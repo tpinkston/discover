@@ -1,0 +1,5 @@
+value,name,desc
+0,NONE,No Laser
+1,LASER_POINTER,Laser Pointer
+2,LASER_DESIGNATOR,Laser Designator
+2,LASER_RANGE_FINDER,Laser Range Finder

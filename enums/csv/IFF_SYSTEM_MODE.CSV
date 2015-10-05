@@ -1,0 +1,16 @@
+value,name,desc,deleted,new,SISO
+0,IFF_SYS_MODE_NO_STATEMENT,No Statement,0,0,0
+1,IFF_SYS_MODE_OFF,Off,0,0,0
+2,IFF_SYS_MODE_STANDBY,Standby,0,0,0
+3,IFF_SYS_MODE_NORMAL,Normal,0,0,0
+4,IFF_SYS_MODE_EMERGENCY,Emergency,0,0,0
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,

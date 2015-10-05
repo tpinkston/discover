@@ -1,0 +1,103 @@
+<project name="Discover" basedir="." default="jar">
+
+  <property name="debug" value="true"/>
+  <property name="verbose" value="false"/>
+  <property name="listfiles" value="false"/>
+  <property name="enums" value="enums"/>
+  <property name="source" value="src"/>
+  <property name="icons" value="discover/gui/icons"/>
+  <property name="army-marking" value="discover/vdis/marking/army"/>
+  <property name="types" value="discover/vdis/types/data"/>
+  <property name="system" value="discover/system"/>
+  <property name="bin" value="bin"/>
+  <property name="library" value="lib"/>
+  <property name="test" value="default"/>
+  <property name="jar" value="discover.jar"/>
+  <property name="main.class" value="discover.Discover"/>
+
+  <path id="classpath">
+    <fileset dir="${library}" includes="**/*.jar"/>
+  </path>
+
+  <target name="clean">
+    <delete verbose="${verbose}" dir="${bin}"/>
+    <delete verbose="${verbose}" file="${enums}/generate_enums"/>
+  </target>
+
+  <target name="buildenums">
+    <exec executable="g++" dir="${enums}" failonerror="true">
+      <arg value="generate_enums.cpp"/>
+      <arg value="-o"/>
+      <arg value="generate_enums"/>
+    </exec>
+      <exec executable="${enums}/generate_enums" failonerror="true">
+    </exec>
+  </target>
+
+  <target name="compile">
+    <mkdir dir="${bin}"/>
+    <javac srcdir="${source}"
+           destdir="${bin}"
+           verbose="${verbose}"
+           classpathref="classpath"
+           debug="${debug}"
+           listfiles="${listfiles}"
+           includeantruntime="false">
+      <compilerarg value="-Xlint"/>
+    </javac>
+  </target>
+
+  <target name="jar" depends="compile, copyfiles">
+    <jar destfile="${library}/${jar}" basedir="${bin}">
+      <manifest>
+        <attribute name="Main-Class" value="${main.class}"/>
+        <attribute name="Class-Path" value="geotransform.jar"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <target name="run" depends="jar">
+    <java fork="true" classname="${main.class}">
+      <classpath>
+        <path refid="classpath"/>
+      </classpath>
+    </java>
+  </target>
+
+  <target name="all" depends="clean, buildenums, jar">
+  </target>
+
+  <target name="test" depends="jar">
+    <java fork="true" classname="${main.class}">
+      <classpath>
+        <path refid="classpath"/>
+      </classpath>
+      <arg value="--level=FINEST"/>
+      <arg value="--test=${test}"/>
+    </java>
+  </target>
+
+  <target name="copyfiles">
+    <copy verbose="${verbose}" todir="${bin}/${icons}">
+      <fileset dir="${source}/${icons}">
+        <exclude name="*.java"/>
+      </fileset>
+    </copy>
+    <copy verbose="${verbose}" todir="${bin}/${system}">
+      <fileset dir="${source}/${system}">
+        <exclude name="*.java"/>
+      </fileset>
+    </copy>
+    <copy verbose="${verbose}" todir="${bin}/${army-marking}">
+      <fileset dir="${source}/${army-marking}">
+        <exclude name="*.java"/>
+      </fileset>
+    </copy>
+    <copy verbose="${verbose}" todir="${bin}/${types}">
+      <fileset dir="${source}/${types}">
+        <exclude name="*.java"/>
+      </fileset>
+    </copy>
+  </target>
+
+</project>

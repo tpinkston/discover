@@ -1,0 +1,14 @@
+value,name,desc,deleted,new,SISO
+0,DES_SPOT_TYPE_NOT_SPECIFIED,Not Specified,0,1,0
+1,DES_SPOT_TYPE_TERRAIN_MODEL,Terrain - terrain model,0,1,0
+2,DES_SPOT_TYPE_NO_TERRAIN_MODEL,Terrain - no terrain model (zero-elevation),0,1,0
+3,DES_SPOT_TYPE_WATER_SURFACE,Water Surface,0,1,0
+4,DES_SPOT_TYPE_FOLIAGE,Foliage or other natural object attached to terrain,0,1,0
+5,DES_SPOT_TYPE_MAN_MADE_OBJECT,Man-made object attached to terrain,0,1,0
+6,DES_SPOT_TYPE_CLOUDS,Clouds,0,1,0
+7,DES_SPOT_TYPE_OBSCURANT,Obscurant (e.g. smoke),0,1,0
+8,DES_SPOT_TYPE_NON_INCIDENT,Non-incident (e.g. clear sky),0,1,0
+,,,,,
+,,,,,
+,,,,,
+,,,,,

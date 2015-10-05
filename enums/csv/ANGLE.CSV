@@ -1,0 +1,5 @@
+value,name,desc,deleted,new,SISO
+0,ANGLE_OTHER,Other,0,0,0
+1,ANGLE_FM,FM (Frequency Modulation),0,0,0
+2,ANGLE_FSK,FSK (Frequency Shift Keying),0,0,0
+3,ANGLE_PM,PM (Phase Modulation),0,0,0

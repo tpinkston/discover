@@ -1,0 +1,1216 @@
+value,name,desc,CAT,type,length,units,new,deleted,SISO
+256,DID_ENVIRONMENT_PROCESS_STATE_COMBIC,COMBIC State,Environment,variable,416-bits,unknown,0,0,0
+259,DID_ENVIRONMENT_PROCESS_STATE_FLARE,Flare State,Environment,variable,192-bits,unknown,0,0,0
+4000,DID_DE_PRECISION_AIMPOINT,DE Precision Aimpoint record,Directed Energy,variable,unknown,unknown,1,0,1
+4001,DID_DE_AREA_AIMPOINT,DE Area Aimpoint record,Directed Energy,variable,unknown,unknown,1,0,1
+4500,DID_DE_DAMAGE_DESCRIPTION,DE Damage Description record,Directed Energy,variable,unknown,unknown,1,0,1
+10000,DID_IDENTIFICATION_AGGR,Identification (Aggregate),Entity ID,unknown,unknown,unknown,0,0,0
+11000,DID_ENTITY_TYPE_AGGR,Entity Type (Aggregate),Entity ID,unknown,unknown,unknown,0,0,0
+11100,DID_ENTITY_TYPE_CONCAT_AGGR,Entity Type - Concatenated (Aggregate),Entity ID,unknown,unknown,unknown,0,0,0
+11110,DID_ENTITY_TYPE_CONCAT_KIND,Entity Type - Concatenated - Kind,Entity ID,unsigned integer,8-bits,unknown,0,0,0
+11120,DID_ENTITY_TYPE_CONCAT_DOMAIN,Entity Type - Concatenated - Domain,Entity ID,unsigned integer,8-bits,unknown,0,0,0
+11130,DID_ENTITY_TYPE_CONCAT_COUNTRY,Entity Type - Concatenated - Country,Entity ID,unsigned integer,16-bits,unknown,0,0,0
+11140,DID_ENTITY_TYPE_CONCAT_CATEGORY,Entity Type - Concatenated - Category,Entity ID,unsigned integer,8-bits,unknown,0,0,0
+11150,DID_ENTITY_TYPE_CONCAT_SUBCATEGORY,Entity Type - Concatenated - Subcategory,Entity ID,unsigned integer,8-bits,unknown,0,0,0
+11160,DID_ENTITY_TYPE_CONCAT_SPECIFIC,Entity Type - Concatenated - Specific ,Entity ID,unsigned integer,8-bits,unknown,0,0,0
+11170,DID_ENTITY_TYPE_CONCAT_EXTRA,Entity Type - Concatenated - Extra,Entity ID,unsigned integer,8-bits,unknown,0,0,0
+11200,DID_TASK_ORG_FORCE_ID,Task Organization - Force ID,Task Organization,unsigned integer,8-bits,unknown,0,0,0
+11250,DID_TASK_ORG_FORCE_ID_AFFILIATION,Task Organization - Force ID - Affiliation,Task Organization,variable,320-bits,unknown,1,0,0
+11300,DID_ENTITY_TYPE_DESC,Entity Type - Description,Entity ID,variable,unknown,unknown,0,0,0
+11400,DID_ENTITY_TYPE_ENTITY_ROLE_RECORD_ID,Entity Type - Entity Role Record ID,SIMAN,variable,unknown,unknown,0,0,0
+11410,DID_ENTITY_TYPE_ENTITY_ORG_RECORD_ID,Entity Type - Entity Organization Record ID,SIMAN,variable,unknown,unknown,0,0,0
+12000,DID_ALTERNATIVE_ENTITY_TYPE_AGGR,Alternative Entity Type (Aggregate),Entity ID,unknown,unknown,unknown,0,0,0
+12100,DID_ALTERNATIVE_ENTITY_ROLE_RECORD_ID,Alternative Entity Role Record ID ,Entity ID,variable,unknown,unknown,0,0,0
+12110,DID_ALTERNATIVE_ENTITY_TYPE_KIND,Alternative Entity Type - Kind,Entity ID,unsigned integer,8-bits,unknown,0,0,0
+12120,DID_ALTERNATIVE_ENTITY_TYPE_DOMAIN,Alternative Entity Type - Domain,Entity ID,unsigned integer,8-bits,unknown,0,0,0
+12130,DID_ALTERNATIVE_ENTITY_TYPE_COUNTRY,Alternative Entity Type - Country,Entity ID,unsigned integer,16-bits,unknown,0,0,0
+12140,DID_ALTERNATIVE_ENTITY_TYPE_CATEGORY,Alternative Entity Type - Category,Entity ID,unsigned integer,8-bits,unknown,0,0,0
+12150,DID_ALTERNATIVE_ENTITY_TYPE_SUBCATEGORY,Alternative Entity Type - Subcategory ,Entity ID,unsigned integer,8-bits,unknown,0,0,0
+12160,DID_ALTERNATIVE_ENTITY_TYPE_SPECIFIC,Alternative Entity Type - Specific,Entity ID,unsigned integer,8-bits,unknown,0,0,0
+12170,DID_ALTERNATIVE_ENTITY_TYPE_EXTRA,Alternative Entity Type - Extra,Entity ID,unsigned integer,8-bits,unknown,0,0,0
+12300,DID_ALTERNATIVE_ENTITY_TYPE_DESC,Alternative Entity Type - Description,Entity ID,variable,unknown,unknown,0,0,0
+13000,DID_ENTITY_MARKING_ENTITY_MARKING,Entity Marking - Entity Marking,Entity ID,unknown,8-bits,unknown,0,0,0
+13100,DID_ENTITY_MARKING_CHARACTERS,Entity Marking Characters,Entity ID,string,80-bits,unknown,0,0,0
+13200,DID_ENTITY_MARKING_CREW_ID,Entity Marking - Crew ID,Entity ID,string,80-bits,unknown,0,0,0
+14000,DID_TASK_ORG_AGGR,Task Organization (Aggregate),Task Organization,unknown,unknown,unknown,0,0,0
+14200,DID_TASK_ORG_REGIMENT_NAME,Task Organization - Regiment Name,Task Organization,string,unknown,unknown,0,0,0
+14300,DID_TASK_ORG_BATTALION_NAME,Task Organization - Battalion Name,Task Organization,string,unknown,unknown,0,0,0
+14400,DID_TASK_ORG_COMPANY_NAME,Task Organization - Company Name,Task Organization,string,unknown,unknown,0,0,0
+14500,DID_TASK_ORG_PLATOON_NAME,Task Organization - Platoon Name,Task Organization,string,unknown,unknown,0,0,0
+14520,DID_TASK_ORG_SQUAD_NAME,Task Organization - Squad Name,Task Organization,string,unknown,unknown,0,0,0
+14540,DID_TASK_ORG_TEAM_NAME,Task Organization - Team Name,Task Organization,string,unknown,unknown,0,0,0
+14600,DID_TASK_ORG_BUMPER_NUMBER,Task Organization - Bumper Number,Task Organization,unknown,unknown,unknown,0,0,0
+14700,DID_TASK_ORG_VEHICLE_NUMBER,Task Organization - Vehicle Number,Task Organization,unknown,unknown,unknown,0,0,0
+14800,DID_TASK_ORG_UNIT_NUMBER,Task Organization - Unit Number,Task Organization,unknown,unknown,unknown,0,0,0
+14900,DID_TASK_ORG_ARMY,Army Task Organization,Task Organization,variable,128-bits,unknown,1,1,0
+14950,DID_TASK_ORG_ARMY_ECHELON_DESC_SHORT,Army Echelon Description - Short,Task Organization,variable,64 + 64N bits,unknown,1,1,0
+14951,DID_TASK_ORG_ARMY_ECHELON_DESC_SHORT_DIVISION,Division Echelon Description - Short,Task Organization,variable,64 + 64N bits,unknown,1,1,0
+14952,DID_TASK_ORG_ARMY_ECHELON_DESC_SHORT_BRIGADE,Brigade Echelon Description - Short,Task Organization,variable,64 + 64N bits,unknown,1,1,0
+14953,DID_TASK_ORG_ARMY_ECHELON_DESC_SHORT_BN,Battalion Echelon Description - Short,Task Organization,variable,64 + 64N bits,unknown,1,1,0
+14954,DID_TASK_ORG_ARMY_ECHELON_DESC_SHORT_COMPANY,Company Echelon Description - Short,Task Organization,variable,64 + 64N bits,unknown,1,1,0
+14955,DID_TASK_ORG_ARMY_ECHELON_DESC_SHORT_PLATOON,Platoon Echelon Description - Short,Task Organization,variable,64 + 64N bits,unknown,1,1,0
+14956,DID_TASK_ORG_ARMY_ECHELON_DESC_SHORT_SECT,Section Echelon Description - Short,Task Organization,variable,64 + 64N bits,unknown,1,1,0
+14957,DID_TASK_ORG_ARMY_ECHELON_DESC_SHORT_SQUAD,Squad Echelon Description - Short,Task Organization,variable,N/A,unknown,1,1,0
+14958,DID_TASK_ORG_ARMY_ECHELON_DESC_SHORT_FIRE_TEAM,Fire Team Echelon Description - Short,Task Organization,variable,64 + 64N bits,unknown,1,1,0
+14970,DID_TASK_ORG_ARMY_ECHELON_DESC_LONG,Army Echelon Description - Long,Task Organization,variable,64 + 128N bits,unknown,1,1,0
+14971,DID_TASK_ORG_ARMY_ECHELON_DESC_LONG_DIVISION,Division Echelon Description - Long,Task Organization,variable,64 + 128N bits,unknown,1,1,0
+14972,DID_TASK_ORG_ARMY_ECHELON_DESC_LONG_BRIGADE,Brigade Echelon Description - Long,Task Organization,variable,64 + 128N bits,unknown,1,1,0
+14973,DID_TASK_ORG_ARMY_ECHELON_DESC_LONG_BN,Battalion Echelon Description - Long,Task Organization,variable,64 + 128N bits,unknown,1,1,0
+14974,DID_TASK_ORG_ARMY_ECHELON_DESC_LONG_COMPANY,Company Echelon Description - Long,Task Organization,variable,64 + 128N bits,unknown,1,1,0
+14975,DID_TASK_ORG_ARMY_ECHELON_DESC_LONG_PLATOON,Platoon Echelon Description - Long,Task Organization,variable,64 + 128N bits,unknown,1,1,0
+14976,DID_TASK_ORG_ARMY_ECHELON_DESC_LONG_SECT,Section Echelon Description - Long,Task Organization,variable,64 + 128N bits,unknown,1,1,0
+14977,DID_TASK_ORG_ARMY_ECHELON_DESC_LONG_SQUAD,Squad Echelon Description - Long,Task Organization,variable,64 + 128N bits,unknown,1,1,0
+14978,DID_TASK_ORG_ARMY_ECHELON_DESC_LONG_FIRE_TEAM,Fire Team Echelon Description - Long,Task Organization,variable,64 + 128N bits,unknown,1,1,0
+15000,DID_DIS_IDENTITY_DIS_IDENTITY,DIS Identity - DIS Identity,Dismounted Infantry,unknown,unknown,unknown,0,0,0
+15100,DID_DIS_IDENTITY_DIS_SITE_ID,DIS Identity - DIS Site ID,Dismounted Infantry,unknown,unknown,unknown,0,0,0
+15200,DID_DIS_IDENTITY_DIS_HOST_ID,DIS Identity - DIS Host ID,Dismounted Infantry,unknown,unknown,unknown,0,0,0
+15300,DID_DIS_IDENTITY_DIS_ENTITY_ID,DIS Identity - DIS Entity ID,Dismounted Infantry,unknown,unknown,unknown,0,0,0
+15400,DID_DIS_IDENTITY_MOUNT_INTENT,DIS Identity - Mount Intent,Dismounted Infantry,unknown,544-bits,unknown,0,0,0
+15500,DID_CFS_TETHER_UNTETHER_COMMAND,CFS - Tether-Untether Command,Task Organization,unsigned integer,32-bits,enumeration,0,0,0
+15505,DID_COMMAND_FROM_SIMULATOR,Command from Simulator (CFS),Task Organization,variable,192-bits +,unknown,1,0,0
+15510,DID_DIS_IDENTITY_TELEPORT_ENTITY_DATA_RECORD,DIS Identity - Teleport Entity Data Record,SIMAN,variable,unknown,unknown,0,0,0
+15600,DID_DIS_IDENTITY_DIS_AGGR_ID,DIS Identity - DIS Aggregate ID,Dismounted Infantry,unsigned integer,32-bits,unknown,0,0,0
+15800,DID_OWNERSHIP_STATUS,Ownership Status Record,Transfer Ownership,variable,64-bits,unknown,1,0,1
+16200,DID_DI_INITIALIZATION_RECORD_ID,DI Initialization Record ID ,Dismounted Infantry,variable,unknown,unknown,0,0,0
+16201,DID_DI_JOB_ASSIGNMENT_ID,DI Job Assignment ID ,Dismounted Infantry,fixed,unknown,unknown,0,0,0
+16202,DID_DI_PRIMARY_WEAPON_ID,DI Primary Weapon ID ,Dismounted Infantry,fixed,unknown,unknown,0,0,0
+16203,DID_DI_PRIMARY_MUNITION_QTY_ID,DI Primary Munition Quantity ID ,Dismounted Infantry,fixed,unknown,unknown,0,0,0
+16204,DID_DI_SECONDARY_WEAPON_ID,DI Secondary Weapon ID ,Dismounted Infantry,fixed,unknown,unknown,0,0,0
+16205,DID_DI_SECONDARY_MUNITION_QTY_ID,DI Secondary Munition Quantity ID ,Dismounted Infantry,fixed,unknown,unknown,0,0,0
+16206,DID_DI_STANCE_ID,DI Stance ID ,Dismounted Infantry,fixed,unknown,unknown,0,0,0
+16210,DID_NUMBER_TO_MOUNT_DISMOUNT_ID,Number To Mount Dismount ID ,Mounting,fixed,unknown,unknown,0,0,0
+16215,DID_MOUNT_DATA_ID,Mount Data,Mounting,variable,unknown,unknown,1,0,0
+16220,DID_CARRIER_MOUNT_ID,Carrier Mount ID,Mounting,variable,unknown,unknown,1,0,0
+16225,DID_DI_MOUNTED_STATUS_ID,DI Mounted Status ID ,Dismounted Infantry,fixed,unknown,unknown,0,0,0
+16230,DID_TROOP_STRENGTH_ID,Troop Strength ID ,Dismounted Infantry,fixed,unknown,unknown,0,0,0
+16240,DID_WEAPON_QTY_RECORD_ID,Weapon Quantity Record ID ,Dismounted Infantry,variable,unknown,unknown,0,0,0
+17000,DID_FORCE_ID,Force ID ,Task Organization,fixed,unknown,unknown,0,0,0
+20000,DID_LOADS_AGGR,Loads (Aggregate),Loads,unknown,unknown,unknown,0,0,0
+20001,DID_LOADS_CARGO_LOAD_REQUEST,Loads - Cargo Load Request,Loads,unknown,unknown,unknown,0,0,0
+20006,DID_LOADS_SLING_LOAD_TYPE,Loads - Sling load Type,Loads,unknown,unknown,unknown,0,0,0
+20007,DID_LOADS_SLING_LOAD_HOOK,Loads - Sling load Hook,Loads,unknown,unknown,unknown,0,0,0
+20008,DID_LOADS_AIRMOUNT_STATION,Loads - Airmount Station,Loads,unknown,unknown,unknown,0,0,0
+20009,DID_LOADS_AIRMOUNT_WEIGHT,Loads - Airmount Weight,Loads,unknown,unknown,unknown,0,0,0
+20010,DID_LOADS_AIRMOUNT_IS_DI,Loads - Airmount Is DI,Loads,unknown,unknown,unknown,0,0,0
+20011,DID_LOADS_AIRMOUNT_NUM_DI,Loads - Airmount Num DI,Loads,unknown,unknown,unknown,0,0,0
+20012,DID_LOADS_AIRMOUNT_DI_KG,Loads - Airmount DI KG,Loads,unknown,unknown,unknown,0,0,0
+20013,DID_LOADS_AIRMOUNT_CARGO_KG,Loads - Airmount Cargo KG,Loads,unknown,unknown,unknown,0,0,0
+20014,DID_LOADS_AIRMOUNT_VEHICLE_SITE,Loads - Airmount Vehicle Site,Loads,unknown,unknown,unknown,0,0,0
+20015,DID_LOADS_AIRMOUNT_VEHICLE_HOST,Loads - Airmount Vehicle Host,Loads,unknown,unknown,unknown,0,0,0
+20016,DID_LOADS_AIRMOUNT_VEHICLE_VEHICLE,Loads - Airmount Vehicle Vehicle,Loads,unknown,unknown,unknown,0,0,0
+20017,DID_LOADS_AIRMOUNT_RESPONSE_ACTION,Loads - Airmount Response Action,Loads,unknown,unknown,unknown,0,0,0
+20020,DID_LOADS_CHECKPOINT_RESTORE_STATUS,Loads - Checkpoint Restore Status,Checkpoint,fixed,unknown,unknown,0,0,0
+20021,DID_LOADS_CHECKPOINT_ENTITIES_LEFT,Loads - Checkpoint Entities Left,Checkpoint,fixed,unknown,unknown,0,0,0
+20022,DID_LOADS_TOTAL_ENTITIES,Loads - Total Entities,Loads,fixed,unknown,unknown,0,0,0
+20030,DID_SLING_LOAD_CAPABILITY,Sling Load Capability,Loads,variable,unknown,unknown,0,0,0
+21000,DID_CREW_MEMBERS_AGGR,Crew Members (Aggregate),Crew Status,unknown,unknown,unknown,0,0,0
+21100,DID_CREW_MEMBERS_CREW_MEMBER_ID,Crew Members - Crew Member ID,Crew Status,unknown,unknown,unknown,0,0,0
+21200,DID_CREW_MEMBERS_HEALTH,Crew Members - Health,Crew Status,unknown,unknown,unknown,0,0,0
+21300,DID_CREW_MEMBERS_JOB_ASSIGNMENT,Crew Members - Job Assignment,Crew Status,string,unknown,unknown,0,0,0
+23000,DID_FUEL_AGGR,Fuel (Aggregate),Fuel,unknown,unknown,unknown,0,0,0
+23100,DID_FUEL_QTY_LITERS,Fuel - Quantity - Liters,Fuel,unknown,unknown,liters,0,0,0
+23105,DID_FUEL_QTY_GALLONS,Fuel - Quantity - Gallons,Fuel,unknown,unknown,gallons,0,0,0
+24000,DID_AMMO_AGGR,Ammunition (Aggregate),Munitions,variable,unknown,unknown,0,0,0
+24001,DID_AMMO_120_MM_HEAT_QTY,Ammunition - 120-mm HEAT - quantity,Munitions,unknown,unknown,rounds,0,0,0
+24002,DID_AMMO_120_MM_SABOT_QTY,Ammunition - 120-mm SABOT - quantity,Munitions,unknown,unknown,rounds,0,0,0
+24003,DID_AMMO_12_7_MM_M8_QTY,Ammunition - 12.7-mm M8 - quantity,Munitions,unknown,unknown,rounds,0,0,0
+24004,DID_AMMO_12_7_MM_M20_QTY,Ammunition - 12.7-mm M20 - quantity,Munitions,unknown,unknown,rounds,0,0,0
+24005,DID_AMMO_7_62_MM_M62_QTY,Ammunition - 7.62-mm M62 - quantity,Munitions,unknown,unknown,rounds,0,0,0
+24006,DID_AMMO_M250_UKL8A1_QTY,Ammunition - M250 UKL8A1 - quantity,Munitions,unknown,unknown,grenades,0,0,0
+24007,DID_AMMO_M250_UKL8A3_QTY,Ammunition - M250 UKL8A3 - quantity,Munitions,unknown,unknown,grenades,0,0,0
+24008,DID_AMMO_7_62_MM_M80_QTY,Ammunition - 7.62-mm M80 - quantity,Munitions,unknown,unknown,rounds,0,0,0
+24009,DID_AMMO_12_7_MM_QTY,Ammunition - 12.7-mm - quantity,Munitions,unknown,unknown,rounds,0,0,0
+24010,DID_AMMO_7_62_MM_QTY,Ammunition - 7.62-mm - quantity,Munitions,unknown,unknown,rounds,0,0,0
+24011,DID_AMMO_DISPLAY_AVIATOR,Ammunition - Display Aviator,Munitions,unknown,unknown,unknown,0,0,0
+24012,DID_AMMO_MUNITIONS_25_HEI_T_QTY_ID_B120,Ammunition - Munitions 25 Hei T Quantity ID B120,Munitions,fixed,unknown,unknown,0,0,0
+24013,DID_AMMO_MUNITIONS_25_SABOT_QTY_ID,Ammunition - Munitions 25 Sabot Quantity ID ,Munitions,fixed,unknown,unknown,0,0,0
+24014,DID_AMMO_MUNITIONS_TOW_II_QTY_ID,Ammunition - Munitions Tow Ii Quantity ID ,Munitions,fixed,unknown,unknown,0,0,0
+24015,DID_AMMO_BATTLE_DAMAGE_STATUS,Ammunition - Battle Damage Status,Munitions,unknown,unknown,unknown,0,0,0
+24016,DID_AMMO_BATTLE_DAMAGE_INHIBIT_STATUS,Ammunition - Battle Damage Inhibit Status,Munitions,unknown,unknown,unknown,0,0,0
+24017,DID_AMMO_BCIS_EQUIPPED_ID,Ammunition - Bcis Equipped ID ,Munitions,fixed,unknown,unknown,0,0,0
+24020,DID_AMMO_SIMSTATUS,Ammunition - SimStatus,Munitions,unknown,unknown,unknown,0,0,0
+24021,DID_AMMO_RUNSTATUS,Ammunition - RunStatus,Munitions,unknown,unknown,unknown,0,0,0
+24022,DID_AMMO_DISPLAY_STATE,Ammunition - Display State,Munitions,unknown,unknown,unknown,0,0,0
+24023,DID_AMMO_MUNITIONS_25_APDS_QTY_ID,Ammunition - Munitions 25 Apds Quantity ID ,Munitions,fixed,unknown,unknown,0,0,0
+24024,DID_AMMO_MUNITIONS_M257_L8A1_QTY_ID,Ammunition - Munitions M257 L8A1 Quantity ID ,Munitions,fixed,unknown,unknown,0,0,0
+24025,DID_AMMO_MUNITIONS_M257_L8A3_QTY_ID,Ammunition - Munitions M257 L8A3 Quantity ID ,Munitions,fixed,unknown,unknown,0,0,0
+24060,DID_AMMO_MINES_QTY,Ammunition - Mines - quantity,Munitions,fixed,16-bits,mines,0,0,0
+24100,DID_AMMO_TYPE,Ammunition - Type,Munitions,fixed,8-bits,N/A,0,0,0
+24110,DID_AMMO_KIND,Ammunition - Kind,Munitions,fixed,8-bits,N/A,0,0,0
+24120,DID_AMMO_DOMAIN,Ammunition - Domain,Munitions,fixed,8-bits,N/A,0,0,0
+24130,DID_AMMO_COUNTRY,Ammunition - Country,Munitions,fixed,16-bits,N/A,0,0,0
+24140,DID_AMMO_CATEGORY,Ammunition - Category,Munitions,fixed,8-bits,N/A,0,0,0
+24150,DID_AMMO_SUBCATEGORY,Ammunition - Subcategory,Munitions,fixed,8-bits,N/A,0,0,0
+24160,DID_AMMO_EXTRA,Ammunition - Extra,Munitions,fixed,8-bits,N/A,0,0,0
+24300,DID_AMMO_DESC,Ammunition - Description,Munitions,variable,320-bits,N/A,0,0,0
+25000,DID_CARGO_AGGR,Cargo (Aggregate),Cargo,unknown,unknown,unknown,0,0,0
+26000,DID_VEHICLE_MASS,Vehicle Mass,Entity Status,unsigned integer,32-bits,kilograms,0,0,0
+27000,DID_SUPPLY_QTY,Supply Quantity,Munitions,unknown,unknown,unknown,0,0,0
+28000,DID_ARMAMENT,Armament,Munitions,boolean,unknown,unknown,0,0,0
+30000,DID_STATUS_AGGR,Status (Aggregate),Entity Status,unknown,unknown,unknown,0,0,0
+30010,DID_STATUS_ACTIVATE_ENTITY,Status - Activate entity,Entity Status,integer,32-bits,unknown,0,0,0
+30100,DID_STATUS_SUBSCRIPTION_STATE,Status - Subscription State,SIMAN,enumeration,8-bits,unknown,0,0,0
+30300,DID_STATUS_ROUND_TRIP_TIME_DELAY,Status - Round trip time delay,SIMAN,unsigned integer,32-bits,milliseconds,0,0,0
+30400,DID_STATUS_TADIL_J_MSG_COUNT_LABEL_0,Status - TADIL J message count (label 0),TADIL J,unsigned integer,32-bits,unknown,0,0,0
+30401,DID_STATUS_TADIL_J_MSG_COUNT_LABEL_1,Status - TADIL J message count (label 1),TADIL J,unsigned integer,32-bits,unknown,0,0,0
+30402,DID_STATUS_TADIL_J_MSG_COUNT_LABEL_2,Status - TADIL J message count (label 2),TADIL J,unsigned integer,32-bits,unknown,0,0,0
+30403,DID_STATUS_TADIL_J_MSG_COUNT_LABEL_3,Status - TADIL J message count (label 3),TADIL J,unsigned integer,32-bits,unknown,0,0,0
+30404,DID_STATUS_TADIL_J_MSG_COUNT_LABEL_4,Status - TADIL J message count (label 4),TADIL J,unsigned integer,32-bits,unknown,0,0,0
+30405,DID_STATUS_TADIL_J_MSG_COUNT_LABEL_5,Status - TADIL J message count (label 5),TADIL J,unsigned integer,32-bits,unknown,0,0,0
+30406,DID_STATUS_TADIL_J_MSG_COUNT_LABEL_6,Status - TADIL J message count (label 6),TADIL J,unsigned integer,32-bits,unknown,0,0,0
+30407,DID_STATUS_TADIL_J_MSG_COUNT_LABEL_7,Status - TADIL J message count (label 7),TADIL J,unsigned integer,32-bits,unknown,0,0,0
+30408,DID_STATUS_TADIL_J_MSG_COUNT_LABEL_8,Status - TADIL J message count (label 8),TADIL J,unsigned integer,32-bits,unknown,0,0,0
+30409,DID_STATUS_TADIL_J_MSG_COUNT_LABEL_9,Status - TADIL J message count (label 9),TADIL J,unsigned integer,32-bits,unknown,0,0,0
+30410,DID_STATUS_TADIL_J_MSG_COUNT_LABEL_10,Status - TADIL J message count (label 10),TADIL J,unsigned integer,32-bits,unknown,0,0,0
+30411,DID_STATUS_TADIL_J_MSG_COUNT_LABEL_11,Status - TADIL J message count (label 11),TADIL J,unsigned integer,32-bits,unknown,0,0,0
+30412,DID_STATUS_TADIL_J_MSG_COUNT_LABEL_12,Status - TADIL J message count (label 12),TADIL J,unsigned integer,32-bits,unknown,0,0,0
+30413,DID_STATUS_TADIL_J_MSG_COUNT_LABEL_13,Status - TADIL J message count (label 13),TADIL J,unsigned integer,32-bits,unknown,0,0,0
+30414,DID_STATUS_TADIL_J_MSG_COUNT_LABEL_14,Status - TADIL J message count (label 14),TADIL J,unsigned integer,32-bits,unknown,0,0,0
+30415,DID_STATUS_TADIL_J_MSG_COUNT_LABEL_15,Status - TADIL J message count (label 15),TADIL J,unsigned integer,32-bits,unknown,0,0,0
+30416,DID_STATUS_TADIL_J_MSG_COUNT_LABEL_16,Status - TADIL J message count (label 16),TADIL J,unsigned integer,32-bits,unknown,0,0,0
+30417,DID_STATUS_TADIL_J_MSG_COUNT_LABEL_17,Status - TADIL J message count (label 17),TADIL J,unsigned integer,32-bits,unknown,0,0,0
+30418,DID_STATUS_TADIL_J_MSG_COUNT_LABEL_18,Status - TADIL J message count (label 18),TADIL J,unsigned integer,32-bits,unknown,0,0,0
+30419,DID_STATUS_TADIL_J_MSG_COUNT_LABEL_19,Status - TADIL J message count (label 19),TADIL J,unsigned integer,32-bits,unknown,0,0,0
+30420,DID_STATUS_TADIL_J_MSG_COUNT_LABEL_20,Status - TADIL J message count (label 20),TADIL J,unsigned integer,32-bits,unknown,0,0,0
+30421,DID_STATUS_TADIL_J_MSG_COUNT_LABEL_21,Status - TADIL J message count (label 21),TADIL J,unsigned integer,32-bits,unknown,0,0,0
+30422,DID_STATUS_TADIL_J_MSG_COUNT_LABEL_22,Status - TADIL J message count (label 22),TADIL J,unsigned integer,32-bits,unknown,0,0,0
+30423,DID_STATUS_TADIL_J_MSG_COUNT_LABEL_23,Status - TADIL J message count (label 23),TADIL J,unsigned integer,32-bits,unknown,0,0,0
+30424,DID_STATUS_TADIL_J_MSG_COUNT_LABEL_24,Status - TADIL J message count (label 24),TADIL J,unsigned integer,32-bits,unknown,0,0,0
+30425,DID_STATUS_TADIL_J_MSG_COUNT_LABEL_25,Status - TADIL J message count (label 25),TADIL J,unsigned integer,32-bits,unknown,0,0,0
+30426,DID_STATUS_TADIL_J_MSG_COUNT_LABEL_26,Status - TADIL J message count (label 26),TADIL J,unsigned integer,32-bits,unknown,0,0,0
+30427,DID_STATUS_TADIL_J_MSG_COUNT_LABEL_27,Status - TADIL J message count (label 27),TADIL J,unsigned integer,32-bits,unknown,0,0,0
+30428,DID_STATUS_TADIL_J_MSG_COUNT_LABEL_28,Status - TADIL J message count (label 28),TADIL J,unsigned integer,32-bits,unknown,0,0,0
+30429,DID_STATUS_TADIL_J_MSG_COUNT_LABEL_29,Status - TADIL J message count (label 29),TADIL J,unsigned integer,32-bits,unknown,0,0,0
+30430,DID_STATUS_TADIL_J_MSG_COUNT_LABEL_30,Status - TADIL J message count (label 30),TADIL J,unsigned integer,32-bits,unknown,0,0,0
+30431,DID_STATUS_TADIL_J_MSG_COUNT_LABEL_31,Status - TADIL J message count (label 31),TADIL J,unsigned integer,32-bits,unknown,0,0,0
+31000,DID_STATUS_POSITION_AGGR,Status - Position (Aggregate),Position,unknown,unknown,unknown,0,0,0
+31010,DID_STATUS_ROUTE_WAYPOINT_TYPE,Status - Route (Waypoint) type,Position,integer,32-bits,unknown,0,0,0
+31100,DID_STATUS_MIL_GRID_10,Status - Mil Grid 10,Position,unknown,unknown,unknown,0,0,0
+31200,DID_STATUS_GEOCENTRIC_COORDINATES_AGGR,Status - Geocentric Coordinates (Aggregate),Position,variable,unknown,unknown,0,0,0
+31210,DID_STATUS_GEOCENTRIC_COORDINATES_X,Status - Geocentric Coordinates - X ,Position,unsigned integer,32-bits,meters,0,0,0
+31220,DID_STATUS_GEOCENTRIC_COORDINATES_Y,Status - Geocentric Coordinates - Y,Position,unsigned integer,32-bits,meters,0,0,0
+31230,DID_STATUS_GEOCENTRIC_COORDINATES_Z,Status - Geocentric Coordinates - Z,Position,unsigned integer,32-bits,meters,0,0,0
+31300,DID_STATUS_LAT,Status - Latitude,Position,unsigned integer,32-bits,degrees,0,0,0
+31400,DID_STATUS_LONG,Status - Longitude,Position,unsigned integer,32-bits,degrees,0,0,0
+31500,DID_STATUS_LOS_AGGR,Status - Line of Sight (Aggregate),LOS,variable,unknown,unknown,0,0,0
+31510,DID_STATUS_LOS_X,Status - Line of Sight - X,LOS,unsigned integer,32-bits,meters,0,0,0
+31520,DID_STATUS_LOS_Y,Status - Line of Sight - Y,LOS,unsigned integer,32-bits,meters,0,0,0
+31530,DID_STATUS_LOS_Z,Status - Line of Sight - Z,LOS,unsigned integer,32-bits,meters,0,0,0
+31600,DID_STATUS_ALTITUDE,Status - Altitude,Entity Status,integer,32-bits,meters,0,0,0
+31700,DID_STATUS_DESTINATION_LAT,Status - Destination Latitude,Entity Status,integer,32-bits,(10000th) degrees,0,0,0
+31800,DID_STATUS_DESTINATION_LONG,Status - Destination Longitude,Entity Status,integer,32-bits,(10000th) degrees,0,0,0
+31900,DID_STATUS_DESTINATION_ALTITUDE,Status - Destination Altitude,Entity Status,integer,32-bits,meters,0,0,0
+32000,DID_STATUS_ORIENT,Status - Orientation,Entity Status,variable datum,96-bits,radians,0,0,0
+32100,DID_STATUS_HULL_HEADING_ANGLE,Status - Hull Heading Angle,Entity Status,unsigned integer,32-bits,degrees,0,0,0
+32200,DID_STATUS_HULL_PITCH_ANGLE,Status - Hull Pitch Angle,Entity Status,unsigned integer,32-bits,degrees,0,0,0
+32300,DID_STATUS_ROLL_ANGLE,Status - Roll Angle,Entity Status,unsigned integer,32-bits,degrees,0,0,0
+32500,DID_STATUS_ROLL_ANGLE_X,Status - Roll Angle - X,Entity Status,unsigned integer,32-bits,degrees,0,0,0
+32600,DID_STATUS_ROLL_ANGLE_Y,Status - Roll Angle - Y,Entity Status,unsigned integer,32-bits,degrees,0,0,0
+32700,DID_STATUS_ROLL_ANGLE_Z,Status - Roll Angle - Z,Entity Status,unsigned integer,32-bits,degrees,0,0,0
+33000,DID_STATUS_APPEARANCE_AGGR,Status - Appearance (Aggregate),Entity Status,variable,unknown,unknown,0,0,0
+33100,DID_STATUS_APPEARANCE_AMBIENT_LIGHTING,Status - Appearance - Ambient Lighting,Lighting,unknown,unknown,unknown,0,0,0
+33101,DID_STATUS_APPEARANCE_LIGHTS,Status - Appearance - Lights,Lighting,unknown,unknown,unknown,0,0,0
+33200,DID_STATUS_APPEARANCE_PAINT_SCHEME,Status - Appearance - Paint Scheme,Entity Status,unknown,unknown,unknown,0,0,0
+33300,DID_STATUS_APPEARANCE_SMOKE,Status - Appearance - Smoke,Entity Status,unknown,unknown,unknown,0,0,0
+33400,DID_STATUS_APPEARANCE_TRAILING_EFFECTS,Status - Appearance - Trailing Effects,Entity Status,unknown,unknown,unknown,0,0,0
+33500,DID_STATUS_APPEARANCE_FLAMING,Status - Appearance - Flaming,Entity Status,unknown,unknown,unknown,0,0,0
+33600,DID_STATUS_APPEARANCE_MARKING,Status - Appearance - Marking,Entity Status,unknown,unknown,unknown,0,0,0
+33710,DID_STATUS_APPEARANCE_MINE_PLOWS_ATTACHED,Status - Appearance - Mine Plows Attached,Entity Status,unknown,unknown,unknown,0,0,0
+33720,DID_STATUS_APPEARANCE_MINE_ROLLERS_ATTACHED,Status - Appearance - Mine Rollers Attached,Entity Status,unknown,unknown,unknown,0,0,0
+33730,DID_STATUS_APPEARANCE_TANK_TURRET_AZIMUTH,Status - Appearance - Tank Turret Azimuth,Entity Status,unknown,unknown,degrees rel 2 lon,0,0,0
+34000,DID_STATUS_FAILURES_AND_MALFUNCTIONS_AGGR,Status - Failures and Malfunctions (Aggregate),Entity Status,unknown,unknown,unknown,0,0,0
+34100,DID_STATUS_AGE,Status - Age,Entity Status,unknown,unknown,miles,0,0,0
+34110,DID_STATUS_KILOMETERS,Status - Kilometers,Entity Status,unknown,unknown,unknown,0,0,0
+35000,DID_STATUS_DAMAGE_AGGR,Status - Damage (Aggregate),Entity Status,variable,128-bits,unknown,0,0,0
+35050,DID_STATUS_DAMAGE_CAUSE,Status - Damage - Cause,Entity Status,unknown,unknown,unknown,0,0,0
+35100,DID_STATUS_DAMAGE_MOBILITY_KILL,Status - Damage - Mobility Kill,Entity Status,unknown,unknown,unknown,0,0,0
+35200,DID_STATUS_DAMAGE_FIRE_POWER_KILL,Status - Damage - Fire-Power Kill,Entity Status,unknown,unknown,unknown,0,0,0
+35300,DID_STATUS_DAMAGE_PERSONNEL_CASUALTIES,Status - Damage - Personnel Casualties,Entity Status,unknown,unknown,unknown,0,0,0
+35400,DID_STATUS_DAMAGE_INFO,Status - Damage Info,Entity Status,variable,unknown,unknown,0,0,0
+36000,DID_STATUS_VEL_AGGR,Status - Velocity (Aggregate),Entity Status,variable,unknown,unknown,0,0,0
+36100,DID_STATUS_X_VEL,Status - X-velocity,Entity Status,variable,unknown,meters/second,0,0,0
+36200,DID_STATUS_Y_VEL,Status - Y-velocity,Entity Status,unknown,unknown,meters/second,0,0,0
+36300,DID_STATUS_Z_VEL,Status - Z-velocity,Entity Status,unknown,unknown,meters/second,0,0,0
+36400,DID_STATUS_SPEED,Status - Speed,Entity Status,floating point,32-bits,meters/second,0,0,0
+37000,DID_STATUS_ACCEL_AGGR,Status - Acceleration (Aggregate),Entity Status,variable,unknown,unknown,0,0,0
+37100,DID_STATUS_X_ACCEL,Status - X-acceleration,Entity Status,unknown,unknown,unknown,0,0,0
+37200,DID_STATUS_Y_ACCEL,Status - Y-acceleration,Entity Status,unknown,unknown,unknown,0,0,0
+37300,DID_STATUS_Z_ACCEL,Status - Z-acceleration,Entity Status,unknown,unknown,unknown,0,0,0
+38100,DID_STATUS_ENGINE_STATUS_AGGR,Status - Engine Status (Aggregate),Entity Status,unknown,unknown,unknown,0,0,0
+39000,DID_STATUS_PRIMARY_TARGET_LINE_PTL,Status - Primary Target Line (PTL),Entity Status,unsigned integer,32-bits,degrees,0,0,0
+40000,DID_EXERCISE_AGGR,Exercise (Aggregate),SIMAN,unknown,unknown,unknown,0,0,0
+40010,DID_EXERCISE_EXERCISE_STATE,Exercise - Exercise State,SIMAN,variable,64-bits,unknown,0,0,0
+40015,DID_EXERCISE_RESTART_REFRESH,Exercise - Restart/Refresh,SIMAN,unsigned integer,32-bits,unknown,0,0,0
+40020,DID_EXERCISE_AFATDS_FILE_NAME,Exercise - AFATDS File Name,SIMAN,variable,unknown,unknown,0,0,0
+41000,DID_TERRAIN_DATABASE,Terrain Database,SIMAN,unsigned integer,32-bits,unknown,0,0,0
+41010,DID_TERRAINDATABASENAME,TerrainDatabaseName,SIMAN,variable,unknown,unknown,0,0,0
+42000,DID_MISSIONS_AGGR,Missions (Aggregate),Missions,unknown,unknown,unknown,0,0,0
+42050,DID_MISSIONS_MISSION_REQUEST_RECORD_ID,Missions - Mission Request Record ID ,AAR,variable,128-bits,unknown,0,0,0
+42060,DID_MISSIONS_INDIRECT_OR_CAS_FIRE_RECORD_ID,Missions - Indirect Or Cas Fire Record ID ,AAR,variable,64-bits,unknown,0,0,0
+42070,DID_MISSIONS_MINEFIELD_ENTRY_RECORD_ID,Missions - Minefield Entry Record ID ,AAR,variable,unknown,unknown,0,0,0
+42080,DID_MISSIONS_MINE_DETONATION_RECORD_ID,Missions - Mine Detonation Record ID ,AAR,variable,unknown,unknown,0,0,0
+42100,DID_MISSIONS_MISSION_ID,Missions - Mission ID,Missions,unknown,unknown,unknown,0,0,0
+42200,DID_MISSIONS_MISSION_TYPE,Missions - Mission Type,Missions,unknown,unknown,unknown,0,0,0
+42300,DID_MISSIONS_MISSION_REQUEST_TIME_STAMP,Missions - Mission Request Time Stamp,Missions,unknown,unknown,unknown,0,0,0
+42400,DID_MISSIONS_MISSION_DESC_ID,Missions - Mission Description ID ,Missions,variable,unknown,unknown,0,0,0
+43000,DID_EXERCISE_DESC,Exercise Description,Scenario,string,unknown,unknown,0,0,0
+43100,DID_EXERCISE_DESC_NAME,Exercise Description - Name,Scenario,string,unknown,unknown,0,0,0
+43200,DID_EXERCISE_DESC_ENTITIES,Exercise Description - Entities,Scenario,integer,unknown,unknown,0,0,0
+43300,DID_EXERCISE_DESC_VERSION,Exercise Description - Version,Scenario,unknown,unknown,unknown,0,0,0
+43400,DID_EXERCISE_DESC_EXERCISE_CONCEPT_OF_OPERATION_ID,Exercise Description - Exercise Concept Of Operation ID ,Scenario,variable,unknown,unknown,0,0,0
+43410,DID_EXERCISE_DESC_GUISE_MODE,Exercise Description - Guise Mode,Scenario,unsigned integer,32-bits,unknown,0,0,0
+43420,DID_EXERCISE_DESC_SIMULATION_APPLICATION_ACTIVE_STATUS,Exercise Description - Simulation Application Active Status,Scenario,unsigned integer,16-bits,unknown,0,0,0
+43430,DID_EXERCISE_DESC_SIMULATION_APPLICATION_ROLE_RECORD,Exercise Description - Simulation Application Role Record,Scenario,variable,64-bits,unknown,0,0,0
+43440,DID_EXERCISE_DESC_SIMULATION_APPLICATION_STATE,Exercise Description - Simulation Application State,Scenario,variable,64-bits,unknown,0,0,0
+43500,DID_EXERCISE_DESC_EXERCISE_ENEMY_FORCES_DESC_ID,Exercise Description - Exercise Enemy Forces Description ID ,Scenario,variable,unknown,unknown,0,0,0
+43600,DID_EXERCISE_DESC_EXERCISE_FRIENDLY_FORCES_DESC_ID,Exercise Description - Exercise Friendly Forces Description ID ,Scenario,variable,unknown,unknown,0,0,0
+44000,DID_VISUAL_OUTPUT_MODE_AGGR,Visual Output Mode (Aggregate),SIMAN,unknown,unknown,unknown,0,0,0
+44100,DID_SIMULATION_MGR_ROLE,Simulation Manager Role,SIMAN,variable,unknown,unknown,0,0,0
+44110,DID_SIMULATION_MGR_SITE_ID,Simulation Manager Site ID,SIMAN,unsigned integer,16-bits,unknown,0,0,0
+44120,DID_SIMULATION_MGR_APPLIC_ID,Simulation Manager Applic. ID,SIMAN,unsigned integer,16-bits,unknown,0,0,0
+44130,DID_SIMULATION_MGR_ENTITY_ID,Simulation Manager Entity ID,SIMAN,unsigned integer,16-bits,unknown,0,0,0
+44140,DID_SIMULATION_MGR_ACTIVE_STATUS,Simulation Manager Active Status,SIMAN,unsigned integer,16-bits,unknown,0,0,0
+44200,DID_AFTER_ACTION_REVIEW_ROLE,After Action Review Role,AAR,variable,unknown,unknown,0,0,0
+44210,DID_AFTER_ACTION_REVIEW_SITE_ID,After Action Review Site ID,AAR,unsigned integer,16-bits,unknown,0,0,0
+44220,DID_AFTER_ACTION_APPLIC_ID,After Action Applic. ID,AAR,unsigned integer,16-bits,unknown,0,0,0
+44230,DID_AFTER_ACTION_REVIEW_ENTITY_ID,After Action Review Entity ID,AAR,unsigned integer,16-bits,unknown,0,0,0
+44240,DID_AFTER_ACTION_REVIEW_ACTIVE_STATUS,After Action Review Active Status,AAR,unsigned integer,16-bits,unknown,0,0,0
+44300,DID_EXERCISE_LOGGER_ROLE,Exercise Logger Role,SIMAN,variable,unknown,unknown,0,0,0
+44310,DID_EXERCISE_LOGGER_SITE_ID,Exercise Logger Site ID,SIMAN,unsigned integer,16-bits,unknown,0,0,0
+44320,DID_EXERCISE_LOGGER_APPLIC_ID,Exercise Logger Applic. ID,SIMAN,unsigned integer,16-bits,unknown,0,0,0
+44330,DID_EXERCISE_ENTITY_ID,Exercise Entity ID,SIMAN,unsigned integer,16-bits,unknown,0,0,0
+44340,DID_EXERCISE_LOGGER_ACTIVE_STATUS,Exercise Logger Active Status,SIMAN,unsigned integer,16-bits,unknown,0,0,0
+44400,DID_SYNTHETIC_ENVIR_MGR_ROLE,Synthetic Environment Manager Role,SIMAN,variable,unknown,unknown,0,0,0
+44410,DID_SYNTHETIC_ENVIR_MGR_SITE_ID,Synthetic Environment Manager Site ID,SIMAN,unsigned integer,16-bits,unknown,0,0,0
+44420,DID_SYNTHETIC_ENVIR_MGR_APPLIC_ID,Synthetic Environment Manager Applic. ID,SIMAN,unsigned integer,16-bits,unknown,0,0,0
+44430,DID_SYNTHETIC_ENVIR_MGR_ENTITY_ID,Synthetic Environment Manager Entity ID,SIMAN,unsigned integer,16-bits,unknown,0,0,0
+44440,DID_SYNTHETIC_ENVIR_MGR_ACTIVE_STATUS,Synthetic Environment Manager Active Status,SIMAN,unsigned integer,16-bits,unknown,0,0,0
+44500,DID_SIMNET_DIS_TRANSLATOR_ROLE,SIMNET-DIS Translator Role,SIMNET-DIS Translator,variable,unknown,unknown,0,0,0
+44510,DID_SIMNET_DIS_TRANSLATOR_SITE_ID,SIMNET-DIS Translator Site ID,SIMNET-DIS Translator,unsigned integer,16-bits,unknown,0,0,0
+44520,DID_SIMNET_DIS_TRANSLATOR_APPLIC_ID,SIMNET-DIS Translator Applic. ID,SIMNET-DIS Translator,unsigned integer,16-bits,unknown,0,0,0
+44530,DID_SIMNET_DIS_TRANSLATOR_ENTITY_ID,SIMNET-DIS Translator Entity ID,SIMNET-DIS Translator,unsigned integer,16-bits,unknown,0,0,0
+44540,DID_SIMNET_DIS_TRANSLATOR_ACTIVE_STATUS,SIMNET-DIS Translator Active Status,SIMNET-DIS Translator,unsigned integer,16-bits,unknown,0,0,0
+45000,DID_APPLICATION_RATE,Application Rate,Time,floating point,32-bits,unknown,0,0,0
+45005,DID_APPLICATION_RATE_APPLICATION_TIME,Application Rate - Application Time,Time,clock time record,64-bits,unknown,0,0,0
+45010,DID_APPLICATION_RATE_APPLICATION_TIMESTEP,Application Rate - Application Timestep,Time,timestamp,32-bits,unknown,0,0,0
+45020,DID_APPLICATION_RATE_FEEDBACK_TIME,Application Rate - Feedback Time,Time,timestamp,32-bits,unknown,0,0,0
+45030,DID_APPLICATION_RATE_SIMULATION_RATE,Application Rate - Simulation Rate,Time,floating point,32-bits,unknown,0,0,0
+45040,DID_APPLICATION_RATE_SIMULATION_TIME,Application Rate - Simulation Time,Time,clock time record,64-bits,unknown,0,0,0
+45050,DID_APPLICATION_RATE_SIMULATION_TIMESTEP,Application Rate - Simulation Timestep,Time,timestamp,32-bits,unknown,0,0,0
+45060,DID_APPLICATION_RATE_TIME_INTERVAL,Application Rate - Time Interval,Time,timestamp,32-bits,unknown,0,0,0
+45070,DID_APPLICATION_RATE_TIME_LATENCY,Application Rate - Time Latency,Time,timestamp,32-bits,unknown,0,0,0
+45080,DID_APPLICATION_RATE_TIME_SCHEME,Application Rate - Time Scheme,Time,unsigned integer,32-bits,unknown,0,0,0
+46000,DID_EXERCISE_ELAPSED_TIME_1,Exercise Elapsed Time 1,Time,unsigned integer,32-bits,seconds,0,0,0
+46010,DID_EXERCISE_ELAPSED_TIME_2,Exercise Elapsed Time 2,Time,unsigned integer,32-bits,seconds,0,0,0
+47100,DID_APPLICATION_STATE_RECORD,Application State Record,SIMAN,variable,unknown,unknown,0,0,0
+47200,DID_APPLICATION_HEALTH_STATUS_RECORD,Application Health Status Record,SIMAN,variable,unknown,unknown,0,0,0
+47210,DID_APPLICATION_STATUS__TYPE_DESC_RECORD,Application Status Type Description Record,SIMAN,variable,unknown,unknown,0,0,0
+47220,DID_APPLICATION_STATUS_DESC_RECORD,Application Status Description Record,SIMAN,variable,unknown,unknown,0,0,0
+47230,DID_APPLICATION_HEALTH_STATUS_CAP_RECORD,Application Health Status Capability Record,SIMAN,variable,unknown,unknown,0,0,0
+47240,DID_APPLICATION_HEALTH_STATUS_HBT_REQ_RECORD,Application Health Status Heartbeat Request Record,SIMAN,variable,unknown,unknown,0,0,0
+47300,DID_APPLICATION_INITIALIZATION_DATA_RECORD,Application Initialization Data Record,SIMAN,variable,unknown,unknown,0,0,0
+47400,DID_EXERCISE_ID,Exercise ID,SIMAN,variable,unknown,unknown,0,0,0
+47500,DID_APPLICATION_CAPABILITY_RECORD,Application Capability Record,SIMAN,variable,unknown,unknown,0,0,0
+47600,DID_DATA_QUERY_REQ_RECORD,Data Query Request Record,SIMAN,variable,unknown,unknown,0,0,0
+50000,DID_ENVIR_AGGR,Environment (Aggregate),Environment,unknown,unknown,unknown,0,0,0
+50001,DID_OWNERSHIP_MUNITION,Munition,Transfer Ownership,variable,128-bits,N/A,1,0,1
+50002,DID_OWNERSHIP_ENGINE_FUEL,Engine Fuel,Transfer Ownership,variable,64-bits,N/A,1,0,1
+50003,DID_OWNERSHIP_STORAGE_FUEL,Storage Fuel,Transfer Ownership,variable,64-bits,N/A,1,0,1
+50004,DID_OWNERSHIP_NOT_USED,Not used,Transfer Ownership,unknown,unknown,unknown,1,0,1
+50005,DID_OWNERSHIP_EXPENDABLE,Expendable,Transfer Ownership,variable,128-bits,N/A,1,0,1
+50006,DID_OWNERSHIP_TOTAL_RECORD_SETS,Total Record Sets,Transfer Ownership,unsigned integer,32-bits,N/A,1,0,1
+50007,DID_OWNERSHIP_LAUNCHED_MUNITION,Launched Munition,Transfer Ownership,variable,384-bits,N/A,1,0,1
+50008,DID_OWNERSHIP_ASSOCIATION,Association,Transfer Ownership,variable,256-bits,N/A,1,0,1
+50009,DID_OWNERSHIP_SENSOR,Sensor,Transfer Ownership,variable,96-bits,N/A,1,0,1
+50010,DID_OWNERSHIP_MUNITION_RELOAD,Munition Reload,Transfer Ownership,variable,192-bits,N/A,1,0,1
+50011,DID_OWNERSHIP_ENGINE_FUEL_RELOAD,Engine Fuel Reload,Transfer Ownership,variable,160-bits,N/A,1,0,1
+50012,DID_OWNERSHIP_STORAGE_FUEL_RELOAD,Storage Fuel Reload,Transfer Ownership,variable,160-bits,N/A,1,0,1
+50013,DID_OWNERSHIP_EXPENDABLE_RELOAD,Expendable Reload,Transfer Ownership,variable,192-bits,N/A,1,0,1
+51000,DID_ENVIR_WEATHER,Environment - Weather,Meteorology,unknown,unknown,unknown,0,0,0
+51010,DID_ENVIR_WEATHER_CONDITION,Environment - Weather Condition,Meteorology,unsigned integer,32-bits,N/A,0,0,0
+51100,DID_ENVIR_THERMAL_CONDITION,Environment - Thermal Condition,Meteorology,unknown,unknown,N/A,0,0,0
+51110,DID_ENVIR_THERMAL_VISIBILITY_FLOATING_POINT,Environment - Thermal Visibility (floating point),Meteorology,floating point,32-bits,meters,0,0,0
+51111,DID_ENVIR_THERMAL_VISIBILITY_UNSIGNED_INTEGER,Environment - Thermal Visibility (unsigned integer),Meteorology,unsigned integer,32-bits,meters,0,0,0
+52000,DID_ENVIR_TIME_AGGR,Environment - Time (Aggregate),Time,unknown,unknown,unknown,0,0,0
+52001,DID_ENVIR_TIME,Environment - Time,Time,string,56-bits,N/A,0,0,0
+52100,DID_ENVIR_TIME_OF_DAY_DISCRETE,Environment - Time of Day - Discrete,Time,unknown,unknown,unknown,0,0,0
+52200,DID_ENVIR_TIME_OF_DAY_CONTINUOUS,Environment - Time of Day - Continuous,Time,unknown,unknown,unknown,0,0,0
+52300,DID_ENVIR_TIME_MODE,Environment - Time Mode,Time,unknown,unknown,unknown,0,0,0
+52305,DID_ENVIR_TIME_SCENE,Environment - Time Scene,Time,unknown,unknown,unknown,0,0,0
+52310,DID_ENVIR_CURRENT_HOUR,Environment - Current Hour,Time,unknown,unknown,unknown,0,0,0
+52320,DID_ENVIR_CURRENT_MINUTE,Environment - Current Minute,Time,unknown,unknown,unknown,0,0,0
+52330,DID_ENVIR_CURRENT_SECOND,Environment - Current Second,Time,unknown,unknown,unknown,0,0,0
+52340,DID_ENVIR_AZIMUTH,Environment - Azimuth,Meteorology,unknown,unknown,unknown,0,0,0
+52350,DID_ENVIR_MAXIMUM_ELEVATION,Environment - Maximum Elevation,Meteorology,unknown,unknown,unknown,0,0,0
+52360,DID_ENVIR_TIME_ZONE,Environment - Time Zone,Time,unknown,unknown,unknown,0,0,0
+52370,DID_ENVIR_TIME_RATE,Environment - Time Rate,Time,integer,32-bits,unknown,0,0,0
+52380,DID_ENVIR_SIMULATION_TIME,Environment - Simulation Time,Time,integer,32-bits,seconds,0,0,0
+52400,DID_ENVIR_TIME_SUNRISE_ENABLED,Environment - Time Sunrise Enabled,Meteorology,unknown,unknown,unknown,0,0,0
+52410,DID_ENVIR_SUNRISE_HOUR,Environment - Sunrise Hour,Meteorology,unknown,unknown,unknown,0,0,0
+52420,DID_ENVIR_SUNRISE_MINUTE,Environment - Sunrise Minute,Meteorology,unknown,unknown,unknown,0,0,0
+52430,DID_ENVIR_SUNRISE_SECOND,Environment - Sunrise Second,Meteorology,unknown,unknown,unknown,0,0,0
+52440,DID_ENVIR_SUNRISE_AZIMUTH,Environment - Sunrise Azimuth,Meteorology,unknown,unknown,unknown,0,0,0
+52500,DID_ENVIR_TIME_SUNSET_ENABLED,Environment - Time Sunset Enabled,Meteorology,unknown,unknown,unknown,0,0,0
+52510,DID_ENVIR_SUNSET_HOUR,Environment - Sunset Hour,Meteorology,unknown,unknown,unknown,0,0,0
+52511,DID_ENVIR_SUNSET_HOUR_2,Environment - Sunset Hour 2,Meteorology,unknown,unknown,unknown,0,0,0
+52520,DID_ENVIR_SUNSET_MINUTE,Environment - Sunset Minute,Meteorology,unknown,unknown,unknown,0,0,0
+52530,DID_ENVIR_SUNSET_SECOND,Environment - Sunset Second,Meteorology,unknown,unknown,unknown,0,0,0
+52600,DID_ENVIR_DATE_AGGR,Environment - Date (Aggregate),Time,unknown,unknown,unknown,0,0,0
+52601,DID_ENVIR_DATE_EUROPEAN,Environment - Date (European),Time,string,72-bits,unknown,0,0,0
+52602,DID_ENVIR_DATE_US,Environment - Date (US),Time,string,72-bits,unknown,0,0,0
+52610,DID_ENVIR_MONTH,Environment - Month,Time,unknown,unknown,unknown,0,0,0
+52620,DID_ENVIR_DAY,Environment - Day,Time,unknown,unknown,unknown,0,0,0
+52630,DID_ENVIR_YEAR,Environment - Year,Time,unknown,unknown,unknown,0,0,0
+53000,DID_ENVIR_CLOUDS,Environment - Clouds,Meteorology,fixed,unknown,boolean,0,0,0
+53050,DID_ENVIR_CLOUDS_CLOUD_LAYER_ENABLE,Environment - Clouds - Cloud Layer Enable,Meteorology,unknown,unknown,unknown,0,0,0
+53060,DID_ENVIR_CLOUDS_CLOUD_LAYER_SELECTION,Environment - Clouds - Cloud Layer Selection,Meteorology,unknown,unknown,unknown,0,0,0
+53100,DID_ENVIR_CLOUDS_VISIBILITY,Environment - Clouds - Visibility,Meteorology,unknown,unknown,unknown,0,0,0
+53200,DID_ENVIR_CLOUDS_BASE_ALTITUDE,Environment - Clouds - Base Altitude,Meteorology,unsigned integer,32-bits,meters,0,0,0
+53250,DID_ENVIR_CLOUDS_BASE_ALTITUDE_FEET,Environment - Clouds - Base Altitude - Feet,Meteorology,unknown,unknown,feet,0,0,0
+53300,DID_ENVIR_CLOUDS_CEILING,Environment - Clouds - Ceiling,Meteorology,unsigned integer,32-bits,meters,0,0,0
+53350,DID_ENVIR_CLOUDS_CEILING_FEET,Environment - Clouds - Ceiling - Feet,Meteorology,unknown,unknown,feet,0,0,0
+53400,DID_ENVIR_CLOUDS_CHARACTERISTICS,Environment - Clouds - Characteristics,Meteorology,unknown,unknown,unknown,0,0,0
+53410,DID_ENVIR_CLOUDS_CONCENTRATION_LENGTH,Environment - Clouds - Concentration Length,Meteorology,floating point,32-bits,milligrams/meter squared,0,0,0
+53420,DID_ENVIR_CLOUDS_TRANSMITTANCE,Environment - Clouds - Transmittance,Meteorology,floating point,32-bits,unknown,0,0,0
+53430,DID_ENVIR_CLOUDS_RADIANCE,Environment - Clouds - Radiance,Meteorology,floating point,32-bits,microwatts/centimeter squared/steradian,0,0,0
+54000,DID_ENVIR_PRECIPITATION,Environment - Precipitation,Meteorology,boolean,32-bits,boolean,0,0,0
+54100,DID_ENVIR_PRECIPITATION_RAIN,Environment - Precipitation - Rain,Meteorology,boolean,unknown,boolean,0,0,0
+55000,DID_ENVIR_FOG,Environment - Fog,Meteorology,boolean,unknown,boolean,0,0,0
+55100,DID_ENVIR_FOG_VISIBILITY_REAL_METERS,Environment - Fog - Visibility - real meters,Meteorology,floating point,32-bits,meters,0,0,0
+55101,DID_ENVIR_FOG_VISIBILITY_METERS,Environment - Fog - Visibility - meters,Meteorology,unsigned integer,32-bits,meters,0,0,0
+55105,DID_ENVIR_FOG_VISIBILITY_MILES,Environment - Fog - Visibility - miles,Meteorology,unknown,unknown,miles,0,0,0
+55200,DID_ENVIR_FOG_DENSITY,Environment - Fog - Density,Meteorology,unknown,unknown,unknown,0,0,0
+55300,DID_ENVIR_FOG_BASE,Environment - Fog - Base,Meteorology,unknown,unknown,unknown,0,0,0
+55401,DID_ENVIR_FOG_VIEW_LAYER_FROM_ABOVE_,Environment - Fog - View Layer from above.,Meteorology,unknown,unknown,unknown,0,0,0
+55410,DID_ENVIR_FOG_TRANSITION_RANGE,Environment - Fog - Transition Range,Meteorology,unknown,unknown,unknown,0,0,0
+55420,DID_ENVIR_FOG_BOTTOM_METERS,Environment - Fog - Bottom - meters,Meteorology,unknown,unknown,meters,0,0,0
+55425,DID_ENVIR_FOG_BOTTOM_FEET,Environment - Fog - Bottom - feet ,Meteorology,unknown,unknown,feet,0,0,0
+55430,DID_ENVIR_FOG_CEILING_METERS,Environment - Fog - Ceiling - meters ,Meteorology,unknown,unknown,meters,0,0,0
+55435,DID_ENVIR_FOG_CEILING_FEET,Environment - Fog - Ceiling - feet ,Meteorology,unknown,unknown,feet,0,0,0
+56000,DID_ENVIR_HBODIES_AGGR,Environment - Heavenly Bodies (Aggregate),Heavenly Bodies,unknown,unknown,unknown,0,0,0
+56100,DID_ENVIR_HBODIES_SUN_AGGR,Environment - Heavenly Bodies - Sun (Aggregate),Heavenly Bodies,unknown,unknown,unknown,0,0,0
+56101,DID_ENVIR_ASSEMBLY_AREA_LIGHTING,Environment - Assembly Area Lighting,Lighting,unknown,unknown,unknown,0,0,0
+56102,DID_ENVIR_FARP_LIGHTING,Environment - FARP Lighting,Lighting,unknown,unknown,unknown,0,0,0
+56103,DID_ENVIR_DB_CULTURAL_LIGHTING,Environment - DB Cultural Lighting,Lighting,unknown,unknown,unknown,0,0,0
+56105,DID_ENVIR_HBODIES_SUN_VISIBLE,Environment - Heavenly Bodies - Sun Visible,Heavenly Bodies,unsigned integer,32-bits,N/A,0,0,0
+56106,DID_ENVIR_RUNWAYLIGHTING,Environment - RunwayLighting,Lighting,unknown,unknown,unknown,0,0,0
+56107,DID_ENVIR_APPROACH_LIGHTING,Environment - Approach Lighting,Lighting,unknown,unknown,unknown,0,0,0
+56108,DID_ENVIR_VASI_VAPI_LIGHTING,Environment - VASI VAPI Lighting,Lighting,unknown,unknown,unknown,0,0,0
+56109,DID_ENVIR_BEACONLIGHTING,Environment - BeaconLighting,Lighting,unknown,unknown,unknown,0,0,0
+56110,DID_ENVIR_HBODIES_POSITION_AGGR,Environment - Heavenly Bodies - Position (Aggregate),Heavenly Bodies,unknown,unknown,unknown,0,0,0
+56111,DID_ENVIR_HBODIES_SUN_POSITION_ELEVATION_DEGREES,Environment - Heavenly Bodies - Sun Position Elevation - Degrees,Heavenly Bodies,floating point,32-bits,degrees,0,0,0
+56120,DID_ENVIR_HBODIES_POSITION_AZIMUTH_AGGR,Environment - Heavenly Bodies - Position Azimuth (Aggregate),Heavenly Bodies,unknown,unknown,unknown,0,0,0
+56121,DID_ENVIR_HBODIES_SUN_POSITION_AZIMUTH_DEGREES,Environment - Heavenly Bodies - Sun Position Azimuth - Degrees,Heavenly Bodies,floating point,32-bits,degrees,0,0,0
+56130,DID_ENVIR_HBODIES_POSITION_ELEVATION,Environment - Heavenly Bodies - Position Elevation,Heavenly Bodies,unknown,unknown,unknown,0,0,0
+56140,DID_ENVIR_HBODIES_POSITION_INTENSITY,Environment - Heavenly Bodies - Position Intensity,Heavenly Bodies,unknown,unknown,unknown,0,0,0
+56200,DID_ENVIR_HBODIES_MOON_AGGR,Environment - Heavenly Bodies - Moon (Aggregate),Heavenly Bodies,unknown,unknown,unknown,0,0,0
+56205,DID_ENVIR_HBODIES_MOON_VISIBLE,Environment - Heavenly Bodies - Moon Visible,Heavenly Bodies,unsigned integer,32-bits,N/A,0,0,0
+56210,DID_ENVIR_HBODIES_MOON_POSITION,Environment - Heavenly Bodies - Moon Position,Heavenly Bodies,unknown,unknown,unknown,0,0,0
+56220,DID_ENVIR_HBODIES_MOON_POSITION_AZIMUTH,Environment - Heavenly Bodies - Moon Position Azimuth,Heavenly Bodies,fixed,unknown,unknown,0,0,0
+56221,DID_ENVIR_HBODIES_MOON_POSITION_AZIMUTH_DEGREES,Environment - Heavenly Bodies - Moon Position Azimuth - Degrees,Heavenly Bodies,floating point,32-bits,degrees,0,0,0
+56230,DID_ENVIR_HBODIES_MOON_POSITION_ELEVATION,Environment - Heavenly Bodies - Moon Position Elevation,Heavenly Bodies,fixed,unknown,unknown,0,0,0
+56231,DID_ENVIR_HBODIES_MOON_POSITION_ELEVATION_DEGREES,Environment - Heavenly Bodies - Moon Position Elevation - Degrees,Heavenly Bodies,floating point,32-bits,degrees,0,0,0
+56240,DID_ENVIR_HBODIES_MOON_POSITION_INTENSITY,Environment - Heavenly Bodies - Moon Position Intensity,Heavenly Bodies,fixed,unknown,unknown,0,0,0
+56250,DID_ENVIR_HBODIES_LUNAR_ILLUMINATION_ID,Environment - Heavenly Bodies - Lunar Illumination ID ,Heavenly Bodies,fixed,unknown,unknown,0,0,0
+56310,DID_ENVIR_HBODIES_HORIZON_AGGR,Environment - Heavenly Bodies - Horizon (Aggregate),Heavenly Bodies,unknown,unknown,unknown,0,0,0
+56320,DID_ENVIR_HBODIES_HORIZON_AZIMUTH,Environment - Heavenly Bodies - Horizon Azimuth,Heavenly Bodies,unknown,unknown,unknown,0,0,0
+56330,DID_ENVIR_HBODIES_HORIZON_ELEVATION,Environment - Heavenly Bodies - Horizon Elevation,Heavenly Bodies,unknown,unknown,unknown,0,0,0
+56340,DID_ENVIR_HBODIES_HORIZON_HEADING,Environment - Heavenly Bodies - Horizon Heading,Heavenly Bodies,unknown,unknown,unknown,0,0,0
+56350,DID_ENVIR_HBODIES_HORIZON_INTENSITY,Environment - Heavenly Bodies - Horizon Intensity,Heavenly Bodies,unknown,unknown,unknown,0,0,0
+57000,DID_ENVIR_METEOR_AGGR,Environment - Meteorological (Aggregate),Meteorology,unknown,unknown,unknown,0,0,0
+57001,DID_ENVIR_METEOR_BAROMETRIC_PRESSURE,Environment - Meteorological - Barometric Pressure,Meteorology,unknown,unknown,unknown,0,0,0
+57007,DID_ENVIR_METEOR_HF_SIG_PROP_ADJ,Environment - Meteorological - HF Sig Prop Adj,Meteorology,unknown,unknown,unknown,0,0,0
+57008,DID_ENVIR_METEOR_GPS_NUM_SATS,Environment - Meteorological - GPS Num Sats,Meteorology,unknown,unknown,unknown,0,0,0
+57009,DID_ENVIR_METEOR_GPS_JAMMING_STATE,Environment - Meteorological - GPS Jamming State,Meteorology,unknown,unknown,unknown,0,0,0
+57010,DID_ENVIR_METEOR_HF_PROP_MODE,Environment - Meteorological - HF Prop Mode,Meteorology,unknown,unknown,unknown,0,0,0
+57020,DID_ENVIR_METEOR_IR_CROSSOVER_STATE,Environment - Meteorological - IR Crossover State,Meteorology,unknown,unknown,unknown,0,0,0
+57021,DID_ENVIR_METEOR_IR_CROSSOVER_MINIMUM,Environment - Meteorological - IR Crossover Minimum,Meteorology,unknown,unknown,unknown,0,0,0
+57022,DID_ENVIR_METEOR_IR_CROSSOVER_MAXIMUM,Environment - Meteorological - IR Crossover Maximum,Meteorology,unknown,unknown,unknown,0,0,0
+57023,DID_ENVIR_METEOR_IR_CROSSOVER_DURATION,Environment - Meteorological - IR Crossover Duration,Meteorology,unknown,unknown,unknown,0,0,0
+57024,DID_ENVIR_METEOR_IR_CROSSOVER_CURRENT,Environment - Meteorological - IR Crossover Current,Meteorology,unknown,unknown,unknown,0,0,0
+57025,DID_ENVIR_METEOR_IR_CROSSOVER_GMT_SECONDS,Environment - Meteorological - IR Crossover GMT Seconds,Meteorology,unknown,unknown,unknown,0,0,0
+57026,DID_ENVIR_METEOR_IR_CROSSOVER_GMT_DAY,Environment - Meteorological - IR Crossover GMT Day,Meteorology,unknown,unknown,unknown,0,0,0
+57027,DID_ENVIR_METEOR_IR_CROSSOVER_GMT_MONTH,Environment - Meteorological - IR Crossover GMT Month,Meteorology,unknown,unknown,unknown,0,0,0
+57028,DID_ENVIR_METEOR_IR_CROSSOVER_GMT_YEAR,Environment - Meteorological - IR Crossover GMT Year,Meteorology,unknown,unknown,unknown,0,0,0
+57029,DID_ENVIR_METEOR_IR_CROSSOVER_TIME_LEFT,Environment - Meteorological - IR Crossover Time Left,Meteorology,unknown,unknown,unknown,0,0,0
+57030,DID_ENVIR_METEOR_IR_CROSSOVER_TIME_FLAG,Environment - Meteorological - IR Crossover Time Flag,Meteorology,unknown,unknown,unknown,0,0,0
+57100,DID_ENVIR_TEMPERATURE,Environment - Temperature,Meteorology,unknown,unknown,unknown,0,0,0
+57200,DID_ENVIR_HUMIDITY,Environment - Humidity,Meteorology,unknown,unknown,unknown,0,0,0
+57300,DID_ENVIR_VISIBILITY,Environment - Visibility,Meteorology,unknown,unknown,unknown,0,0,0
+57301,DID_ENVIR_AMBIENT_VISIBILITY,Environment - Ambient Visibility,Meteorology,unknown,unknown,unknown,0,0,0
+57308,DID_ENVIR_SCUD_ENABLE,Environment - Scud Enable,Meteorology,unknown,unknown,unknown,0,0,0
+57309,DID_ENVIR_SCATTERED_CLOUD_DENSITY,Environment - Scattered Cloud Density,Meteorology,unknown,unknown,unknown,0,0,0
+57310,DID_ENVIR_SCENE_ILLUMINATION_STATE,Environment - Scene Illumination State,Meteorology,unknown,unknown,unknown,0,0,0
+57311,DID_ENVIR_ROTOR_WASH_ENABLE,Environment - Rotor Wash Enable,Meteorology,unknown,unknown,unknown,0,0,0
+57400,DID_ENVIR_WINDS_AGGR,Environment - Winds (Aggregate),Meteorology,unknown,unknown,unknown,0,0,0
+57410,DID_ENVIR_WIND_SPEED_AGGR,Environment - Wind Speed (Aggregate),Meteorology,unknown,unknown,unknown,0,0,0
+57411,DID_ENVIR_WIND_SPEED_KNOTS,Environment - Wind Speed - Knots,Meteorology,floating point,32-bits,knots,0,0,0
+57420,DID_ENVIR_WIND_DIRECTION,Environment - Wind Direction,Meteorology,floating point,32-bits,radians,0,0,0
+57421,DID_ENVIR_WIND_DIRECTION_DEGREES,Environment - Wind Direction - Degrees,Meteorology,floating point,32-bits,degrees,0,0,0
+57430,DID_ENVIR_PRESSURE,Environment - Pressure,Meteorology,unknown,unknown,unknown,0,0,0
+57500,DID_ENVIR_RAINSOAK,Environment - Rainsoak,Meteorology,unknown,unknown,unknown,0,0,0
+57610,DID_ENVIR_TIDE_SPEED,Environment - Tide Speed,Tides,floating point,32-bits,meters/second,0,0,0
+57611,DID_ENVIR_TIDE_SPEED_KNOTS,Environment - Tide Speed - Knots,Tides,floating point,32-bits,knots,0,0,0
+57620,DID_ENVIR_TIDE_DIRECTION,Environment - Tide Direction,Tides,floating point,32-bits,radians,0,0,0
+57621,DID_ENVIR_TIDE_DIRECTION_DEGREES,Environment - Tide Direction - Degrees,Tides,floating point,32-bits,degrees,0,0,0
+57700,DID_ENVIR_SEASON,Environment - Season,Meteorology,fixed,unknown,unknown,0,0,0
+58000,DID_ENVIR_HAZE,Environment - Haze,Meteorology,boolean,unknown,boolean,0,0,0
+58100,DID_ENVIR_HAZE_VISIBILITY_METERS,Environment - Haze - Visibility - Meters,Meteorology,unknown,unknown,meters,0,0,0
+58105,DID_ENVIR_HAZE_VISIBILITY_MILES,Environment - Haze - Visibility - Miles,Meteorology,unknown,unknown,miles,0,0,0
+58200,DID_ENVIR_HAZE_DENSITY,Environment - Haze - Density,Meteorology,unknown,unknown,unknown,0,0,0
+58430,DID_ENVIR_HAZE_CEILING_METERS,Environment - Haze - Ceiling - Meters,Meteorology,unknown,unknown,meters,0,0,0
+58435,DID_ENVIR_HAZE_CEILING_FEET,Environment - Haze - Ceiling - Feet,Meteorology,unknown,unknown,feet,0,0,0
+59000,DID_ENVIR_CONTAM_AND_OBS_AGGR,Environment - Contaminants and Obscurants (Aggregate),Contaminants and Obscurants,unknown,unknown,unknown,0,0,0
+59100,DID_ENVIR_CONTAM_AND_OBS_TYPE,Environment - Contaminants and Obscurants - Type,Contaminants and Obscurants,unsigned integer,32-bits,unknown,0,0,0
+59110,DID_ENVIR_CONTAM_AND_OBS_PERSISTENCE,Environment - Contaminants and Obscurants - Persistence,Contaminants and Obscurants,enumeration,8-bits,unknown,0,0,0
+59115,DID_ENVIR_CONTAM_AND_OBS_CHEM_DOSAGE,Environment - Contaminants and Obscurants - Chemical Dosage,Contaminants and Obscurants,floating point,32-bits,milligrams/meter cubed/minute,0,0,0
+59120,DID_ENVIR_CONTAM_AND_OBS_CHEM_AIR_CONCENTRATION,Environment - Contaminants and Obscurants - Chemical Air Concentration,Contaminants and Obscurants,floating point,32-bits,milligrams/meter cubed,0,0,0
+59125,DID_ENVIR_CONTAM_AND_OBS_CHEM_GROUND_DEPOSITION,Environment - Contaminants and Obscurants - Chemical Ground Deposition,Contaminants and Obscurants,floating point,32-bits,milligrams/meter squared,0,0,0
+59130,DID_ENVIR_CONTAM_AND_OBS_CHEM_MAXIMUM_GROUND_DEPOSITION,Environment - Contaminants and Obscurants - Chemical Maximum Ground Deposition,Contaminants and Obscurants,floating point,32-bits,milligrams/meter squared,0,0,0
+59135,DID_ENVIR_CONTAM_AND_OBS_CHEM_DOSAGE_THRESHOLD,Environment - Contaminants and Obscurants - Chemical Dosage Threshold,Contaminants and Obscurants,floating point,32-bits,milligram/meter cubed/minute,0,0,0
+59140,DID_ENVIR_CONTAM_AND_OBS_BIO_DOSAGE,Environment - Contaminants and Obscurants - Biological Dosage,Contaminants and Obscurants,floating point,32-bits,particles/liter of air/minute,0,0,0
+59145,DID_ENVIR_CONTAM_AND_OBS_BIO_AIR_CONCENTRATION,Environment - Contaminants and Obscurants - Biological Air Concentration,Contaminants and Obscurants,floating point,32-bits,particles/liter of air,0,0,0
+59150,DID_ENVIR_CONTAM_AND_OBS_BIO_DOSAGE_THRESHOLD,Environment - Contaminants and Obscurants - Biological Dosage Threshold,Contaminants and Obscurants,floating point,32-bits,particles/liter of air/minute,0,0,0
+59155,DID_ENVIR_CONTAM_AND_OBS_BIO_BINNED_PARTICLE_COUNT,Environment - Contaminants and Obscurants - Biological Binned Particle Count,Contaminants and Obscurants,enumeration,8-bits,unknown,0,0,0
+59160,DID_ENVIR_CONTAM_AND_OBS_RAD_DOSAGE,Environment - Contaminants and Obscurants - Radiological Dosage,Contaminants and Obscurants,floating point,32-bits,unknown,0,0,0
+60000,DID_COMMS_AGGR,Communications (Aggregate),Communications,unknown,unknown,unknown,0,0,0
+61100,DID_COMMS_CHANNEL_TYPE,Communications - Channel Type,Communications,unknown,unknown,unknown,0,0,0
+61101,DID_COMMS_CHANNEL_TYPE_2,Communications - Channel Type 2,Communications,unknown,unknown,unknown,0,0,0
+61200,DID_COMMS_CHANNEL_IDENTIFICATION,Communications - Channel Identification,Communications,unknown,unknown,unknown,0,0,0
+61300,DID_COMMS_ALPHA_IDENTIFICATION,Communications - Alpha Identification,Communications,unknown,unknown,unknown,0,0,0
+61400,DID_COMMS_RADIO_IDENTIFICATION,Communications - Radio Identification,Communications,unknown,unknown,unknown,0,0,0
+61500,DID_COMMS_LAND_LINE_IDENTIFICATION,Communications - Land Line Identification,Communications,unknown,unknown,unknown,0,0,0
+61600,DID_COMMS_INTERCOM_IDENTIFICATION,Communications - Intercom Identification,Communications,unknown,unknown,unknown,0,0,0
+61700,DID_COMMS_GROUP_NETWORK_CHANNEL_NUMBER,Communications - Group Network Channel Number,Communications,unknown,unknown,unknown,0,0,0
+62100,DID_COMMS_RADIO_COMMS_STATUS,Communications - Radio Communications Status,Communications,unknown,unknown,unknown,0,0,0
+62200,DID_COMMS_STATIONARY_RADIO_TRANS_DEFAULT_TIME,Communications - Stationary Radio Transmitters Default Time,Communications,unsigned integer,unknown,unknown,0,0,0
+62300,DID_COMMS_MOVING_RADIO_TRANS_DEFAULT_TIME,Communications - Moving Radio Transmitters Default Time,Communications,unsigned integer,unknown,unknown,0,0,0
+62330,DID_COMMS_MOVING_RADIO_TRANS_DEFAULT_TIME_XET_ELAPSED_SECONDS,Communications - Moving Radio Transmitters Default Time - Xet Elapsed Seconds,Communications,unknown,unknown,unknown,0,0,0
+62331,DID_COMMS_MOVING_RADIO_TRANS_DEFAULT_TIME_SYNC_BMC_FREEZE,Communications - Moving Radio Transmitters Default Time - Sync Bmc Freeze,Communications,unknown,unknown,unknown,0,0,0
+62332,DID_COMMS_MOVING_RADIO_TRANS_DEFAULT_TIME_SYNC_BMC_HF_SIG_DEG,Communications - Moving Radio Transmitters Default Time - Sync Bmc HF sig Deg,Communications,unknown,unknown,unknown,0,0,0
+62400,DID_COMMS_STATIONARY_RADIO_SIGNALS_DEFAULT_TIME,Communications - Stationary Radio Signals Default Time,Communications,unknown,unknown,unknown,0,0,0
+62500,DID_COMMS_MOVING_RADIO_SIGNAL_DEFAULT_TIME,Communications - Moving Radio Signal Default Time,Communications,unknown,unknown,unknown,0,0,0
+63101,DID_COMMS_RADIO_INITIALIZATION_TRANSEC_SECURITY_KEY,Communications - Radio Initialization Transec Security Key,Communications,variable,unknown,unknown,0,0,0
+63102,DID_COMMS_RADIO_INITIALIZATION_INTERNAL_NOISE_LEVEL,Communications - Radio Initialization Internal Noise Level,Communications,variable,unknown,unknown,0,0,0
+63103,DID_COMMS_RADIO_INITIALIZATION_SQUELCH_THRESHOLD,Communications - Radio Initialization Squelch Threshold,Communications,variable,unknown,unknown,0,0,0
+63104,DID_COMMS_RADIO_INITIALIZATION_ANTENNA_LOCATION,Communications - Radio Initialization Antenna Location,Communications,variable,unknown,unknown,0,0,0
+63105,DID_COMMS_RADIO_INITIALIZATION_ANTENNA_PATTERN_TYPE,Communications - Radio Initialization Antenna Pattern Type,Communications,variable,unknown,unknown,0,0,0
+63106,DID_COMMS_RADIO_INITIALIZATION_ANTENNA_PATTERN_LENGTH,Communications - Radio Initialization Antenna Pattern Length,Communications,variable,unknown,unknown,0,0,0
+63107,DID_COMMS_RADIO_INITIALIZATION_BEAM_DEFINITION,Communications - Radio Initialization Beam Definition,Communications,variable,unknown,unknown,0,0,0
+63108,DID_COMMS_RADIO_INITIALIZATION_TRANSMIT_HEARTBEAT_TIME,Communications - Radio Initialization Transmit Heartbeat Time,Communications,variable,unknown,unknown,0,0,0
+63109,DID_COMMS_RADIO_INITIALIZATION_TRANSMIT_DISTANCE_THRESHOLD,Communications - Radio Initialization Transmit Distance Threshold ,Communications,variable,unknown,unknown,0,0,0
+63110,DID_COMMS_RADIO_CHANNEL_INITIALIZATION_LOCKOUT_ID,Communications - Radio Channel Initialization Lockout ID,Communications,variable,unknown,unknown,0,0,0
+63111,DID_COMMS_RADIO_CHANNEL_INITIALIZATION_HOPSET_ID,Communications - Radio Channel Initialization Hopset ID,Communications,variable,unknown,unknown,0,0,0
+63112,DID_COMMS_RADIO_CHANNEL_INITIALIZATION_PRESET_FREQUENCY,Communications - Radio Channel Initialization Preset Frequency,Communications,variable,unknown,unknown,0,0,0
+63113,DID_COMMS_RADIO_CHANNEL_INITIALIZATION_FREQUENCY_SYNC_TIME,Communications - Radio Channel Initialization Frequency Sync Time ,Communications,variable,unknown,unknown,0,0,0
+63114,DID_COMMS_RADIO_CHANNEL_INITIALIZATION_COMSEC_KEY,Communications - Radio Channel Initialization Comsec Key,Communications,variable,unknown,unknown,0,0,0
+63115,DID_COMMS_RADIO_CHANNEL_INITIALIZATION_ALPHA,Communications - Radio Channel Initialization Alpha,Communications,variable,unknown,unknown,0,0,0
+63200,DID_COMMS_RADIO_SC_NET_INITIALIZATION_ID,Communications - Radio Sc Net Initialization ID ,Communications,variable,unknown,unknown,0,0,0
+63202,DID_COMMS_RADIO_FH_NET_INITIALIZATION_ID,Communications - Radio Fh Net Initialization ID ,Communications,variable,unknown,unknown,0,0,0
+63204,DID_COMMS_RADIO_NET_DELETION_ID,Communications - Radio Net Deletion ID ,Communications,variable,unknown,unknown,0,0,0
+63206,DID_COMMS_RADIO_SYSTEM_INITIALIZATION_ID,Communications - Radio System Initialization ID ,Communications,variable,unknown,unknown,0,0,0
+63208,DID_COMMS_RADIO_INITIALIZATION_ID,Communications - Radio Initialization ID ,Communications,variable,unknown,unknown,0,0,0
+63210,DID_COMMS_RADIO_CHANNEL_INITIALIZATION_ID,Communications - Radio Channel Initialization ID ,Communications,variable,unknown,unknown,0,0,0
+63212,DID_COMMS_RADIO_CHANNEL_COMSEC_INITIALIZATION_ID,Communications - Radio Channel Comsec Initialization ID ,Communications,variable,unknown,unknown,0,0,0
+63250,DID_COMMS_RESPONSE_RECORD_ID,Communications - Response Record ID ,Communications,variable,unknown,unknown,0,0,0
+63260,DID_COMMS_BISEPS_RECORD_ID,Communications - Biseps Record ID ,Communications,variable,unknown,unknown,0,0,0
+65536,DID_ENVIRONMENT_PROCESS_GEOMETRY_BOUNDING_SPHERE,EP Geometry - Bounding Sphere Record,Environment,variable,320-bits,unknown,0,0,0
+70000,DID_ALGORITHM_PARMS_AGGR,Algorithm Parameters (Aggregate),Algorithm Parameters,unknown,unknown,unknown,0,0,0
+71000,DID_DRA_AGGR,Dead Reckoning Algorithm (DRA) (Aggregate),Algorithm Parameters,unknown,unknown,unknown,0,0,0
+71100,DID_DRA_LOCATION_THRESHOLD,Dead Reckoning Algorithm (DRA) - DRA Location Threshold,Algorithm Parameters,unsigned integer,32-bits,unknown,0,0,0
+71200,DID_DRA_ORIENT_THRESHOLD,Dead Reckoning Algorithm (DRA) - DRA Orientation Threshold,Algorithm Parameters,unknown,unknown,unknown,0,0,0
+71300,DID_DRA_TIME_THRESHOLD,Dead Reckoning Algorithm (DRA) - DRA Time Threshold,Algorithm Parameters,unknown,unknown,unknown,0,0,0
+71400,DID_FBCB2_TIME_THRESHOLD_ID_FBCB2_TIME_THRESHOLD_ID,FBCB2 Time Threshold ID - FBCB2 Time Threshold ID,FBCB2,variable,unknown,unknown,0,0,0
+71500,DID_FBCB2_MOTION_THRESHOLD_ID_FBCB2_MOTION_THRESHOLD_ID,FBCB2 Motion Threshold ID - FBCB2 Motion Threshold ID,FBCB2,variable,unknown,unknown,0,0,0
+72000,DID_SIMULATION_MANAGEMENT_PARMS,Simulation Management Parameters,SIMAN,unknown,unknown,unknown,0,0,0
+72100,DID_CHECKPOINT_INTERVAL,Checkpoint Interval,Checkpoint,unknown,unknown,unknown,0,0,0
+72600,DID_TRANS_TIME_THRESHOLD,Transmitter Time Threshold,SIMAN,unknown,unknown,unknown,0,0,0
+72700,DID_RECEIVER_TIME_THRESHOLD,Receiver Time Threshold,SIMAN,unknown,unknown,unknown,0,0,0
+73000,DID_INTEROPERABILITY_MODE,Interoperability Mode,SIMAN,unknown,unknown,unknown,0,0,0
+74000,DID_SIMNET_DATA_COLLECTION,SIMNET Data Collection,SIMAN,variable,unknown,unknown,0,0,0
+75000,DID_EVENT_ID,Event ID,SIMAN,unknown,unknown,unknown,0,0,0
+75100,DID_SOURCE_SITE_ID,Source Site ID,SIMAN,unknown,unknown,unknown,0,0,0
+75200,DID_SOURCE_HOST_ID,Source Host ID,SIMAN,unknown,unknown,unknown,0,0,0
+76000,DID_EMULATION_STATUS_ID,Emulation Status ID,SIMAN,fixed,unknown,unknown,0,0,0
+77000,DID_EVENT_REPORT_RECORD_ID,Event Report Record ID,SIMAN,variable,unknown,unknown,0,0,0
+78100,DID_SLAVED_VIEWPORT_GENERAL_ID,Slaved Viewport General ID,Stealth,variable,unknown,unknown,0,0,0
+78200,DID_SLAVED_EYEPOINT_ID,Slaved Eyepoint ID,Stealth,variable,unknown,unknown,0,0,0
+78201,DID_SLAVED_GAS_SYMBOLOGY,Slaved Gas Symbology,Stealth,variable,unknown,unknown,0,0,0
+78202,DID_SLAVED_GUNNER_SYMBOLOGY,Slaved Gunner Symbology,Stealth,variable,unknown,unknown,0,0,0
+78203,DID_SLAVED_CITV_SYMBOLOGY,Slaved CITV Symbology,Stealth,variable,unknown,unknown,0,0,0
+78204,DID_SLAVED_BUS_SYMBOLOGY,Slaved Bus Symbology,Stealth,variable,unknown,unknown,0,0,0
+78205,DID_SLAVED_ISU_SYMBOLOGY,Slaved ISU Symbology,Stealth,variable,unknown,unknown,0,0,0
+78206,DID_SLAVED_TELESCOPE_SYMBOLOGY,Slaved Telescope Symbology,Stealth,variable,unknown,unknown,0,0,0
+78207,DID_SLAVED_CIV_IBAS_SYMBOLOGY,Slaved Civ Ibas Symbology,Stealth,variable,unknown,unknown,0,0,0
+78208,DID_SLAVED_DVO_SYMBOLOGY,Slaved Dvo Symbology,Stealth,variable,unknown,unknown,0,0,0
+78220,DID_SLAVED_LASER_RANGE_FINDER_ID,Slaved Laser Range Finder ID,Stealth,variable,unknown,unknown,0,0,0
+78300,DID_SLAVED_VIEWPORT_DATA_ID,Slaved Viewport Data ID,Stealth,variable,unknown,unknown,0,0,0
+78400,DID_SLAVED_SYMBOLOGY_ID,Slaved Symbology ID,Stealth,variable,unknown,unknown,0,0,0
+78410,DID_AAR_MODE_ID,AAR Mode ID,AAR,fixed,unknown,unknown,0,0,0
+78420,DID_AAR_RECORD_READY_ID,AAR Record Ready ID,AAR,fixed,unknown,unknown,0,0,0
+78430,DID_AAR_REMAINING_MEDIA_TIME_ID,AAR Remaining Media Time ID,AAR,fixed,unknown,unknown,0,0,0
+78440,DID_AAR_VOICE_CHANNEL_ID,AAR Voice Channel ID,AAR,fixed,unknown,unknown,0,0,0
+78450,DID_AAR_RECORDING_INIT_ID,AAR Recording Init ID,AAR,fixed,unknown,unknown,0,0,0
+78500,DID_SELF_TEST_STATUS_RECORD_ID,Self Test Status Record ID,SIMAN,variable,unknown,unknown,0,0,0
+78600,DID_CHECKPOINT_DATA_RECORD_ID,Checkpoint Data Record ID,Checkpoint,variable,unknown,unknown,0,0,0
+78700,DID_CHECKPOINT_RESET_TIME_RECORD_ID,Checkpoint Reset Time Record ID,Checkpoint,variable,unknown,unknown,0,0,0
+78800,DID_OPERATIONS_CENTER_FLAGS_RECORD_ID,Operations Center Flags Record ID,SIMAN,variable,unknown,unknown,0,0,0
+78820,DID_OPERATIONS_CENTER_RADIO_STATUS_ID,Operations Center Radio Status ID,SIMAN,variable,unknown,unknown,0,0,0
+78920,DID_PORT_ADDRESS_RECORD_ID,Port Address Record ID,SIMAN,variable,unknown,unknown,0,0,0
+79000,DID_SEND_OBJECT_STATE_DATA_RECORD_ID,Send Object State Data Record ID,SIMAN,variable,unknown,unknown,0,0,0
+79100,DID_SAF_BOSS_INDICATOR_ID,Saf Boss Indicator ID,SIMAN,fixed,unknown,unknown,0,0,0
+79200,DID_NUMBER_OF_CGF_SIMULATORS_ID,Number Of CGF Simulators ID,SIMAN,fixed,unknown,unknown,0,0,0
+79300,DID_BLUFOR_SIM_LOAD_ID,Blufor Sim Load ID,SIMAN,fixed,unknown,unknown,0,0,0
+79400,DID_OPFOR_SIM_LOAD_ID,Opfor Sim Load ID,SIMAN,fixed,unknown,unknown,0,0,0
+79500,DID_SAF_EXERCISE_FILENAME_ID,Saf Exercise Filename ID,SIMAN,variable,unknown,unknown,0,0,0
+80000,DID_VISUAL_OBJECT_UPDATE_REQUEST,Visual Object Update Request,SIMAN,unknown,unknown,unknown,0,0,0
+80001,DID_VISUAL_OBJECT_STATE_REQUEST,Visual Object State Request,SIMAN,unknown,unknown,unknown,0,0,0
+90000,DID_ART_PARTS_AGGR,Articulated Parts (Aggregate),Articulated Parts,variable,unknown,unknown,0,0,0
+90050,DID_ART_PARTS_PART_ID,Articulated Parts - Part ID,Articulated Parts,unknown,unknown,unknown,0,0,0
+90070,DID_ART_PARTS_INDEX,Articulated Parts - Index,Articulated Parts,unknown,unknown,unknown,0,0,0
+90100,DID_ART_PARTS_POSITION,Articulated Parts - Position,Articulated Parts,unknown,unknown,unknown,0,0,0
+90200,DID_ART_PARTS_POSITION_RATE,Articulated Parts - Position Rate,Articulated Parts,unknown,unknown,unknown,0,0,0
+90300,DID_ART_PARTS_EXTENSION,Articulated Parts - Extension,Articulated Parts,unknown,unknown,unknown,0,0,0
+90400,DID_ART_PARTS_EXTENSION_EXTENSION_RATE,Articulated Parts - Extension - Extension Rate,Articulated Parts,unknown,unknown,unknown,0,0,0
+90500,DID_ART_PARTS_EXTENSION_X,Articulated Parts - Extension - X,Articulated Parts,unknown,unknown,unknown,0,0,0
+90600,DID_ART_PARTS_EXTENSION_X_RATE,Articulated Parts - Extension - X-rate,Articulated Parts,unknown,unknown,unknown,0,0,0
+90700,DID_ART_PARTS_EXTENSION_Y,Articulated Parts - Extension - Y,Articulated Parts,unknown,unknown,unknown,0,0,0
+90800,DID_ART_PARTS_EXTENSION_Y_RATE,Articulated Parts - Extension - Y-rate,Articulated Parts,unknown,unknown,unknown,0,0,0
+90900,DID_ART_PARTS_EXTENSION_Z,Articulated Parts - Extension - Z,Articulated Parts,unknown,unknown,unknown,0,0,0
+91000,DID_ART_PARTS_EXTENSION_Z_RATE,Articulated Parts - Extension - Z-rate,Articulated Parts,unknown,unknown,unknown,0,0,0
+91100,DID_ART_PARTS_AZIMUTH,Articulated Parts - Azimuth,Articulated Parts,unknown,unknown,unknown,0,0,0
+91200,DID_ART_PARTS_AZIMUTH_RATE,Articulated Parts - Azimuth Rate,Articulated Parts,unknown,unknown,unknown,0,0,0
+91300,DID_ART_PARTS_ELEVATION,Articulated Parts - Elevation,Articulated Parts,unknown,unknown,unknown,0,0,0
+91400,DID_ART_PARTS_ELEVATION_RATE,Articulated Parts - Elevation Rate,Articulated Parts,unknown,unknown,unknown,0,0,0
+91500,DID_ART_PARTS_ROTATION,Articulated Parts - Rotation,Articulated Parts,unknown,unknown,unknown,0,0,0
+91600,DID_ART_PARTS_ROTATION_RATE,Articulated Parts - Rotation Rate,Articulated Parts,unknown,unknown,unknown,0,0,0
+100001,DID_DRA_ANGULAR_X_VEL,DRA Angular X-Velocity,Dead Reckoning,unknown,unknown,unknown,0,0,0
+100002,DID_DRA_ANGULAR_Y_VEL,DRA Angular Y-Velocity,Dead Reckoning,unknown,unknown,unknown,0,0,0
+100003,DID_DRA_ANGULAR_Z_VEL,DRA Angular Z-Velocity,Dead Reckoning,unknown,unknown,unknown,0,0,0
+100004,DID_APPEARANCE_TRAILING_EFFECTS,Appearance - Trailing Effects,Entity Status,unknown,unknown,unknown,0,0,0
+100005,DID_APPEARANCE_HATCH,Appearance - Hatch,Entity Status,unknown,unknown,unknown,0,0,0
+100008,DID_APPEARANCE_CHARACTER_SET,Appearance - Character Set,Entity Status,unknown,unknown,unknown,0,0,0
+100010,DID_CAPABILITY_AMMO_SUPPLIER,Capability - Ammunition Supplier,Capability,fixed,unknown,unknown,0,0,0
+100011,DID_CAPABILITY_MISCELLANEOUS_SUPPLIER,Capability - Miscellaneous Supplier,Capability,fixed,unknown,unknown,0,0,0
+100012,DID_CAPABILITY_REPAIR_PROVIDER,Capability - Repair Provider,Capability,fixed,unknown,unknown,0,0,0
+100014,DID_ART_PARAMETER,Articulation Parameter,Articulated Parts,fixed,unknown,unknown,0,0,0
+100047,DID_ART_PARAMETER_TYPE,Articulation Parameter Type,Articulated Parts,fixed,unknown,unknown,0,0,0
+100048,DID_ART_PARAMETER_VALUE,Articulation Parameter Value,Articulated Parts,fixed,unknown,unknown,0,0,0
+100058,DID_TIME_OF_DAY_SCENE,Time of Day - Scene,Time,unknown,unknown,unknown,0,0,0
+100061,DID_LAT_NORTH,Latitude-North (Location of weather cell),Meteorology,unsigned integer,unknown,unknown,0,0,0
+100063,DID_LONG_EAST,Longitude-East (Location of weather cell),Meteorology,unsigned integer,unknown,unknown,0,0,0
+100068,DID_TACTICAL_DRIVER_STATUS,Tactical Driver Status,Crew Status,unsigned integer,unknown,unknown,0,0,0
+100100,DID_SONAR_SYSTEM_STATUS,Sonar System Status,Entity Status,unknown,unknown,unknown,0,0,0
+100160,DID_ACCOMPLISHED_ACCEPT,Accomplished Accept,SIMAN,boolean,unknown,boolean,0,0,0
+100161,DID_UPPER_LAT,Upper latitude,Meteorology,float,32-bits,radians,0,0,0
+100162,DID_LAT_SOUTH,Latitude-South (Location of weather cell),Meteorology,unsigned integer,unknown,unknown,0,0,0
+100163,DID_WESTERN_LONG,Western longitude,Meteorology,float,32-bits,radians,0,0,0
+100164,DID_LONG_WEST,Longitude-West (location of weather cell),Meteorology,unsigned integer,unknown,unknown,0,0,0
+100165,DID_CD_ROM_NUMBER_DISK_ID_FOR_TERRAIN,CD ROM Number (Disk ID for terrain),SIMAN,integer,unknown,N/A,0,0,0
+100166,DID_DTED_DISK_ID,DTED Disk ID,SIMAN,unsigned integer,32-bits,unknown,0,0,0
+100169,DID_TACTICAL_SYSTEM_STATUS,Tactical System Status,Entity Status,unsigned integer,unknown,unknown,0,0,0
+100170,DID_JTIDS_STATUS,JTIDS Status,unknown,unsigned integer,unknown,unknown,0,0,0
+100171,DID_TADIL_J_STATUS,TADIL-J Status,TADIL J,unsigned integer,unknown,unknown,0,0,0
+100172,DID_DSDD_STATUS,DSDD Status,unknown,unsigned integer,unknown,unknown,0,0,0
+100200,DID_WEAPON_SYSTEM_STATUS,Weapon System Status,Entity Status,unknown,unknown,unknown,0,0,0
+100205,DID_SUBSYSTEM_STATUS,Subsystem status,Entity Status,boolean,32-bits,unknown,0,0,0
+100206,DID_NUMBER_OF_INTERCEPTORS_FIRED,Number of interceptors fired,Engagement Data,unsigned integer,32-bits,unknown,0,0,0
+100207,DID_NUMBER_OF_INTERCEPTOR_DETONATIONS,Number of interceptor detonations,Engagement Data,unsigned integer,32-bits,unknown,0,0,0
+100208,DID_NUMBER_OF_MSG_BUFFERS_DROPPED,Number of message buffers dropped,SIMAN,unsigned integer,32-bits,unknown,0,0,0
+100213,DID_SATELLITE_SENSOR_BACKGROUND_YEAR_DAY,Satellite sensor background (year - day),Time,fixed,16-bits,years - julian days,0,0,0
+100214,DID_SATELLITE_SENSOR_BACKGROUND_HOUR_MINUTE,Satellite sensor background (hour - minute),Time,fixed,16-bits,hours - minutes,0,0,0
+100218,DID_SCRIPT_NUMBER,Script Number,SIMAN,integer,16-bits,unknown,0,0,0
+100300,DID_ENTITY_TRACK_UPDATE_DATA,Entity/Track/Update Data,unknown,unknown,16-bits,unknown,0,0,0
+100400,DID_LOCAL_FORCE_TRAINING,Local/Force Training,unknown,unknown,32-bits,unknown,0,0,0
+100500,DID_ENTITY_TRACK_IDENTITY_DATA_AGGR,Entity/Track Identity Data (Aggregate),unknown,unknown,unknown,unknown,0,0,0
+100510,DID_ENTITY_FOR_TRACK_EVENT,Entity for Track Event,unknown,variable,unknown,unknown,0,0,0
+100520,DID_IFF_FRIEND_FOE_STATUS,IFF (Friend-Foe) status,Entity Status,unsigned integer,unknown,unknown,0,0,0
+100600,DID_ENGAGE_DATA,Engagement Data,Engagement Data,unknown,48-bits,unknown,0,0,0
+100610,DID_ENGAGE_DATA_TARGET_LAT,Engagement Data - Target Latitude,Engagement Data,integer,32-bits,(10000th) degrees,0,0,0
+100620,DID_ENGAGE_DATA_TARGET_LONG,Engagement Data - Target Longitude,Engagement Data,integer,unknown,(10000th) degrees,0,0,0
+100631,DID_ENGAGE_DATA_AOI_GROUND_IMPACT_CIRCLE_CENTER_LAT,Engagement Data - AOI (Ground Impact Circle) Center Latitude,Engagement Data,integer,32-bits,(10000th) degrees,0,0,0
+100632,DID_ENGAGE_DATA_AOI_GROUND_IMPACT_CIRCLE_CENTER_LONG,Engagement Data - AOI (Ground Impact Circle) Center Longitude,Engagement Data,integer,32-bits,(10000th) degrees,0,0,0
+100633,DID_ENGAGE_DATA_AOI_GROUND_IMPACT_CIRCLE_RADIUS,Engagement Data - AOI (Ground Impact Circle) Radius,Engagement Data,unsigned integer,32-bits,meters,0,0,0
+100634,DID_ENGAGE_DATA_AOI_TYPE,Engagement Data - AOI Type,Engagement Data,unsigned integer,32-bits,unknown,0,0,0
+100640,DID_ENGAGE_DATA_TARGET_AGGR_ID,Engagement Data - Target Aggregate ID,Engagement Data,variable,32-bits,unknown,0,0,0
+100650,DID_ENGAGE_DATA_GIC_IDENTIFICATION_NUMBER,Engagement Data - GIC Identification Number,Engagement Data,unsigned integer,32-bits,unknown,0,0,0
+100660,DID_ENGAGE_DATA_EST_TIME_OF_FLIGHT_TO_TBM_IMPACT,Engagement Data - Estimated Time of Flight to TBM Impact,Engagement Data,floating point,48-bits,unknown,0,0,0
+100661,DID_ENGAGE_DATA_EST_INTERCEPT_TIME,Engagement Data - Estimated Intercept Time,Engagement Data,floating point,32-bits,unknown,0,0,0
+100662,DID_ENGAGE_DATA_EST_TIME_OF_FLIGHT_TO_NEXT_WAYPOINT,Engagement Data - Estimated Time of Flight to Next Waypoint,Engagement Data,floating point,32-bits,unknown,0,0,0
+100700,DID_ENTITY_TRACK_EQUIPMENT_DATA,Entity/Track Equipment Data,unknown,unknown,32-bits,unknown,0,0,0
+100800,DID_EMISSION_EW_DATA,Emission/EW Data,Emissions,unknown,32-bits,unknown,0,0,0
+100900,DID_APPEARANCE_DATA_AGGR,Appearance Data (Aggregate),Entity Status,unknown,unknown,unknown,0,0,0
+101000,DID_COMMAND_ORDER_DATA_AGGR,Command/Order Data (Aggregate),unknown,unknown,unknown,unknown,0,0,0
+101100,DID_ENVIRAL_DATA,Environmental Data,Environmental Data,unknown,unknown,unknown,0,0,0
+101200,DID_SIGNIFICANT_EVENT_DATA,Significant Event Data,unknown,unknown,unknown,unknown,0,0,0
+101300,DID_OP_ACTION_DATA,Operator Action Data,Operator Action,unknown,unknown,unknown,0,0,0
+101310,DID_OP_ACTION_DATA_ADA_ENGAGE_MODE,Operator Action Data - ADA Engagement Mode,Operator Action,unsigned integer,unknown,unknown,0,0,0
+101320,DID_OP_ACTION_DATA_ADA_SHOOTING_STATUS,Operator Action Data - ADA Shooting Status,Operator Action,unsigned integer,unknown,unknown,0,0,0
+101321,DID_OP_ACTION_DATA_ADA_MODE,Operator Action Data - ADA Mode,Operator Action,unsigned integer,32-bits,unknown,0,0,0
+101330,DID_OP_ACTION_DATA_ADA_RADAR_STATUS,Operator Action Data - ADA Radar Status,Operator Action,unsigned integer,32-bits,unknown,0,0,0
+101340,DID_OP_ACTION_DATA_SHOOT_COMMAND,Operator Action Data - Shoot Command,Operator Action,unsigned integer,32-bits,unknown,0,0,0
+101350,DID_OP_ACTION_DATA_ADA_WEAPON_STATUS,Operator Action Data - ADA Weapon Status,Operator Action,unsigned integer,32-bits,unknown,0,0,0
+101360,DID_OP_ACTION_DATA_ADA_FIRING_DISCIPLE,Operator Action Data - ADA Firing Disciple,Operator Action,unsigned integer,32-bits,unknown,0,0,0
+101370,DID_OP_ACTION_DATA_ORDER_STATUS,Operator Action Data - Order Status,Operator Action,unsigned integer,32-bits,unknown,0,0,0
+101400,DID_TIME_SYNCHRONIZATION,Time Synchronization,Time,unknown,32-bits,unknown,0,0,0
+101500,DID_TOMAHAWK_DATA,Tomahawk Data,Weapon Status,unknown,32-bits,unknown,0,0,0
+102100,DID_NUMBER_OF_DETONATIONS,Number of Detonations,Engagement Data,unsigned integer,unknown,unknown,0,0,0
+102200,DID_NUMBER_OF_INTERCEPTS,Number of Intercepts,Engagement Data,unsigned integer,unknown,unknown,0,0,0
+109993,DID_VEHICLE_DRIVER_STATUS_ID,Vehicle Driver Status ID ,Crew Status,fixed,unknown,unknown,0,0,0
+109994,DID_VEHICLE_COMMANDER_STATUS_ID,Vehicle Commander Status ID ,Crew Status,fixed,unknown,unknown,0,0,0
+109995,DID_VEHICLE_LOADER_STATUS_ID,Vehicle Loader Status ID ,Crew Status,fixed,unknown,unknown,0,0,0
+109996,DID_VEHICLE_GUNNER_STATUS_ID,Vehicle Gunner Status ID ,Crew Status,fixed,unknown,unknown,0,0,0
+109997,DID_SIMULATION_DATE_ID,Simulation Date ID ,Time,fixed,unknown,unknown,0,0,0
+109998,DID_SIMULATION_TIME_OF_DAY_ID,Simulation Time Of Day ID ,Time,fixed,unknown,unknown,0,0,0
+109999,DID_RAIN_LEVEL_ID,Rain Level ID ,Meteorology,fixed,unknown,unknown,0,0,0
+120000,DID_SAF_LOAD_CONFIG_ID,Saf Load Config ID ,Scenario,fixed,unknown,unknown,0,0,0
+120001,DID_ENDSCRIPT_ID,Endscript ID ,SIMAN,fixed,unknown,unknown,0,0,0
+120002,DID_FBCB2_AUTO_DETECT_ID,FBCB2 Auto Detect ID ,FBCB2,fixed,unknown,unknown,0,0,0
+120003,DID_ENDGAME_ID,Endgame ID ,SIMAN,fixed,unknown,unknown,0,0,0
+120004,DID_COMPUTATION_LEVEL_ID,Computation Level ID ,unknown,fixed,unknown,unknown,0,0,0
+200201,DID_OBT_CONTROL_M_1,OBT Control (M) 1,unknown,variable,unknown,unknown,0,0,0
+200202,DID_SENSOR_DATA_M_1,Sensor Data (M) 1,Sensor Data,variable,unknown,unknown,0,0,0
+200203,DID_ENVIRAL_DATA_M_1,Environmental Data (M) 1,Environmental Data,variable,64-bits,unknown,0,0,0
+200204,DID_OWNSHIP_DATA_M_1,Ownship Data (M) 1,Entity Status,variable,64-bits,unknown,0,0,0
+200205,DID_ACOUSTIC_CONTACT_DATA_M_1,Acoustic Contact Data (M) 1,Sonar,variable,64-bits,unknown,0,0,0
+200207,DID_SONOBUOY_DATA_M_1,Sonobuoy Data (M) 1,Sonar,variable,128-bits,unknown,0,0,0
+200210,DID_SONOBUOY_CONTACT_DATA_M_1,Sonobuoy Contact Data (M) 1,Sonar,variable,288-bits,unknown,0,0,0
+200211,DID_HELO_CONTROL_M,Helo Control (M),Aircraft Status,variable,64-bits,unknown,0,0,0
+200213,DID_ESM_CONTROL_DATA,ESM Control Data,Emissions,variable,64-bits,unknown,0,0,0
+200214,DID_ESM_CONTACT_DATA_M_1,ESM Contact Data (M) 1,Emissions,variable,64-bits,unknown,0,0,0
+200215,DID_ESM_EMITTER_DATA_M_1,ESM Emitter Data (M) 1,Emissions,variable,96-bits,unknown,0,0,0
+200216,DID_WEAPON_DEFINITION_DATA_M_1,Weapon Definition Data (M) 1,Weapon Status,variable,192-bits,unknown,0,0,0
+200217,DID_WEAPON_PRESET_DATA_M_1,Weapon Preset Data (M) 1,Weapon Status,variable,64-bits,unknown,0,0,0
+200301,DID_OBT_CONTROL_M_2,OBT Control (M) 2,unknown,variable,224-bits,unknown,0,0,0
+200302,DID_SENSOR_DATA_M_2,Sensor Data (M) 2,Sensor Data,variable,256-bits,unknown,0,0,0
+200303,DID_ENVIRAL_DATA_M_2,Environmental Data (M) 2,Environmental Data,variable,64-bits,unknown,0,0,0
+200304,DID_OWNSHIP_DATA_M_2,Ownship Data (M) 2,Entity Status,variable,64-bits,unknown,0,0,0
+200305,DID_ACOUSTIC_CONTACT_DATA_M_2,Acoustic Contact Data (M) 2,Sonar,variable,64-bits,unknown,0,0,0
+200307,DID_SONOBUOY_DATA_M_2,Sonobuoy Data (M) 2,Sonar,variable,64-bits,unknown,0,0,0
+200310,DID_SONOBUOY_CONTACT_DATA_M_2,Sonobuoy Contact Data (M) 2,Sonar,variable,288-bits,unknown,0,0,0
+200311,DID_HELO_SCENARIO_EQUIPMENT_STATUS,Helo Scenario / Equipment Status,Aircraft Status,variable,128-bits,unknown,0,0,0
+200313,DID_ESM_CONTROL_DATA_M,ESM Control Data (M),Emissions,variable,64-bits,unknown,0,0,0
+200314,DID_ESM_CONTACT_DATA_M_2,ESM Contact Data (M) 2,Emissions,variable,224-bits,unknown,0,0,0
+200315,DID_ESM_EMITTER_DATA_M_2,ESM Emitter Data (M) 2,Emissions,variable,96-bits,unknown,0,0,0
+200316,DID_WEAPON_DEFINITION_DATA_M_2,Weapon Definition Data (M) 2,Weapon Status,variable,192-bits,unknown,0,0,0
+200317,DID_WEAPON_PRESET_DATA_M_2,Weapon Preset Data (M) 2,Weapon Status,variable,64-bits,unknown,0,0,0
+200400,DID_PAIRING_ASSOCIATION_EM,Pairing/Association (eM),unknown,variable,256-bits,unknown,0,0,0
+200401,DID_POINTER_EM,Pointer (eM),unknown,variable,256-bits,unknown,0,0,0
+200402,DID_REPORTING_RESPONSIBILITY_EM,Reporting Responsibility (eM),unknown,variable,unknown,unknown,0,0,0
+200403,DID_TRACK_NUMBER_EM,Track Number (eM),unknown,variable,unknown,unknown,0,0,0
+200404,DID_ID_FOR_LINK_11_REPORTING_EM,ID for Link-11 Reporting (eM),Communications,variable,unknown,unknown,0,0,0
+200405,DID_REMOTE_TRACK_EM,Remote Track (eM),unknown,variable,unknown,unknown,0,0,0
+200406,DID_LINK_11_ERROR_RATE_EM,Link-11 Error Rate (eM),Communications,variable,unknown,unknown,0,0,0
+200407,DID_TRACK_QUALITY_EM,Track Quality (eM),unknown,variable,unknown,unknown,0,0,0
+200408,DID_GRIDLOCK_EM,Gridlock (eM),unknown,variable,unknown,unknown,0,0,0
+200409,DID_KILL_EM,Kill (eM),unknown,variable,unknown,unknown,0,0,0
+200410,DID_TRACK_ID_CHANGE_RESOLUTION_EM,Track ID Change / Resolution (eM),unknown,variable,unknown,unknown,0,0,0
+200411,DID_WEAPONS_STATUS_EM,Weapons Status (eM),Weapon Status,variable,unknown,unknown,0,0,0
+200412,DID_LINK_11_OP_EM,Link-11 Operator (eM),Communications,variable,unknown,unknown,0,0,0
+200413,DID_FORCE_TRAINING_TRANSMIT_EM,Force Training Transmit (eM),unknown,variable,unknown,unknown,0,0,0
+200414,DID_FORCE_TRAINING_RECEIVE_EM,Force Training Receive (eM),unknown,variable,unknown,unknown,0,0,0
+200415,DID_INTERCEPTOR_AMPLIFICATION_EM,Interceptor Amplification (eM),unknown,variable,unknown,unknown,0,0,0
+200416,DID_CONSUMABLES_EM,Consumables (eM),Consumables,variable,unknown,unknown,0,0,0
+200417,DID_LINK_11_LOCAL_TRACK_QUALITY_EM,Link-11 Local Track Quality (eM),Communications,variable,unknown,unknown,0,0,0
+200418,DID_DLRP_EM,DLRP (eM),unknown,variable,unknown,unknown,0,0,0
+200419,DID_FORCE_ORDER_EM,Force Order (eM),unknown,variable,unknown,unknown,0,0,0
+200420,DID_WILCO_CANTCO_EM,Wilco / Cantco (eM),unknown,variable,unknown,unknown,0,0,0
+200421,DID_EMC_BEARING_EM,EMC Bearing (eM),unknown,variable,unknown,unknown,0,0,0
+200422,DID_CHANGE_TRACK_ELIGIBILITY_EM,Change Track Eligibility (eM),unknown,variable,unknown,unknown,0,0,0
+200423,DID_LAND_MASS_REFERENCE_POINT,Land Mass Reference Point,Location,variable,unknown,unknown,0,0,0
+200424,DID_SYSTEM_REFERENCE_POINT,System Reference Point,unknown,variable,unknown,unknown,0,0,0
+200425,DID_PU_AMPLIFICATION,PU Amplification,unknown,variable,unknown,unknown,0,0,0
+200426,DID_SET_DRIFT,Set/Drift,unknown,variable,unknown,unknown,0,0,0
+200427,DID_BEGIN_INITIALIZATION_M,Begin Initialization (M),SIMAN,variable,unknown,unknown,0,0,0
+200428,DID_STATUS_AND_CONTROL_M,Status and Control (M),Entity Status,variable,unknown,unknown,0,0,0
+200429,DID_SCINTILLATION_CHANGE_M,Scintillation Change (M),unknown,variable,unknown,unknown,0,0,0
+200430,DID_LINK_11_ID_CONTROL_M,Link 11 ID Control (M),Communications,variable,unknown,unknown,0,0,0
+200431,DID_PU_GUARD_LIST,PU Guard List,unknown,variable,unknown,unknown,0,0,0
+200432,DID_WINDS_ALOFT_M,Winds Aloft (M),Meteorology,variable,unknown,unknown,0,0,0
+200433,DID_SURFACE_WINDS_M,Surface Winds (M),Meteorology,variable,unknown,unknown,0,0,0
+200434,DID_SEA_STATE_M,Sea State (M),Meteorology,variable,unknown,unknown,0,0,0
+200435,DID_MAGNETIC_VARIATION_M,Magnetic Variation (M),unknown,variable,unknown,unknown,0,0,0
+200436,DID_TRACK_ELIGIBILITY_M,Track Eligibility (M),unknown,variable,unknown,unknown,0,0,0
+200437,DID_TRAINING_TRACK_NOTIFICATION,Training Track Notification,unknown,variable,unknown,unknown,0,0,0
+200501,DID_TACAN_DATA_M,Tacan Data (M),TACAN,variable,unknown,unknown,0,0,0
+200502,DID_INTERCEPTOR_AMPLIFICATION_M,Interceptor Amplification (M),unknown,variable,unknown,unknown,0,0,0
+200503,DID_TACAN_ASSIGNMENT_M,Tacan Assignment (M),TACAN,variable,unknown,unknown,0,0,0
+200504,DID_AUTOPILOT_STATUS_M,Autopilot Status (M),Aircraft Status,variable,unknown,unknown,0,0,0
+200505,DID_CONSUMABLES_M,Consumables (M),Consumables,variable,unknown,unknown,0,0,0
+200506,DID_DOWNLINK_M,Downlink (M),unknown,variable,unknown,unknown,0,0,0
+200507,DID_TIN_REPORT_M,TIN Report (M),unknown,variable,unknown,unknown,0,0,0
+200508,DID_SPECIAL_POINT_CONTROL_M,Special Point Control (M),unknown,variable,unknown,unknown,0,0,0
+200509,DID_CONTROL_DISCRETES_M,Control Discretes (M),unknown,variable,unknown,unknown,0,0,0
+200510,DID_REQUEST_TARGET_DISCRETES_M,Request Target Discretes (M),unknown,variable,unknown,unknown,0,0,0
+200511,DID_TARGET_DISCRETES_M,Target Discretes (M),Engagement Data,variable,unknown,unknown,0,0,0
+200512,DID_REPLY_DISCRETES_M,Reply Discretes (M),unknown,variable,unknown,unknown,0,0,0
+200513,DID_COMMAND_MANEUVERS_M,Command Maneuvers (M),unknown,variable,unknown,unknown,0,0,0
+200514,DID_TARGET_DATA_M,Target Data (M),Engagement Data,variable,unknown,unknown,0,0,0
+200515,DID_TARGET_POINTER_M,Target Pointer (M),Engagement Data,variable,unknown,unknown,0,0,0
+200516,DID_INTERCEPT_DATA_M,Intercept Data (M),unknown,variable,unknown,unknown,0,0,0
+200517,DID_DECREMENT_MISSILE_INVENTORY_M,Decrement Missile Inventory (M),Missiles,variable,unknown,unknown,0,0,0
+200518,DID_LINK_4A_ALERT_M,Link-4A Alert (M),Communications,variable,unknown,unknown,0,0,0
+200519,DID_STRIKE_CONTROL_M,Strike Control (M),unknown,variable,unknown,unknown,0,0,0
+200521,DID_SPEED_CHANGE_M,Speed Change (M),Entity Status,variable,unknown,unknown,0,0,0
+200522,DID_COURSE_CHANGE_M,Course Change (M),unknown,variable,unknown,unknown,0,0,0
+200523,DID_ALTITUDE_CHANGE_M,Altitude Change (M),Aircraft Status,variable,unknown,unknown,0,0,0
+200524,DID_ACLS_AN_SPN_46_STATUS,ACLS AN/SPN-46 Status,Aircraft Status,variable,unknown,unknown,0,0,0
+200525,DID_ACLS_AIRCRAFT_REPORT,ACLS Aircraft Report,Aircraft Status,variable,unknown,unknown,0,0,0
+200600,DID_SPS_67_RADAR_OP_FUNCTIONS,SPS-67 Radar Operator Functions,Radar,variable,unknown,unknown,0,0,0
+200601,DID_SPS_55_RADAR_OP_FUNCTIONS,SPS-55 Radar Operator Functions,Radar,variable,unknown,unknown,0,0,0
+200602,DID_SPQ_9A_RADAR_OP_FUNCTIONS,SPQ-9A Radar Operator Functions ,Radar,variable,unknown,unknown,0,0,0
+200603,DID_SPS_49_RADAR_OP_FUNCTIONS,SPS-49 Radar Operator Functions,Radar,variable,unknown,unknown,0,0,0
+200604,DID_MK_23_RADAR_OP_FUNCTIONS,MK-23 Radar Operator Functions,Radar,variable,unknown,unknown,0,0,0
+200605,DID_SPS_48_RADAR_OP_FUNCTIONS,SPS-48 Radar Operator Functions,Radar,variable,unknown,unknown,0,0,0
+200606,DID_SPS_40_RADAR_OP_FUNCTIONS,SPS-40 Radar Operator Functions,Radar,variable,unknown,unknown,0,0,0
+200607,DID_MK_95_RADAR_OP_FUNCTIONS,MK-95 Radar Operator Functions,Radar,variable,unknown,unknown,0,0,0
+200608,DID_KILL_NO_KILL,Kill/No Kill,unknown,unsigned integer,unknown,unknown,0,0,0
+200609,DID_CMT_PC,CMT pc,unknown,unsigned integer,unknown,unknown,0,0,0
+200610,DID_CMC4_AIR_GLOBAL_DATA,CMC4 Air Global Data,unknown,variable,32-bits,unknown,0,0,0
+200611,DID_CMC4_GLOBAL_DATA,CMC4 Global Data,unknown,variable,32-bits,unknown,0,0,0
+200612,DID_LINKSIM_COMMENT_PDU,LINKSIM COMMENT PDU,Communications,integer,unknown,unknown,0,0,0
+200613,DID_NSST_OWNSHIP_CONTROL,NSST Ownship Control,unknown,integer,unknown,unknown,0,0,0
+240000,DID_OTHER,Other,unknown,integer,32-bits,unknown,0,0,0
+240001,DID_OTHER_MASS_OF_THE_VEHICLE,Other - Mass Of The Vehicle,Entity Status,real,64-bits,unknown,0,0,0
+240017,DID_OTHER_ENTITY_LOCATION_X,Other - Entity Location X,Entity Status,real,8-bits,unknown,0,0,0
+240018,DID_OTHER_ENTITY_LOCATION_Y,Other - Entity Location Y,Entity Status,real,8-bits,unknown,0,0,0
+240019,DID_OTHER_ENTITY_LOCATION_Z,Other - Entity Location Z,Entity Status,real,64-bits,unknown,0,0,0
+240020,DID_OTHER_ENTITY_LINEAR_VEL_X,Other - Entity Linear Velocity X,Entity Status,real,64-bits,unknown,0,0,0
+240021,DID_OTHER_ENTITY_LINEAR_VEL_Y,Other - Entity Linear Velocity Y,Entity Status,real,64-bits,unknown,0,0,0
+240022,DID_OTHER_ENTITY_LINEAR_VEL_Z,Other - Entity Linear Velocity Z,Entity Status,real,32-bits,unknown,0,0,0
+240023,DID_OTHER_ENTITY_ORIENT_PSI,Other - Entity Orientation Psi,Entity Status,real,32-bits,unknown,0,0,0
+240024,DID_OTHER_ENTITY_ORIENT_THETA,Other - Entity Orientation Theta,Entity Status,real,32-bits,unknown,0,0,0
+240025,DID_OTHER_ENTITY_ORIENT_PHI,Other - Entity Orientation Phi,Entity Status,real,32-bits,unknown,0,0,0
+240027,DID_OTHER_DR_LINEAR_ACCEL_X,Other - Dead Reckoning Linear Acceleration X,Dead Reckoning,real,32-bits,unknown,0,0,0
+240028,DID_OTHER_DR_LINEAR_ACCEL_Y,Other - Dead Reckoning Linear Acceleration Y,Dead Reckoning,real,8-bits,unknown,0,0,0
+240029,DID_OTHER_DR_LINEAR_ACCEL_Z,Other - Dead Reckoning Linear Acceleration Z,Dead Reckoning,real,32-bits,unknown,0,0,0
+240033,DID_OTHER_ENTITY_APPEARANCE,Other - Entity Appearance,Entity Status,integer,32-bits,unknown,0,0,0
+240036,DID_OTHER_CAPABILITY,Other - Capability,unknown,integer,8-bits,unknown,0,0,0
+240037,DID_OTHER_NUMBER_ART_PARMS,Other - Number Articulation Parameters,Articulated Parts,integer,88-bits,unknown,0,0,0
+240041,DID_OTHER_TYPE_OF_STORES,Other - Type Of Stores,Stores,integer,32-bits,unknown,0,0,0
+240042,DID_OTHER_QTY_OF_STORES,Other - Quantity Of Stores,Stores,integer,64-bits,unknown,0,0,0
+240044,DID_OTHER_RADAR_SYSTEM_STATUS,Other - Radar System Status,Radar,integer,32-bits,unknown,0,0,0
+240045,DID_OTHER_RADIO_COMM_SYSTEM_STATUS,Other - Radio Communication System Status,Communications,integer,32-bits,unknown,0,0,0
+240046,DID_OTHER_DEFAULT_TIME_STATIONARY_TRANS,Other - Default Time For Radio Transmission For Stationary Transmitters,Communications,integer,32-bits,unknown,0,0,0
+240047,DID_OTHER_DEFAULT_TIME_MOVING_TRANS,Other - Default Time For Radio Transmission For Moving Transmitters,Communications,integer,32-bits,unknown,0,0,0
+240048,DID_OTHER_BODY_PART_DAMAGED_RATIO,Other - Body Part Damaged Ratio,Entity Status,real,32-bits,unknown,0,0,0
+240049,DID_OTHER_NAME_OF_THE_TERRAIN_DATABASE_FILE,Other - Name Of The Terrain Database File,SIMAN,character,32-bits,unknown,0,0,0
+240050,DID_OTHER_NAME_OF_LOCAL_FILE,Other - Name Of Local File,SIMAN,character,32-bits,unknown,0,0,0
+240051,DID_OTHER_AIMPOINT_BEARING,Other - Aimpoint Bearing,Engagement Data,real,00-bits,unknown,0,0,0
+240052,DID_OTHER_AIMPOINT_ELEVATION,Other - Aimpoint Elevation,Engagement Data,real,00-bits,unknown,0,0,0
+240053,DID_OTHER_AIMPOINT_RANGE,Other - Aimpoint Range,Engagement Data,real,32-bits,unknown,0,0,0
+240054,DID_OTHER_AIR_SPEED,Other - Air Speed,Aircraft Status,real,32-bits,unknown,0,0,0
+240055,DID_OTHER_ALTITUDE,Other - Altitude,Aircraft Status,real,32-bits,unknown,0,0,0
+240056,DID_OTHER_APPLICATION_STATUS,Other - Application Status,Aircraft Status,variable,32-bits,unknown,0,0,0
+240057,DID_OTHER_AUTO_IFF,Other - Auto Iff,Aircraft Status,integer,32-bits,unknown,0,0,0
+240058,DID_OTHER_BEACON_DELAY,Other - Beacon Delay,Aircraft Status,real,32-bits,unknown,0,0,0
+240059,DID_OTHER_BINGO_FUEL_SETTING,Other - Bingo Fuel Setting,Aircraft Status,real,32-bits,unknown,0,0,0
+240062,DID_OTHER_DIRECTION,Other - Direction,Aircraft Status,real,32-bits,unknown,0,0,0
+240063,DID_OTHER_END_ACTION,Other - End Action,Aircraft Status,integer,32-bits,unknown,0,0,0
+240064,DID_OTHER_FREQUENCY,Other - Frequency,Aircraft Status,real,32-bits,unknown,0,0,0
+240065,DID_OTHER_FREEZE,Other - Freeze,Aircraft Status,integer,32-bits,unknown,0,0,0
+240066,DID_OTHER_HEADING,Other - Heading,Aircraft Status,real,32-bits,unknown,0,0,0
+240067,DID_OTHER_IDENTIFICATION,Other - Identification,Aircraft Status,integer,32-bits,unknown,0,0,0
+240068,DID_OTHER_INITIAL_POINT_DATA,Other - Initial Point Data,Aircraft Status,integer,32-bits,unknown,0,0,0
+240069,DID_OTHER_LAT,Other - Latitude,Aircraft Status,real,32-bits,unknown,0,0,0
+240070,DID_OTHER_LIGHTS,Other - Lights,Aircraft Status,integer,32-bits,unknown,0,0,0
+240071,DID_OTHER_LINEAR,Other - Linear,Aircraft Status,integer,64-bits,unknown,0,0,0
+240072,DID_OTHER_LONG,Other - Longitude,Aircraft Status,real,32-bits,unknown,0,0,0
+240073,DID_OTHER_LOW_ALTITUDE,Other - Low Altitude,Aircraft Status,real,32-bits,unknown,0,0,0
+240074,DID_OTHER_MFD_FORMATS,Other - Mfd Formats,Aircraft Status,integer,64-bits,unknown,0,0,0
+240075,DID_OTHER_NCTR,Other - Nctr,Aircraft Status,integer,32-bits,unknown,0,0,0
+240076,DID_OTHER_NUMBER_PROJECTILES,Other - Number Projectiles,Aircraft Status,integer,32-bits,unknown,0,0,0
+240077,DID_OTHER_OPERATION_CODE,Other - Operation Code,Aircraft Status,integer,32-bits,unknown,0,0,0
+240078,DID_OTHER_PITCH,Other - Pitch,Aircraft Status,real,32-bits,unknown,0,0,0
+240079,DID_OTHER_PROFILES,Other - Profiles,Aircraft Status,integer,32-bits,unknown,0,0,0
+240080,DID_OTHER_QTY,Other - Quantity,Aircraft Status,integer,32-bits,unknown,0,0,0
+240081,DID_OTHER_RADAR_MODES,Other - Radar Modes,Aircraft Status,integer,32-bits,unknown,0,0,0
+240082,DID_OTHER_RADAR_SEARCH_VOLUME,Other - Radar Search Volume,Aircraft Status,real,32-bits,unknown,0,0,0
+240083,DID_OTHER_ROLL,Other - Roll,Aircraft Status,real,32-bits,unknown,0,0,0
+240084,DID_OTHER_ROTATION,Other - Rotation,Aircraft Status,real,32-bits,unknown,0,0,0
+240085,DID_OTHER_SCALE_FACTOR_X,Other - Scale Factor X,Aircraft Status,real,32-bits,unknown,0,0,0
+240086,DID_OTHER_SCALE_FACTOR_Y,Other - Scale Factor Y,Aircraft Status,real,32-bits,unknown,0,0,0
+240087,DID_OTHER_SHIELDS,Other - Shields,Aircraft Status,integer,32-bits,unknown,0,0,0
+240088,DID_OTHER_STEERPOINT,Other - Steerpoint,Aircraft Status,structure,32-bits,unknown,0,0,0
+240089,DID_OTHER_SPARE1,Other - Spare1,Aircraft Status,real,32-bits,unknown,0,0,0
+240090,DID_OTHER_SPARE2,Other - Spare2,Aircraft Status,real,192-bits,unknown,0,0,0
+240091,DID_OTHER_TEAM,Other - Team,Aircraft Status,integer,64-bits,unknown,0,0,0
+240092,DID_OTHER_TEXT,Other - Text,Aircraft Status,character,64-bits,unknown,0,0,0
+240093,DID_OTHER_TIME_OF_DAY,Other - Time Of Day,Aircraft Status,integer,32-bits,unknown,0,0,0
+240094,DID_OTHER_TRAIL_FLAG,Other - Trail Flag,Aircraft Status,integer,00-bits,unknown,0,0,0
+240095,DID_OTHER_TRAIL_SIZE,Other - Trail Size,Aircraft Status,real,32-bits,unknown,0,0,0
+240096,DID_OTHER_TYPE_OF_PROJECTILE,Other - Type Of Projectile,Weapon Status,integer,32-bits,unknown,0,0,0
+240097,DID_OTHER_TYPE_OF_TARGET,Other - Type Of Target,Engagement Data,integer,32-bits,unknown,0,0,0
+240098,DID_OTHER_TYPE_OF_THREAT,Other - Type Of Threat,Engagement Data,integer,32-bits,unknown,0,0,0
+240099,DID_OTHER_UHF_FREQUENCY,Other - Uhf Frequency,Communications,real,32-bits,unknown,0,0,0
+240100,DID_OTHER_UTM_ALTITUDE,Other - Utm Altitude,Location,real,32-bits,unknown,0,0,0
+240101,DID_OTHER_UTM_LAT,Other - Utm Latitude,Location,real,32-bits,unknown,0,0,0
+240102,DID_OTHER_UTM_LONG,Other - Utm Longitude,Location,real,32-bits,unknown,0,0,0
+240103,DID_OTHER_VHF_FREQUENCY,Other - Vhf Frequency,Communications,real,64-bits,unknown,0,0,0
+240104,DID_OTHER_VISIBILITY_RANGE,Other - Visibility Range,Meteorology,real,64-bits,unknown,0,0,0
+240105,DID_OTHER_VOID_AAA_HIT,Other - Void Aaa Hit,Detonation,integer,32-bits,unknown,0,0,0
+240106,DID_OTHER_VOID_COLLISION,Other - Void Collision,Collision,integer,32-bits,unknown,0,0,0
+240107,DID_OTHER_VOID_EARTH_HIT,Other - Void Earth Hit,Collision,integer,32-bits,unknown,0,0,0
+240108,DID_OTHER_VOID_FRIENDLY,Other - Void Friendly,unknown,integer,32-bits,unknown,0,0,0
+240109,DID_OTHER_VOID_GUN_HIT,Other - Void Gun Hit,Detonation,integer,32-bits,unknown,0,0,0
+240110,DID_OTHER_VOID_ROCKET_HIT,Other - Void Rocket Hit,Detonation,integer,32-bits,unknown,0,0,0
+240111,DID_OTHER_VOID_SAM_HIT,Other - Void Sam Hit,Detonation,integer,32-bits,unknown,0,0,0
+240112,DID_OTHER_WEAPON_DATA,Other - Weapon Data,Weapon Status,integer,32-bits,unknown,0,0,0
+240113,DID_OTHER_WEAPON_TYPE,Other - Weapon Type,Weapon Status,integer,32-bits,unknown,0,0,0
+240114,DID_OTHER_WEATHER,Other - Weather,Meteorology,integer,32-bits,unknown,0,0,0
+240117,DID_OTHER_WING_STATION,Other - Wing Station,Aircraft Status,integer,32-bits,unknown,0,0,0
+240118,DID_OTHER_YAW,Other - Yaw,Aircraft Status,real,32-bits,unknown,0,0,0
+240119,DID_OTHER_MEMORY_OFFSET,Other - Memory Offset,CPU,integer,32-bits,unknown,0,0,0
+240120,DID_OTHER_MEMORY_DATA,Other - Memory Data,CPU,integer,32-bits,unknown,0,0,0
+240121,DID_OTHER_VASI,Other - VASI,unknown,integer,32-bits,unknown,0,0,0
+240122,DID_OTHER_BEACON,Other - Beacon,Runway Status,integer,00-bits,unknown,0,0,0
+240123,DID_OTHER_STROBE,Other - Strobe,Runway Status,integer,32-bits,unknown,0,0,0
+240124,DID_OTHER_CULTURE,Other - Culture,Runway Status,integer,32-bits,unknown,0,0,0
+240125,DID_OTHER_APPROACH,Other - Approach,Runway Status,integer,32-bits,unknown,0,0,0
+240126,DID_OTHER_RUNWAY_END,Other - Runway End,Runway Status,integer,32-bits,unknown,0,0,0
+240127,DID_OTHER_OBSTRUCTION,Other - Obstruction,Runway Status,integer,32-bits,unknown,0,0,0
+240128,DID_OTHER_RUNWAY_EDGE,Other - Runway Edge,Runway Status,integer,32-bits,unknown,0,0,0
+240129,DID_OTHER_RAMP_TAXIWAY,Other - Ramp Taxiway,Runway Status,integer,32-bits,unknown,0,0,0
+240130,DID_OTHER_LASER_BOMB_CODE,Other - Laser Bomb Code,Munitions,integer,32-bits,unknown,0,0,0
+240131,DID_OTHER_RACK_TYPE,Other - Rack Type,Aircraft Status,integer,32-bits,unknown,0,0,0
+240132,DID_OTHER_HUD,Other - HUD,Aircraft Status,structure,32-bits,unknown,0,0,0
+240133,DID_OTHER_ROLEFILENAME,Other - RoleFileName,Aircraft Status,character,32-bits,unknown,0,0,0
+240134,DID_OTHER_PILOTNAME,Other - PilotName,Aircraft Status,character,00-bits,unknown,0,0,0
+240135,DID_OTHER_PILOTDESIGNATION,Other - PilotDesignation,Aircraft Status,integer,00-bits,unknown,0,0,0
+240136,DID_OTHER_MODEL_TYPE,Other - Model Type,Aircraft Status,integer,00-bits,unknown,0,0,0
+240137,DID_OTHER_DIS_TYPE,Other - DIS Type,Entity Status,integer,32-bits,unknown,0,0,0
+240138,DID_OTHER_CLASS,Other - Class,Entity Status,integer,32-bits,unknown,0,0,0
+240139,DID_OTHER_CHANNEL,Other - Channel,Entity Status,integer,64-bits,unknown,0,0,0
+240140,DID_OTHER_ENTITY_TYPE,Other - Entity Type,Entity Status,variable,32-bits,unknown,0,0,0
+240141,DID_OTHER_ALTERNATIVE_ENTITY_TYPE,Other - Alternative Entity Type,Entity Status,variable,32-bits,unknown,0,0,0
+240142,DID_OTHER_ENTITY_LOCATION,Other - Entity Location,Entity Status,variable,64-bits,unknown,0,0,0
+240143,DID_OTHER_ENTITY_LINEAR_VEL,Other - Entity Linear Velocity,Entity Status,variable,64-bits,unknown,0,0,0
+240144,DID_OTHER_ENTITY_ORIENT,Other - Entity Orientation,Entity Status,variable,192-bits,unknown,0,0,0
+240145,DID_OTHER_DR,Other - Dead Reckoning,Dead Reckoning,variable,96-bits,unknown,0,0,0
+240146,DID_OTHER_FAILURE_SYMPTOM,Other - Failure Symptom,Aircraft Status,integer,96-bits,unknown,0,0,0
+240147,DID_OTHER_MAX_FUEL,Other - Max Fuel,Aircraft Status,real,320-bits,unknown,0,0,0
+240148,DID_OTHER_REFUELING_BOOM_CONNECT,Other - Refueling Boom Connect,Aircraft Status,integer,32-bits,unknown,0,0,0
+240149,DID_OTHER_ALTITUDE_AGL,Other - Altitude AGL,Aircraft Status,real,32-bits,unknown,0,0,0
+240150,DID_OTHER_CALIBRATED_AIRSPEED,Other - Calibrated Airspeed,Aircraft Status,real,32-bits,unknown,0,0,0
+240151,DID_OTHER_TACAN_CHANNEL,Other - TACAN Channel,TACAN,integer,32-bits,unknown,0,0,0
+240152,DID_OTHER_TACAN_BAND,Other - TACAN Band,TACAN,integer,32-bits,unknown,0,0,0
+240153,DID_OTHER_TACAN_MODE,Other - TACAN Mode,TACAN,integer,32-bits,unknown,0,0,0
+240154,DID_OTHER_GUNNER_CONTROL,Other - GUNNER CONTROL ,Crew Status,unknown,unknown,unknown,0,0,0
+240155,DID_OTHER_DRIVER_CONTROL,Other - DRIVER CONTROL ,Crew Status,unknown,unknown,unknown,0,0,0
+240156,DID_OTHER_FIRE_DESIGNATOR_CONTROL,Other - FIRE DESIGNATOR CONTROL ,Crew Status,unknown,unknown,unknown,0,0,0
+240160,DID_OTHER_STEALTH_SPECTRUM,Other - Stealth spectrum,Stealth,variable,64-bits,unknown,1,0,0
+240161,DID_OTHER_STEALTH_LOCATION,Other - Stealth location,Stealth,variable,192-bits,unknown,1,0,0
+240162,DID_OTHER_STEALTH_ORIENT,Other - Stealth orientation,Stealth,variable,128-bits,unknown,1,0,0
+240163,DID_OTHER_STEALTH_ATTACHMENT_DATA,Other - Stealth attachment data,Stealth,variable,384-bits,unknown,1,0,0
+240164,DID_OTHER_STEALTH_VEL,Other - Stealth velocity,Stealth,variable,192-bits,unknown,1,0,0
+240165,DID_OTHER_STEALTH_FIELD_OF_VIEW,Other - Stealth Field of view,Stealth,variable,64-bits,unknown,1,0,0
+240166,DID_OTHER_STEALTH_EYEPOINT_OFFSET,Other - Stealth eyepoint offset,Stealth,variable,128-bits,unknown,1,0,0
+240167,DID_OTHER_STEALTH_MAGNIFICATION,Other - Stealth magnification,Stealth,fixed,32-bits,unknown,1,0,0
+240168,DID_OTHER_STEALTH_SENSOR_MODE,Other - Stealth sensor mode,Stealth,fixed,16-bits,unknown,1,0,0
+240169,DID_OTHER_STEALTH_HEIGHT_ABOVE_TERRAIN,Other - Stealth height above terrain,Stealth,fixed,32-bits,unknown,1,0,0
+240170,DID_OTHER_STEALTH_FLY_TO_LOCATION,Other - Stealth fly to Location,Stealth,variable,256-bits,unknown,1,0,0
+250110,DID_GATEWAY_INFORMATION_REQUEST,Gateway Control - Gateway Information Request,Application Control,variable,unknown,unknown,0,0,0
+250120,DID_GATEWAY_SUPPORTED_DIALECTS,Gateway Control - Gateway Supported Dialects,Application Control,variable,unknown,unknown,0,0,0
+250130,DID_GATEWAY_DIALECT_INDEX_REPORT,Gateway Control - Gateway Dialect Index Report,Application Control,variable,unknown,unknown,0,0,0
+250140,DID_GATEWAY_DESTINATION_INFORMATION,Gateway Control - Gateway Destination Information,Application Control,variable,unknown,unknown,0,0,0
+250150,DID_GATEWAY_GENERAL_INFORMATION,Gateway Control - Gateway General Information,Application Control,variable,unknown,unknown,0,0,0
+250160,DID_GATEWAY_ENTITY_PROXIMITY_FILTER_INFORMATION,Gateway Control - Gateway Entity Proximity Filter Information,Application Control,variable,unknown,unknown,0,0,0
+250161,DID_GATEWAY_ENTITY_PROXIMITY_FILTERS,Gateway Control - Gateway Entity Proximity Filters,Application Control,variable,unknown,unknown,0,0,0
+250170,DID_GATEWAY_STATIC_GEOGRAPHIC_FILTER_INFORMATION,Gateway Control - Gateway Static Geographic Filter Information,Application Control,variable,unknown,unknown,0,0,0
+250171,DID_GATEWAY_STATIC_GEOGRAPHIC_FILTER_EXTENTS,Gateway Control - Gateway Static Geographic Filter Extents,Application Control,variable,unknown,unknown,0,0,0
+250180,DID_GATEWAY_DYNAMIC_GEOGRAPHIC_FILTER_INFORMATION,Gateway Control - Gateway Dynamic Geographic Filter Information,Application Control,variable,unknown,unknown,0,0,0
+250181,DID_GATEWAY_DYNAMIC_GEOGRAPHIC_FILTER_EXTENTS,Gateway Control - Gateway Dynamic Geographic Filter Extents,Application Control,variable,unknown,unknown,0,0,0
+260100,DID_WEATHER_STATE_ATMOSPHERIC,Weather State Atmospheric,Meteorology,variable,24 bytes,unknown,1,0,0
+260200,DID_WEATHER_STATE_CELESTIAL,Weather State Celestial,Meteorology,variable,16 bytes,unknown,1,0,0
+260300,DID_WEATHER_STATE_WIND,Weather State Wind,Meteorology,variable,24 bytes,unknown,1,0,0
+260400,DID_WEATHER_STATE_PRECIPITATION,Weather State Precipitation,Meteorology,variable,24 bytes,unknown,1,0,0
+260500,DID_WEATHER_STATE_CLOUDS,Weather State Clouds,Meteorology,variable,32 bytes,unknown,1,0,0
+260600,DID_WEATHER_STATE_GROUND_FOG,Weather State Ground Fog,Meteorology,variable,32 bytes,unknown,1,0,0
+260700,DID_WEATHER_STATE_HAZE,Weather State Haze,Meteorology,variable,24 bytes,unknown,1,0,0
+260800,DID_WEATHER_STATE_LIGHTNING,Weather State Lightning,Meteorology,variable,16 bytes,unknown,1,0,0
+260900,DID_WEATHER_STATE_THUNDER,Weather State Thunder,Meteorology,variable,16 bytes,unknown,1,0,0
+261000,DID_WEATHER_STATE_LAYER,Weather State Layer,Meteorology,variable,32 bytes,unknown,1,0,0
+300000,DID_MALF01,Malf01,Malfunction,fixed,unknown,unknown,0,0,0
+300001,DID_MALF01STATE,Malf01State,Malfunction,fixed,unknown,unknown,0,0,0
+300002,DID_MALF02,Malf02,Malfunction,fixed,unknown,unknown,0,0,0
+300003,DID_MALF02STATE,Malf02State,Malfunction,fixed,unknown,unknown,0,0,0
+300004,DID_MALF03,Malf03,Malfunction,fixed,unknown,unknown,0,0,0
+300005,DID_MALF03STATE,Malf03State,Malfunction,fixed,unknown,unknown,0,0,0
+300006,DID_MALF04,Malf04,Malfunction,fixed,unknown,unknown,0,0,0
+300007,DID_MALF04STATE,Malf04State,Malfunction,fixed,unknown,unknown,0,0,0
+300008,DID_MALF05,Malf05,Malfunction,fixed,unknown,unknown,0,0,0
+300009,DID_MALF05STATE,Malf05State,Malfunction,fixed,unknown,unknown,0,0,0
+300010,DID_MALF06,Malf06,Malfunction,fixed,unknown,unknown,0,0,0
+300011,DID_MALF06STATE,Malf06State,Malfunction,fixed,unknown,unknown,0,0,0
+300012,DID_MALF07,Malf07,Malfunction,fixed,unknown,unknown,0,0,0
+300013,DID_MALF07STATE,Malf07State,Malfunction,fixed,unknown,unknown,0,0,0
+300014,DID_MALF08,Malf08,Malfunction,fixed,unknown,unknown,0,0,0
+300015,DID_MALF08STATE,Malf08State,Malfunction,fixed,unknown,unknown,0,0,0
+300016,DID_MALF09,Malf09,Malfunction,fixed,unknown,unknown,0,0,0
+300017,DID_MALF09STATE,Malf09State,Malfunction,fixed,unknown,unknown,0,0,0
+300018,DID_MALF10,Malf10,Malfunction,fixed,unknown,unknown,0,0,0
+300019,DID_MALF10STATE,Malf10State,Malfunction,fixed,unknown,unknown,0,0,0
+300020,DID_MALF11,Malf11,Malfunction,fixed,unknown,unknown,0,0,0
+300021,DID_MALF11STATE,Malf11State,Malfunction,fixed,unknown,unknown,0,0,0
+300022,DID_MALF12,Malf12,Malfunction,fixed,unknown,unknown,0,0,0
+300023,DID_MALF12STATE,Malf12State,Malfunction,fixed,unknown,unknown,0,0,0
+300027,DID_STEALTHRESTART,StealthRestart,Stealth,fixed,unknown,unknown,0,0,0
+300028,DID_STEALTHSHUTDOWN,StealthShutdown,Stealth,fixed,unknown,unknown,0,0,0
+300030,DID_STEALTHSTART,StealthStart,Stealth,fixed,unknown,unknown,0,0,0
+300100,DID_CARGO_TYPE_1,Cargo Type 1,Cargo,fixed,unknown,unknown,0,0,0
+300101,DID_LOAD_WEIGHT_1,Load Weight 1,Cargo,fixed,unknown,unknown,0,0,0
+300102,DID_LOAD_MOMENT_1,Load Moment 1,Cargo,fixed,unknown,unknown,0,0,0
+300103,DID_LOAD_STATUS_1,Load Status 1,Cargo,fixed,unknown,unknown,0,0,0
+300104,DID_CARGO_TYPE_2,Cargo Type 2,Cargo,fixed,unknown,unknown,0,0,0
+300105,DID_LOAD_WEIGHT_2,Load Weight 2,Cargo,fixed,unknown,unknown,0,0,0
+300106,DID_LOAD_MOMENT_2,Load Moment 2,Cargo,fixed,unknown,unknown,0,0,0
+300107,DID_LOAD_STATUS_2,Load Status 2,Cargo,fixed,unknown,unknown,0,0,0
+300108,DID_CARGO_TYPE_3,Cargo Type 3,Cargo,fixed,unknown,unknown,0,0,0
+300109,DID_LOAD_WEIGHT_3,Load Weight 3,Cargo,fixed,unknown,unknown,0,0,0
+300110,DID_LOAD_MOMENT_3,Load Moment 3,Cargo,fixed,unknown,unknown,0,0,0
+300111,DID_LOAD_STATUS_3,Load Status 3,Cargo,fixed,unknown,unknown,0,0,0
+300112,DID_CARGO_TYPE_4,Cargo Type 4,Cargo,fixed,unknown,unknown,0,0,0
+300113,DID_LOAD_WEIGHT_4,Load Weight 4,Cargo,fixed,unknown,unknown,0,0,0
+300114,DID_LOAD_MOMENT_4,Load Moment 4,Cargo,fixed,unknown,unknown,0,0,0
+300115,DID_LOAD_STATUS_4,Load Status 4,Cargo,fixed,unknown,unknown,0,0,0
+300116,DID_CARGO_TYPE_5,Cargo Type 5,Cargo,fixed,unknown,unknown,0,0,0
+300117,DID_LOAD_WEIGHT_5,Load Weight 5,Cargo,fixed,unknown,unknown,0,0,0
+300118,DID_LOAD_MOMENT_5,Load Moment 5,Cargo,fixed,unknown,unknown,0,0,0
+300119,DID_LOAD_STATUS_5,Load Status 5,Cargo,fixed,unknown,unknown,0,0,0
+300120,DID_CARGO_TYPE_6,Cargo Type 6,Cargo,fixed,unknown,unknown,0,0,0
+300121,DID_LOAD_WEIGHT_6,Load Weight 6,Cargo,fixed,unknown,unknown,0,0,0
+300122,DID_LOAD_MOMENT_6,Load Moment 6,Cargo,fixed,unknown,unknown,0,0,0
+300123,DID_LOAD_STATUS_6,Load Status 6,Cargo,fixed,unknown,unknown,0,0,0
+300124,DID_CARGO_TYPE_7,Cargo Type 7,Cargo,fixed,unknown,unknown,0,0,0
+300125,DID_LOAD_WEIGHT_7,Load Weight 7,Cargo,fixed,unknown,unknown,0,0,0
+300126,DID_LOAD_MOMENT_7,Load Moment 7,Cargo,fixed,unknown,unknown,0,0,0
+300127,DID_LOAD_STATUS_7,Load Status 7,Cargo,fixed,unknown,unknown,0,0,0
+300128,DID_CARGO_TYPE_8,Cargo Type 8,Cargo,fixed,unknown,unknown,0,0,0
+300129,DID_LOAD_WEIGHT_8,Load Weight 8,Cargo,fixed,unknown,unknown,0,0,0
+300130,DID_LOAD_MOMENT_8,Load Moment 8,Cargo,fixed,unknown,unknown,0,0,0
+300131,DID_LOAD_STATUS_8,Load Status 8,Cargo,fixed,unknown,unknown,0,0,0
+300132,DID_CARGO_TYPE_9,Cargo Type 9,Cargo,fixed,unknown,unknown,0,0,0
+300133,DID_LOAD_WEIGHT_9,Load Weight 9,Cargo,fixed,unknown,unknown,0,0,0
+300134,DID_LOAD_MOMENT_9,Load Moment 9,Cargo,fixed,unknown,unknown,0,0,0
+300135,DID_LOAD_STATUS_9,Load Status 9,Cargo,fixed,unknown,unknown,0,0,0
+300136,DID_CARGO_TYPE_10,Cargo Type 10,Cargo,fixed,unknown,unknown,0,0,0
+300137,DID_LOAD_WEIGHT_10,Load Weight 10,Cargo,fixed,unknown,unknown,0,0,0
+300138,DID_LOAD_MOMENT_10,Load Moment 10,Cargo,fixed,unknown,unknown,0,0,0
+300139,DID_LOAD_STATUS_10,Load Status 10,Cargo,fixed,unknown,unknown,0,0,0
+300140,DID_CARGO_TYPE_11,Cargo Type 11,Cargo,fixed,unknown,unknown,0,0,0
+300141,DID_LOAD_WEIGHT_11,Load Weight 11,Cargo,fixed,unknown,unknown,0,0,0
+300142,DID_LOAD_MOMENT_11,Load Moment 11,Cargo,fixed,unknown,unknown,0,0,0
+300143,DID_LOAD_STATUS_11,Load Status 11,Cargo,fixed,unknown,unknown,0,0,0
+300144,DID_CARGO_TYPE_12,Cargo Type 12,Cargo,fixed,unknown,unknown,0,0,0
+300145,DID_LOAD_WEIGHT_12,Load Weight 12,Cargo,fixed,unknown,unknown,0,0,0
+300146,DID_LOAD_MOMENT_12,Load Moment 12,Cargo,fixed,unknown,unknown,0,0,0
+300147,DID_LOAD_STATUS_12,Load Status 12,Cargo,fixed,unknown,unknown,0,0,0
+300148,DID_CARGO_TYPE_13,Cargo Type 13,Cargo,fixed,unknown,unknown,0,0,0
+300149,DID_LOAD_WEIGHT_13,Load Weight 13,Cargo,fixed,unknown,unknown,0,0,0
+300150,DID_LOAD_MOMENT_13,Load Moment 13,Cargo,fixed,unknown,unknown,0,0,0
+300151,DID_LOAD_STATUS_13,Load Status 13,Cargo,fixed,unknown,unknown,0,0,0
+300152,DID_CARGO_TYPE_14,Cargo Type 14,Cargo,fixed,unknown,unknown,0,0,0
+300153,DID_LOAD_WEIGHT_14,Load Weight 14,Cargo,fixed,unknown,unknown,0,0,0
+300154,DID_LOAD_MOMENT_14,Load Moment 14,Cargo,fixed,unknown,unknown,0,0,0
+300155,DID_LOAD_STATUS_14,Load Status 14,Cargo,fixed,unknown,unknown,0,0,0
+300156,DID_CARGO_TYPE_15,Cargo Type 15,Cargo,fixed,unknown,unknown,0,0,0
+300157,DID_LOAD_WEIGHT_15,Load Weight 15,Cargo,fixed,unknown,unknown,0,0,0
+300158,DID_LOAD_MOMENT_15,Load Moment 15,Cargo,fixed,unknown,unknown,0,0,0
+300159,DID_LOAD_STATUS_15,Load Status 15,Cargo,fixed,unknown,unknown,0,0,0
+300300,DID_PYLON_1_SETUP,Pylon 1 Setup,Pylons,unknown,unknown,unknown,0,0,0
+300301,DID_PYLON_2_SETUP,Pylon 2 Setup,Pylons,unknown,unknown,unknown,0,0,0
+300302,DID_PYLON_3_SETUP,Pylon 3 Setup,Pylons,unknown,unknown,unknown,0,0,0
+300303,DID_PYLON_4_SETUP,Pylon 4 Setup,Pylons,unknown,unknown,unknown,0,0,0
+300304,DID_RCKT_ZONE_1_SETUP,Rocket Zone 1 Setup,Rocket Zone,unknown,unknown,unknown,0,0,0
+300305,DID_RCKT_ZONE_2_SETUP,Rocket Zone 2 Setup,Rocket Zone,unknown,unknown,unknown,0,0,0
+300306,DID_RCKT_ZONE_3_SETUP,Rocket Zone 3 Setup,Rocket Zone,unknown,unknown,unknown,0,0,0
+300307,DID_RCKT_ZONE_4_SETUP,Rocket Zone 4 Setup,Rocket Zone,unknown,unknown,unknown,0,0,0
+300308,DID_RCKT_ZONE_5_SETUP,Rocket Zone 5 Setup,Rocket Zone,unknown,unknown,unknown,0,0,0
+300309,DID_RCKT_PYLON_1_Z1_QTY,Rocket Pylon 1 Z1 Quantity,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300310,DID_RCKT_PYLON_1_Z2_QTY,Rocket Pylon 1 Z2 Quantity,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300311,DID_RCKT_PYLON_1_Z3_QTY,Rocket Pylon 1 Z3 Quantity,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300312,DID_RCKT_PYLON_1_Z4_QTY,Rocket Pylon 1 Z4 Quantity,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300313,DID_RCKT_PYLON_1_Z5_QTY,Rocket Pylon 1 Z5 Quantity,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300314,DID_RCKT_PYLON_2_Z1_QTY,Rocket Pylon 2 Z1 Quantity,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300315,DID_RCKT_PYLON_2_Z2_QTY,Rocket Pylon 2 Z2 Quantity,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300316,DID_RCKT_PYLON_2_Z3_QTY,Rocket Pylon 2 Z3 Quantity,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300317,DID_RCKT_PYLON_2_Z4_QTY,Rocket Pylon 2 Z4 Quantity,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300318,DID_RCKT_PYLON_2_Z5_QTY,Rocket Pylon 2 Z5 Quantity,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300319,DID_RCKT_PYLON_3_Z1_QTY,Rocket Pylon 3 Z1 Quantity,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300320,DID_RCKT_PYLON_3_Z2_QTY,Rocket Pylon 3 Z2 Quantity,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300321,DID_RCKT_PYLON_3_Z3_QTY,Rocket Pylon 3 Z3 Quantity,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300322,DID_RCKT_PYLON_3_Z4_QTY,Rocket Pylon 3 Z4 Quantity,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300323,DID_RCKT_PYLON_3_Z5_QTY,Rocket Pylon 3 Z5 Quantity,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300324,DID_RCKT_PYLON_4_Z1_QTY,Rocket Pylon 4 Z1 Quantity,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300325,DID_RCKT_PYLON_4_Z2_QTY,Rocket Pylon 4 Z2 Quantity,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300326,DID_RCKT_PYLON_4_Z3_QTY,Rocket Pylon 4 Z3 Quantity,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300327,DID_RCKT_PYLON_4_Z4_QTY,Rocket Pylon 4 Z4 Quantity,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300328,DID_RCKT_PYLON_4_Z5_QTY,Rocket Pylon 4 Z5 Quantity,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300329,DID_HELLFIRE_P1_R1_SETUP,Hellfire P1 R1 Setup,Missiles - Hellfire,unknown,unknown,unknown,0,0,0
+300330,DID_HELLFIRE_P1_R2_SETUP,Hellfire P1 R2 Setup,Missiles - Hellfire,unknown,unknown,unknown,0,0,0
+300331,DID_HELLFIRE_P1_R3_SETUP,Hellfire P1 R3 Setup,Missiles - Hellfire,unknown,unknown,unknown,0,0,0
+300332,DID_HELLFIRE_P1_R4_SETUP,Hellfire P1 R4 Setup,Missiles - Hellfire,unknown,unknown,unknown,0,0,0
+300333,DID_HELLFIRE_P2_R1_SETUP,Hellfire P2 R1 Setup,Missiles - Hellfire,unknown,unknown,unknown,0,0,0
+300334,DID_HELLFIRE_P2_R2_SETUP,Hellfire P2 R2 Setup,Missiles - Hellfire,unknown,unknown,unknown,0,0,0
+300335,DID_HELLFIRE_P2_R3_SETUP,Hellfire P2 R3 Setup,Missiles - Hellfire,unknown,unknown,unknown,0,0,0
+300336,DID_HELLFIRE_P2_R4_SETUP,Hellfire P2 R4 Setup,Missiles - Hellfire,unknown,unknown,unknown,0,0,0
+300337,DID_HELLFIRE_P3_R1_SETUP,Hellfire P3 R1 Setup,Missiles - Hellfire,unknown,unknown,unknown,0,0,0
+300338,DID_HELLFIRE_P3_R2_SETUP,Hellfire P3 R2 Setup,Missiles - Hellfire,unknown,unknown,unknown,0,0,0
+300339,DID_HELLFIRE_P3_R3_SETUP,Hellfire P3 R3 Setup,Missiles - Hellfire,unknown,unknown,unknown,0,0,0
+300340,DID_HELLFIRE_P3_R4_SETUP,Hellfire P3 R4 Setup,Missiles - Hellfire,unknown,unknown,unknown,0,0,0
+300341,DID_HELLFIRE_P4_R1_SETUP,Hellfire P4 R1 Setup,Missiles - Hellfire,unknown,unknown,unknown,0,0,0
+300342,DID_HELLFIRE_P4_R2_SETUP,Hellfire P4 R2 Setup,Missiles - Hellfire,unknown,unknown,unknown,0,0,0
+300343,DID_HELLFIRE_P4_R3_SETUP,Hellfire P4 R3 Setup,Missiles - Hellfire,unknown,unknown,unknown,0,0,0
+300344,DID_HELLFIRE_P4_R4_SETUP,Hellfire P4 R4 Setup,Missiles - Hellfire,unknown,unknown,unknown,0,0,0
+300345,DID_ATAS_P1_R1_SETUP,ATAS P1 R1 Setup,Missiles - ATAS,unknown,unknown,unknown,0,0,0
+300346,DID_ATAS_P1_R2_SETUP,ATAS P1 R2 Setup,Missiles - ATAS,unknown,unknown,unknown,0,0,0
+300347,DID_ATAS_P2_R1_SETUP,ATAS P2 R1 Setup,Missiles - ATAS,unknown,unknown,unknown,0,0,0
+300348,DID_ATAS_P2_R2_SETUP,ATAS P2 R2 Setup,Missiles - ATAS,unknown,unknown,unknown,0,0,0
+300349,DID_ATAS_P3_R1_SETUP,ATAS P3 R1 Setup,Missiles - ATAS,unknown,unknown,unknown,0,0,0
+300350,DID_ATAS_P3_R2_SETUP,ATAS P3 R2 Setup,Missiles - ATAS,unknown,unknown,unknown,0,0,0
+300351,DID_ATAS_P4_R1_SETUP,ATAS P4 R1 Setup,Missiles - ATAS,unknown,unknown,unknown,0,0,0
+300352,DID_ATAS_P4_R2_SETUP,ATAS P4 R2 Setup,Missiles - ATAS,unknown,unknown,unknown,0,0,0
+300353,DID_GUN_ROUNDS_SETUP,Gun Rounds Setup,Weapon Status,unknown,unknown,unknown,0,0,0
+300354,DID_FUEL_TANK_1_SETUP,Fuel Tank 1 Setup,Fuel,unknown,unknown,unknown,0,0,0
+300355,DID_FUEL_TANK_2_SETUP,Fuel Tank 2 Setup,Fuel,unknown,unknown,unknown,0,0,0
+300356,DID_FUEL_TANK_3_SETUP,Fuel Tank 3 Setup,Fuel,unknown,unknown,unknown,0,0,0
+300357,DID_FUEL_TANK_4_SETUP,Fuel Tank 4 Setup,Fuel,unknown,unknown,unknown,0,0,0
+300358,DID_LASER_CODE_1_SETUP,Laser Code 1 Setup,Laser Code,unknown,unknown,unknown,0,0,0
+300359,DID_LASER_CODE_2_SETUP,Laser Code 2 Setup,Laser Code,unknown,unknown,unknown,0,0,0
+300360,DID_LASER_CODE_3_SETUP,Laser Code 3 Setup,Laser Code,unknown,unknown,unknown,0,0,0
+300361,DID_LASER_CODE_4_SETUP,Laser Code 4 Setup,Laser Code,unknown,unknown,unknown,0,0,0
+300362,DID_LASER_CODE_5_SETUP,Laser Code 5 Setup,Laser Code,unknown,unknown,unknown,0,0,0
+300363,DID_LASER_CODE_6_SETUP,Laser Code 6 Setup,Laser Code,unknown,unknown,unknown,0,0,0
+300364,DID_LASER_CODE_7_SETUP,Laser Code 7 Setup,Laser Code,unknown,unknown,unknown,0,0,0
+300365,DID_LASER_CODE_8_SETUP,Laser Code 8 Setup,Laser Code,unknown,unknown,unknown,0,0,0
+300366,DID_LASER_CODE_9_SETUP,Laser Code 9 Setup,Laser Code,unknown,unknown,unknown,0,0,0
+300367,DID_LASER_CODE_10_SETUP,Laser Code 10 Setup,Laser Code,unknown,unknown,unknown,0,0,0
+300368,DID_LASER_CODE_11_SETUP,Laser Code 11 Setup,Laser Code,unknown,unknown,unknown,0,0,0
+300369,DID_LASER_CODE_12_SETUP,Laser Code 12 Setup,Laser Code,unknown,unknown,unknown,0,0,0
+300370,DID_LASER_CODE_13_SETUP,Laser Code 13 Setup,Laser Code,unknown,unknown,unknown,0,0,0
+300371,DID_LASER_CODE_14_SETUP,Laser Code 14 Setup,Laser Code,unknown,unknown,unknown,0,0,0
+300372,DID_LASER_CODE_15_SETUP,Laser Code 15 Setup,Laser Code,unknown,unknown,unknown,0,0,0
+300373,DID_LASER_CODE_16_SETUP,Laser Code 16 Setup,Laser Code,unknown,unknown,unknown,0,0,0
+300500,DID_RCKT_PYLON_1_Z1_STATE,Rocket Pylon 1 Z1 State,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300501,DID_RCKT_PYLON_1_Z2_STATE,Rocket Pylon 1 Z2 State,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300502,DID_RCKT_PYLON_1_Z3_STATE,Rocket Pylon 1 Z3 State,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300503,DID_RCKT_PYLON_1_Z4_STATE,Rocket Pylon 1 Z4 State,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300504,DID_RCKT_PYLON_1_Z5_STATE,Rocket Pylon 1 Z5 State,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300505,DID_RCKT_PYLON_2_Z1_STATE,Rocket Pylon 2 Z1 State,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300506,DID_RCKT_PYLON_2_Z2_STATE,Rocket Pylon 2 Z2 State,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300507,DID_RCKT_PYLON_2_Z3_STATE,Rocket Pylon 2 Z3 State,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300508,DID_RCKT_PYLON_2_Z4_STATE,Rocket Pylon 2 Z4 State,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300509,DID_RCKT_PYLON_2_Z5_STATE,Rocket Pylon 2 Z5 State,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300510,DID_RCKT_PYLON_3_Z1_STATE,Rocket Pylon 3 Z1 State,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300511,DID_RCKT_PYLON_3_Z2_STATE,Rocket Pylon 3 Z2 State,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300512,DID_RCKT_PYLON_3_Z3_STATE,Rocket Pylon 3 Z3 State,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300513,DID_RCKT_PYLON_3_Z4_STATE,Rocket Pylon 3 Z4 State,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300514,DID_RCKT_PYLON_3_Z5_STATE,Rocket Pylon 3 Z5 State,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300515,DID_RCKT_PYLON_4_Z1_STATE,Rocket Pylon 4 Z1 State,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300516,DID_RCKT_PYLON_4_Z2_STATE,Rocket Pylon 4 Z2 State,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300517,DID_RCKT_PYLON_4_Z3_STATE,Rocket Pylon 4 Z3 State,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300518,DID_RCKT_PYLON_4_Z4_STATE,Rocket Pylon 4 Z4 State,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300519,DID_RCKT_PYLON_4_Z5_STATE,Rocket Pylon 4 Z5 State,Rocket Pylon,fixed,unknown,unknown,0,0,0
+300520,DID_HELLFIRE_P1_R1_STATE,Hellfire P1 R1 State,Missiles - Hellfire,fixed,unknown,unknown,0,0,0
+300521,DID_HELLFIRE_P1_R2_STATE,Hellfire P1 R2 State,Missiles - Hellfire,fixed,unknown,unknown,0,0,0
+300522,DID_HELLFIRE_P1_R3_STATE,Hellfire P1 R3 State,Missiles - Hellfire,fixed,unknown,unknown,0,0,0
+300523,DID_HELLFIRE_P1_R4_STATE,Hellfire P1 R4 State,Missiles - Hellfire,fixed,unknown,unknown,0,0,0
+300524,DID_HELLFIRE_P2_R1_STATE,Hellfire P2 R1 State,Missiles - Hellfire,fixed,unknown,unknown,0,0,0
+300525,DID_HELLFIRE_P2_R2_STATE,Hellfire P2 R2 State,Missiles - Hellfire,fixed,unknown,unknown,0,0,0
+300526,DID_HELLFIRE_P2_R3_STATE,Hellfire P2 R3 State,Missiles - Hellfire,fixed,unknown,unknown,0,0,0
+300527,DID_HELLFIRE_P2_R4_STATE,Hellfire P2 R4 State,Missiles - Hellfire,fixed,unknown,unknown,0,0,0
+300528,DID_HELLFIRE_P3_R1_STATE,Hellfire P3 R1 State,Missiles - Hellfire,fixed,unknown,unknown,0,0,0
+300529,DID_HELLFIRE_P3_R2_STATE,Hellfire P3 R2 State,Missiles - Hellfire,fixed,unknown,unknown,0,0,0
+300530,DID_HELLFIRE_P3_R3_STATE,Hellfire P3 R3 State,Missiles - Hellfire,fixed,unknown,unknown,0,0,0
+300531,DID_HELLFIRE_P3_R4_STATE,Hellfire P3 R4 State,Missiles - Hellfire,fixed,unknown,unknown,0,0,0
+300532,DID_HELLFIRE_P4_R1_STATE,Hellfire P4 R1 State,Missiles - Hellfire,fixed,unknown,unknown,0,0,0
+300533,DID_HELLFIRE_P4_R2_STATE,Hellfire P4 R2 State,Missiles - Hellfire,fixed,unknown,unknown,0,0,0
+300534,DID_HELLFIRE_P4_R3_STATE,Hellfire P4 R3 State,Missiles - Hellfire,fixed,unknown,unknown,0,0,0
+300535,DID_HELLFIRE_P4_R4_STATE,Hellfire P4 R4 State,Missiles - Hellfire,fixed,unknown,unknown,0,0,0
+300536,DID_ATAS_P1_R1_STATE,ATAS P1 R1 State,Missiles - ATAS,fixed,unknown,unknown,0,0,0
+300537,DID_ATAS_P1_R2_STATE,ATAS P1 R2 State,Missiles - ATAS,fixed,unknown,unknown,0,0,0
+300538,DID_ATAS_P2_R1_STATE,ATAS P2 R1 State,Missiles - ATAS,fixed,unknown,unknown,0,0,0
+300539,DID_ATAS_P2_R2_STATE,ATAS P2 R2 State,Missiles - ATAS,fixed,unknown,unknown,0,0,0
+300540,DID_ATAS_P3_R1_STATE,ATAS P3 R1 State,Missiles - ATAS,fixed,unknown,unknown,0,0,0
+300541,DID_ATAS_P3_R2_STATE,ATAS P3 R2 State,Missiles - ATAS,fixed,unknown,unknown,0,0,0
+300542,DID_ATAS_P4_R1_STATE,ATAS P4 R1 State,Missiles - ATAS,fixed,unknown,unknown,0,0,0
+300543,DID_ATAS_P4_R2_STATE,ATAS P4 R2 State,Missiles - ATAS,fixed,unknown,unknown,0,0,0
+300544,DID_GUN_STATE,Gun State,Weapon Status,fixed,unknown,unknown,0,0,0
+300545,DID_FUEL_TANK_1_STATE,Fuel Tank 1 State,Fuel,fixed,unknown,unknown,0,0,0
+300546,DID_FUEL_TANK_2_STATE,Fuel Tank 2 State,Fuel,fixed,unknown,unknown,0,0,0
+300547,DID_FUEL_TANK_3_STATE,Fuel Tank 3 State,Fuel,fixed,unknown,unknown,0,0,0
+300548,DID_FUEL_TANK_4_STATE,Fuel Tank 4 State,Fuel,fixed,unknown,unknown,0,0,0
+300549,DID_LASER_CODE_1_STATE,Laser Code 1 State,Laser Code,fixed,unknown,unknown,0,0,0
+300550,DID_LASER_CODE_2_STATE,Laser Code 2 State,Laser Code,fixed,unknown,unknown,0,0,0
+300551,DID_LASER_CODE_3_STATE,Laser Code 3 State,Laser Code,fixed,unknown,unknown,0,0,0
+300552,DID_LASER_CODE_4_STATE,Laser Code 4 State,Laser Code,fixed,unknown,unknown,0,0,0
+300553,DID_LASER_CODE_5_STATE,Laser Code 5 State,Laser Code,fixed,unknown,unknown,0,0,0
+300554,DID_LASER_CODE_6_STATE,Laser Code 6 State,Laser Code,fixed,unknown,unknown,0,0,0
+300555,DID_LASER_CODE_7_STATE,Laser Code 7 State,Laser Code,fixed,unknown,unknown,0,0,0
+300556,DID_LASER_CODE_8_STATE,Laser Code 8 State,Laser Code,fixed,unknown,unknown,0,0,0
+300557,DID_UPPER_CHANNEL_LASER_CODE,Upper Channel Laser Code,Laser Code,fixed,unknown,unknown,0,0,0
+300558,DID_LOWER_CHANNEL_LASER_CODE,Lower Channel Laser Code,Laser Code,fixed,unknown,unknown,0,0,0
+300559,DID_LASER_SPOT_TRACKER_CODE,Laser Spot Tracker Code,Laser Code,fixed,unknown,unknown,0,0,0
+300560,DID_LRFD_DESIGNATOR_CODE,Lrfd Designator Code,Laser Code,fixed,unknown,unknown,0,0,0
+300600,DID_TOTAL_MOMENT_STATE,Total Moment State,unknown,fixed,unknown,unknown,0,0,0
+300601,DID_FUEL_MOMENT_STATE,Fuel Moment State,Fuel,fixed,unknown,unknown,0,0,0
+300602,DID_LASER_CODE_10_STATE,Laser Code 10 State,Laser Code,fixed,unknown,unknown,0,0,0
+300603,DID_LASER_CODE_11_STATE,Laser Code 11 State,Laser Code,fixed,unknown,unknown,0,0,0
+300604,DID_LASER_CODE_12_STATE,Laser Code 12 State,Laser Code,fixed,unknown,unknown,0,0,0
+300605,DID_LASER_CODE_13_STATE,Laser Code 13 State,Laser Code,fixed,unknown,unknown,0,0,0
+300606,DID_LASER_CODE_14_STATE,Laser Code 14 State,Laser Code,fixed,unknown,unknown,0,0,0
+300607,DID_LASER_CODE_15_STATE,Laser Code 15 State,Laser Code,fixed,unknown,unknown,0,0,0
+300608,DID_LASER_CODE_16_STATE,Laser Code 16 State,Laser Code,fixed,unknown,unknown,0,0,0
+300650,DID_FUEL_INTERNAL_AUX_QTY,Fuel Internal Aux Quantity,Fuel,fixed,unknown,unknown,0,0,0
+300651,DID_COMBO_PACK_INSTALLED,Combo Pack Installed,unknown,fixed,unknown,unknown,0,0,0
+301100,DID_DISPLAY_MODE_1,Display Mode 1,unknown,fixed,unknown,unknown,0,0,0
+301101,DID_DISPLAY_MODE_2,Display Mode 2,unknown,fixed,unknown,unknown,0,0,0
+301102,DID_DISPLAY_MODE_3,Display Mode 3,unknown,fixed,unknown,unknown,0,0,0
+327680,DID_ENVIRONMENT_PROCESS_GEOMETRY_UNIFORM,EP Geometry - Uniform,Environment,variable,64-bits,unknown,0,0,0
+400100,DID_CDT_GENERAL_DISCOVERY,CDT General Discovery,unknown,variable,unknown,unknown,0,0,0
+400200,DID_CDT_SPECIFIC_CONNECTION,CDT Specific Connection,unknown,variable,unknown,unknown,0,0,0
+400300,DID_CDT_CONFIGURATION,CDT Configuration,unknown,variable,unknown,unknown,0,0,0
+400400,DID_CDT_ONESAF_CONFIGURATION,CDT OneSAF Configuration,unknown,variable,unknown,unknown,0,0,0
+400500,DID_CDT_APPLICATION_CONFIGURATION,CDT Application Configuration,unknown,variable,unknown,unknown,0,0,0
+404100,DID_CDT_WAYPOINTS_CURRENT,CDT Waypoints Current,unknown,fixed,unknown,unknown,0,0,0
+404200,DID_CDT_WAYPOINTS_NUMBER,CDT Waypoints Number,unknown,fixed,unknown,unknown,0,0,0
+405100,DID_CDT_WAYPOINT,CDT Waypoint,unknown,variable,unknown,unknown,0,0,0
+405200,DID_CDT_OCU_PANEL,CDT Talon OCU Panel,unknown,variable,unknown,unknown,0,0,0
+405300,DID_CDT_TALON_SCORE,CDT Talon Score,unknown,fixed,unknown,unknown,0,0,0
+405400,DID_CDT_LT_FLAIL_SCORE,CDT Light Flail Score,unknown,fixed,unknown,unknown,0,0,0
+405500,DID_CDT_MALFUNCTION_TYPE,CDT Malfunction Type,unknown,fixed,unknown,unknown,0,0,0
+405510,DID_CDT_MALFUNCTION_STATE,CDT Malfunction State,unknown,fixed,unknown,unknown,0,0,0
+405600,DID_CDT_WEATHER_CHANGE,CDT Weather Change,unknown,variable,unknown,unknown,0,0,0
+500001,DID_ENTITY_STATUS_MUNITION_RECORD,Entity Status - Munition Record,Entity Status,variable,128-bits,unknown,0,0,0
+500002,DID_ENTITY_STATUS_ENGINE_FUEL_RECORD,Entity Status - Engine Fuel Record,Entity Status,variable,64-bits,unknown,0,0,0
+500003,DID_ENTITY_STATUS_STORAGE_FUEL_RECORD,Entity Status - Storage Fuel Record,Entity Status,variable,64-bits,unknown,0,0,0
+500005,DID_ENTITY_STATUS_EXPENDABLE_RECORD,Entity Status - Expendable Record,Entity Status,variable,128-bits,unknown,0,0,0
+500006,DID_ENTITY_TOTAL_RECORD_SETS,Entity Status - Total Record Sets,Entity Status,fixed,32-bits,unknown,0,0,0
+500007,DID_ENTITY_STATUS_LAUNCHED_MUNITION_RECORD,Entity Status - Launched Munition Record,Entity Status,variable,384-bits,unknown,0,0,0
+500008,DID_ENTITY_STATUS_ASSOCIATION_RECORD,Entity Status - Association Record,Entity Status,variable,256-bits,unknown,0,0,0
+500009,DID_ENTITY_STATUS_SENSOR_RECORD,Entity Status - Sensor Record,Entity Status,variable,96-bits,unknown,0,0,0
+500010,DID_ENTITY_STATUS_MUNITION_RELOAD,Munition Reload,Entity Status,variable,192-bits,unknown,0,0,0
+500011,DID_ENTITY_STATUS_ENGINE_FUEL_RELOAD,Engine Fuel Reload,Entity Status,variable,160-bits,unknown,0,0,0
+500012,DID_ENTITY_STATUS_STORAGE_FUEL_RELOAD,Storage Fuel Reload,Entity Status,variable,160-bits,unknown,0,0,0
+500013,DID_ENTITY_STATUS_EXPENDABLE_RELOAD,Expendable Reload,Entity Status,variable,192-bits,unknown,0,0,0
+655360,DID_ENVIRONMENT_PROCESS_GEOMETRY_POINT_RECORD_1,EP Geometry - Point Record 1,Environment,variable,256-bits,unknown,0,0,0
+786432,DID_ENVIRONMENT_PROCESS_GEOMETRY_LINE_RECORD_1,EP Geometry - Line Record 1,Environment,variable,448-bits,unknown,0,0,0
+851968,DID_ENVIRONMENT_PROCESS_GEOMETRY_SPHERE_RECORD_1,EP Geometry - Sphere Record 1,Environment,variable,320-bits,unknown,0,0,0
+1000011,DID_DATUM_SCENARIO_NAME,Datum Scenario Name,SIMAN,variable,unknown,unknown,0,0,0
+1000012,DID_DATUM_CHECKPOINT_NAME,Datum Checkpoint Name,Checkpoint,variable,unknown,unknown,0,0,0
+1000016,DID_DATUM_KILL_SAF,Datum Kill SAF,SIMAN,unknown,unknown,unknown,0,0,0
+1000017,DID_DATUM_SHUTDOWN_LINUX,Datum Shutdown Linux,SIMAN,unknown,unknown,unknown,0,0,0
+1000018,DID_DATUM_REBOOT_LINUX,Datum Reboot Linux,SIMAN,unknown,unknown,unknown,0,0,0
+1000019,DID_DATUM_SAF_CHECK_ALIVE,Datum SAF Check Alive,SIMAN,unknown,unknown,unknown,0,0,0
+1048576,DID_ENVIRONMENT_PROCESS_GEOMETRY_ELLIPSOID_RECORD_1,EP Geometry - Ellipsoid Record 1,Environment,variable,448-bits,unknown,0,0,0
+3145728,DID_ENVIRONMENT_PROCESS_GEOMETRY_CONE_RECORD_1,EP Geometry - Cone Record 1,Environment,variable,448-bits,unknown,0,0,0
+5242880,DID_ENVIRONMENT_PROCESS_GEOMETRY_RECTANGULAR_VOLUME_RECORD_1,EP Geometry - Rectangular Volume Record 1,Environment,variable,448-bits,unknown,0,0,0
+83886080,DID_ENVIRONMENT_PROCESS_GEOMETRY_RECTANGULAR_VOLUME_RECORD_3,EP Geometry - Rectangular Volume Record 3,Environment,variable,448-bits,unknown,0,0,0
+167772160,DID_ENVIRONMENT_PROCESS_GEOMETRY_POINT_RECORD_2,EP Geometry - Point Record 2,Environment,variable,384-bits,unknown,0,0,0
+201326592,DID_ENVIRONMENT_PROCESS_GEOMETRY_LINE_RECORD_2,EP Geometry - Line Record 2,Environment,variable,640-bits,unknown,0,0,0
+218103808,DID_ENVIRONMENT_PROCESS_GEOMETRY_SPHERE_RECORD_2,EP Geometry - Sphere Record 2,Environment,variable,512-bits,unknown,0,0,0
+268435456,DID_ENVIRONMENT_PROCESS_GEOMETRY_ELLIPSOID_RECORD_2,EP Geometry - Ellipsoid Record 2,Environment,variable,768-bits,unknown,0,0,0
+805306368,DID_ENVIRONMENT_PROCESS_GEOMETRY_CONE_RECORD_2,EP Geometry - Cone Record 2,Environment,variable,704-bits,unknown,0,0,0
+1342177280,DID_ENVIRONMENT_PROCESS_GEOMETRY_RECTANGULAR_VOLUME_RECORD_2,EP Geometry - Rectangular Volume Record 2,Environment,variable,768-bits,unknown,0,0,0
+1610612736,DID_ENVIRONMENT_PROCESS_GEOMETRY_GAUSSIAN_PLUME_RECORD,EP Geometry - Gaussian Plume Record,Environment,variable,704-bits,unknown,0,0,0
+1879048192,DID_ENVIRONMENT_PROCESS_GEOMETRY_GAUSSIAN_PUFF_RECORD,EP Geometry - Gaussian Puff Record,Environment,variable,960-bits,unknown,0,0,0

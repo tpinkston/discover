@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<multicast_addresses>
+    <address>224.0.0.1</address>
+    <address>ff02::1:e000:701</address>
+    <address>ff02::1:e000:901</address>
+    <address>ff02::1:e000:c001</address>
+</multicast_addresses>

@@ -1,0 +1,5 @@
+value,name,desc,deleted,new,SISO
+0,CDT_ONESAF_NOT_PRESENT,Not Present,0,0,0
+1,CDT_ONESAF_PRESENT_AVAILABLE,Present and Available,0,0,0
+2,CDT_ONESAF_PRESENT_RESERVED,Present but Reserved,0,0,0
+3,CDT_ONESAF_PRESENT_IN_USE,Present but In Use,0,0,0

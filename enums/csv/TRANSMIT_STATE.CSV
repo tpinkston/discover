@@ -1,0 +1,4 @@
+value,name,desc,deleted,new,SISO
+0,TRANSMIT_OFF,Off,0,0,0
+1,TRANSMIT_ON_BUT_NOT_TRANSMITTING,On But Not Transmitting,0,0,0
+2,TRANSMIT_ON_AND_TRANSMITTING,On And Transmitting,0,0,0

@@ -1,0 +1,5 @@
+value,name,desc
+0,AIR_SMOKE_NONE,Not Smoking
+1,AIR_SMOKE_TRAILING,Trailing Smoke
+2,AIR_SMOKE_ENGINE,Emitting Engine Smoke
+3,AIR_SMOKE_ENGINE_TRAILING,Emitting Engine Smoke and Trailing Smoke

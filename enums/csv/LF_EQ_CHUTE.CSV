@@ -1,0 +1,4 @@
+value,name,desc,new
+0,LF_EQUIP_CHUTE_DOES_NOT_HAVE,Does not have,1
+1,LF_EQUIP_CHUTE_NOT_DEPLOYED,Not Deployed,1
+2,LF_EQUIP_CHUTE_DEPLOYED,Deployed,1
