@@ -12,7 +12,7 @@ import discover.vdis.enums.VDIS;
 public class LifeformAppearance extends AbstractAppearance {
 
     public static final List<Bits> values = new ArrayList<Bits>();
-    
+
     static {
 
         values.add(Bits.get1("Clothing", 0, true, getHandle(VDIS.LF_CLOTH_TYPE)));
@@ -35,20 +35,20 @@ public class LifeformAppearance extends AbstractAppearance {
 
         return values;
     }
-    
+
     @Override
     public String getName() {
-        
+
         return "Lifeform Appearance";
     }
-    
+
     @Override
     public LifeformAppearance clone() {
-        
+
         LifeformAppearance appearance = new LifeformAppearance();
-        
+
         appearance.set(super.get());
-        
+
         return appearance;
     }
 }

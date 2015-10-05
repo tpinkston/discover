@@ -24,15 +24,15 @@ public class ClockTime implements Bufferable, Readable {
     private long hours = 0L;
     private long system = 0L;
     private String date = null;
-    
+
     public void clear() {
-        
+
         this.timestamp.clear();
         this.hours = 0L;
         this.system = 0L;
         this.date = null;
     }
-    
+
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
@@ -46,7 +46,7 @@ public class ClockTime implements Bufferable, Readable {
 
         this.hours = Common.toUnsigned32(stream.readInt());
         this.timestamp.read(stream);
-        
+
         this.system = (this.hours * MILLIS_PER_HOUR);
         this.system += (this.timestamp.getMinutes() * MILLIS_PER_MINUTE);
         this.system += (int)(this.timestamp.getSeconds() * MILLIS_PER_SECOND);

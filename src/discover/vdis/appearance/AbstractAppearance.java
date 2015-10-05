@@ -12,10 +12,10 @@ public abstract class AbstractAppearance extends Abstract32Bits {
 
     @Override
     public abstract AbstractAppearance clone();
-    
+
     /**
      * @param type - {@link EntityType}
-     * 
+     *
      * @return Appropriate appearance object for the given entity type.
      */
     public static AbstractAppearance get(EntityType type) {
@@ -26,28 +26,28 @@ public abstract class AbstractAppearance extends Abstract32Bits {
 
 
             case 1: // PLATFORM
-                
+
                 switch(type.septuple.domain) {
-                
-                    case 1: // LAND 
+
+                    case 1: // LAND
                         value = new PlatformLandAppearance();
                         break;
-                    
+
                     case 2: // AIR
                         value = new PlatformAirAppearance();
                         break;
                 }
-                
+
                 break;
 
-            case 3: // LIFEFORM 
-                
+            case 3: // LIFEFORM
+
                 value = new LifeformAppearance();
                 break;
         }
-        
+
         if (value == null) {
-            
+
             value = new DefaultAppearance();
         }
 

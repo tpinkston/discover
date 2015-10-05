@@ -24,7 +24,7 @@ public class Signal extends AbstractPDU {
     private int dataLength = 0;
     private int samples = 0;
     private byte data[] = null;
-    
+
     public Signal() {
 
     }
@@ -56,13 +56,13 @@ public class Signal extends AbstractPDU {
 
         buffer.addTitle("ENCODING");
         buffer.addAttribute(
-            "Encoding Class", 
+            "Encoding Class",
             VDIS.getDescription(VDIS.ENCODING_CLASS, this.encodingClass));
         buffer.addAttribute(
-            "Encoding Type", 
+            "Encoding Type",
             VDIS.getDescription(VDIS.ENCODING_TYPE, this.encodingType));
         buffer.addAttribute(
-            "TDL Type", 
+            "TDL Type",
             VDIS.getDescription(VDIS.TDL_TYPE, this.tdlType));
         buffer.addAttribute("TDL Message Count", this.tdlMessages);
         buffer.addAttribute("Sample Rate", this.sampleRate);
@@ -71,9 +71,9 @@ public class Signal extends AbstractPDU {
 
         buffer.addTitle("DATA");
         buffer.addAttribute("Data Length", (this.dataLength + " Bits"));
-        
+
         if (this.data == null) {
-            
+
             buffer.addItalic("Empty");
             buffer.addBreak();
         }
@@ -81,9 +81,9 @@ public class Signal extends AbstractPDU {
 
             Hexadecimal.toBuffer(
                 buffer,
-                "     ", 
-                4, 
-                false, 
+                "     ",
+                4,
+                false,
                 this.data);
         }
     }
@@ -95,46 +95,46 @@ public class Signal extends AbstractPDU {
 
         this.entityId.read(stream);
         this.radioId = stream.readUnsignedShort();
-        
+
         // Encoding Scheme
         int eScheme = stream.readUnsignedShort();
-        
+
         // Encoding class is the bits 14-15 of the encoding scheme.
         this.encodingClass = Binary.get2Bits(15, eScheme);
-        
+
         if (this.encodingClass == 0) {
-            
+
             // ENCODED_AUDIO, bits 0-13 is the encoding type.
             this.encodingType = (eScheme & 0x3FFF);
         }
         else {
-            
+
             // Bits 0-13 is the number of Tactical Data Link (TDL) messages.
             this.tdlMessages = (eScheme & 0x3FFF);
             this.encodingType = 0;
         }
-        
+
         this.tdlType = stream.readUnsignedShort();
         this.sampleRate = stream.readInt();
         this.dataLength = stream.readUnsignedShort();
         this.samples = stream.readUnsignedShort();
-        
+
         if (this.dataLength > 0) {
 
             // Data length is the number of bits!
             final int length = (this.dataLength / 8);
 
             this.data = new byte[length];
-            
+
             for(int i = 0; i < length; ++i) {
-                
+
                 this.data[i] = stream.readByte();
             }
         }
- 
+
         // Variable Padding
         while(stream.available() > 0) {
-            
+
             stream.skipBytes(1);
         }
     }

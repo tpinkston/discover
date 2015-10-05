@@ -29,7 +29,7 @@ import discover.vdis.enums.VDIS;
 public class FilterDialog implements ActionListener {
 
     private static final Logger logger = Discover.getLogger();
-    
+
     private static final String CLEAR = "Clear";
     private static final String REVERT = "Revert";
     private static final String OKAY = "Okay";
@@ -43,7 +43,7 @@ public class FilterDialog implements ActionListener {
             public void dispose() {
 
                 FilterDialog.this.disposing();
-                
+
                 super.dispose();
             }
     };
@@ -71,8 +71,8 @@ public class FilterDialog implements ActionListener {
     private final TableFilter filter;
 
     public FilterDialog(
-        String title, 
-        TableModel model, 
+        String title,
+        TableModel model,
         TableFilter filter) {
 
         this.dialog.setTitle("Filter: " + title);
@@ -92,22 +92,22 @@ public class FilterDialog implements ActionListener {
     public FilterDialog(
         String title,
         PDU pdu,
-        TableModel model, 
+        TableModel model,
         TableFilter filter) {
-        
+
         int type = pdu.getType();
-        
+
         this.dialog.setTitle("Filter: " + title);
         this.model = model;
         this.filter = filter;
 
         this.configureComponents();
-        
+
         this.port.setValue(pdu.getPort());
         this.exercise.setValue(pdu.getExercise());
         this.typesIncluded.add(type);
         this.included.setText("1");
-        
+
         Utilities.setComboBoxValue(
             this.protocol,
             VDIS.PROTOCOL_VERSION,
@@ -118,17 +118,17 @@ public class FilterDialog implements ActionListener {
             pdu.getFamily());
 
         if (pdu.hasInitiator()) {
-            
+
             this.site.setValue(pdu.getSiteId());
             this.application.setValue(pdu.getApplicationId());
             this.entity.setValue(pdu.getEntityId());
         }
-        
+
         if (pdu.hasRequestId()) {
-            
+
             this.request.setValue(pdu.getRequestId());
         }
-        
+
         if (type == VDIS.PDU_TYPE_ENTITY_STATE) {
 
             this.setEntityParametersEditable(true);
@@ -151,48 +151,48 @@ public class FilterDialog implements ActionListener {
 
         this.showDialog();
     }
-    
+
     public void configure(PDU pdu) {
-        
+
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent event) {
 
         String command = event.getActionCommand();
 
         if (event.getSource() instanceof JTextField) {
-            
+
             if (event.getSource() == this.request) {
-                
+
                 this.checkLongValue((JTextField)event.getSource());
             }
             else {
-                
+
                 this.checkIntegerValue((JTextField)event.getSource());
             }
         }
         else if (event.getSource() == this.included) {
-         
+
             PDUTypeDialog dialog = new PDUTypeDialog(
-                "Included PDU Types", 
-                this.dialog, 
+                "Included PDU Types",
+                this.dialog,
                 this.typesIncluded);
-            
+
             dialog.apply(this.typesIncluded);
 
             this.modifiedTypes();
         }
         else if (event.getSource() == this.excluded) {
-            
-            
+
+
             PDUTypeDialog dialog = new PDUTypeDialog(
-                "Excluded PDU Types", 
-                this.dialog, 
+                "Excluded PDU Types",
+                this.dialog,
                 this.typesExcluded);
-            
+
             dialog.apply(this.typesExcluded);
-            
+
             this.modifiedTypes();
         }
         else if (command != null) {
@@ -217,9 +217,9 @@ public class FilterDialog implements ActionListener {
             }
         }
     }
-    
+
     private void disposing() {
-        
+
         this.clear.removeActionListener(this);
         this.revert.removeActionListener(this);
         this.okay.removeActionListener(this);
@@ -227,83 +227,83 @@ public class FilterDialog implements ActionListener {
         this.included.removeActionListener(this);
         this.excluded.removeActionListener(this);
     }
-    
+
     private void modifiedTypes() {
-        
+
         if (this.typesIncluded.isEmpty()) {
 
             this.included.setText(NONE);
         }
         else {
-            
+
             this.included.setText(Integer.toString(this.typesIncluded.size()));
         }
-        
+
         if (this.typesExcluded.isEmpty()) {
 
             this.excluded.setText(NONE);
         }
         else {
-            
+
             this.excluded.setText(Integer.toString(this.typesExcluded.size()));
         }
 
         if (this.typesIncluded.isEmpty() && this.typesExcluded.isEmpty()) {
-            
+
             this.setEntityParametersEditable(false);
         }
         else if (this.typesIncluded.contains(VDIS.PDU_TYPE_ENTITY_STATE)) {
-            
+
             this.setEntityParametersEditable(true);
         }
         else {
-            
+
             this.setEntityParametersEditable(false);
         }
     }
-    
+
     private void checkIntegerValue(JTextField component) {
-        
+
         String value = component.getText();
-        
+
         try {
-            
+
             if (!value.isEmpty()) {
-                
+
                 Integer.parseInt(value);
             }
         }
         catch(NumberFormatException exception) {
-            
+
             JOptionPane.showMessageDialog(
-                component, 
-                "Invalid number: " + value, 
-                "Error", 
+                component,
+                "Invalid number: " + value,
+                "Error",
                 JOptionPane.ERROR_MESSAGE);
-            
+
             component.setText("");
         }
     }
-    
+
     private void checkLongValue(JTextField component) {
-        
+
         String value = component.getText();
-        
+
         try {
-            
+
             if (!value.isEmpty()) {
-                
+
                 Long.parseLong(value);
             }
         }
         catch(NumberFormatException exception) {
-            
+
             JOptionPane.showMessageDialog(
-                component, 
-                "Invalid number: " + value, 
-                "Error", 
+                component,
+                "Invalid number: " + value,
+                "Error",
                 JOptionPane.ERROR_MESSAGE);
-            
+
             component.setText("");
         }
     }
@@ -336,7 +336,7 @@ public class FilterDialog implements ActionListener {
         this.entity.setValue(null);
         this.typesIncluded.clear();
         this.typesExcluded.clear();
-        
+
         this.modifiedTypes();
         this.clearEntityParameters();
     }
@@ -360,22 +360,22 @@ public class FilterDialog implements ActionListener {
         this.port.setValue(this.filter.port);
         this.exercise.setValue(this.filter.exercise);
         this.request.setValue(this.filter.request);
-        
+
         Utilities.setComboBoxValue(
-            this.protocol, 
-            VDIS.PROTOCOL_VERSION, 
+            this.protocol,
+            VDIS.PROTOCOL_VERSION,
             this.filter.protocol);
         Utilities.setComboBoxValue(
-            this.family, 
-            VDIS.PDU_FAMILY, 
+            this.family,
+            VDIS.PDU_FAMILY,
             this.filter.family);
         Utilities.setComboBoxValue(
-            this.domain, 
-            VDIS.DOMAIN, 
+            this.domain,
+            VDIS.DOMAIN,
             this.filter.domain);
         Utilities.setComboBoxValue(
-            this.kind, 
-            VDIS.ENT_KIND, 
+            this.kind,
+            VDIS.ENT_KIND,
             this.filter.kind);
 
         if (!this.filter.includedTypes.contains(VDIS.PDU_TYPE_ENTITY_STATE)) {
@@ -387,11 +387,11 @@ public class FilterDialog implements ActionListener {
             this.setEntityParametersEditable(true);
 
             if (this.filter.marking == null) {
-                
+
                 this.marking.setText("");
             }
             else {
-                
+
                 this.marking.setText(this.filter.marking);
             }
         }
@@ -429,17 +429,17 @@ public class FilterDialog implements ActionListener {
         this.filter.excludedTypes.addAll(this.typesExcluded);
 
         if (this.filter.marking.isEmpty()) {
-            
+
             this.filter.marking = null;
         }
-        
+
         logger.finer("New Filter:\n" + this.filter.toString());
     }
 
     private void configureComponents() {
 
         this.port.setColumns(10);
-        
+
         this.site.setColumns(5);
         this.site.setHorizontalAlignment(JTextField.RIGHT);
         this.application.setColumns(5);
@@ -448,20 +448,20 @@ public class FilterDialog implements ActionListener {
         this.entity.setHorizontalAlignment(JTextField.RIGHT);
 
         Utilities.configureComboBox(
-            this.protocol, 
-            VDIS.PROTOCOL_VERSION, 
+            this.protocol,
+            VDIS.PROTOCOL_VERSION,
             true);
         Utilities.configureComboBox(
-            this.family, 
-            VDIS.PDU_FAMILY, 
+            this.family,
+            VDIS.PDU_FAMILY,
             true);
         Utilities.configureComboBox(
-            this.domain, 
-            VDIS.DOMAIN, 
+            this.domain,
+            VDIS.DOMAIN,
             true);
         Utilities.configureComboBox(
-            this.kind, 
-            VDIS.ENT_KIND, 
+            this.kind,
+            VDIS.ENT_KIND,
             true);
 
         this.clear.setActionCommand(CLEAR);
@@ -475,18 +475,18 @@ public class FilterDialog implements ActionListener {
 
         this.cancel.setActionCommand(CANCEL);
         this.cancel.addActionListener(this);
-        
+
         this.domain.setEnabled(false);
 
         this.kind.setEnabled(false);
 
         this.included.addActionListener(this);
-        
+
         this.excluded.addActionListener(this);
     }
-    
+
     private void showDialog() {
-        
+
         this.fill();
 
         this.dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -501,7 +501,7 @@ public class FilterDialog implements ActionListener {
         int y = -1;
 
         Utilities.setGridBagLayout(this.dialog.getContentPane());
-        
+
         Utilities.addItem(
             this.dialog.getContentPane(),
             this.port,
@@ -591,12 +591,12 @@ public class FilterDialog implements ActionListener {
             Utilities.setBorder(this, "Entity State");
         }
     }
-    
+
     @SuppressWarnings("serial")
     class EntityIdPanel extends JPanel {
-        
+
         public EntityIdPanel() {
-            
+
             super(new GridLayout(1, 3, 10, 10));
             super.add(site);
             super.add(application);

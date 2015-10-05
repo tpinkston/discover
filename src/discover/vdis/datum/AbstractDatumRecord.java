@@ -19,12 +19,12 @@ public abstract class AbstractDatumRecord implements Bufferable, Readable {
 
     private int id = 0;
     private int length = 0;
-    
+
     protected AbstractDatumRecord(int id) {
-        
+
         this.id = id;
     }
-    
+
     public final int getDatumId() { return this.id; }
     public final int getDatumLength() { return this.length; }
 
@@ -33,7 +33,7 @@ public abstract class AbstractDatumRecord implements Bufferable, Readable {
         int segments = (this.length / ALIGNMENT_BOUNDRY_BITS);
 
         if ((this.length % ALIGNMENT_BOUNDRY_BITS) > 0) {
-            
+
             segments++;
         }
 

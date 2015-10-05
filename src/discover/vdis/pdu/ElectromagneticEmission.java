@@ -23,9 +23,9 @@ public class ElectromagneticEmission extends AbstractPDU {
     public ElectromagneticEmission() {
 
     }
-    
+
     public List<EmitterSystemData> getSystems() {
-        
+
         return this.systems;
     }
 
@@ -38,12 +38,12 @@ public class ElectromagneticEmission extends AbstractPDU {
         this.update = 0;
         this.systemCount = 0;
     }
-    
+
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
         super.toBuffer(buffer);
-        
+
         buffer.addTitle("IDENTIFICATION");
         buffer.addAttribute("Emitting Entity", this.emitter.toString());
         buffer.addAttribute("Event", this.event.toString());
@@ -63,24 +63,24 @@ public class ElectromagneticEmission extends AbstractPDU {
 
         // 12 bytes (header)
         super.read(stream);
-        
+
         // 6 bytes
         this.emitter.read(stream);
-        
+
         // 6 bytes
         this.event.read(stream);
-        
+
         // 1 byte
         this.update = stream.readUnsignedByte();
-        
+
         // 1 byte
         this.systemCount = stream.readUnsignedByte();
-        
+
         // 2 bytes padding
         stream.skipBytes(2);
-        
+
         for(int i = 0; i < this.systemCount; ++i) {
-            
+
             this.systems.add(new EmitterSystemData(stream));
         }
     }

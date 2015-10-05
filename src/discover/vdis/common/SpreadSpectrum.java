@@ -12,16 +12,16 @@ import discover.vdis.bits.Bits;
 public class SpreadSpectrum extends Abstract16Bits {
 
     public static final List<Bits> values;
-    
+
     static {
-        
+
         values = new ArrayList<Bits>();
 
         values.add(Bits.getYesNo("Frequency Hopping", 0));
         values.add(Bits.getYesNo("Pseudo Noise", 1));
         values.add(Bits.getYesNo("Time Hopping", 2));
     }
-    
+
     @Override
     public List<Bits> getValues() {
 
@@ -30,11 +30,11 @@ public class SpreadSpectrum extends Abstract16Bits {
 
     @Override
     public SpreadSpectrum clone() {
-        
+
         SpreadSpectrum object = new SpreadSpectrum();
-        
+
         object.set(super.get());
-        
+
         return object;
     }
 }

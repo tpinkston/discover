@@ -12,9 +12,9 @@ import discover.vdis.bits.Bits;
 public class ExtendedLightsLand extends Abstract32Bits {
 
     private static final List<Bits> values;
-    
+
     static {
-        
+
         values = new ArrayList<Bits>();
 
         values.add(Bits.getOnOff("Left Signal", 0));
@@ -30,13 +30,13 @@ public class ExtendedLightsLand extends Abstract32Bits {
         values.add(Bits.getOnOff("Rear Interior Lights", 10));
         values.add(Bits.getOnOff("Emergency Vehicle Lights", 11));
     }
-    
+
     public ExtendedLightsLand() {
 
     }
-    
+
     public ExtendedLightsLand(int value) {
-        
+
         super.set(value);
     }
 
@@ -48,11 +48,11 @@ public class ExtendedLightsLand extends Abstract32Bits {
 
     @Override
     public ExtendedLightsLand clone() {
-        
+
         ExtendedLightsLand lights = new ExtendedLightsLand();
-        
+
         lights.set(super.get());
-        
+
         return lights;
     }
 }

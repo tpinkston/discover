@@ -45,32 +45,32 @@ import discover.vdis.types.ObjectTypes;
 public class Discover {
 
     private static final String DISCOVER_LOGGER = "discover";
-    
+
     private static final boolean timestampedLogFile = false;
 
     private static final String[] EXTERNAL_CLASSES = {
-        
+
         "geotransform.coords.Gcc_Coord_3d",
         "geotransform.coords.Gdc_Coord_3d",
         "geotransform.ellipsoids.WE_Ellipsoid",
         "geotransform.transforms.Gcc_To_Gdc_Converter",
         "geotransform.transforms.Gdc_To_Gcc_Converter"
     };
-    
+
     private static Logger logger = null;
-    
+
     public static Logger getLogger() {
-        
+
         if (logger == null) {
-            
+
             initializeLogger(Level.WARNING.toString());
         }
-        
+
         return logger;
     }
-    
+
     public static void main(String[] args) {
-        
+
         List<String> list = Arrays.asList(args);
         boolean info = false;
         boolean cdt = false;
@@ -84,14 +84,14 @@ public class Discover {
         String headless = null;
         String enumeration = null;
         String laf = null;
-        
+
         for(String name : EXTERNAL_CLASSES) {
-            
+
             forName(name);
         }
-        
+
         Ellipsoid ellipsoid = new WE_Ellipsoid();
-        
+
         Gcc_To_Gdc_Converter.Init(ellipsoid);
         Gdc_To_Gcc_Converter.Init(ellipsoid);
 
@@ -99,32 +99,32 @@ public class Discover {
         Iterator<String> iterator = list.iterator();
 
         while(iterator.hasNext()) {
-            
+
             String argument = iterator.next();
-            
+
             if (argument.equals("-I") ||
                 argument.equals("--info")) {
-                
+
                 info = true;
             }
             else if (argument.equals("-u") ||
                      argument.equals("--unbundled")) {
-                
+
                 unbundled = true;
             }
             else if (argument.equals("-c") ||
                      argument.equals("--cdt")) {
-                       
+
                 cdt = true;
             }
-            else if (argument.startsWith("--log=") || 
+            else if (argument.startsWith("--log=") ||
                      argument.startsWith("--level=")) {
-                
+
                 level = getArgumentValue(argument);
             }
             else if (argument.contains("?") ||
                      argument.equals("--help")) {
-                
+
                 usage();
                 System.exit(0);
             }
@@ -141,7 +141,7 @@ public class Discover {
                 test = getArgumentValue(argument);
             }
             else if (argument.equals("--nolaf")) {
-                       
+
                 noLAF = true;
             }
             else if (argument.startsWith("--headless=")) {
@@ -153,15 +153,15 @@ public class Discover {
                 enumeration = getArgumentValue(argument);;
             }
             else if (argument.equals("--multicast")) {
-                
+
                 multicast = true;
             }
             else if (argument.startsWith("--laf=")) {
-                
+
                 laf = getArgumentValue(argument);
             }
             else {
-                
+
                 System.err.println("ERROR: Invalid argument: " + argument);
                 usage();
                 System.exit(0);
@@ -169,95 +169,95 @@ public class Discover {
         }
 
         if (level != null) {
-            
+
             initializeLogger(level);
         }
 
         if (info) {
-            
+
             Map<String, String> netinfo = Network.getNetworkInfo(false);
-            
+
             for(String key : netinfo.keySet()) {
-                
+
                 String value = netinfo.get(key);
-                
+
                 System.out.println("INTERFACE: " + key);
                 System.out.println(value);
             }
-            
+
             System.exit(0);
         }
-        
+
         if ((laf != null) && ((headless != null) || (enumeration != null))) {
-            
+
             System.err.println("WARNING: LAF specified for headless mode!");
         }
 
         if ((headless == null) && (enumeration == null)) {
-            
+
             if (!noLAF) {
-                
+
                 setLookAndFeel(laf);
             }
-            
+
             initializeNetwork(nic, playback, unbundled, multicast);
 
             ArmyTracking.load();
             EntityTypes.load(cdt);
             ObjectTypes.load();
         }
-        
+
         if (test != null) {
-            
+
             Test.test(test);
         }
         else if (enumeration != null) {
-            
+
             EnumPrinter.print(enumeration);
         }
         else if (headless != null) {
-            
+
             Headless.run(headless);
         }
         else {
-            
+
             SwingUtilities.invokeLater(new Runnable() {
 
                 @Override
                 public void run() {
 
                     try {
-                        
-                        DiscoverFrame.getInstance();     
+
+                        DiscoverFrame.getInstance();
                     }
                     catch(HeadlessException exception) {
-                        
+
                         System.out.println("ERROR: Can only run headless!");
                     }
-                } 
+                }
             });
         }
     }
 
     private static String getArgumentValue(String argument) {
-        
+
         StringTokenizer tokenizer = new StringTokenizer(argument, "=");
-        
+
         if (tokenizer.countTokens() != 2) {
-            
+
             // Terminate application.
             System.err.println("Misformed argument: " + argument);
             System.exit(1);
         }
-           
+
         // Skip first token...
         tokenizer.nextToken();
-            
+
         return tokenizer.nextToken();
     }
-    
+
     private static void setLookAndFeel(String name) {
-        
+
         if (name == null) {
 
             name = UIManager.getSystemLookAndFeelClassName();
@@ -266,31 +266,31 @@ public class Discover {
         else try {
 
             if (name.equalsIgnoreCase("GTK")) {
-                
+
                 name = "com.sun.java.swing.plaf.gtk.GTKLookAndFeel";
             }
             else if (name.equalsIgnoreCase("MOTIF")) {
-                
+
                 name = "com.sun.java.swing.plaf.motif.MotifLookAndFeel";
             }
             else if (name.equalsIgnoreCase("NIMBUS")) {
-                
+
                 name = "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel";
             }
             else if (name.equalsIgnoreCase("WINDOWS")) {
-                
+
                 name = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
             }
-            
+
             Class<?> c = Class.forName(name);
-            
+
             if (c != null) {
-                
+
                 name = c.getName();
                 logger.info("Using user specified LAF: " + name);
             }
             else {
-                
+
                 System.err.println("LAF class not found: " + name);
                 name = null;
             }
@@ -302,33 +302,33 @@ public class Discover {
         }
 
         if (name != null) {
-            
+
             try {
 
                 System.out.println("Setting LAF: " + name);
                 UIManager.setLookAndFeel(name);
-            } 
+            }
             catch(Exception exception) {
 
                 exception.printStackTrace();
             }
         }
     }
-    
+
     private static void initializeNetwork(
         String name,
         String playback,
         boolean unbundled,
         boolean multicast) {
-        
+
         NetworkInterface networkInterface = null;
-        
+
         try {
-            
+
             networkInterface = NetworkInterface.getByName(name);
-            
+
             if (networkInterface == null) {
-                
+
                 System.err.print("ERROR: Network interface: ");
                 System.err.print(name);
                 System.err.println(" could not be found!");
@@ -342,11 +342,11 @@ public class Discover {
                 System.exit(0);
             }
             else if (!Network.initialize(
-                         networkInterface, 
-                         playback, 
+                         networkInterface,
+                         playback,
                          unbundled,
                          multicast)) {
-       
+
                 System.err.print("ERROR: Network interface: ");
                 System.err.print(networkInterface.getDisplayName());
                 System.err.println(" could not be initialized!");
@@ -354,29 +354,29 @@ public class Discover {
             }
         }
         catch(SocketException exception) {
-            
+
             exception.printStackTrace();
             System.exit(0);
         }
     }
 
     private static void forName(String name) {
-        
+
         try {
-            
+
             Class.forName(name);
         }
         catch(Exception exception) {
-        
+
             exception.printStackTrace();
             System.exit(0);
         }
     }
 
     private static void usage() {
-    
+
         PrintStream out = System.out;
-        
+
         out.println("Usage: discover [OPTIONS]...");
         out.println();
         out.println("Options:");
@@ -411,38 +411,38 @@ public class Discover {
         out.println("  com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
         out.println("Shortcut WINDOWS:");
         out.println("  com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-        
+
         Headless.printUsage();
         EnumPrinter.printUsage();
     }
-    
+
     private static void initializeLogger(String name) {
-        
+
         Level level = Level.parse(name);
-        
+
         if (level == null) {
-            
+
             System.err.println("ERROR: Invalid logger level: " + name);
             level = Level.WARNING;
         }
-        
+
         if (logger != null) {
-            
+
             logger.setLevel(level);
         }
         else try {
-            
+
             String file = getLogFile();
             LogManager manager = LogManager.getLogManager();
             FileHandler handler = null;
-            
+
             manager.reset();
 
             logger = Logger.getLogger(DISCOVER_LOGGER);
 
             handler = new FileHandler(file, false);
             handler.setFormatter(new LogFormatter());
- 
+
             logger.setLevel(level);
             logger.addHandler(handler);
 
@@ -451,7 +451,7 @@ public class Discover {
             Runtime.getRuntime().addShutdownHook(new ShutdownHook());
         }
         catch(IllegalArgumentException exception) {
-            
+
             exception.printStackTrace();
             System.exit(0);
         }
@@ -466,30 +466,30 @@ public class Discover {
             System.exit(0);
         }
     }
-    
+
     private static void uninitializeLogger() {
-        
+
         System.out.println("Closing logger...");
-        
+
         Logger logger = Logger.getLogger(DISCOVER_LOGGER);
-        
+
         for(Handler handler : logger.getHandlers()) {
-            
+
             handler.close();
         }
     }
-    
+
     private static String getLogFile() {
-        
+
         StringBuilder builder = new StringBuilder();
 
         builder.append("%h/.discover");
-        
+
         if (timestampedLogFile) {
-            
+
             NumberFormat format = NumberFormat.getInstance();
             Calendar calendar = Calendar.getInstance();
-            
+
             format.setMinimumIntegerDigits(2);
 
             builder.append("_");
@@ -506,7 +506,7 @@ public class Discover {
 
         return builder.toString();
     }
-    
+
     private static class ShutdownHook extends Thread {
 
         @Override
@@ -518,11 +518,11 @@ public class Discover {
     }
 
     private static class LogFormatter extends Formatter {
-        
+
         private Map<Level, String> levels = new HashMap<Level, String>();
-        
+
         public LogFormatter() {
-            
+
             this.levels.put(Level.SEVERE, "[SEVERE ] ");
             this.levels.put(Level.WARNING, "[WARNING] ");
             this.levels.put(Level.INFO, "[INFO   ] ");
@@ -531,64 +531,64 @@ public class Discover {
             this.levels.put(Level.FINER, "[FINER  ] ");
             this.levels.put(Level.FINEST, "[FINEST ] ");
         }
-        
+
         @Override
         public String format(LogRecord record) {
-          
+
           StringBuffer buffer = new StringBuffer();
           Date date = new Date(record.getMillis());
-          
+
           buffer.append(this.levels.get(record.getLevel()));
           buffer.append("[" + date + "] ");
           buffer.append(record.getSourceClassName().toString() + ".");
           buffer.append(record.getSourceMethodName().toString() + "(): ");
           buffer.append("\n+ " + record.getMessage() + "\n");
-          
+
           Throwable throwable = record.getThrown();
-          
+
           if (throwable != null) {
-              
+
               buffer.append("\n" + throwable.getClass().getName());
               buffer.append(": " + throwable.getMessage());
-              
+
               for(StackTraceElement element : throwable.getStackTrace()) {
-                  
+
                   buffer.append("\n    at ");
                   buffer.append(element.getClassName() + ".");
                   buffer.append(element.getMethodName() + "(");
                   buffer.append(element.getFileName() + ":");
                   buffer.append(element.getLineNumber() + ")");
               }
-              
+
               buffer.append("\n");
 
-              if ((throwable.getCause() != null) && 
+              if ((throwable.getCause() != null) &&
                   (throwable.getCause() != throwable)) {
-                  
+
                   throwable = throwable.getCause();
 
                   buffer.append("\nCaused by: ");
                   buffer.append(throwable.getClass().getName());
                   buffer.append(": " + throwable.getMessage());
-                  
+
                   for(StackTraceElement element : throwable.getStackTrace()) {
-                      
+
                       buffer.append("\n    at ");
                       buffer.append(element.getClassName() + ".");
                       buffer.append(element.getMethodName() + "(");
                       buffer.append(element.getFileName() + ":");
                       buffer.append(element.getLineNumber() + ")");
                   }
-                  
+
                   buffer.append("\n");
               }
           }
-          
+
           if (record.getLevel().equals(Level.SEVERE)) {
-              
+
               System.err.println(buffer.toString());
           }
-          
+
           return buffer.toString();
         }
     }

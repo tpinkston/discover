@@ -19,7 +19,7 @@ public class Orientation implements Readable, Writable  {
     private static final NumberFormat formatter = NumberFormat.getInstance();
 
     static {
-        
+
         formatter.setMinimumFractionDigits(1);
         formatter.setMaximumFractionDigits(4);
     }
@@ -27,11 +27,11 @@ public class Orientation implements Readable, Writable  {
     private float psi = 0.0f;
     private float theta = 0.0f;
     private float phi = 0.0f;
-    
+
     public Orientation() { }
 
     public Orientation(float psi, float theta, float phi) {
-        
+
         this.psi = psi;
         this.theta = theta;
         this.phi = phi;
@@ -45,9 +45,9 @@ public class Orientation implements Readable, Writable  {
 
     public float getPhi() { return this.phi; }
     public void setPhi(float phi) { this.phi = phi; }
-    
+
     public void clear() {
-        
+
         this.psi = 0.0f;
         this.theta = 0.0f;
         this.phi = 0.0f;
@@ -55,12 +55,12 @@ public class Orientation implements Readable, Writable  {
 
     @Override
     public String toString() {
-        
+
         float tempPsi = (float)Common.clampToPI(this.psi);
         float tempTheta = (float)Common.clampToHalfPI(this.theta);
         float tempPhi = (float)Common.clampToPI(this.phi);
 
-        return "(psi: " + formatter.format(tempPsi) + 
+        return "(psi: " + formatter.format(tempPsi) +
                ", theta: " + formatter.format(tempTheta) +
                ", phi: " + formatter.format(tempPhi) + ")";
     }

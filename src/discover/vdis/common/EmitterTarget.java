@@ -17,10 +17,10 @@ public class EmitterTarget implements Bufferable, Readable {
     private int beam = 0;
 
     public EmitterTarget(DataInputStream stream) throws IOException {
-        
+
         this.read(stream);
     }
-    
+
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 

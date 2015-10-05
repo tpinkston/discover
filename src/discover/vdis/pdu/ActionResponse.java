@@ -31,10 +31,10 @@ public class ActionResponse extends AbstractPDU {
     public EntityId getRecipient() { return this.recipient; }
 
     public DatumSpecificationRecord getSpecification() { return this.specification; }
-    
+
     @Override
     public void clear() {
-        
+
         this.originator.clear();
         this.recipient.clear();
         this.specification.clear();
@@ -60,7 +60,7 @@ public class ActionResponse extends AbstractPDU {
     public void read(DataInputStream stream) throws IOException {
 
         super.read(stream); // (header)
-        
+
         this.originator.read(stream);
         this.recipient.read(stream);
         this.requestId = Common.toUnsigned32(stream.readInt());

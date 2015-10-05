@@ -12,9 +12,9 @@ import discover.vdis.bits.Bits;
 public class IFFChangeOptions extends Abstract8Bits {
 
     private static final List<Bits> values;
-    
+
     static {
-        
+
         values = new ArrayList<Bits>();
 
         values.add(Bits.getYesNo("Change Indicator", 0));
@@ -25,7 +25,7 @@ public class IFFChangeOptions extends Abstract8Bits {
         values.add(Bits.getYesNo("Simulation Mode", 5));
         values.add(Bits.getYesNo("Test Mode", 7));
     }
-    
+
     @Override
     public List<Bits> getValues() {
 
@@ -34,11 +34,11 @@ public class IFFChangeOptions extends Abstract8Bits {
 
     @Override
     public IFFChangeOptions clone() {
-        
+
         IFFChangeOptions record = new IFFChangeOptions();
-        
+
         record.set(super.get());
-        
+
         return record;
     }
 }

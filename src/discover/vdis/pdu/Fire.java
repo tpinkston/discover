@@ -14,7 +14,7 @@ import discover.vdis.common.Location24;
 import discover.vdis.common.Velocity;
 
 /**
- * Always 96 bytes 
+ * Always 96 bytes
  */
 public class Fire extends AbstractPDU {
 
@@ -27,7 +27,7 @@ public class Fire extends AbstractPDU {
     private BurstDescriptor burst = new BurstDescriptor();
     private long fireMission = 0L;
     private float range = 0.0f;
-    
+
     /** Resulting detonation PDU, event Id will be identical. */
     private Detonation detonation = null;
 
@@ -47,13 +47,13 @@ public class Fire extends AbstractPDU {
     public Detonation getDetonation() { return detonation; }
 
     public void setDetonation(Detonation detonation) {
-    
+
         this.detonation = detonation;
     }
 
     @Override
     public void clear() {
-        
+
         this.shooter.clear();
         this.target.clear();
         this.munition.clear();
@@ -69,7 +69,7 @@ public class Fire extends AbstractPDU {
     public void toBuffer(AbstractBuffer buffer) {
 
         super.toBuffer(buffer);
-        
+
         buffer.addTitle("IDENTIFICATION");
         buffer.addAttribute("Shooter", this.shooter.toString());
         buffer.addAttribute("Target", this.target.toString());
@@ -77,13 +77,13 @@ public class Fire extends AbstractPDU {
         buffer.addAttribute("Event", this.event.toString());
         buffer.addAttribute("Fire Mission", this.fireMission);
         buffer.addBreak();
-        
+
         buffer.addTitle("SPATIAL");
         buffer.addAttribute("Velocity", this.velocity.toString());
         buffer.addAttribute("Location", this.location.toString());
         buffer.addAttribute("Range", this.range);
         buffer.addBreak();
-        
+
         buffer.addBuffer(this.burst);
     }
 
@@ -91,7 +91,7 @@ public class Fire extends AbstractPDU {
     public void read(DataInputStream stream) throws IOException {
 
         super.read(stream); // (header)
-        
+
         this.shooter.read(stream); // 6 bytes
         this.target.read(stream); // 6 bytes
         this.munition.read(stream); // 6 bytes

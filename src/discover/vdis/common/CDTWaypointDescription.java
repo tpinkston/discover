@@ -12,9 +12,9 @@ import discover.vdis.bits.Bits;
 public class CDTWaypointDescription extends Abstract32Bits {
 
     private static final List<Bits> values;
-    
+
     static {
-        
+
         values = new ArrayList<Bits>();
 
         values.add(Bits.getOnOff("Right Turn Signal", 0));
@@ -33,11 +33,11 @@ public class CDTWaypointDescription extends Abstract32Bits {
 
     @Override
     public CDTWaypointDescription clone() {
-        
+
         CDTWaypointDescription description = new CDTWaypointDescription();
-        
+
         description.set(super.get());
-        
+
         return description;
     }
 }

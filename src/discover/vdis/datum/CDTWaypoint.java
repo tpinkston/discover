@@ -19,14 +19,14 @@ public class CDTWaypoint extends AbstractDatumRecord implements Writable {
 
     /** DID_CDT_WAYPOINT (not in V-DIS specification) */
     public static final int DATUM_ID = 405100;
-    
+
     /** Length of entire record minus datum ID and length fields. */
     public static final int DATUM_LENGTH = (576 - 64);
-    
+
     private static final NumberFormat formatter;
 
     static {
-        
+
         formatter = NumberFormat.getInstance();
         formatter.setMaximumFractionDigits(4);
     }
@@ -35,21 +35,21 @@ public class CDTWaypoint extends AbstractDatumRecord implements Writable {
     public final CDTWaypointDescription description;
     public final Location24 location;
     public float speed = 0.0f;
-    
+
     public CDTWaypoint() {
-        
+
         this(DATUM_ID);
     }
-    
+
     public CDTWaypoint(int id) {
-        
+
         super(id);
-        
+
         this.constraint = new CDTWaypointConstraint();
         this.description = new CDTWaypointDescription();
         this.location = new Location24();
     }
-    
+
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
@@ -71,7 +71,7 @@ public class CDTWaypoint extends AbstractDatumRecord implements Writable {
     public void read(DataInputStream stream) throws IOException {
 
         super.read(stream); // Record length (record type already read)
-        
+
         this.location.read(stream); // 24 bytes
         this.speed = stream.readFloat(); // 4 bytes
         this.description.read(stream); // 4 bytes
@@ -80,7 +80,7 @@ public class CDTWaypoint extends AbstractDatumRecord implements Writable {
 
     @Override
     public void write(DataOutputStream stream) throws IOException {
-        
+
         stream.writeInt(DATUM_ID); // 4 bytes
         stream.writeInt(DATUM_LENGTH); // 4 bytes
         this.location.write(stream); // 24 bytes

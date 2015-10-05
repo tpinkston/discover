@@ -12,7 +12,7 @@ import discover.vdis.common.ClockTime;
 import discover.vdis.common.EntityId;
 
 public class StartResume extends AbstractPDU {
-    
+
     private EntityId originator = new EntityId();
     private EntityId recipient = new EntityId();
     private ClockTime real = new ClockTime();
@@ -25,14 +25,14 @@ public class StartResume extends AbstractPDU {
 
     @Override
     public void clear() {
-        
+
         this.originator.clear();
         this.recipient.clear();
         this.real.clear();
         this.simulation.clear();
         this.requestId = -1L;
     }
-    
+
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
@@ -43,11 +43,11 @@ public class StartResume extends AbstractPDU {
         buffer.addAttribute("Recipient", this.recipient.toString());
         buffer.addAttribute("Request Id", this.requestId);
         buffer.addBreak();
-        
+
         buffer.addTitle("REAL TIME");
         buffer.addBuffer(this.real);
         buffer.addBreak();
-        
+
         buffer.addTitle("SIMULATION TIME");
         buffer.addBuffer(this.simulation);
         buffer.addBreak();
@@ -57,7 +57,7 @@ public class StartResume extends AbstractPDU {
     public void read(DataInputStream stream) throws IOException {
 
         super.read(stream); // (header)
-        
+
         this.originator.read(stream);
         this.recipient.read(stream);
         this.real.read(stream);

@@ -14,23 +14,23 @@ public class HypertextBuffer extends AbstractBuffer {
         int rows,
         int columns,
         String data[][]) {
-        
+
         super.addText("<table");
-        
+
         if (border != null) {
-            
+
             super.addText(" border=\"" + border.toString() + "\"");
         }
 
         if (spacing != null) {
-            
+
             super.addText(" cellspacing=\"" + spacing.toString() + "\"");
         }
-        
+
         super.addText(">");
 
         for(int row = 0; row < rows; ++row) {
-            
+
             super.addText("<tr>");
 
             for(int column = 0; column < columns; ++column) {
@@ -42,7 +42,7 @@ public class HypertextBuffer extends AbstractBuffer {
 
             super.addText("</tr>");
         }
-        
+
         super.addText("</table>");
     }
 }

@@ -53,14 +53,14 @@ public class LinearObjectState extends AbstractPDU {
     public void toBuffer(AbstractBuffer buffer) {
 
         super.toBuffer(buffer);
-        
+
         String count = (this.count + " (" + this.segments.size() + ")");
-        
+
         buffer.addTitle("IDENTIFICATION");
         buffer.addAttribute("Object", this.objectId.toString());
         buffer.addAttribute("Referenced Object", this.referencedObjectId.toString());
         buffer.addAttribute(
-            "Force", 
+            "Force",
             VDIS.getDescription(VDIS.FORCE_ID, this.force));
         buffer.addAttribute("Requestor", this.requestor.toString());
         buffer.addAttribute("Receiver", this.receiver.toString());
@@ -73,7 +73,7 @@ public class LinearObjectState extends AbstractPDU {
         buffer.addBreak();
 
         for(LinearSegment segment : this.segments) {
-            
+
             buffer.addBuffer(segment);
         }
 
@@ -84,7 +84,7 @@ public class LinearObjectState extends AbstractPDU {
     public void read(DataInputStream stream) throws IOException {
 
         super.read(stream); // (header)
-        
+
         this.objectId.read(stream);
         this.referencedObjectId.read(stream);
         this.update = stream.readUnsignedShort();
@@ -93,9 +93,9 @@ public class LinearObjectState extends AbstractPDU {
         this.requestor.readPartial(stream);
         this.receiver.readPartial(stream);
         this.objectType = ObjectTypes.getObjectType(LINEAR, stream.readInt());
-        
+
         for(int i = 0; i < this.count; ++i) {
-            
+
             this.segments.add(new LinearSegment(stream));
         }
     }

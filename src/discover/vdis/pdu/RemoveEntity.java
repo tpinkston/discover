@@ -15,14 +15,14 @@ public class RemoveEntity extends AbstractPDU {
     private EntityId originator = new EntityId();
     private EntityId recipient = new EntityId();
     private long requestId = -1;
-    
+
     public RemoveEntity() {
 
     }
-    
+
     @Override
     public void clear() {
-        
+
         this.originator.clear();
         this.recipient.clear();
         this.requestId = -1;
@@ -44,7 +44,7 @@ public class RemoveEntity extends AbstractPDU {
     public void read(DataInputStream stream) throws IOException {
 
         super.read(stream); // (header)
-        
+
         this.originator.read(stream);
         this.recipient.read(stream);
         this.requestId = Common.toUnsigned32(stream.readInt());

@@ -12,7 +12,7 @@ import discover.common.buffer.Bufferable;
 import discover.vdis.enums.VDIS;
 
 public class IFFSystemIdentifier implements Bufferable, Readable {
-    
+
     private int type = 0;
     private int name = 0;
     private int mode = 0;
@@ -24,13 +24,13 @@ public class IFFSystemIdentifier implements Bufferable, Readable {
     public IFFChangeOptions getOptions() { return this.options; }
 
     public void clear() {
-        
+
         this.type = 0;
         this.name = 0;
         this.mode = 0;
         this.options.set((byte)0x00);
     }
-    
+
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 

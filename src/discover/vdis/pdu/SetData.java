@@ -21,10 +21,10 @@ public class SetData extends AbstractPDU {
     public SetData() {
 
     }
-    
+
     @Override
     public void clear() {
-        
+
         this.originator.clear();
         this.recipient.clear();
         this.requestId = -1;
@@ -48,13 +48,13 @@ public class SetData extends AbstractPDU {
     public void read(DataInputStream stream) throws IOException {
 
         super.read(stream); // (header)
-        
+
         this.originator.read(stream);
         this.recipient.read(stream);
         this.requestId = Common.toUnsigned32(stream.readInt());
-        
+
         stream.skipBytes(4); // 4 bytes padding
-        
+
         this.specification.read(stream);
     }
 }

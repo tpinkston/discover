@@ -14,9 +14,9 @@ import discover.common.buffer.Bufferable;
 import discover.vdis.enums.VDIS;
 
 public class PDUHeader implements Bufferable, Readable, Writable {
-    
+
     public static final int LENGTH = 12;
-    
+
     private int type = 0;
     private int family = 0;
     private int protocol = 0;
@@ -36,42 +36,42 @@ public class PDUHeader implements Bufferable, Readable, Writable {
     public PDUStatus getStatus() { return this.status; }
 
     public void setType(int type) {
-    
+
         this.type = type;
     }
-    
+
     public void setFamily(int family) {
-    
+
         this.family = family;
     }
-    
+
     public void setProtocol(int protocol) {
-    
+
         this.protocol = protocol;
     }
-    
+
     public void setTimestamp(Timestamp timestamp) {
-    
+
         this.timestamp = timestamp.clone();
     }
-    
+
     public void setStatus(PDUStatus status) {
-    
+
         this.status = status;
     }
-    
+
     public void setExercise(int exercise) {
-    
+
         this.exercise = exercise;
     }
-    
+
     public void setLength(int length) {
-    
+
         this.length = length;
     }
-    
+
     public void setPadding(int padding) {
-    
+
         this.padding = padding;
     }
 
@@ -91,13 +91,13 @@ public class PDUHeader implements Bufferable, Readable, Writable {
         this.padding = stream.readUnsignedByte();
         this.status.setEnumValues(this.type);
     }
-    
+
     /**
      * Writes 12 bytes to stream
      */
     @Override
     public void write(DataOutputStream stream) throws IOException {
-        
+
         stream.writeByte(this.protocol);
         stream.writeByte(this.exercise);
         stream.writeByte(this.type);
@@ -107,10 +107,10 @@ public class PDUHeader implements Bufferable, Readable, Writable {
         stream.writeByte(this.status.getValue()); // status
         stream.writeByte(this.padding);
     }
-    
+
     @Override
     public void toBuffer(AbstractBuffer buffer) {
-    
+
         buffer.addTitle("HEADER");
         buffer.addAttribute("Protocol", this.protocol, VDIS.PROTOCOL_VERSION);
         buffer.addAttribute("Exercise", this.exercise);
@@ -119,12 +119,12 @@ public class PDUHeader implements Bufferable, Readable, Writable {
         buffer.addAttribute("Length", this.length);
         buffer.addAttribute("Timestamp", this.timestamp.toString());
         buffer.addBuffer(this.status);
-        
+
         if (this.padding != 0) {
-            
+
             buffer.addAttribute("Padding", this.padding);
         }
-        
+
         buffer.addBreak();
     }
 }

@@ -23,7 +23,7 @@ import discover.vdis.enums.VDIS;
 public class GetRecordTypeDialog implements ActionListener {
 
     private static final int TYPES[] = {
-        
+
         0,  // VP_RECORD_TYPE_ARTICULATED_PART
         4,  // VP_RECORD_TYPE_ENTITY_ASSOC
         20, // VP_RECORD_TYPE_EXT_PLATFORM_APP
@@ -33,10 +33,10 @@ public class GetRecordTypeDialog implements ActionListener {
         31, // VP_RECORD_TYPE_EXT_CULT_FEAT_APP
         32  // VP_RECORD_TYPE_EXT_SUPPLY_APP
     };
-    
+
     @SuppressWarnings("serial")
     private final JDialog dialog = new JDialog(
-        DiscoverFrame.getFrame(), 
+        DiscoverFrame.getFrame(),
         "Variable Parameter Records") {
 
         @Override
@@ -44,36 +44,36 @@ public class GetRecordTypeDialog implements ActionListener {
 
             okay.removeActionListener(GetRecordTypeDialog.this);
             cancel.removeActionListener(GetRecordTypeDialog.this);
-            
+
             super.dispose();
         }
     };
-    
+
     private final ButtonGroup group = new ButtonGroup();
     private final JButton okay = new JButton("Okay");
     private final JButton cancel = new JButton("Cancel");
     private final List<JRadioButton> buttons = new ArrayList<JRadioButton>();
 
     private int type = -1;
-    
+
     public GetRecordTypeDialog() {
-     
+
         this.fill();
-        
+
         this.okay.addActionListener(this);
         this.cancel.addActionListener(this);
-        
+
         this.dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         this.dialog.pack();
         this.dialog.setModal(true);
-        
+
         Utilities.center(DiscoverFrame.getFrame(), this.dialog);
-        
+
         this.dialog.setVisible(true);
     }
-    
+
     public Integer getRecordType() {
-        
+
         return this.type;
     }
 
@@ -81,11 +81,11 @@ public class GetRecordTypeDialog implements ActionListener {
     public void actionPerformed(ActionEvent event) {
 
         if (event.getSource() == this.okay) {
-            
+
             for(int i = 0; i < this.buttons.size(); ++i) {
 
                 if (this.buttons.get(i).isSelected()) {
-                    
+
                     this.type = TYPES[i];
                 }
             }
@@ -93,10 +93,10 @@ public class GetRecordTypeDialog implements ActionListener {
 
         this.dialog.dispose();
     }
-    
+
     private void fill() {
-        
-        
+
+
         Utilities.setGridBagLayout(this.dialog.getContentPane());
 
         Utilities.addComponent(
@@ -109,21 +109,21 @@ public class GetRecordTypeDialog implements ActionListener {
             Utilities.getInsets(10, 5, 5, 5));
 
         int count = 0;
-        
+
         for(int type : TYPES) {
-            
+
             String name = VDIS.getDescription(VDIS.VP_RECORD_TYPE, type);
             JRadioButton button = new JRadioButton(name);
-            
+
             if (type == 0) {
-                
+
                 button.setSelected(true);
             }
-            
+
             this.group.add(button);
-            
+
             this.buttons.add(button);
-            
+
             Utilities.addComponent(
                 this.dialog.getContentPane(),
                 button,
@@ -132,12 +132,12 @@ public class GetRecordTypeDialog implements ActionListener {
                 1, 1,
                 0.0, 0.0,
                 Utilities.getInsets(0, 20, 0, 5));
-            
+
             count++;
         }
 
         Utilities.addComponent(
-            this.dialog.getContentPane(),                
+            this.dialog.getContentPane(),
             this.getButtonPanel(),
             Utilities.HORIZONTAL,
             0, (TYPES.length + 1),
@@ -147,12 +147,12 @@ public class GetRecordTypeDialog implements ActionListener {
     }
 
     private JPanel getButtonPanel() {
-        
+
         JPanel panel = new JPanel(new GridLayout(1, 3, 10, 2));
-        
+
         panel.add(this.okay);
         panel.add(this.cancel);
-        
+
         return panel;
     }
 }

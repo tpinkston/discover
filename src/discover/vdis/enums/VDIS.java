@@ -374,7 +374,7 @@ public class VDIS {
         "UNMODULATED",
         "VP_RECORD_TYPE",
         "WARHEAD_BURST_DESC",
-        "YESNO" 
+        "YESNO"
     };
 
     public static int[] getEnumValues(int type) {

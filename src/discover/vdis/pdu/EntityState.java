@@ -80,63 +80,63 @@ public class EntityState extends AbstractPDU implements Writable {
     public DeadReckoning getDeadReckoning() { return this.deadReckoning; }
 
     public EntityCapabilities getCapabilities() { return this.capabilities; }
-    
+
     public List<AbstractVPRecord> getRecords() { return this.records; }
 
     public void setEntityId(EntityId value) {
-        
+
         this.checkObject(value);
         this.entityId = value;
     }
 
     public void setForceId(int value) {
-        
+
         this.forceId = value;
     }
-    
+
     public void setEntityType(EntityType value) {
-        
+
         this.checkObject(value);
         this.entityType = value;
     }
-    
+
     public void setAlternateType(EntityType value) {
-        
+
         this.checkObject(value);
         this.alternateType = value;
     }
-    
+
     public void setMarking(EntityMarking value) {
-        
+
         this.checkObject(value);
         this.marking = value;
     }
-    
+
     public void setAppearance(AbstractAppearance value) {
-        
+
         this.checkObject(value);
         this.appearance = value;
     }
-    
+
     public boolean hasExtendedAppearance() {
-        
+
         if (!this.records.isEmpty()) {
-            
+
             for(AbstractVPRecord record : this.records) {
-                
+
                 if (record instanceof ExtendedAppearanceVPR) {
-                    
+
                     return true;
                 }
             }
         }
-        
+
         return false;
     }
-   
+
     @Override
     public void clear() {
-        
+
         this.entityId.clear();
         this.forceId = 0;
         this.entityType = null;
@@ -150,11 +150,11 @@ public class EntityState extends AbstractPDU implements Writable {
         this.capabilities.set(0);
         this.records.clear();
     }
-    
+
     public int calculateLength() {
-        
+
         int length = 0;
-        
+
         length += PDUHeader.LENGTH;
         length += EntityId.LENGTH;
         length += 2; // Force Id and number of variable parameter records.
@@ -167,50 +167,50 @@ public class EntityState extends AbstractPDU implements Writable {
         length += DeadReckoning.LENGTH;
         length += EntityMarking.LENGTH;
         length += EntityCapabilities.LENGTH;
-        
+
         for(AbstractVPRecord record : this.records) {
-            
+
             length += record.getLength();
         }
 
         return length;
     }
-    
+
     public boolean hasAssociations() {
-        
+
         for(AbstractVPRecord record : this.records) {
-            
+
             if (record instanceof EntityAssociationVPR) {
-                
+
                 return true;
             }
         }
-        
+
         return false;
     }
-    
+
     public void getAssociations(List<AbstractVPRecord> list) {
-        
+
         list.clear();
-        
+
         for(AbstractVPRecord record : this.records) {
-            
+
             if ((record instanceof EntityAssociationVPR) ||
                 (record instanceof EntityOffsetVPR)) {
-                
+
                 list.add(record);
             }
         }
     }
-    
+
     public void getArticulations(List<AbstractVPRecord> list) {
-        
+
         list.clear();
-        
+
         for(AbstractVPRecord record : this.records) {
-            
+
             if (record instanceof ArticulatedPartVPR) {
-                
+
                 list.add(record);
             }
         }
@@ -244,11 +244,11 @@ public class EntityState extends AbstractPDU implements Writable {
         buffer.addBreak();
 
         if (this.appearance == null) {
-            
+
             buffer.addTitle("APPEARANCE NOT AVAILABLE");
         }
         else {
-            
+
             buffer.addTitle(this.appearance.getName().toUpperCase());
             buffer.addBuffer(this.appearance);
         }
@@ -261,19 +261,19 @@ public class EntityState extends AbstractPDU implements Writable {
 
         buffer.addTitle("CAPABILITIES");
         buffer.addBuffer(this.capabilities);
-         
+
         if (!this.records.isEmpty()) {
-            
+
             for(int i = 0, size = this.records.size(); (i < size); ++i) {
-                
+
                 AbstractVPRecord record = this.records.get(i);
-                
+
                 buffer.addBreak();
                 buffer.addSeparator();
                 buffer.addBuffer(record);
             }
         }
-        
+
         buffer.addBreak();
     }
 
@@ -281,12 +281,12 @@ public class EntityState extends AbstractPDU implements Writable {
     public void read(DataInputStream stream) throws IOException {
 
         super.read(stream); // (header = 12 bytes)
-        
+
         this.entityId.read(stream); // 6 bytes
         this.forceId = stream.readUnsignedByte(); // 1 byte
-        
+
         int recordCount = stream.readUnsignedByte(); // 1 byte
-        
+
         this.entityType = EntityTypes.read(stream); // 8 bytes
         this.alternateType = EntityTypes.read(stream); // 8 bytes
         this.velocity.read(stream); // 12 bytes
@@ -299,52 +299,52 @@ public class EntityState extends AbstractPDU implements Writable {
         this.deadReckoning.read(stream);
         this.marking.read(stream);
         this.capabilities.read(stream);
-        
+
         for(int i = 0; (i < recordCount); ++i) {
 
             int type = stream.readUnsignedByte();
 
             AbstractVPRecord record = this.getVPRecord(type);
-            
+
             if (record == null) {
-                
+
                 logger.severe("Could not create VP record for " + type);
             }
             else {
-                
+
                 // Some records are dependent on the entity domain to be
                 // decoded.
                 record.setDomain(this.entityType.septuple.domain);
-                
+
                 // The reading of record from the stream should assume
                 // that the first byte (out of 16) has already been read
                 // to get the record type.
                 record.read(stream);
-                
+
                 this.records.add(record);
             }
         }
     }
-    
+
     public byte[] write() throws IOException {
-        
+
         ByteArrayOutputStream array = new ByteArrayOutputStream();
         DataOutputStream stream = new DataOutputStream(array);
-        
+
         this.write(stream);
-        
+
         byte bytes[] = array.toByteArray();
-        
+
         stream.close();
-        
+
         return bytes;
     }
 
     @Override
     public void write(DataOutputStream stream) throws IOException {
-        
+
         int length = this.calculateLength();
-        
+
         super.getHeader().setLength(length);
         super.getHeader().write(stream);
 
@@ -360,27 +360,27 @@ public class EntityState extends AbstractPDU implements Writable {
         this.deadReckoning.write(stream);
         this.marking.write(stream);
         this.capabilities.write(stream);
-        
+
         for(AbstractVPRecord record : this.records) {
-            
+
             record.write(stream);
         }
     }
-    
+
     private void checkObject(Object object) {
-        
+
         if (object == null) {
-            
+
             throw new IllegalArgumentException("Cannot set null attribute!");
         }
     }
-    
+
     private AbstractVPRecord getVPRecord(int type) {
-        
+
         AbstractVPRecord record = null;
-        
+
         switch(type) {
-            
+
             case 0: // VP_RECORD_TYPE_ARTICULATED_PART
                 record = new ArticulatedPartVPR();
                 break;
@@ -408,7 +408,7 @@ public class EntityState extends AbstractPDU implements Writable {
             default:
                 record = new DefaultVPR(type);
         }
- 
+
         return record;
     }
 }

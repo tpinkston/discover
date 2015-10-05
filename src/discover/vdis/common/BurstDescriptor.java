@@ -14,7 +14,7 @@ import discover.vdis.types.EntityType;
 import discover.vdis.types.EntityTypes;
 
 /**
- * 16 byte record used in Fire and Detonation PDUs 
+ * 16 byte record used in Fire and Detonation PDUs
  */
 public class BurstDescriptor implements Bufferable, Readable {
 
@@ -23,7 +23,7 @@ public class BurstDescriptor implements Bufferable, Readable {
     private int fuse = 0;
     private int quantity = 0;
     private int rate = 0;
-    
+
     public EntityType getMunition() { return this.munition; }
     public int getWarhead() { return this.warhead; }
     public int getFuse() { return this.fuse; }
@@ -42,16 +42,16 @@ public class BurstDescriptor implements Bufferable, Readable {
             this.warhead,
             VDIS.WARHEAD_BURST_DESC);
         buffer.addAttribute(
-            "Fuse", 
+            "Fuse",
             this.fuse,
             VDIS.FUSE_BURST_DESC);
         buffer.addAttribute("Quantity", this.quantity);
         buffer.addAttribute("Rate", this.rate);
         buffer.addBreak();
     }
-    
+
     public void clear() {
-        
+
         this.munition = null;
         this.warhead = 0;
         this.fuse = 0;
@@ -64,7 +64,7 @@ public class BurstDescriptor implements Bufferable, Readable {
 
         // 8 bytes
         this.munition = EntityTypes.read(stream);
-        
+
         // 2 bytes
         this.warhead = stream.readUnsignedShort();
 
@@ -73,7 +73,7 @@ public class BurstDescriptor implements Bufferable, Readable {
 
         // 2 bytes
         this.quantity = stream.readUnsignedShort();
-        
+
         // 2 bytes
         this.rate = stream.readUnsignedShort();
     }

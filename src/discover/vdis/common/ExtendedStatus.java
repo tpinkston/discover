@@ -13,16 +13,16 @@ import discover.vdis.enums.VDIS;
 public class ExtendedStatus extends Abstract8Bits {
 
     public static final List<Bits> values;
-    
+
     static {
-        
+
         values = new ArrayList<Bits>();
 
         values.add(Bits.get4("PresentDomain", 3, false, getHandle(VDIS.PRESENT_DOMAIN)));
         values.add(Bits.get3("Disguise", 6, false, getHandle(VDIS.DISGUISE_STATUS)));
         values.add(Bits.getYesNo("Invincible", 7));
     }
-    
+
     @Override
     public List<Bits> getValues() {
 
@@ -31,11 +31,11 @@ public class ExtendedStatus extends Abstract8Bits {
 
     @Override
     public ExtendedStatus clone() {
-        
+
         ExtendedStatus record = new ExtendedStatus();
-        
+
         record.set(super.get());
-        
+
         return record;
     }
 }

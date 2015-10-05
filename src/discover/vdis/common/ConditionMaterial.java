@@ -13,9 +13,9 @@ import discover.vdis.enums.VDIS;
 public final class ConditionMaterial extends Abstract8Bits {
 
     private static final List<Bits> values;
-    
+
     static {
-        
+
         values = new ArrayList<Bits>();
 
         values.add(Bits.get2("Rust", 7, false, getHandle(VDIS.SEVERITY)));
@@ -23,7 +23,7 @@ public final class ConditionMaterial extends Abstract8Bits {
         values.add(Bits.get2("Damage", 3, false, getHandle(VDIS.SEVERITY)));
         values.add(Bits.get2("Cleanliness", 1, false, getHandle(VDIS.SEVERITY)));
     }
-    
+
     @Override
     public List<Bits> getValues() {
 
@@ -32,11 +32,11 @@ public final class ConditionMaterial extends Abstract8Bits {
 
     @Override
     public ConditionMaterial clone() {
-        
+
         ConditionMaterial record = new ConditionMaterial();
-        
+
         record.set(super.get());
-        
+
         return record;
     }
 }

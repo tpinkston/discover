@@ -12,9 +12,9 @@ import discover.vdis.bits.Bits;
 public class ThermalIndicators extends Abstract8Bits {
 
     public static final List<Bits> values;
-    
+
     static {
-        
+
         values = new ArrayList<Bits>();
 
         values.add(Bits.getYesNo("Main Power Plant", 0));
@@ -25,7 +25,7 @@ public class ThermalIndicators extends Abstract8Bits {
         values.add(Bits.getYesNo("Gun (Secondary or Right)", 5));
         values.add(Bits.get2("Solar Heating", 7, false, null));
     }
-    
+
     @Override
     public List<Bits> getValues() {
 
@@ -34,11 +34,11 @@ public class ThermalIndicators extends Abstract8Bits {
 
     @Override
     public ThermalIndicators clone() {
-        
+
         ThermalIndicators record = new ThermalIndicators();
-        
+
         record.set(super.get());
-        
+
         return record;
     }
 }

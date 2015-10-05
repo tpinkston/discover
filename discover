@@ -11,10 +11,10 @@ if [ -e "$JAR" ]
 then
     java $ARGS -jar $JAR $@
 else
-    
+
     DIR=`dirname "$0"`
     JAR="${DIR}/${JAR}"
-    
+
     if [ -e "$JAR" ]
     then
         java $ARGS -Xmx1024m -jar $JAR $@

@@ -13,9 +13,9 @@ import discover.vdis.enums.VDIS;
 public class ExtendedEquipmentLifeform extends Abstract32Bits {
 
     private static final List<Bits> values;
-    
+
     static {
-        
+
         values = new ArrayList<Bits>();
 
         values.add(Bits.getGenericPresence("Binoculars", 0));
@@ -27,7 +27,7 @@ public class ExtendedEquipmentLifeform extends Abstract32Bits {
         values.add(Bits.getGenericPresence("Radio", 8));
         values.add(Bits.get2("IED", 10, false, getHandle(VDIS.IED_PRESENCE)));
     }
-    
+
     @Override
     public List<Bits> getValues() {
 
@@ -36,11 +36,11 @@ public class ExtendedEquipmentLifeform extends Abstract32Bits {
 
     @Override
     public ExtendedEquipmentLifeform clone() {
-        
+
         ExtendedEquipmentLifeform equipment = new ExtendedEquipmentLifeform();
-        
+
         equipment.set(super.get());
-        
+
         return equipment;
     }
 }

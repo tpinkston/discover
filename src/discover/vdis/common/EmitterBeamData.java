@@ -36,10 +36,10 @@ public class EmitterBeamData implements Bufferable, Readable {
     private long jammingTechnique = 0L;
 
     public EmitterBeamData(DataInputStream stream) throws IOException {
-        
+
         this.read(stream);
     }
-    
+
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
@@ -57,21 +57,21 @@ public class EmitterBeamData implements Bufferable, Readable {
         buffer.addAttribute("Targets", this.targetCount);
         buffer.addAttribute("Jamming Technique", this.jammingTechnique);
         buffer.addAttribute("Data Length", this.dataLength);
-        
+
         buffer.addTitle("FUNDAMENTAL PARAMETER DATA");
         buffer.addAttribute("Frequency", this.frequency);
         buffer.addAttribute("Frequency Range", this.frequencyRange);
         buffer.addAttribute("Effective Radiated Power", this.effectiveRadiatedPower);
         buffer.addAttribute("Pulse Repetition Frequency", this.pulseRepetitionFrequency);
         buffer.addAttribute("Pulse Width", this.pulseWidth);
-        
+
         buffer.addTitle("BEAM DATA");
         buffer.addAttribute("Azimuth Center", this.azimuthCenter);
         buffer.addAttribute("Azimuth Sweep", this.azimuthSweep);
         buffer.addAttribute("Elevation Center", this.elevationCenter);
         buffer.addAttribute("Elevation Sweep", this.elevationSweep);
         buffer.addAttribute("Sweep Sync", this.sweepSync);
-        
+
         for(int i = 0, size = this.targets.size(); i < size; ++i) {
 
             buffer.addBuffer(this.targets.get(i));
@@ -80,13 +80,13 @@ public class EmitterBeamData implements Bufferable, Readable {
 
     @Override
     public void read(DataInputStream stream) throws IOException {
-        
+
         // 1 byte
         this.dataLength = stream.readUnsignedByte();
-        
+
         // 1 byte
         this.beamIdNumber = stream.readUnsignedByte();
-        
+
         // 2 bytes
         this.beamParameterIndex = stream.readUnsignedShort();
 
@@ -103,24 +103,24 @@ public class EmitterBeamData implements Bufferable, Readable {
         this.elevationCenter = stream.readFloat(); // 4 bytes
         this.elevationSweep = stream.readFloat(); // 4 bytes
         this.sweepSync = stream.readFloat(); // 4 bytes
-        
+
         // 1 byte
         this.function = stream.readUnsignedByte();
-        
+
         // 1 Byte
         this.targetCount = stream.readUnsignedByte();
-        
+
         // 1 byte
         this.highDensityTrackJam = stream.readUnsignedByte();
-        
+
         // 1 byte
-        this.beamStatus = stream.readByte();        
-        
+        this.beamStatus = stream.readByte();
+
         // 4 bytes
         this.jammingTechnique = stream.readInt();
-        
+
         for(int i = 0; i < this.targetCount; ++i) {
-            
+
             this.targets.add(new EmitterTarget(stream));
         }
     }

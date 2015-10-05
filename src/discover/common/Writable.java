@@ -10,7 +10,7 @@ public interface Writable {
 
     /**
      * Writes object to output stream.
-     * 
+     *
      * @param stream - {@link DataOutputStream}
      * @throws IOException
      */

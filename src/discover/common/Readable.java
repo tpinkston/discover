@@ -10,7 +10,7 @@ public interface Readable {
 
     /**
      * Reads object from input stream.
-     * 
+     *
      * @param stream - {@link DataInputStream}
      * @throws IOException
      */

@@ -46,7 +46,7 @@ public class Receiver extends AbstractPDU {
 
         buffer.addTitle("RECEIVER");
         buffer.addAttribute(
-            "State", 
+            "State",
             VDIS.getDescription(VDIS.RECEIVER, this.receiverState));
         buffer.addAttribute("Power (dBm)", this.power);
         buffer.addBreak();
@@ -60,7 +60,7 @@ public class Receiver extends AbstractPDU {
     public void read(DataInputStream stream) throws IOException {
 
         super.read(stream); // (header)
-        
+
         this.entityId.read(stream);
         this.radioId = stream.readUnsignedShort();
         this.receiverState = stream.readUnsignedShort();

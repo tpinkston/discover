@@ -35,21 +35,21 @@ public class ExtendedPlatformAppearanceVPR extends ExtendedAppearanceVPR {
     private ConditionMaterial secondaryCondition = new ConditionMaterial();
     private ThermalIndicators thermalIndicators = new ThermalIndicators();
     private ExtendedStatus status = new ExtendedStatus();
-    
+
     public ExtendedPlatformAppearanceVPR() {
-        
+
         this(0);
     }
-    
+
     public ExtendedPlatformAppearanceVPR(int domain) {
-        
+
         super(20); // VP_RECORD_TYPE_EXT_PLATFORM_APP
         super.setDomain(domain);
     }
 
     @Override
     public int getLength() {
-        
+
         return LENGTH;
     }
 
@@ -65,90 +65,90 @@ public class ExtendedPlatformAppearanceVPR extends ExtendedAppearanceVPR {
     public ExtendedStatus getStatus() { return status; }
 
     public void setPaintScheme(int paintScheme) {
-        
+
         this.paintScheme = paintScheme;
     }
 
     public void setDecalScheme(int decalScheme) {
-    
+
         this.decalScheme = decalScheme;
     }
 
     public void setPrimaryColor(int primaryColor) {
-    
+
         this.primaryColor = primaryColor;
     }
 
     public void setSecondaryColor(int secondaryColor) {
-    
+
         this.secondaryColor = secondaryColor;
     }
-    
+
     public void setEquipment(Abstract16Bits equipment) {
-        
+
         // Intentionally throws NPE if null...
         equipment.getClass();
-        
+
         this.equipment = equipment;
     }
-    
+
     public void setLights(Abstract32Bits lights) {
-        
+
         // Intentionally throws NPE if null...
         lights.getClass();
-        
+
         this.lights = lights;
     }
 
     @Override
     public void setDomain(int domain) {
-        
+
         super.setDomain(domain);
-        
+
         this.createSubRecords();
     }
-    
+
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
         String title = VDIS.getDescription(VDIS.VP_RECORD_TYPE, super.type);
-        
+
         String domain = VDIS.getDescription(VDIS.DOMAIN, super.domain);
-        
+
         domain = domain.toUpperCase();
-        
+
         buffer.addTitle(title.toUpperCase());
-        
+
         buffer.addAttribute(
-            "Paint", 
+            "Paint",
             VDIS.getDescription(VDIS.PL_PAINT_SCHEME, this.paintScheme));
         buffer.addAttribute(
-            "Decal", 
+            "Decal",
             VDIS.getDescription(VDIS.PL_DECAL_SCHEME, this.decalScheme));
-        
+
         buffer.addTitle("PRIMARY APPEARANCE");
         buffer.addAttribute(
-            "Color", 
+            "Color",
             VDIS.getDescription(VDIS.COLORS, this.primaryColor));
         buffer.addText("Condition ");
         buffer.addBuffer(this.primaryCondition);
-        
+
         buffer.addTitle("SECONDARY APPEARANCE");
         buffer.addAttribute(
-            "Color", 
+            "Color",
             VDIS.getDescription(VDIS.COLORS, this.secondaryColor));
         buffer.addText("Condition ");
         buffer.addBuffer(this.secondaryCondition);
-        
+
         buffer.addTitle("LIGHTS (" + domain + ")");
         buffer.addBuffer(this.lights);
 
         buffer.addTitle("THERMAL INDICATORS");
         buffer.addBuffer(this.thermalIndicators);
-        
+
         buffer.addTitle("STATUS");
         buffer.addBuffer(this.status);
-        
+
         buffer.addTitle("EQUIPMENT (" + domain + ")");
         buffer.addBuffer(this.equipment);
     }
@@ -160,7 +160,7 @@ public class ExtendedPlatformAppearanceVPR extends ExtendedAppearanceVPR {
     public void read(DataInputStream stream) throws IOException {
 
         this.createSubRecords();
-        
+
         // 1 Byte
         this.paintScheme = stream.readUnsignedByte();
 
@@ -178,7 +178,7 @@ public class ExtendedPlatformAppearanceVPR extends ExtendedAppearanceVPR {
 
         // 1 Byte
         this.secondaryColor =  stream.readUnsignedByte();
-        
+
          // 4 Byte
         this.lights.read(stream);
 
@@ -187,7 +187,7 @@ public class ExtendedPlatformAppearanceVPR extends ExtendedAppearanceVPR {
 
         // 1 Byte
         this.status.read(stream);
-        
+
         // 2 bytes
         this.equipment.read(stream);
     }
@@ -196,38 +196,38 @@ public class ExtendedPlatformAppearanceVPR extends ExtendedAppearanceVPR {
     public void write(DataOutputStream stream) throws IOException {
 
         super.write(stream); // Writes record type (1 byte)
-        
+
         stream.writeByte(this.paintScheme);
         stream.writeShort(this.decalScheme);
-        
+
         this.primaryCondition.write(stream);
         stream.writeByte(this.primaryColor);
-        
+
         this.secondaryCondition.write(stream);
         stream.writeByte(this.secondaryColor);
-        
+
         this.lights.write(stream);
         this.thermalIndicators.write(stream);
         this.status.write(stream);
         this.equipment.write(stream);
     }
-    
+
     private void createSubRecords() {
-        
+
         if (super.domain == 1) {
-            
+
             // LAND
             this.lights = new ExtendedLightsLand();
             this.equipment = new ExtendedEquipmentLand();
         }
         else if (super.domain == 2) {
-            
+
             // AIR
             this.lights = new ExtendedLightsAir();
             this.equipment = new ExtendedEquipmentAir();
         }
         else {
-            
+
             this.lights = new ExtendedLightsDefault();
             this.equipment = new ExtendedEquipmentDefault();
         }

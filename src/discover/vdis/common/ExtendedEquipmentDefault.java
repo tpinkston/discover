@@ -9,11 +9,11 @@ public class ExtendedEquipmentDefault extends Abstract16Bits {
 
     @Override
     public ExtendedEquipmentDefault clone() {
-        
+
         ExtendedEquipmentDefault equipment = new ExtendedEquipmentDefault();
-        
+
         equipment.set(super.get());
-        
+
         return equipment;
     }
 

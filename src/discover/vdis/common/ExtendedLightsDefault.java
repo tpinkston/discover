@@ -9,11 +9,11 @@ public class ExtendedLightsDefault extends Abstract32Bits {
 
     @Override
     public ExtendedLightsDefault clone() {
-        
+
         ExtendedLightsDefault lights = new ExtendedLightsDefault();
-        
+
         lights.set(super.get());
-        
+
         return lights;
     }
 }

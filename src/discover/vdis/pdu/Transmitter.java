@@ -43,7 +43,7 @@ public class Transmitter extends AbstractPDU {
     public Transmitter() {
 
     }
-    
+
     public EntityId getEntityId() { return this.entityId; }
     public EntityType getRadioType() { return this.radioType; }
     public int getTransmitState() { return this.transmitState; }
@@ -54,28 +54,28 @@ public class Transmitter extends AbstractPDU {
     public int getRadioId() { return this.radioId; }
 
     public void setTransmitState(int state) {
-    
+
         this.transmitState = state;
     }
 
     public void setInputSource(int source) {
-    
+
         this.inputSource = source;
     }
 
     public void setAntennaPattern(int pattern) {
-    
+
         this.antennaPattern = pattern;
     }
 
     public void setRadioId(int id) {
-    
+
         this.radioId = id;
     }
-    
+
     @Override
     public void clear() {
-        
+
         this.entityId.clear();
         this.radioId = 0;
         this.radioType = null;
@@ -112,7 +112,7 @@ public class Transmitter extends AbstractPDU {
         buffer.addTitle("TYPE");
         this.radioType.toBuffer(buffer);
         buffer.addBreak();
-        
+
         buffer.addTitle("SPATIAL");
         buffer.addAttribute("Location", this.location.toString());
         buffer.addAttribute("Relative Location", this.relativeLocation.toString());
@@ -120,29 +120,29 @@ public class Transmitter extends AbstractPDU {
 
         buffer.addTitle("STATUS");
         buffer.addAttribute(
-            "Transmit State", 
+            "Transmit State",
             VDIS.getDescription(VDIS.TRANSMIT_STATE, this.transmitState));
         buffer.addAttribute(
-            "Input Source", 
+            "Input Source",
             VDIS.getDescription(VDIS.INPUT_SOURCE, this.inputSource));
         buffer.addBreak();
 
         buffer.addTitle("SPECIFICATION");
         buffer.addAttribute(
-            "Radio System", 
+            "Radio System",
             VDIS.getDescription(VDIS.RADIO_SYSTEM, this.radioSystem));
         buffer.addAttribute("Frequency (Hz)", this.frequency);
         buffer.addAttribute("Bandwidth", this.bandwidth);
         buffer.addAttribute("Power (dBm)", this.power);
         buffer.addAttribute(
-            "Antenna Pattern", 
+            "Antenna Pattern",
             VDIS.getDescription(
-                VDIS.ANTENNA_PATTERN_TYPE, 
+                VDIS.ANTENNA_PATTERN_TYPE,
                 this.antennaPattern));
         buffer.addLabel("Antenna Pattern Parameters");
-        
+
         if (this.antennaPatterns == null) {
-            
+
             buffer.addText("None");
             buffer.addBreak();
         }
@@ -151,23 +151,23 @@ public class Transmitter extends AbstractPDU {
             buffer.addBreak();
             Hexadecimal.toBuffer(
                 buffer,
-                " - ", 
-                4, 
-                false, 
+                " - ",
+                4,
+                false,
                 this.antennaPatterns);
         }
-        
+
         buffer.addBreak();
 
         buffer.addTitle("MODULATION");
         buffer.addAttribute(
-            "Modulation", 
+            "Modulation",
             VDIS.getDescription(VDIS.MAJOR_MODULATION, this.majorModulation));
-        
+
         int detailType = VDIS.AMPLITUDE;
-        
+
         switch(this.majorModulation) {
-            
+
             case 1: // MAJ_MOD_AMPLITUDE
                 detailType = VDIS.AMPLITUDE;
                 break;
@@ -189,13 +189,13 @@ public class Transmitter extends AbstractPDU {
         }
 
         buffer.addAttribute(
-            "Detail", 
+            "Detail",
             VDIS.getDescription(detailType, this.modulationDetail));
-        
+
         buffer.addLabel("Parameters");
-        
+
         if (this.modulationParameters == null) {
-            
+
             buffer.addText("None");
             buffer.addBreak();
         }
@@ -204,21 +204,21 @@ public class Transmitter extends AbstractPDU {
             buffer.addBreak();
             Hexadecimal.toBuffer(
                 buffer,
-                " - ", 
-                4, 
-                false, 
+                " - ",
+                4,
+                false,
                 this.modulationParameters);
         }
-        
+
         buffer.addBreak();
 
         buffer.addTitle("SPREAD SPECTRUM");
         buffer.addBuffer(this.spreadSpectrum);
         buffer.addBreak();
-        
+
         buffer.addTitle("CRYPTO");
         buffer.addAttribute(
-            "System", 
+            "System",
             VDIS.getDescription(VDIS.CRYPTO_SYS, this.cryptoSystem));
         buffer.addAttribute("Key", this.cryptoKey);
         buffer.addBreak();
@@ -228,16 +228,16 @@ public class Transmitter extends AbstractPDU {
     public void read(DataInputStream stream) throws IOException {
 
         super.read(stream); // (header)
-        
+
         this.entityId.read(stream);
         this.radioId = stream.readUnsignedShort();
         this.radioType = EntityTypes.read(stream);
         this.transmitState = stream.readUnsignedByte();
         this.inputSource = stream.readUnsignedByte();
-        
+
         // Padding (Transmitter VPR count under V-DIS)
         stream.skipBytes(2);
-        
+
         this.location.read(stream);
         this.relativeLocation.read(stream);
         this.antennaPattern = stream.readUnsignedShort();
@@ -247,7 +247,7 @@ public class Transmitter extends AbstractPDU {
         this.power = stream.readFloat();
         this.spreadSpectrum.read(stream);
         this.majorModulation = stream.readUnsignedShort();
-        this.modulationDetail = stream.readUnsignedShort(); 
+        this.modulationDetail = stream.readUnsignedShort();
         this.radioSystem = stream.readUnsignedShort();
         this.cryptoSystem = stream.readUnsignedShort();
         this.cryptoKey = stream.readUnsignedShort();
@@ -259,21 +259,21 @@ public class Transmitter extends AbstractPDU {
         stream.readByte();
 
         if (this.modulationParametersLength > 0) {
-        
+
             this.modulationParameters = new byte[this.modulationParametersLength];
-            
+
             for(int i = 0; i < this.modulationParametersLength; ++i) {
-                
+
                 this.modulationParameters[i] = stream.readByte();
             }
         }
 
         if (this.antennaPatternsLength > 0) {
-        
+
             this.modulationParameters = new byte[this.antennaPatternsLength];
-            
+
             for(int i = 0; i < this.antennaPatternsLength; ++i) {
-                
+
                 this.antennaPatterns[i] = stream.readByte();
             }
         }

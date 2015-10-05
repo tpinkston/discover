@@ -9,11 +9,11 @@ public class SpecificObjectAppearance extends Abstract32Bits {
 
     @Override
     public SpecificObjectAppearance clone() {
-        
+
         SpecificObjectAppearance appearance = new SpecificObjectAppearance();
-        
+
         appearance.set(super.get());
-        
+
         return appearance;
     }
 }
