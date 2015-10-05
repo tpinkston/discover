@@ -45,7 +45,7 @@ public class Detonation extends AbstractPDU {
 
     @Override
     public void clear() {
-        
+
         this.shooter.clear();
         this.target.clear();
         this.munition.clear();
@@ -58,25 +58,25 @@ public class Detonation extends AbstractPDU {
         this.parameters = 0;
         this.parameterData = null;
     }
-    
+
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
         super.toBuffer(buffer);
-        
+
         buffer.addTitle("IDENTIFICATION");
         buffer.addAttribute("Shooter", this.shooter.toString());
         buffer.addAttribute("Target", this.target.toString());
         buffer.addAttribute("Munition", this.munition.toString());
         buffer.addAttribute("Event", this.event.toString());
         buffer.addBreak();
-        
+
         buffer.addTitle("SPATIAL");
         buffer.addAttribute("Velocity", this.velocity.toString());
         buffer.addAttribute("Location", this.location.toString());
         buffer.addAttribute("Offset", this.offset.toString());
         buffer.addBreak();
-        
+
         buffer.addBuffer(this.burst);
         buffer.addAttribute(
             "Result",
@@ -88,7 +88,7 @@ public class Detonation extends AbstractPDU {
     public void read(DataInputStream stream) throws IOException {
 
         super.read(stream); // (header)
-        
+
         this.shooter.read(stream); // 6 bytes
         this.target.read(stream); // 6 bytes
         this.munition.read(stream); // 6 bytes
@@ -99,19 +99,19 @@ public class Detonation extends AbstractPDU {
         this.offset.read(stream); // 12 bytes
         this.result = stream.readUnsignedByte(); // 1 byte
         this.parameters = stream.readUnsignedByte(); // 1 byte
-        
+
         stream.readShort(); // 2 bytes padding
-        
+
         int count = stream.available();
-        
+
         if (count == 0) {
-            
+
             this.parameterData = null;
         }
         else {
-            
+
             this.parameterData = new byte[count];
-            
+
             stream.read(this.parameterData, 0, count);
         }
     }

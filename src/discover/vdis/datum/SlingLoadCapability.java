@@ -18,7 +18,7 @@ public class SlingLoadCapability extends AbstractDatumRecord {
     private static final NumberFormat formatter;
 
     static {
-        
+
         formatter = NumberFormat.getInstance();
         formatter.setMaximumFractionDigits(4);
     }
@@ -31,12 +31,12 @@ public class SlingLoadCapability extends AbstractDatumRecord {
     private int linesNeeded = 0;
     private float dragCoeffficient = 0.0f;
     private float currentMass = 0.0f;
-    
+
     public SlingLoadCapability(int id) {
-        
+
         super(id);
     }
-    
+
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
@@ -48,17 +48,17 @@ public class SlingLoadCapability extends AbstractDatumRecord {
         buffer.addAttribute("Drag Coefficient", this.dragCoeffficient);
         buffer.addAttribute("Current Mass (kg)", this.currentMass);
         buffer.addLabel("Lines Needed");
-        
+
         if (this.linesNeeded < 1) {
-            
+
             buffer.addItalic("None");
         }
         else {
-            
+
             buffer.listStart();
-            
+
             for(int i = 0; i < this.linesNeeded; ++i) {
-            
+
                 buffer.listItemStart();
                 buffer.addLabel("Line Length (m)");
                 buffer.addItalic(formatter.format(this.lengths.get(i)));
@@ -66,7 +66,7 @@ public class SlingLoadCapability extends AbstractDatumRecord {
                 buffer.addItalic(formatter.format(this.offsets.get(i)));
                 buffer.listItemFinished();
             }
-            
+
             buffer.listFinished();
         }
     }
@@ -75,7 +75,7 @@ public class SlingLoadCapability extends AbstractDatumRecord {
     public void read(DataInputStream stream) throws IOException {
 
         super.read(stream); // Record length (record type already read)
-        
+
         this.payload.read(stream); // 6 bytes
         this.carrier.read(stream); // 6 bytes
         this.dragCoeffficient = stream.readFloat(); // 4 bytes
@@ -83,9 +83,9 @@ public class SlingLoadCapability extends AbstractDatumRecord {
         stream.skipBytes(2); // 2 bytes padding
         this.hookType = stream.readUnsignedByte(); // 1 byte
         this.linesNeeded = stream.readUnsignedByte(); // 1 byte
-        
+
         for(int i = 0; i < this.linesNeeded; ++i) {
-            
+
             this.lengths.add(stream.readFloat()); // 4 bytes
             this.offsets.add(stream.readFloat()); // 4 bytes
         }

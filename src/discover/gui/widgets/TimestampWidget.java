@@ -15,15 +15,15 @@ import discover.vdis.common.Timestamp;
 public class TimestampWidget extends ToggleWidget {
 
     private final JPanel panel = Utilities.getGridBagPanel("");
-    
+
     public final JCheckBox absolute = new JCheckBox("Absolute");
     public final JFormattedTextField minutes = Utilities.getIntegerField(0);
     public final JFormattedTextField seconds = Utilities.getFloatField(0.0f, null);
-    
+
     public TimestampWidget(String title) {
-        
+
         super(title);
-        
+
         this.minutes.setColumns(5);
         this.seconds.setColumns(5);
         this.absolute.setSelected(false);
@@ -36,13 +36,13 @@ public class TimestampWidget extends ToggleWidget {
 
         return this.panel;
     }
-    
+
     public Timestamp getValue() {
-        
+
         Timestamp timestamp = new Timestamp();
-        
+
         this.getValue(timestamp);
-        
+
         return timestamp;
     }
 
@@ -59,51 +59,51 @@ public class TimestampWidget extends ToggleWidget {
         this.minutes.setValue(timestamp.getMinutes());
         this.seconds.setValue(timestamp.getSeconds());
     }
-    
+
     @Override
     protected void fill() {
 
         super.fill();
 
         Utilities.addComponent(
-            this.panel, 
-            new JLabel("Minutes:"), 
-            Utilities.NONE, 
-            0, 0, 
-            1, 1, 
-            0.0, 0.0, 
+            this.panel,
+            new JLabel("Minutes:"),
+            Utilities.NONE,
+            0, 0,
+            1, 1,
+            0.0, 0.0,
             Utilities.getInsets(8, 2, 2, 2));
         Utilities.addComponent(
-            this.panel, 
-            this.minutes, 
-            Utilities.HORIZONTAL, 
-            1, 0, 
-            1, 1, 
-            0.0, 0.0, 
+            this.panel,
+            this.minutes,
+            Utilities.HORIZONTAL,
+            1, 0,
+            1, 1,
+            0.0, 0.0,
             Utilities.getInsets(4, 2, 2, 2));
         Utilities.addComponent(
-            this.panel, 
-            new JLabel("Seconds:"), 
-            Utilities.NONE, 
-            2, 0, 
-            1, 1, 
-            0.0, 0.0, 
+            this.panel,
+            new JLabel("Seconds:"),
+            Utilities.NONE,
+            2, 0,
+            1, 1,
+            0.0, 0.0,
             Utilities.getInsets(8, 20, 2, 2));
         Utilities.addComponent(
-            this.panel, 
-            this.seconds, 
-            Utilities.HORIZONTAL, 
-            3, 0, 
-            1, 1, 
-            0.0, 0.0, 
+            this.panel,
+            this.seconds,
+            Utilities.HORIZONTAL,
+            3, 0,
+            1, 1,
+            0.0, 0.0,
             Utilities.getInsets(4, 2, 2, 2));
         Utilities.addComponent(
-            this.panel, 
-            this.absolute, 
-            Utilities.HORIZONTAL, 
-            4, 0, 
-            1, 1, 
-            0.0, 0.0, 
+            this.panel,
+            this.absolute,
+            Utilities.HORIZONTAL,
+            4, 0,
+            1, 1,
+            0.0, 0.0,
             Utilities.getInsets(6, 20, 2, 2));
     }
 }

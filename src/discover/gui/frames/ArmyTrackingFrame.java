@@ -34,38 +34,38 @@ import discover.vdis.marking.army.ArmyTracking;
 public class ArmyTrackingFrame {
 
     private static ArmyTrackingFrame instance = null;
-    
+
     private final JFrame frame = new JFrame("Army Tracking");
-    
+
     public static JFrame getFrame() {
-        
+
         if (instance == null) {
-            
+
             return null;
         }
         else {
-            
+
             return instance.frame;
         }
     }
-    
+
     public static void setVisible() {
-        
+
         if (instance == null) {
-            
+
             instance = new ArmyTrackingFrame();
         }
-        
+
         if (!instance.frame.isVisible()) {
-            
+
             instance.frame.setVisible(true);
         }
     }
 
     private ArmyTrackingFrame() {
-        
+
         JTabbedPane tabs = new JTabbedPane();
-        
+
         tabs.add("High Level Units", new JScrollPane(this.getTree()));
         tabs.add("Companies", new JScrollPane(this.getCompanyTable()));
         tabs.add("Platoons", new JScrollPane(this.getPlatoonTable()));
@@ -78,193 +78,193 @@ public class ArmyTrackingFrame {
         this.frame.pack();
         this.frame.setVisible(true);
     }
-    
+
     private JTable getCompanyTable() {
-        
+
         Column columns[] = new Column[] {
-          
+
             Column.VALUE,
             Column.NAME,
             Column.DESCRIPTION,
             Column.CV,
             Column.BUMPER
         };
-        
+
         JTable table = new JTable(new TableModel(
-            columns, 
+            columns,
             ArmyTracking.getValues(ArmyCompany.class)));
-        
+
         this.setTableColumnWidths(table, columns);
-        
+
         return table;
     }
-    
+
     private JTable getPlatoonTable() {
-        
+
         Column columns[] = new Column[] {
-          
+
             Column.VALUE,
             Column.NAME,
             Column.DESCRIPTION,
             Column.PV,
             Column.BUMPER
         };
-        
+
         JTable table = new JTable(new TableModel(
-            columns, 
+            columns,
             ArmyTracking.getValues(ArmyPlatoon.class)));
-        
+
         this.setTableColumnWidths(table, columns);
-        
+
         return table;
     }
-    
+
     private JTable getSectionTable() {
-        
+
         Column columns[] = new Column[] {
-          
+
             Column.VALUE,
             Column.NAME,
             Column.DESCRIPTION,
             Column.BUMPER
         };
-        
+
         JTable table = new JTable(new TableModel(
-            columns, 
+            columns,
             ArmyTracking.getValues(ArmySection.class)));
-        
+
         this.setTableColumnWidths(table, columns);
-        
+
         return table;
     }
-    
+
     private JTable getSquadTable() {
-        
+
         Column columns[] = new Column[] {
-          
+
             Column.VALUE,
             Column.NAME,
             Column.DESCRIPTION,
             Column.BUMPER
         };
-        
+
         JTable table = new JTable(new TableModel(
-            columns, 
+            columns,
             ArmyTracking.getValues(ArmySquad.class)));
-        
+
         this.setTableColumnWidths(table, columns);
-        
+
         return table;
     }
-    
+
     private JTable getTeamTable() {
-        
+
         Column columns[] = new Column[] {
-          
+
             Column.VALUE,
             Column.NAME,
             Column.DESCRIPTION,
             Column.BUMPER
         };
-        
+
         JTable table = new JTable(new TableModel(
-            columns, 
+            columns,
             ArmyTracking.getValues(ArmyTeam.class)));
-        
+
         this.setTableColumnWidths(table, columns);
-        
+
         return table;
     }
-    
+
     private JTree getTree() {
-        
+
         JTree tree = new JTree();
         DefaultTreeModel model = (DefaultTreeModel)tree.getModel();
         DefaultMutableTreeNode root = (DefaultMutableTreeNode)model.getRoot();
         Map<ArmyBrigade, DefaultMutableTreeNode> brigades = null;
-        
+
         tree.setRootVisible(false);
         tree.setCellRenderer(new TreeCellRenderer());
 
         while(model.getChildCount(root) > 0) {
-            
+
             model.removeNodeFromParent((MutableTreeNode)root.getChildAt(0));
         }
-        
+
         AbstractEchelon divisions[] = ArmyDivision.getValues();
-        
+
         if (divisions == null) {
-            
+
             model.insertNodeInto(
                 new DefaultMutableTreeNode("Data Not Available"),
-                root, 
+                root,
                 0);
 
             model.nodeStructureChanged(root);
         }
         else for(int i = 0; i < divisions.length; ++i) {
-            
+
             ArmyDivision division = (ArmyDivision)divisions[i];
             ArmyBrigade brigade = null;
             ArmyBattalion battalion = null;
             AbstractEchelon battalions[] = division.getBattalions();
-           
+
             DefaultMutableTreeNode node = new DefaultMutableTreeNode(division);
             DefaultMutableTreeNode child = null;
-            
+
             model.insertNodeInto(node, root, i);
             model.nodeStructureChanged(root);
 
             if (battalions != null) {
 
                 brigades = new HashMap<ArmyBrigade, DefaultMutableTreeNode>();
-                
+
                 for(int j = 0; j < battalions.length; ++j) {
-                    
+
                     battalion = (ArmyBattalion)battalions[j];
                     brigade = battalion.getBrigade();
-                    
+
                     if (brigade != null) {
 
                         child = brigades.get(brigade);
-                        
+
                         if (child == null) {
-                            
+
                             child = new DefaultMutableTreeNode(brigade);
-                            
+
                             brigades.put(brigade, child);
 
                             model.insertNodeInto(
-                                child, 
-                                node, 
+                                child,
+                                node,
                                 node.getChildCount());
                         }
-                        
+
                         model.insertNodeInto(
-                            new DefaultMutableTreeNode(battalion), 
-                            child, 
+                            new DefaultMutableTreeNode(battalion),
+                            child,
                             child.getChildCount());
-                        
+
                         model.nodeStructureChanged(root);
                     }
                 }
             }
         }
-        
+
         return tree;
     }
-    
+
     private void setTableColumnWidths(JTable table, Column columns[]) {
-        
+
         for(int i = 0; i < columns.length; ++i) {
-            
+
             table.getColumnModel().getColumn(i).setPreferredWidth(
                 columns[i].width);
         }
     }
-    
+
     static enum Column {
-        
+
         VALUE(Integer.class, 50),
         NAME(String.class, 250),
         DESCRIPTION(String.class, 250),
@@ -273,35 +273,35 @@ public class ArmyTrackingFrame {
         PV(Integer.class, 50),
         PRV(Integer.class, 50),
         BUMPER(String.class, 100);
-        
+
         final Class<?> type;
         final int width;
-        
+
         private Column(Class<?> type, int width) {
-        
+
             this.type = type;
             this.width = width;
         }
     }
-    
+
     @SuppressWarnings("serial")
     static class TableModel extends AbstractTableModel {
 
         private final Column columns[];
         private final AbstractEchelon data[];
-        
+
         public TableModel(
             Column columns[],
             AbstractEchelon data[]) {
-        
+
             this.columns = columns;
-            
+
             if (data != null) {
-                
+
                 this.data = data;
             }
             else {
-                
+
                 this.data = new AbstractEchelon[0];
             }
         }
@@ -340,7 +340,7 @@ public class ArmyTrackingFrame {
         public Object getValueAt(int row, int column) {
 
             switch(this.columns[column]) {
-            
+
                 case VALUE:
                     return this.data[row].value;
                 case NAME:
@@ -358,14 +358,14 @@ public class ArmyTrackingFrame {
                 case BUMPER:
                     return this.data[row].getBumper();
             }
-            
+
             return null;
         }
     }
 
     @SuppressWarnings("serial")
     static class TreeCellRenderer extends DefaultTreeCellRenderer {
-        
+
         @Override
         public Component getTreeCellRendererComponent(
             JTree tree,
@@ -375,7 +375,7 @@ public class ArmyTrackingFrame {
             boolean leaf,
             int row,
             boolean focus) {
-          
+
             DefaultMutableTreeNode node = (DefaultMutableTreeNode)object;
 
             JLabel label = (JLabel)super.getTreeCellRendererComponent(
@@ -386,28 +386,28 @@ public class ArmyTrackingFrame {
                 leaf,
                 row,
                 focus);
-            
+
             if (node.getUserObject() instanceof AbstractEchelon) {
-                
+
                 AbstractEchelon echelon = (AbstractEchelon)node.getUserObject();
                 StringBuffer buffer = new StringBuffer();
 
                 buffer.append(echelon.description);
                 buffer.append(" [value: " + echelon.value + "]");
-                
+
                 if (echelon instanceof ArmyBattalion) {
-                    
+
                     ArmyBattalion battalion = (ArmyBattalion)echelon;
-                    
+
                     buffer.append(" [prv: " + battalion.getPRV() + "]");
                     buffer.append(" [bv: " + battalion.getBV() + "]");
                 }
-                
+
                 if (echelon.getBumper() != null) {
-                    
+
                     buffer.append(" [bumper: " + echelon.getBumper() + "]");
                 }
-                
+
                 label.setText(buffer.toString());
             }
 

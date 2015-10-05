@@ -26,9 +26,9 @@ public class LegacyExtendedLifeformAppearanceVPR extends ExtendedAppearanceVPR {
     private int secondaryColor = 0;
 
     public LegacyExtendedLifeformAppearanceVPR() {
-    
+
         super(30); //  VP_RECORD_TYPE_LEGACY_EXT_LIFEFORM_APP;
-        
+
         this.equipment = new ExtendedEquipmentLifeform();
         this.status = new ExtendedStatus();
         this.attributes = new LifeformAttributes();
@@ -36,7 +36,7 @@ public class LegacyExtendedLifeformAppearanceVPR extends ExtendedAppearanceVPR {
 
     @Override
     public int getLength() {
-        
+
         return LENGTH;
     }
 
@@ -48,47 +48,47 @@ public class LegacyExtendedLifeformAppearanceVPR extends ExtendedAppearanceVPR {
     public int getSecondaryColor() { return this.secondaryColor; }
 
     public void setClothing(int clothing) {
-    
+
         this.clothing = clothing;
     }
 
     public void setPrimaryColor(int primaryColor) {
-    
+
         this.primaryColor = primaryColor;
     }
 
     public void setSecondaryColor(int secondaryColor) {
-    
+
         this.secondaryColor = secondaryColor;
     }
 
     @Override
     public void toBuffer(AbstractBuffer buffer) {
-        
+
         String title = VDIS.getDescription(VDIS.VP_RECORD_TYPE, super.type);
-        
+
         buffer.addTitle(title.toUpperCase());
-        
+
         buffer.addAttribute(
-            "Clothing", 
+            "Clothing",
             VDIS.getDescription(VDIS.LF_CLOTH_SCHEME, this.clothing));
         buffer.addAttribute(
-            "Primary Color", 
+            "Primary Color",
             VDIS.getDescription(VDIS.COLORS, this.primaryColor));
         buffer.addAttribute(
-            "Secondary Color", 
+            "Secondary Color",
             VDIS.getDescription(VDIS.COLORS, this.secondaryColor));
-        
+
         buffer.addTitle("EQUIPMENT");
         buffer.addBuffer(this.equipment);
-        
+
         buffer.addTitle("STATUS");
         buffer.addBuffer(this.status);
-        
+
         buffer.addTitle("ATTRIBUTES");
         buffer.addBuffer(this.attributes);
     }
-    
+
     @Override
     public void read(DataInputStream stream) throws IOException {
 

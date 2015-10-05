@@ -12,9 +12,9 @@ import discover.vdis.bits.Bits;
 public class IFFInformationLayers extends Abstract8Bits {
 
     private static final List<Bits> values;
-    
+
     static {
-        
+
         values = new ArrayList<Bits>();
 
         values.add(Bits.getYesNo("Layer 1", 1));
@@ -25,7 +25,7 @@ public class IFFInformationLayers extends Abstract8Bits {
         values.add(Bits.getYesNo("Layer 6", 6));
         values.add(Bits.getYesNo("Layer 7", 7));
     }
-    
+
     @Override
     public List<Bits> getValues() {
 
@@ -34,11 +34,11 @@ public class IFFInformationLayers extends Abstract8Bits {
 
     @Override
     public IFFInformationLayers clone() {
-        
+
         IFFInformationLayers record = new IFFInformationLayers();
-        
+
         record.set(super.get());
-        
+
         return record;
     }
 }

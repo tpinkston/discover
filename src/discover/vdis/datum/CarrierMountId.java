@@ -11,10 +11,10 @@ import discover.common.buffer.AbstractBuffer;
 public class CarrierMountId extends AbstractDatumRecord {
 
     public CarrierMountId(int id) {
-        
+
         super(id);
     }
-    
+
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 

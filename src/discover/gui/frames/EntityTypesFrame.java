@@ -36,7 +36,7 @@ import discover.vdis.types.EntityTypes;
 public class EntityTypesFrame implements ActionListener, ListSelectionListener {
 
     private static EntityTypesFrame instance = null;
-    
+
     private static final Column COLUMNS[] = Column.values();
 
     private final JFrame frame = new JFrame("Entity Types");
@@ -50,28 +50,28 @@ public class EntityTypesFrame implements ActionListener, ListSelectionListener {
     private final TableFilter filter = new TableFilter();
     private final TableRowSorter<TableModel> sorter;
     private final List<EntityType> types;
-    
+
     public static JFrame getFrame() {
-        
+
         if (instance == null) {
-            
+
             return null;
         }
         else {
-            
+
             return instance.frame;
         }
     }
-    
+
     public static void setVisible() {
-        
+
         if (instance == null) {
-            
+
             instance = new EntityTypesFrame();
         }
-        
+
         if (!instance.frame.isVisible()) {
-            
+
             instance.frame.setVisible(true);
         }
     }
@@ -79,15 +79,15 @@ public class EntityTypesFrame implements ActionListener, ListSelectionListener {
     private EntityTypesFrame() {
 
         this.types = EntityTypes.getValues();
-        
+
         Utilities.configureComboBox(this.countries, VDIS.ENT_CNTRY, true);
         Utilities.configureComboBox(this.kinds, VDIS.ENT_KIND, true);
         Utilities.configureComboBox(this.domains, VDIS.DOMAIN, true);
-        
+
         this.domains.addActionListener(this);
         this.kinds.addActionListener(this);
         this.countries.addActionListener(this);
-       
+
         this.sorter = new TableRowSorter<TableModel>(this.model);
         this.sorter.setRowFilter(this.filter);
 
@@ -110,7 +110,7 @@ public class EntityTypesFrame implements ActionListener, ListSelectionListener {
 
         this.fill();
         this.setVisibleObjectCount();
-        
+
         this.frame.setPreferredSize(new Dimension(800, 600));
         this.frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         this.frame.pack();
@@ -122,33 +122,33 @@ public class EntityTypesFrame implements ActionListener, ListSelectionListener {
         this.filter.domain = null;
         this.filter.kind = null;
         this.filter.country = null;
-        
+
         int domain = this.domains.getSelectedIndex();
         int kind = this.kinds.getSelectedIndex();
         int geometry = this.countries.getSelectedIndex();
-        
+
         if (domain > 0) {
-            
+
             this.filter.domain = new Integer(domain - 1);
         }
-        
+
         if (kind > 0) {
-            
+
             this.filter.kind = new Integer(kind - 1);
         }
-        
+
         if (geometry > 0) {
-            
+
             this.filter.country = new Integer(geometry - 1);
         }
-        
+
         this.model.fireTableDataChanged();
         this.setVisibleObjectCount();
     }
 
     @Override
     public void valueChanged(ListSelectionEvent event) {
-        
+
         if (!event.getValueIsAdjusting()) {
 
             int row = this.table.getSelectedRow();
@@ -180,7 +180,7 @@ public class EntityTypesFrame implements ActionListener, ListSelectionListener {
     private void setVisibleObjectCount() {
 
         this.visible.setText(
-            "Visible rows: " + this.sorter.getViewRowCount() + 
+            "Visible rows: " + this.sorter.getViewRowCount() +
             " of " + this.types.size());
     }
 
@@ -200,7 +200,7 @@ public class EntityTypesFrame implements ActionListener, ListSelectionListener {
 
         splitter.setTopComponent(scroller);
         splitter.setBottomComponent(this.text.getPanel());
-        
+
         this.frame.add(filter, BorderLayout.NORTH);
         this.frame.add(splitter, BorderLayout.CENTER);
         this.frame.add(this.visible, BorderLayout.SOUTH);
@@ -233,11 +233,11 @@ public class EntityTypesFrame implements ActionListener, ListSelectionListener {
         public Class<?> getColumnClass(int column) {
 
             if (column == Column.VALUE.ordinal()) {
-                
+
                 return EntityType.class;
             }
             else {
-                
+
                 return String.class;
             }
         }
@@ -271,7 +271,7 @@ public class EntityTypesFrame implements ActionListener, ListSelectionListener {
                     object = type.name;
                     break;
                 case VALUE:
-                    object = type; 
+                    object = type;
                     break;
                 case DOMAIN:
                     object = type.getDomain();
@@ -293,10 +293,10 @@ public class EntityTypesFrame implements ActionListener, ListSelectionListener {
         Integer kind = null;
         Integer domain = null;
         Integer country = null;
-        
+
         @Override
         public boolean include( RowFilter.Entry<
-            ? extends TableModel, 
+            ? extends TableModel,
             ? extends Integer> entry) {
 
             EntityType type = types.get(entry.getIdentifier().intValue());
@@ -305,12 +305,12 @@ public class EntityTypesFrame implements ActionListener, ListSelectionListener {
 
                 return false;
             }
-            else if ((this.domain != null) && 
+            else if ((this.domain != null) &&
                      (this.domain != type.septuple.domain)) {
 
                 return false;
             }
-            else if ((this.kind != null) && 
+            else if ((this.kind != null) &&
                      (this.kind != type.septuple.kind)) {
 
                 return false;

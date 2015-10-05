@@ -22,7 +22,7 @@ public class IdentificationFriendOrFoe extends AbstractPDU {
     private IFFFundamentalOperationalData operational = new IFFFundamentalOperationalData();
     private byte designator = 0x00;
     private byte specific = 0x00;
-    
+
     public IdentificationFriendOrFoe() {
 
     }
@@ -37,12 +37,12 @@ public class IdentificationFriendOrFoe extends AbstractPDU {
         this.operational.clear();
         this.designator = 0x00;
     }
-    
+
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
         super.toBuffer(buffer);
-    
+
         buffer.addTitle("IDENTIFICATION");
         buffer.addAttribute("Emitter", this.emitter.toString());
         buffer.addAttribute("Event", this.event.toString());
@@ -75,7 +75,7 @@ public class IdentificationFriendOrFoe extends AbstractPDU {
     public void read(DataInputStream stream) throws IOException {
 
         super.read(stream); // (header)
-     
+
         this.emitter.read(stream);
         this.event.read(stream);
         this.location.read(stream);

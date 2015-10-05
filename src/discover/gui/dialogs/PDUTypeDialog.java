@@ -22,9 +22,9 @@ import discover.vdis.enums.VDIS;
 
 public class PDUTypeDialog implements ActionListener {
 
-    private static final String CLOSE = "Close"; 
-    private static final String SELECT_ALL = "Select All"; 
-    private static final String DESELECT_ALL = "Deselect All"; 
+    private static final String CLOSE = "Close";
+    private static final String SELECT_ALL = "Select All";
+    private static final String DESELECT_ALL = "Deselect All";
 
     @SuppressWarnings("serial")
     private final JDialog dialog = new JDialog(DiscoverFrame.getFrame(), "") {
@@ -33,17 +33,17 @@ public class PDUTypeDialog implements ActionListener {
             public void dispose() {
 
                 PDUTypeDialog.this.disposing();
-                
+
                 super.dispose();
             }
     };
-    
+
     private final TableModel model = new TableModel();
-    
+
     private final JButton select = new JButton(SELECT_ALL);
     private final JButton deselect = new JButton(DESELECT_ALL);
     private final JButton close = new JButton(CLOSE);
-    
+
     public PDUTypeDialog(
         String title,
         JDialog parent,
@@ -59,64 +59,64 @@ public class PDUTypeDialog implements ActionListener {
 
         this.deselect.setActionCommand(DESELECT_ALL);
         this.deselect.addActionListener(this.model);
-        
+
         this.close.setActionCommand(CLOSE);
         this.close.addActionListener(this);
-        
+
         int values[] = VDIS.getEnumValues(VDIS.PDU_TYPE);
-        
+
         for(int type : values) {
-            
+
             TableRow row = new TableRow(type);
 
             row.selected = Boolean.valueOf(list.contains(type));
-            
+
             this.model.rows.add(row);
         }
-        
+
         TableColumn column0 = table.getColumnModel().getColumn(0);
         TableColumn column1 = table.getColumnModel().getColumn(1);
-        
+
         column0.setResizable(true);
         column1.setMinWidth(18);
         column1.setMaxWidth(18);
         column1.setResizable(false);
 
         scroller.setPreferredSize(new Dimension(250, 300));
-        
+
         Utilities.setGridBagLayout(this.dialog.getContentPane());
-        
+
         Utilities.addComponent(
-            this.dialog.getContentPane(), 
-            scroller, 
-            Utilities.BOTH, 
-            0, 0, 
-            2, 1, 
-            1.0, 1.0, 
+            this.dialog.getContentPane(),
+            scroller,
+            Utilities.BOTH,
+            0, 0,
+            2, 1,
+            1.0, 1.0,
             Utilities.getInsets(10, 10, 10, 10));
         Utilities.addComponent(
-            this.dialog.getContentPane(), 
-            this.select, 
-            Utilities.HORIZONTAL, 
+            this.dialog.getContentPane(),
+            this.select,
+            Utilities.HORIZONTAL,
             0, 1,
             1, 1,
-            0.5, 0.0, 
+            0.5, 0.0,
             Utilities.getInsets(10, 10, 10, 5));
         Utilities.addComponent(
-            this.dialog.getContentPane(), 
-            this.deselect, 
-            Utilities.HORIZONTAL, 
+            this.dialog.getContentPane(),
+            this.deselect,
+            Utilities.HORIZONTAL,
             1, 1,
             1, 1,
-            0.5, 0.0, 
+            0.5, 0.0,
             Utilities.getInsets(10, 5, 10, 10));
         Utilities.addComponent(
-            this.dialog.getContentPane(), 
-            this.close, 
-            Utilities.HORIZONTAL, 
-            0, 2, 
-            2, 1, 
-            1.0, 0.0, 
+            this.dialog.getContentPane(),
+            this.close,
+            Utilities.HORIZONTAL,
+            0, 2,
+            2, 1,
+            1.0, 0.0,
             Utilities.getInsets(10, 10, 10, 10));
 
         this.dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -127,47 +127,47 @@ public class PDUTypeDialog implements ActionListener {
     }
 
     public void apply(List<Integer> list) {
-        
+
         list.clear();
-        
+
         for(TableRow row : this.model.rows) {
-            
+
             if (row.selected) {
-                
+
                 list.add(row.type);
             }
         }
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent event) {
 
         if (event.getActionCommand() == CLOSE) {
-            
+
             this.dialog.dispose();
         }
     }
-    
+
     private void disposing() {
-        
+
         this.select.removeActionListener(this.model);
         this.deselect.removeActionListener(this.model);
         this.close.removeActionListener(this);
     }
-    
+
     class TableRow {
-        
+
         public final int type;
         public final String description;
         public Boolean selected;
-        
+
         public TableRow(int type) {
-            
+
             this.type = type;
             this.description = VDIS.getDescription(VDIS.PDU_TYPE, type);
         }
     }
-    
+
     @SuppressWarnings("serial")
     class TableModel extends AbstractTableModel implements ActionListener {
 
@@ -193,53 +193,53 @@ public class PDUTypeDialog implements ActionListener {
 
         @Override
         public boolean isCellEditable(int row, int column) {
-            
+
             return (column == 1);
         }
 
         public void setAllRows(boolean selected) {
-            
+
             for(TableRow row : rows) {
-                
+
                 row.selected = Boolean.valueOf(selected);
             }
-            
+
             super.fireTableDataChanged();
         }
-        
+
         @Override
         public void setValueAt(Object object, int row, int column) {
-            
+
             if (object instanceof Boolean) {
 
                 this.rows.get(row).selected = (Boolean)object;
             }
         }
- 
+
         @Override
         public Object getValueAt(int row, int column) {
 
             TableRow tableRow = this.rows.get(row);
-            
+
             if (column == 0) {
-                
+
                return tableRow.description;
             }
             else {
-                
+
                 return tableRow.selected;
             }
         }
-        
+
         @Override
         public void actionPerformed(ActionEvent event) {
 
             if (event.getActionCommand() == SELECT_ALL) {
-                
+
                 this.setAllRows(true);
             }
             else if (event.getActionCommand() == DESELECT_ALL) {
-                
+
                 this.setAllRows(false);
             }
         }

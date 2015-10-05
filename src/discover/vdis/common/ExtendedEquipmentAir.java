@@ -13,9 +13,9 @@ import discover.vdis.enums.VDIS;
 public class ExtendedEquipmentAir extends Abstract16Bits {
 
     public static final List<Bits> values;
-    
+
     static {
-        
+
         values = new ArrayList<Bits>();
 
         values.add(Bits.getGenericPresence("Auxiliary Power Plant #2", 0));
@@ -33,10 +33,10 @@ public class ExtendedEquipmentAir extends Abstract16Bits {
     }
 
     public ExtendedEquipmentAir(short value) {
-        
+
         super.set(value);
     }
-    
+
     @Override
     public List<Bits> getValues() {
 
@@ -45,11 +45,11 @@ public class ExtendedEquipmentAir extends Abstract16Bits {
 
     @Override
     public ExtendedEquipmentAir clone() {
-        
+
         ExtendedEquipmentAir equipment = new ExtendedEquipmentAir();
-        
+
         equipment.set(super.get());
-        
+
         return equipment;
     }
 }

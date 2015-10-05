@@ -36,7 +36,7 @@ import discover.vdis.types.ObjectTypes;
 public class ObjectTypesFrame implements ActionListener, ListSelectionListener {
 
     private static ObjectTypesFrame instance = null;
-    
+
     private static final Column COLUMNS[] = Column.values();
 
     private final JFrame frame = new JFrame("Object Types");
@@ -50,28 +50,28 @@ public class ObjectTypesFrame implements ActionListener, ListSelectionListener {
     private final TableFilter filter = new TableFilter();
     private final TableRowSorter<TableModel> sorter;
     private final List<ObjectType> types;
-    
+
     public static JFrame getFrame() {
-        
+
         if (instance == null) {
-            
+
             return null;
         }
         else {
-            
+
             return instance.frame;
         }
     }
-    
+
     public static void setVisible() {
-        
+
         if (instance == null) {
-            
+
             instance = new ObjectTypesFrame();
         }
-        
+
         if (!instance.frame.isVisible()) {
-            
+
             instance.frame.setVisible(true);
         }
     }
@@ -79,15 +79,15 @@ public class ObjectTypesFrame implements ActionListener, ListSelectionListener {
     private ObjectTypesFrame() {
 
         this.types = ObjectTypes.getValues();
-        
+
         Utilities.configureComboBox(this.geometries, VDIS.OBJECT_GEOMETRY, true);
         Utilities.configureComboBox(this.kinds, VDIS.OBJECT_KIND, true);
         Utilities.configureComboBox(this.domains, VDIS.DOMAIN, true);
-        
+
         this.domains.addActionListener(this);
         this.kinds.addActionListener(this);
         this.geometries.addActionListener(this);
-       
+
         this.sorter = new TableRowSorter<TableModel>(this.model);
         this.sorter.setRowFilter(this.filter);
 
@@ -110,7 +110,7 @@ public class ObjectTypesFrame implements ActionListener, ListSelectionListener {
 
         this.fill();
         this.setVisibleObjectCount();
-        
+
         this.frame.setPreferredSize(new Dimension(800, 600));
         this.frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         this.frame.pack();
@@ -122,33 +122,33 @@ public class ObjectTypesFrame implements ActionListener, ListSelectionListener {
         this.filter.domain = null;
         this.filter.kind = null;
         this.filter.geometry = null;
-        
+
         int domain = this.domains.getSelectedIndex();
         int kind = this.kinds.getSelectedIndex();
         int geometry = this.geometries.getSelectedIndex();
-        
+
         if (domain > 0) {
-            
+
             this.filter.domain = new Integer(domain - 1);
         }
-        
+
         if (kind > 0) {
-            
+
             this.filter.kind = new Integer(kind - 1);
         }
-        
+
         if (geometry > 0) {
-            
+
             this.filter.geometry = new Integer(geometry - 1);
         }
-        
+
         this.model.fireTableDataChanged();
         this.setVisibleObjectCount();
     }
 
     @Override
     public void valueChanged(ListSelectionEvent event) {
-        
+
         if (!event.getValueIsAdjusting()) {
 
             int row = this.table.getSelectedRow();
@@ -180,7 +180,7 @@ public class ObjectTypesFrame implements ActionListener, ListSelectionListener {
     private void setVisibleObjectCount() {
 
         this.visible.setText(
-            "Visible rows: " + this.sorter.getViewRowCount() + 
+            "Visible rows: " + this.sorter.getViewRowCount() +
             " of " + this.types.size());
     }
 
@@ -200,7 +200,7 @@ public class ObjectTypesFrame implements ActionListener, ListSelectionListener {
 
         splitter.setTopComponent(scroller);
         splitter.setBottomComponent(this.text.getPanel());
-        
+
         this.frame.add(filter, BorderLayout.NORTH);
         this.frame.add(splitter, BorderLayout.CENTER);
         this.frame.add(this.visible, BorderLayout.SOUTH);
@@ -233,11 +233,11 @@ public class ObjectTypesFrame implements ActionListener, ListSelectionListener {
         public Class<?> getColumnClass(int column) {
 
             if (column == Column.VALUE.ordinal()) {
-                
+
                 return ObjectType.class;
             }
             else {
-                
+
                 return String.class;
             }
         }
@@ -271,7 +271,7 @@ public class ObjectTypesFrame implements ActionListener, ListSelectionListener {
                     object = type.name;
                     break;
                 case VALUE:
-                    object = type; 
+                    object = type;
                     break;
                 case DOMAIN:
                     object = type.getDomain();
@@ -293,10 +293,10 @@ public class ObjectTypesFrame implements ActionListener, ListSelectionListener {
         Integer kind = null;
         Integer domain = null;
         Integer geometry = null;
-        
+
         @Override
         public boolean include( RowFilter.Entry<
-            ? extends TableModel, 
+            ? extends TableModel,
             ? extends Integer> entry) {
 
             ObjectType type = types.get(entry.getIdentifier().intValue());
@@ -305,7 +305,7 @@ public class ObjectTypesFrame implements ActionListener, ListSelectionListener {
 
                 return false;
             }
-            else if ((this.domain != null) && 
+            else if ((this.domain != null) &&
                      (this.domain != type.domain)) {
 
                 return false;
@@ -315,7 +315,7 @@ public class ObjectTypesFrame implements ActionListener, ListSelectionListener {
 
                 return false;
             }
-            else if ((this.geometry != null) && 
+            else if ((this.geometry != null) &&
                      (this.geometry != type.geometry.ordinal())) {
 
                 return false;

@@ -22,13 +22,13 @@ public class ActionRequest extends AbstractPDU implements Writable {
     private DatumSpecificationRecord specification = new DatumSpecificationRecord();
     private int actionId = 0;
     private long requestId = 0;
-    
+
     public ActionRequest() {
-        
+
     }
-    
+
     public long getRequestId() { return this.requestId; }
-    
+
     public void setRequestId(long id) { this.requestId = id; }
 
     public int getActionId() { return this.actionId; }
@@ -38,15 +38,15 @@ public class ActionRequest extends AbstractPDU implements Writable {
     public EntityId getOriginator() { return this.originator; }
 
     public EntityId getRecipient() { return this.recipient; }
-    
+
     public DatumSpecificationRecord getSpecification() {
-        
+
         return this.specification;
     }
-    
+
     @Override
     public void clear() {
-        
+
         this.originator.clear();
         this.recipient.clear();
         this.requestId = 0;
@@ -72,39 +72,39 @@ public class ActionRequest extends AbstractPDU implements Writable {
     public void read(DataInputStream stream) throws IOException {
 
         super.read(stream); // (header)
-        
+
         this.originator.read(stream); // 6 bytes
         this.recipient.read(stream); // 6 bytes
         this.requestId = Common.toUnsigned32(stream.readInt()); // 4 bytes
         this.actionId = stream.readInt(); // 4 bytes
         this.specification.read(stream);
     }
-    
+
     public byte[] write() throws IOException {
-        
+
         ByteArrayOutputStream array = new ByteArrayOutputStream();
         DataOutputStream stream = new DataOutputStream(array);
-        
+
         this.write(stream);
-        
+
         byte bytes[] = array.toByteArray();
-        
+
         stream.close();
-        
+
         return bytes;
     }
-    
+
     @Override
     public void write(DataOutputStream stream) throws IOException {
-        
+
         super.getHeader().write(stream);
-        
+
         this.originator.write(stream);
         this.recipient.write(stream);
-        
+
         stream.writeInt((int)this.requestId);
         stream.writeInt(this.actionId);
-        
+
         this.specification.write(stream);
     }
 }

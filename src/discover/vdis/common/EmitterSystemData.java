@@ -25,15 +25,15 @@ public class EmitterSystemData implements Bufferable, Readable {
     private long time = 0;
 
     public EmitterSystemData(DataInputStream stream) throws IOException {
-        
+
         this.read(stream);
     }
-    
+
     public int getNumber() { return this.number; }
     public long getTime() { return this.time; }
-    
+
     public void setTime(long time) {
-        
+
         this.time = time;
     }
 
@@ -56,26 +56,26 @@ public class EmitterSystemData implements Bufferable, Readable {
 
     @Override
     public void read(DataInputStream stream) throws IOException {
-        
+
         // 1 byte
         this.dataLength = stream.readUnsignedByte();
-        
+
         // 1 byte
         this.beamCount = stream.readUnsignedByte();
-        
+
         // 2 bytes padding
         stream.skipBytes(2);
-        
+
         // Emitter System
         this.name = stream.readUnsignedShort(); // 2 bytes
         this.function = stream.readUnsignedByte(); // 1 byte
         this.number = stream.readUnsignedByte(); // 1 byte
-        
+
         // 12 bytes
         this.location.read(stream);
-        
+
         for(int i = 0; i < this.beamCount; ++i) {
-            
+
             this.beams.add(new EmitterBeamData(stream));
         }
     }

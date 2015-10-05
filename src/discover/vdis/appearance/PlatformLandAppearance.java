@@ -12,9 +12,9 @@ import discover.vdis.enums.VDIS;
 public class PlatformLandAppearance extends AbstractAppearance {
 
     public static final List<Bits> values;
-    
+
     static {
-        
+
         values = new ArrayList<Bits>();
 
         values.add(Bits.getYesNo("Camouflaged", 0));
@@ -38,10 +38,10 @@ public class PlatformLandAppearance extends AbstractAppearance {
         values.add(Bits.getOnOff("Interior Lights", 29));
         values.add(Bits.getYesNo("Surrendered", 30));
     }
-    
+
     @Override
     public String getName() {
-        
+
         return "Platform Land Appearance";
     }
 
@@ -53,11 +53,11 @@ public class PlatformLandAppearance extends AbstractAppearance {
 
     @Override
     public PlatformLandAppearance clone() {
-        
+
         PlatformLandAppearance appearance = new PlatformLandAppearance();
-        
+
         appearance.set(super.get());
-        
+
         return appearance;
     }
 }

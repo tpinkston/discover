@@ -8,7 +8,7 @@ public enum TabType {
     // Add new enumerations to the end to preserve backwards compatibility
     // with previous versions that save ordinal values to file.
     CAPTURE(
-        "Capture", 
+        "Capture",
         "For capturing inbound PDU traffic."),
     PLAYBACK(
         "Playback",

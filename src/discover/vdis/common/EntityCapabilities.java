@@ -12,9 +12,9 @@ import discover.vdis.bits.Bits;
 public class EntityCapabilities extends Abstract32Bits {
 
     private static final List<Bits> values;
-    
+
     static {
-        
+
         values = new ArrayList<Bits>();
 
         values.add(Bits.getGenericPresence("Ammunition Supply", 0));
@@ -36,11 +36,11 @@ public class EntityCapabilities extends Abstract32Bits {
 
     @Override
     public EntityCapabilities clone() {
-        
+
         EntityCapabilities capabilities = new EntityCapabilities();
-        
+
         capabilities.set(super.get());
-        
+
         return capabilities;
     }
 }

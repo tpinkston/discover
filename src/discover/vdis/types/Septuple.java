@@ -6,7 +6,7 @@ package discover.vdis.types;
 import java.util.StringTokenizer;
 
 public class Septuple {
-    
+
     public final String string; // (e.g. "1.1.225.1.1.0.0")
     public final int kind;
     public final int domain;
@@ -25,7 +25,7 @@ public class Septuple {
         int subcategory,
         int specific,
         int extension) {
-        
+
         this.string = string;
         this.kind = kind;
         this.domain = domain;
@@ -35,9 +35,9 @@ public class Septuple {
         this.specific = specific;
         this.extension = extension;
     }
-    
+
     public long toLong() {
-        
+
         return toLong(
             this.kind,
             this.domain,
@@ -56,9 +56,9 @@ public class Septuple {
         int subcategory,
         int specific,
         int extension) {
-        
+
         long value = 0;
-        
+
         value = (kind & 0xFF);
         value <<= 8;
         value |= (domain & 0xFF);
@@ -84,9 +84,9 @@ public class Septuple {
         int subcategory,
         int specific,
         int extension) {
-        
+
         StringBuilder builder = new StringBuilder();
-        
+
         builder.append(kind);
         builder.append(".");
         builder.append(domain);
@@ -103,9 +103,9 @@ public class Septuple {
 
         return builder.toString();
     }
-    
+
     public static Septuple parse(String string) {
-        
+
         StringTokenizer tokenizer = new StringTokenizer(string, ".");
         int kind = 0;
         int domain = 0;
@@ -116,9 +116,9 @@ public class Septuple {
         int extension = 0;
 
         if (tokenizer.countTokens() == 7) {
-            
+
             try {
-                
+
                 kind = Integer.parseInt(tokenizer.nextToken());
                 domain = Integer.parseInt(tokenizer.nextToken());
                 country = Integer.parseInt(tokenizer.nextToken());
@@ -128,19 +128,19 @@ public class Septuple {
                 extension = Integer.parseInt(tokenizer.nextToken());
             }
             catch(NumberFormatException exception) {
-                
+
                 exception.printStackTrace();
             }
         }
-        
+
         return new Septuple(
-            string, 
-            kind, 
-            domain, 
-            country, 
-            category, 
-            subcategory, 
-            specific, 
+            string,
+            kind,
+            domain,
+            country,
+            category,
+            subcategory,
+            specific,
             extension);
     }
 }

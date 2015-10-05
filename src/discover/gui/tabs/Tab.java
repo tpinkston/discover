@@ -17,45 +17,45 @@ import discover.common.Version;
 public abstract class Tab {
 
     protected static final Logger logger = Discover.getLogger();
-    
+
     protected final JPanel panel;
     protected final TabType type;
-    
+
     protected Tab(String name, TabType type) {
-        
+
         this.type = type;
         this.panel = new JPanel(new GridBagLayout());
         this.panel.setName(name);
     }
-    
+
     public abstract void load(Version version, DataInputStream stream) throws IOException;
-    
+
     public abstract void save(DataOutputStream stream) throws IOException;
 
     public abstract void close();
-    
+
     public JPanel getPanel() {
-        
+
         return this.panel;
     }
-    
+
     public TabType getTabType() {
-        
+
         return this.type;
     }
-    
+
     public String getTabName() {
-        
+
         return this.panel.getName();
     }
-    
+
     public void setTabName(String name) {
-        
+
         this.panel.setName(name);
     }
 
     public final boolean isPDUPanel() {
-        
+
         return (this.type == TabType.CAPTURE) || (this.type == TabType.PLAYBACK);
     }
 }

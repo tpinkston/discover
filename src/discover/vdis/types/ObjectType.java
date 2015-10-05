@@ -11,17 +11,17 @@ public class ObjectType implements Comparable<ObjectType>, Bufferable {
 
     /**
      * Must match the OBJECT_GEOMETRY enumeration
-     * 
+     *
      * @see VDISNames.OBJECT_GEOMETRY
      */
     public static enum Geometry {
-        
+
         UNKNOWN,
         POINT,
         LINEAR,
         AREAL
     }
-    
+
     public final int domain;
     public final int kind;
     public final int category;
@@ -42,7 +42,7 @@ public class ObjectType implements Comparable<ObjectType>, Bufferable {
         String name,
         String description,
         String tuple) {
-        
+
         this.domain = domain;
         this.kind = kind;
         this.category = category;
@@ -60,37 +60,37 @@ public class ObjectType implements Comparable<ObjectType>, Bufferable {
     public int compareTo(ObjectType type) {
 
         if (this.value < type.value) {
-            
+
             return -1;
         }
         else if (this.value == type.value) {
-            
+
             return 0;
         }
         else {
-            
+
             return 1;
         }
     }
 
     @Override
     public boolean equals(Object object) {
-        
+
         if (object instanceof ObjectType) {
-            
+
             return (this.value == ((ObjectType)object).value);
         }
         else {
-            
+
             return false;
         }
     }
-    
+
     /**
      * @return {@link String}
      */
     public String getDomain() {
-    
+
         return VDIS.getHandle(VDIS.DOMAIN).getDescription(this.domain);
     }
 
@@ -98,15 +98,15 @@ public class ObjectType implements Comparable<ObjectType>, Bufferable {
      * @return {@link String}
      */
     public String getKind() {
-    
+
         return VDIS.getHandle(VDIS.OBJECT_KIND).getDescription(this.kind);
     }
-    
+
     /**
      * @return {@link String}
      */
     public String getGeometry() {
-    
+
         return VDIS.getHandle(VDIS.OBJECT_GEOMETRY).getDescription(this.geometry.ordinal());
     }
 
@@ -115,7 +115,7 @@ public class ObjectType implements Comparable<ObjectType>, Bufferable {
 
         return this.tuple;
     }
-    
+
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 

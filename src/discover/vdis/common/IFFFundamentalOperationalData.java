@@ -23,9 +23,9 @@ public class IFFFundamentalOperationalData implements Bufferable, Readable {
     private short parameter4 = 0x00;
     private short parameter5 = 0x00;
     private short parameter6 = 0x00;
-    
+
     public void clear() {
-        
+
         this.status.set((byte)0x00);
         this.informationLayers.set((byte)0x00);
         this.dataField1 = 0x00;
@@ -37,7 +37,7 @@ public class IFFFundamentalOperationalData implements Bufferable, Readable {
         this.parameter5 = 0x00;
         this.parameter6 = 0x00;
     }
-    
+
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
@@ -69,25 +69,25 @@ public class IFFFundamentalOperationalData implements Bufferable, Readable {
         this.parameter3 = this.readAvailableShort(stream);
         this.parameter4 = this.readAvailableShort(stream);
         this.parameter5 = this.readAvailableShort(stream);
-        
+
         if (stream.available() > 0) {
-            
+
             this.parameter6 = stream.readShort();
         }
         else {
-            
+
             this.parameter6 = 0x00;
         }
     }
-    
+
     private short readAvailableShort(DataInputStream stream) throws IOException {
-        
+
         if (stream.available() > 1) {
-            
+
             return stream.readShort();
         }
         else {
-            
+
             return 0x00;
         }
     }

@@ -18,15 +18,15 @@ public class OrientationWidget extends CartesianWidget {
 
         super(title, format);
     }
-    
+
     @Override
     public String[] getLabels() {
-        
+
         return new String[] { "Psi", "Theta", "Phi" };
     }
-    
+
     public void setValue(Orientation orientation) {
-        
+
         super.fields[0].setValue(orientation.getPsi());
         super.fields[1].setValue(orientation.getTheta());
         super.fields[2].setValue(orientation.getPhi());

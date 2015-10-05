@@ -26,14 +26,14 @@ public class LinearSegment implements Bufferable, Readable {
     private int modifications = 0;
 
     public LinearSegment() {
-        
+
     }
-    
+
     public LinearSegment(DataInputStream stream) throws IOException {
-    
+
         this.read(stream);
     }
-    
+
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
@@ -72,7 +72,7 @@ public class LinearSegment implements Bufferable, Readable {
         this.width = stream.readUnsignedShort();
         this.height = stream.readUnsignedShort();
         this.depth = stream.readUnsignedShort();
-        
+
         stream.readInt(); // 32 bits padding
     }
 }

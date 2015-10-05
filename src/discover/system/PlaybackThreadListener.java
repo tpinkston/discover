@@ -4,7 +4,7 @@
 package discover.system;
 
 public interface PlaybackThreadListener {
-    
+
     /**
      * @param status - {@link PlaybackStatus}
      * @param percent - Percent complete

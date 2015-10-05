@@ -16,17 +16,17 @@ public class Velocity implements Readable, Writable {
     public static final int LENGTH = 12;
 
     private static final NumberFormat formatter = NumberFormat.getInstance();
-    
+
     static {
-        
+
         formatter.setMinimumFractionDigits(1);
         formatter.setMaximumFractionDigits(2);
     }
-    
+
     private float x = 0.0f;
     private float y = 0.0f;
     private float z = 0.0f;
-    
+
     public float getX() { return this.x; }
     public float getY() { return this.y; }
     public float getZ() { return this.z; }
@@ -36,21 +36,21 @@ public class Velocity implements Readable, Writable {
     public void setZ(float z) { this.z = z; }
 
     public float getLength() {
-        
+
         return (float)Math.sqrt((x * x) + (y * y) + (z * z));
     }
 
     public void clear() {
-        
+
         this.x = 0.0f;
         this.y = 0.0f;
         this.z = 0.0f;
     }
-    
+
     @Override
     public String toString() {
-        
-        return "(" + formatter.format(this.x) + 
+
+        return "(" + formatter.format(this.x) +
                ", " + formatter.format(this.y) +
                ", " + formatter.format(this.z) + ")";
     }

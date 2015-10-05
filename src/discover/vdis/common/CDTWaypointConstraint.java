@@ -19,11 +19,11 @@ public class CDTWaypointConstraint implements Bufferable, Readable, Writable {
     public int trigger = 0;
     public float constraint = 0.0f;
     public final Location24 location = new Location24();
-    
+
     public CDTWaypointConstraint() {
 
     }
-    
+
     @Override
     public void write(DataOutputStream stream) throws IOException {
 
@@ -32,7 +32,7 @@ public class CDTWaypointConstraint implements Bufferable, Readable, Writable {
         this.entity.write(stream); // 6 bytes
         stream.writeInt(0); // 4 bytes padding
         stream.writeFloat(this.constraint); // 4 bytes
-        
+
         this.location.write(stream); // 24 bytes
     }
 
@@ -40,13 +40,13 @@ public class CDTWaypointConstraint implements Bufferable, Readable, Writable {
     public void read(DataInputStream stream) throws IOException {
 
         this.trigger = stream.readUnsignedByte(); // 1 byte
-        
+
         stream.skipBytes(1); // 1 byte padding
-        
+
         this.entity.read(stream); // 6 bytes
-        
+
         stream.skipBytes(4); // 4 bytes padding
-        
+
         this.constraint = stream.readFloat(); // 4 bytes
         this.location.read(stream); // 24 bytes
     }
@@ -55,10 +55,10 @@ public class CDTWaypointConstraint implements Bufferable, Readable, Writable {
     public void toBuffer(AbstractBuffer buffer) {
 
         buffer.addAttribute(
-            "Trigger Type", 
-            this.trigger, 
+            "Trigger Type",
+            this.trigger,
             VDIS.CDT_WAYPOINT_TRIGGER_TYPE);
-        
+
         buffer.addAttribute("Entity Id", this.entity.toString());
         buffer.addAttribute("Constraint Value", this.constraint);
         buffer.addAttribute("Location (GCC)", this.location.toStringGCC());

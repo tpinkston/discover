@@ -21,11 +21,11 @@ public class Headless {
     private static Integer pdutype = null;
     private static Integer pdufamily = null;
     private static boolean verbose = false;
-      
+
     public static void printUsage() {
-    
+
         PrintStream out = System.out;
-        
+
         out.println();
         out.println("In headless mode the application will listen on a");
         out.println("single port and print PDUs received according to the ");
@@ -40,132 +40,132 @@ public class Headless {
         out.println("   pdufamily:F, where F is the PDU family number.");
         out.println("   verbose:Y/N, argument value is either Y or N.");
     }
-    
+
     /**
      * Arguments should contain no whitespace and be in the form:
      * "arg1:value1,arg2:value2,arg3:value3"
-     * 
+     *
      * @param arguments
      */
     public static void run(String arguments) {
-        
+
         StringTokenizer tokenizer = new StringTokenizer(arguments, ",");
-        
+
         while(tokenizer.hasMoreTokens()) {
-            
+
             String parameter = tokenizer.nextToken();
-            
+
             if (parameter.startsWith("port:")) {
-                
+
                 String value = parameter.replace("port:", "");
-                
+
                 try {
-                    
+
                     port = Integer.parseInt(value);
                 }
                 catch(NumberFormatException exception) {
-                    
+
                     System.err.println("Invalid port: '" + value + "'");
                     System.exit(0);
                 }
             }
             else if (parameter.startsWith("exercise:")) {
-                
+
                 String value = parameter.replace("exercise:", "");
-                
+
                 try {
-                    
+
                     exercise = Integer.parseInt(value);
                 }
                 catch(NumberFormatException exception) {
-                    
+
                     System.err.println("Invalid exercise: '" + value + "'");
                     System.exit(0);
                 }
             }
             else if (parameter.startsWith("pdutype:")) {
-                
+
                 String value = parameter.replace("pdutype:", "");
-                
+
                 try {
-                    
+
                     pdutype = Integer.parseInt(value);
                 }
                 catch(NumberFormatException exception) {
-                    
+
                     System.err.println("Invalid PDU type: '" + value + "'");
                     System.exit(0);
                 }
             }
             else if (parameter.startsWith("pdufamily:")) {
-                
+
                 String value = parameter.replace("pdufamily:", "");
-                
+
                 try {
-                    
+
                     pdufamily = Integer.parseInt(value);
                 }
                 catch(NumberFormatException exception) {
-                    
+
                     System.err.println("Invalid PDU family: '" + value + "'");
                     System.exit(0);
                 }
             }
             else if (parameter.startsWith("verbose:")) {
-                
+
                 String value = parameter.replace("verbose:", "");
 
                 if (value.startsWith("Y") || value.startsWith("y")) {
-                    
+
                     verbose = true;
                 }
             }
             else {
-                
+
                 System.err.println("Invalid headless parameter: '" + parameter + "'");
                 System.exit(0);
             }
         }
-        
+
         if (port == null) {
-            
+
             System.err.println("Port request to run headless!");
             System.exit(0);
         }
-        
+
         if (pdutype != null) {
-            
-            
+
+
         }
-        
+
         if (pdufamily != null) {
-            
+
         }
-        
+
         try {
-            
+
             run();
         }
         catch(Exception exception) {
-            
+
             exception.printStackTrace();
             System.exit(0);
         }
     }
-    
+
     static void run() throws Exception {
-        
+
         CaptureThreadListener listener = new Listener();
-        
+
         CaptureThread thread = new CaptureThread(
-            ("headless_capture:" + port.toString()), 
-            listener, 
+            ("headless_capture:" + port.toString()),
+            listener,
             port.intValue());
 
         System.out.println(
             "Running headless on port " + port +
             ", press <ctrl-c> to stop...");
-        
+
         // No need to start new start since we're running headess, just run
         // the thread's main method.
         //
@@ -176,43 +176,43 @@ public class Headless {
 
         @Override
         public void pdusCaptured(List<PDU> list) {
-            
+
             for(PDU pdu : list) {
-                
+
                 boolean
                     process = true;
-                
+
                 if (process && (exercise != null)) {
-                
+
                     process = (pdu.getExercise() == exercise.intValue());
                 }
-                
+
                 if (process && (pdutype != null)) {
-                    
+
                     process = (pdu.getType() == pdutype.intValue());
                 }
 
                 if (process) {
-                    
+
                     this.processPDU(pdu);
                 }
             }
         }
-        
+
         private void processPDU(PDU pdu) {
-            
+
             StringBuilder string = new StringBuilder();
-            
+
             if (verbose) {
 
                 PlainTextBuffer buffer = new PlainTextBuffer();
-                
+
                 pdu.toBuffer(buffer);
-                
+
                 string.append(buffer.toString());
             }
             else {
-                
+
                 string.append(format.format(pdu.getTime()));
                 string.append(": ex: ");
                 string.append(pdu.getExercise());
@@ -225,26 +225,26 @@ public class Headless {
                 string.append(", ");
                 string.append(pdu.getLength());
                 string.append(" bytes");
-                
+
                 if (pdu.getId() != null) {
-                    
+
                     string.append(", from: ");
                     string.append(pdu.getId().toHeadlessString());
                 }
-                
+
                 if (pdu.getRecipient() != null) {
-                    
+
                     string.append(", to: ");
                     string.append(pdu.getRecipient().toHeadlessString());
                 }
 
                 if (pdu.hasRequestId()) {
-                    
+
                     string.append(", reqid: ");
                     string.append(pdu.getRequestId());
                 }
             }
-   
+
             System.out.println(string.toString());
             System.out.flush();
         }

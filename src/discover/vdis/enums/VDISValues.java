@@ -5,7 +5,7 @@ package discover.vdis.enums;
  */
 public class VDISValues {
 
-    public static final int ACK_ACKNOWLEDGE_FLAG[] = { 
+    public static final int ACK_ACKNOWLEDGE_FLAG[] = {
         1, // ACK_FLAG_CREATE_ENTITY
         2, // ACK_FLAG_REMOVE_ENTITY
         3, // ACK_FLAG_START_RESUME
@@ -13,14 +13,14 @@ public class VDISValues {
         5  // ACK_FLAG_TRANSFER_CONTROL_REQUEST
     };
 
-    public static final int ACK_RESPONSE_FLAG[] = { 
+    public static final int ACK_RESPONSE_FLAG[] = {
         0, // ACK_RESP_OTHER
         1, // ACK_RESP_ABLE_TO_COMPLY
         2, // ACK_RESP_UNABLE_TO_COMPLY
         3  // ACK_RESP_PENDING_OPER_ACT
     };
 
-    public static final int ACTREQ_ACTION_IDS[] = { 
+    public static final int ACTREQ_ACTION_IDS[] = {
         0, // ACTREQ_ID_OTHER
         1, // ACTREQ_ID_LOCAL_STORAGE_REQ_INFO
         2, // ACTREQ_ID_INFORM_EVENT_RAN_OUT_OF_AMMO
@@ -90,7 +90,7 @@ public class VDISValues {
         5600  // ACTID_CDT_WAYPOINTS
     };
 
-    public static final int ACTRES_REQ_STATUS[] = { 
+    public static final int ACTRES_REQ_STATUS[] = {
         0, // ACTRES_REQ_OTHER
         1, // ACTRES_REQ_PENDING
         2, // ACTRES_REQ_EXECUTING
@@ -107,21 +107,21 @@ public class VDISValues {
         201  // ACTRES_REQ_JOIN_EXERCISE_REQ_REJECTED
     };
 
-    public static final int AIR_EQ_SLINGLOAD[] = { 
+    public static final int AIR_EQ_SLINGLOAD[] = {
         0, // AIRPLAT_EQ_SLNGLD_NOT_PRESENT
         1, // AIRPLAT_EQ_SLNGLD_EMPTY
         2, // AIRPLAT_EQ_SLNGLD_LOADED
         3  // AIRPLAT_EQ_SLNGLD_DAMAGED
     };
 
-    public static final int AIR_SMOKE[] = { 
+    public static final int AIR_SMOKE[] = {
         0, // AIR_SMOKE_NONE
         1, // AIR_SMOKE_TRAILING
         2, // AIR_SMOKE_ENGINE
         3  // AIR_SMOKE_ENGINE_TRAILING
     };
 
-    public static final int AMPLITUDE[] = { 
+    public static final int AMPLITUDE[] = {
         0, // AMPLITUDE_OTHER
         1, // AMPLITUDE_AFSK
         2, // AMPLITUDE_AM
@@ -135,25 +135,25 @@ public class VDISValues {
         10  // AMPLITUDE_VSB
     };
 
-    public static final int AMPLITUDE_AND_ANGLE[] = { 
+    public static final int AMPLITUDE_AND_ANGLE[] = {
         0, // AMP_ANG_OTHER
         1  // AMP_ANG_AMPLITUDE_AND_ANGLE
     };
 
-    public static final int ANGLE[] = { 
+    public static final int ANGLE[] = {
         0, // ANGLE_OTHER
         1, // ANGLE_FM
         2, // ANGLE_FSK
         3  // ANGLE_PM
     };
 
-    public static final int ANTENNA_PATTERN_TYPE[] = { 
+    public static final int ANTENNA_PATTERN_TYPE[] = {
         0, // ANTENNA_PATTERN_OMNI_DIRECTIONAL
         1, // ANTENNA_PATTERN_BEAM
         2  // ANTENNA_PATTERN_SPHERICAL_HARMONIC
     };
 
-    public static final int APP_CTRL_APPLICATION_TYPE[] = { 
+    public static final int APP_CTRL_APPLICATION_TYPE[] = {
         0, // APP_CTRL_APPLICATION_OTHER
         1, // APP_CTRL_APPLICATION_RESOURCE_MANAGER
         2, // APP_CTRL_APPLICATION_SIMULATION_MANAGER
@@ -162,7 +162,7 @@ public class VDISValues {
         5  // APP_CTRL_APPLICATION_TACTICAL_INTERNET_INTERFACE
     };
 
-    public static final int APP_CTRL_CONTROL_TYPE[] = { 
+    public static final int APP_CTRL_CONTROL_TYPE[] = {
         0, // APP_CTRL_CONTROL_OTHER
         1, // APP_CTRL_CONTROL_SHUTDOWN
         2, // APP_CTRL_CONTROL_DATA_QUERY
@@ -173,7 +173,7 @@ public class VDISValues {
         7  // APP_CTRL_CONTROL_STATUS
     };
 
-    public static final int ARTICULATED_PARTS[] = { 
+    public static final int ARTICULATED_PARTS[] = {
         1024, // ARTPART_RUDDER
         1056, // ARTPART_LEFT_FLAP
         1088, // ARTPART_RIGHT_FLAP
@@ -325,7 +325,7 @@ public class VDISValues {
         7616  // ARTPART_FUSELAGE_FOLD
     };
 
-    public static final int ARTICULATED_PARTS_METRIC[] = { 
+    public static final int ARTICULATED_PARTS_METRIC[] = {
         0, // EMPTY
         1, // POSITION
         2, // POSITION_RATE
@@ -345,7 +345,7 @@ public class VDISValues {
         16  // ROTATION_RATE
     };
 
-    public static final int ATTACHED_PARTS[] = { 
+    public static final int ATTACHED_PARTS[] = {
         0, // ATCHPART_EMPTY
         512, // ATCHPART_FUSELAGE_STATION_1
         513, // ATCHPART_FUSELAGE_STATION_2
@@ -744,7 +744,7 @@ public class VDISValues {
         906  // ATCHPART_CARGO_PARACHUTE
     };
 
-    public static final int BEAM_FUNCTION[] = { 
+    public static final int BEAM_FUNCTION[] = {
         0, // BEAM_FUNC_OTHER
         1, // BEAM_FUNC_SEARCH
         2, // BEAM_FUNC_HEIGHT_FINDER
@@ -771,21 +771,21 @@ public class VDISValues {
         25  // BEAM_FUNC_TIME_SHARED_JAMMING
     };
 
-    public static final int CDT_ONESAF_STATUS[] = { 
+    public static final int CDT_ONESAF_STATUS[] = {
         0, // CDT_ONESAF_NOT_PRESENT
         1, // CDT_ONESAF_PRESENT_AVAILABLE
         2, // CDT_ONESAF_PRESENT_RESERVED
         3  // CDT_ONESAF_PRESENT_IN_USE
     };
 
-    public static final int CDT_WAYPOINT_TRIGGER_TYPE[] = { 
+    public static final int CDT_WAYPOINT_TRIGGER_TYPE[] = {
         0, // CDT_WAYPOINT_TRIGGER_NONE
         1, // CDT_WAYPOINT_TRIGGER_WAIT
         2, // CDT_WAYPOINT_TRIGGER_DISTANCE
         3  // CDT_WAYPOINT_TRIGGER_TIME
     };
 
-    public static final int CDT_WEATHER_TYPE[] = { 
+    public static final int CDT_WEATHER_TYPE[] = {
         0, // CDT_WEATHER_TYPE_NONE
         1, // CDT_WEATHER_TYPE_DUST
         2, // CDT_WEATHER_TYPE_FOG
@@ -795,7 +795,7 @@ public class VDISValues {
         6  // CDT_WEATHER_TYPE_WIND
     };
 
-    public static final int COLORS[] = { 
+    public static final int COLORS[] = {
         0, // COLOR_NOT_SPECIFIED
         1, // COLOR_WHITE_VGA
         2, // COLOR_RED_VGA
@@ -958,12 +958,12 @@ public class VDISValues {
         159  // COLOR_WHITE
     };
 
-    public static final int COMBINATION[] = { 
+    public static final int COMBINATION[] = {
         0, // COMBO_OTHER
         1  // COMBO_AMPLITUDE_ANGLE_PULSE
     };
 
-    public static final int CRYPTO_SYS[] = { 
+    public static final int CRYPTO_SYS[] = {
         0, // CRYPTO_OTHER
         1, // CRYPTO_KY_28
         2, // CRYPTO_VINSON
@@ -971,14 +971,14 @@ public class VDISValues {
         4  // CRYPTO_WSVE
     };
 
-    public static final int CUSTOM_AIR_SMOKE[] = { 
+    public static final int CUSTOM_AIR_SMOKE[] = {
         0, // AIR_SMOKE_NONE
         1, // AIR_SMOKE_TRAILING
         2, // AIR_SMOKE_ENGINE
         3  // AIR_SMOKE_ENGINE_TRAILING
     };
 
-    public static final int CUSTOM_ARTICULATED_PARTS_METRIC[] = { 
+    public static final int CUSTOM_ARTICULATED_PARTS_METRIC[] = {
         0, // EMPTY
         1, // POSITION
         2, // POSITION_RATE
@@ -998,7 +998,7 @@ public class VDISValues {
         16  // ROTATION_RATE
     };
 
-    public static final int CUSTOM_ENT_CNTRY[] = { 
+    public static final int CUSTOM_ENT_CNTRY[] = {
         0, // ENT_CNTRY_OTHER
         1, // ENT_CNTRY_AFGHANISTAN
         2, // ENT_CNTRY_ALBANIA
@@ -1268,7 +1268,7 @@ public class VDISValues {
         266  // ENT_CNTRY_UZBEKISTAN
     };
 
-    public static final int CUSTOM_ENT_DOMAIN[] = { 
+    public static final int CUSTOM_ENT_DOMAIN[] = {
         0, // ENT_DOMAIN_OTHER
         1, // ENT_DOMAIN_LAND
         2, // ENT_DOMAIN_AIR
@@ -1277,7 +1277,7 @@ public class VDISValues {
         5  // ENT_DOMAIN_SPACE
     };
 
-    public static final int CUSTOM_ENT_KIND[] = { 
+    public static final int CUSTOM_ENT_KIND[] = {
         0, // ENT_KIND_OTHER
         1, // ENT_KIND_PLATFORM
         2, // ENT_KIND_MUNITION
@@ -1290,7 +1290,7 @@ public class VDISValues {
         9  // ENT_KIND_SENSOR_EMITTER
     };
 
-    public static final int CUSTOM_FROZEN_BEHAVIOR[] = { 
+    public static final int CUSTOM_FROZEN_BEHAVIOR[] = {
         0, // RUN_INTERNAL_SIMULATION_CLOCK
         1, // TRANSMIT_PDUS
         2, // UPDATE_MODELS_OF_OTHER_ENTITIES
@@ -1299,57 +1299,57 @@ public class VDISValues {
         5  // CONTINUE_MODELS_OF_OTHER_ENTITIES
     };
 
-    public static final int CUSTOM_IED_PRESENCE[] = { 
+    public static final int CUSTOM_IED_PRESENCE[] = {
         0, // NONE
         1, // VISIBLE
         2, // PARTIALLY_HIDDEN
         3  // COMPLETELY_HIDDEN
     };
 
-    public static final int CUSTOM_LAND_SMOKE[] = { 
+    public static final int CUSTOM_LAND_SMOKE[] = {
         0, // LAND_SMOKE_NONE
         1, // LAND_SMOKE_RISING
         2, // LAND_SMOKE_ENGINE
         3  // LAND_SMOKE_ENGINE_RISING
     };
 
-    public static final int CUSTOM_LF_EQ_LASER[] = { 
+    public static final int CUSTOM_LF_EQ_LASER[] = {
         0, // NONE
         1, // LASER_POINTER
         2  // LASER_RANGE_FINDER
     };
 
-    public static final int CUSTOM_OBJ_DAMAGE[] = { 
+    public static final int CUSTOM_OBJ_DAMAGE[] = {
         0, // NO_DAMAGE
         1, // DAMAGED
         2  // DESTROYED
     };
 
-    public static final int CUSTOM_ONOFF[] = { 
+    public static final int CUSTOM_ONOFF[] = {
         0, // CUSTOM_ONOFF_OFF
         1  // CUSTOM_ONOFF_ON
     };
 
-    public static final int CUSTOM_SEVERITY[] = { 
+    public static final int CUSTOM_SEVERITY[] = {
         0, // SEVERITY_NONE
         1, // SEVERITY_SLIGHT
         2, // SEVERITY_MODERATE
         3  // SEVERITY_HEAVY
     };
 
-    public static final int CUSTOM_SLING_DAMAGE[] = { 
+    public static final int CUSTOM_SLING_DAMAGE[] = {
         0, // NONE
         1, // SLING_DAMAGED
         2, // LINE_DAMAGED
         3  // SLING_OR_LINE_DAMAGED
     };
 
-    public static final int CUSTOM_YESNO[] = { 
+    public static final int CUSTOM_YESNO[] = {
         0, // YESNO_NO
         1  // YESNO_YES
     };
 
-    public static final int DATUM_IDS[] = { 
+    public static final int DATUM_IDS[] = {
         256, // DID_ENVIRONMENT_PROCESS_STATE_COMBIC
         259, // DID_ENVIRONMENT_PROCESS_STATE_FLARE
         4000, // DID_DE_PRECISION_AIMPOINT
@@ -2567,7 +2567,7 @@ public class VDISValues {
         1879048192  // DID_ENVIRONMENT_PROCESS_GEOMETRY_GAUSSIAN_PUFF_RECORD
     };
 
-    public static final int DEAD_RECKONING[] = { 
+    public static final int DEAD_RECKONING[] = {
         0, // DEAD_RECK_OTHER
         1, // DEAD_RECK_STATIC
         2, // DEAD_RECK_DRM_F_P_W
@@ -2580,20 +2580,20 @@ public class VDISValues {
         9  // DEAD_RECK_DRM_F_V_B
     };
 
-    public static final int DESIG_MOTION_PATTERN[] = { 
+    public static final int DESIG_MOTION_PATTERN[] = {
         0, // DES_MOT_PATT_NO_STATEMENT
         1, // DES_MOT_PATT_ROPING
         2  // DES_MOT_PATT_SNAKING
     };
 
-    public static final int DESIG_OBJ_STATUS[] = { 
+    public static final int DESIG_OBJ_STATUS[] = {
         0, // DES_OBJ_STATUS_OTHER
         1, // DES_OBJ_STATUS_INITIAL_REPORT
         2, // DES_OBJ_STATUS_CHANGE_REPORT
         3  // DES_OBJ_STATUS_FINAL_REPORT
     };
 
-    public static final int DESIG_SPOT_TYPE[] = { 
+    public static final int DESIG_SPOT_TYPE[] = {
         0, // DES_SPOT_TYPE_NOT_SPECIFIED
         1, // DES_SPOT_TYPE_TERRAIN_MODEL
         2, // DES_SPOT_TYPE_NO_TERRAIN_MODEL
@@ -2605,7 +2605,7 @@ public class VDISValues {
         8  // DES_SPOT_TYPE_NON_INCIDENT
     };
 
-    public static final int DESIG_SYSTEM_NAME[] = { 
+    public static final int DESIG_SYSTEM_NAME[] = {
         0, // DES_SYS_NAME_NO_STATEMENT
         1, // DES_SYS_NAME_AN_AAQ_16
         2, // DES_SYS_NAME_AN_AAQ_22A
@@ -2637,7 +2637,7 @@ public class VDISValues {
         28  // DES_SYS_NAME_ACP_2A_AIR_COMMANDER_POINTER_IR_AIMING_LASER
     };
 
-    public static final int DETONATION_RESULT[] = { 
+    public static final int DETONATION_RESULT[] = {
         0, // DET_RESULT_OTHER
         1, // DET_RESULT_ENTITY_IMPACT
         2, // DET_RESULT_ENTITY_PROXIMATE
@@ -2674,14 +2674,14 @@ public class VDISValues {
         33  // DET_RESULT_MISS_FLY_OUT_END_GAME_FAILURE
     };
 
-    public static final int DISGUISE_STATUS[] = { 
+    public static final int DISGUISE_STATUS[] = {
         0, // DISGUISE_STATUS_NOT_SPECIFIED
         1, // DISGUISE_STATUS_NO_DISGUISE
         2, // DISGUISE_STATUS_DISGUISED
         3  // DISGUISE_STATUS_INDISTINGUISHABLE
     };
 
-    public static final int DOMAIN[] = { 
+    public static final int DOMAIN[] = {
         0, // DOMAIN_OTHER
         1, // DOMAIN_LAND
         2, // DOMAIN_AIR
@@ -2690,14 +2690,14 @@ public class VDISValues {
         5  // DOMAIN_SPACE
     };
 
-    public static final int DR_TYPE[] = { 
+    public static final int DR_TYPE[] = {
         0, // DRVP_DR_TYPE_NOT_SPECIFIED
         1, // DRVP_DR_TYPE_LINEAR_VELOCITY
         2, // DRVP_DR_TYPE_LINEAR_ACCELERATION
         3  // DRVP_DR_TYPE_ANGULAR_VELOCITY
     };
 
-    public static final int EMITTER_FUNCTION[] = { 
+    public static final int EMITTER_FUNCTION[] = {
         0, // EMITTER_FUNC_OTHER
         1, // EMITTER_FUNC_MULTI_FUNCTION
         2, // EMITTER_FUNC_EARLY_WARNING_SURVEILLANCE
@@ -2768,7 +2768,7 @@ public class VDISValues {
         97  // EMITTER_FUNC_WEAPON_LETHAL
     };
 
-    public static final int EMITTER_NAME[] = { 
+    public static final int EMITTER_NAME[] = {
         10, // EMITTER_1RL138
         45, // EMITTER_1226_DECCA_MIL
         80, // EMITTER_9GR400
@@ -4011,14 +4011,14 @@ public class VDISValues {
         65044  // EMITTER_HAVOC
     };
 
-    public static final int ENCODING_CLASS[] = { 
+    public static final int ENCODING_CLASS[] = {
         0, // ENCODING_CLASS_ENCODED_AUDIO
         1, // ENCODING_CLASS_RAW_BINARY_DATA
         2, // ENCODING_CLASS_APPLICATION_SPECIFIC_DATA
         3  // ENCODING_CLASS_DATABASE_INDEX
     };
 
-    public static final int ENCODING_TYPE[] = { 
+    public static final int ENCODING_TYPE[] = {
         1, // ENCODING_TYPE_8_BIT_MU_LAW
         2, // ENCODING_TYPE_CVSD_PER_MIL_STD_188_113
         3, // ENCODING_TYPE_ADPCM_PER_CCITT_G_721
@@ -4027,14 +4027,14 @@ public class VDISValues {
         6  // ENCODING_TYPE_VQ_VECTOR_QUANTIZATION
     };
 
-    public static final int ENTITY_MARKING[] = { 
+    public static final int ENTITY_MARKING[] = {
         0, // ENTITY_MARKING_UNUSED
         1, // ENTITY_MARKING_ASCII
         2, // ENTITY_MARKING_US_ARMY
         3  // ENTITY_MARKING_DIGIT_CHEVRON
     };
 
-    public static final int ENT_ASSOC_STATUS[] = { 
+    public static final int ENT_ASSOC_STATUS[] = {
         0, // EAVP_ENT_ASSOC_STATUS_NOT_SPECIFIED
         1, // EAVP_ENT_ASSOC_STATUS_PHYS_ASSOC_TARGET
         2, // EAVP_ENT_ASSOC_STATUS_NON_PHYSICAL_ASSOC
@@ -4042,7 +4042,7 @@ public class VDISValues {
         4  // EAVP_ENT_ASSOC_STATUS_PHYS_ASSOC_CARRIER
     };
 
-    public static final int ENT_CNTRY[] = { 
+    public static final int ENT_CNTRY[] = {
         0, // ENT_CNTRY_OTHER
         1, // ENT_CNTRY_AFGHANISTAN
         2, // ENT_CNTRY_ALBANIA
@@ -4312,7 +4312,7 @@ public class VDISValues {
         266  // ENT_CNTRY_UZBEKISTAN
     };
 
-    public static final int ENT_KIND[] = { 
+    public static final int ENT_KIND[] = {
         0, // ENT_KIND_OTHER
         1, // ENT_KIND_PLATFORM
         2, // ENT_KIND_MUNITION
@@ -4325,7 +4325,7 @@ public class VDISValues {
         9  // ENT_KIND_SENSOR_EMITTER
     };
 
-    public static final int ETHNICITY[] = { 
+    public static final int ETHNICITY[] = {
         0, // LF_ETHN_NOT_SPECIFIED
         1, // LF_ETHN_ASIAN
         2, // LF_ETHN_PACIFIC_ISLANDER
@@ -4338,7 +4338,7 @@ public class VDISValues {
         9  // LF_ETHN_INDIGENOUS_CTRY
     };
 
-    public static final int FORCE_ID[] = { 
+    public static final int FORCE_ID[] = {
         0, // FORCE_ID_OTHER
         1, // FORCE_ID_FRIENDLY
         2, // FORCE_ID_OPPOSING
@@ -4372,7 +4372,7 @@ public class VDISValues {
         30  // FORCE_ID_NEUTRAL_10
     };
 
-    public static final int FROZEN_BEHAVIOR[] = { 
+    public static final int FROZEN_BEHAVIOR[] = {
         0, // RUN_INTERNAL_SIMULATION_CLOCK
         1, // TRANSMIT_PDUS
         2, // UPDATE_MODELS_OF_OTHER_ENTITIES
@@ -4381,7 +4381,7 @@ public class VDISValues {
         5  // CONTINUE_MODELS_OF_OTHER_ENTITIES
     };
 
-    public static final int FUSE_BURST_DESC[] = { 
+    public static final int FUSE_BURST_DESC[] = {
         0, // FUSE_BURST_DESC_OTHER
         10, // FUSE_BURST_DESC_INTELLIGENT_INFLUENCE
         20, // FUSE_BURST_DESC_SENSOR
@@ -4480,12 +4480,12 @@ public class VDISValues {
         9620  // FUSE_BURST_DESC_MECHANICAL_TAIL
     };
 
-    public static final int GENERIC_PRESENCE[] = { 
+    public static final int GENERIC_PRESENCE[] = {
         0, // GENERIC_PRESENCE_NOT_PRESENT
         1  // GENERIC_PRESENCE_PRESENT
     };
 
-    public static final int GRP_MEM_TYPE[] = { 
+    public static final int GRP_MEM_TYPE[] = {
         0, // GRP_MEM_TYPE_NOT_SPECIFIED
         1, // GRP_MEM_TYPE_GROUP_LEADER
         2, // GRP_MEM_TYPE_GROUP_MEMBER
@@ -4495,7 +4495,7 @@ public class VDISValues {
         6  // GRP_MEM_TYPE_CONVOY_MEMBER
     };
 
-    public static final int HOOK_TYPE[] = { 
+    public static final int HOOK_TYPE[] = {
         0, // HOOK_TYPE_NOT_SPECIFIED
         1, // HOOK_TYPE_SINGLE
         2, // HOOK_TYPE_FORWARD
@@ -4507,7 +4507,7 @@ public class VDISValues {
         8  // HOOK_TYPE_ALL
     };
 
-    public static final int HUMAN_AGE_GROUP[] = { 
+    public static final int HUMAN_AGE_GROUP[] = {
         0, // LF_HUMAN_AGE_NOT_SPECIFIED
         1, // LF_HUMAN_AGE_NEWBORN
         2, // LF_HUMAN_AGE_INFANT
@@ -4524,14 +4524,14 @@ public class VDISValues {
         13  // LF_HUMAN_AGE_CENTURION
     };
 
-    public static final int IED_PRESENCE[] = { 
+    public static final int IED_PRESENCE[] = {
         0, // NONE
         1, // VISIBLE
         2, // PARTIALLY_HIDDEN
         3  // COMPLETELY_HIDDEN
     };
 
-    public static final int IFF_SYSTEM_MODE[] = { 
+    public static final int IFF_SYSTEM_MODE[] = {
         0, // IFF_SYS_MODE_NO_STATEMENT
         1, // IFF_SYS_MODE_OFF
         2, // IFF_SYS_MODE_STANDBY
@@ -4539,7 +4539,7 @@ public class VDISValues {
         4  // IFF_SYS_MODE_EMERGENCY
     };
 
-    public static final int IFF_SYSTEM_NAME[] = { 
+    public static final int IFF_SYSTEM_NAME[] = {
         0, // IFF_SYS_NAME_OTHER
         1, // IFF_SYS_NAME_MARK_X
         2, // IFF_SYS_NAME_MARK_XII
@@ -4561,7 +4561,7 @@ public class VDISValues {
         18  // IFF_SYS_NAME_MARK_X_SIF
     };
 
-    public static final int IFF_SYSTEM_TYPE[] = { 
+    public static final int IFF_SYSTEM_TYPE[] = {
         0, // IFF_SYS_TYPE_NOT_USED
         1, // IFF_SYS_TYPE_MARK_X_XII_ATCRBS_TRANS
         2, // IFF_SYS_TYPE_MARK_X_XII_ATCRBS_INT
@@ -4579,7 +4579,7 @@ public class VDISValues {
         14  // IFF_SYS_TYPE_TCAS_ACAS_TRANSCEIVER
     };
 
-    public static final int INPUT_SOURCE[] = { 
+    public static final int INPUT_SOURCE[] = {
         0, // INPUT_SRC_OTHER
         1, // INPUT_SRC_PILOT
         2, // INPUT_SRC_COPILOT
@@ -4593,20 +4593,20 @@ public class VDISValues {
         10  // INPUT_SRC_AUDIO_JAMMER
     };
 
-    public static final int JAMMING_TECHNIQUE[] = { 
+    public static final int JAMMING_TECHNIQUE[] = {
         0, // JAM_TECH_OTHER
         1, // JAM_TECH_NOISE
         2  // JAM_TECH_DECEPTION
     };
 
-    public static final int LAND_SMOKE[] = { 
+    public static final int LAND_SMOKE[] = {
         0, // LAND_SMOKE_NONE
         1, // LAND_SMOKE_RISING
         2, // LAND_SMOKE_ENGINE
         3  // LAND_SMOKE_ENGINE_RISING
     };
 
-    public static final int LASER_FUNCTION[] = { 
+    public static final int LASER_FUNCTION[] = {
         0, // LASER_FUNCTION_DESIGNATING
         1, // LASER_FUNCTION_RANGING
         2, // LASER_FUNCTION_IR_DESIGNATING
@@ -4616,14 +4616,14 @@ public class VDISValues {
         6  // LASER_FUNCTION_NVG_MARKING
     };
 
-    public static final int LF_CAMOUFLAGE[] = { 
+    public static final int LF_CAMOUFLAGE[] = {
         0, // LF_CAMOUFLAGE_DESERT
         1, // LF_CAMOUFLAGE_WINTER
         2, // LF_CAMOUFLAGE_FOREST
         3  // LF_CAMOUFLAGE_NONE
     };
 
-    public static final int LF_CLOTH_SCHEME[] = { 
+    public static final int LF_CLOTH_SCHEME[] = {
         0, // LF_CLOTH_SCHEME_DEFAULT
         1, // LF_CLOTH_SCHEME_SOLID
         2, // LF_CLOTH_SCHEME_TWO_TONE
@@ -4643,12 +4643,12 @@ public class VDISValues {
         16  // LF_CLOTH_SCHEME_TRADITIONAL
     };
 
-    public static final int LF_CLOTH_TYPE[] = { 
+    public static final int LF_CLOTH_TYPE[] = {
         0, // LF_CLOTH_TYPE_UNIFORM_COLOR
         1  // LF_CLOTH_TYPE_CAMOUFLAGE
     };
 
-    public static final int LF_COMPLIANCE[] = { 
+    public static final int LF_COMPLIANCE[] = {
         0, // LF_COMPLIANCE_OTHER
         1, // LF_COMPLIANCE_DETAINED
         2, // LF_COMPLIANCE_SURRENDER
@@ -4667,33 +4667,33 @@ public class VDISValues {
         15  // LF_COMPLIANCE_USING_NON_LETHAL_WEAPON_6
     };
 
-    public static final int LF_COND_EXT_DMG[] = { 
+    public static final int LF_COND_EXT_DMG[] = {
         0, // LIFE_COND_EXT_DMG_NOT_SPECIFIED
         1, // LIFE_COND_EXT_DMG_SLIGHT
         2, // LIFE_COND_EXT_DMG_MODERATE
         3  // LIFE_COND_EXT_DMG_HEAVY
     };
 
-    public static final int LF_EQ_CHUTE[] = { 
+    public static final int LF_EQ_CHUTE[] = {
         0, // LF_EQUIP_CHUTE_DOES_NOT_HAVE
         1, // LF_EQUIP_CHUTE_NOT_DEPLOYED
         2  // LF_EQUIP_CHUTE_DEPLOYED
     };
 
-    public static final int LF_EQ_LASER[] = { 
+    public static final int LF_EQ_LASER[] = {
         0, // NONE
         1, // LASER_POINTER
         2  // LASER_RANGE_FINDER
     };
 
-    public static final int LF_HEALTH[] = { 
+    public static final int LF_HEALTH[] = {
         0, // LF_HEALTH_NO_INJURY
         1, // LF_HEALTH_SLIGHT_INJURY
         2, // LF_HEALTH_MODERATE_INJURY
         3  // LF_HEALTH_FATAL_INJURY
     };
 
-    public static final int LF_POSTURE[] = { 
+    public static final int LF_POSTURE[] = {
         0, // LF_POSTURE_OTHER
         1, // LF_POSTURE_UPRIGHT_STANDING_STILL
         2, // LF_POSTURE_UPRIGHT_WALKING
@@ -4712,14 +4712,14 @@ public class VDISValues {
         15  // LF_POSTURE_DETAINED
     };
 
-    public static final int LF_WEAPON_STATE[] = { 
+    public static final int LF_WEAPON_STATE[] = {
         0, // LF_WEAPON_STATE_NONE
         1, // LF_WEAPON_STATE_STOWED
         2, // LF_WEAPON_STATE_DEPLOYED
         3  // LF_WEAPON_STATE_FIRING_POSITION
     };
 
-    public static final int MAJOR_MODULATION[] = { 
+    public static final int MAJOR_MODULATION[] = {
         0, // MAJ_MOD_OTHER
         1, // MAJ_MOD_AMPLITUDE
         2, // MAJ_MOD_AMPLITUDE_AND_ANGLE
@@ -4730,20 +4730,20 @@ public class VDISValues {
         7  // MAJ_MOD_CPSM
     };
 
-    public static final int OBJECT_DAMAGE[] = { 
+    public static final int OBJECT_DAMAGE[] = {
         0, // NO_DAMAGE
         1, // DAMAGED
         2  // DESTROYED
     };
 
-    public static final int OBJECT_GEOMETRY[] = { 
+    public static final int OBJECT_GEOMETRY[] = {
         0, // UNKNOWN
         1, // POINT
         2, // LINEAR
         3  // AREAL
     };
 
-    public static final int OBJECT_KIND[] = { 
+    public static final int OBJECT_KIND[] = {
         0, // OBJECT_KIND_OTHER
         1, // OBJECT_KIND_OBSTACLE
         2, // OBJECT_KIND_PREPARED_POSITION
@@ -4754,7 +4754,7 @@ public class VDISValues {
         7  // OBJECT_KIND_OBSTACLE_BREACH
     };
 
-    public static final int OFFSET_TYPE[] = { 
+    public static final int OFFSET_TYPE[] = {
         0, // OFFVP_OFFSET_TYPE_CARRIER_ORIGIN
         1, // OFFVP_OFFSET_TYPE_STATION_LOC
         2, // OFFVP_OFFSET_TYPE_POS_MOD_BY_CARRIER
@@ -4762,12 +4762,12 @@ public class VDISValues {
         100  // OFFVP_OFFSET_TYPE_CENTER_OF_GRAVITY
     };
 
-    public static final int ONOFF[] = { 
+    public static final int ONOFF[] = {
         0, // ONOFF_OFF
         1  // ONOFF_ON
     };
 
-    public static final int PDU_FAMILY[] = { 
+    public static final int PDU_FAMILY[] = {
         0, // PDU_FAMILY_OTHER
         1, // PDU_FAMILY_ENTITY_INFORMATION_INTERACTION
         2, // PDU_FAMILY_WARFARE
@@ -4785,46 +4785,46 @@ public class VDISValues {
         130  // PDU_FAMILY_EXPERIMENTAL_V_DIS
     };
 
-    public static final int PDU_STATUS_CEI[] = { 
+    public static final int PDU_STATUS_CEI[] = {
         0, // PDU_STATUS_CEI_NOT_COUPLED
         1  // PDU_STATUS_CEI_COUPLED
     };
 
-    public static final int PDU_STATUS_DMI[] = { 
+    public static final int PDU_STATUS_DMI[] = {
         0, // PDU_STATUS_DMI_GUISE_MODE
         1  // PDU_STATUS_DMI_DISGUISE_MODE
     };
 
-    public static final int PDU_STATUS_DTI[] = { 
+    public static final int PDU_STATUS_DTI[] = {
         0, // PDU_STATUS_DTI_MUNITION
         1, // PDU_STATUS_DTI_EXPENDABLE
         2  // PDU_STATUS_DTI_NON_MUNITION_EXPLOSION
     };
 
-    public static final int PDU_STATUS_FTI[] = { 
+    public static final int PDU_STATUS_FTI[] = {
         0, // PDU_STATUS_FTI_MUNITION
         1  // PDU_STATUS_FTI_EXPENDABLE
     };
 
-    public static final int PDU_STATUS_LVCI[] = { 
+    public static final int PDU_STATUS_LVCI[] = {
         0, // PDU_STATUS_LVCI_NO_STATEMENT
         1, // PDU_STATUS_LVCI_LIVE
         2, // PDU_STATUS_LVCI_VIRTUAL
         3  // PDU_STATUS_LVCI_CONSTRUCTIVE
     };
 
-    public static final int PDU_STATUS_RAI[] = { 
+    public static final int PDU_STATUS_RAI[] = {
         0, // PDU_STATUS_RAI_NO_STATEMENT
         1, // PDU_STATUS_RAI_NOT_ATTACHED
         2  // PDU_STATUS_RAI_ATTACHED
     };
 
-    public static final int PDU_STATUS_TEI[] = { 
+    public static final int PDU_STATUS_TEI[] = {
         0, // PDU_STATUS_TEI_NO_DIFF
         1  // PDU_STATUS_TEI_DIFF
     };
 
-    public static final int PDU_TYPE[] = { 
+    public static final int PDU_TYPE[] = {
         0, // PDU_TYPE_OTHER
         1, // PDU_TYPE_ENTITY_STATE
         2, // PDU_TYPE_FIRE
@@ -4901,7 +4901,7 @@ public class VDISValues {
         200  // PDU_TYPE_APPLICATION_CTRL
     };
 
-    public static final int PHYS_ASSOC_TYPE[] = { 
+    public static final int PHYS_ASSOC_TYPE[] = {
         0, // EAVP_PHYS_ASSOC_TYPE_NOT_SPECIFIED
         1, // EAVP_PHYS_ASSOC_TYPE_TOWED_IN_AIR
         2, // EAVP_PHYS_ASSOC_TYPE_TOWED_ON_LAND
@@ -4932,7 +4932,7 @@ public class VDISValues {
         93  // EAVP_PHYS_ASSOC_TYPE_ROOF
     };
 
-    public static final int PHYS_CONN_TYPE[] = { 
+    public static final int PHYS_CONN_TYPE[] = {
         0, // EAVP_PHYS_CONN_TYPE_NOT_SPECIFIED
         1, // EAVP_PHYS_CONN_TYPE_ATTACHED_TO_SURFACE
         2, // EAVP_PHYS_CONN_TYPE_CABLE_WIRE
@@ -4947,21 +4947,21 @@ public class VDISValues {
         11  // EAVP_PHYS_CONN_TYPE_IN_CONTACT_WITH
     };
 
-    public static final int PL_COND_EXT_DMG[] = { 
+    public static final int PL_COND_EXT_DMG[] = {
         0, // PLAT_COND_EXT_DMG_NOT_SPECIFIED
         1, // PLAT_COND_EXT_DMG_SLIGHT
         2, // PLAT_COND_EXT_DMG_MODERATE
         3  // PLAT_COND_EXT_DMG_HEAVY
     };
 
-    public static final int PL_COND_MTL[] = { 
+    public static final int PL_COND_MTL[] = {
         0, // PLAT_COND_MTL_NOT_SPECIFIED
         1, // PLAT_COND_MTL_METALLIC
         2, // PLAT_COND_MTL_PLASTIC
         3  // PLAT_COND_MTL_ROUGH
     };
 
-    public static final int PL_DECAL_SCHEME[] = { 
+    public static final int PL_DECAL_SCHEME[] = {
         0, // PLAT_DECAL_SCHEME_NONE
         1, // PLAT_DECAL_SCHEME_UN
         2, // PLAT_DECAL_SCHEME_FED_EX
@@ -4971,7 +4971,7 @@ public class VDISValues {
         6  // PLAT_DECAL_SCHEME_CHANNEL_5_NEWS
     };
 
-    public static final int PL_PAINT_SCHEME[] = { 
+    public static final int PL_PAINT_SCHEME[] = {
         0, // PLAT_PAINT_SCHEME_DEFAULT
         1, // PLAT_PAINT_SCHEME_SOLID
         2, // PLAT_PAINT_SCHEME_TWO_TONE_TOP_BOTTOM
@@ -4992,7 +4992,7 @@ public class VDISValues {
         17  // PLAT_PAINT_SCHEME_JINGLE
     };
 
-    public static final int PRESENT_DOMAIN[] = { 
+    public static final int PRESENT_DOMAIN[] = {
         0, // PRESENT_DOM_ENUM_UNCHANGED
         1, // PRESENT_DOM_ENUM_LAND
         2, // PRESENT_DOM_ENUM_AIR
@@ -5009,7 +5009,7 @@ public class VDISValues {
         13  // PRESENT_DOM_ENUM_EXTERIOR_OTHER_ENTITY
     };
 
-    public static final int PROTOCOL_VERSION[] = { 
+    public static final int PROTOCOL_VERSION[] = {
         0, // PTCL_VER_OTHER
         1, // PTCL_VER_DIS_1_0_MAY_1992
         2, // PTCL_VER_IEEE_1278_1993
@@ -5020,14 +5020,14 @@ public class VDISValues {
         7  // PTCL_VER_IEEE_1278_1_200X_DRAFT
     };
 
-    public static final int PULSE[] = { 
+    public static final int PULSE[] = {
         0, // PULSE_OTHER
         1, // PULSE_PULSE
         2, // PULSE_X_BAND_TACAN_PULSE
         3  // PULSE_Y_BAND_TACAN_PULSE
     };
 
-    public static final int RADIO_SYSTEM[] = { 
+    public static final int RADIO_SYSTEM[] = {
         0, // RADIO_OTHER
         1, // RADIO_GENERIC
         2, // RADIO_HQ
@@ -5041,25 +5041,25 @@ public class VDISValues {
         10  // RADIO_ENHANCED_SINCGARS_7_3
     };
 
-    public static final int RECEIVER[] = { 
+    public static final int RECEIVER[] = {
         0, // RECEIVER_OFF
         1, // RECEIVER_ON_BUT_NOT_RECEIVING
         2  // RECEIVER_ON_AND_RECEIVING
     };
 
-    public static final int SEVERITY[] = { 
+    public static final int SEVERITY[] = {
         0, // SEVERITY_NONE
         1, // SEVERITY_SLIGHT
         2, // SEVERITY_MODERATE
         3  // SEVERITY_HEAVY
     };
 
-    public static final int SEX[] = { 
+    public static final int SEX[] = {
         0, // LF_SEX_MALE
         1  // LF_SEX_FEMALE
     };
 
-    public static final int SF_REASON_CODES[] = { 
+    public static final int SF_REASON_CODES[] = {
         0, // SF_REASON_OTHER
         1, // SF_REASON_RECESS
         2, // SF_REASON_TERMINATION
@@ -5071,14 +5071,14 @@ public class VDISValues {
         8  // SF_REASON_ABORT_TRAINING_RETURN_TAC_OPS
     };
 
-    public static final int SLING_DAMAGE[] = { 
+    public static final int SLING_DAMAGE[] = {
         0, // NONE
         1, // SLING_DAMAGED
         2, // LINE_DAMAGED
         3  // SLING_OR_LINE_DAMAGED
     };
 
-    public static final int STATION_NAME[] = { 
+    public static final int STATION_NAME[] = {
         0, // STATION_OTHER
         1, // STATION_AIRCRAFT_WINGSTATION
         2, // STATION_SHIPS_FORWARD_GUNMOUNT_STARBOARD
@@ -5098,7 +5098,7 @@ public class VDISValues {
         16  // STATION_ON_STATION_XYZ
     };
 
-    public static final int TDL_TYPE[] = { 
+    public static final int TDL_TYPE[] = {
         0, // TDL_OTHER
         1, // TDL_PADIL
         2, // TDL_NATO_LINK_1
@@ -5180,18 +5180,18 @@ public class VDISValues {
         110  // TDL_CURSOR_ON_TARGET
     };
 
-    public static final int TRANSMIT_STATE[] = { 
+    public static final int TRANSMIT_STATE[] = {
         0, // TRANSMIT_OFF
         1, // TRANSMIT_ON_BUT_NOT_TRANSMITTING
         2  // TRANSMIT_ON_AND_TRANSMITTING
     };
 
-    public static final int UNMODULATED[] = { 
+    public static final int UNMODULATED[] = {
         0, // UNMOD_OTHER
         1  // UNMOD_CONTINUOUS_WAVE_EMISSION
     };
 
-    public static final int VP_RECORD_TYPE[] = { 
+    public static final int VP_RECORD_TYPE[] = {
         0, // VP_RECORD_TYPE_ARTICULATED_PART
         1, // VP_RECORD_TYPE_ATTACHED_PART
         2, // VP_RECORD_TYPE_SEPARATION
@@ -5212,7 +5212,7 @@ public class VDISValues {
         32  // VP_RECORD_TYPE_EXT_SUPPLY_APP
     };
 
-    public static final int WARHEAD_BURST_DESC[] = { 
+    public static final int WARHEAD_BURST_DESC[] = {
         0, // WARHEAD_BURST_DESC_OTHER
         10, // WARHEAD_BURST_DESC_CARGO
         20, // WARHEAD_BURST_DESC_FUEL_AIR_EXPLOSIVE
@@ -5283,7 +5283,7 @@ public class VDISValues {
         9500  // WARHEAD_BURST_DESC_BIOLOGICAL_TOXIN
     };
 
-    public static final int YESNO[] = { 
+    public static final int YESNO[] = {
         0, // YESNO_NO
         1  // YESNO_YES
     };

@@ -37,37 +37,37 @@ import discover.common.buffer.PlainTextBuffer;
 public class Network {
 
     public static final int DEFAULT_PORT = 3000;
-    
+
     private static final Logger logger = Discover.getLogger();
-    
+
     private static final String MULTICAST_ADDRESSES = "multicast_addresses.xml";
-    
+
     private static final String DEFAULT_ADDRESSES[] = {
-        
+
         "224.0.0.1",
         "ff02::1:e000:701",
         "ff02::1:e000:901",
         "ff02::1:e000:c001"
     };
-    
+
     private static final List<String> addresses;
-    
+
     private static InetAddress captureAddress = null;
     private static InetAddress playbackAddress = null;
 
     private static boolean bundledPDUs = true;
 
     static {
-        
+
         addresses = new CopyOnWriteArrayList<String>();
     }
-    
+
     /**
      * Determines capture and playback IP addresses.
-     * 
+     *
      * @param nif - {@link NetworkInterface}
      * @param unbundled - True if PDUs are unbundled.
-     * 
+     *
      * @return True if successful.
      */
     public static boolean initialize(
@@ -75,15 +75,15 @@ public class Network {
         String playback,
         boolean unbundled,
         boolean multicast) {
-        
+
         logger.info("Network interface: " + nif.getDisplayName());
-        
+
         List<InterfaceAddress> addresses = nif.getInterfaceAddresses();
         InputStream stream = null;
         boolean loaded = false;
 
         for(InterfaceAddress address : addresses) {
-                     
+
             logger.info("Address: " + address);
 
             if (address.getAddress().isSiteLocalAddress()) {
@@ -91,14 +91,14 @@ public class Network {
                 System.out.print("Using IP address (capture): ");
                 System.out.print(address.getAddress().getHostAddress());
                 System.out.println();
-            
+
                 captureAddress = address.getAddress();
             }
-          
+
             if (playback != null) {
-                
+
                 try {
-                    
+
                     playbackAddress = Inet4Address.getByName(playback);
                 }
                 catch(UnknownHostException exception) {
@@ -107,60 +107,60 @@ public class Network {
                 }
             }
             else if (address.getBroadcast() != null) {
-              
+
                 System.out.print("Using IP address (playback): ");
                 System.out.print(address.getBroadcast().getHostAddress());
                 System.out.println();
-            
+
                 playbackAddress = address.getBroadcast();
-                
+
                 if (captureAddress == null) {
-                	
+
                 	captureAddress = address.getAddress();
                 }
             }
         }
 
         if (unbundled) {
-          
+
             bundledPDUs = false;
         }
-        
+
         if (multicast) {
-            
+
             stream = Network.class.getResourceAsStream(MULTICAST_ADDRESSES);
 
             if (stream == null) {
-                
+
                 System.err.println("File not found: " + MULTICAST_ADDRESSES);
             }
             else {
-                
+
                 loaded = loadMulticastAddresses(stream);
             }
 
             if (!loaded) {
-                
+
                 defaultMulticastAddress();
             }
         }
-              
+
         return (captureAddress != null) && (playbackAddress != null);
     }
-    
+
     /**
      * @return {@link InetAddress}
      */
     public static InetAddress getCaptureAddress() {
-        
+
         return captureAddress;
     }
-    
+
     /**
      * @return {@link InetAddress}
      */
     public static InetAddress getPlaybackAddress() {
-        
+
         return playbackAddress;
     }
 
@@ -168,7 +168,7 @@ public class Network {
      * @return True if captured PDUs get unbundled.
      */
     public static boolean getBundledPDUs() {
-        
+
         return bundledPDUs;
     }
 
@@ -178,67 +178,67 @@ public class Network {
     public static String getHostname() {
 
         if (captureAddress != null) {
-          
+
             return captureAddress.getCanonicalHostName();
         }
         else {
-            
+
             return null;
         }
     }
-    
+
     /**
      * @param packet - {@link DatagramPacket}
-     * 
+     *
      * @return IP address representation and machine that sent the packet.
      */
     public static String getHostAddress(DatagramPacket packet) {
-        
+
         if (packet.getAddress() == null) {
-            
+
             return null;
         }
         else {
-            
+
             return packet.getAddress().getHostAddress();
         }
     }
-    
+
     /**
      * @return Array of multicast addresses in string form.
      */
     public synchronized static String[] getMulticastAddresses() {
-        
+
         return addresses.toArray(new String[addresses.size()]);
     }
-    
+
     /**
      * Adds IP address to the list of multicast addresses.
-     * 
+     *
      * @param address - IP address in string form.
-     * 
+     *
      * @return Short error description if address is not added to list.
      */
     public static synchronized String addMulticastAddress(String address) {
-        
+
         try {
-            
+
             InetAddress multicast = InetAddress.getByName(address);
-            
+
             if (multicast == null) {
-                
+
                 return "Could not get address by name.";
             }
             else if (addresses.contains(address)) {
-                
+
                 return "Address is already listed.";
             }
             else {
-                
+
                 logger.info("Adding multicast address: " + address);
-                
+
                 addresses.add(address);
-                
+
                 return null;
             }
         }
@@ -247,40 +247,40 @@ public class Network {
             return ("Caught " + exception.getClass().getSimpleName());
         }
     }
-    
+
     /**
      * Removes IP address from the list of multicast addresses.
-     * 
+     *
      * @param address - IP address in string form.
      */
     public static synchronized void removeMulticastAddress(String address) {
-        
+
         if (addresses.contains(address)) {
-            
+
             logger.info("Removing multicast address: " + address);
 
             addresses.remove(address);
         }
     }
-    
+
     /**
-     * Clears list of multicast addresses and adds hard coded default addresses. 
+     * Clears list of multicast addresses and adds hard coded default addresses.
      */
     public static synchronized void defaultMulticastAddress() {
-        
+
         logger.info("Defaulting multicast addresses");
 
         addresses.clear();
 
         for(String address : DEFAULT_ADDRESSES) {
-            
+
             String result = addMulticastAddress(address.toLowerCase());
-            
+
             if (result != null) {
-                
+
                 System.err.println(
-                    "Error with address " + address + 
-                    " - " + result); 
+                    "Error with address " + address +
+                    " - " + result);
             }
         }
     }
@@ -289,27 +289,27 @@ public class Network {
      * @return Map of interface name to description.
      */
     public static Map<String, String> getNetworkInfo(boolean html) {
-    
+
         Map<String, String> info = new TreeMap<String, String>();
 
         List<InterfaceAddress> interfaceAddresses;
         Enumeration<NetworkInterface> interfaces = null;
-        
+
         try {
 
             interfaces = NetworkInterface.getNetworkInterfaces();
-            
+
             while((interfaces != null) & interfaces.hasMoreElements()) {
-                
+
                 NetworkInterface nif = interfaces.nextElement();
                 AbstractBuffer buffer = null;
-                
+
                 if (html) {
-                    
+
                     buffer = new HypertextBuffer();
                 }
                 else {
-                    
+
                     buffer = new PlainTextBuffer();
                 }
 
@@ -319,46 +319,46 @@ public class Network {
                 buffer.addAttribute("Loopback", Boolean.toString(nif.isLoopback()));
                 buffer.addAttribute("Up and Running", Boolean.toString(nif.isUp()));
                 buffer.addAttribute("Point to Point", Boolean.toString(nif.isPointToPoint()));
-                
+
                 if (html) {
-                    
+
                     buffer.addBreak();
                 }
-                
+
                 buffer.addBoldLabel("Addresses");
                 buffer.addBreak();
-                
+
                 Enumeration<InetAddress> addresses = nif.getInetAddresses();
 
                 while((addresses != null) & addresses.hasMoreElements()) {
-                    
+
                     InetAddress address = addresses.nextElement();
 
                     if (!html) {
-                        
+
                         buffer.addText("  ");
                     }
-                    
+
                     buffer.addLabel(address.getClass().getSimpleName());
                     buffer.addItalic(address.getHostAddress());
 
                     if (address.isMulticastAddress()) {
-                      
+
                         buffer.addItalic(" (multicast)");
                     }
 
                     if (address.isSiteLocalAddress()) {
-                        
+
                         buffer.addItalic(" (site local)");
                     }
 
                     if (address.isLinkLocalAddress()) {
-                        
+
                         buffer.addItalic(" (link local)");
                     }
 
                     if (address.isAnyLocalAddress()) {
-                        
+
                         buffer.addItalic(" (any local)");
                     }
 
@@ -366,7 +366,7 @@ public class Network {
                 }
 
                 if (html) {
-                    
+
                     buffer.addBreak();
                 }
 
@@ -376,16 +376,16 @@ public class Network {
                 interfaceAddresses = nif.getInterfaceAddresses();
 
                 for(InterfaceAddress address : interfaceAddresses) {
-                    
+
                     if (!html) {
-                        
+
                         buffer.addText("  ");
                     }
 
                     buffer.addText(address.getAddress().getHostAddress());
-                    
+
                     if (address.getBroadcast() != null) {
-                        
+
                         buffer.addItalic(" (broadcast: ");
                         buffer.addItalic(address.getBroadcast().getHostAddress());
                         buffer.addItalic(")");
@@ -398,44 +398,44 @@ public class Network {
             }
         }
         catch(SocketException exception) {
-            
+
             logger.log(Level.SEVERE, "Caught exception!", exception);
         }
 
         return info;
     }
-    
+
     private static boolean loadMulticastAddresses(InputStream stream) {
-        
+
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         boolean loaded = false;
-        
+
         try {
-            
+
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document document = builder.parse(stream);
             NodeList nodes = document.getDocumentElement().getChildNodes();
             String result = null;
 
             for(int i = 0, size = nodes.getLength(); i < size; ++i) {
-                
+
                 Node node = nodes.item(i);
-                
+
                 if (node.getNodeName().equals("address")) {
-                    
+
                     String address = node.getTextContent().trim();
-                    
+
                     result = addMulticastAddress(address.toLowerCase());
-                    
+
                     if (result != null) {
-                        
+
                         System.err.println(
-                            "Error with address " + address + 
-                            " - " + result); 
+                            "Error with address " + address +
+                            " - " + result);
                     }
                 }
             }
-            
+
             loaded = true;
         }
         catch(ParserConfigurationException exception) {
@@ -450,7 +450,7 @@ public class Network {
 
             logger.log(Level.SEVERE, "Caught exception!", exception);
         }
-        
+
         return loaded;
     }
 }

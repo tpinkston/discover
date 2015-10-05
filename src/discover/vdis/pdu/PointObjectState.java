@@ -21,7 +21,7 @@ import discover.vdis.types.ObjectType.Geometry;
 public class PointObjectState extends AbstractPDU {
 
     private static final Geometry POINT = Geometry.POINT;
-    
+
     private ObjectId objectId = new ObjectId();
     private ObjectId referencedObjectId = new ObjectId();
     private ObjectType objectType = null;
@@ -34,7 +34,7 @@ public class PointObjectState extends AbstractPDU {
     private int force = 0;
     private int update = 0;
     private int modifications = 0;
-    
+
     public PointObjectState() {
 
     }
@@ -60,12 +60,12 @@ public class PointObjectState extends AbstractPDU {
     public void toBuffer(AbstractBuffer buffer) {
 
         super.toBuffer(buffer);
-        
+
         buffer.addTitle("IDENTIFICATION");
         buffer.addAttribute("Object", this.objectId.toString());
         buffer.addAttribute("Referenced Object", this.referencedObjectId.toString());
         buffer.addAttribute(
-            "Force", 
+            "Force",
             VDIS.getDescription(VDIS.FORCE_ID, this.force));
         buffer.addAttribute("Requestor", this.requestor.toString());
         buffer.addAttribute("Receiver", this.receiver.toString());
@@ -95,7 +95,7 @@ public class PointObjectState extends AbstractPDU {
     public void read(DataInputStream stream) throws IOException {
 
         super.read(stream); // (header)
-        
+
         this.objectId.read(stream);
         this.referencedObjectId.read(stream);
         this.update = stream.readUnsignedShort();
@@ -106,12 +106,12 @@ public class PointObjectState extends AbstractPDU {
         this.orientation.read(stream);
         this.generic.read(stream);
         this.specific.read(stream);
-        
+
         stream.readShort(); // 16 bits padding
 
         this.requestor.readPartial(stream);
         this.receiver.readPartial(stream);
-        
+
         stream.readInt(); // 32 bits padding
    }
 }

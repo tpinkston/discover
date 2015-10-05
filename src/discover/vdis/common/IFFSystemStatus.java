@@ -12,9 +12,9 @@ import discover.vdis.bits.Bits;
 public class IFFSystemStatus extends Abstract8Bits {
 
     private static final List<Bits> values;
-    
+
     static {
-        
+
         values = new ArrayList<Bits>();
 
         values.add(Bits.getOnOff("System", 0));
@@ -26,7 +26,7 @@ public class IFFSystemStatus extends Abstract8Bits {
         values.add(Bits.getYesNo("Parameter 6 Capable", 6));
         values.add(Bits.getYesNo("Operational", 7));
     }
-    
+
     @Override
     public List<Bits> getValues() {
 
@@ -35,11 +35,11 @@ public class IFFSystemStatus extends Abstract8Bits {
 
     @Override
     public IFFSystemStatus clone() {
-        
+
         IFFSystemStatus record = new IFFSystemStatus();
-        
+
         record.set(super.get());
-        
+
         return record;
     }
 }

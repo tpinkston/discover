@@ -23,35 +23,35 @@ import discover.system.Network;
 public class MulticastAddressesDialog implements ActionListener, ListSelectionListener {
 
     public static final String TITLE = "Multicast Addresses";
-    
+
     private static final Dimension LIST_SIZE = new Dimension(200, 200);
     private static final Dimension BUTTON_SIZE = new Dimension(100, 22);
-    
+
     private static final String ADD = "Add";
     private static final String DELETE = "Delete";
     private static final String DEFAULT = "Default";
 
     @SuppressWarnings("serial")
     private final JDialog dialog = new JDialog(
-        DiscoverFrame.getFrame(), 
+        DiscoverFrame.getFrame(),
         TITLE) {
 
             @Override
             public void dispose() {
 
                 MulticastAddressesDialog.this.disposing();
-                
+
                 super.dispose();
             }
     };
-    
+
     private final JList<String> list;
     private final JButton addAddress;
     private final JButton deleteAddresses;
     private final JButton defaultAddresses;
-    
+
     public MulticastAddressesDialog() {
-     
+
         this.list = new JList<>();
         this.list.getSelectionModel().addListSelectionListener(this);
 
@@ -67,13 +67,13 @@ public class MulticastAddressesDialog implements ActionListener, ListSelectionLi
 
         this.refreshList();
         this.fill();
-        
+
         this.dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         this.dialog.pack();
         this.dialog.setModal(true);
-        
+
         Utilities.center(DiscoverFrame.getFrame(), this.dialog);
-        
+
         this.dialog.setVisible(true);
     }
 
@@ -83,7 +83,7 @@ public class MulticastAddressesDialog implements ActionListener, ListSelectionLi
         if (!event.getValueIsAdjusting()) {
 
         	int size = this.list.getSelectedValuesList().size();
-        	
+
             this.deleteAddresses.setEnabled(size > 0);
         }
     }
@@ -94,73 +94,73 @@ public class MulticastAddressesDialog implements ActionListener, ListSelectionLi
         if (event.getActionCommand().equals(ADD)) {
 
             String address = JOptionPane.showInputDialog(
-                this.dialog, 
-                "Enter IP address:", 
-                TITLE, 
+                this.dialog,
+                "Enter IP address:",
+                TITLE,
                 JOptionPane.PLAIN_MESSAGE);
-            
+
             if (address != null) {
-                
+
                 address = address.toLowerCase();
 
                 String result = Network.addMulticastAddress(address);
-                
+
                 if (result == null) {
-                    
+
                     this.refreshList();
                 }
                 else {
-                    
+
                     JOptionPane.showMessageDialog(
-                        this.dialog, 
-                        ("Error with address " + address + "\n" + result), 
-                        TITLE, 
+                        this.dialog,
+                        ("Error with address " + address + "\n" + result),
+                        TITLE,
                         JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
         else if (event.getActionCommand().equals(DELETE)) {
-            
+
             List<String> values = this.list.getSelectedValuesList();
-            
+
             if ((values != null) && (values.size() > 0)) {
-                
+
                 StringBuffer buffer;
-                
+
                 if (values.size() == 1) {
-                    
+
                     buffer = new StringBuffer("Remove address:");
                 }
                 else {
-                    
+
                     buffer = new StringBuffer("Remove addresses:");
                 }
-                
+
                 for(Object value : values) {
-                    
+
                     buffer.append("\n" + value.toString());
                 }
-                
+
                 int result = JOptionPane.showConfirmDialog(
                     this.dialog,
                     buffer.toString(),
                     TITLE,
                     JOptionPane.OK_CANCEL_OPTION,
                     JOptionPane.QUESTION_MESSAGE);
-                
+
                 if (result == JOptionPane.OK_OPTION) {
-                    
+
                     for(Object value : values) {
-                        
+
                         Network.removeMulticastAddress(value.toString());
                     }
-                    
+
                     this.refreshList();
                 }
             }
         }
         else if (event.getActionCommand().equals(DEFAULT)) {
-            
+
             int result = JOptionPane.showConfirmDialog(
                 this.dialog,
                 "Use default addresses?  This will remove any non-default\n" +
@@ -168,31 +168,31 @@ public class MulticastAddressesDialog implements ActionListener, ListSelectionLi
                 TITLE,
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE);
-            
+
             if (result == JOptionPane.YES_OPTION) {
-                
+
                 Network.defaultMulticastAddress();
                 this.refreshList();
             }
         }
     }
-    
+
     private void disposing() {
-        
+
         this.list.getSelectionModel().removeListSelectionListener(this);
         this.addAddress.removeActionListener(this);
         this.deleteAddresses.removeActionListener(this);
         this.defaultAddresses.removeActionListener(this);
     }
-    
+
     private void refreshList() {
-        
+
         this.list.setListData(Network.getMulticastAddresses());
         this.list.getSelectionModel().setSelectionInterval(-1, -1);
     }
-        
+
     private void fill() {
-        
+
         this.list.setPreferredSize(LIST_SIZE);
         this.addAddress.setPreferredSize(BUTTON_SIZE);
         this.deleteAddresses.setPreferredSize(BUTTON_SIZE);

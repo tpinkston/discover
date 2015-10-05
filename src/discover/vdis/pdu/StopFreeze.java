@@ -27,7 +27,7 @@ public class StopFreeze extends AbstractPDU {
 
     @Override
     public void clear() {
-        
+
         this.originator.clear();
         this.recipient.clear();
         this.real.clear();
@@ -35,7 +35,7 @@ public class StopFreeze extends AbstractPDU {
         this.behavior = 0;
         this.requestId = -1L;
     }
-    
+
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
@@ -45,14 +45,14 @@ public class StopFreeze extends AbstractPDU {
         buffer.addAttribute("Originator", this.originator.toString());
         buffer.addAttribute("Recipient", this.recipient.toString());
         buffer.addAttribute(
-            "Reason", 
+            "Reason",
             VDIS.getDescription(VDIS.SF_REASON_CODES, this.reason));
         buffer.addAttribute(
             "Frozen Behavior",
             VDIS.getDescription(VDIS.FROZEN_BEHAVIOR, this.behavior));
         buffer.addAttribute("Request Id", this.requestId);
         buffer.addBreak();
-        
+
         buffer.addTitle("REAL TIME");
         buffer.addBuffer(this.real);
         buffer.addBreak();
@@ -62,7 +62,7 @@ public class StopFreeze extends AbstractPDU {
     public void read(DataInputStream stream) throws IOException {
 
         super.read(stream); // (header)
-        
+
         this.originator.read(stream);
         this.recipient.read(stream);
         this.real.read(stream);

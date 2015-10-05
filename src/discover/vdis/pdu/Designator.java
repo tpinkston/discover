@@ -32,7 +32,7 @@ public class Designator extends AbstractPDU {
     public Designator() {
 
     }
-    
+
     public EntityId getEntity() { return this.entity; }
     public EntityId getObject() { return this.object; }
     public Location12 getBeamOffset() { return this.beamOffset; }
@@ -66,12 +66,12 @@ public class Designator extends AbstractPDU {
         this.designatorPower = 0.0f;
         this.designatorWavelength = 0.0f;
     }
-    
+
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
         super.toBuffer(buffer);
-        
+
         buffer.addTitle("IDENTIFICATION");
         buffer.addAttribute("Designating Entity", this.entity.toString());
         buffer.addAttribute("Designated Entity", this.object.toString());
@@ -79,7 +79,7 @@ public class Designator extends AbstractPDU {
         buffer.addAttribute("System Name", this.systemName, VDIS.DESIG_SYSTEM_NAME);
         buffer.addAttribute("System Number", this.designatorSystemNumber);
         buffer.addBreak();
-        
+
         buffer.addTitle("PARAMETERS");
         buffer.addAttribute("Code", this.designatorCode);
         buffer.addAttribute("Power", this.designatorPower);
@@ -88,7 +88,7 @@ public class Designator extends AbstractPDU {
         buffer.addAttribute("Laser Function", this.function, VDIS.LASER_FUNCTION);
         buffer.addAttribute("Dead Reckoning Algorithm", this.algorithm, VDIS.DEAD_RECKONING);
         buffer.addBreak();
-        
+
         buffer.addTitle("SPATIAL");
         buffer.addAttribute("Spot Location", this.spotLocation.toString());
         buffer.addAttribute("Spot Offset on Object", this.spotOffset.toString());
@@ -101,46 +101,46 @@ public class Designator extends AbstractPDU {
 
         // 12 bytes (header)
         super.read(stream);
-        
+
         // 6 bytes
         this.entity.read(stream);
-        
+
         // 1 byte
         this.spotType = stream.readUnsignedByte();
-        
+
         // 1 byte
         this.systemName = stream.readUnsignedByte();
-        
+
         // 6 bytes
         this.object.read(stream);
-        
+
         // 2 bytes
         this.designatorCode = stream.readUnsignedShort();
-        
+
         // 4 bytes
         this.designatorPower = stream.readFloat();
-        
+
         // 4 bytes
         this.designatorWavelength = stream.readFloat();
-        
+
         // 12 bytes
         this.spotOffset.read(stream);
-        
+
         // 24 bytes
         this.spotLocation.read(stream);
-        
+
         // 1 byte
         this.algorithm = stream.readUnsignedByte();
-        
+
         // 1 byte
         this.flashRate = stream.readUnsignedByte();
-        
+
         // 1 byte
         this.designatorSystemNumber = stream.readUnsignedByte();
-        
+
         // 1 byte
         this.function = stream.readUnsignedByte();
-        
+
         // 12 bytes
         this.beamOffset.read(stream);
     }

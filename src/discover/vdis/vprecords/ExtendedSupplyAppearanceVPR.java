@@ -14,31 +14,31 @@ import discover.vdis.common.ExtendedStatus;
 import discover.vdis.enums.VDIS;
 
 public class ExtendedSupplyAppearanceVPR extends ExtendedAppearanceVPR {
-    
+
     public static final int LENGTH = 16;
 
     private ExtendedStatus status = new ExtendedStatus();
     private Abstract16Bits equipment = new ExtendedEquipmentSupply();
 
     public ExtendedSupplyAppearanceVPR() {
-        
+
         super(32); // VP_RECORD_TYPE_EXT_SUPPLY_APP
     }
 
     @Override
     public int getLength() {
-        
+
         return LENGTH;
     }
 
     public ExtendedStatus getStatus() { return status; }
     public Abstract16Bits getEquipment() { return this.equipment; }
-    
+
     public void setEquipment(Abstract16Bits equipment) {
-        
+
         // Intentionally throws NPE if null...
         equipment.getClass();
-        
+
         this.equipment = equipment;
     }
 
@@ -46,7 +46,7 @@ public class ExtendedSupplyAppearanceVPR extends ExtendedAppearanceVPR {
     public void toBuffer(AbstractBuffer buffer) {
 
         String title = VDIS.getDescription(VDIS.VP_RECORD_TYPE, super.type);
-        
+
         buffer.addTitle(title.toUpperCase());
         buffer.addTitle("STATUS");
         buffer.addBuffer(this.status);
@@ -61,7 +61,7 @@ public class ExtendedSupplyAppearanceVPR extends ExtendedAppearanceVPR {
 
         // 1 Byte
         this.status.read(stream);
-        
+
         // 2 bytes
         this.equipment.read(stream);
     }
@@ -75,7 +75,7 @@ public class ExtendedSupplyAppearanceVPR extends ExtendedAppearanceVPR {
         stream.writeInt(0x00);
         stream.writeInt(0x00);
         stream.writeInt(0x00);
-        
+
         this.status.write(stream);
         this.equipment.write(stream);
     }

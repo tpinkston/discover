@@ -15,17 +15,17 @@ import discover.vdis.enums.VDIS;
 
 /**
  * 16-bit record for the general appearance of an environment object (point,
- * linear or areal).  The lower 8 bits are for a single integer value, 
- * the upper 8 bits comprise several individual enumerations. 
+ * linear or areal).  The lower 8 bits are for a single integer value,
+ * the upper 8 bits comprise several individual enumerations.
  */
 public class GenericObjectAppearance extends Abstract8Bits {
 
     public static final List<Bits> values;
-    
+
     private int percentComplete = 0;
-    
+
     static {
-        
+
         values = new ArrayList<Bits>();
 
         values.add(Bits.get2("Damage", 1, true, getHandle(VDIS.OBJECT_DAMAGE)));
@@ -34,16 +34,16 @@ public class GenericObjectAppearance extends Abstract8Bits {
         values.add(Bits.getYesNo("Smoking", 4));
         values.add(Bits.getYesNo("Flaming", 5));
     }
-    
+
     public void clear() {
 
         super.set((byte)0);
         this.percentComplete = 0;
     }
-    
+
     @Override
     public boolean bitsInBuffer() {
-        
+
         return false;
     }
 
@@ -60,13 +60,13 @@ public class GenericObjectAppearance extends Abstract8Bits {
         buffer.addBreak();
 
         buffer.addAttribute("Percent Complete", this.percentComplete);
-        
+
         super.toBuffer(buffer);
     }
 
     @Override
     public void read(DataInputStream stream) throws IOException {
-        
+
         // Read upper 8 bits:
         super.read(stream);
 
@@ -76,12 +76,12 @@ public class GenericObjectAppearance extends Abstract8Bits {
 
     @Override
     public GenericObjectAppearance clone() {
-        
+
         GenericObjectAppearance appearance = new GenericObjectAppearance();
-        
+
         appearance.set(super.get());
         appearance.percentComplete = this.percentComplete;
-        
+
         return appearance;
     }
 }

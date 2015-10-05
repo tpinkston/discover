@@ -18,18 +18,18 @@ public class Acknowledge extends AbstractPDU {
     private int acknowledge = 0;
     private int response = 0;
     private long requestId = -1;
-    
+
     public Acknowledge() {
-    
+
     }
 
     public EntityId getOriginator() { return this.originator; }
 
     public EntityId getRecipient() { return this.recipient; }
-    
+
     @Override
     public void clear() {
-        
+
         this.originator.clear();
         this.recipient.clear();
         this.acknowledge = 0;
@@ -61,7 +61,7 @@ public class Acknowledge extends AbstractPDU {
     public void read(DataInputStream stream) throws IOException {
 
         super.read(stream); // (header)
-        
+
         this.originator.read(stream);
         this.recipient.read(stream);
         this.acknowledge = stream.readUnsignedShort();
