@@ -1,0 +1,6 @@
+value,name,desc,deleted,new,SISO
+1,ACK_FLAG_CREATE_ENTITY,Create Entity,0,0,0
+2,ACK_FLAG_REMOVE_ENTITY,Remove Entity,0,0,0
+3,ACK_FLAG_START_RESUME,Start Resume,0,0,0
+4,ACK_FLAG_STOP_FREEZE,Stop Freeze,0,0,0
+5,ACK_FLAG_TRANSFER_CONTROL_REQUEST,Transfer Control Request,0,0,0

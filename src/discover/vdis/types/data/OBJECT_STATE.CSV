@@ -1,0 +1,89 @@
+type,dom,kind,cat,scat,name,desc,deleted,new,SISO
+point,0,5,0,0,POINT_OBJ_TAC_SMOKE,Tactical Smoke,0,0,0
+point,0,5,1,0,POINT_OBJ_TAC_SMOKE_GROUND_BURST,Tactical Smoke Ground Burst,0,0,0
+point,0,5,1,1,POINT_OBJ_TAC_SMOKE_GROUND_BURST_ART,Tactical Smoke Ground Burst Artillery,0,0,0
+point,0,5,2,0,POINT_OBJ_TAC_SMOKE_AIR_BURST,Tactical Smoke Air Burst,0,0,0
+point,0,5,2,1,POINT_OBJ_TAC_SMOKE_AIR_BURST_GRENADE,Tactical Smoke Air Burst Grenade,0,0,0
+point,0,5,3,0,POINT_OBJ_TAC_SMOKE_CANISTER,Tactical Smoke Canister,0,1,0
+point,0,5,3,1,POINT_OBJ_TAC_SMOKE_CANISTER_M83_WHITE,M83~ White,0,1,0
+point,0,5,3,2,POINT_OBJ_TAC_SMOKE_CANISTER_M18_GREEN,M18~ Green,0,1,0
+point,0,5,3,3,POINT_OBJ_TAC_SMOKE_CANISTER_M18_VIOLET,M18~ Violet,0,1,0
+point,0,5,3,4,POINT_OBJ_TAC_SMOKE_CANISTER_M18_YELLOW,M18~ Yellow,0,1,0
+point,0,5,3,5,POINT_OBJ_TAC_SMOKE_CANISTER_M18_RED,M18~ Red,0,1,0
+point,1,1,0,0,POINT_OBJ_OBSTACLE,Obstacle,0,0,0
+point,1,1,1,0,POINT_OBJ_ABATIS,Abatis,0,0,0
+point,1,1,1,1,POINT_OBJ_ABATIS_8_TREE,Abatis 8 Tree,0,0,0
+point,1,1,1,2,POINT_OBJ_ABATIS_14_TREE,Abatis 14 Tree,0,0,0
+point,1,1,2,0,POINT_OBJ_LOG_CRIB,Log Crib,0,0,0
+point,1,1,2,1,POINT_OBJ_LOG_CRIB_RECT,Log Crib Rectangular,0,0,0
+point,1,1,2,2,POINT_OBJ_LOG_CRIB_TRI,Log Crib Triangular,0,0,0
+point,1,1,3,0,POINT_OBJ_CRATER,Crater,0,0,0
+point,1,1,3,1,POINT_OBJ_CRATER_SMALL,Crater Small,0,0,0
+point,1,1,3,2,POINT_OBJ_CRATER_MEDIUM,Crater Medium,0,0,0
+point,1,1,3,3,POINT_OBJ_CRATER_LARGE,Crater Large,0,0,0
+point,1,1,4,0,POINT_OBJ_BARRIER,Barrier,0,1,1
+point,1,1,4,1,POINT_OBJ_DRAGONS_TEETH,Dragons Teeth,0,1,1
+point,1,1,5,0,POINT_OBJ_ROCK_DROP,Rock Drop,0,1,1
+point,1,1,5,1,POINT_OBJ_ROCK_DROP_COV,Rock Drop Covered,0,1,1
+point,1,1,5,2,POINT_OBJ_ROCK_DROP_UNCOV,Rock Drop Uncovered,0,1,1
+point,1,1,6,0,POINT_OBJ_TARGET,Target,0,1,1
+point,1,1,6,1,POINT_OBJ_TARGET_BORESIGHT,Boresight,0,1,1
+point,1,1,6,2,POINT_OBJ_TARGET_ZEROING,Zeroing Target Panel,0,1,1
+point,1,1,8,0,POINT_OBJ_BARRICADE,Barricade,0,1,1
+point,1,1,8,1,POINT_OBJ_BARRICADE_IMPROVISED,Improvised Barricade (Hasty),0,1,1
+point,1,1,8,2,POINT_OBJ_BARRICADE_IMPROVED,Improved Barricade,0,1,1
+point,1,2,0,0,POINT_OBJ_PREPARED_POS,Prepared Position,0,0,0
+point,1,2,1,0,POINT_OBJ_VEH_DEFILADE,Vehicle Defilade,0,0,0
+point,1,2,1,1,POINT_OBJ_ARMORED_VEH_DEFILADE,Armored Vehicle Defilade,0,0,0
+point,1,2,1,2,POINT_OBJ_FIGHTING_VEH_DEFILADE,Fighting Vehicle Defilade,0,0,0
+point,1,2,1,3,POINT_OBJ_MORTAR_CARRIER_DEFILADE,Mortar Carrier Defilade,0,0,0
+point,1,2,1,4,POINT_OBJ_TANK_DEFILADE,Tank Defilade,0,0,0
+point,1,2,2,0,POINT_OBJ_INFANTRY_FIGHTING_POS,Infantry Fighting Position,0,0,0
+point,1,2,2,1,POINT_OBJ_COV_MACH_GUN_BUNKER,Covered Machine Gun Bunker,0,0,0
+point,1,2,2,2,POINT_OBJ_OVERHEAD_COV_INFANTRY_POS,Overhead Covered Infantry Position,0,0,0
+point,1,2,2,3,POINT_OBJ_NON_COV_INFANTRY_POS,Non Covered Infantry Position,0,0,0
+point,1,2,2,4,POINT_OBJ_NON_COV_MACH_GUN_BUNKER,Non Covered Machine Gun Bunker,0,0,0
+point,1,2,2,5,POINT_OBJ_HASTY_FIGHTING_POS,Hasty Fighting Position,0,0,0
+point,1,3,0,0,POINT_OBJ_CULTURAL_FEATURE,Cultural Feature,0,0,0
+point,1,3,1,0,POINT_OBJ_BLDG,Building,0,0,0
+point,1,3,1,1,POINT_OBJ_CHURCH,Church,0,0,0
+point,1,3,1,2,POINT_OBJ_APARTMENT_BLDG,Apartment Building,0,0,0
+point,1,3,1,3,POINT_OBJ_GOVERNMENT_BLDG,Government Building,0,0,0
+point,1,3,1,4,POINT_OBJ_INDUSTRIAL_BLDG,Industrial Building,0,0,0
+point,1,3,1,5,POINT_OBJ_HANGAR,Hangar,0,0,0
+point,1,3,1,6,POINT_OBJ_MICROWAVE_TOWER,Microwave Tower,0,0,0
+point,1,3,1,7,POINT_OBJ_POWER_PYLON,Power Pylon,0,0,0
+point,1,3,1,8,POINT_OBJ_RADIO_TV_TOWER,Radio Tv Tower,0,0,0
+point,1,3,1,9,POINT_OBJ_SCHOOL,School,0,0,0
+point,1,3,1,10,POINT_OBJ_TRANSFORMER_YARD,Transformer Yard,0,0,0
+point,1,3,1,11,POINT_OBJ_INSURGENT_BLDG,Insurgent Building,0,1,1
+point,1,3,2,0,POINT_OBJ_BLDG_RUBBLE,Building Rubble,0,0,0
+point,1,4,0,0,POINT_OBJ_PASSAGEWAY,Passageway,0,0,0
+point,1,4,1,0,POINT_OBJ_STATIONARY_BRIDGE,Stationary Bridge,0,0,0
+point,1,4,1,1,POINT_OBJ_STATIONARY_BRIDGE_2_LANE,Stationary Bridge 2 Lane,0,0,0
+point,1,4,1,2,POINT_OBJ_STATIONARY_BRIDGE_4_LANE,Stationary Bridge 4 Lane,0,0,0
+point,1,4,2,0,POINT_OBJ_AVLB,AVLB,0,0,0
+point,1,4,2,1,POINT_OBJ_AVLB_M60A1,AVLB M60A1,0,0,0
+point,1,4,2,2,POINT_OBJ_AVLB_MTU20,AVLB MTU20,0,0,0
+point,1,4,3,0,POINT_OBJ_RIBBON_BRIDGE,Ribbon Bridge,0,0,0
+point,1,4,3,1,POINT_OBJ_RIBBON_BRIDGE_2_LANE,Ribbon Bridge 2 Lane,0,0,0
+point,1,4,3,2,POINT_OBJ_RIBBON_BRIDGE_4_LANE,Ribbon Bridge 4 Lane,0,0,0
+point,1,6,2,0,POINT_OBJ_NBC_HAZARD_MARKER,NBC Hazard Marker,0,0,0
+linear,0,5,0,0,LINEAR_OBJ_TAC_SMOKE,Tactical Smoke,0,0,0
+linear,0,5,1,0,LINEAR_OBJ_EXHAUST_SMOKE,Exhaust Smoke,0,0,0
+linear,1,1,0,0,LINEAR_OBJ_OBSTACLE,Obstacle,0,0,0
+linear,1,1,1,0,LINEAR_OBJ_TANK_DITCH,Tank Ditch,0,0,0
+linear,1,1,2,0,LINEAR_OBJ_CONCERTINA_WIRE,Concertina Wire,0,0,0
+linear,1,1,2,1,LINEAR_OBJ_CONCERTINA_WIRE_2_ROLL,Concertina Wire 2 Roll,0,0,0
+linear,1,1,2,2,LINEAR_OBJ_CONCERTINA_WIRE_3_ROLL,Concertina Wire 3 Roll,0,0,0
+linear,1,1,3,0,LINEAR_OBJ_CONCRETE_BARRIER,Concrete Barrier,0,1,1
+linear,1,6,0,0,LINEAR_OBJ_OBSTACLE_MARKER,Obstacle Marker,0,0,0
+linear,1,6,1,0,LINEAR_OBJ_MINEFIELD_LANE_MARKER,Minefield Lane Marker,0,0,0
+linear,1,7,0,0,LINEAR_OBJ_OBSTACLE_BREACH,Obstacle Breach,0,0,0
+linear,1,7,1,0,LINEAR_OBJ_BREACH,Breach,0,0,0
+areal,0,1,0,0,AREAL_OBJ_OBSTACLE,Obstacle,0,0,0
+areal,0,1,1,0,AREAL_OBJ_MINEFIELD,Minefield,0,0,0
+areal,0,1,1,1,AREAL_OBJ_MINEFIELD_HASTY,Minefield Hasty,0,0,0
+areal,0,1,1,2,AREAL_OBJ_MINEFIELD_PREPARED,Minefield Prepared,0,0,0
+areal,0,1,1,3,AREAL_OBJ_MINEFIELD_SCATTERED,Minefield Scattered,0,0,0
+areal,0,1,1,4,AREAL_OBJ_MINEFIELD_SOLITARY,Minefield Solitary,0,0,0

@@ -1,0 +1,5 @@
+value,name,desc
+0,LAND_SMOKE_NONE,Not Smoking
+1,LAND_SMOKE_RISING,Rising Smoke
+2,LAND_SMOKE_ENGINE,Emitting Engine Smoke
+3,LAND_SMOKE_ENGINE_RISING,Emitting Engine Smoke and Rising Smoke

@@ -1,0 +1,10 @@
+value,name,desc,deleted,new,SISO
+0,SF_REASON_OTHER,Other,0,0,0
+1,SF_REASON_RECESS,Recess,0,0,0
+2,SF_REASON_TERMINATION,Termination,0,0,0
+3,SF_REASON_SYSTEM_FAILURE,System Failure,0,0,0
+4,SF_REASON_SECURITY_VIOLATION,Security Violation,0,0,0
+5,SF_REASON_ENTITY_RECONSTITUTION,Entity Reconstitution,0,0,0
+6,SF_REASON_STOP_FOR_RESET,Stop For Reset,0,0,0
+7,SF_REASON_STOP_FOR_RESTART,Stop For Restart,0,0,0
+8,SF_REASON_ABORT_TRAINING_RETURN_TAC_OPS,Abort Training Return to Tactical Operations,0,0,0

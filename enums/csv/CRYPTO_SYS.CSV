@@ -1,0 +1,6 @@
+value,name,desc,deleted,new,SISO
+0,CRYPTO_OTHER,Other,0,0,0
+1,CRYPTO_KY_28,KY-28,0,0,0
+2,CRYPTO_VINSON,VINSON (KY-57~ KY-58~ SINCGARS ICOM),0,0,0
+3,CRYPTO_NSVE,Narrow Spectrum Secure Voice (NSVE),0,0,0
+4,CRYPTO_WSVE,Wide Spectrum Secure Voice (WSVE),0,0,0

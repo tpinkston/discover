@@ -1,0 +1,5 @@
+value,name,desc
+0,NONE,None
+1,SLING_DAMAGED,Sling Damaged
+2,LINE_DAMAGED,Line Damaged
+3,SLING_OR_LINE_DAMAGED,Sling or Line Damaged

@@ -1,0 +1,6 @@
+value,name,desc,deleted,new,SISO
+0,DES_OBJ_STATUS_OTHER,No Statement,0,1,0
+1,DES_OBJ_STATUS_INITIAL_REPORT,Initial Report,0,1,0
+2,DES_OBJ_STATUS_CHANGE_REPORT,Change Report,0,1,0
+3,DES_OBJ_STATUS_FINAL_REPORT,Final Report,0,1,0
+,,,,,
