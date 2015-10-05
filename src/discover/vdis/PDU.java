@@ -49,11 +49,11 @@ import discover.vdis.pdu.StopFreeze;
 import discover.vdis.pdu.Transmitter;
 
 public class PDU implements Bufferable {
-    
+
     protected static final DateFormat format = DateFormat.getDateTimeInstance();
 
     private static Logger logger = Discover.getLogger();
-    
+
     private String source = null;
     private String title = null;
     private String initiator = null;
@@ -62,174 +62,174 @@ public class PDU implements Bufferable {
     private long time = 0;
     private byte data[] = null;
     private AbstractPDU pdu = null;
-    
+
     public PDU() {
-        
+
     }
 
     public PDU(byte data[]) {
-        
+
         this.data = data;
-        
+
         if (this.data == null) {
-            
+
             throw new NullPointerException();
         }
     }
-    
+
     public AbstractPDU getPDU() {
-        
+
         return this.pdu;
     }
-    
+
     public void setPDU(AbstractPDU pdu) {
-        
+
         this.pdu = pdu;
     }
 
     public String getSource() {
-        
+
         return this.source;
     }
-    
+
     public void setSource(String source) {
-        
+
         this.source = source;
     }
-    
+
     public String getTitle() {
-        
+
         if ((this.title == null) || this.title.isEmpty()) {
-        
+
             return VDIS.getDescription(VDIS.PDU_TYPE, this.getType());
         }
-        
+
         return this.title;
     }
-    
+
     public String getInitiator() {
-        
+
         return this.initiator;
     }
-    
+
     public String getTimestamp() {
-        
+
         return this.timestamp;
     }
 
     public int getPort() {
-        
+
         return this.port;
     }
-    
+
     public void setPort(int port) {
-        
+
         this.port = port;
     }
-    
+
     public long getTime() {
-        
+
         return this.time;
     }
-    
+
     public void setTime(long time) {
-        
+
         this.time = time;
     }
-    
+
     public int getProtocol() {
-        
+
         return ByteArray.get8bits(this.data, 0);
     }
-    
+
     public void setProtocol(byte protocol) {
-        
+
         ByteArray.set8Bits(this.data, 0, protocol);
     }
-    
+
     public int getExercise() {
-        
+
         if (this.data != null) {
-            
+
             return ByteArray.get8bits(this.data, 1);
         }
         else {
-            
+
             return 0;
         }
     }
-    
+
     public void setExercise(byte exercise) {
-        
+
         ByteArray.set8Bits(this.data, 1, exercise);
     }
-    
+
     public int getType() {
-        
+
         return ByteArray.get8bits(this.data, 2);
     }
-    
+
     public void setType(byte type) {
-        
+
         ByteArray.set8Bits(this.data, 2, type);
     }
-    
+
     public int getFamily() {
-        
+
         return ByteArray.get8bits(this.data, 3);
     }
-    
+
     public void setFamily(byte family) {
-        
+
         ByteArray.set8Bits(this.data, 3, family);
     }
-    
+
     public int getLength() {
-        
+
         return ByteArray.get16bits(this.data, 8);
     }
-    
+
     public void setLength(int length) {
-        
+
         ByteArray.set16Bits(this.data, 8, length);
     }
-    
+
     public int getStatus() {
-        
+
         return ByteArray.get8bits(this.data, 10);
     }
-    
+
     public void setStatus(byte status) {
-        
+
         ByteArray.set8Bits(this.data, 10, status);
     }
-    
+
     public byte[] getData() {
-        
+
         return this.data;
     }
-    
+
     public void setData(byte[] bytes) {
-        
+
         this.data = bytes;
         this.setTitle();
         this.setInitiator();
         this.setTimestamp(true);
     }
-    
+
     public int getDataLength() {
-        
+
         return this.data.length;
     }
-    
+
     public boolean hasEntityId() {
-        
+
         if (this.data == null) {
-            
+
             return false;
         }
         else switch(this.getType()) {
-            
+
             case VDIS.PDU_TYPE_ACKNOWLEDGE:
             case VDIS.PDU_TYPE_ACTION_REQUEST:
             case VDIS.PDU_TYPE_ACTION_RESPONSE:
@@ -255,117 +255,117 @@ public class PDU implements Bufferable {
                 return false;
         }
     }
-    
+
     public EntityId getId() {
-        
+
         if (!this.hasEntityId()) {
-            
+
             return null;
         }
         else {
-            
+
             EntityId id = new EntityId();
-            
+
             this.getEntityId(id);
-            
+
             return id;
         }
     }
-    
+
     public void getEntityId(EntityId entityId) {
-        
+
         if (this.hasEntityId()) {
-            
+
             entityId.set(
-                this.getSiteId(), 
-                this.getApplicationId(), 
+                this.getSiteId(),
+                this.getApplicationId(),
                 this.getEntityId());
         }
     }
-    
+
     public int getSiteId() {
-        
+
         if ((this.data != null) && this.hasEntityId()) {
-            
+
             return ByteArray.get16bits(this.data, 12);
         }
-        
+
         return 0xFFFF;
     }
-    
+
     public int getApplicationId() {
-        
+
         if ((this.data != null) && this.hasEntityId()) {
-            
+
             return ByteArray.get16bits(this.data, 14);
         }
-        
+
         return 0xFFFF;
     }
-    
+
     public int getEntityId() {
-        
+
         if ((this.data != null) && this.hasEntityId()) {
-            
+
             return ByteArray.get16bits(this.data, 16);
         }
-        
+
         return 0xFFFF;
     }
-    
+
     public boolean hasRecipient() {
-        
+
         if ((this.getType() == VDIS.PDU_TYPE_FIRE) ||
             (this.getType() == VDIS.PDU_TYPE_DETONATION) ||
             (this.getType() == VDIS.PDU_TYPE_APPEARANCE)) {
-            
+
             return true;
         }
         else {
-            
+
             return this.hasRequestId();
         }
     }
-    
+
     public EntityId getRecipient() {
-        
+
         if (!this.hasRecipient()) {
-            
+
             return null;
         }
         else {
-            
+
             EntityId id = new EntityId();
-            
+
             this.getRecepient(id);
-            
+
             return id;
         }
     }
-    
+
     public void getRecepient(EntityId id) {
-        
+
         if (this.hasRecipient()) {
-            
+
             id.setSite(ByteArray.get16bits(this.data, 18));
             id.setApplication(ByteArray.get16bits(this.data, 20));
             id.setEntity(ByteArray.get16bits(this.data, 22));
         }
     }
-    
+
     public boolean hasInitiator() {
-        
+
         return (this.initiator != null);
     }
-    
+
     public void setInitiator() {
-        
+
         if (!this.hasEntityId()) {
-            
+
             this.initiator = null;
         }
         else {
-            
+
             StringBuilder builder = new StringBuilder();
             builder.append("(");
             builder.append(this.getSiteId());
@@ -378,21 +378,21 @@ public class PDU implements Bufferable {
             this.initiator = builder.toString();
         }
     }
-    
+
     public void setTimestamp(boolean force) {
-        
+
         if (force || (this.timestamp == null)) {
 
             Timestamp timestamp = new Timestamp(ByteArray.get32bits(
-                this.data, 
+                this.data,
                 4));
-            
+
             this.timestamp = timestamp.toString();
         }
     }
-    
+
     public boolean hasEntityType() {
-        
+
         switch(this.getType()) {
 
             case VDIS.PDU_TYPE_DETONATION:
@@ -404,9 +404,9 @@ public class PDU implements Bufferable {
                 return false;
         }
     }
-    
+
     public long getEntityType() {
-        
+
         switch(this.getType()) {
 
             case VDIS.PDU_TYPE_DETONATION:
@@ -422,7 +422,7 @@ public class PDU implements Bufferable {
     }
 
     public int getEntityKind() {
-        
+
         switch(this.getType()) {
 
             case VDIS.PDU_TYPE_DETONATION:
@@ -438,7 +438,7 @@ public class PDU implements Bufferable {
     }
 
     public int getEntityDomain() {
-        
+
         switch(this.getType()) {
 
             case VDIS.PDU_TYPE_DETONATION:
@@ -452,28 +452,28 @@ public class PDU implements Bufferable {
                 return 0x0;
         }
     }
-    
+
     public boolean hasMarking() {
-        
+
         return (this.getType() == VDIS.PDU_TYPE_ENTITY_STATE);
     }
-    
+
     public String getMarking() {
-        
+
         if (!this.hasMarking()) {
-            
+
             return null;
         }
         else {
-            
+
             EntityMarking marking = new EntityMarking();
-            
+
             marking.read(this.data, 128);
-            
+
             return marking.getMarking();
         }
     }
-    
+
     public boolean hasRequestId() {
 
         switch(getType()) {
@@ -517,64 +517,64 @@ public class PDU implements Bufferable {
                 return 0;
         }
     }
-    
+
     public void setTitle() {
-        
+
         StringBuilder builder = new StringBuilder();
-        
+
         builder.append(VDIS.getDescription(VDIS.PDU_TYPE, this.getType()));
 
         if (this.hasRequestId()) {
-            
+
             builder.append(" [");
             builder.append(this.getRequestId());
             builder.append("]");
         }
-        
+
         this.title = builder.toString();
     }
-    
+
     public PDU copy() {
-        
+
         PDU pdu = new PDU(Arrays.copyOf(this.data, this.data.length));
 
         pdu.port = this.port;
         pdu.time = this.time;
-        
+
         if (this.title != null) {
-            
+
             pdu.title = new String(this.title);
         }
-        
+
         if (this.source != null) {
-            
+
             pdu.source = new String(this.source);
         }
-        
+
         if (this.initiator != null) {
-            
+
             pdu.initiator = new String(this.initiator);
         }
-        
+
         if (this.timestamp != null) {
-            
+
             pdu.timestamp = new String(this.timestamp);
         }
-        
+
         return pdu;
     }
-    
+
     public void decodeWithoutCatch(boolean force) throws IOException {
-        
+
         if (force) {
-            
+
             this.pdu = null;
         }
 
         if ((this.pdu == null) && (this.data != null)) {
 
             int type = this.getType();
-            
+
             switch(type) {
 
                 case 1: // PDU_TYPE_ENTITY_STATE
@@ -646,75 +646,75 @@ public class PDU implements Bufferable {
                 default:
                     this.pdu = new DefaultPDU();
             }
-            
+
             ByteArrayInputStream array = new ByteArrayInputStream(this.data);
             DataInputStream stream = new DataInputStream(array);
-            
+
             this.pdu.read(stream);
-            
+
             if (stream.available() > 0) {
-                
+
                 logger.warning(
                     "Post read bytes available is " + stream.available() +
                     " for " + this.getClass().getSimpleName());
             }
-            
+
             stream.close();
         }
     }
-    
+
     public void decode(boolean force) {
-        
+
         try {
-            
+
             this.decodeWithoutCatch(force);
         }
         catch(IOException exception) {
-            
+
             logger.log(Level.SEVERE, "Caught exception!", exception);
         }
     }
-    
+
     public boolean encode() {
 
         boolean encoded = false;
-        
+
         if (this.pdu instanceof Writable) {
-            
+
             Writable writable = (Writable)this.pdu;
-            
+
             ByteArrayOutputStream array = new ByteArrayOutputStream();
             DataOutputStream stream = new DataOutputStream(array);
 
             try {
-                
+
                 writable.write(stream);
 
                 stream.close();
-                
+
                 encoded = true;
 
                 this.setData(array.toByteArray());
-                
+
                 logger.fine("Encoded " + this.getDataLength() + " bytes");
             }
             catch(IOException exception) {
-                
+
                 logger.log(Level.SEVERE, "Caught exception!", exception);
             }
-            
+
         }
-        
+
         return encoded;
     }
-    
+
     @Override
     public void toBuffer(AbstractBuffer buffer) {
-      
+
         this.decode(false);
-        
+
         if (!buffer.isHTML()) {
-            
+
             buffer.addThickSeparator(null);
             buffer.addAttribute("LENGTH", this.getLength());
             buffer.addAttribute("PORT", this.port);
@@ -723,10 +723,10 @@ public class PDU implements Bufferable {
             buffer.addThickSeparator(null);
         }
         else {
-            
+
             HypertextBuffer hypertext = (HypertextBuffer)buffer;
             HypertextBuffer preface = new HypertextBuffer();
-            
+
             preface.addBoldAttribute("LENGTH", this.getLength());
             preface.addBoldAttribute("PORT", this.port);
             preface.addBoldAttribute("SOURCE", this.source);
@@ -734,7 +734,7 @@ public class PDU implements Bufferable {
 
             String data[][] = new String[1][1];
             data[0][0] = preface.toString();
-            
+
             hypertext.addTable(1, 0, 1, 1, data);
         }
 
@@ -754,18 +754,18 @@ public class PDU implements Bufferable {
     public static PDU create(DataInputStream stream) throws IOException {
 
         PDU pdu = new PDU();
-        
+
         pdu.source = stream.readUTF();
         pdu.port = stream.readInt();
         pdu.time = stream.readLong();
         pdu.data = new byte[stream.readInt()];
-      
+
         stream.read(pdu.data, 0, pdu.data.length);
-        
+
         pdu.setTitle();
         pdu.setInitiator();
         pdu.setTimestamp(false);
-        
+
         return pdu;
     }
 
@@ -775,7 +775,6 @@ public class PDU implements Bufferable {
 
         // Perform some heuristic checking on the PDU to make sure it's valid.
 
-        int protocolVersion = pdu.getProtocol();
         int pduType = pdu.getType();
         int protocolFamily = pdu.getFamily();
 
@@ -1010,17 +1009,17 @@ public class PDU implements Bufferable {
     }
 
     public static boolean isByteEditable(int type, int index) {
-        
+
         // PDU header checks
         switch(index) {
-        
+
             case 2: // PDU type
             case 3: // PDU family
             case 8: // PDU length (1 of 2)
             case 9: // PDU length (2 of 2)
                 return false;
         }
-        
+
         if (type == 1) {
 
             // PDU_TYPE_ENTITY_STATE
@@ -1029,7 +1028,7 @@ public class PDU implements Bufferable {
                     return false;
             }
         }
-        
+
         return true;
     }
 }
