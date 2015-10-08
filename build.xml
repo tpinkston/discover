@@ -1,4 +1,4 @@
-<project name="Discover" basedir="." default="jar">
+<project name="discover" basedir="." default="jar">
 
   <property name="debug" value="true"/>
   <property name="verbose" value="false"/>
@@ -9,7 +9,7 @@
   <property name="army-marking" value="discover/vdis/marking/army"/>
   <property name="types" value="discover/vdis/types/data"/>
   <property name="system" value="discover/system"/>
-  <property name="bin" value="bin"/>
+  <property name="classes" value="classes"/>
   <property name="library" value="lib"/>
   <property name="test" value="default"/>
   <property name="jar" value="discover.jar"/>
@@ -20,7 +20,7 @@
   </path>
 
   <target name="clean">
-    <delete verbose="${verbose}" dir="${bin}"/>
+    <delete verbose="${verbose}" dir="${classes}"/>
     <delete verbose="${verbose}" file="${enums}/generate_enums"/>
   </target>
 
@@ -35,9 +35,9 @@
   </target>
 
   <target name="compile">
-    <mkdir dir="${bin}"/>
+    <mkdir dir="${classes}"/>
     <javac srcdir="${source}"
-           destdir="${bin}"
+           destdir="${classes}"
            verbose="${verbose}"
            classpathref="classpath"
            debug="${debug}"
@@ -48,7 +48,7 @@
   </target>
 
   <target name="jar" depends="compile, copyfiles">
-    <jar destfile="${library}/${jar}" basedir="${bin}">
+    <jar destfile="${library}/${jar}" basedir="${classes}">
       <manifest>
         <attribute name="Main-Class" value="${main.class}"/>
         <attribute name="Class-Path" value="geotransform.jar"/>
@@ -78,22 +78,22 @@
   </target>
 
   <target name="copyfiles">
-    <copy verbose="${verbose}" todir="${bin}/${icons}">
+    <copy verbose="${verbose}" todir="${classes}/${icons}">
       <fileset dir="${source}/${icons}">
         <exclude name="*.java"/>
       </fileset>
     </copy>
-    <copy verbose="${verbose}" todir="${bin}/${system}">
+    <copy verbose="${verbose}" todir="${classes}/${system}">
       <fileset dir="${source}/${system}">
         <exclude name="*.java"/>
       </fileset>
     </copy>
-    <copy verbose="${verbose}" todir="${bin}/${army-marking}">
+    <copy verbose="${verbose}" todir="${classes}/${army-marking}">
       <fileset dir="${source}/${army-marking}">
         <exclude name="*.java"/>
       </fileset>
     </copy>
-    <copy verbose="${verbose}" todir="${bin}/${types}">
+    <copy verbose="${verbose}" todir="${classes}/${types}">
       <fileset dir="${source}/${types}">
         <exclude name="*.java"/>
       </fileset>
