@@ -86,6 +86,12 @@ public class ObjectType implements Comparable<ObjectType>, Bufferable {
         }
     }
 
+    @Override
+    public int hashCode() {
+
+        return value;
+    }
+
     /**
      * @return {@link String}
      */

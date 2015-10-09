@@ -5,6 +5,7 @@ package discover.vdis.types;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.util.Arrays;
 
 import discover.common.Writable;
 import discover.common.buffer.AbstractBuffer;
@@ -115,6 +116,12 @@ public class EntityType implements Comparable<EntityType>, Bufferable, Writable 
 
             return false;
         }
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Long.hashCode(value);
     }
 
     @Override

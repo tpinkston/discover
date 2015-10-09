@@ -131,6 +131,12 @@ public class EntityMarking implements Bufferable, Readable, Writable {
     }
 
     @Override
+    public int hashCode() {
+
+        return ((31 * Arrays.hashCode(bytes)) + characterSet);
+    }
+
+    @Override
     public void toBuffer(AbstractBuffer buffer) {
 
         buffer.addAttribute("Value", this.marking);
