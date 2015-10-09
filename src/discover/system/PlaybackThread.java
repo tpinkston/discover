@@ -9,15 +9,10 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-import discover.Discover;
 import discover.vdis.PDU;
 
 public class PlaybackThread extends NetworkThread {
-
-    private static final Logger logger = Discover.getLogger();
 
     private final List<PDU> list;
     private final PlaybackThreadListener listener;
@@ -104,7 +99,7 @@ public class PlaybackThread extends NetworkThread {
         catch(Exception exception) {
 
             this.exception = exception;
-            logger.log(Level.SEVERE, "Caught exception!", exception);
+            logger.error("Caught exception!", exception);
         }
 
         this.socket.close();

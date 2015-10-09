@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.tabs;
 
 import java.awt.Font;
@@ -19,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
-import java.util.logging.Level;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -50,6 +46,9 @@ import discover.vdis.common.EntityId;
 import discover.vdis.enums.VDIS;
 import discover.vdis.enums.VDIS.Handle;
 
+/**
+ * @author Tony Pinkston
+ */
 public abstract class PDUTab
     extends Tab
     implements ClipboardTab, ListSelectionListener, MouseListener {
@@ -372,7 +371,7 @@ public abstract class PDUTab
             }
             catch(Exception exception) {
 
-                logger.log(Level.SEVERE, "Caught exception!", exception);
+                logger.error("Caught exception!", exception);
             }
 
             try {
@@ -391,7 +390,7 @@ public abstract class PDUTab
             }
             catch(Exception exception) {
 
-                logger.log(Level.SEVERE, "Caught exception!", exception);
+                logger.error("Caught exception!", exception);
             }
         }
     }
@@ -880,7 +879,7 @@ public abstract class PDUTab
         @Override
         public void run() {
 
-            logger.info("Thread started: " + super.getName());
+            logger.info("Thread started: " + getName());
 
             try {
 
@@ -901,7 +900,7 @@ public abstract class PDUTab
                     buffer.addBreak();
                 }
 
-                logger.config("Text writing complete...");
+                logger.info("Text writing complete...");
 
                 OutputStreamWriter writer = this.getWriter();
 
@@ -910,10 +909,10 @@ public abstract class PDUTab
             }
             catch(Exception exception) {
 
-                logger.log(Level.SEVERE, "Caught exception!", exception);
+                logger.error("Caught exception!", exception);
             }
 
-            logger.info("Thread finished: " + super.getName());
+            logger.info("Thread finished: {}", getName());
         }
 
         private OutputStreamWriter getWriter() throws FileNotFoundException {

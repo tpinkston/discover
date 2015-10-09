@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false"> 
+
+  <!-- Valid levels (case insensitive): ALL,TRACE,DEBUG,INFO,WARN,ERROR,OFF -->
+  <logger name="discover" level="warn"/>
+  <logger name="discover.common" level="warn"/>
+  <logger name="discover.gui" level="warn"/>
+  <logger name="discover.headless" level="warn"/>
+  <logger name="discover.pcap" level="warn"/>
+  <logger name="discover.system" level="warn"/>
+  <logger name="discover.test" level="debug"/>
+  <logger name="discover.vdis" level="warn"/>
+  <logger name="discover.vdis.pdu" level="warn"/>
+
+  <timestamp key="log-file-timestamp" datePattern="yyyyMMdd_HHmmss"/>
+
+  <appender name="log-file" class="ch.qos.logback.core.FileAppender">
+    <encoder>
+      <pattern>[%-5p] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%t] %C.%M\(\): %L%n%msg%n%n</pattern>
+    </encoder>
+    <!--  file>logs/log_${log-file-timestamp}.txt</file -->
+    <file>logs/log.txt</file>
+    <append>false</append>
+  </appender>
+  
+  <root level="warn" >
+    <appender-ref ref="log-file"/>
+  </root>
+  
+</configuration>

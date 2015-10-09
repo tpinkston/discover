@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.types;
 
 import java.io.BufferedReader;
@@ -13,24 +10,23 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.TreeMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
-import discover.Discover;
-
+/**
+ * @author Tony Pinkston
+ */
 public class EntityTypes {
 
-    private static final Logger logger = Discover.getLogger();
+    private static final Logger logger = LoggerFactory.getLogger(EntityTypes.class);
 
     private static final String UNKNOWN = "Unknown Type";
 
@@ -189,7 +185,7 @@ public class EntityTypes {
 
         if (reader == null) {
 
-            logger.severe("File not found: " + filename);
+            logger.error("File not found: {}", filename);
         }
         else try {
 
@@ -208,7 +204,7 @@ public class EntityTypes {
 
                 if ((tokens == null) || (tokens.length != 13)) {
 
-                    logger.warning(
+                    logger.warn(
                         "Parse error:\n" + filename +
                         ": Expecting 13 tokens on line " + line +
                         "\n" + Arrays.toString(tokens));
@@ -275,7 +271,7 @@ public class EntityTypes {
                     }
                     else {
 
-                        logger.severe(
+                        logger.error(
                             "Duplicate entity type: " + value +
                             ", " + tuple + ", " + tokens[0]);
                     }
@@ -284,10 +280,8 @@ public class EntityTypes {
 
                     if (line > 1) {
 
-                        logger.log(
-                            Level.WARNING,
-                            "Parse error:\n" + filename +
-                            ": Number format exception on line " + line,
+                        logger.warn(
+                            "Parse error " + filename + ":" + line,
                             exception);
                     }
                 }
@@ -300,11 +294,9 @@ public class EntityTypes {
         }
         catch(Exception exception) {
 
-            logger.log(Level.SEVERE, "Caught exception!", exception);
-
-            logger.severe(
-                exception.getClass().getName() +
-                " parsing file " + filename);
+            logger.error(
+                "Caught exception parsing file " + filename,
+                exception);
         }
 
         return count;
@@ -352,29 +344,9 @@ public class EntityTypes {
                 }
             }
         }
-        catch(IOException exception) {
+        catch(Exception exception) {
 
-            logger.log(Level.SEVERE, "Caught exception!", exception);
-
-            logger.severe(
-                exception.getClass().getName() +
-                " parsing file " + CDT);
-        }
-        catch(SAXException exception) {
-
-            logger.log(Level.SEVERE, "Caught exception!", exception);
-
-            logger.severe(
-                exception.getClass().getName() +
-                " parsing file " + CDT);
-        }
-        catch(ParserConfigurationException exception) {
-
-            logger.log(Level.SEVERE, "Caught exception!", exception);
-
-            logger.severe(
-                exception.getClass().getName() +
-                " parsing file " + CDT);
+            logger.error("Caught exception parsing " + CDT, exception);
         }
 
         return count;

@@ -16,8 +16,6 @@ import java.net.DatagramSocket;
 import java.text.DateFormat;
 import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -30,7 +28,6 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.SwingUtilities;
 
-import discover.Discover;
 import discover.common.Version;
 import discover.gui.Utilities;
 import discover.system.CaptureThread;
@@ -53,7 +50,6 @@ public class CFSTab
     extends Tab
     implements ActionListener, CaptureThreadListener, FocusListener {
 
-    private static final Logger logger = Discover.getLogger();
     private static final DateFormat format = DateFormat.getDateTimeInstance();
     private static final int BASE_LENGTH = 64;
 
@@ -360,7 +356,7 @@ public class CFSTab
 
             if (buffer.length != header.getLength()) {
 
-                logger.severe("Buffer length and PDU length inconsistent!");
+                logger.error("Buffer length and PDU length inconsistent!");
             }
 
             if ((buffer != null) && (buffer.length > 0)) {
@@ -376,7 +372,7 @@ public class CFSTab
         }
         catch(Exception exception) {
 
-            logger.log(Level.SEVERE, "Caught exception!", exception);
+            logger.error("Caught exception!", exception);
             return false;
         }
     }
@@ -469,7 +465,7 @@ public class CFSTab
         }
         catch(Exception exception) {
 
-            logger.log(Level.SEVERE, "Caught exception!", exception);
+            logger.error("Caught exception!", exception);
         }
     }
 
@@ -599,9 +595,9 @@ public class CFSTab
             this.data.marking = text;
         }
 
-        if (logger.isLoggable(Level.FINE)) {
+        if (logger.isDebugEnabled()) {
 
-            logger.fine(this.data.toString());
+            logger.debug(data.toString());
         }
 
         this.updatingData = false;

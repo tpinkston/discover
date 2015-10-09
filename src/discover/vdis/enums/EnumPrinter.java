@@ -9,20 +9,6 @@ import discover.common.Hexadecimal;
 
 public class EnumPrinter {
 
-    public static void printUsage() {
-
-        PrintStream out = System.out;
-
-        out.println();
-        out.println("For the enumerations possible parameters are as follows:");
-        out.println();
-        out.println("  --enum=?      Lists all enumerations and their numbers");
-        out.println("  --enum=all    Same as '--enum=?'");
-        out.println("  --enum=list   Same as '--enum=?'");
-        out.println("  --enum=X      Print values for enumeration number X");
-        out.println("  --enum=NAME   Print values for enumeration named NAME");
-    }
-
     public static void print(String parameter) {
 
         int length = VDIS.ENUM_TYPE_NAMES.length;

@@ -1,24 +1,121 @@
-#!/bin/bash
+#!/bin/sh
 
-JAR=lib/discover.jar
+SCRIPT_PATH=`readlink -f $0`
+SCRIPT_PATH=`dirname $SCRIPT_PATH`
+SCRIPT_NAME=`basename $0 | sed 's/\.sh$//'`
 
-if [ -n "$DEBUG_PORT" ] ; then
-    echo "Debug port set to $DEBUG_PORT"
-    ARGS="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=$DEBUG_PORT"
+function usage() {
+
+    echo "Usage:"
+    echo "  $SCRIPT_NAME [options]"
+    echo
+    echo "Options:"
+    echo " -d, --debug-port=PORT  Run with remote debugger on port"
+    echo " -h, --help             Displays this help and exit"
+    echo " -u, --unbundled        Unbundle inbound PDU traffic"
+    echo " -i, --iface=NAME       Use NAME as the network interface"
+    echo "     --laf=LAF          Use LAF for GUI look and feel"
+    echo "     --headless=PARAMS  Run without GUI"
+    echo "     --playback=IPADDR  Use IPADDR as playback address"
+    echo "     --enum=PARAM       Print enumeration information"
+    echo "     --multicast        Use any multicast addresses"
+    echo
+    echo "Default network interface is 'eth0'"
+    echo
+    echo "GUI look and feel (LAF) is the java class name (subject"
+    echo "to platform, JRE support) or shortcut (default is GTK):"
+    echo
+    echo "  Shortcut GTK:"
+    echo "    com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
+    echo "  Shortcut MOTIF:"
+    echo "    com.sun.java.swing.plaf.motif.MotifLookAndFeel"
+    echo "  Shortcut NIMBUS:"
+    echo "    com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel"
+    echo "  Shortcut WINDOWS:"
+    echo "    com.sun.java.swing.plaf.windows.WindowsLookAndFeel"
+    echo
+    echo "In headless mode the application will listen on a"
+    echo "single port and print PDUs received according to the "
+    echo "specified auguments in the following form:"
+    echo
+    echo "   --headless=arg1:value1,arg2:value2,arg3:value3"
+    echo
+    echo "  Possible arguments are:"
+    echo "    port:P       Where P is the capture port."
+    echo "    exercise:E   Where E is the exercise number."
+    echo "    pdutype:T    Where T is the PDU type number."
+    echo "    pdufamily:F  Where F is the PDU family number."
+    echo "    verbose:V    Where V is either Y or N."
+    echo
+    echo "For the enumerations possible parameters are as follows:"
+    echo
+    echo "  --enum=all     Same as '--enum=?'"
+    echo "  --enum=list    Same as '--enum=?'"
+    echo "  --enum=X       Print values for enumeration number X"
+    echo "  --enum=NAME    Print values for enumeration named NAME"
+    exit 0
+}
+
+JVM_ARGS="-Xmx1024m"
+
+SHORT_OPTIONS="d:e:h:i:l:p:u"
+LONG_OPTIONS="debug-port:,enum:,headless:,help,iface:,laf:,multicast,playback:,unbundled"
+
+# Verifies command line options
+OPTS=`getopt -o $SHORT_OPTIONS --long $LONG_OPTIONS -n "$SCRIPT_NAME" -- "$@"`
+
+if [ $? != 0 ]; then
+    echo "$SCRIPT_NAME: use --help argument to show options..." >&2
+    exit 1;
 fi
 
-if [ -e "$JAR" ]
-then
-    java $ARGS -jar $JAR $@
-else
+# Converts options to JVM system properties
+eval set -- "$OPTS"
+#echo "OPTIONS: $OPTS"
+while true; do
+    case "$1" in
+        -e | --enum ) 
+            JVM_ARGS="$JVM_ARGS -Ddiscover.enum=$2"; shift; shift;;
+        -d | --debug-port ) 
+            JVM_ARGS="$JVM_ARGS -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=$2"; shift; shift;;
+        -i | --iface ) 
+            JVM_ARGS="$JVM_ARGS -Ddiscover.iface=$2"; shift; shift;;
+        --headless ) 
+            JVM_ARGS="$JVM_ARGS -Ddiscover.headless=$2"; shift; shift;;
+        -l | --laf ) 
+            JVM_ARGS="$JVM_ARGS -Ddiscover.laf=$2"; shift; shift;;
+        --multicast ) 
+            JVM_ARGS="$JVM_ARGS -Ddiscover.multicast=true"; shift;;
+        -p | --playback ) 
+            JVM_ARGS="$JVM_ARGS -Ddiscover.playback=$2"; shift; shift;;
+        -u | --unbunded ) 
+            JVM_ARGS="$JVM_ARGS -Ddiscover.unbundled=true"; shift;;
+        -- ) 
+            shift; break;;
+        * ) 
+            usage;;
+    esac
+done
 
-    DIR=`dirname "$0"`
-    JAR="${DIR}/${JAR}"
+LIB_PATH="$SCRIPT_PATH/lib"
+JAR_FILES="$LIB_PATH/discover.jar"
+JAR_FILES="$JAR_FILES:$LIB_PATH/geotransform.jar"
+JAR_FILES="$JAR_FILES:$LIB_PATH/junit.jar"
+JAR_FILES="$JAR_FILES:$LIB_PATH/logback-classic-1.0.6.jar"
+JAR_FILES="$JAR_FILES:$LIB_PATH/logback-core-1.0.6.jar"
+JAR_FILES="$JAR_FILES:$LIB_PATH/slf4j-api-1.6.6.jar"
 
-    if [ -e "$JAR" ]
-    then
-        java $ARGS -Xmx1024m -jar $JAR $@
-    else
-        echo "Java jar file not available: $JAR"
+# Verifies library dependencies
+for J in `echo $JAR_FILES | tr ':' ' '`; do
+    if [ ! -e $J ]; then
+        echo "$SCRIPT_NAME -- library not found: $J"
+        exit 1
     fi
-fi
+done
+
+PROPERTIES_PATH="$SCRIPT_PATH/properties"
+
+java -classpath $JAR_FILES:$PROPERTIES_PATH $JVM_ARGS discover.Discover
+
+exit $?
+

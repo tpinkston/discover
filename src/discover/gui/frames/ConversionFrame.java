@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.frames;
 
 import java.awt.BorderLayout;
@@ -9,7 +6,6 @@ import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.NumberFormat;
-import java.util.logging.Logger;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -21,17 +17,22 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 
-import discover.Discover;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import discover.common.Binary;
 import discover.common.Common;
 import discover.common.Hexadecimal;
 import discover.gui.Utilities;
 
+/**
+ * @author Tony Pinkston
+ */
 public class ConversionFrame implements ActionListener {
 
     private static ConversionFrame instance = null;
 
-    private static final Logger logger = Discover.getLogger();
+    private static final Logger logger = LoggerFactory.getLogger(ConversionFrame.class);
 
     private static final NumberFormat format = NumberFormat.getInstance();
 
@@ -418,7 +419,7 @@ public class ConversionFrame implements ActionListener {
         }
         else {
 
-            logger.severe("No size selection!");
+            logger.error("No size selection!");
         }
 
         return size;

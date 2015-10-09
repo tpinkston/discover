@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.frames;
 
 import java.awt.Cursor;
@@ -12,7 +9,6 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Logger;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -27,17 +23,22 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
-import discover.Discover;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import discover.common.Binary;
 import discover.common.Hexadecimal;
 import discover.gui.Utilities;
 import discover.gui.tabs.PlaybackTab;
 import discover.vdis.PDU;
 
+/**
+ * @author Tony Pinkston
+ */
 @SuppressWarnings("serial")
 public class BulkEditorFrame implements ActionListener, MouseListener {
 
-    private static final Logger logger = Discover.getLogger();
+    private static final Logger logger = LoggerFactory.getLogger(BulkEditorFrame.class);
 
     private static final Cursor WAIT_CURSOR;
 
@@ -111,7 +112,7 @@ public class BulkEditorFrame implements ActionListener, MouseListener {
 
     private BulkEditorFrame(PlaybackTab tab, List<PDU> list) {
 
-        logger.finer("Creating with " + list.size() + " PDUs");
+        logger.debug("Creating with {} PDUs", list.size());
 
         this.frame.setTitle(TITLE + ": " + tab.getTabName());
         this.tab = tab;
@@ -265,7 +266,7 @@ public class BulkEditorFrame implements ActionListener, MouseListener {
                 ++count;
             }
 
-            logger.fine("Modified " + count + " PDUs...");
+            logger.debug("Modified {} PDUs...", count);
 
             this.tab.modified(this.list);
             this.frame.setCursor(original);

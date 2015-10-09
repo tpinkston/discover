@@ -308,7 +308,7 @@ public class EntityState extends AbstractPDU implements Writable {
 
             if (record == null) {
 
-                logger.severe("Could not create VP record for " + type);
+                logger.error("Could not create VP record for {}", type);
             }
             else {
 

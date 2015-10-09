@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.frames;
 
 import java.awt.BorderLayout;
@@ -17,8 +14,6 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JEditorPane;
@@ -42,7 +37,9 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableRowSorter;
 
-import discover.Discover;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import discover.gui.Utilities;
 import discover.vdis.Entity;
 import discover.vdis.PDU;
@@ -50,9 +47,12 @@ import discover.vdis.common.EntityId;
 import discover.vdis.enums.VDIS;
 import discover.vdis.types.EntityType;
 
+/**
+ * @author Tony Pinkston
+ */
 public class EntityTrackerFrame implements ActionListener, KeyListener, ListSelectionListener {
 
-    private static final Logger logger = Discover.getLogger();
+    private static final Logger logger = LoggerFactory.getLogger(EntityTrackerFrame.class);
 
     private static final int MINIMUM_WIDTH = 700;
     private static final int MINIMUM_HEIGHT = 500;
@@ -631,7 +631,6 @@ public class EntityTrackerFrame implements ActionListener, KeyListener, ListSele
     private void purgeExpirations(long current) {
 
         Iterator<Entity> iterator = this.list.iterator();
-        boolean info = logger.isLoggable(Level.INFO);
         boolean purged = false;
 
         while(iterator.hasNext()) {
@@ -651,12 +650,10 @@ public class EntityTrackerFrame implements ActionListener, KeyListener, ListSele
                     this.show(null);
                 }
 
-                if (info) {
-
-                    logger.info(
-                        "Purging " + entity.getId() +
-                        ": " + entity.getMarking());
-                }
+                logger.info(
+                    "Purging entity {}: {}", 
+                    entity.getId(), 
+                    entity.getMarking());
             }
         }
 

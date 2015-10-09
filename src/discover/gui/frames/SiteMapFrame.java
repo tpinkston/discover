@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.logging.Logger;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -35,7 +34,9 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
 
-import discover.Discover;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.Bufferable;
 import discover.common.buffer.HypertextBuffer;
@@ -47,7 +48,7 @@ import discover.vdis.enums.VDIS;
 @SuppressWarnings("serial")
 public class SiteMapFrame implements MouseListener, TreeSelectionListener {
 
-    private static final Logger logger = Discover.getLogger();
+    private static final Logger logger = LoggerFactory.getLogger(SiteMapFrame.class);
 
     private static final Icon WORLD_ICON = Utilities.getImageIcon("world.png");
     private static final Icon PERSON_ICON = Utilities.getImageIcon("person.png");
@@ -252,9 +253,7 @@ public class SiteMapFrame implements MouseListener, TreeSelectionListener {
 
         DefaultTreeModel model = (DefaultTreeModel)this.tree.getModel();
 
-        logger.finer(
-            "Inserting node \"" + child.toString() +
-            "\" into \"" + parent.toString() + "\"");
+        logger.debug("Inserting node '{}' into '{}'", child, parent);
 
         model.insertNodeInto(child, parent, index);
     }
@@ -315,7 +314,7 @@ public class SiteMapFrame implements MouseListener, TreeSelectionListener {
 
         if (site == null) {
 
-            logger.severe("Site not found for " + id.toString());
+            logger.error("Site not found for {}", id);
         }
         else {
 
@@ -323,7 +322,7 @@ public class SiteMapFrame implements MouseListener, TreeSelectionListener {
 
             if (application == null) {
 
-                logger.severe("Application not found for " + id.toString());
+                logger.error("Application not found for {}", id);
             }
             else {
 
@@ -331,7 +330,7 @@ public class SiteMapFrame implements MouseListener, TreeSelectionListener {
 
                 if (entity == null) {
 
-                    logger.severe("Entity not found for " + id.toString());
+                    logger.error("Entity not found for {}", id);
                 }
                 else {
 
@@ -596,7 +595,7 @@ public class SiteMapFrame implements MouseListener, TreeSelectionListener {
                 }
                 else {
 
-                    logger.severe("Cannot create child node!");
+                    logger.error("Cannot create child node!");
                 }
 
                 if (node != null) {
@@ -625,7 +624,7 @@ public class SiteMapFrame implements MouseListener, TreeSelectionListener {
 
                 if (!inserted) {
 
-                    logger.severe("Failed to insert node for number " + number);
+                    logger.error("Failed to insert node for number {}", number);
                 }
             }
 
@@ -638,9 +637,7 @@ public class SiteMapFrame implements MouseListener, TreeSelectionListener {
 
             if (this.isEntity()) {
 
-                logger.finer(
-                    "Adding PDU (" + type + ") for node \"" +
-                    this.toString() + "\"");
+                logger.debug("Adding PDU ({}) for node: {}", type, toString());
             }
 
             if (count == null) {

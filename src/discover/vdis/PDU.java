@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis;
 
 import java.io.ByteArrayInputStream;
@@ -10,10 +7,10 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-import discover.Discover;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import discover.common.ByteArray;
 import discover.common.Writable;
 import discover.common.buffer.AbstractBuffer;
@@ -48,11 +45,13 @@ import discover.vdis.pdu.StartResume;
 import discover.vdis.pdu.StopFreeze;
 import discover.vdis.pdu.Transmitter;
 
+/**
+ * @author Tony Pinkston
+ */
 public class PDU implements Bufferable {
 
     protected static final DateFormat format = DateFormat.getDateTimeInstance();
-
-    private static Logger logger = Discover.getLogger();
+    protected static final Logger logger = LoggerFactory.getLogger(PDU.class);
 
     private String source = null;
     private String title = null;
@@ -654,9 +653,10 @@ public class PDU implements Bufferable {
 
             if (stream.available() > 0) {
 
-                logger.warning(
-                    "Post read bytes available is " + stream.available() +
-                    " for " + this.getClass().getSimpleName());
+                logger.warn(
+                    "Post read bytes available is {} for {}",
+                    stream.available(),
+                    getClass().getSimpleName());
             }
 
             stream.close();
@@ -667,11 +667,11 @@ public class PDU implements Bufferable {
 
         try {
 
-            this.decodeWithoutCatch(force);
+            decodeWithoutCatch(force);
         }
         catch(IOException exception) {
 
-            logger.log(Level.SEVERE, "Caught exception!", exception);
+            logger.error("Caught exception!", exception);
         }
     }
 
@@ -696,11 +696,11 @@ public class PDU implements Bufferable {
 
                 this.setData(array.toByteArray());
 
-                logger.fine("Encoded " + this.getDataLength() + " bytes");
+                logger.debug("Encoded {} bytes", getDataLength());
             }
             catch(IOException exception) {
 
-                logger.log(Level.SEVERE, "Caught exception!", exception);
+                logger.error("Caught exception!", exception);
             }
 
         }

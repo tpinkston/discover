@@ -1,13 +1,9 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.widgets;
 
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusEvent;
 import java.util.HashMap;
-import java.util.logging.Logger;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -18,7 +14,6 @@ import javax.swing.JTextField;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableColumn;
 
-import discover.Discover;
 import discover.gui.Utilities;
 import discover.vdis.appearance.DefaultAppearance;
 import discover.vdis.appearance.LifeformAppearance;
@@ -44,9 +39,10 @@ import discover.vdis.common.ExtendedStatus;
 import discover.vdis.common.LifeformAttributes;
 import discover.vdis.common.ThermalIndicators;
 
+/**
+ * @author Tony Pinkston
+ */
 public class BitRecordWidget extends ToggleWidget {
-
-    private static final Logger logger = Discover.getLogger();
 
     private static final HashMap<Class<?>, String> titles;
 
@@ -161,7 +157,7 @@ public class BitRecordWidget extends ToggleWidget {
 
         if (!applied) {
 
-            logger.severe("Mismatch in AbstractBits objects!");
+            logger.error("Mismatch in AbstractBits objects!");
         }
     }
 
@@ -294,8 +290,8 @@ public class BitRecordWidget extends ToggleWidget {
 
         if (title == null) {
 
-            logger.severe(
-                "Could not get name for record: " +
+            logger.error(
+                "Could not get name for record: {}",
                 value.getClass().getSimpleName());
 
             title = "Unknown Record";

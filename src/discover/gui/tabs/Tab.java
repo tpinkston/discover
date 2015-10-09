@@ -7,16 +7,17 @@ import java.awt.GridBagLayout;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.util.logging.Logger;
 
 import javax.swing.JPanel;
 
-import discover.Discover;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import discover.common.Version;
 
 public abstract class Tab {
 
-    protected static final Logger logger = Discover.getLogger();
+    protected static final Logger logger = LoggerFactory.getLogger(Tab.class);
 
     protected final JPanel panel;
     protected final TabType type;

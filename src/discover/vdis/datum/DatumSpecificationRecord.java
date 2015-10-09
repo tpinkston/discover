@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.datum;
 
 import java.io.DataInputStream;
@@ -8,18 +5,22 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
-import discover.Discover;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import discover.common.Common;
 import discover.common.Readable;
 import discover.common.Writable;
 import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.Bufferable;
 
+/**
+ * @author Tony Pinkston
+ */
 public class DatumSpecificationRecord implements Bufferable, Readable, Writable {
 
-    private static final Logger logger = Discover.getLogger();
+    private static final Logger logger = LoggerFactory.getLogger(DatumSpecificationRecord.class);
 
     private final List<FixedDatumRecord> fixed = new ArrayList<FixedDatumRecord>();
     private final List<AbstractDatumRecord> variable = new ArrayList<AbstractDatumRecord>();
@@ -105,8 +106,8 @@ public class DatumSpecificationRecord implements Bufferable, Readable, Writable 
             }
             else {
 
-                logger.severe(
-                    "Variable Datum Record is not writable: " +
+                logger.error(
+                    "Variable Datum Record is not writable: {}",
                     record.getClass().getName());
             }
         }

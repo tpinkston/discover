@@ -1,9 +1,5 @@
-/**
- * @author Tony Pinkston
- */
 package discover.system;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.DatagramPacket;
 import java.net.Inet4Address;
@@ -17,28 +13,28 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
-import discover.Discover;
 import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.HypertextBuffer;
 import discover.common.buffer.PlainTextBuffer;
 
+/**
+ * @author Tony Pinkston
+ */
 public class Network {
 
     public static final int DEFAULT_PORT = 3000;
 
-    private static final Logger logger = Discover.getLogger();
+    private static final Logger logger = LoggerFactory.getLogger(Network.class);
 
     private static final String MULTICAST_ADDRESSES = "multicast_addresses.xml";
 
@@ -399,7 +395,7 @@ public class Network {
         }
         catch(SocketException exception) {
 
-            logger.log(Level.SEVERE, "Caught exception!", exception);
+            logger.error("Caught exception!", exception);
         }
 
         return info;
@@ -438,17 +434,9 @@ public class Network {
 
             loaded = true;
         }
-        catch(ParserConfigurationException exception) {
+        catch(Exception exception) {
 
-            logger.log(Level.SEVERE, "Caught exception!", exception);
-        }
-        catch(SAXException exception) {
-
-            logger.log(Level.SEVERE, "Caught exception!", exception);
-        }
-        catch(IOException exception) {
-
-            logger.log(Level.SEVERE, "Caught exception!", exception);
+            logger.error("Caught exception!", exception);
         }
 
         return loaded;

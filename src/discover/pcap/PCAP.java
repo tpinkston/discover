@@ -6,9 +6,10 @@ import java.io.EOFException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
-import discover.Discover;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import discover.vdis.PDU;
 
 /**
@@ -21,7 +22,7 @@ public class PCAP {
     public static int ETHERTYPE_IPv6 = 0x86dd;
     public static int IP_UDP = 0x11;
 
-    private static final Logger logger = Discover.getLogger();
+    private static final Logger logger = LoggerFactory.getLogger(PCAP.class);
 
     public static List<PDU> getPDUs(DataInputStream stream, boolean swap)
             throws IOException {
