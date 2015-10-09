@@ -6,6 +6,7 @@ package discover.vdis.common;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.util.Arrays;
 
 import discover.common.Readable;
 import discover.common.Writable;
@@ -97,6 +98,12 @@ public class EntityId implements Comparable<EntityId>, Readable, Writable {
         }
 
         return false;
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Arrays.hashCode(values);
     }
 
     public boolean matches(Integer site, Integer application, Integer entity) {

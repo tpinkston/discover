@@ -5,6 +5,7 @@ package discover.vdis.common;
 
 import java.io.DataInputStream;
 import java.io.IOException;
+import java.util.Arrays;
 
 import discover.common.Readable;
 
@@ -39,6 +40,12 @@ public class ObjectId implements Comparable<ObjectId>, Readable {
         }
 
         return false;
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Arrays.hashCode(values);
     }
 
     public boolean matches(Integer site, Integer application, Integer entity) {
