@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.pdu;
 
 import java.io.ByteArrayOutputStream;
@@ -17,6 +14,9 @@ import discover.vdis.datum.AbstractDatumRecord;
 import discover.vdis.datum.DatumRecordFactory;
 import discover.vdis.enums.VDIS;
 
+/**
+ * @author Tony Pinkston
+ */
 public class ApplicationControlPDU extends AbstractPDU implements Writable {
 
     private final EntityId originator = new EntityId();
@@ -241,8 +241,8 @@ public class ApplicationControlPDU extends AbstractPDU implements Writable {
             }
             else {
 
-                logger.severe(
-                    "Variable Datum Record is not writable: " +
+                logger.error(
+                    "Variable Datum Record is not writable: {}",
                     record.getClass().getName());
             }
         }

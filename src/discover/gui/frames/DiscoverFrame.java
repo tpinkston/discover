@@ -19,8 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -38,7 +36,9 @@ import javax.swing.JToolBar;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import discover.Discover;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import discover.common.Version;
 import discover.gui.Utilities;
 import discover.gui.dialogs.AddTabDialog;
@@ -65,7 +65,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
 
     private static DiscoverFrame instance = null;
 
-    private static final Logger logger = Discover.getLogger();
+    private static final Logger logger = LoggerFactory.getLogger(DiscoverFrame.class);
 
     private static final String SEPARATOR = "-";
 
@@ -501,11 +501,12 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
 
         this.counters.put(type, new Integer(count + 1));
 
-        if (logger.isLoggable(Level.FINER)) {
+        if (logger.isDebugEnabled()) {
 
-            logger.finer(
-                "Incremented " + type +
-                " counter to " + this.getTabCount(type));
+            logger.debug(
+                "Incremented {} counter to {}",
+                type,
+                getTabCount(type));
         }
     }
 
@@ -513,9 +514,9 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
 
         this.counters.put(type, new Integer(count));
 
-        if (logger.isLoggable(Level.FINER)) {
+        if (logger.isDebugEnabled()) {
 
-            logger.finer("Reset " + type + " counter to " + count);
+            logger.debug("Reset {} counter to {}", type, count);
         }
     }
 
@@ -574,13 +575,13 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
 
                 String prefix = name.substring(0, first);
 
-                logger.finest("Returning " + prefix + " for " + name);
+                logger.debug("Returning {} for {}", prefix, name);
 
                 return prefix;
             }
         }
 
-        logger.finest("Returning null for " + name);
+        logger.debug("Returning null for {}", name);
 
         return null;
     }
@@ -601,7 +602,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
 
             Integer integer = Integer.parseInt(number);
 
-            logger.finest("Returning " + integer + " for " + name);
+            logger.debug("Returning {} for {}", integer, name);
 
             return integer;
         }
@@ -643,7 +644,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
             case BUILDER:
                 return new BuilderTab(name);
             default:
-                logger.severe("Unsupported tab type: " + type);
+                logger.error("Unsupported tab type: {}", type);
                 return null;
         }
     }
@@ -662,7 +663,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
         }
         else {
 
-            logger.severe("Invalid tab type: " + type);
+            logger.error("Invalid tab type: {}", type);
             return null;
         }
     }
@@ -735,7 +736,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
 
         int value = stream.readInt();
 
-        logger.finer("Tab type as integer: " + value);
+        logger.debug("Tab type as integer: {}", value);
 
         for(TabType type : TabType.values()) {
 
@@ -858,7 +859,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
                 stream.writeLong(Version.getLatest().getValue());
                 stream.writeInt(tabs.size());
 
-                logger.config("Tabs to save: " + tabs.size());
+                logger.info("Tabs to save: {}", tabs.size());
 
                 for(int i = 0; i < pane.getTabCount(); ++i) {
 
@@ -866,7 +867,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
 
                     if (title == null) {
 
-                        logger.severe("Null tab title at index " + i);
+                        logger.error("Null tab title at index {}", i);
                     }
                     else {
 
@@ -874,11 +875,11 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
 
                         if (tab == null) {
 
-                            logger.severe("Null tab for " + title);
+                            logger.error("Null tab for {}", title);
                         }
                         else {
 
-                            logger.config("Saving tab: " + title);
+                            logger.error("Saving tab: {}", title);
 
                             tab.save(stream);
                         }
@@ -899,7 +900,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
             }
             catch(Exception exception) {
 
-                logger.log(Level.SEVERE, "Caught exception!", exception);
+                logger.error("Caught exception!", exception);
             }
         }
     }
@@ -997,7 +998,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
             }
             catch(Exception exception) {
 
-                logger.log(Level.SEVERE, "Caught exception!", exception);
+                logger.error("Caught exception!", exception);
             }
         }
     }
@@ -1160,7 +1161,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
 
             NumberFormat formatter = NumberFormat.getInstance();
 
-            logger.config("Loading PDUs, file: " + file.getAbsolutePath());
+            logger.info("Loading PDUs, file: {}", file.getAbsolutePath());
 
             try {
 
@@ -1169,7 +1170,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
                 long start = System.currentTimeMillis();
                 int bytes = stream.available();
 
-                logger.fine("Bytes to load: " + bytes);
+                logger.debug("Bytes to load: {}", bytes);
 
                 stream.mark(stream.available());
 
@@ -1193,7 +1194,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
 
                     System.out.println(builder.toString());
 
-                    logger.config(builder.toString());
+                    logger.info(builder.toString());
 
                     if (version == Version.PDU_STALKER) {
 
@@ -1227,9 +1228,9 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
 
                     if (stream.available() > 0) {
 
-                        logger.warning(
-                            stream.available() +
-                            " bytes left in stream after loading...");
+                        logger.warn(
+                            "{} bytes left in stream after loading...",
+                            stream.available());
                     }
 
                     stream.close();
@@ -1245,7 +1246,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
             }
             catch(Exception exception) {
 
-                logger.log(Level.SEVERE, "Caught exception!", exception);
+                logger.error("Caught exception!", exception);
             }
         }
 
@@ -1326,11 +1327,11 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
             // Number of tabs to be loaded
             final int tabs = stream.readInt();
 
-            logger.config("Tabs to load: " + tabs);
+            logger.info("Tabs to load: {}", tabs);
 
             for(int i = 0; i < tabs; ++i) {
 
-                logger.config(
+                logger.info(
                     "Iteration " + i + ": " + stream.available() +
                     " bytes remaining");
 
@@ -1603,7 +1604,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
 
                 if (result == JOptionPane.YES_OPTION) {
 
-                    logger.fine("Removing tab: " + name);
+                    logger.debug("Removing tab: {}", name);
 
                     tab.close();
                     tabs.remove(name);

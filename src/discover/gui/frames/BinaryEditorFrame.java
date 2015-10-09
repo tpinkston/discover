@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.frames;
 
 import java.awt.BorderLayout;
@@ -17,8 +14,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -33,7 +28,9 @@ import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JToolBar;
 
-import discover.Discover;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import discover.common.Binary;
 import discover.common.Hexadecimal;
 import discover.common.buffer.HypertextBuffer;
@@ -43,8 +40,13 @@ import discover.gui.panels.TextPanel;
 import discover.gui.tabs.PlaybackTab;
 import discover.vdis.PDU;
 
+/**
+ * @author Tony Pinkston
+ */
 @SuppressWarnings("serial")
 public class BinaryEditorFrame implements ActionListener, MouseListener {
+    
+    private static final Logger logger = LoggerFactory.getLogger(BinaryEditorFrame.class);
 
     private static final String TITLE = "Binary Editor";
     private static final String HTML = "text/html";
@@ -63,8 +65,6 @@ public class BinaryEditorFrame implements ActionListener, MouseListener {
     private static final Insets SPACING0 = Utilities.getInsets(1, 2, 0, 0);
     private static final Insets SPACING1 = Utilities.getInsets(1, 0, 1, 0);
     private static final Insets SPACING2 = Utilities.getInsets(1, 0, 1, 2);
-
-    private final Logger logger = Discover.getLogger();
 
     private static final String VALUES[] = { "0", "1" };
 
@@ -383,7 +383,7 @@ public class BinaryEditorFrame implements ActionListener, MouseListener {
             }
             catch(Exception exception) {
 
-                logger.log(Level.SEVERE, "Caught exception!", exception);
+                logger.error("Caught exception!", exception);
             }
 
             try {
@@ -402,7 +402,7 @@ public class BinaryEditorFrame implements ActionListener, MouseListener {
             }
             catch(Exception exception) {
 
-                logger.log(Level.SEVERE, "Caught exception!", exception);
+                logger.error("Caught exception!", exception);
             }
         }
     }

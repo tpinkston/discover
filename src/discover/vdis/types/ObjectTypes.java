@@ -11,10 +11,10 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.TreeMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-import discover.Discover;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import discover.vdis.enums.VDISNames;
 import discover.vdis.types.ObjectType.Geometry;
 
@@ -22,7 +22,7 @@ public class ObjectTypes {
 
     private static final String FILE = "data/OBJECT_STATE.CSV";
 
-    private static final Logger logger = Discover.getLogger();
+    private static final Logger logger = LoggerFactory.getLogger(ObjectTypes.class);
 
     /** Maps 32-bit entity type value to ObjectType object. */
     private static final TreeMap<Geometry, TreeMap<Integer, ObjectType>> mapping;
@@ -116,7 +116,7 @@ public class ObjectTypes {
 
         if (reader == null) {
 
-            logger.severe("File not found: " + FILE);
+            logger.error("File not found {}", FILE);
         }
         else try {
 
@@ -131,7 +131,7 @@ public class ObjectTypes {
 
                 if ((tokens == null) || (tokens.length != 10)) {
 
-                    logger.severe(
+                    logger.error(
                         "Parse error:\n" + FILE +
                         ": Expecting 13 tokens on line " + line +
                         "\n" + Arrays.toString(tokens));
@@ -181,7 +181,7 @@ public class ObjectTypes {
 
                     if (submapping.containsKey(value)) {
 
-                        logger.severe("Duplicate object type: " + tuple);
+                        logger.error("Duplicate object type: {}", tuple);
                     }
                     else {
 
@@ -192,12 +192,7 @@ public class ObjectTypes {
 
                     if (line > 1) {
 
-                        logger.log(
-                            Level.WARNING,
-                            "Parse error:\n" + FILE +
-                            ": Number format exception on line " + line,
-                            exception);
-                    }
+                        logger.error("Caught exception!", exception);                    }
                 }
 
                 string = reader.readLine();
@@ -212,11 +207,7 @@ public class ObjectTypes {
         }
         catch(Exception exception) {
 
-            logger.log(Level.SEVERE, "Caught exception!", exception);
-
-            logger.severe(
-                exception.getClass().getName() +
-                " parsing file " + FILE);
+            logger.error("Caught exception!", exception);
         }
 
         long duration = (System.currentTimeMillis() - start);

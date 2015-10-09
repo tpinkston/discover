@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.widgets;
 
 import java.awt.event.ActionEvent;
@@ -14,9 +11,17 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import discover.gui.Utilities;
 
+/**
+ * @author Tony Pinkston
+ */
 public abstract class Widget implements ActionListener, FocusListener, MouseListener {
+    
+    protected static final Logger logger = LoggerFactory.getLogger(Widget.class);
 
     private final JPanel panel;
 

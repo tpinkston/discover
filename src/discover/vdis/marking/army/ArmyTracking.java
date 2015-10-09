@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.marking.army;
 
 import java.io.BufferedReader;
@@ -13,14 +10,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 import java.util.StringTokenizer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-import discover.Discover;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+/**
+ * @author Tony Pinkston
+ */
 public class ArmyTracking {
 
-    private static final Logger logger = Discover.getLogger();
+    private static final Logger logger = LoggerFactory.getLogger(ArmyTracking.class);
 
     private static final String DIVISION = "EM_USARMY_DIV.CSV";
     private static final String BRIGADE = "EM_USARMY_BDE.CSV";
@@ -64,7 +63,7 @@ public class ArmyTracking {
         System.out.print("Loaded " + total + " VDIS echelons in ");
         System.out.println(duration + " milliseconds");
 
-        if (logger.isLoggable(Level.FINER)) {
+        if (logger.isDebugEnabled()) {
 
             StringBuffer buffer = new StringBuffer("\n");
 
@@ -114,7 +113,7 @@ public class ArmyTracking {
                 }
             }
 
-            logger.finer(buffer.toString());
+            logger.debug(buffer.toString());
         }
     }
 
@@ -186,7 +185,7 @@ public class ArmyTracking {
 
         if (list == null) {
 
-            logger.warning("No echelon values for " + echelon.getName());
+            logger.warn("No echelon values for {}", echelon.getName());
         }
         else for(AbstractEchelon item : list) {
 
@@ -196,9 +195,7 @@ public class ArmyTracking {
             }
         }
 
-        logger.warning(
-            "No echelon value for " + value +
-            ": " + echelon.getSimpleName());
+        logger.warn("No echelon value for {}: {}", value, echelon.getSimpleName());
 
         return null;
     }
@@ -215,7 +212,7 @@ public class ArmyTracking {
 
         if (list == null) {
 
-            logger.warning("No echelon values for " + division.name);
+            logger.warn("No echelon values for {}", division.name);
         }
         else for(ArmyBattalion item : list) {
 
@@ -249,7 +246,7 @@ public class ArmyTracking {
                 }
                 catch(NumberFormatException exception) {
 
-                    logger.severe(
+                    logger.error(
                         "NumberFormatException!" +
                         "\n  file: " + DIVISION +
                         "\n  line: " + (i + 2) +
@@ -284,7 +281,7 @@ public class ArmyTracking {
                 }
                 catch(NumberFormatException exception) {
 
-                    logger.severe(
+                    logger.error(
                         "NumberFormatException!" +
                         "\n  file: " + BRIGADE +
                         "\n  line: " + (i + 2) +
@@ -340,7 +337,7 @@ public class ArmyTracking {
                 }
                 catch(NumberFormatException exception) {
 
-                    logger.severe(
+                    logger.error(
                         "NumberFormatException!" +
                         "\n  file: " + name +
                         "\n  line: " + (i + 2) +
@@ -380,7 +377,7 @@ public class ArmyTracking {
                 }
                 catch(NumberFormatException exception) {
 
-                    logger.severe(
+                    logger.error(
                         "NumberFormatException!" +
                         "\n  file: " + COMPANY +
                         "\n  line: " + (i + 2) +
@@ -417,7 +414,7 @@ public class ArmyTracking {
                  }
                  catch(NumberFormatException exception) {
 
-                     logger.severe(
+                     logger.error(
                          "NumberFormatException!" +
                          "\n  file: " + PLATOON +
                          "\n  line: " + (i + 2) +
@@ -453,7 +450,7 @@ public class ArmyTracking {
                 }
                 catch(NumberFormatException exception) {
 
-                    logger.severe(
+                    logger.error(
                         "NumberFormatException!" +
                         "\n  file: " + SECTION +
                         "\n  line: " + (i + 2) +
@@ -489,7 +486,7 @@ public class ArmyTracking {
                 }
                 catch(NumberFormatException exception) {
 
-                    logger.severe(
+                    logger.error(
                         "NumberFormatException!" +
                         "\n  file: " + SQUAD +
                         "\n  line: " + (i + 2) +
@@ -525,7 +522,7 @@ public class ArmyTracking {
                 }
                 catch(NumberFormatException exception) {
 
-                    logger.severe(
+                    logger.error(
                         "NumberFormatException!" +
                         "\n  file: " + TEAM +
                         "\n  line: " + (i + 2) +
@@ -571,7 +568,7 @@ public class ArmyTracking {
                             }
                             else {
 
-                                logger.warning(
+                                logger.warn(
                                     "Invalid number of tokens!" +
                                     "\n  file: " + name +
                                     "\n  line: " + line +
@@ -587,7 +584,7 @@ public class ArmyTracking {
             }
             catch(Exception exception) {
 
-                logger.log(Level.SEVERE, "Caught exception!", exception);
+                logger.error("Caught exception!", exception);
             }
         }
 

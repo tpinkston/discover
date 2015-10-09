@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.widgets;
 
 import java.awt.event.MouseEvent;
@@ -11,6 +8,9 @@ import javax.swing.JLabel;
 
 import discover.gui.Utilities;
 
+/**
+ * @author Tony Pinkston
+ */
 public abstract class ToggleWidget extends Widget {
 
     private static final ImageIcon HIDE_ICON = Utilities.getImageIcon(

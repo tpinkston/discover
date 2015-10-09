@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.tabs;
 
 import java.awt.Font;
@@ -12,7 +9,6 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
-import java.util.logging.Level;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -56,6 +52,9 @@ import discover.vdis.enums.VDIS;
 import discover.vdis.pdu.EntityState;
 import discover.vdis.types.EntityType;
 
+/**
+ * @author Tony Pinkston
+ */
 public class EntityTab extends Tab implements ActionListener {
 
     private static final String HTML = "text/html";
@@ -191,7 +190,7 @@ public class EntityTab extends Tab implements ActionListener {
 
         int length = stream.readInt();
 
-        logger.fine("Loading buffer with " + length + " bytes");
+        logger.debug("Loading buffer with {} bytes", length);
 
         if (length > 0) {
 
@@ -262,7 +261,7 @@ public class EntityTab extends Tab implements ActionListener {
             }
             catch(SocketException exception) {
 
-                logger.log(Level.SEVERE, "Caught exception!", exception);
+                logger.error("Caught exception!", exception);
 
                 JOptionPane.showMessageDialog(
                     DiscoverFrame.getFrame(),
@@ -335,7 +334,7 @@ public class EntityTab extends Tab implements ActionListener {
         }
         catch(Exception exception) {
 
-            logger.log(Level.SEVERE, "Caught exception!", exception);
+            logger.error("Caught exception!", exception);
         }
     }
 
@@ -459,7 +458,7 @@ public class EntityTab extends Tab implements ActionListener {
         }
         catch(Exception exception) {
 
-            logger.log(Level.SEVERE, "Caught exception!", exception);
+            logger.error("Caught exception!", exception);
         }
 
         try {
@@ -478,7 +477,7 @@ public class EntityTab extends Tab implements ActionListener {
         }
         catch(Exception exception) {
 
-            logger.log(Level.SEVERE, "Caught exception!", exception);
+            logger.error("Caught exception!", exception);
         }
     }
 

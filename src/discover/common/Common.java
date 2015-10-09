@@ -1,34 +1,33 @@
-/**
- * @author Tony Pinkston
- */
 package discover.common;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-import discover.Discover;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+/**
+ * @author Tony Pinkston
+ */
 public class Common {
 
-    // RADIX:
-    public static final int BIN = 2;
-    public static final int DEC = 10;
-    public static final int HEX = 16;
+    /** RADIX **/
+    public static final int BIN = 2, DEC = 10, HEX = 16;
 
-    // SIZE:
-    public static final int SIZE8 = 8;
-    public static final int SIZE16 = 16;
-    public static final int SIZE32 = 32;
-    public static final int SIZE64 = 64;
+    /** SIZE **/
+    public static final int 
+        SIZE8 = 8,
+        SIZE16 = 16,
+        SIZE32 = 32,
+        SIZE64 = 64;
 
-    // RADIANS:
-    public static final double HALF_PI = (Math.PI / 2.0);
-    public static final double TWO_PI = (Math.PI * 2.0);
+    /** RADIANS **/
+    public static final double 
+        HALF_PI = (Math.PI / 2.0),
+        TWO_PI = (Math.PI * 2.0);
 
-    private static final Logger logger = Discover.getLogger();
+    private static final Logger logger = LoggerFactory.getLogger(Common.class);
 
     /**
      * Gets integer value from unsigned byte value.
@@ -167,7 +166,7 @@ public class Common {
         }
         catch(IOException exception) {
 
-            logger.log(Level.SEVERE, "Caught exception!", exception);
+            logger.error("Caught exception!", exception);
             return null;
         }
     }
@@ -194,7 +193,7 @@ public class Common {
 
         if ((radix != BIN) && (radix != HEX) && (radix != DEC)) {
 
-            logger.severe("Invalid radix: " + radix);
+            logger.error("Invalid radix: {}", radix);
         }
         else if (floating) {
 
@@ -245,7 +244,7 @@ public class Common {
                     number = parsed;
                     break;
                 default:
-                    logger.severe("Invalid size: " + size);
+                    logger.error("Invalid size: {}", size);
 
             }
         }

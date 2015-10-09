@@ -6,6 +6,9 @@ package discover.vdis.bits;
 import java.util.Collections;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import discover.common.Binary;
 import discover.common.Readable;
 import discover.common.Writable;
@@ -15,6 +18,8 @@ import discover.vdis.enums.VDIS;
 import discover.vdis.enums.VDIS.Handle;
 
 public abstract class AbstractBits implements Bufferable, Cloneable, Readable, Writable {
+
+    protected static final Logger logger = LoggerFactory.getLogger(AbstractBits.class);
 
     /**
      * @return True if all bits are zero.

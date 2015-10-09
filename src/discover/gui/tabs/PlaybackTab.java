@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.tabs;
 
 import java.awt.BorderLayout;
@@ -19,7 +16,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.TreeSet;
-import java.util.logging.Level;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -43,6 +39,9 @@ import discover.system.PlaybackThread;
 import discover.system.PlaybackThreadListener;
 import discover.vdis.PDU;
 
+/**
+ * @author Tony Pinkston
+ */
 public class PlaybackTab extends PDUTab implements PlaybackThreadListener {
 
     private final JProgressBar progress = new JProgressBar(0, 100);
@@ -204,11 +203,9 @@ public class PlaybackTab extends PDUTab implements PlaybackThreadListener {
                 "Deleting " + selections.length + " of " + size + " " +
                 super.getTabName() + " PDUs...");
 
-            if (logger.isLoggable(Level.FINER)) {
+            if (logger.isDebugEnabled()) {
 
-                logger.finer(
-                    "Selected rows: " +
-                    Arrays.toString(selections));
+                logger.debug("Selected rows: {}", Arrays.toString(selections));
             }
 
             for(int i = 0; i < selections.length; ++i) {
@@ -219,18 +216,16 @@ public class PlaybackTab extends PDUTab implements PlaybackThreadListener {
 
             Arrays.sort(selections);
 
-            if (logger.isLoggable(Level.FINER)) {
+            if (logger.isDebugEnabled()) {
 
-                logger.finer(
-                    "Selected rows (sorted): " +
-                    Arrays.toString(selections));
+                logger.debug("Selected rows (sorted): {}", Arrays.toString(selections));
             }
 
             for(int i = (selections.length - 1); i >= 0; --i) {
 
-                if (logger.isLoggable(Level.FINEST)) {
+                if (logger.isDebugEnabled()) {
 
-                    logger.finest("Deleting PDU at index: " + selections[i]);
+                    logger.debug("Deleting PDU at index: {}", selections[i]);
                 }
 
                 super.cutPDU(selections[i]);
@@ -287,11 +282,9 @@ public class PlaybackTab extends PDUTab implements PlaybackThreadListener {
                 "Cutting " + selections.length + " of " + size + " " +
                 super.getTabName() + " PDUs...");
 
-            if (logger.isLoggable(Level.FINER)) {
+            if (logger.isDebugEnabled()) {
 
-                logger.finer(
-                    "Selected rows: " +
-                    Arrays.toString(selections));
+                logger.debug("Selected rows: {}", Arrays.toString(selections));
             }
 
             for(int i = 0; i < selections.length; ++i) {
@@ -302,16 +295,14 @@ public class PlaybackTab extends PDUTab implements PlaybackThreadListener {
 
             Arrays.sort(selections);
 
-            if (logger.isLoggable(Level.FINER)) {
+            if (logger.isDebugEnabled()) {
 
-                logger.finer(
-                    "Selected rows (sorted): " +
-                    Arrays.toString(selections));
+                logger.debug("Selected rows (sorted): {}", Arrays.toString(selections));
             }
 
             for(int i = (selections.length - 1); i >= 0; --i) {
 
-                logger.finest("Cutting PDU at index: " + selections[i]);
+                logger.debug("Cutting PDU at index: {}", selections[i]);
 
                 clipboard.add(super.cutPDU(selections[i]));
             }
@@ -341,13 +332,13 @@ public class PlaybackTab extends PDUTab implements PlaybackThreadListener {
                 "Copying " + selections.length + " of " + size + " " +
                 super.getTabName() + " PDUs...");
 
-            logger.finer("Selected rows: " + Arrays.toString(selections));
+            logger.debug("Selected rows: {}", Arrays.toString(selections));
 
             for(int i = 0; i < selections.length; ++i) {
 
                 int index = this.sorter.convertRowIndexToModel(selections[i]);
 
-                logger.finest("Copying PDU at index: " + index);
+                logger.debug("Copying PDU at index: {}", index);
 
                 clipboard.add(this.getPDU(index).copy());
             }
@@ -465,7 +456,7 @@ public class PlaybackTab extends PDUTab implements PlaybackThreadListener {
                 }
                 catch(NumberFormatException exception) {
 
-                    logger.severe("Cannot parse date/time: " + object);
+                    logger.error("Cannot parse date/time: {}", object);
                 }
             }
         }
@@ -729,7 +720,7 @@ public class PlaybackTab extends PDUTab implements PlaybackThreadListener {
 
             if (port == null) {
 
-                logger.severe("Playback port is not set!");
+                logger.error("Playback port is not set!");
             }
             else if (thread != null) {
 
@@ -739,7 +730,7 @@ public class PlaybackTab extends PDUTab implements PlaybackThreadListener {
                 }
                 else {
 
-                    logger.severe(getTabName() + ": Already started sending!");
+                    logger.error(getTabName() + ": Already started sending!");
                 }
             }
             else try {
@@ -755,7 +746,7 @@ public class PlaybackTab extends PDUTab implements PlaybackThreadListener {
             }
             catch(Exception exception) {
 
-                logger.log(Level.SEVERE, "Caught exception!", exception);
+                logger.error("Caught exception!", exception);
 
                 JOptionPane.showMessageDialog(
                     DiscoverFrame.getFrame(),

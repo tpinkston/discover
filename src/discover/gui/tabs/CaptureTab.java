@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.tabs;
 
 import java.awt.BorderLayout;
@@ -19,7 +16,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
-import java.util.logging.Level;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -43,6 +39,9 @@ import discover.system.CaptureThread;
 import discover.system.CaptureThreadListener;
 import discover.vdis.PDU;
 
+/**
+ * @author Tony Pinkston
+ */
 public class CaptureTab extends PDUTab implements CaptureThreadListener {
 
     private static final Color ACTIVE_COLOR = Color.BLACK;
@@ -139,7 +138,7 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
     @Override
     public void delete() {
 
-        logger.severe("Method not supported!");
+        logger.error("Method not supported!");
     }
 
     @Override
@@ -164,7 +163,7 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
     @Override
     public void cut(ArrayList<PDU> clipboard) {
 
-        logger.severe("Method not supported!");
+        logger.error("Method not supported!");
     }
 
     @Override
@@ -178,15 +177,15 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
 
         logger.info(
             "Copying " + selections.length + " of " + size + " " +
-            super.getTabName() + " PDUs...");
+            getTabName() + " PDUs...");
 
-        logger.finer("Selected rows: " + Arrays.toString(selections));
+        logger.debug("Selected rows: {}", Arrays.toString(selections));
 
         for(int i = 0; i < selections.length; ++i) {
 
             int index = this.sorter.convertRowIndexToModel(selections[i]);
 
-            logger.finest("Copying PDU at index: " + index);
+            logger.debug("Copying PDU at index: {}", index);
 
             clipboard.add(this.getPDU(index).copy());
         }
@@ -195,7 +194,7 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
     @Override
     public void paste(ArrayList<PDU> clipboard) {
 
-        logger.severe("Method not supported!");
+        logger.error("Method not supported!");
     }
 
     @Override
@@ -210,7 +209,7 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
                 @Override
                 public void run() {
 
-                    logger.finer("Adding " + copy.size() + " PDUs");
+                    logger.debug("Adding {} PDUs", copy.size());
 
                     lock.writeLock().lock();
 
@@ -267,7 +266,7 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
 
         if (this.ports.keySet().contains(number)) {
 
-            logger.severe("Port already in use: " + number);
+            logger.error("Port already in use: {}", number);
         }
         else try {
 
@@ -293,7 +292,7 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
         }
         catch(Exception exception) {
 
-            logger.log(Level.SEVERE, "Caught exception!", exception);
+            logger.error("Caught exception!", exception);
 
             JOptionPane.showMessageDialog(
                 DiscoverFrame.getFrame(),
@@ -510,7 +509,7 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
 
                     if (port == null) {
 
-                        logger.severe("No port for " + number);
+                        logger.error("No port for {}", number);
                     }
                     else {
 

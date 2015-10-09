@@ -1,9 +1,14 @@
+package discover.system;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * @author Tony Pinkston
  */
-package discover.system;
-
 public abstract class NetworkThread extends Thread {
+
+    protected static final Logger logger = LoggerFactory.getLogger(NetworkThread.class);
 
     private boolean paused = false;
     private boolean stopped = false;

@@ -6,16 +6,12 @@ package discover.vdis.bits;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.util.logging.Logger;
 
-import discover.Discover;
 import discover.common.Binary;
 
 public abstract class Abstract32Bits extends AbstractBits {
 
     public static final int LENGTH = 4;
-
-    protected static final Logger logger = Discover.getLogger();
 
     private int value = 0x00;
 

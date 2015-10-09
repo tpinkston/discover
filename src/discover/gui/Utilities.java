@@ -17,7 +17,6 @@ import java.net.URL;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.Comparator;
-import java.util.logging.Logger;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -35,7 +34,9 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 
-import discover.Discover;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import discover.gui.frames.DiscoverFrame;
 import discover.vdis.common.EntityId;
 import discover.vdis.enums.VDIS;
@@ -45,7 +46,7 @@ import discover.vdis.types.ObjectType;
 
 public class Utilities {
 
-    private static final Logger logger = Discover.getLogger();
+    private static final Logger logger = LoggerFactory.getLogger(Utilities.class);
 
     public static final int HORIZONTAL = GridBagConstraints.HORIZONTAL;
     public static final int VERTICAL = GridBagConstraints.VERTICAL;
@@ -746,8 +747,8 @@ public class Utilities {
         }
         else {
 
-            logger.severe(
-                "Could not create comparator for class: " +
+            logger.error(
+                "Could not create comparator for class: {}",
                 type.getName());
         }
 

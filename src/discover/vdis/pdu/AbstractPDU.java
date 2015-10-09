@@ -6,9 +6,10 @@ package discover.vdis.pdu;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.text.DateFormat;
-import java.util.logging.Logger;
 
-import discover.Discover;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import discover.common.Readable;
 import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.Bufferable;
@@ -16,7 +17,7 @@ import discover.vdis.common.PDUHeader;
 
 public abstract class AbstractPDU implements Bufferable, Readable {
 
-    protected static final Logger logger = Discover.getLogger();
+    protected static final Logger logger = LoggerFactory.getLogger(AbstractPDU.class);
 
     protected static final DateFormat format = DateFormat.getDateTimeInstance();
 

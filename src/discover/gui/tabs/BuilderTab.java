@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.tabs;
 
 import java.awt.BorderLayout;
@@ -17,7 +14,6 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.logging.Level;
 
 import javax.swing.AbstractAction;
 import javax.swing.JLabel;
@@ -42,19 +38,22 @@ import discover.gui.Utilities;
 import discover.gui.frames.DiscoverFrame;
 import discover.gui.panels.TextPanel;
 import discover.vdis.PDU;
-import discover.vdis.datum.DatumSpecificationRecord;
-import discover.vdis.datum.FixedDatumRecord;
 import discover.vdis.datum.CDTApplicationConfiguration;
 import discover.vdis.datum.CDTGeneralDiscoveryRecord;
 import discover.vdis.datum.CDTOneSAFConfigurationRecord;
 import discover.vdis.datum.CDTSpecificConnectionRecord;
 import discover.vdis.datum.CDTWaypoint;
+import discover.vdis.datum.DatumSpecificationRecord;
+import discover.vdis.datum.FixedDatumRecord;
 import discover.vdis.pdu.ActionRequest;
 import discover.vdis.pdu.ApplicationControlPDU;
 import discover.vdis.pdu.EntityState;
 import discover.vdis.types.EntityTypes;
 import discover.vdis.types.Septuple;
 
+/**
+ * @author Tony Pinkston
+ */
 public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
 
     public static final String BUILDER_TAB = "(Builder Tab)";
@@ -119,7 +118,7 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
     @Override
     public void cut(ArrayList<PDU> clipboard) {
 
-        logger.severe("Method not supported!");
+        logger.error("Method not supported!");
     }
 
     @Override
@@ -139,7 +138,7 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
         }
         catch(IOException exception) {
 
-            logger.log(Level.SEVERE, "Caught exception!", exception);
+            logger.error("Caught exception!", exception);
         }
     }
 
@@ -320,7 +319,7 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
                 }
                 catch(Exception exception) {
 
-                    logger.log(Level.SEVERE, "Caught exception!", exception);
+                    logger.error("Caught exception!", exception);
                 }
 
                 try {
@@ -339,12 +338,12 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
                 }
                 catch(Exception exception) {
 
-                    logger.log(Level.SEVERE, "Caught exception!", exception);
+                    logger.error("Caught exception!", exception);
                 }
             }
             catch(IOException exception) {
 
-                logger.log(Level.SEVERE, "Caught exception!", exception);
+                logger.error("Caught exception!", exception);
 
                 this.content.setText("Caught exception, nothing to display.");
                 this.hexadecimal.setText("Caught exception, nothing to display.");
@@ -593,7 +592,7 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
             }
             catch(Exception exception) {
 
-                logger.log(Level.SEVERE, "Caught exception!", exception);
+                logger.error("Caught exception!", exception);
             }
         }
 
@@ -619,7 +618,7 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
             }
             catch(Exception exception) {
 
-                logger.log(Level.SEVERE, "Caught exception!", exception);
+                logger.error("Caught exception!", exception);
             }
         }
 
@@ -659,7 +658,7 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
             }
             catch(Exception exception) {
 
-                logger.log(Level.SEVERE, "Caught exception!", exception);
+                logger.error("Caught exception!", exception);
             }
         }
 
@@ -713,7 +712,7 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
             }
             catch(Exception exception) {
 
-                logger.log(Level.SEVERE, "Caught exception!", exception);
+                logger.error("Caught exception!", exception);
             }
         }
 
@@ -753,7 +752,7 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
             }
             catch(Exception exception) {
 
-                logger.log(Level.SEVERE, "Caught exception!", exception);
+                logger.error("Caught exception!", exception);
             }
         }
 
@@ -813,7 +812,7 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
             }
             catch(Exception exception) {
 
-                logger.log(Level.SEVERE, "Caught exception!", exception);
+                logger.error("Caught exception!", exception);
             }
         }
     }

@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.dialogs;
 
 import java.awt.GridLayout;
@@ -8,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -18,7 +14,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import discover.Discover;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import discover.gui.Utilities;
 import discover.gui.frames.DiscoverFrame;
 import discover.gui.tabs.PDUTab.TableFilter;
@@ -26,9 +24,12 @@ import discover.gui.tabs.PDUTab.TableModel;
 import discover.vdis.PDU;
 import discover.vdis.enums.VDIS;
 
+/**
+ * @author Tony Pinkston
+ */
 public class FilterDialog implements ActionListener {
 
-    private static final Logger logger = Discover.getLogger();
+    private static final Logger logger = LoggerFactory.getLogger(FilterDialog.class);
 
     private static final String CLEAR = "Clear";
     private static final String REVERT = "Revert";
@@ -433,7 +434,7 @@ public class FilterDialog implements ActionListener {
             this.filter.marking = null;
         }
 
-        logger.finer("New Filter:\n" + this.filter.toString());
+        logger.debug("New Filter:\n" + this.filter.toString());
     }
 
     private void configureComponents() {

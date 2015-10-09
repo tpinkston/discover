@@ -3,7 +3,6 @@
  */
 package discover.headless;
 
-import java.io.PrintStream;
 import java.text.DateFormat;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -21,25 +20,6 @@ public class Headless {
     private static Integer pdutype = null;
     private static Integer pdufamily = null;
     private static boolean verbose = false;
-
-    public static void printUsage() {
-
-        PrintStream out = System.out;
-
-        out.println();
-        out.println("In headless mode the application will listen on a");
-        out.println("single port and print PDUs received according to the ");
-        out.println("specified auguments in the following form:");
-        out.println();
-        out.println("   --headless=arg1:value1,arg2:value2,arg3:value3");
-        out.println();
-        out.println("Possible arguments are:");
-        out.println("   port:P, where P is the capture port.");
-        out.println("   exercise:E, where E is the exercise number.");
-        out.println("   pdutype:T, where T is the PDU type number.");
-        out.println("   pdufamily:F, where F is the PDU family number.");
-        out.println("   verbose:Y/N, argument value is either Y or N.");
-    }
 
     /**
      * Arguments should contain no whitespace and be in the form:

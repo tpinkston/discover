@@ -5,16 +5,17 @@ package discover.vdis.vprecords;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.util.logging.Logger;
 
-import discover.Discover;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import discover.common.Readable;
 import discover.common.Writable;
 import discover.common.buffer.Bufferable;
 
 public abstract class AbstractVPRecord implements Bufferable, Readable, Writable {
 
-    protected static final Logger logger = Discover.getLogger();
+    protected static final Logger logger = LoggerFactory.getLogger(AbstractVPRecord.class);
 
     protected int type = -1; // VP_RECORD_TYPE
     protected int domain = -1;

@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.system;
 
 import java.io.ByteArrayInputStream;
@@ -14,15 +11,13 @@ import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-import discover.Discover;
 import discover.vdis.PDU;
 
+/**
+ * @author Tony Pinkston
+ */
 public class CaptureThread extends NetworkThread {
-
-    private static final Logger logger = Discover.getLogger();
 
     private static final int TIMEOUT = 1000; // 5 seconds
 
@@ -87,9 +82,7 @@ public class CaptureThread extends NetworkThread {
             }
             catch(Exception exception) {
 
-                logger.warning(
-                    "Could not join address " + address +
-                    ", exception: " + exception.getClass().getName());
+                logger.warn("Caught exception!", exception);
             }
         }
     }
@@ -120,7 +113,7 @@ public class CaptureThread extends NetworkThread {
             }
             catch(IOException exception) {
 
-                logger.log(Level.SEVERE, "Caught exception!", exception);
+                logger.error("Caught exception!", exception);
             }
         }
 
@@ -141,9 +134,9 @@ public class CaptureThread extends NetworkThread {
             final int size = packet.getLength();
             final byte[] data = packet.getData();
 
-            if (logger.isLoggable(Level.FINEST)) {
+            if (logger.isDebugEnabled()) {
 
-                logger.finest(
+                logger.debug(
                     "Packet from host: " + Network.getHostAddress(packet) +
                     ", port: " + this.port +
                     ", length: " + packet.getLength());
@@ -170,11 +163,11 @@ public class CaptureThread extends NetworkThread {
 
                         if (length < 12) {
 
-                            logger.severe("Stream size less than 12 bytes!");
+                            logger.error("Stream size less than 12 bytes!");
                         }
                         else if (length > (size - index)) {
 
-                            logger.severe("Stream size greater than data size!");
+                            logger.error("Stream size greater than data size!");
                         }
                         else {
 
@@ -194,7 +187,7 @@ public class CaptureThread extends NetworkThread {
                 }
                 catch(IOException exception) {
 
-                    logger.log(Level.SEVERE, "Caught exception!", exception);
+                    logger.error("Caught exception!", exception);
                 }
             }
         }
