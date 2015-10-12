@@ -1,12 +1,4 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.common;
-
-import geotransform.coords.Gcc_Coord_3d;
-import geotransform.coords.Gdc_Coord_3d;
-import geotransform.transforms.Gcc_To_Gdc_Converter;
-import geotransform.transforms.Gdc_To_Gcc_Converter;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -15,9 +7,15 @@ import java.text.NumberFormat;
 
 import discover.common.Readable;
 import discover.common.Writable;
+import geotransform.coords.Gcc_Coord_3d;
+import geotransform.coords.Gdc_Coord_3d;
+import geotransform.transforms.Gcc_To_Gdc_Converter;
+import geotransform.transforms.Gdc_To_Gcc_Converter;
 
 /**
  * Record of size 192 bits (24 bytes)
+ *
+ * @author Tony Pinkston
  */
 public class Location24 implements Readable, Writable {
 
@@ -42,9 +40,9 @@ public class Location24 implements Readable, Writable {
     private double y = 0.0;
     private double z = 0.0;
 
-    public double getX() { return this.x; }
-    public double getY() { return this.y; }
-    public double getZ() { return this.z; }
+    public double getX() { return x; }
+    public double getY() { return y; }
+    public double getZ() { return z; }
 
     public void setX(double x) { this.x = x; }
     public void setY(double y) { this.y = y; }
@@ -65,16 +63,16 @@ public class Location24 implements Readable, Writable {
 
         Gdc_To_Gcc_Converter.Convert(GDC, GCC);
 
-        this.x = GCC.x;
-        this.y = GCC.y;
-        this.z = GCC.z;
+        x = GCC.x;
+        y = GCC.y;
+        z = GCC.z;
     }
 
     public void clear() {
 
-        this.x = 0.0;
-        this.y = 0.0;
-        this.z = 0.0;
+        x = 0.0;
+        y = 0.0;
+        z = 0.0;
     }
 
     /**
@@ -89,7 +87,7 @@ public class Location24 implements Readable, Writable {
     @Override
     public String toString() {
 
-        return this.toStringGCC();
+        return toStringGCC();
     }
 
     /**
@@ -97,9 +95,9 @@ public class Location24 implements Readable, Writable {
      */
     public String toStringGCC() {
 
-        return "(" + formatterGCC.format(this.x) +
-               ", " + formatterGCC.format(this.y) +
-               ", " + formatterGCC.format(this.z) + ")";
+        return "(" + formatterGCC.format(x) +
+               ", " + formatterGCC.format(y) +
+               ", " + formatterGCC.format(z) + ")";
     }
 
     /**
@@ -109,9 +107,9 @@ public class Location24 implements Readable, Writable {
 
         StringBuffer buffer = new StringBuffer();
 
-        GCC.x = this.getX();
-        GCC.y = this.getY();
-        GCC.z = this.getZ();
+        GCC.x = getX();
+        GCC.y = getY();
+        GCC.z = getZ();
 
         Gcc_To_Gdc_Converter.Convert(GCC, GDC);
 
@@ -129,16 +127,16 @@ public class Location24 implements Readable, Writable {
     @Override
     public void read(DataInputStream stream) throws IOException {
 
-        this.x = stream.readDouble();
-        this.y = stream.readDouble();
-        this.z = stream.readDouble();
+        x = stream.readDouble();
+        y = stream.readDouble();
+        z = stream.readDouble();
     }
 
     @Override
     public void write(DataOutputStream stream) throws IOException {
 
-        stream.writeDouble(this.x);
-        stream.writeDouble(this.y);
-        stream.writeDouble(this.z);
+        stream.writeDouble(x);
+        stream.writeDouble(y);
+        stream.writeDouble(z);
     }
 }

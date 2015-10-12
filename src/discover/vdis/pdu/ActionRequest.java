@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.pdu;
 
 import java.io.ByteArrayOutputStream;
@@ -15,6 +12,9 @@ import discover.vdis.common.EntityId;
 import discover.vdis.datum.DatumSpecificationRecord;
 import discover.vdis.enums.VDIS;
 
+/**
+ * @author Tony Pinkston
+ */
 public class ActionRequest extends AbstractPDU implements Writable {
 
     private EntityId originator = new EntityId();
@@ -27,31 +27,31 @@ public class ActionRequest extends AbstractPDU implements Writable {
 
     }
 
-    public long getRequestId() { return this.requestId; }
+    public long getRequestId() { return requestId; }
 
-    public void setRequestId(long id) { this.requestId = id; }
+    public void setRequestId(long id) { requestId = id; }
 
-    public int getActionId() { return this.actionId; }
+    public int getActionId() { return actionId; }
 
-    public void setActionId(int id) { this.actionId = id; }
+    public void setActionId(int id) { actionId = id; }
 
-    public EntityId getOriginator() { return this.originator; }
+    public EntityId getOriginator() { return originator; }
 
-    public EntityId getRecipient() { return this.recipient; }
+    public EntityId getRecipient() { return recipient; }
 
     public DatumSpecificationRecord getSpecification() {
 
-        return this.specification;
+        return specification;
     }
 
     @Override
     public void clear() {
 
-        this.originator.clear();
-        this.recipient.clear();
-        this.requestId = 0;
-        this.actionId = 0;
-        this.specification.clear();
+        originator.clear();
+        recipient.clear();
+        requestId = 0;
+        actionId = 0;
+        specification.clear();
     }
 
     @Override
@@ -60,12 +60,12 @@ public class ActionRequest extends AbstractPDU implements Writable {
         super.toBuffer(buffer);
 
         buffer.addTitle("REQUEST");
-        buffer.addAttribute("Originator", this.originator.toString());
-        buffer.addAttribute("Recipient", this.recipient.toString());
-        buffer.addAttribute("Request Id", this.requestId);
-        buffer.addAttribute("Action Id", this.actionId, VDIS.ACTREQ_ACTION_IDS);
+        buffer.addAttribute("Originator", originator.toString());
+        buffer.addAttribute("Recipient", recipient.toString());
+        buffer.addAttribute("Request Id", requestId);
+        buffer.addAttribute("Action Id", actionId, VDIS.ACTREQ_ACTION_IDS);
         buffer.addBreak();
-        buffer.addBuffer(this.specification);
+        buffer.addBuffer(specification);
     }
 
     @Override
@@ -73,11 +73,11 @@ public class ActionRequest extends AbstractPDU implements Writable {
 
         super.read(stream); // (header)
 
-        this.originator.read(stream); // 6 bytes
-        this.recipient.read(stream); // 6 bytes
-        this.requestId = Common.toUnsigned32(stream.readInt()); // 4 bytes
-        this.actionId = stream.readInt(); // 4 bytes
-        this.specification.read(stream);
+        originator.read(stream); // 6 bytes
+        recipient.read(stream); // 6 bytes
+        requestId = Common.toUnsigned32(stream.readInt()); // 4 bytes
+        actionId = stream.readInt(); // 4 bytes
+        specification.read(stream);
     }
 
     public byte[] write() throws IOException {
@@ -99,12 +99,12 @@ public class ActionRequest extends AbstractPDU implements Writable {
 
         super.getHeader().write(stream);
 
-        this.originator.write(stream);
-        this.recipient.write(stream);
+        originator.write(stream);
+        recipient.write(stream);
 
-        stream.writeInt((int)this.requestId);
-        stream.writeInt(this.actionId);
+        stream.writeInt((int)requestId);
+        stream.writeInt(actionId);
 
-        this.specification.write(stream);
+        specification.write(stream);
     }
 }

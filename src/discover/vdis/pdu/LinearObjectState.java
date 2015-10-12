@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.pdu;
 
 import java.io.DataInputStream;
@@ -14,9 +11,12 @@ import discover.vdis.common.LinearSegment;
 import discover.vdis.common.ObjectId;
 import discover.vdis.enums.VDIS;
 import discover.vdis.types.ObjectType;
-import discover.vdis.types.ObjectTypes;
 import discover.vdis.types.ObjectType.Geometry;
+import discover.vdis.types.ObjectTypes;
 
+/**
+ * @author Tony Pinkston
+ */
 public class LinearObjectState extends AbstractPDU {
 
     private static final Geometry LINEAR = Geometry.LINEAR;
@@ -38,15 +38,15 @@ public class LinearObjectState extends AbstractPDU {
     @Override
     public void clear() {
 
-        this.objectId.clear();
-        this.referencedObjectId.clear();
-        this.objectType = null;
-        this.requestor.clear();
-        this.receiver.clear();
-        this.segments.clear();
-        this.force = 0;
-        this.update = 0;
-        this.count = 0;
+        objectId.clear();
+        referencedObjectId.clear();
+        objectType = null;
+        requestor.clear();
+        receiver.clear();
+        segments.clear();
+        force = 0;
+        update = 0;
+        count = 0;
     }
 
     @Override
@@ -54,25 +54,25 @@ public class LinearObjectState extends AbstractPDU {
 
         super.toBuffer(buffer);
 
-        String count = (this.count + " (" + this.segments.size() + ")");
+        String count = (this.count + " (" + segments.size() + ")");
 
         buffer.addTitle("IDENTIFICATION");
-        buffer.addAttribute("Object", this.objectId.toString());
-        buffer.addAttribute("Referenced Object", this.referencedObjectId.toString());
+        buffer.addAttribute("Object", objectId.toString());
+        buffer.addAttribute("Referenced Object", referencedObjectId.toString());
         buffer.addAttribute(
             "Force",
-            VDIS.getDescription(VDIS.FORCE_ID, this.force));
-        buffer.addAttribute("Requestor", this.requestor.toString());
-        buffer.addAttribute("Receiver", this.receiver.toString());
-        buffer.addAttribute("Update Number", this.update);
+            VDIS.getDescription(VDIS.FORCE_ID, force));
+        buffer.addAttribute("Requestor", requestor.toString());
+        buffer.addAttribute("Receiver", receiver.toString());
+        buffer.addAttribute("Update Number", update);
         buffer.addAttribute("Segments", count);
         buffer.addBreak();
 
         buffer.addTitle("TYPE");
-        this.objectType.toBuffer(buffer);
+        objectType.toBuffer(buffer);
         buffer.addBreak();
 
-        for(LinearSegment segment : this.segments) {
+        for(LinearSegment segment : segments) {
 
             buffer.addBuffer(segment);
         }
@@ -85,18 +85,18 @@ public class LinearObjectState extends AbstractPDU {
 
         super.read(stream); // (header)
 
-        this.objectId.read(stream);
-        this.referencedObjectId.read(stream);
-        this.update = stream.readUnsignedShort();
-        this.force = stream.readUnsignedByte();
-        this.count = stream.readUnsignedByte();
-        this.requestor.readPartial(stream);
-        this.receiver.readPartial(stream);
-        this.objectType = ObjectTypes.getObjectType(LINEAR, stream.readInt());
+        objectId.read(stream);
+        referencedObjectId.read(stream);
+        update = stream.readUnsignedShort();
+        force = stream.readUnsignedByte();
+        count = stream.readUnsignedByte();
+        requestor.readPartial(stream);
+        receiver.readPartial(stream);
+        objectType = ObjectTypes.getObjectType(LINEAR, stream.readInt());
 
-        for(int i = 0; i < this.count; ++i) {
+        for(int i = 0; i < count; ++i) {
 
-            this.segments.add(new LinearSegment(stream));
+            segments.add(new LinearSegment(stream));
         }
     }
 }

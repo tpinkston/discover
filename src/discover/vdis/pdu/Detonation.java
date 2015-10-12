@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.pdu;
 
 import java.io.DataInputStream;
@@ -14,6 +11,9 @@ import discover.vdis.common.Location24;
 import discover.vdis.common.Velocity;
 import discover.vdis.enums.VDIS;
 
+/**
+ * @author Tony Pinkston
+ */
 public class Detonation extends AbstractPDU {
 
     private EntityId shooter = new EntityId();
@@ -32,31 +32,31 @@ public class Detonation extends AbstractPDU {
 
     }
 
-    public EntityId getShooter() { return this.shooter; }
-    public EntityId getTarget() { return this.target; }
-    public EntityId getMunition() { return this.munition; }
-    public EntityId getEvent() { return this.event; }
-    public Location24 getLocation() { return this.location; }
-    public Velocity getVelocity() { return this.velocity; }
-    public Location12 getOffset() { return this.offset; }
-    public BurstDescriptor getBurst() { return this.burst; }
-    public int getDetonationResult() { return this.result; }
-    public int getParameters() { return this.parameters; }
+    public EntityId getShooter() { return shooter; }
+    public EntityId getTarget() { return target; }
+    public EntityId getMunition() { return munition; }
+    public EntityId getEvent() { return event; }
+    public Location24 getLocation() { return location; }
+    public Velocity getVelocity() { return velocity; }
+    public Location12 getOffset() { return offset; }
+    public BurstDescriptor getBurst() { return burst; }
+    public int getDetonationResult() { return result; }
+    public int getParameters() { return parameters; }
 
     @Override
     public void clear() {
 
-        this.shooter.clear();
-        this.target.clear();
-        this.munition.clear();
-        this.event.clear();
-        this.location.clear();
-        this.velocity.clear();
-        this.offset.clear();
-        this.burst.clear();
-        this.result = 0;
-        this.parameters = 0;
-        this.parameterData = null;
+        shooter.clear();
+        target.clear();
+        munition.clear();
+        event.clear();
+        location.clear();
+        velocity.clear();
+        offset.clear();
+        burst.clear();
+        result = 0;
+        parameters = 0;
+        parameterData = null;
     }
 
     @Override
@@ -65,22 +65,22 @@ public class Detonation extends AbstractPDU {
         super.toBuffer(buffer);
 
         buffer.addTitle("IDENTIFICATION");
-        buffer.addAttribute("Shooter", this.shooter.toString());
-        buffer.addAttribute("Target", this.target.toString());
-        buffer.addAttribute("Munition", this.munition.toString());
-        buffer.addAttribute("Event", this.event.toString());
+        buffer.addAttribute("Shooter", shooter.toString());
+        buffer.addAttribute("Target", target.toString());
+        buffer.addAttribute("Munition", munition.toString());
+        buffer.addAttribute("Event", event.toString());
         buffer.addBreak();
 
         buffer.addTitle("SPATIAL");
-        buffer.addAttribute("Velocity", this.velocity.toString());
-        buffer.addAttribute("Location", this.location.toString());
-        buffer.addAttribute("Offset", this.offset.toString());
+        buffer.addAttribute("Velocity", velocity.toString());
+        buffer.addAttribute("Location", location.toString());
+        buffer.addAttribute("Offset", offset.toString());
         buffer.addBreak();
 
-        buffer.addBuffer(this.burst);
+        buffer.addBuffer(burst);
         buffer.addAttribute(
             "Result",
-            this.result,
+            result,
             VDIS.DETONATION_RESULT);
     }
 
@@ -89,16 +89,16 @@ public class Detonation extends AbstractPDU {
 
         super.read(stream); // (header)
 
-        this.shooter.read(stream); // 6 bytes
-        this.target.read(stream); // 6 bytes
-        this.munition.read(stream); // 6 bytes
-        this.event.read(stream); // 6 bytes
-        this.velocity.read(stream); // 12 bytes
-        this.location.read(stream); // 24 bytes
-        this.burst.read(stream); // 16 bytes
-        this.offset.read(stream); // 12 bytes
-        this.result = stream.readUnsignedByte(); // 1 byte
-        this.parameters = stream.readUnsignedByte(); // 1 byte
+        shooter.read(stream); // 6 bytes
+        target.read(stream); // 6 bytes
+        munition.read(stream); // 6 bytes
+        event.read(stream); // 6 bytes
+        velocity.read(stream); // 12 bytes
+        location.read(stream); // 24 bytes
+        burst.read(stream); // 16 bytes
+        offset.read(stream); // 12 bytes
+        result = stream.readUnsignedByte(); // 1 byte
+        parameters = stream.readUnsignedByte(); // 1 byte
 
         stream.readShort(); // 2 bytes padding
 
@@ -106,13 +106,13 @@ public class Detonation extends AbstractPDU {
 
         if (count == 0) {
 
-            this.parameterData = null;
+            parameterData = null;
         }
         else {
 
-            this.parameterData = new byte[count];
+            parameterData = new byte[count];
 
-            stream.read(this.parameterData, 0, count);
+            stream.read(parameterData, 0, count);
         }
     }
 }

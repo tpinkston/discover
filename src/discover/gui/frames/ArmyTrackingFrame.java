@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.frames;
 
 import java.awt.BorderLayout;
@@ -31,6 +28,9 @@ import discover.vdis.marking.army.ArmySquad;
 import discover.vdis.marking.army.ArmyTeam;
 import discover.vdis.marking.army.ArmyTracking;
 
+/**
+ * @author Tony Pinkston
+ */
 public class ArmyTrackingFrame {
 
     private static ArmyTrackingFrame instance = null;
@@ -66,17 +66,17 @@ public class ArmyTrackingFrame {
 
         JTabbedPane tabs = new JTabbedPane();
 
-        tabs.add("High Level Units", new JScrollPane(this.getTree()));
-        tabs.add("Companies", new JScrollPane(this.getCompanyTable()));
-        tabs.add("Platoons", new JScrollPane(this.getPlatoonTable()));
-        tabs.add("Sections", new JScrollPane(this.getSectionTable()));
-        tabs.add("Squads", new JScrollPane(this.getSquadTable()));
-        tabs.add("Teams", new JScrollPane(this.getTeamTable()));
+        tabs.add("High Level Units", new JScrollPane(getTree()));
+        tabs.add("Companies", new JScrollPane(getCompanyTable()));
+        tabs.add("Platoons", new JScrollPane(getPlatoonTable()));
+        tabs.add("Sections", new JScrollPane(getSectionTable()));
+        tabs.add("Squads", new JScrollPane(getSquadTable()));
+        tabs.add("Teams", new JScrollPane(getTeamTable()));
 
-        this.frame.getContentPane().add(tabs, BorderLayout.CENTER);
-        this.frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        this.frame.pack();
-        this.frame.setVisible(true);
+        frame.getContentPane().add(tabs, BorderLayout.CENTER);
+        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
     }
 
     private JTable getCompanyTable() {
@@ -94,7 +94,7 @@ public class ArmyTrackingFrame {
             columns,
             ArmyTracking.getValues(ArmyCompany.class)));
 
-        this.setTableColumnWidths(table, columns);
+        setTableColumnWidths(table, columns);
 
         return table;
     }
@@ -114,7 +114,7 @@ public class ArmyTrackingFrame {
             columns,
             ArmyTracking.getValues(ArmyPlatoon.class)));
 
-        this.setTableColumnWidths(table, columns);
+        setTableColumnWidths(table, columns);
 
         return table;
     }
@@ -133,7 +133,7 @@ public class ArmyTrackingFrame {
             columns,
             ArmyTracking.getValues(ArmySection.class)));
 
-        this.setTableColumnWidths(table, columns);
+        setTableColumnWidths(table, columns);
 
         return table;
     }
@@ -152,7 +152,7 @@ public class ArmyTrackingFrame {
             columns,
             ArmyTracking.getValues(ArmySquad.class)));
 
-        this.setTableColumnWidths(table, columns);
+        setTableColumnWidths(table, columns);
 
         return table;
     }
@@ -171,7 +171,7 @@ public class ArmyTrackingFrame {
             columns,
             ArmyTracking.getValues(ArmyTeam.class)));
 
-        this.setTableColumnWidths(table, columns);
+        setTableColumnWidths(table, columns);
 
         return table;
     }
@@ -315,48 +315,48 @@ public class ArmyTrackingFrame {
         @Override
         public int getRowCount() {
 
-            return this.data.length;
+            return data.length;
         }
 
         @Override
         public int getColumnCount() {
 
-            return this.columns.length;
+            return columns.length;
         }
 
         @Override
         public Class<?> getColumnClass(int column) {
 
-            return this.columns[column].type;
+            return columns[column].type;
         }
 
         @Override
         public String getColumnName(int column) {
 
-            return this.columns[column].name();
+            return columns[column].name();
         }
 
         @Override
         public Object getValueAt(int row, int column) {
 
-            switch(this.columns[column]) {
+            switch(columns[column]) {
 
                 case VALUE:
-                    return this.data[row].value;
+                    return data[row].value;
                 case NAME:
-                    return this.data[row].name;
+                    return data[row].name;
                 case DESCRIPTION:
-                    return this.data[row].description;
+                    return data[row].description;
                 case BV:
-                    return this.data[row].getBV();
+                    return data[row].getBV();
                 case CV:
-                    return this.data[row].getCV();
+                    return data[row].getCV();
                 case PV:
-                    return this.data[row].getPV();
+                    return data[row].getPV();
                 case PRV:
-                    return this.data[row].getPRV();
+                    return data[row].getPRV();
                 case BUMPER:
-                    return this.data[row].getBumper();
+                    return data[row].getBumper();
             }
 
             return null;

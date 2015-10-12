@@ -1,11 +1,11 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.datum;
 
 import java.io.DataInputStream;
 import java.io.IOException;
 
+/**
+ * @author Tony Pinkston
+ */
 public class DatumRecordFactory {
 
     public static AbstractDatumRecord getVariableRecord(

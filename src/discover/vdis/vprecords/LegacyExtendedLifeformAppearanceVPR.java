@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.vprecords;
 
 import java.io.DataInputStream;
@@ -13,6 +10,9 @@ import discover.vdis.common.ExtendedStatus;
 import discover.vdis.common.LifeformAttributes;
 import discover.vdis.enums.VDIS;
 
+/**
+ * @author Tony Pinkston
+ */
 public class LegacyExtendedLifeformAppearanceVPR extends ExtendedAppearanceVPR {
 
     public static final int LENGTH = 16;
@@ -29,9 +29,9 @@ public class LegacyExtendedLifeformAppearanceVPR extends ExtendedAppearanceVPR {
 
         super(30); //  VP_RECORD_TYPE_LEGACY_EXT_LIFEFORM_APP;
 
-        this.equipment = new ExtendedEquipmentLifeform();
-        this.status = new ExtendedStatus();
-        this.attributes = new LifeformAttributes();
+        equipment = new ExtendedEquipmentLifeform();
+        status = new ExtendedStatus();
+        attributes = new LifeformAttributes();
     }
 
     @Override
@@ -40,12 +40,12 @@ public class LegacyExtendedLifeformAppearanceVPR extends ExtendedAppearanceVPR {
         return LENGTH;
     }
 
-    public ExtendedEquipmentLifeform getEquipment() { return this.equipment; }
-    public ExtendedStatus getStatus() { return this.status; }
-    public LifeformAttributes getAttributes() { return this.attributes; }
-    public int getClothing() { return this.clothing; }
-    public int getPrimaryColor() { return this.primaryColor; }
-    public int getSecondaryColor() { return this.secondaryColor; }
+    public ExtendedEquipmentLifeform getEquipment() { return equipment; }
+    public ExtendedStatus getStatus() { return status; }
+    public LifeformAttributes getAttributes() { return attributes; }
+    public int getClothing() { return clothing; }
+    public int getPrimaryColor() { return primaryColor; }
+    public int getSecondaryColor() { return secondaryColor; }
 
     public void setClothing(int clothing) {
 
@@ -65,40 +65,40 @@ public class LegacyExtendedLifeformAppearanceVPR extends ExtendedAppearanceVPR {
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
-        String title = VDIS.getDescription(VDIS.VP_RECORD_TYPE, super.type);
+        String title = VDIS.getDescription(VDIS.VP_RECORD_TYPE, getRecordType());
 
         buffer.addTitle(title.toUpperCase());
 
         buffer.addAttribute(
             "Clothing",
-            VDIS.getDescription(VDIS.LF_CLOTH_SCHEME, this.clothing));
+            VDIS.getDescription(VDIS.LF_CLOTH_SCHEME, clothing));
         buffer.addAttribute(
             "Primary Color",
-            VDIS.getDescription(VDIS.COLORS, this.primaryColor));
+            VDIS.getDescription(VDIS.COLORS, primaryColor));
         buffer.addAttribute(
             "Secondary Color",
-            VDIS.getDescription(VDIS.COLORS, this.secondaryColor));
+            VDIS.getDescription(VDIS.COLORS, secondaryColor));
 
         buffer.addTitle("EQUIPMENT");
-        buffer.addBuffer(this.equipment);
+        buffer.addBuffer(equipment);
 
         buffer.addTitle("STATUS");
-        buffer.addBuffer(this.status);
+        buffer.addBuffer(status);
 
         buffer.addTitle("ATTRIBUTES");
-        buffer.addBuffer(this.attributes);
+        buffer.addBuffer(attributes);
     }
 
     @Override
     public void read(DataInputStream stream) throws IOException {
 
-        this.clothing = stream.readUnsignedByte();
-        this.primaryColor = stream.readUnsignedByte();
-        this.secondaryColor = stream.readUnsignedByte();
-        this.equipment.read(stream);
-        this.status.read(stream);
+        clothing = stream.readUnsignedByte();
+        primaryColor = stream.readUnsignedByte();
+        secondaryColor = stream.readUnsignedByte();
+        equipment.read(stream);
+        status.read(stream);
         stream.skipBytes(1);
-        this.attributes.read(stream);
+        attributes.read(stream);
         stream.skipBytes(4);
     }
 
@@ -107,13 +107,13 @@ public class LegacyExtendedLifeformAppearanceVPR extends ExtendedAppearanceVPR {
 
         super.write(stream); // Writes record type (1 byte)
 
-        stream.writeByte(this.clothing);
-        stream.writeByte(this.primaryColor);
-        stream.writeByte(this.secondaryColor);
-        this.equipment.write(stream);
-        this.status.write(stream);
+        stream.writeByte(clothing);
+        stream.writeByte(primaryColor);
+        stream.writeByte(secondaryColor);
+        equipment.write(stream);
+        status.write(stream);
         stream.writeByte(0x00);
-        this.attributes.write(stream);
+        attributes.write(stream);
         stream.writeInt(0x00);
     }
 }

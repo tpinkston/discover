@@ -1,10 +1,10 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.appearance;
 
 import discover.vdis.bits.Abstract32Bits;
 
+/**
+ * @author Tony Pinkston
+ */
 public class SpecificObjectAppearance extends Abstract32Bits {
 
     @Override
@@ -12,7 +12,7 @@ public class SpecificObjectAppearance extends Abstract32Bits {
 
         SpecificObjectAppearance appearance = new SpecificObjectAppearance();
 
-        appearance.set(super.get());
+        appearance.set(get());
 
         return appearance;
     }

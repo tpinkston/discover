@@ -1,8 +1,8 @@
+package discover.vdis.appearance;
+
 /**
  * @author Tony Pinkston
  */
-package discover.vdis.appearance;
-
 public class DefaultAppearance extends AbstractAppearance {
 
     @Override
@@ -16,7 +16,7 @@ public class DefaultAppearance extends AbstractAppearance {
 
         DefaultAppearance appearance = new DefaultAppearance();
 
-        appearance.set(super.get());
+        appearance.set(get());
 
         return appearance;
     }

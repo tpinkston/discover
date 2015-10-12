@@ -1,8 +1,8 @@
+package discover.common;
+
 /**
  * @author Tony Pinkston
  */
-package discover.common;
-
 public class Binary {
 
     private static final int SET_MASK[] = new int[] {

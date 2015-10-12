@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.dialogs;
 
 import java.awt.Dimension;
@@ -20,6 +17,9 @@ import discover.gui.Utilities;
 import discover.gui.frames.DiscoverFrame;
 import discover.vdis.enums.VDIS;
 
+/**
+ * @author Tony Pinkston
+ */
 public class PDUTypeDialog implements ActionListener {
 
     private static final String CLOSE = "Close";
@@ -49,19 +49,19 @@ public class PDUTypeDialog implements ActionListener {
         JDialog parent,
         List<Integer> list) {
 
-        this.dialog.setTitle(title);
+        dialog.setTitle(title);
 
-        JTable table = new JTable(this.model);
+        JTable table = new JTable(model);
         JScrollPane scroller = new JScrollPane(table);
 
-        this.select.setActionCommand(SELECT_ALL);
-        this.select.addActionListener(this.model);
+        select.setActionCommand(SELECT_ALL);
+        select.addActionListener(model);
 
-        this.deselect.setActionCommand(DESELECT_ALL);
-        this.deselect.addActionListener(this.model);
+        deselect.setActionCommand(DESELECT_ALL);
+        deselect.addActionListener(model);
 
-        this.close.setActionCommand(CLOSE);
-        this.close.addActionListener(this);
+        close.setActionCommand(CLOSE);
+        close.addActionListener(this);
 
         int values[] = VDIS.getEnumValues(VDIS.PDU_TYPE);
 
@@ -71,7 +71,7 @@ public class PDUTypeDialog implements ActionListener {
 
             row.selected = Boolean.valueOf(list.contains(type));
 
-            this.model.rows.add(row);
+            model.rows.add(row);
         }
 
         TableColumn column0 = table.getColumnModel().getColumn(0);
@@ -84,10 +84,10 @@ public class PDUTypeDialog implements ActionListener {
 
         scroller.setPreferredSize(new Dimension(250, 300));
 
-        Utilities.setGridBagLayout(this.dialog.getContentPane());
+        Utilities.setGridBagLayout(dialog.getContentPane());
 
         Utilities.addComponent(
-            this.dialog.getContentPane(),
+            dialog.getContentPane(),
             scroller,
             Utilities.BOTH,
             0, 0,
@@ -95,42 +95,42 @@ public class PDUTypeDialog implements ActionListener {
             1.0, 1.0,
             Utilities.getInsets(10, 10, 10, 10));
         Utilities.addComponent(
-            this.dialog.getContentPane(),
-            this.select,
+            dialog.getContentPane(),
+            select,
             Utilities.HORIZONTAL,
             0, 1,
             1, 1,
             0.5, 0.0,
             Utilities.getInsets(10, 10, 10, 5));
         Utilities.addComponent(
-            this.dialog.getContentPane(),
-            this.deselect,
+            dialog.getContentPane(),
+            deselect,
             Utilities.HORIZONTAL,
             1, 1,
             1, 1,
             0.5, 0.0,
             Utilities.getInsets(10, 5, 10, 10));
         Utilities.addComponent(
-            this.dialog.getContentPane(),
-            this.close,
+            dialog.getContentPane(),
+            close,
             Utilities.HORIZONTAL,
             0, 2,
             2, 1,
             1.0, 0.0,
             Utilities.getInsets(10, 10, 10, 10));
 
-        this.dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        this.dialog.pack();
-        this.dialog.setModal(true);
-        this.dialog.setResizable(true);
-        this.dialog.setVisible(true);
+        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        dialog.pack();
+        dialog.setModal(true);
+        dialog.setResizable(true);
+        dialog.setVisible(true);
     }
 
     public void apply(List<Integer> list) {
 
         list.clear();
 
-        for(TableRow row : this.model.rows) {
+        for(TableRow row : model.rows) {
 
             if (row.selected) {
 
@@ -144,15 +144,15 @@ public class PDUTypeDialog implements ActionListener {
 
         if (event.getActionCommand() == CLOSE) {
 
-            this.dialog.dispose();
+            dialog.dispose();
         }
     }
 
     private void disposing() {
 
-        this.select.removeActionListener(this.model);
-        this.deselect.removeActionListener(this.model);
-        this.close.removeActionListener(this);
+        select.removeActionListener(model);
+        deselect.removeActionListener(model);
+        close.removeActionListener(this);
     }
 
     class TableRow {
@@ -164,7 +164,7 @@ public class PDUTypeDialog implements ActionListener {
         public TableRow(int type) {
 
             this.type = type;
-            this.description = VDIS.getDescription(VDIS.PDU_TYPE, type);
+            description = VDIS.getDescription(VDIS.PDU_TYPE, type);
         }
     }
 
@@ -177,7 +177,7 @@ public class PDUTypeDialog implements ActionListener {
         public int getColumnCount() { return 2; }
 
         @Override
-        public int getRowCount() { return this.rows.size(); }
+        public int getRowCount() { return rows.size(); }
 
         @Override
         public String getColumnName(int column) {
@@ -212,14 +212,14 @@ public class PDUTypeDialog implements ActionListener {
 
             if (object instanceof Boolean) {
 
-                this.rows.get(row).selected = (Boolean)object;
+                rows.get(row).selected = (Boolean)object;
             }
         }
 
         @Override
         public Object getValueAt(int row, int column) {
 
-            TableRow tableRow = this.rows.get(row);
+            TableRow tableRow = rows.get(row);
 
             if (column == 0) {
 
@@ -236,11 +236,11 @@ public class PDUTypeDialog implements ActionListener {
 
             if (event.getActionCommand() == SELECT_ALL) {
 
-                this.setAllRows(true);
+                setAllRows(true);
             }
             else if (event.getActionCommand() == DESELECT_ALL) {
 
-                this.setAllRows(false);
+                setAllRows(false);
             }
         }
     }

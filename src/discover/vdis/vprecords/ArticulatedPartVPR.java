@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.vprecords;
 
 import java.io.DataInputStream;
@@ -11,6 +8,9 @@ import java.text.NumberFormat;
 import discover.common.buffer.AbstractBuffer;
 import discover.vdis.enums.VDIS;
 
+/**
+ * @author Tony Pinkston
+ */
 public class ArticulatedPartVPR extends AbstractVPRecord {
 
     public static final int LENGTH = 16;
@@ -35,16 +35,17 @@ public class ArticulatedPartVPR extends AbstractVPRecord {
         super(0); // VP_RECORD_TYPE_ARTICULATED_PART
     }
 
+    @Override
     public int getLength() {
 
         return LENGTH;
     }
 
-    public int getType() { return this.type; }
-    public int getMetric() { return this.metric; }
-    public int getChange() { return this.change; }
-    public int getAttachmentId() { return this.attachment; }
-    public float getValue() { return this.value; }
+    public int getType() { return type; }
+    public int getMetric() { return metric; }
+    public int getChange() { return change; }
+    public int getAttachmentId() { return attachment; }
+    public float getValue() { return value; }
 
     public void setType(int type) {
 
@@ -58,12 +59,12 @@ public class ArticulatedPartVPR extends AbstractVPRecord {
 
     public void setChange(int changeIndicator) {
 
-        this.change = changeIndicator;
+        change = changeIndicator;
     }
 
     public void setAttachmentId(int attachmentId) {
 
-        this.attachment = attachmentId;
+        attachment = attachmentId;
     }
 
     public void setValue(float value) {
@@ -74,38 +75,38 @@ public class ArticulatedPartVPR extends AbstractVPRecord {
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
-        String title = VDIS.getDescription(VDIS.VP_RECORD_TYPE, super.type);
+        String title = VDIS.getDescription(VDIS.VP_RECORD_TYPE, getRecordType());
         String type = null;
 
         buffer.addTitle(title.toUpperCase());
 
         type = VDIS.getDescription(VDIS.ARTICULATED_PARTS, this.type);
         type += " (";
-        type += VDIS.getDescription(VDIS.ARTICULATED_PARTS_METRIC, this.metric);
+        type += VDIS.getDescription(VDIS.ARTICULATED_PARTS_METRIC, metric);
         type += ")";
 
         buffer.addAttribute("Type", type);
         buffer.addLabel("Change");
-        buffer.addItalic(Long.toString(this.change));
+        buffer.addItalic(Long.toString(change));
         buffer.addLabel(", Attachment");
-        buffer.addItalic(Long.toString(this.attachment));
+        buffer.addItalic(Long.toString(attachment));
         buffer.addLabel(", Value");
-        buffer.addItalic(formatter.format(this.value));
+        buffer.addItalic(formatter.format(value));
         buffer.addBreak();
     }
 
     @Override
     public void read(DataInputStream stream) throws IOException {
 
-        this.change = stream.readUnsignedByte();
-        this.attachment = stream.readUnsignedShort();
+        change = stream.readUnsignedByte();
+        attachment = stream.readUnsignedShort();
 
         int parameter = stream.readInt();
 
-        this.type = (parameter & ~MASK_5_BITS);
-        this.metric = (parameter & MASK_5_BITS);
+        type = (parameter & ~MASK_5_BITS);
+        metric = (parameter & MASK_5_BITS);
 
-        this.value = stream.readFloat();
+        value = stream.readFloat();
 
         stream.skipBytes(4); // padding
     }
@@ -115,10 +116,10 @@ public class ArticulatedPartVPR extends AbstractVPRecord {
 
         super.write(stream); // Writes record type (1 byte)
 
-        stream.writeByte(this.change);
-        stream.writeShort(this.attachment);
-        stream.writeInt(this.type | this.metric);
-        stream.writeFloat(this.value);
+        stream.writeByte(change);
+        stream.writeShort(attachment);
+        stream.writeInt(type | metric);
+        stream.writeFloat(value);
         stream.writeInt(0x00); // padding
     }
 }

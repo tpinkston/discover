@@ -1,8 +1,8 @@
+package discover.common.buffer;
+
 /**
  * @author Tony Pinkston
  */
-package discover.common.buffer;
-
 public class HypertextBuffer extends AbstractBuffer {
 
     @Override
@@ -35,9 +35,9 @@ public class HypertextBuffer extends AbstractBuffer {
 
             for(int column = 0; column < columns; ++column) {
 
-                this.addText("<td valign=\"top\">");
-                this.addText(data[row][column]);
-                this.addText("</td>");
+                addText("<td valign=\"top\">");
+                addText(data[row][column]);
+                addText("</td>");
             }
 
             super.addText("</tr>");

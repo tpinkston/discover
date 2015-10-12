@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.frames;
 
 import java.awt.BorderLayout;
@@ -33,6 +30,9 @@ import discover.vdis.enums.VDIS;
 import discover.vdis.types.EntityType;
 import discover.vdis.types.EntityTypes;
 
+/**
+ * @author Tony Pinkston
+ */
 public class EntityTypesFrame implements ActionListener, ListSelectionListener {
 
     private static EntityTypesFrame instance = null;
@@ -78,25 +78,25 @@ public class EntityTypesFrame implements ActionListener, ListSelectionListener {
 
     private EntityTypesFrame() {
 
-        this.types = EntityTypes.getValues();
+        types = EntityTypes.getValues();
 
-        Utilities.configureComboBox(this.countries, VDIS.ENT_CNTRY, true);
-        Utilities.configureComboBox(this.kinds, VDIS.ENT_KIND, true);
-        Utilities.configureComboBox(this.domains, VDIS.DOMAIN, true);
+        Utilities.configureComboBox(countries, VDIS.ENT_CNTRY, true);
+        Utilities.configureComboBox(kinds, VDIS.ENT_KIND, true);
+        Utilities.configureComboBox(domains, VDIS.DOMAIN, true);
 
-        this.domains.addActionListener(this);
-        this.kinds.addActionListener(this);
-        this.countries.addActionListener(this);
+        domains.addActionListener(this);
+        kinds.addActionListener(this);
+        countries.addActionListener(this);
 
-        this.sorter = new TableRowSorter<TableModel>(this.model);
-        this.sorter.setRowFilter(this.filter);
+        sorter = new TableRowSorter<TableModel>(model);
+        sorter.setRowFilter(filter);
 
-        this.table.setModel(this.model);
-        this.table.setRowSorter(this.sorter);
-        this.table.getSelectionModel().addListSelectionListener(this);
-        this.table.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        table.setModel(model);
+        table.setRowSorter(sorter);
+        table.getSelectionModel().addListSelectionListener(this);
+        table.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-        TableColumnModel columnModel = this.table.getColumnModel();
+        TableColumnModel columnModel = table.getColumnModel();
 
         for (Column column : COLUMNS) {
 
@@ -105,45 +105,45 @@ public class EntityTypesFrame implements ActionListener, ListSelectionListener {
             tableColumn.setResizable(true);
             tableColumn.setPreferredWidth(column.width);
 
-            this.sorter.setComparator(column.ordinal(), column.comparator);
+            sorter.setComparator(column.ordinal(), column.comparator);
         }
 
-        this.fill();
-        this.setVisibleObjectCount();
+        fill();
+        setVisibleObjectCount();
 
-        this.frame.setPreferredSize(new Dimension(800, 600));
-        this.frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        this.frame.pack();
+        frame.setPreferredSize(new Dimension(800, 600));
+        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        frame.pack();
     }
 
     @Override
     public void actionPerformed(ActionEvent event) {
 
-        this.filter.domain = null;
-        this.filter.kind = null;
-        this.filter.country = null;
+        filter.domain = null;
+        filter.kind = null;
+        filter.country = null;
 
-        int domain = this.domains.getSelectedIndex();
-        int kind = this.kinds.getSelectedIndex();
-        int geometry = this.countries.getSelectedIndex();
+        int domain = domains.getSelectedIndex();
+        int kind = kinds.getSelectedIndex();
+        int geometry = countries.getSelectedIndex();
 
         if (domain > 0) {
 
-            this.filter.domain = new Integer(domain - 1);
+            filter.domain = new Integer(domain - 1);
         }
 
         if (kind > 0) {
 
-            this.filter.kind = new Integer(kind - 1);
+            filter.kind = new Integer(kind - 1);
         }
 
         if (geometry > 0) {
 
-            this.filter.country = new Integer(geometry - 1);
+            filter.country = new Integer(geometry - 1);
         }
 
-        this.model.fireTableDataChanged();
-        this.setVisibleObjectCount();
+        model.fireTableDataChanged();
+        setVisibleObjectCount();
     }
 
     @Override
@@ -151,13 +151,13 @@ public class EntityTypesFrame implements ActionListener, ListSelectionListener {
 
         if (!event.getValueIsAdjusting()) {
 
-            int row = this.table.getSelectedRow();
+            int row = table.getSelectedRow();
 
             if (row > -1) {
 
-                int index = this.sorter.convertRowIndexToModel(row);
+                int index = sorter.convertRowIndexToModel(row);
 
-                EntityType type = this.types.get(index);
+                EntityType type = types.get(index);
 
                 HypertextBuffer buffer = new HypertextBuffer();
 
@@ -172,38 +172,38 @@ public class EntityTypesFrame implements ActionListener, ListSelectionListener {
 
                 buffer.addText("</body></html>");
 
-                this.text.setText(buffer.toString());
+                text.setText(buffer.toString());
             }
         }
     }
 
     private void setVisibleObjectCount() {
 
-        this.visible.setText(
-            "Visible rows: " + this.sorter.getViewRowCount() +
-            " of " + this.types.size());
+        visible.setText(
+            "Visible rows: " + sorter.getViewRowCount() +
+            " of " + types.size());
     }
 
     private void fill() {
 
         JToolBar filter = new JToolBar();
         JSplitPane splitter = new JSplitPane(JSplitPane.VERTICAL_SPLIT, true);
-        JScrollPane scroller = new JScrollPane(this.table);
+        JScrollPane scroller = new JScrollPane(table);
 
         filter.add(new JLabel(" Domain: "));
-        filter.add(this.domains);
+        filter.add(domains);
         filter.add(new JLabel("   Kind: "));
-        filter.add(this.kinds);
+        filter.add(kinds);
         filter.add(new JLabel("   Country: "));
-        filter.add(this.countries);
+        filter.add(countries);
         filter.setFloatable(false);
 
         splitter.setTopComponent(scroller);
-        splitter.setBottomComponent(this.text.getPanel());
+        splitter.setBottomComponent(text.getPanel());
 
-        this.frame.add(filter, BorderLayout.NORTH);
-        this.frame.add(splitter, BorderLayout.CENTER);
-        this.frame.add(this.visible, BorderLayout.SOUTH);
+        frame.add(filter, BorderLayout.NORTH);
+        frame.add(splitter, BorderLayout.CENTER);
+        frame.add(visible, BorderLayout.SOUTH);
     }
 
     public static enum Column {
@@ -305,18 +305,18 @@ public class EntityTypesFrame implements ActionListener, ListSelectionListener {
 
                 return false;
             }
-            else if ((this.domain != null) &&
-                     (this.domain != type.septuple.domain)) {
+            else if ((domain != null) &&
+                     (domain != type.septuple.domain)) {
 
                 return false;
             }
-            else if ((this.kind != null) &&
-                     (this.kind != type.septuple.kind)) {
+            else if ((kind != null) &&
+                     (kind != type.septuple.kind)) {
 
                 return false;
             }
-            else if ((this.country != null) &&
-                     (this.country != type.septuple.country)) {
+            else if ((country != null) &&
+                     (country != type.septuple.country)) {
 
                 return false;
             }

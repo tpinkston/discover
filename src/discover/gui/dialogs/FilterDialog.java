@@ -40,13 +40,13 @@ public class FilterDialog implements ActionListener {
     @SuppressWarnings("serial")
     private final JDialog dialog = new JDialog(DiscoverFrame.getFrame(), "") {
 
-            @Override
-            public void dispose() {
+        @Override
+        public void dispose() {
 
-                FilterDialog.this.disposing();
+            FilterDialog.this.disposing();
 
-                super.dispose();
-            }
+            super.dispose();
+        }
     };
 
     private final JButton included = new JButton(NONE);
@@ -76,18 +76,18 @@ public class FilterDialog implements ActionListener {
         TableModel model,
         TableFilter filter) {
 
-        this.dialog.setTitle("Filter: " + title);
+        dialog.setTitle("Filter: " + title);
         this.model = model;
         this.filter = filter;
 
-        this.configureComponents();
+        configureComponents();
 
-        this.typesIncluded.addAll(this.filter.includedTypes);
-        this.typesExcluded.addAll(this.filter.excludedTypes);
+        typesIncluded.addAll(filter.includedTypes);
+        typesExcluded.addAll(filter.excludedTypes);
 
-        this.setWidgetValues();
-        this.modifiedTypes();
-        this.showDialog();
+        setWidgetValues();
+        modifiedTypes();
+        showDialog();
     }
 
     public FilterDialog(
@@ -98,59 +98,59 @@ public class FilterDialog implements ActionListener {
 
         int type = pdu.getType();
 
-        this.dialog.setTitle("Filter: " + title);
+        dialog.setTitle("Filter: " + title);
         this.model = model;
         this.filter = filter;
 
-        this.configureComponents();
+        configureComponents();
 
-        this.port.setValue(pdu.getPort());
-        this.exercise.setValue(pdu.getExercise());
-        this.typesIncluded.add(type);
-        this.included.setText("1");
+        port.setValue(pdu.getPort());
+        exercise.setValue(pdu.getExercise());
+        typesIncluded.add(type);
+        included.setText("1");
 
         Utilities.setComboBoxValue(
-            this.protocol,
+            protocol,
             VDIS.PROTOCOL_VERSION,
             pdu.getProtocol());
         Utilities.setComboBoxValue(
-            this.family,
+            family,
             VDIS.PDU_FAMILY,
             pdu.getFamily());
 
         if (pdu.hasInitiator()) {
 
-            this.site.setValue(pdu.getSiteId());
-            this.application.setValue(pdu.getApplicationId());
-            this.entity.setValue(pdu.getEntityId());
+            site.setValue(pdu.getSiteId());
+            application.setValue(pdu.getApplicationId());
+            entity.setValue(pdu.getEntityId());
         }
 
         if (pdu.hasRequestId()) {
 
-            this.request.setValue(pdu.getRequestId());
+            request.setValue(pdu.getRequestId());
         }
 
         if (type == VDIS.PDU_TYPE_ENTITY_STATE) {
 
-            this.setEntityParametersEditable(true);
+            setEntityParametersEditable(true);
 
-            this.marking.setText(pdu.getMarking());
+            marking.setText(pdu.getMarking());
 
             Utilities.setComboBoxValue(
-                this.domain,
+                domain,
                 VDIS.DOMAIN,
                 pdu.getEntityDomain());
             Utilities.setComboBoxValue(
-                this.kind,
+                kind,
                 VDIS.ENT_KIND,
                 pdu.getEntityKind());
         }
         else {
 
-            this.setEntityParametersEditable(false);
+            setEntityParametersEditable(false);
         }
 
-        this.showDialog();
+        showDialog();
     }
 
     public void configure(PDU pdu) {
@@ -164,102 +164,101 @@ public class FilterDialog implements ActionListener {
 
         if (event.getSource() instanceof JTextField) {
 
-            if (event.getSource() == this.request) {
+            if (event.getSource() == request) {
 
-                this.checkLongValue((JTextField)event.getSource());
+                checkLongValue((JTextField) event.getSource());
             }
             else {
 
-                this.checkIntegerValue((JTextField)event.getSource());
+                checkIntegerValue((JTextField) event.getSource());
             }
         }
-        else if (event.getSource() == this.included) {
+        else if (event.getSource() == included) {
 
             PDUTypeDialog dialog = new PDUTypeDialog(
                 "Included PDU Types",
                 this.dialog,
-                this.typesIncluded);
+                typesIncluded);
 
-            dialog.apply(this.typesIncluded);
+            dialog.apply(typesIncluded);
 
-            this.modifiedTypes();
+            modifiedTypes();
         }
-        else if (event.getSource() == this.excluded) {
-
+        else if (event.getSource() == excluded) {
 
             PDUTypeDialog dialog = new PDUTypeDialog(
                 "Excluded PDU Types",
                 this.dialog,
-                this.typesExcluded);
+                typesExcluded);
 
-            dialog.apply(this.typesExcluded);
+            dialog.apply(typesExcluded);
 
-            this.modifiedTypes();
+            modifiedTypes();
         }
         else if (command != null) {
 
             if (command.equals(CLEAR)) {
 
-                this.clearAllParameters();
+                clearAllParameters();
             }
             else if (command.equals(REVERT)) {
 
-                this.setWidgetValues();
+                setWidgetValues();
             }
             else if (command.equals(OKAY)) {
 
-                this.setFilterValues();
-                this.model.fireTableDataChanged();
-                this.dialog.dispose();
+                setFilterValues();
+                model.fireTableDataChanged();
+                dialog.dispose();
             }
             else if (command.equals(CANCEL)) {
 
-                this.dialog.dispose();
+                dialog.dispose();
             }
         }
     }
 
     private void disposing() {
 
-        this.clear.removeActionListener(this);
-        this.revert.removeActionListener(this);
-        this.okay.removeActionListener(this);
-        this.cancel.removeActionListener(this);
-        this.included.removeActionListener(this);
-        this.excluded.removeActionListener(this);
+        clear.removeActionListener(this);
+        revert.removeActionListener(this);
+        okay.removeActionListener(this);
+        cancel.removeActionListener(this);
+        included.removeActionListener(this);
+        excluded.removeActionListener(this);
     }
 
     private void modifiedTypes() {
 
-        if (this.typesIncluded.isEmpty()) {
+        if (typesIncluded.isEmpty()) {
 
-            this.included.setText(NONE);
+            included.setText(NONE);
         }
         else {
 
-            this.included.setText(Integer.toString(this.typesIncluded.size()));
+            included.setText(Integer.toString(typesIncluded.size()));
         }
 
-        if (this.typesExcluded.isEmpty()) {
+        if (typesExcluded.isEmpty()) {
 
-            this.excluded.setText(NONE);
-        }
-        else {
-
-            this.excluded.setText(Integer.toString(this.typesExcluded.size()));
-        }
-
-        if (this.typesIncluded.isEmpty() && this.typesExcluded.isEmpty()) {
-
-            this.setEntityParametersEditable(false);
-        }
-        else if (this.typesIncluded.contains(VDIS.PDU_TYPE_ENTITY_STATE)) {
-
-            this.setEntityParametersEditable(true);
+            excluded.setText(NONE);
         }
         else {
 
-            this.setEntityParametersEditable(false);
+            excluded.setText(Integer.toString(typesExcluded.size()));
+        }
+
+        if (typesIncluded.isEmpty() && typesExcluded.isEmpty()) {
+
+            setEntityParametersEditable(false);
+        }
+        else if (typesIncluded.contains(VDIS.PDU_TYPE_ENTITY_STATE)) {
+
+            setEntityParametersEditable(true);
+        }
+        else {
+
+            setEntityParametersEditable(false);
         }
     }
 
@@ -311,42 +310,42 @@ public class FilterDialog implements ActionListener {
 
     private void setEntityParametersEditable(boolean editable) {
 
-        this.marking.setEnabled(editable);
-        this.marking.setEnabled(editable);
-        this.domain.setEnabled(editable);
-        this.kind.setEnabled(editable);
+        marking.setEnabled(editable);
+        marking.setEnabled(editable);
+        domain.setEnabled(editable);
+        kind.setEnabled(editable);
 
         if (!editable) {
 
-            this.clearEntityParameters();
+            clearEntityParameters();
         }
     }
 
     private void clearAllParameters() {
 
-        this.included.setText(NONE);
-        this.excluded.setText(NONE);
+        included.setText(NONE);
+        excluded.setText(NONE);
 
-        this.protocol.setSelectedIndex(0);
-        this.family.setSelectedIndex(0);
-        this.port.setValue(null);
-        this.exercise.setValue(null);
-        this.request.setValue(null);
-        this.site.setValue(null);
-        this.application.setValue(null);
-        this.entity.setValue(null);
-        this.typesIncluded.clear();
-        this.typesExcluded.clear();
+        protocol.setSelectedIndex(0);
+        family.setSelectedIndex(0);
+        port.setValue(null);
+        exercise.setValue(null);
+        request.setValue(null);
+        site.setValue(null);
+        application.setValue(null);
+        entity.setValue(null);
+        typesIncluded.clear();
+        typesExcluded.clear();
 
-        this.modifiedTypes();
-        this.clearEntityParameters();
+        modifiedTypes();
+        clearEntityParameters();
     }
 
     private void clearEntityParameters() {
 
-        this.marking.setText("");
-        this.domain.setSelectedIndex(0);
-        this.kind.setSelectedIndex(0);
+        marking.setText("");
+        domain.setSelectedIndex(0);
+        kind.setSelectedIndex(0);
     }
 
     /**
@@ -354,46 +353,46 @@ public class FilterDialog implements ActionListener {
      */
     private void setWidgetValues() {
 
-        this.site.setValue(this.filter.site);
-        this.application.setValue(this.filter.application);
-        this.entity.setValue(this.filter.entity);
+        site.setValue(filter.site);
+        application.setValue(filter.application);
+        entity.setValue(filter.entity);
 
-        this.port.setValue(this.filter.port);
-        this.exercise.setValue(this.filter.exercise);
-        this.request.setValue(this.filter.request);
+        port.setValue(filter.port);
+        exercise.setValue(filter.exercise);
+        request.setValue(filter.request);
 
         Utilities.setComboBoxValue(
-            this.protocol,
+            protocol,
             VDIS.PROTOCOL_VERSION,
-            this.filter.protocol);
+            filter.protocol);
         Utilities.setComboBoxValue(
-            this.family,
+            family,
             VDIS.PDU_FAMILY,
-            this.filter.family);
+            filter.family);
         Utilities.setComboBoxValue(
-            this.domain,
+            domain,
             VDIS.DOMAIN,
-            this.filter.domain);
+            filter.domain);
         Utilities.setComboBoxValue(
-            this.kind,
+            kind,
             VDIS.ENT_KIND,
-            this.filter.kind);
+            filter.kind);
 
-        if (!this.filter.includedTypes.contains(VDIS.PDU_TYPE_ENTITY_STATE)) {
+        if (!filter.includedTypes.contains(VDIS.PDU_TYPE_ENTITY_STATE)) {
 
-            this.setEntityParametersEditable(false);
+            setEntityParametersEditable(false);
         }
         else {
 
-            this.setEntityParametersEditable(true);
+            setEntityParametersEditable(true);
 
-            if (this.filter.marking == null) {
+            if (filter.marking == null) {
 
-                this.marking.setText("");
+                marking.setText("");
             }
             else {
 
-                this.marking.setText(this.filter.marking);
+                marking.setText(filter.marking);
             }
         }
     }
@@ -403,138 +402,138 @@ public class FilterDialog implements ActionListener {
      */
     private void setFilterValues() {
 
-        this.filter.site = (Integer)this.site.getValue();
-        this.filter.application = (Integer)this.application.getValue();
-        this.filter.entity = (Integer)this.entity.getValue();
-        this.filter.port = (Integer)this.port.getValue();
-        this.filter.exercise = (Integer)this.exercise.getValue();
-        this.filter.request = (Integer)this.request.getValue();
-        this.filter.marking = this.marking.getText().trim();
+        filter.site = (Integer)site.getValue();
+        filter.application = (Integer)application.getValue();
+        filter.entity = (Integer)entity.getValue();
+        filter.port = (Integer)port.getValue();
+        filter.exercise = (Integer)exercise.getValue();
+        filter.request = (Integer)request.getValue();
+        filter.marking = marking.getText().trim();
 
-        this.filter.protocol = Utilities.getComboboxValue(
-            this.protocol,
+        filter.protocol = Utilities.getComboboxValue(
+            protocol,
             VDIS.PROTOCOL_VERSION);
-        this.filter.family = Utilities.getComboboxValue(
-            this.family,
+        filter.family = Utilities.getComboboxValue(
+            family,
             VDIS.PDU_FAMILY);
-        this.filter.domain = Utilities.getComboboxValue(
-            this.domain,
+        filter.domain = Utilities.getComboboxValue(
+            domain,
             VDIS.DOMAIN);
-        this.filter.kind = Utilities.getComboboxValue(
-            this.kind,
+        filter.kind = Utilities.getComboboxValue(
+            kind,
             VDIS.ENT_KIND);
 
-        this.filter.includedTypes.clear();
-        this.filter.includedTypes.addAll(this.typesIncluded);
-        this.filter.excludedTypes.clear();
-        this.filter.excludedTypes.addAll(this.typesExcluded);
+        filter.includedTypes.clear();
+        filter.includedTypes.addAll(typesIncluded);
+        filter.excludedTypes.clear();
+        filter.excludedTypes.addAll(typesExcluded);
 
-        if (this.filter.marking.isEmpty()) {
+        if (filter.marking.isEmpty()) {
 
-            this.filter.marking = null;
+            filter.marking = null;
         }
 
-        logger.debug("New Filter:\n" + this.filter.toString());
+        logger.debug("New Filter:\n" + filter.toString());
     }
 
     private void configureComponents() {
 
-        this.port.setColumns(10);
+        port.setColumns(10);
 
-        this.site.setColumns(5);
-        this.site.setHorizontalAlignment(JTextField.RIGHT);
-        this.application.setColumns(5);
-        this.application.setHorizontalAlignment(JTextField.RIGHT);
-        this.entity.setColumns(5);
-        this.entity.setHorizontalAlignment(JTextField.RIGHT);
+        site.setColumns(5);
+        site.setHorizontalAlignment(JTextField.RIGHT);
+        application.setColumns(5);
+        application.setHorizontalAlignment(JTextField.RIGHT);
+        entity.setColumns(5);
+        entity.setHorizontalAlignment(JTextField.RIGHT);
 
         Utilities.configureComboBox(
-            this.protocol,
+            protocol,
             VDIS.PROTOCOL_VERSION,
             true);
         Utilities.configureComboBox(
-            this.family,
+            family,
             VDIS.PDU_FAMILY,
             true);
         Utilities.configureComboBox(
-            this.domain,
+            domain,
             VDIS.DOMAIN,
             true);
         Utilities.configureComboBox(
-            this.kind,
+            kind,
             VDIS.ENT_KIND,
             true);
 
-        this.clear.setActionCommand(CLEAR);
-        this.clear.addActionListener(this);
+        clear.setActionCommand(CLEAR);
+        clear.addActionListener(this);
 
-        this.revert.setActionCommand(REVERT);
-        this.revert.addActionListener(this);
+        revert.setActionCommand(REVERT);
+        revert.addActionListener(this);
 
-        this.okay.setActionCommand(OKAY);
-        this.okay.addActionListener(this);
+        okay.setActionCommand(OKAY);
+        okay.addActionListener(this);
 
-        this.cancel.setActionCommand(CANCEL);
-        this.cancel.addActionListener(this);
+        cancel.setActionCommand(CANCEL);
+        cancel.addActionListener(this);
 
-        this.domain.setEnabled(false);
+        domain.setEnabled(false);
 
-        this.kind.setEnabled(false);
+        kind.setEnabled(false);
 
-        this.included.addActionListener(this);
+        included.addActionListener(this);
 
-        this.excluded.addActionListener(this);
+        excluded.addActionListener(this);
     }
 
     private void showDialog() {
 
-        this.fill();
+        fill();
 
-        this.dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        this.dialog.pack();
-        this.dialog.setModal(true);
-        this.dialog.setResizable(false);
-        this.dialog.setVisible(true);
+        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        dialog.pack();
+        dialog.setModal(true);
+        dialog.setResizable(false);
+        dialog.setVisible(true);
     }
 
     private void fill() {
 
         int y = -1;
 
-        Utilities.setGridBagLayout(this.dialog.getContentPane());
+        Utilities.setGridBagLayout(dialog.getContentPane());
 
         Utilities.addItem(
-            this.dialog.getContentPane(),
-            this.port,
+            dialog.getContentPane(),
+            port,
             "Port:",
             ++y);
         Utilities.addItem(
-            this.dialog.getContentPane(),
-            this.exercise,
+            dialog.getContentPane(),
+            exercise,
             "Exercise",
             ++y);
         Utilities.addItem(
-            this.dialog.getContentPane(),
-            this.protocol,
+            dialog.getContentPane(),
+            protocol,
             "Protocol:",
             ++y);
-       Utilities.addItem(
-            this.dialog.getContentPane(),
-            this.family,
+        Utilities.addItem(
+            dialog.getContentPane(),
+            family,
             "Family:",
             ++y);
         Utilities.addItem(
-            this.dialog.getContentPane(),
-            this.included,
+            dialog.getContentPane(),
+            included,
             "Included Types:",
             ++y);
         Utilities.addItem(
-            this.dialog.getContentPane(),
-            this.excluded,
+            dialog.getContentPane(),
+            excluded,
             "Excluded Types:",
             ++y);
         Utilities.addComponent(
-            this.dialog.getContentPane(),
+            dialog.getContentPane(),
             new EntityIdPanel(),
             Utilities.HORIZONTAL,
             0, ++y,
@@ -542,7 +541,7 @@ public class FilterDialog implements ActionListener {
             1.0, 0.0,
             Utilities.getInsets(10, 0, 0, 0));
         Utilities.addComponent(
-            this.dialog.getContentPane(),
+            dialog.getContentPane(),
             new EntityStatePanel(),
             Utilities.HORIZONTAL,
             0, ++y,
@@ -550,7 +549,7 @@ public class FilterDialog implements ActionListener {
             1.0, 0.0,
             Utilities.getInsets(10, 0, 0, 0));
         Utilities.addComponent(
-            this.dialog.getContentPane(),
+            dialog.getContentPane(),
             new MiscellaneousPanel(),
             Utilities.HORIZONTAL,
             0, ++y,
@@ -558,7 +557,7 @@ public class FilterDialog implements ActionListener {
             1.0, 0.0,
             Utilities.getInsets(10, 0, 0, 0));
         Utilities.addComponent(
-            this.dialog.getContentPane(),
+            dialog.getContentPane(),
             new ButtonPanel(),
             Utilities.HORIZONTAL,
             0, ++y,
@@ -566,7 +565,7 @@ public class FilterDialog implements ActionListener {
             1.0, 1.0,
             Utilities.getInsets(10, 6, 1, 6));
 
-        Utilities.center(DiscoverFrame.getFrame(), this.dialog);
+        Utilities.center(DiscoverFrame.getFrame(), dialog);
     }
 
     @SuppressWarnings("serial")

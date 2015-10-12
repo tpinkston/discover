@@ -1,13 +1,15 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.types;
 
 import java.util.StringTokenizer;
 
+/**
+ * @author Tony Pinkston
+ */
 public class Septuple {
 
     public final String string; // (e.g. "1.1.225.1.1.0.0")
+
+    // TODO: Use int[7]
     public final int kind;
     public final int domain;
     public final int country;
@@ -39,13 +41,13 @@ public class Septuple {
     public long toLong() {
 
         return toLong(
-            this.kind,
-            this.domain,
-            this.country,
-            this.category,
-            this.subcategory,
-            this.specific,
-            this.extension);
+            kind,
+            domain,
+            country,
+            category,
+            subcategory,
+            specific,
+            extension);
     }
 
     public static long toLong(

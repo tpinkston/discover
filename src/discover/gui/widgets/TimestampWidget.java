@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.widgets;
 
 import javax.swing.JCheckBox;
@@ -12,6 +9,9 @@ import javax.swing.JPanel;
 import discover.gui.Utilities;
 import discover.vdis.common.Timestamp;
 
+/**
+ * @author Tony Pinkston
+ */
 public class TimestampWidget extends ToggleWidget {
 
     private final JPanel panel = Utilities.getGridBagPanel("");
@@ -24,17 +24,17 @@ public class TimestampWidget extends ToggleWidget {
 
         super(title);
 
-        this.minutes.setColumns(5);
-        this.seconds.setColumns(5);
-        this.absolute.setSelected(false);
+        minutes.setColumns(5);
+        seconds.setColumns(5);
+        absolute.setSelected(false);
 
-        this.fill();
+        fill();
     }
 
     @Override
     public JComponent getComponent() {
 
-        return this.panel;
+        return panel;
     }
 
     public Timestamp getValue() {
@@ -48,16 +48,16 @@ public class TimestampWidget extends ToggleWidget {
 
     public void getValue(Timestamp timestamp) {
 
-        timestamp.setAbsolute(this.absolute.isSelected());
-        timestamp.setMinutes(Utilities.getIntegerValue(this.minutes));
-        timestamp.setSeconds(Utilities.getFloatValue(this.seconds));
+        timestamp.setAbsolute(absolute.isSelected());
+        timestamp.setMinutes(Utilities.getIntegerValue(minutes));
+        timestamp.setSeconds(Utilities.getFloatValue(seconds));
     }
 
     public void setValue(Timestamp timestamp) {
 
-        this.absolute.setSelected(timestamp.isAbsolute());
-        this.minutes.setValue(timestamp.getMinutes());
-        this.seconds.setValue(timestamp.getSeconds());
+        absolute.setSelected(timestamp.isAbsolute());
+        minutes.setValue(timestamp.getMinutes());
+        seconds.setValue(timestamp.getSeconds());
     }
 
     @Override
@@ -66,7 +66,7 @@ public class TimestampWidget extends ToggleWidget {
         super.fill();
 
         Utilities.addComponent(
-            this.panel,
+            panel,
             new JLabel("Minutes:"),
             Utilities.NONE,
             0, 0,
@@ -74,15 +74,15 @@ public class TimestampWidget extends ToggleWidget {
             0.0, 0.0,
             Utilities.getInsets(8, 2, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            this.minutes,
+            panel,
+            minutes,
             Utilities.HORIZONTAL,
             1, 0,
             1, 1,
             0.0, 0.0,
             Utilities.getInsets(4, 2, 2, 2));
         Utilities.addComponent(
-            this.panel,
+            panel,
             new JLabel("Seconds:"),
             Utilities.NONE,
             2, 0,
@@ -90,16 +90,16 @@ public class TimestampWidget extends ToggleWidget {
             0.0, 0.0,
             Utilities.getInsets(8, 20, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            this.seconds,
+            panel,
+            seconds,
             Utilities.HORIZONTAL,
             3, 0,
             1, 1,
             0.0, 0.0,
             Utilities.getInsets(4, 2, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            this.absolute,
+            panel,
+            absolute,
             Utilities.HORIZONTAL,
             4, 0,
             1, 1,

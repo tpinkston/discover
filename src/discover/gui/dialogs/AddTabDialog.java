@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.dialogs;
 
 import java.awt.GridBagLayout;
@@ -25,6 +22,8 @@ import discover.gui.tabs.TabType;
 
 /**
  * Dialog allowing user to add additional tabs.
+ *
+ * @author Tony Pinkston
  */
 public class AddTabDialog implements ActionListener {
 
@@ -33,13 +32,13 @@ public class AddTabDialog implements ActionListener {
         DiscoverFrame.getFrame(),
         "Add Tab") {
 
-            @Override
-            public void dispose() {
+        @Override
+        public void dispose() {
 
-                AddTabDialog.this.disposing();
+            AddTabDialog.this.disposing();
 
-                super.dispose();
-            }
+            super.dispose();
+        }
     };
 
     private final TreeMap<TabType, JRadioButton> buttons;
@@ -52,7 +51,7 @@ public class AddTabDialog implements ActionListener {
 
     public AddTabDialog() {
 
-        this.buttons = new TreeMap<TabType, JRadioButton>();
+        buttons = new TreeMap<TabType, JRadioButton>();
 
         DiscoverFrame frame = DiscoverFrame.getInstance();
         ButtonGroup group = new ButtonGroup();
@@ -66,44 +65,43 @@ public class AddTabDialog implements ActionListener {
 
             group.add(button);
 
-            this.buttons.put(type, button);
+            buttons.put(type, button);
         }
 
-        this.buttons.get(TabType.CAPTURE).setSelected(true);
+        buttons.get(TabType.CAPTURE).setSelected(true);
 
+        name.addActionListener(this);
+        port.addActionListener(this);
+        okay.addActionListener(this);
+        cancel.addActionListener(this);
 
-        this.name.addActionListener(this);
-        this.port.addActionListener(this);
-        this.okay.addActionListener(this);
-        this.cancel.addActionListener(this);
+        fill();
 
-        this.fill();
+        dialog.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
+        dialog.pack();
+        dialog.setResizable(false);
+        dialog.setModal(true);
 
-        this.dialog.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
-        this.dialog.pack();
-        this.dialog.setResizable(false);
-        this.dialog.setModal(true);
+        Utilities.center(DiscoverFrame.getFrame(), dialog);
 
-        Utilities.center(DiscoverFrame.getFrame(), this.dialog);
-
-        this.name.setText(frame.getNextTabName(TabType.CAPTURE));
-        this.name.requestFocusInWindow();
-        this.dialog.setVisible(true);
+        name.setText(frame.getNextTabName(TabType.CAPTURE));
+        name.requestFocusInWindow();
+        dialog.setVisible(true);
     }
 
     public TabType getTabType() {
 
-        return this.selectedType;
+        return selectedType;
     }
 
     public String getTabName() {
 
-        return this.name.getText().trim();
+        return name.getText().trim();
     }
 
     public Integer getPort() {
 
-        String text = this.port.getText();
+        String text = port.getText();
         Integer integer = null;
 
         if ((text != null) && !text.isEmpty()) {
@@ -128,43 +126,43 @@ public class AddTabDialog implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent event) {
 
-        if (event.getSource() == this.cancel) {
+        if (event.getSource() == cancel) {
 
-            this.dialog.dispose();
+            dialog.dispose();
         }
         else if ((event.getSource() instanceof JTextField) ||
-                 (event.getSource() == this.okay)) {
+            (event.getSource() == okay)) {
 
-            this.selectedType = this.getSelectedTabType();
+            selectedType = getSelectedTabType();
 
-            this.dialog.dispose();
+            dialog.dispose();
         }
         else if (event.getSource() instanceof JRadioButton) {
 
             DiscoverFrame frame = DiscoverFrame.getInstance();
 
-            this.name.setText(frame.getNextTabName(this.getSelectedTabType()));
+            name.setText(frame.getNextTabName(getSelectedTabType()));
 
-            if (this.buttons.get(TabType.CFS) == event.getSource()) {
+            if (buttons.get(TabType.CFS) == event.getSource()) {
 
-                this.port.setText("");
-                this.port.setEnabled(false);
+                port.setText("");
+                port.setEnabled(false);
             }
             else {
 
-                this.port.setEnabled(true);
+                port.setEnabled(true);
             }
         }
     }
 
     private TabType getSelectedTabType() {
 
-        Iterator<TabType> iterator = this.buttons.keySet().iterator();
+        Iterator<TabType> iterator = buttons.keySet().iterator();
 
         while(iterator.hasNext() && (this.selectedType == null)) {
 
             TabType type = iterator.next();
-            JRadioButton button = this.buttons.get(type);
+            JRadioButton button = buttons.get(type);
 
             if (button.isSelected()) {
 
@@ -177,26 +175,26 @@ public class AddTabDialog implements ActionListener {
 
     private void disposing() {
 
-        this.name.removeActionListener(this);
-        this.port.removeActionListener(this);
-        this.okay.removeActionListener(this);
-        this.cancel.removeActionListener(this);
+        name.removeActionListener(this);
+        port.removeActionListener(this);
+        okay.removeActionListener(this);
+        cancel.removeActionListener(this);
 
-        for(JRadioButton button : this.buttons.values()) {
+        for (JRadioButton button : buttons.values()) {
 
             button.removeActionListener(this);
         }
 
-        this.buttons.clear();
+        buttons.clear();
     }
 
     private void fill() {
 
-        Utilities.setGridBagLayout(this.dialog.getContentPane());
+        Utilities.setGridBagLayout(dialog.getContentPane());
 
         Utilities.addComponent(
-            this.dialog.getContentPane(),
-            this.getNorthPanel(),
+            dialog.getContentPane(),
+            getNorthPanel(),
             Utilities.HORIZONTAL,
             0, 0,
             1, 1,
@@ -204,8 +202,8 @@ public class AddTabDialog implements ActionListener {
             Utilities.getInsets(0, 0, 0, 0));
 
         Utilities.addComponent(
-            this.dialog.getContentPane(),
-            this.getSouthPanel(),
+            dialog.getContentPane(),
+            getSouthPanel(),
             Utilities.HORIZONTAL,
             0, 1,
             1, 1,
@@ -253,7 +251,7 @@ public class AddTabDialog implements ActionListener {
 
         Utilities.addComponent(
             panel,
-            this.name,
+            name,
             Utilities.HORIZONTAL,
             0, row++,
             1, 1,
@@ -271,7 +269,7 @@ public class AddTabDialog implements ActionListener {
 
         Utilities.addComponent(
             panel,
-            this.port,
+            port,
             Utilities.HORIZONTAL,
             0, row++,
             1, 1,
@@ -285,8 +283,8 @@ public class AddTabDialog implements ActionListener {
 
         JPanel panel = new JPanel(new GridLayout(1, 3, 10, 2));
 
-        panel.add(this.okay);
-        panel.add(this.cancel);
+        panel.add(okay);
+        panel.add(cancel);
 
         return panel;
     }

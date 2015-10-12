@@ -20,24 +20,24 @@ import discover.gui.Utilities;
  * @author Tony Pinkston
  */
 public abstract class Widget implements ActionListener, FocusListener, MouseListener {
-    
+
     protected static final Logger logger = LoggerFactory.getLogger(Widget.class);
 
     private final JPanel panel;
 
     protected Widget(String title) {
 
-        this.panel = Utilities.getGridBagPanel(title);
+        panel = Utilities.getGridBagPanel(title);
     }
 
     public JPanel getPanel() {
 
-        return this.panel;
+        return panel;
     }
 
     public void setTitle(String title) {
 
-        Border border = this.panel.getBorder();
+        Border border = panel.getBorder();
 
         if ((border != null) && (border instanceof TitledBorder)) {
 
@@ -47,7 +47,7 @@ public abstract class Widget implements ActionListener, FocusListener, MouseList
 
     public String getTitle() {
 
-        Border border = this.panel.getBorder();
+        Border border = panel.getBorder();
 
         if ((border != null) && (border instanceof TitledBorder)) {
 

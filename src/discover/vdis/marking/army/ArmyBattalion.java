@@ -1,10 +1,9 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.marking.army;
 
 /**
  * (High Level Unit)
+ *
+ * @author Tony Pinkston
  */
 public class ArmyBattalion extends AbstractEchelon {
 
@@ -35,30 +34,30 @@ public class ArmyBattalion extends AbstractEchelon {
 
     public final ArmyDivision getDivision() {
 
-        return this.division;
+        return division;
     }
 
     public final ArmyBrigade getBrigade() {
 
-        return this.brigade;
+        return brigade;
     }
 
     @Override
     public final int getPRV() {
 
-        return this.prv;
+        return prv;
     }
 
     @Override
     public final int getBV() {
 
-        return this.bv;
+        return bv;
     }
 
     @Override
     public final String getBumper() {
 
-        return this.bumper;
+        return bumper;
     }
 
     public static AbstractEchelon[] getValues() {

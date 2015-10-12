@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.datum;
 
 import java.io.DataInputStream;
@@ -15,6 +12,9 @@ import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.Bufferable;
 import discover.vdis.enums.VDIS;
 
+/**
+ * @author Tony Pinkston
+ */
 public class FixedDatumRecord implements Bufferable, Readable, Writable {
 
     private static final NumberFormat format = NumberFormat.getInstance();
@@ -33,20 +33,20 @@ public class FixedDatumRecord implements Bufferable, Readable, Writable {
 
     public FixedDatumRecord(DataInputStream stream) throws IOException {
 
-        this.read(stream);
+        read(stream);
     }
 
-    public int getDatumId() { return this.datumId; }
-    public int getDatumValue() { return this.datumValue; }
+    public int getDatumId() { return datumId; }
+    public int getDatumValue() { return datumValue; }
 
     public void setDatumId(int id) {
 
-        this.datumId = id;
+        datumId = id;
     }
 
     public void setDatumValue(int value) {
 
-        this.datumValue = value;
+        datumValue = value;
     }
 
     @Override
@@ -54,26 +54,26 @@ public class FixedDatumRecord implements Bufferable, Readable, Writable {
 
         StringBuffer value = new StringBuffer();
 
-        value.append(format.format(this.datumValue));
+        value.append(format.format(datumValue));
         value.append(" (0x");
-        value.append(Hexadecimal.toString32(this.datumValue));
+        value.append(Hexadecimal.toString32(datumValue));
         value.append(")");
 
-        buffer.addAttribute("Datum Id", this.datumId, VDIS.DATUM_IDS);
+        buffer.addAttribute("Datum Id", datumId, VDIS.DATUM_IDS);
         buffer.addAttribute("Datum Value", value.toString());
     }
 
     @Override
     public void read(DataInputStream stream) throws IOException {
 
-        this.datumId = stream.readInt();
-        this.datumValue = stream.readInt();
+        datumId = stream.readInt();
+        datumValue = stream.readInt();
     }
 
     @Override
     public void write(DataOutputStream stream) throws IOException {
 
-        stream.writeInt(this.datumId);
-        stream.writeInt(this.datumValue);
+        stream.writeInt(datumId);
+        stream.writeInt(datumValue);
     }
 }

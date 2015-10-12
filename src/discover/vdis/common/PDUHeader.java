@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.common;
 
 import java.io.DataInputStream;
@@ -13,6 +10,9 @@ import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.Bufferable;
 import discover.vdis.enums.VDIS;
 
+/**
+ * @author Tony Pinkston
+ */
 public class PDUHeader implements Bufferable, Readable, Writable {
 
     public static final int LENGTH = 12;
@@ -26,14 +26,14 @@ public class PDUHeader implements Bufferable, Readable, Writable {
     private Timestamp timestamp = new Timestamp();
     private PDUStatus status = new PDUStatus();
 
-    public int getType() { return this.type; }
-    public int getFamily() { return this.family; }
-    public int getProtocol() { return this.protocol; }
-    public int getExercise() { return this.exercise; }
-    public int getLength() { return this.length; }
-    public int getPadding() { return this.padding; }
-    public Timestamp getTimestamp() { return this.timestamp; }
-    public PDUStatus getStatus() { return this.status; }
+    public int getType() { return type; }
+    public int getFamily() { return family; }
+    public int getProtocol() { return protocol; }
+    public int getExercise() { return exercise; }
+    public int getLength() { return length; }
+    public int getPadding() { return padding; }
+    public Timestamp getTimestamp() { return timestamp; }
+    public PDUStatus getStatus() { return status; }
 
     public void setType(int type) {
 
@@ -81,15 +81,15 @@ public class PDUHeader implements Bufferable, Readable, Writable {
     @Override
     public void read(DataInputStream stream) throws IOException {
 
-        this.protocol = stream.readUnsignedByte();
-        this.exercise = stream.readUnsignedByte();
-        this.type = stream.readUnsignedByte();
-        this.family = stream.readUnsignedByte();
-        this.timestamp.read(stream); // 4 bytes
-        this.length = stream.readUnsignedShort();
-        this.status.read(stream);
-        this.padding = stream.readUnsignedByte();
-        this.status.setEnumValues(this.type);
+        protocol = stream.readUnsignedByte();
+        exercise = stream.readUnsignedByte();
+        type = stream.readUnsignedByte();
+        family = stream.readUnsignedByte();
+        timestamp.read(stream); // 4 bytes
+        length = stream.readUnsignedShort();
+        status.read(stream);
+        padding = stream.readUnsignedByte();
+        status.setEnumValues(type);
     }
 
     /**
@@ -98,31 +98,31 @@ public class PDUHeader implements Bufferable, Readable, Writable {
     @Override
     public void write(DataOutputStream stream) throws IOException {
 
-        stream.writeByte(this.protocol);
-        stream.writeByte(this.exercise);
-        stream.writeByte(this.type);
-        stream.writeByte(this.family);
-        stream.writeInt(this.timestamp.getValue());
-        stream.writeShort(this.length);
-        stream.writeByte(this.status.getValue()); // status
-        stream.writeByte(this.padding);
+        stream.writeByte(protocol);
+        stream.writeByte(exercise);
+        stream.writeByte(type);
+        stream.writeByte(family);
+        stream.writeInt(timestamp.getValue());
+        stream.writeShort(length);
+        stream.writeByte(status.getValue()); // status
+        stream.writeByte(padding);
     }
 
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
         buffer.addTitle("HEADER");
-        buffer.addAttribute("Protocol", this.protocol, VDIS.PROTOCOL_VERSION);
-        buffer.addAttribute("Exercise", this.exercise);
-        buffer.addAttribute("Type", this.type, VDIS.PDU_TYPE);
-        buffer.addAttribute("Family", this.family, VDIS.PDU_FAMILY);
-        buffer.addAttribute("Length", this.length);
-        buffer.addAttribute("Timestamp", this.timestamp.toString());
-        buffer.addBuffer(this.status);
+        buffer.addAttribute("Protocol", protocol, VDIS.PROTOCOL_VERSION);
+        buffer.addAttribute("Exercise", exercise);
+        buffer.addAttribute("Type", type, VDIS.PDU_TYPE);
+        buffer.addAttribute("Family", family, VDIS.PDU_FAMILY);
+        buffer.addAttribute("Length", length);
+        buffer.addAttribute("Timestamp", timestamp.toString());
+        buffer.addBuffer(status);
 
-        if (this.padding != 0) {
+        if (padding != 0) {
 
-            buffer.addAttribute("Padding", this.padding);
+            buffer.addAttribute("Padding", padding);
         }
 
         buffer.addBreak();

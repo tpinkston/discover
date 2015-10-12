@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.dialogs;
 
 import java.awt.GridLayout;
@@ -19,6 +16,9 @@ import javax.swing.JRadioButton;
 import discover.gui.Utilities;
 import discover.gui.frames.DiscoverFrame;
 
+/**
+ * @author Tony Pinkston
+ */
 public class RemovePortDialog implements ActionListener {
 
     @SuppressWarnings("serial")
@@ -43,47 +43,47 @@ public class RemovePortDialog implements ActionListener {
 
     public RemovePortDialog(Set<Integer> choices) {
 
-        this.fill(choices);
+        fill(choices);
 
-        this.okay.addActionListener(this);
-        this.cancel.addActionListener(this);
+        okay.addActionListener(this);
+        cancel.addActionListener(this);
 
-        this.dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        this.dialog.pack();
-        this.dialog.setModal(true);
+        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        dialog.pack();
+        dialog.setModal(true);
 
-        Utilities.center(DiscoverFrame.getFrame(), this.dialog);
+        Utilities.center(DiscoverFrame.getFrame(), dialog);
 
-        this.dialog.setVisible(true);
+        dialog.setVisible(true);
     }
 
     public List<Integer> getPorts() {
 
-        return this.ports;
+        return ports;
     }
 
     @Override
     public void actionPerformed(ActionEvent event) {
 
-        if (event.getSource() == this.okay) {
+        if (event.getSource() == okay) {
 
-            this.removePorts();
+            removePorts();
         }
-        else if (event.getSource() == this.cancel) {
+        else if (event.getSource() == cancel) {
 
-            this.dialog.dispose();
+            dialog.dispose();
         }
     }
 
     private void disposing() {
 
-        this.okay.removeActionListener(this);
-        this.cancel.removeActionListener(this);
+        okay.removeActionListener(this);
+        cancel.removeActionListener(this);
     }
 
     private void removePorts() {
 
-        for(JRadioButton button : this.buttons) {
+        for(JRadioButton button : buttons) {
 
             if (button.isSelected()) {
 
@@ -93,7 +93,7 @@ public class RemovePortDialog implements ActionListener {
 
                     if (port != null) {
 
-                        this.ports.add(port);
+                        ports.add(port);
                     }
                 }
                 catch(NumberFormatException exception) {
@@ -102,15 +102,15 @@ public class RemovePortDialog implements ActionListener {
             }
         }
 
-        this.dialog.dispose();
+        dialog.dispose();
     }
 
     private void fill(Set<Integer> choices) {
 
-        Utilities.setGridBagLayout(this.dialog.getContentPane());
+        Utilities.setGridBagLayout(dialog.getContentPane());
 
         Utilities.addComponent(
-            this.dialog.getContentPane(),
+            dialog.getContentPane(),
             new JLabel("Select ports to remove:"),
             Utilities.HORIZONTAL,
             0, 0,
@@ -130,7 +130,7 @@ public class RemovePortDialog implements ActionListener {
             buttons.add(button);
 
             Utilities.addComponent(
-                this.dialog.getContentPane(),
+                dialog.getContentPane(),
                 button,
                 Utilities.HORIZONTAL,
                 0, (count + 1),
@@ -142,8 +142,8 @@ public class RemovePortDialog implements ActionListener {
         }
 
         Utilities.addComponent(
-            this.dialog.getContentPane(),
-            this.getButtonPanel(),
+            dialog.getContentPane(),
+            getButtonPanel(),
             Utilities.HORIZONTAL,
             0, (choices.size() + 1),
             1, 1,
@@ -155,8 +155,8 @@ public class RemovePortDialog implements ActionListener {
 
         JPanel panel = new JPanel(new GridLayout(1, 3, 10, 2));
 
-        panel.add(this.okay);
-        panel.add(this.cancel);
+        panel.add(okay);
+        panel.add(cancel);
 
         return panel;
     }

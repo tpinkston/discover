@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.marking;
 
 import java.io.DataInputStream;
@@ -22,6 +19,9 @@ import discover.vdis.marking.army.ArmyDivision;
 import discover.vdis.marking.army.ArmyPlatoon;
 import discover.vdis.marking.army.ArmyTracking;
 
+/**
+ * @author Tony Pinkston
+ */
 public class EntityMarking implements Bufferable, Readable, Writable {
 
     public static final int LENGTH = 12;
@@ -40,48 +40,48 @@ public class EntityMarking implements Bufferable, Readable, Writable {
 
     public int getCharacterSet() {
 
-        return this.characterSet;
+        return characterSet;
     }
 
     public String getMarking() {
 
-        return this.marking;
+        return marking;
     }
 
     public void setCharacterSet(int value) {
 
-        this.characterSet = value;
+        characterSet = value;
     }
 
     public void setMarking(String marking) {
 
-        this.characterSet = 1; // ENTITY_MARKING_ASCII
+        characterSet = 1; // ENTITY_MARKING_ASCII
         this.marking = marking;
 
         for(int i = 0; i < SIZE; ++i) {
 
             if (i < this.marking.length()) {
 
-                this.bytes[i] = (byte)this.marking.charAt(i);
+                bytes[i] = (byte)this.marking.charAt(i);
             }
             else {
 
-                this.bytes[i] = 0x00;
+                bytes[i] = 0x00;
             }
         }
     }
 
     public void clear() {
 
-        Arrays.fill(this.bytes, (byte)0x00);
+        Arrays.fill(bytes, (byte)0x00);
 
-        this.characterSet = 1; // ENTITY_MARKING_ASCII
-        this.marking = "";
-        this.division = null;
-        this.battalion = null;
-        this.company = null;
-        this.platoon = null;
-        this.vehicle = null;
+        characterSet = 1; // ENTITY_MARKING_ASCII
+        marking = "";
+        division = null;
+        battalion = null;
+        company = null;
+        platoon = null;
+        vehicle = null;
     }
 
     /**
@@ -99,7 +99,7 @@ public class EntityMarking implements Bufferable, Readable, Writable {
         }
         else try {
 
-            return this.marking.matches(".*" + expression + ".*");
+            return marking.matches(".*" + expression + ".*");
         }
         catch(PatternSyntaxException exception) {
 
@@ -107,13 +107,14 @@ public class EntityMarking implements Bufferable, Readable, Writable {
         }
     }
 
+    @Override
     public String toString() {
 
         String description = VDIS.getDescription(
             VDIS.ENTITY_MARKING,
-            this.characterSet);
+            characterSet);
 
-        return (this.marking + " (" + description + ")");
+        return (marking + " (" + description + ")");
     }
 
     @Override
@@ -124,7 +125,7 @@ public class EntityMarking implements Bufferable, Readable, Writable {
             EntityMarking marking = (EntityMarking)object;
 
             return ((this.marking.equals(marking.marking)) &&
-                    (this.characterSet == marking.characterSet));
+                    (characterSet == marking.characterSet));
         }
 
         return false;
@@ -139,73 +140,73 @@ public class EntityMarking implements Bufferable, Readable, Writable {
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
-        buffer.addAttribute("Value", this.marking);
+        buffer.addAttribute("Value", marking);
         buffer.addAttribute(
             "Type",
-            this.characterSet,
+            characterSet,
             VDIS.ENTITY_MARKING);
 
-        if (this.division != null) {
+        if (division != null) {
 
-            buffer.addAttribute("Division", this.division.description);
+            buffer.addAttribute("Division", division.description);
         }
 
-        if (this.brigade != null) {
+        if (brigade != null) {
 
-            buffer.addAttribute("Brigade", this.brigade.description);
+            buffer.addAttribute("Brigade", brigade.description);
         }
 
-        if (this.battalion != null) {
+        if (battalion != null) {
 
-            buffer.addAttribute("Battalion", this.battalion.description);
+            buffer.addAttribute("Battalion", battalion.description);
         }
     }
 
     public void read(byte bytes[], int index) {
 
-        this.characterSet = bytes[index];
+        characterSet = bytes[index];
 
         for(int i = 0; i < SIZE; ++i) {
 
             this.bytes[i] = bytes[index + 1 + i];
         }
 
-        if (this.characterSet == 1) {
+        if (characterSet == 1) {
 
             // ENTITY_MARKING_ASCII
-            this.marking = new String(this.bytes);
-            this.marking = this.marking.trim();
+            marking = new String(this.bytes);
+            marking = marking.trim();
         }
-        else if (this.characterSet == 2) {
+        else if (characterSet == 2) {
 
             // ENTITY_MARKING_US_ARMY
-            this.division = ArmyTracking.getValue(
+            division = ArmyTracking.getValue(
                 ArmyDivision.class,
                 this.bytes[0]);
-            this.battalion = ArmyTracking.getValue(
+            battalion = ArmyTracking.getValue(
                 division,
                 this.bytes[1]);
-            this.company = ArmyTracking.getValue(
+            company = ArmyTracking.getValue(
                 ArmyCompany.class,
                 this.bytes[2]);
-            this.platoon = ArmyTracking.getValue(
+            platoon = ArmyTracking.getValue(
                 ArmyPlatoon.class,
                 this.bytes[3]);
 
-            this.vehicle = getVehicleNumber();
+            vehicle = getVehicleNumber();
 
-            if (this.battalion != null) {
+            if (battalion != null) {
 
-                this.brigade = this.battalion.getBrigade();
+                brigade = battalion.getBrigade();
             }
 
             StringBuffer buffer = new StringBuffer();
 
-            if ((this.division == null) ||
-                (this.battalion == null) ||
-                (this.company == null) ||
-                (this.platoon == null) ||
-                (this.vehicle == null)) {
+            if ((division == null) ||
+                (battalion == null) ||
+                (company == null) ||
+                (platoon == null) ||
+                (vehicle == null)) {
 
                 for(int i = 0; i < this.bytes.length; ++i) {
 
@@ -219,20 +220,20 @@ public class EntityMarking implements Bufferable, Readable, Writable {
             }
             else {
 
-                buffer.append(this.vehicle);
+                buffer.append(vehicle);
                 buffer.append("/");
-                buffer.append(this.platoon.getBumper());
+                buffer.append(platoon.getBumper());
                 buffer.append("/");
-                buffer.append(this.company.getBumper());
+                buffer.append(company.getBumper());
                 buffer.append("/");
-                buffer.append(this.battalion.getBumper());
+                buffer.append(battalion.getBumper());
             }
 
-            this.marking = buffer.toString();
+            marking = buffer.toString();
         }
         else {
 
-            this.marking = "UNDECODED";
+            marking = "UNDECODED";
         }
     }
 
@@ -249,22 +250,22 @@ public class EntityMarking implements Bufferable, Readable, Writable {
     @Override
     public void write(DataOutputStream stream) throws IOException {
 
-        stream.writeByte(this.characterSet);
-        stream.write(this.bytes);
+        stream.writeByte(characterSet);
+        stream.write(bytes);
     }
 
     private String getVehicleNumber() {
 
         StringBuffer buffer = new StringBuffer();
 
-        if ((this.bytes[4] > -1) && (this.bytes[4] < 10)) {
+        if ((bytes[4] > -1) && (bytes[4] < 10)) {
 
-            buffer.append(this.bytes[4]);
+            buffer.append(bytes[4]);
         }
 
-        if ((this.bytes[5] > -1) && (this.bytes[5] < 10)) {
+        if ((bytes[5] > -1) && (bytes[5] < 10)) {
 
-            buffer.append(this.bytes[5]);
+            buffer.append(bytes[5]);
         }
 
         return buffer.toString();

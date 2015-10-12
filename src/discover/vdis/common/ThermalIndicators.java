@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.common;
 
 import java.util.ArrayList;
@@ -9,13 +6,14 @@ import java.util.List;
 import discover.vdis.bits.Abstract8Bits;
 import discover.vdis.bits.Bits;
 
+/**
+ * @author Tony Pinkston
+ */
 public class ThermalIndicators extends Abstract8Bits {
 
-    public static final List<Bits> values;
+    public static final List<Bits> values = new ArrayList<Bits>();
 
     static {
-
-        values = new ArrayList<Bits>();
 
         values.add(Bits.getYesNo("Main Power Plant", 0));
         values.add(Bits.getYesNo("Auxiliary Power Plant", 1));
@@ -37,7 +35,7 @@ public class ThermalIndicators extends Abstract8Bits {
 
         ThermalIndicators record = new ThermalIndicators();
 
-        record.set(super.get());
+        record.set(get());
 
         return record;
     }

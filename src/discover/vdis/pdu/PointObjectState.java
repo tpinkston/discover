@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.pdu;
 
 import java.io.DataInputStream;
@@ -15,9 +12,12 @@ import discover.vdis.common.ObjectId;
 import discover.vdis.common.Orientation;
 import discover.vdis.enums.VDIS;
 import discover.vdis.types.ObjectType;
-import discover.vdis.types.ObjectTypes;
 import discover.vdis.types.ObjectType.Geometry;
+import discover.vdis.types.ObjectTypes;
 
+/**
+ * @author Tony Pinkston
+ */
 public class PointObjectState extends AbstractPDU {
 
     private static final Geometry POINT = Geometry.POINT;
@@ -42,18 +42,18 @@ public class PointObjectState extends AbstractPDU {
     @Override
     public void clear() {
 
-        this.objectId.clear();
-        this.referencedObjectId.clear();
-        this.objectType = null;
-        this.requestor.clear();
-        this.receiver.clear();
-        this.location.clear();
-        this.orientation.clear();
-        this.generic.clear();
-        this.specific.set((byte)0);
-        this.force = 0;
-        this.update = 0;
-        this.modifications = 0;
+        objectId.clear();
+        referencedObjectId.clear();
+        objectType = null;
+        requestor.clear();
+        receiver.clear();
+        location.clear();
+        orientation.clear();
+        generic.clear();
+        specific.set((byte)0);
+        force = 0;
+        update = 0;
+        modifications = 0;
    }
 
     @Override
@@ -62,32 +62,32 @@ public class PointObjectState extends AbstractPDU {
         super.toBuffer(buffer);
 
         buffer.addTitle("IDENTIFICATION");
-        buffer.addAttribute("Object", this.objectId.toString());
-        buffer.addAttribute("Referenced Object", this.referencedObjectId.toString());
+        buffer.addAttribute("Object", objectId.toString());
+        buffer.addAttribute("Referenced Object", referencedObjectId.toString());
         buffer.addAttribute(
             "Force",
-            VDIS.getDescription(VDIS.FORCE_ID, this.force));
-        buffer.addAttribute("Requestor", this.requestor.toString());
-        buffer.addAttribute("Receiver", this.receiver.toString());
-        buffer.addAttribute("Update Number", this.update);
-        buffer.addAttribute("Modifications", this.modifications);
+            VDIS.getDescription(VDIS.FORCE_ID, force));
+        buffer.addAttribute("Requestor", requestor.toString());
+        buffer.addAttribute("Receiver", receiver.toString());
+        buffer.addAttribute("Update Number", update);
+        buffer.addAttribute("Modifications", modifications);
         buffer.addBreak();
 
         buffer.addTitle("TYPE");
-        this.objectType.toBuffer(buffer);
+        objectType.toBuffer(buffer);
         buffer.addBreak();
 
         buffer.addTitle("SPATIAL");
-        buffer.addAttribute("Location", this.location.toString());
-        buffer.addAttribute("Orientation", this.orientation.toString());
+        buffer.addAttribute("Location", location.toString());
+        buffer.addAttribute("Orientation", orientation.toString());
         buffer.addBreak();
 
         buffer.addTitle("GENERIC APPEARANCE");
-        buffer.addBuffer(this.generic);
+        buffer.addBuffer(generic);
         buffer.addBreak();
 
         buffer.addTitle("SPECIFIC APPEARANCE");
-        buffer.addBuffer(this.specific);
+        buffer.addBuffer(specific);
         buffer.addBreak();
     }
 
@@ -96,21 +96,21 @@ public class PointObjectState extends AbstractPDU {
 
         super.read(stream); // (header)
 
-        this.objectId.read(stream);
-        this.referencedObjectId.read(stream);
-        this.update = stream.readUnsignedShort();
-        this.force = stream.readUnsignedByte();
-        this.modifications = stream.readUnsignedByte();
-        this.objectType = ObjectTypes.getObjectType(POINT, stream.readInt());
-        this.location.read(stream);
-        this.orientation.read(stream);
-        this.generic.read(stream);
-        this.specific.read(stream);
+        objectId.read(stream);
+        referencedObjectId.read(stream);
+        update = stream.readUnsignedShort();
+        force = stream.readUnsignedByte();
+        modifications = stream.readUnsignedByte();
+        objectType = ObjectTypes.getObjectType(POINT, stream.readInt());
+        location.read(stream);
+        orientation.read(stream);
+        generic.read(stream);
+        specific.read(stream);
 
         stream.readShort(); // 16 bits padding
 
-        this.requestor.readPartial(stream);
-        this.receiver.readPartial(stream);
+        requestor.readPartial(stream);
+        receiver.readPartial(stream);
 
         stream.readInt(); // 32 bits padding
    }

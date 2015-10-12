@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.bits;
 
 import java.util.Collections;
@@ -17,6 +14,9 @@ import discover.common.buffer.Bufferable;
 import discover.vdis.enums.VDIS;
 import discover.vdis.enums.VDIS.Handle;
 
+/**
+ * @author Tony Pinkston
+ */
 public abstract class AbstractBits implements Bufferable, Cloneable, Readable, Writable {
 
     protected static final Logger logger = LoggerFactory.getLogger(AbstractBits.class);
@@ -63,7 +63,7 @@ public abstract class AbstractBits implements Bufferable, Cloneable, Readable, W
 
     public int getValue(Bits bits) {
 
-        final int bitset = this.getBits();
+        final int bitset = getBits();
         int value = 0x00;
 
         switch(bits.count) {
@@ -88,21 +88,21 @@ public abstract class AbstractBits implements Bufferable, Cloneable, Readable, W
     @Override
     public String toString() {
 
-        return this.getBitString();
+        return getBitString();
     }
 
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
-        if (this.bitsInBuffer()) {
+        if (bitsInBuffer()) {
 
-            buffer.addText("Bits: " + this.getBitString());
+            buffer.addText("Bits: " + getBitString());
             buffer.addBreak();
         }
 
-        for(Bits bits : this.getValues()) {
+        for(Bits bits : getValues()) {
 
-            int value = this.getValue(bits);
+            int value = getValue(bits);
 
             if (bits.handle == null) {
 

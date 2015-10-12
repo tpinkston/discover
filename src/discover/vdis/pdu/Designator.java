@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.pdu;
 
 import java.io.DataInputStream;
@@ -12,6 +9,9 @@ import discover.vdis.common.Location12;
 import discover.vdis.common.Location24;
 import discover.vdis.enums.VDIS;
 
+/**
+ * @author Tony Pinkston
+ */
 public class Designator extends AbstractPDU {
 
     private EntityId entity = new EntityId();
@@ -33,38 +33,38 @@ public class Designator extends AbstractPDU {
 
     }
 
-    public EntityId getEntity() { return this.entity; }
-    public EntityId getObject() { return this.object; }
-    public Location12 getBeamOffset() { return this.beamOffset; }
-    public Location12 getSpotOffset() { return this.spotOffset; }
-    public Location24 getSpotLocation() { return this.spotLocation; }
-    public int getSpotType() { return this.spotType; }
-    public int getSystemName() { return this.systemName; }
-    public int getFunction() { return this.function; }
-    public int getAlgorithm() { return this.algorithm; }
-    public int getDesignatorCode() { return this.designatorCode; }
-    public int getFlashRate() { return this.flashRate; }
-    public int getSystemNumber() { return this.designatorSystemNumber; }
-    public float getPower() { return this.designatorPower; }
-    public float getWavelength() { return this.designatorWavelength; }
+    public EntityId getEntity() { return entity; }
+    public EntityId getObject() { return object; }
+    public Location12 getBeamOffset() { return beamOffset; }
+    public Location12 getSpotOffset() { return spotOffset; }
+    public Location24 getSpotLocation() { return spotLocation; }
+    public int getSpotType() { return spotType; }
+    public int getSystemName() { return systemName; }
+    public int getFunction() { return function; }
+    public int getAlgorithm() { return algorithm; }
+    public int getDesignatorCode() { return designatorCode; }
+    public int getFlashRate() { return flashRate; }
+    public int getSystemNumber() { return designatorSystemNumber; }
+    public float getPower() { return designatorPower; }
+    public float getWavelength() { return designatorWavelength; }
 
     @Override
     public void clear() {
 
-        this.entity.clear();
-        this.object.clear();
-        this.beamOffset.clear();
-        this.spotOffset.clear();
-        this.spotLocation.clear();
-        this.spotType = 0;
-        this.systemName = 0;
-        this.function = 0;
-        this.algorithm = 0;
-        this.designatorCode = 0;
-        this.flashRate = 0;
-        this.designatorSystemNumber = 0;
-        this.designatorPower = 0.0f;
-        this.designatorWavelength = 0.0f;
+        entity.clear();
+        object.clear();
+        beamOffset.clear();
+        spotOffset.clear();
+        spotLocation.clear();
+        spotType = 0;
+        systemName = 0;
+        function = 0;
+        algorithm = 0;
+        designatorCode = 0;
+        flashRate = 0;
+        designatorSystemNumber = 0;
+        designatorPower = 0.0f;
+        designatorWavelength = 0.0f;
     }
 
     @Override
@@ -73,26 +73,26 @@ public class Designator extends AbstractPDU {
         super.toBuffer(buffer);
 
         buffer.addTitle("IDENTIFICATION");
-        buffer.addAttribute("Designating Entity", this.entity.toString());
-        buffer.addAttribute("Designated Entity", this.object.toString());
-        buffer.addAttribute("Spot Type", this.spotType, VDIS.DESIG_SPOT_TYPE);
-        buffer.addAttribute("System Name", this.systemName, VDIS.DESIG_SYSTEM_NAME);
-        buffer.addAttribute("System Number", this.designatorSystemNumber);
+        buffer.addAttribute("Designating Entity", entity.toString());
+        buffer.addAttribute("Designated Entity", object.toString());
+        buffer.addAttribute("Spot Type", spotType, VDIS.DESIG_SPOT_TYPE);
+        buffer.addAttribute("System Name", systemName, VDIS.DESIG_SYSTEM_NAME);
+        buffer.addAttribute("System Number", designatorSystemNumber);
         buffer.addBreak();
 
         buffer.addTitle("PARAMETERS");
-        buffer.addAttribute("Code", this.designatorCode);
-        buffer.addAttribute("Power", this.designatorPower);
-        buffer.addAttribute("Wave Length", this.designatorWavelength);
-        buffer.addAttribute("Flash Rate", this.flashRate);
-        buffer.addAttribute("Laser Function", this.function, VDIS.LASER_FUNCTION);
-        buffer.addAttribute("Dead Reckoning Algorithm", this.algorithm, VDIS.DEAD_RECKONING);
+        buffer.addAttribute("Code", designatorCode);
+        buffer.addAttribute("Power", designatorPower);
+        buffer.addAttribute("Wave Length", designatorWavelength);
+        buffer.addAttribute("Flash Rate", flashRate);
+        buffer.addAttribute("Laser Function", function, VDIS.LASER_FUNCTION);
+        buffer.addAttribute("Dead Reckoning Algorithm", algorithm, VDIS.DEAD_RECKONING);
         buffer.addBreak();
 
         buffer.addTitle("SPATIAL");
-        buffer.addAttribute("Spot Location", this.spotLocation.toString());
-        buffer.addAttribute("Spot Offset on Object", this.spotOffset.toString());
-        buffer.addAttribute("Beam Origin Offset", this.beamOffset.toString());
+        buffer.addAttribute("Spot Location", spotLocation.toString());
+        buffer.addAttribute("Spot Offset on Object", spotOffset.toString());
+        buffer.addAttribute("Beam Origin Offset", beamOffset.toString());
         buffer.addBreak();
     }
 
@@ -103,45 +103,45 @@ public class Designator extends AbstractPDU {
         super.read(stream);
 
         // 6 bytes
-        this.entity.read(stream);
+        entity.read(stream);
 
         // 1 byte
-        this.spotType = stream.readUnsignedByte();
+        spotType = stream.readUnsignedByte();
 
         // 1 byte
-        this.systemName = stream.readUnsignedByte();
+        systemName = stream.readUnsignedByte();
 
         // 6 bytes
-        this.object.read(stream);
+        object.read(stream);
 
         // 2 bytes
-        this.designatorCode = stream.readUnsignedShort();
+        designatorCode = stream.readUnsignedShort();
 
         // 4 bytes
-        this.designatorPower = stream.readFloat();
+        designatorPower = stream.readFloat();
 
         // 4 bytes
-        this.designatorWavelength = stream.readFloat();
+        designatorWavelength = stream.readFloat();
 
         // 12 bytes
-        this.spotOffset.read(stream);
+        spotOffset.read(stream);
 
         // 24 bytes
-        this.spotLocation.read(stream);
+        spotLocation.read(stream);
 
         // 1 byte
-        this.algorithm = stream.readUnsignedByte();
+        algorithm = stream.readUnsignedByte();
 
         // 1 byte
-        this.flashRate = stream.readUnsignedByte();
+        flashRate = stream.readUnsignedByte();
 
         // 1 byte
-        this.designatorSystemNumber = stream.readUnsignedByte();
+        designatorSystemNumber = stream.readUnsignedByte();
 
         // 1 byte
-        this.function = stream.readUnsignedByte();
+        function = stream.readUnsignedByte();
 
         // 12 bytes
-        this.beamOffset.read(stream);
+        beamOffset.read(stream);
     }
 }

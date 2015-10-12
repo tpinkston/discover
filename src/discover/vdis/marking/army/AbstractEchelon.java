@@ -1,8 +1,8 @@
+package discover.vdis.marking.army;
+
 /**
  * @author Tony Pinkston
  */
-package discover.vdis.marking.army;
-
 public abstract class AbstractEchelon {
 
     public final int value;

@@ -1,12 +1,4 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.widgets;
-
-import geotransform.coords.Gcc_Coord_3d;
-import geotransform.coords.Gdc_Coord_3d;
-import geotransform.transforms.Gcc_To_Gdc_Converter;
-import geotransform.transforms.Gdc_To_Gcc_Converter;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusEvent;
@@ -18,7 +10,14 @@ import javax.swing.JTextField;
 
 import discover.gui.Utilities;
 import discover.vdis.common.Location24;
+import geotransform.coords.Gcc_Coord_3d;
+import geotransform.coords.Gdc_Coord_3d;
+import geotransform.transforms.Gcc_To_Gdc_Converter;
+import geotransform.transforms.Gdc_To_Gcc_Converter;
 
+/**
+ * @author Tony Pinkston
+ */
 public class LocationWidget extends ToggleWidget {
 
     private static final String GCC = "Geocentric";
@@ -61,44 +60,44 @@ public class LocationWidget extends ToggleWidget {
 
         super(title);
 
-        this.panel = Utilities.getGridBagPanel(null);
+        panel = Utilities.getGridBagPanel(null);
 
         for(int i = 0; i < 3; ++i) {
 
-            this.gcc.fields[i].setName(GCC);
-            this.gcc.fields[i].addActionListener(this);
-            this.gcc.fields[i].addFocusListener(this);
-            this.gdc.fields[i].setName(GDC);
-            this.gdc.fields[i].setValue(GDC_VALUE[i]);
-            this.gdc.fields[i].addActionListener(this);
-            this.gdc.fields[i].addFocusListener(this);
+            gcc.fields[i].setName(GCC);
+            gcc.fields[i].addActionListener(this);
+            gcc.fields[i].addFocusListener(this);
+            gdc.fields[i].setName(GDC);
+            gdc.fields[i].setValue(GDC_VALUE[i]);
+            gdc.fields[i].addActionListener(this);
+            gdc.fields[i].addFocusListener(this);
         }
 
         this.update(GDC);
-        this.fill();
+        fill();
     }
 
     @Override
     public JComponent getComponent() {
 
-        return this.panel;
+        return panel;
     }
 
     public void getValue(Location24 location) {
 
-        this.gcc.getValue(location);
+        gcc.getValue(location);
     }
 
     public void setValue(Location24 location) {
 
-        this.gcc.setValue(location);
-        this.updateGeodetic();
+        gcc.setValue(location);
+        updateGeodetic();
     }
 
     @Override
     public void focusGained(FocusEvent event) {
 
-        if (!this.updating && (event.getSource() instanceof JTextField)) {
+        if (!updating && (event.getSource() instanceof JTextField)) {
 
             this.update(((JTextField)event.getSource()).getName());
         }
@@ -107,7 +106,7 @@ public class LocationWidget extends ToggleWidget {
     @Override
     public void focusLost(FocusEvent event) {
 
-        if (!this.updating && (event.getSource() instanceof JTextField)) {
+        if (!updating && (event.getSource() instanceof JTextField)) {
 
             this.update(((JTextField)event.getSource()).getName());
         }
@@ -116,7 +115,7 @@ public class LocationWidget extends ToggleWidget {
     @Override
     public void actionPerformed(ActionEvent event) {
 
-        if (!this.updating && (event.getSource() instanceof JTextField)) {
+        if (!updating && (event.getSource() instanceof JTextField)) {
 
             this.update(((JTextField)event.getSource()).getName());
         }
@@ -128,16 +127,16 @@ public class LocationWidget extends ToggleWidget {
         super.fill();
 
         Utilities.addComponent(
-            this.panel,
-            this.gcc.getPanel(),
+            panel,
+            gcc.getPanel(),
             Utilities.HORIZONTAL,
             0, 0,
             1, 1,
             0.5, 0.0,
             Utilities.getInsets(4, 6, 2, 0));
         Utilities.addComponent(
-            this.panel,
-            this.gdc.getPanel(),
+            panel,
+            gdc.getPanel(),
             Utilities.HORIZONTAL,
             0, 1,
             1, 1,
@@ -149,11 +148,11 @@ public class LocationWidget extends ToggleWidget {
 
         if (name.equals(GCC)) {
 
-            this.updateGeodetic();
+            updateGeodetic();
         }
         else if (name.equals(GDC)) {
 
-            this.updateGeocentric();
+            updateGeocentric();
         }
     }
 
@@ -162,17 +161,17 @@ public class LocationWidget extends ToggleWidget {
         Gcc_Coord_3d GCC = new Gcc_Coord_3d();
         Gdc_Coord_3d GDC = new Gdc_Coord_3d();
 
-        GDC.latitude = ((Float)this.gdc.fields[0].getValue()).doubleValue();
-        GDC.longitude = ((Float)this.gdc.fields[1].getValue()).doubleValue();
-        GDC.elevation = ((Float)this.gdc.fields[2].getValue()).doubleValue();
+        GDC.latitude = ((Float)gdc.fields[0].getValue()).doubleValue();
+        GDC.longitude = ((Float)gdc.fields[1].getValue()).doubleValue();
+        GDC.elevation = ((Float)gdc.fields[2].getValue()).doubleValue();
 
         Gdc_To_Gcc_Converter.Convert(GDC, GCC);
 
-        this.updating = true;
-        this.gcc.fields[0].setValue((float)GCC.x);
-        this.gcc.fields[1].setValue((float)GCC.y);
-        this.gcc.fields[2].setValue((float)GCC.z);
-        this.updating = false;
+        updating = true;
+        gcc.fields[0].setValue((float)GCC.x);
+        gcc.fields[1].setValue((float)GCC.y);
+        gcc.fields[2].setValue((float)GCC.z);
+        updating = false;
     }
 
     private void updateGeodetic() {
@@ -180,16 +179,16 @@ public class LocationWidget extends ToggleWidget {
         Gcc_Coord_3d GCC = new Gcc_Coord_3d();
         Gdc_Coord_3d GDC = new Gdc_Coord_3d();
 
-        GCC.x = ((Float)this.gcc.fields[0].getValue()).doubleValue();
-        GCC.y = ((Float)this.gcc.fields[1].getValue()).doubleValue();
-        GCC.z = ((Float)this.gcc.fields[2].getValue()).doubleValue();
+        GCC.x = ((Float)gcc.fields[0].getValue()).doubleValue();
+        GCC.y = ((Float)gcc.fields[1].getValue()).doubleValue();
+        GCC.z = ((Float)gcc.fields[2].getValue()).doubleValue();
 
         Gcc_To_Gdc_Converter.Convert(GCC, GDC);
 
-        this.updating = true;
-        this.gdc.fields[0].setValue((float)GDC.latitude);
-        this.gdc.fields[1].setValue((float)GDC.longitude);
-        this.gdc.fields[2].setValue((float)GDC.elevation);
-        this.updating = false;
+        updating = true;
+        gdc.fields[0].setValue((float)GDC.latitude);
+        gdc.fields[1].setValue((float)GDC.longitude);
+        gdc.fields[2].setValue((float)GDC.elevation);
+        updating = false;
     }
 }

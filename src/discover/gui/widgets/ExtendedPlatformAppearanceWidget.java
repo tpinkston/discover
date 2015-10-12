@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.widgets;
 
 import java.awt.event.ActionEvent;
@@ -26,6 +23,9 @@ import discover.vdis.enums.VDIS;
 import discover.vdis.vprecords.AbstractVPRecord;
 import discover.vdis.vprecords.ExtendedPlatformAppearanceVPR;
 
+/**
+ * @author Tony Pinkston
+ */
 public class ExtendedPlatformAppearanceWidget extends AbstractVariableRecordWidget {
 
     private final JPanel panel = Utilities.getGridBagPanel("");
@@ -48,54 +48,54 @@ public class ExtendedPlatformAppearanceWidget extends AbstractVariableRecordWidg
 
         ButtonGroup group = new ButtonGroup();
 
-        group.add(this.air);
-        group.add(this.land);
+        group.add(air);
+        group.add(land);
 
-        this.air.addActionListener(this);
-        this.land.addActionListener(this);
-        this.land.setSelected(true);
+        air.addActionListener(this);
+        land.addActionListener(this);
+        land.setSelected(true);
 
-        this.status = new BitRecordWidget(new ExtendedStatus());
-        this.lights = new BitRecordWidget(new ExtendedLightsLand());
-        this.equipment = new BitRecordWidget(new ExtendedEquipmentLand());
-        this.primaryCondition = new BitRecordWidget(new ConditionMaterial());
-        this.secondaryCondition = new BitRecordWidget(new ConditionMaterial());
-        this.thermalIndicators = new BitRecordWidget(new ThermalIndicators());
+        status = new BitRecordWidget(new ExtendedStatus());
+        lights = new BitRecordWidget(new ExtendedLightsLand());
+        equipment = new BitRecordWidget(new ExtendedEquipmentLand());
+        primaryCondition = new BitRecordWidget(new ConditionMaterial());
+        secondaryCondition = new BitRecordWidget(new ConditionMaterial());
+        thermalIndicators = new BitRecordWidget(new ThermalIndicators());
 
-        this.primaryCondition.setText("Primary Condition");
-        this.secondaryCondition.setText("Secondary Condition");
+        primaryCondition.setText("Primary Condition");
+        secondaryCondition.setText("Secondary Condition");
 
         Utilities.configureComboBox(
-            this.paint,
+            paint,
             VDIS.PL_PAINT_SCHEME,
             false);
         Utilities.configureComboBox(
-            this.decal,
+            decal,
             VDIS.PL_DECAL_SCHEME,
             false);
         Utilities.configureComboBox(
-            this.primaryColor,
+            primaryColor,
             VDIS.COLORS,
             false);
         Utilities.configureComboBox(
-            this.secondaryColor,
+            secondaryColor,
             VDIS.COLORS,
             false);
 
-        this.fill();
+        fill();
     }
 
     @Override
     public JComponent getComponent() {
 
-        return this.panel;
+        return panel;
     }
 
     @Override
     public void removed() {
 
-        this.air.removeActionListener(this);
-        this.land.removeActionListener(this);
+        air.removeActionListener(this);
+        land.removeActionListener(this);
 
         super.removed();
     }
@@ -103,7 +103,7 @@ public class ExtendedPlatformAppearanceWidget extends AbstractVariableRecordWidg
     @Override
     public void actionPerformed(ActionEvent event) {
 
-        this.updateDomain();
+        updateDomain();
     }
 
     @Override
@@ -113,7 +113,7 @@ public class ExtendedPlatformAppearanceWidget extends AbstractVariableRecordWidg
 
         record = new ExtendedPlatformAppearanceVPR();
 
-        if (this.land.isSelected()) {
+        if (land.isSelected()) {
 
             record.setDomain(1); // DOMAIN_LAND
         }
@@ -123,24 +123,24 @@ public class ExtendedPlatformAppearanceWidget extends AbstractVariableRecordWidg
         }
 
         record.setPaintScheme(Utilities.getComboboxValue(
-            this.paint,
+            paint,
             VDIS.PL_PAINT_SCHEME));
         record.setDecalScheme(Utilities.getComboboxValue(
-            this.decal,
+            decal,
             VDIS.PL_DECAL_SCHEME));
         record.setPrimaryColor(Utilities.getComboboxValue(
-            this.primaryColor,
+            primaryColor,
             VDIS.COLORS));
         record.setSecondaryColor(Utilities.getComboboxValue(
-            this.secondaryColor,
+            secondaryColor,
             VDIS.COLORS));
 
-        this.equipment.applyValue(record.getEquipment());
-        this.lights.applyValue(record.getLights());
-        this.primaryCondition.applyValue(record.getPrimaryCondition());
-        this.secondaryCondition.applyValue(record.getSecondaryCondition());
-        this.status.applyValue(record.getStatus());
-        this.thermalIndicators.applyValue(record.getThermalIndicators());
+        equipment.applyValue(record.getEquipment());
+        lights.applyValue(record.getLights());
+        primaryCondition.applyValue(record.getPrimaryCondition());
+        secondaryCondition.applyValue(record.getSecondaryCondition());
+        status.applyValue(record.getStatus());
+        thermalIndicators.applyValue(record.getThermalIndicators());
 
         return record;
     }
@@ -156,36 +156,36 @@ public class ExtendedPlatformAppearanceWidget extends AbstractVariableRecordWidg
 
             if (record.getDomain() == 1) {
 
-                this.land.setSelected(true);
+                land.setSelected(true);
             }
             else {
 
-                this.air.setSelected(true);
+                air.setSelected(true);
             }
 
             Utilities.setComboBoxValue(
-                this.paint,
+                paint,
                 VDIS.PL_PAINT_SCHEME,
                 appearance.getPaintScheme());
             Utilities.setComboBoxValue(
-                this.decal,
+                decal,
                 VDIS.PL_DECAL_SCHEME,
                 appearance.getDecalScheme());
             Utilities.setComboBoxValue(
-                this.primaryColor,
+                primaryColor,
                 VDIS.COLORS,
                 appearance.getPrimaryColor());
             Utilities.setComboBoxValue(
-                this.secondaryColor,
+                secondaryColor,
                 VDIS.COLORS,
                 appearance.getSecondaryColor());
 
-            this.equipment.setValue(appearance.getEquipment());
-            this.lights.setValue(appearance.getLights());
-            this.primaryCondition.setValue(appearance.getPrimaryCondition());
-            this.secondaryCondition.setValue(appearance.getSecondaryCondition());
-            this.status.setValue(appearance.getStatus());
-            this.thermalIndicators.setValue(appearance.getThermalIndicators());
+            equipment.setValue(appearance.getEquipment());
+            lights.setValue(appearance.getLights());
+            primaryCondition.setValue(appearance.getPrimaryCondition());
+            secondaryCondition.setValue(appearance.getSecondaryCondition());
+            status.setValue(appearance.getStatus());
+            thermalIndicators.setValue(appearance.getThermalIndicators());
         }
     }
 
@@ -197,7 +197,7 @@ public class ExtendedPlatformAppearanceWidget extends AbstractVariableRecordWidg
         lights = (Abstract32Bits)this.lights.getValue();
         equipment = (Abstract16Bits)this.equipment.getValue();
 
-        if (this.air.isSelected()) {
+        if (air.isSelected()) {
 
             lights = new ExtendedLightsAir(lights.get());
             equipment = new ExtendedEquipmentAir(equipment.get());
@@ -218,7 +218,7 @@ public class ExtendedPlatformAppearanceWidget extends AbstractVariableRecordWidg
         super.fill();
 
         Utilities.addComponent(
-            this.panel,
+            panel,
             new JLabel("Paint Scheme:"),
             Utilities.HORIZONTAL,
             0, 0,
@@ -226,15 +226,15 @@ public class ExtendedPlatformAppearanceWidget extends AbstractVariableRecordWidg
             0.5, 0.0,
             Utilities.getInsets(10, 6, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            this.paint,
+            panel,
+            paint,
             Utilities.HORIZONTAL,
             2, 0,
             1, 1,
             0.5, 0.0,
             Utilities.getInsets(4, 2, 2, 2));
         Utilities.addComponent(
-            this.panel,
+            panel,
             new JLabel("Decal Scheme:"),
             Utilities.HORIZONTAL,
             0, 1,
@@ -242,15 +242,15 @@ public class ExtendedPlatformAppearanceWidget extends AbstractVariableRecordWidg
             0.5, 0.0,
             Utilities.getInsets(10, 6, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            this.decal,
+            panel,
+            decal,
             Utilities.HORIZONTAL,
             2, 1,
             1, 1,
             0.5, 0.0,
             Utilities.getInsets(4, 2, 2, 2));
         Utilities.addComponent(
-            this.panel,
+            panel,
             new JLabel("Primary Color:"),
             Utilities.HORIZONTAL,
             0, 2,
@@ -258,23 +258,23 @@ public class ExtendedPlatformAppearanceWidget extends AbstractVariableRecordWidg
             0.5, 0.0,
             Utilities.getInsets(10, 6, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            this.primaryColor,
+            panel,
+            primaryColor,
             Utilities.HORIZONTAL,
             2, 2,
             2, 1,
             0.5, 0.0,
             Utilities.getInsets(4, 2, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            this.primaryCondition.getPanel(),
+            panel,
+            primaryCondition.getPanel(),
             Utilities.HORIZONTAL,
             0, 3,
             3, 1,
             1.0, 0.0,
             Utilities.getInsets(4, 4, 2, 2));
         Utilities.addComponent(
-            this.panel,
+            panel,
             new JLabel("Secondary Color:"),
             Utilities.HORIZONTAL,
             0, 4,
@@ -282,72 +282,72 @@ public class ExtendedPlatformAppearanceWidget extends AbstractVariableRecordWidg
             0.5, 0.0,
             Utilities.getInsets(10, 6, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            this.secondaryColor,
+            panel,
+            secondaryColor,
             Utilities.HORIZONTAL,
             2, 4,
             1, 1,
             0.5, 0.0,
             Utilities.getInsets(4, 2, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            this.secondaryCondition.getPanel(),
+            panel,
+            secondaryCondition.getPanel(),
             Utilities.HORIZONTAL,
             0, 5,
             3, 1,
             1.0, 0.0,
             Utilities.getInsets(4, 4, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            this.air,
+            panel,
+            air,
             Utilities.HORIZONTAL,
             0, 6,
             1, 1,
             0.0, 0.0,
             Utilities.getInsets(6, 6, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            this.land,
+            panel,
+            land,
             Utilities.HORIZONTAL,
             1, 6,
             1, 1,
             0.0, 0.0,
             Utilities.getInsets(6, 6, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            this.lights.getPanel(),
+            panel,
+            lights.getPanel(),
             Utilities.HORIZONTAL,
             0, 7,
             3, 1,
             0.0, 0.0,
             Utilities.getInsets(4, 4, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            this.equipment.getPanel(),
+            panel,
+            equipment.getPanel(),
             Utilities.HORIZONTAL,
             0, 8,
             3, 1,
             0.0, 0.0,
             Utilities.getInsets(4, 4, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            this.status.getPanel(),
+            panel,
+            status.getPanel(),
             Utilities.HORIZONTAL,
             0, 9,
             3, 1,
             0.0, 0.0,
             Utilities.getInsets(4, 4, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            this.thermalIndicators.getPanel(),
+            panel,
+            thermalIndicators.getPanel(),
             Utilities.HORIZONTAL,
             0, 10,
             3, 1,
             0.0, 0.0,
             Utilities.getInsets(4, 4, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            super.getRemoveButton(),
+            panel,
+            getRemoveButton(),
             Utilities.HORIZONTAL,
             0, 11,
             3, 1,

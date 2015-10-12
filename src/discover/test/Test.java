@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.test;
 
 import java.io.ByteArrayInputStream;
@@ -12,6 +9,9 @@ import discover.common.ByteArray;
 import discover.vdis.types.EntityType;
 import discover.vdis.types.EntityTypes;
 
+/**
+ * @author Tony Pinkston
+ */
 public class Test {
 
     public static void test(String test) {
@@ -35,7 +35,9 @@ public class Test {
 
     private static void testByteArray() {
 
-        byte data[] = { 0, 1, -45, -1, 13, -88, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+        byte data[] = {
+            0, 1, -45, -1, 13, -88, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+        };
 
         System.out.println();
         System.out.println(Arrays.toString(data));
@@ -88,7 +90,9 @@ public class Test {
 
     private static void testEntityTypes() {
 
-        byte bytes[] = { 6, 0, 0, 0, 0, 13, 5, 2 };
+        byte bytes[] = {
+            6, 0, 0, 0, 0, 13, 5, 2
+        };
         ByteArrayInputStream stream1 = new ByteArrayInputStream(bytes);
         DataInputStream stream2 = new DataInputStream(stream1);
 
@@ -103,7 +107,7 @@ public class Test {
 
             stream2.close();
         }
-        catch(IOException exception) {
+        catch (IOException exception) {
 
             exception.printStackTrace();
         }

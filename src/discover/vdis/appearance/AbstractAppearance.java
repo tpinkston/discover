@@ -1,11 +1,11 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.appearance;
 
 import discover.vdis.bits.Abstract32Bits;
 import discover.vdis.types.EntityType;
 
+/**
+ * @author Tony Pinkston
+ */
 public abstract class AbstractAppearance extends Abstract32Bits {
 
     public abstract String getName();

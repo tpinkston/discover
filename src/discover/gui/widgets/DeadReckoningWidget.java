@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.widgets;
 
 import javax.swing.JComboBox;
@@ -12,6 +9,9 @@ import discover.gui.Utilities;
 import discover.vdis.common.DeadReckoning;
 import discover.vdis.enums.VDIS;
 
+/**
+ * @author Tony Pinkston
+ */
 public class DeadReckoningWidget extends ToggleWidget {
 
     private final JPanel panel = Utilities.getGridBagPanel("");
@@ -24,52 +24,53 @@ public class DeadReckoningWidget extends ToggleWidget {
 
         super("Dead Reckoning");
 
-        this.fill();
+        fill();
     }
 
     @Override
     public JComponent getComponent() {
 
-        return this.panel;
+        return panel;
     }
 
     public void getValue(DeadReckoning record) {
 
         record.setAlgorithm(Utilities.getComboboxValue(
-            this.algorithm,
+            algorithm,
             VDIS.DEAD_RECKONING));
 
-        this.acceleration.getValue(record.getAcceleration());
-        this.velocity.getValue(record.getVelocity());
+        acceleration.getValue(record.getAcceleration());
+        velocity.getValue(record.getVelocity());
     }
 
     public void setValue(DeadReckoning record) {
 
 
         Utilities.setComboBoxValue(
-            this.algorithm,
+            algorithm,
             VDIS.DEAD_RECKONING,
             record.getAlgorithm());
 
-        this.acceleration.setValue(record.getAcceleration());
-        this.velocity.setValue(record.getVelocity());
+        acceleration.setValue(record.getAcceleration());
+        velocity.setValue(record.getVelocity());
     }
 
+    @Override
     protected void fill() {
 
         super.fill();
 
         Utilities.configureComboBox(
-            this.algorithm,
+            algorithm,
             VDIS.DEAD_RECKONING,
             false);
         Utilities.setComboBoxValue(
-            this.algorithm,
+            algorithm,
             VDIS.DEAD_RECKONING,
             1);
 
         Utilities.addComponent(
-            this.panel,
+            panel,
             new JLabel("Algorithm:"),
             Utilities.HORIZONTAL,
             0, 0,
@@ -77,24 +78,24 @@ public class DeadReckoningWidget extends ToggleWidget {
             0.0, 0.0,
             Utilities.getInsets(8, 6, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            this.algorithm,
+            panel,
+            algorithm,
             Utilities.HORIZONTAL,
             1, 0,
             1, 1,
             0.5, 0.0,
             Utilities.getInsets(4, 2, 2, 4));
         Utilities.addComponent(
-            this.panel,
-            this.acceleration.getPanel(),
+            panel,
+            acceleration.getPanel(),
             Utilities.HORIZONTAL,
             0, 1,
             2, 1,
             0.5, 0.0,
             Utilities.getInsets(4, 6, 2, 4));
         Utilities.addComponent(
-            this.panel,
-            this.velocity.getPanel(),
+            panel,
+            velocity.getPanel(),
             Utilities.HORIZONTAL,
             0, 2,
             2, 1,

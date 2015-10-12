@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.common;
 
 import java.io.DataInputStream;
@@ -10,6 +7,9 @@ import discover.common.Readable;
 import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.Bufferable;
 
+/**
+ * @author Tony Pinkston
+ */
 public class EmitterTarget implements Bufferable, Readable {
 
     private EntityId entity = new EntityId();
@@ -18,7 +18,7 @@ public class EmitterTarget implements Bufferable, Readable {
 
     public EmitterTarget(DataInputStream stream) throws IOException {
 
-        this.read(stream);
+        read(stream);
     }
 
     @Override
@@ -26,15 +26,15 @@ public class EmitterTarget implements Bufferable, Readable {
 
         buffer.addTitle("TARGET");
         buffer.addAttribute("Entity", entity.toString());
-        buffer.addAttribute("Emitter", this.emitter);
-        buffer.addAttribute("Beam", this.beam);
+        buffer.addAttribute("Emitter", emitter);
+        buffer.addAttribute("Beam", beam);
     }
 
     @Override
     public void read(DataInputStream stream) throws IOException {
 
-        this.entity.read(stream); // 6 bytes
-        this.emitter = stream.readUnsignedByte(); // 1 byte
-        this.beam = stream.readUnsignedByte(); // 1 byte
+        entity.read(stream); // 6 bytes
+        emitter = stream.readUnsignedByte(); // 1 byte
+        beam = stream.readUnsignedByte(); // 1 byte
     }
 }

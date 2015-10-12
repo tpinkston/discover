@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.tabs;
 
 import java.awt.Insets;
@@ -46,9 +43,12 @@ import discover.vdis.pdu.EntityState;
 import discover.vdis.types.EntityType;
 import discover.vdis.types.EntityTypes;
 
+/**
+ * @author Tony Pinkston
+ */
 public class CFSTab
-    extends Tab
-    implements ActionListener, CaptureThreadListener, FocusListener {
+        extends Tab
+        implements ActionListener, CaptureThreadListener, FocusListener {
 
     private static final DateFormat format = DateFormat.getDateTimeInstance();
     private static final int BASE_LENGTH = 64;
@@ -98,10 +98,10 @@ public class CFSTab
 
         super(name, TabType.CFS);
 
-        this.configureWidgets();
-        this.updateWidgets();
-        this.setState(State.PENDING_START);
-        this.fill();
+        configureWidgets();
+        updateWidgets();
+        setState(State.PENDING_START);
+        fill();
     }
 
     @Override
@@ -109,39 +109,39 @@ public class CFSTab
 
         Object source = event.getSource();
 
-        if (source == this.start) {
+        if (source == start) {
 
-            this.start();
+            start();
         }
-        else if (source == this.stop) {
+        else if (source == stop) {
 
-            this.stop();
+            stop();
         }
-        else if (source == this.clear) {
+        else if (source == clear) {
 
             status.setText("");
         }
-        else if (!this.updatingData) {
+        else if (!updatingData) {
 
-            this.updateData();
+            updateData();
         }
     }
 
     @Override
     public void focusGained(FocusEvent event) {
 
-        if (!this.updatingData) {
+        if (!updatingData) {
 
-            this.updateData();
+            updateData();
         }
     }
 
     @Override
     public void focusLost(FocusEvent event) {
 
-        if (!this.updatingData) {
+        if (!updatingData) {
 
-            this.updateData();
+            updateData();
         }
     }
 
@@ -156,18 +156,18 @@ public class CFSTab
 
                 pdu.getEntityId(entityId);
 
-                if (pdu.getPort() == this.data.cfsPort) {
+                if (pdu.getPort() == data.cfsPort) {
 
-                    if (this.data.entityId.equals(entityId)) {
+                    if (data.entityId.equals(entityId)) {
 
                         pdu.decode(false);
-                        this.processEntityState(pdu);
+                        processEntityState(pdu);
                     }
                 }
             }
             else if (pdu.getType() == VDIS.PDU_TYPE_ACTION_RESPONSE) {
 
-                if (pdu.getPort() == this.data.safPort) {
+                if (pdu.getPort() == data.safPort) {
 
                     SwingUtilities.invokeLater(new Runnable() {
 
@@ -190,76 +190,76 @@ public class CFSTab
         throws IOException {
 
         // Tab type and name should have already been read...
-        this.data.entityId.setSite(stream.readUnsignedShort());
-        this.data.entityId.setApplication(stream.readUnsignedShort());
-        this.data.entityId.setEntity(stream.readUnsignedShort());
-        this.data.protocol = stream.readByte();
-        this.data.marking = stream.readUTF();
-        this.data.requestId = stream.readInt();
-        this.data.cfsPort = stream.readInt();
-        this.data.cfsExercise = stream.readInt();
-        this.data.safPort = stream.readInt();
-        this.data.safExercise = stream.readInt();
+        data.entityId.setSite(stream.readUnsignedShort());
+        data.entityId.setApplication(stream.readUnsignedShort());
+        data.entityId.setEntity(stream.readUnsignedShort());
+        data.protocol = stream.readByte();
+        data.marking = stream.readUTF();
+        data.requestId = stream.readInt();
+        data.cfsPort = stream.readInt();
+        data.cfsExercise = stream.readInt();
+        data.safPort = stream.readInt();
+        data.safExercise = stream.readInt();
 
-        this.updateWidgets();
+        updateWidgets();
     }
 
     @Override
     public void save(DataOutputStream stream) throws IOException {
 
-        stream.writeInt(super.getTabType().ordinal());
-        stream.writeUTF(super.getTabName());
-        stream.writeShort(this.data.entityId.getSite());
-        stream.writeShort(this.data.entityId.getApplication());
-        stream.writeShort(this.data.entityId.getEntity());
-        stream.writeByte(this.data.protocol);
-        stream.writeUTF(this.data.marking);
-        stream.writeInt(this.data.requestId);
-        stream.writeInt(this.data.cfsPort);
-        stream.writeInt(this.data.cfsExercise);
-        stream.writeInt(this.data.safPort);
-        stream.writeInt(this.data.safExercise);
+        stream.writeInt(getTabType().ordinal());
+        stream.writeUTF(getTabName());
+        stream.writeShort(data.entityId.getSite());
+        stream.writeShort(data.entityId.getApplication());
+        stream.writeShort(data.entityId.getEntity());
+        stream.writeByte(data.protocol);
+        stream.writeUTF(data.marking);
+        stream.writeInt(data.requestId);
+        stream.writeInt(data.cfsPort);
+        stream.writeInt(data.cfsExercise);
+        stream.writeInt(data.safPort);
+        stream.writeInt(data.safExercise);
     }
 
     @Override
     public void close() {
 
-        this.start.removeActionListener(this);
-        this.stop.removeActionListener(this);
-        this.clear.removeActionListener(this);
-        this.cfsPort.removeActionListener(this);
-        this.cfsPort.removeFocusListener(this);
-        this.cfsExercise.removeActionListener(this);
-        this.cfsExercise.removeFocusListener(this);
-        this.safPort.removeActionListener(this);
-        this.safPort.removeFocusListener(this);
-        this.safExercise.removeActionListener(this);
-        this.safExercise.removeFocusListener(this);
-        this.marking.removeActionListener(this);
-        this.marking.removeFocusListener(this);
-        this.site.removeActionListener(this);
-        this.site.removeFocusListener(this);
-        this.application.removeActionListener(this);
-        this.application.removeFocusListener(this);
-        this.entity.removeActionListener(this);
-        this.entity.removeFocusListener(this);
+        start.removeActionListener(this);
+        stop.removeActionListener(this);
+        clear.removeActionListener(this);
+        cfsPort.removeActionListener(this);
+        cfsPort.removeFocusListener(this);
+        cfsExercise.removeActionListener(this);
+        cfsExercise.removeFocusListener(this);
+        safPort.removeActionListener(this);
+        safPort.removeFocusListener(this);
+        safExercise.removeActionListener(this);
+        safExercise.removeFocusListener(this);
+        marking.removeActionListener(this);
+        marking.removeFocusListener(this);
+        site.removeActionListener(this);
+        site.removeFocusListener(this);
+        application.removeActionListener(this);
+        application.removeFocusListener(this);
+        entity.removeActionListener(this);
+        entity.removeFocusListener(this);
 
-        this.stop();
+        stop();
     }
 
     private void processEntityState(final PDU pdu) {
 
-        if (this.state == State.PENDING_COMPLETE) {
+        if (state == State.PENDING_COMPLETE) {
 
             // Forward entity state PDU from CFS node, whatever it may be,
             // to SAF node.
             byte buffer[] = Arrays.copyOf(pdu.getData(), pdu.getLength());
 
             // The 1st byte is the protocol.
-            buffer[0] = (byte)this.data.protocol;
+            buffer[0] = (byte)data.protocol;
 
             // The 2nd byte is the exercise.
-            buffer[1] = (byte)this.data.safExercise;
+            buffer[1] = (byte)data.safExercise;
 
             // The 143th byte in the buffer should be 3rd byte of the 4-byte
             // entity capabilities record.  The zero bit denotes the entity
@@ -268,7 +268,7 @@ public class CFSTab
 
             try {
 
-                this.sendBuffer(buffer, buffer.length);
+                sendBuffer(buffer, buffer.length);
             }
             catch(IOException exception) {
 
@@ -284,7 +284,7 @@ public class CFSTab
                 });
             }
         }
-        else if (this.state == State.PENDING_ENTITY) {
+        else if (state == State.PENDING_ENTITY) {
 
             // Found CFS entity, send action request to SAF node.
             final String name;
@@ -334,19 +334,19 @@ public class CFSTab
             PDUHeader header = request.getHeader();
             CommandFromSimulator record = new CommandFromSimulator(15505);
 
-            header.setProtocol(this.data.protocol);
-            header.setExercise(this.data.safExercise);
+            header.setProtocol(data.protocol);
+            header.setExercise(data.safExercise);
             header.setType(VDIS.PDU_TYPE_ACTION_REQUEST);
             header.setFamily(5); // PDU_FAMILY_SIMULATION_MANAGEMENT
             header.setTimestamp(entityState.getHeader().getTimestamp());
-            header.setLength(BASE_LENGTH + this.getTotalMarkingLength());
+            header.setLength(BASE_LENGTH + getTotalMarkingLength());
 
-            record.getEntityId().set(this.data.entityId);
+            record.getEntityId().set(data.entityId);
             record.setEntityType(entityState.getEntityType());
-            record.setName(this.data.marking);
+            record.setName(data.marking);
 
             request.setActionId(48); // ACTREQ_ID_COMMAND_FROM_SIMULATOR
-            request.setRequestId(this.data.getNextRequestId());
+            request.setRequestId(data.getNextRequestId());
             request.getOriginator().set(entityState.getEntityId());
             request.getOriginator().setEntity(0);
             request.getRecipient().set(65535, 65535, 65535);
@@ -361,7 +361,7 @@ public class CFSTab
 
             if ((buffer != null) && (buffer.length > 0)) {
 
-                this.sendBuffer(buffer, buffer.length);
+                sendBuffer(buffer, buffer.length);
             }
             else {
 
@@ -380,7 +380,7 @@ public class CFSTab
     private void processActionResponse(PDU pdu) {
 
         int capturedId = pdu.getRequestId();
-        int expectedId = this.data.requestId;
+        int expectedId = data.requestId;
 
         if (capturedId == expectedId) {
 
@@ -402,9 +402,9 @@ public class CFSTab
 
                     cfs = (CommandFromSimulator)record;
 
-                    if (cfs.getEntityId().equals(this.data.entityId)) {
+                    if (cfs.getEntityId().equals(data.entityId)) {
 
-                        this.setStatus(
+                        setStatus(
                             "Action Response Status: " +
                             VDIS.getDescription(
                                 VDIS.ACTRES_REQ_STATUS,
@@ -414,16 +414,16 @@ public class CFSTab
                         if (response.getStatus() == 4) {
 
                             // Stop SAF capture thread, no longer needed.
-                            this.safCaptureThread.setStopped(true);
-                            this.safCaptureThread = null;
+                            safCaptureThread.setStopped(true);
+                            safCaptureThread = null;
 
-                            if (this.translate.isSelected()) {
+                            if (translate.isSelected()) {
 
-                                this.setState(State.PENDING_COMPLETE);
+                                setState(State.PENDING_COMPLETE);
                             }
                             else {
 
-                                this.setState(State.COMPLETE);
+                                setState(State.COMPLETE);
                             }
                         }
                     }
@@ -436,32 +436,32 @@ public class CFSTab
 
         try {
 
-            this.cfsCaptureThread = new CaptureThread(
-                (super.getTabName() + ":" + this.data.cfsPort),
+            cfsCaptureThread = new CaptureThread(
+                (getTabName() + ":" + data.cfsPort),
                 this,
-                this.data.cfsPort);
-            this.safCaptureThread = new CaptureThread(
-                (super.getTabName() + ":" + this.data.safPort),
+                data.cfsPort);
+            safCaptureThread = new CaptureThread(
+                (getTabName() + ":" + data.safPort),
                 this,
-                this.data.safPort);
+                data.safPort);
 
             System.out.println(
-                this.getTabName() +
-                ": Listening on ports: " + this.data.cfsPort +
-                " and " + this.data.safPort);
+                getTabName() +
+                ": Listening on ports: " + data.cfsPort +
+                " and " + data.safPort);
 
-            this.socket = new DatagramSocket();
-            this.socket.setBroadcast(true);
+            socket = new DatagramSocket();
+            socket.setBroadcast(true);
 
-            this.cfsCaptureThread.start();
-            this.safCaptureThread.start();
+            cfsCaptureThread.start();
+            safCaptureThread.start();
 
-            this.setState(State.PENDING_ENTITY);
-            this.enableInputs(false);
+            setState(State.PENDING_ENTITY);
+            enableInputs(false);
 
-            this.translate.setEnabled(false);
-            this.start.setEnabled(false);
-            this.stop.setEnabled(true);
+            translate.setEnabled(false);
+            start.setEnabled(false);
+            stop.setEnabled(true);
         }
         catch(Exception exception) {
 
@@ -471,23 +471,23 @@ public class CFSTab
 
     private void stop() {
 
-        if (this.cfsCaptureThread != null) {
+        if (cfsCaptureThread != null) {
 
-            this.cfsCaptureThread.setStopped(true);
-            this.cfsCaptureThread = null;
+            cfsCaptureThread.setStopped(true);
+            cfsCaptureThread = null;
         }
 
-        if (this.safCaptureThread != null) {
+        if (safCaptureThread != null) {
 
-            this.safCaptureThread.setStopped(true);
-            this.safCaptureThread = null;
+            safCaptureThread.setStopped(true);
+            safCaptureThread = null;
         }
 
-        this.setState(State.PENDING_START);
-        this.enableInputs(true);
-        this.translate.setEnabled(true);
-        this.start.setEnabled(true);
-        this.stop.setEnabled(false);
+        setState(State.PENDING_START);
+        enableInputs(true);
+        translate.setEnabled(true);
+        start.setEnabled(true);
+        stop.setEnabled(false);
     }
 
     private void setState(State state) {
@@ -506,31 +506,31 @@ public class CFSTab
 
                 buffer.append("Waiting for Entity State PDUs from:\n");
                 buffer.append("Port: ");
-                buffer.append(this.data.cfsPort + "\n");
+                buffer.append(data.cfsPort + "\n");
                 buffer.append("Exercise ID: ");
-                buffer.append(this.data.cfsExercise + "\n");
+                buffer.append(data.cfsExercise + "\n");
                 buffer.append("Entity Id: ");
-                buffer.append(this.data.entityId.toString());
+                buffer.append(data.entityId.toString());
                 break;
 
             case PENDING_RESPONSE:
 
                 buffer.append("Sent CFS Action Request with Request Id: ");
-                buffer.append(this.data.requestId + "\n");
+                buffer.append(data.requestId + "\n");
                 buffer.append("Waiting for response on:\n");
                 buffer.append("Port: ");
-                buffer.append(this.data.safPort + "\n");
+                buffer.append(data.safPort + "\n");
                 buffer.append("Exercise ID: ");
-                buffer.append(this.data.safExercise);
+                buffer.append(data.safExercise);
                 break;
 
             case PENDING_COMPLETE:
 
                 buffer.append("Translating Entity States on:");
                 buffer.append("Port: ");
-                buffer.append(this.data.safPort + "\n");
+                buffer.append(data.safPort + "\n");
                 buffer.append("Exercise ID: ");
-                buffer.append(this.data.safExercise);
+                buffer.append(data.safExercise);
                 break;
 
             case COMPLETE:
@@ -539,20 +539,20 @@ public class CFSTab
                 break;
         }
 
-        this.setStatus(buffer.toString());
+        setStatus(buffer.toString());
     }
 
     private void setStatus(String text) {
 
-        this.status.append(format.format(System.currentTimeMillis()));
-        this.status.append("\n");
-        this.status.append(text);
-        this.status.append("\n\n");
+        status.append(format.format(System.currentTimeMillis()));
+        status.append("\n");
+        status.append(text);
+        status.append("\n\n");
     }
 
     private int getTotalMarkingLength() {
 
-        int length = this.data.marking.length();
+        int length = data.marking.length();
 
         length += (8 - (length % 8));
 
@@ -565,34 +565,34 @@ public class CFSTab
             buffer,
             length,
             Network.getPlaybackAddress(),
-            this.data.safPort);
+            data.safPort);
 
-        this.socket.send(packet);
+        socket.send(packet);
     }
 
     private void updateData() {
 
-        this.updatingData = true;
+        updatingData = true;
 
-        String text = this.marking.getText();
+        String text = marking.getText();
 
-        this.data.cfsPort = Utilities.getIntegerValue(this.cfsPort);
-        this.data.cfsExercise = Utilities.getIntegerValue(this.cfsExercise);
-        this.data.safPort = Utilities.getIntegerValue(this.safPort);
-        this.data.safExercise = Utilities.getIntegerValue(this.safExercise);
+        data.cfsPort = Utilities.getIntegerValue(cfsPort);
+        data.cfsExercise = Utilities.getIntegerValue(cfsExercise);
+        data.safPort = Utilities.getIntegerValue(safPort);
+        data.safExercise = Utilities.getIntegerValue(safExercise);
 
-        this.data.entityId.set(
-            Utilities.getIntegerValue(this.site),
-            Utilities.getIntegerValue(this.application),
-            Utilities.getIntegerValue(this.entity));
+        data.entityId.set(
+            Utilities.getIntegerValue(site),
+            Utilities.getIntegerValue(application),
+            Utilities.getIntegerValue(entity));
 
         if (text.isEmpty()) {
 
-            this.marking.setText(this.data.marking);
+            marking.setText(data.marking);
         }
         else {
 
-            this.data.marking = text;
+            data.marking = text;
         }
 
         if (logger.isDebugEnabled()) {
@@ -600,115 +600,115 @@ public class CFSTab
             logger.debug(data.toString());
         }
 
-        this.updatingData = false;
+        updatingData = false;
     }
 
     private void updateWidgets() {
 
-        this.marking.setText(this.data.marking);
-        this.site.setValue(this.data.entityId.getSite());
-        this.application.setValue(this.data.entityId.getApplication());
-        this.entity.setValue(this.data.entityId.getEntity());
-        this.cfsPort.setValue(this.data.cfsPort);
-        this.cfsExercise.setValue(this.data.cfsExercise);
-        this.safPort.setValue(this.data.safPort);
-        this.safExercise.setValue(this.data.safExercise);
+        marking.setText(data.marking);
+        site.setValue(data.entityId.getSite());
+        application.setValue(data.entityId.getApplication());
+        entity.setValue(data.entityId.getEntity());
+        cfsPort.setValue(data.cfsPort);
+        cfsExercise.setValue(data.cfsExercise);
+        safPort.setValue(data.safPort);
+        safExercise.setValue(data.safExercise);
     }
 
     private void configureWidgets() {
 
-        this.status.setMargin(new Insets(4, 4, 4, 4));
+        status.setMargin(new Insets(4, 4, 4, 4));
 
-        this.start.setIcon(Utilities.getImageIcon("playback_play.png"));
-        this.start.setHideActionText(true);
-        this.start.addActionListener(this);
+        start.setIcon(Utilities.getImageIcon("playback_play.png"));
+        start.setHideActionText(true);
+        start.addActionListener(this);
 
-        this.stop.setIcon(Utilities.getImageIcon("playback_stop.png"));
-        this.stop.setHideActionText(true);
-        this.stop.addActionListener(this);
+        stop.setIcon(Utilities.getImageIcon("playback_stop.png"));
+        stop.setHideActionText(true);
+        stop.addActionListener(this);
 
-        this.clear.addActionListener(this);
+        clear.addActionListener(this);
 
-        this.status.setEditable(false);
+        status.setEditable(false);
 
-        this.cfsPort.addActionListener(this);
-        this.cfsPort.addFocusListener(this);
+        cfsPort.addActionListener(this);
+        cfsPort.addFocusListener(this);
 
-        this.cfsExercise.addActionListener(this);
-        this.cfsExercise.addFocusListener(this);
+        cfsExercise.addActionListener(this);
+        cfsExercise.addFocusListener(this);
 
-        this.safPort.addActionListener(this);
-        this.safPort.addFocusListener(this);
+        safPort.addActionListener(this);
+        safPort.addFocusListener(this);
 
-        this.safExercise.addActionListener(this);
-        this.safExercise.addFocusListener(this);
+        safExercise.addActionListener(this);
+        safExercise.addFocusListener(this);
 
-        this.marking.addActionListener(this);
-        this.marking.addFocusListener(this);
+        marking.addActionListener(this);
+        marking.addFocusListener(this);
 
-        this.site.addActionListener(this);
-        this.site.addFocusListener(this);
+        site.addActionListener(this);
+        site.addFocusListener(this);
 
-        this.application.addActionListener(this);
-        this.application.addFocusListener(this);
+        application.addActionListener(this);
+        application.addFocusListener(this);
 
-        this.entity.addActionListener(this);
-        this.entity.addFocusListener(this);
+        entity.addActionListener(this);
+        entity.addFocusListener(this);
 
-        this.translate.setSelected(true);
-        this.translate.setToolTipText("Check if Gateway is not is use.");
+        translate.setSelected(true);
+        translate.setToolTipText("Check if Gateway is not is use.");
     }
 
     private void enableInputs(boolean enabled) {
 
-        this.marking.setEnabled(enabled);
-        this.site.setEnabled(enabled);
-        this.application.setEnabled(enabled);
-        this.entity.setEnabled(enabled);
-        this.cfsPort.setEnabled(enabled);
-        this.cfsExercise.setEnabled(enabled);
-        this.safPort.setEnabled(enabled);
-        this.safExercise.setEnabled(enabled);
+        marking.setEnabled(enabled);
+        site.setEnabled(enabled);
+        application.setEnabled(enabled);
+        entity.setEnabled(enabled);
+        cfsPort.setEnabled(enabled);
+        cfsExercise.setEnabled(enabled);
+        safPort.setEnabled(enabled);
+        safExercise.setEnabled(enabled);
     }
 
     private void fill() {
 
-        Utilities.setGridBagLayout(super.getPanel());
+        Utilities.setGridBagLayout(getPanel());
 
         Utilities.addComponent(
-            super.getPanel(),
-            this.getTools(),
+            getPanel(),
+            getTools(),
             Utilities.HORIZONTAL,
             0, 0,
             3, 1,
             0.0, 0.0,
             Utilities.getInsets(2, 2, 8, 2));
         Utilities.addComponent(
-            super.getPanel(),
-            this.getIdentificationPanel(),
+            getPanel(),
+            getIdentificationPanel(),
             Utilities.HORIZONTAL,
             0, 1,
             2, 1,
             0.0, 0.0,
             Utilities.getInsets(2, 2, 2, 2));
         Utilities.addComponent(
-            super.getPanel(),
-            this.getCFSSettingsPanel(),
+            getPanel(),
+            getCFSSettingsPanel(),
             Utilities.HORIZONTAL,
             0, 2,
             1, 1,
             0.0, 0.0,
             Utilities.getInsets(2, 2, 2, 2));
         Utilities.addComponent(
-            super.getPanel(),
-            this.getSAFSettingsPanel(),
+            getPanel(),
+            getSAFSettingsPanel(),
             Utilities.HORIZONTAL,
             1, 2,
             1, 1,
             0.0, 0.0,
             Utilities.getInsets(2, 2, 2, 2));
         Utilities.addComponent(
-            super.getPanel(),
+            getPanel(),
             new JLabel("  "),
             Utilities.BOTH,
             0, 3,
@@ -716,8 +716,8 @@ public class CFSTab
             0.0, 1.0,
             Utilities.getInsets(2, 2, 2, 2));
         Utilities.addComponent(
-            super.getPanel(),
-            this.getStatusPanel(),
+            getPanel(),
+            getStatusPanel(),
             Utilities.BOTH,
             2, 1,
             1, 4,
@@ -729,12 +729,12 @@ public class CFSTab
 
         JPanel panel = Utilities.getGridBagPanel("CFS Entity Identification");
 
-        this.site.setColumns(5);
-        this.site.setHorizontalAlignment(JTextField.RIGHT);
-        this.application.setColumns(5);
-        this.application.setHorizontalAlignment(JTextField.RIGHT);
-        this.entity.setColumns(5);
-        this.entity.setHorizontalAlignment(JTextField.RIGHT);
+        site.setColumns(5);
+        site.setHorizontalAlignment(JTextField.RIGHT);
+        application.setColumns(5);
+        application.setHorizontalAlignment(JTextField.RIGHT);
+        entity.setColumns(5);
+        entity.setHorizontalAlignment(JTextField.RIGHT);
 
         Utilities.addComponent(
             panel,
@@ -746,7 +746,7 @@ public class CFSTab
             Utilities.getInsets(6, 2, 2, 2));
         Utilities.addComponent(
             panel,
-            this.marking,
+            marking,
             Utilities.HORIZONTAL,
             1, 0,
             3, 1,
@@ -762,7 +762,7 @@ public class CFSTab
             Utilities.getInsets(6, 2, 2, 2));
         Utilities.addComponent(
             panel,
-            this.site,
+            site,
             Utilities.HORIZONTAL,
             1, 1,
             1, 1,
@@ -770,7 +770,7 @@ public class CFSTab
             Utilities.getInsets(2, 2, 2, 2));
         Utilities.addComponent(
             panel,
-            this.application,
+            application,
             Utilities.HORIZONTAL,
             2, 1,
             1, 1,
@@ -778,7 +778,7 @@ public class CFSTab
             Utilities.getInsets(2, 2, 2, 2));
         Utilities.addComponent(
             panel,
-            this.entity,
+            entity,
             Utilities.HORIZONTAL,
             3, 1,
             1, 1,
@@ -792,10 +792,10 @@ public class CFSTab
 
         JPanel panel = Utilities.getGridBagPanel("CFS Settings");
 
-        this.cfsPort.setColumns(5);
-        this.cfsPort.setHorizontalAlignment(JTextField.RIGHT);
-        this.cfsExercise.setColumns(5);
-        this.cfsExercise.setHorizontalAlignment(JTextField.RIGHT);
+        cfsPort.setColumns(5);
+        cfsPort.setHorizontalAlignment(JTextField.RIGHT);
+        cfsExercise.setColumns(5);
+        cfsExercise.setHorizontalAlignment(JTextField.RIGHT);
 
         Utilities.addComponent(
             panel,
@@ -807,7 +807,7 @@ public class CFSTab
             Utilities.getInsets(6, 2, 2, 2));
         Utilities.addComponent(
             panel,
-            this.cfsPort,
+            cfsPort,
             Utilities.HORIZONTAL,
             1, 0,
             1, 1,
@@ -823,7 +823,7 @@ public class CFSTab
             Utilities.getInsets(6, 2, 2, 2));
         Utilities.addComponent(
             panel,
-            this.cfsExercise,
+            cfsExercise,
             Utilities.HORIZONTAL,
             1, 1,
             1, 1,
@@ -837,10 +837,10 @@ public class CFSTab
 
         JPanel panel = Utilities.getGridBagPanel("SAF Settings");
 
-        this.safPort.setColumns(5);
-        this.safPort.setHorizontalAlignment(JTextField.RIGHT);
-        this.safExercise.setColumns(5);
-        this.safExercise.setHorizontalAlignment(JTextField.RIGHT);
+        safPort.setColumns(5);
+        safPort.setHorizontalAlignment(JTextField.RIGHT);
+        safExercise.setColumns(5);
+        safExercise.setHorizontalAlignment(JTextField.RIGHT);
 
         Utilities.addComponent(
             panel,
@@ -852,7 +852,7 @@ public class CFSTab
             Utilities.getInsets(6, 2, 2, 2));
         Utilities.addComponent(
             panel,
-            this.safPort,
+            safPort,
             Utilities.HORIZONTAL,
             1, 0,
             1, 1,
@@ -868,7 +868,7 @@ public class CFSTab
             Utilities.getInsets(6, 2, 2, 2));
         Utilities.addComponent(
             panel,
-            this.safExercise,
+            safExercise,
             Utilities.HORIZONTAL,
             1, 1,
             1, 1,
@@ -884,7 +884,7 @@ public class CFSTab
 
         Utilities.addComponent(
             panel,
-            new JScrollPane(this.status),
+            new JScrollPane(status),
             Utilities.BOTH,
             0, 0,
             1, 1,
@@ -900,12 +900,12 @@ public class CFSTab
 
         tools.setFloatable(false);
 
-        tools.add(this.start);
-        tools.add(this.stop);
+        tools.add(start);
+        tools.add(stop);
         tools.addSeparator();
-        tools.add(this.clear);
+        tools.add(clear);
         tools.addSeparator();
-        tools.add(this.translate);
+        tools.add(translate);
 
         return tools;
     }
@@ -923,9 +923,9 @@ public class CFSTab
 
         public int getNextRequestId() {
 
-            this.requestId++;
+            requestId++;
 
-            return this.requestId;
+            return requestId;
         }
 
         @Override
@@ -933,14 +933,14 @@ public class CFSTab
 
             StringBuilder builder = new StringBuilder();
 
-            builder.append("\n entityId = " + this.entityId.toString());
-            builder.append("\n marking = " + this.marking);
-            builder.append("\n protocol = " + this.protocol);
-            builder.append("\n requestId = " + this.requestId);
-            builder.append("\n cfsPort = " + this.cfsPort);
-            builder.append("\n cfsExercise = " + this.cfsExercise);
-            builder.append("\n safPort = " + this.safPort);
-            builder.append("\n safExercise = " + this.safExercise);
+            builder.append("\n entityId = " + entityId.toString());
+            builder.append("\n marking = " + marking);
+            builder.append("\n protocol = " + protocol);
+            builder.append("\n requestId = " + requestId);
+            builder.append("\n cfsPort = " + cfsPort);
+            builder.append("\n cfsExercise = " + cfsExercise);
+            builder.append("\n safPort = " + safPort);
+            builder.append("\n safExercise = " + safExercise);
 
             return builder.toString();
         }

@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.pdu;
 
 import java.io.DataInputStream;
@@ -11,6 +8,9 @@ import discover.common.buffer.AbstractBuffer;
 import discover.vdis.common.EntityId;
 import discover.vdis.datum.DatumSpecificationRecord;
 
+/**
+ * @author Tony Pinkston
+ */
 public class SetData extends AbstractPDU {
 
     private EntityId originator = new EntityId();
@@ -25,10 +25,10 @@ public class SetData extends AbstractPDU {
     @Override
     public void clear() {
 
-        this.originator.clear();
-        this.recipient.clear();
-        this.requestId = -1;
-        this.specification.clear();
+        originator.clear();
+        recipient.clear();
+        requestId = -1;
+        specification.clear();
     }
 
     @Override
@@ -37,11 +37,11 @@ public class SetData extends AbstractPDU {
         super.toBuffer(buffer);
 
         buffer.addTitle("DATA");
-        buffer.addAttribute("Originator", this.originator.toString());
-        buffer.addAttribute("Recipient", this.recipient.toString());
-        buffer.addAttribute("Request Id", this.requestId);
+        buffer.addAttribute("Originator", originator.toString());
+        buffer.addAttribute("Recipient", recipient.toString());
+        buffer.addAttribute("Request Id", requestId);
         buffer.addBreak();
-        buffer.addBuffer(this.specification);
+        buffer.addBuffer(specification);
     }
 
     @Override
@@ -49,12 +49,12 @@ public class SetData extends AbstractPDU {
 
         super.read(stream); // (header)
 
-        this.originator.read(stream);
-        this.recipient.read(stream);
-        this.requestId = Common.toUnsigned32(stream.readInt());
+        originator.read(stream);
+        recipient.read(stream);
+        requestId = Common.toUnsigned32(stream.readInt());
 
         stream.skipBytes(4); // 4 bytes padding
 
-        this.specification.read(stream);
+        specification.read(stream);
     }
 }

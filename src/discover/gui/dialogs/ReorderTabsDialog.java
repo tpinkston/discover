@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.dialogs;
 
 import java.awt.BorderLayout;
@@ -21,6 +18,9 @@ import javax.swing.event.ListSelectionListener;
 import discover.gui.Utilities;
 import discover.gui.frames.DiscoverFrame;
 
+/**
+ * @author Tony Pinkston
+ */
 public class ReorderTabsDialog implements ActionListener, ListSelectionListener {
 
     @SuppressWarnings("serial")
@@ -51,62 +51,62 @@ public class ReorderTabsDialog implements ActionListener, ListSelectionListener 
 
         this.names = names;
 
-        this.list = new JList<>(this.names);
-        this.list.setPrototypeCellValue("ABCDEFGHIJKLMNOPQR");
-        this.list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        this.list.addListSelectionListener(this);
+        list = new JList<>(names);
+        list.setPrototypeCellValue("ABCDEFGHIJKLMNOPQR");
+        list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        list.addListSelectionListener(this);
 
-        this.up.addActionListener(this);
-        this.up.setEnabled(false);
+        up.addActionListener(this);
+        up.setEnabled(false);
 
-        this.down.addActionListener(this);
-        this.down.setEnabled(false);
+        down.addActionListener(this);
+        down.setEnabled(false);
 
-        this.okay.addActionListener(this);
-        this.okay.setEnabled(false);
+        okay.addActionListener(this);
+        okay.setEnabled(false);
 
-        this.cancel.addActionListener(this);
+        cancel.addActionListener(this);
 
-        this.fill();
+        fill();
 
-        this.dialog.pack();
-        this.dialog.setModal(true);
-        this.dialog.setResizable(true);
-        this.dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        dialog.pack();
+        dialog.setModal(true);
+        dialog.setResizable(true);
+        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 
-        Utilities.center(DiscoverFrame.getFrame(), this.dialog);
+        Utilities.center(DiscoverFrame.getFrame(), dialog);
 
-        this.dialog.setVisible(true);
+        dialog.setVisible(true);
     }
 
     public boolean reorderTabs() {
 
-        return this.reorder;
+        return reorder;
     }
 
     @Override
     public void actionPerformed(ActionEvent event) {
 
-        final int selection = this.list.getSelectedIndex();
+        final int selection = list.getSelectedIndex();
 
-        if (event.getSource() == this.up) {
+        if (event.getSource() == up) {
 
-            this.move(selection, (selection - 1));
-            this.okay.setEnabled(true);
+            move(selection, (selection - 1));
+            okay.setEnabled(true);
         }
-        else if (event.getSource() == this.down) {
+        else if (event.getSource() == down) {
 
-            this.move(selection, (selection + 1));
-            this.okay.setEnabled(true);
+            move(selection, (selection + 1));
+            okay.setEnabled(true);
         }
-        else if (event.getSource() == this.okay) {
+        else if (event.getSource() == okay) {
 
-            this.reorder = true;
-            this.dialog.dispose();
+            reorder = true;
+            dialog.dispose();
         }
-        else if (event.getSource() == this.cancel) {
+        else if (event.getSource() == cancel) {
 
-            this.dialog.dispose();
+            dialog.dispose();
         }
     }
 
@@ -115,50 +115,50 @@ public class ReorderTabsDialog implements ActionListener, ListSelectionListener 
 
         if (!event.getValueIsAdjusting()) {
 
-            final int selection = this.list.getSelectedIndex();
+            final int selection = list.getSelectedIndex();
 
             if (selection == 0) {
 
-                this.up.setEnabled(false);
-                this.down.setEnabled(true);
+                up.setEnabled(false);
+                down.setEnabled(true);
             }
-            else if (selection == (this.names.length - 1)) {
+            else if (selection == (names.length - 1)) {
 
-                this.up.setEnabled(true);
-                this.down.setEnabled(false);
+                up.setEnabled(true);
+                down.setEnabled(false);
             }
             else {
 
-                this.up.setEnabled(true);
-                this.down.setEnabled(true);
+                up.setEnabled(true);
+                down.setEnabled(true);
             }
         }
     }
 
     private void disposing() {
 
-        this.up.removeActionListener(this);
-        this.down.removeActionListener(this);
-        this.okay.removeActionListener(this);
-        this.cancel.removeActionListener(this);
-        this.list.removeListSelectionListener(this);
+        up.removeActionListener(this);
+        down.removeActionListener(this);
+        okay.removeActionListener(this);
+        cancel.removeActionListener(this);
+        list.removeListSelectionListener(this);
     }
 
     private void move(int source, int target) {
 
-        String temp = this.names[source];
+        String temp = names[source];
 
-        this.names[source] = this.names[target];
-        this.names[target] = temp;
+        names[source] = names[target];
+        names[target] = temp;
 
-        this.list.setListData(this.names);
-        this.list.setSelectedIndex(target);
+        list.setListData(names);
+        list.setSelectedIndex(target);
     }
 
     private void fill() {
 
-        this.dialog.add(this.getCenterPanel(), BorderLayout.CENTER);
-        this.dialog.add(this.getSouthPanel(), BorderLayout.SOUTH);
+        dialog.add(getCenterPanel(), BorderLayout.CENTER);
+        dialog.add(getSouthPanel(), BorderLayout.SOUTH);
     }
 
     private JPanel getCenterPanel() {
@@ -166,7 +166,7 @@ public class ReorderTabsDialog implements ActionListener, ListSelectionListener 
         JPanel panel = new JPanel(new GridBagLayout());
 
         JScrollPane scroller = new JScrollPane(
-            this.list,
+            list,
             JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
             JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
@@ -181,7 +181,7 @@ public class ReorderTabsDialog implements ActionListener, ListSelectionListener 
 
         Utilities.addComponent(
             panel,
-            this.up,
+            up,
             Utilities.HORIZONTAL,
             1, 1,
             1, 1,
@@ -190,7 +190,7 @@ public class ReorderTabsDialog implements ActionListener, ListSelectionListener 
 
         Utilities.addComponent(
             panel,
-            this.down,
+            down,
             Utilities.HORIZONTAL,
             1, 2,
             1, 1,
@@ -204,8 +204,8 @@ public class ReorderTabsDialog implements ActionListener, ListSelectionListener 
 
         JPanel panel = new JPanel(new GridLayout(1, 3, 10, 2));
 
-        panel.add(this.okay);
-        panel.add(this.cancel);
+        panel.add(okay);
+        panel.add(cancel);
 
         return panel;
     }

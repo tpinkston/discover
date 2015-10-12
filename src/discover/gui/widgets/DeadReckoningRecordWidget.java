@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.widgets;
 
 import javax.swing.JComboBox;
@@ -13,6 +10,9 @@ import discover.vdis.enums.VDIS;
 import discover.vdis.vprecords.AbstractVPRecord;
 import discover.vdis.vprecords.DeadReckoningVPR;
 
+/**
+ * @author Tony Pinkston
+ */
 public class DeadReckoningRecordWidget extends AbstractVariableRecordWidget {
 
     private final JPanel panel = Utilities.getGridBagPanel("");
@@ -26,15 +26,15 @@ public class DeadReckoningRecordWidget extends AbstractVariableRecordWidget {
         super("Dead Reckoning");
 
         Utilities.configureComboBox(
-            this.type,
+            type,
             VDIS.DR_TYPE,
             false);
         Utilities.configureComboBox(
-            this.algorithm,
+            algorithm,
             VDIS.DEAD_RECKONING,
             false);
 
-        this.fill();
+        fill();
     }
 
     @Override
@@ -45,13 +45,13 @@ public class DeadReckoningRecordWidget extends AbstractVariableRecordWidget {
         record = new DeadReckoningVPR();
 
         record.setType(Utilities.getComboboxValue(
-            this.type,
+            type,
             VDIS.DR_TYPE));
         record.setAlgorithm(Utilities.getComboboxValue(
-            this.algorithm,
+            algorithm,
             VDIS.DEAD_RECKONING));
 
-        this.parameter.getValue(record.getParameter());
+        parameter.getValue(record.getParameter());
 
         return record;
     }
@@ -64,30 +64,31 @@ public class DeadReckoningRecordWidget extends AbstractVariableRecordWidget {
             DeadReckoningVPR dead = (DeadReckoningVPR)record;
 
             Utilities.setComboBoxValue(
-                this.type,
+                type,
                 VDIS.DR_TYPE,
                 dead.getType());
             Utilities.setComboBoxValue(
-                this.algorithm,
+                algorithm,
                 VDIS.DEAD_RECKONING,
                 dead.getAlgorithm());
 
-            this.parameter.setValue(dead.getParameter());
+            parameter.setValue(dead.getParameter());
         }
     }
 
     @Override
     public JComponent getComponent() {
 
-        return this.panel;
+        return panel;
     }
 
+    @Override
     protected void fill() {
 
         super.fill();
 
         Utilities.addComponent(
-            this.panel,
+            panel,
             new JLabel("Type:"),
             Utilities.HORIZONTAL,
             0, 0,
@@ -95,15 +96,15 @@ public class DeadReckoningRecordWidget extends AbstractVariableRecordWidget {
             0.0, 0.0,
             Utilities.getInsets(10, 6, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            this.type,
+            panel,
+            type,
             Utilities.HORIZONTAL,
             1, 0,
             1, 1,
             0.0, 0.0,
             Utilities.getInsets(4, 2, 2, 2));
         Utilities.addComponent(
-            this.panel,
+            panel,
             new JLabel("Algorithm:"),
             Utilities.HORIZONTAL,
             0, 1,
@@ -111,8 +112,8 @@ public class DeadReckoningRecordWidget extends AbstractVariableRecordWidget {
             0.0, 0.0,
             Utilities.getInsets(10, 6, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            this.algorithm,
+            panel,
+            algorithm,
             Utilities.HORIZONTAL,
             1, 1,
             1, 1,
@@ -120,8 +121,8 @@ public class DeadReckoningRecordWidget extends AbstractVariableRecordWidget {
             Utilities.getInsets(4, 2, 2, 2));
 
         Utilities.addComponent(
-            this.panel,
-            this.parameter.getPanel(),
+            panel,
+            parameter.getPanel(),
             Utilities.HORIZONTAL,
             0, 2,
             2, 1,
@@ -129,8 +130,8 @@ public class DeadReckoningRecordWidget extends AbstractVariableRecordWidget {
             Utilities.getInsets(8, 2, 2, 2));
 
         Utilities.addComponent(
-            this.panel,
-            super.getRemoveButton(),
+            panel,
+            getRemoveButton(),
             Utilities.HORIZONTAL,
             0, 3,
             2, 1,

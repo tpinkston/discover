@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis;
 
 import java.text.DateFormat;
@@ -26,6 +23,9 @@ import discover.vdis.types.EntityType;
 import discover.vdis.vprecords.AbstractVPRecord;
 import discover.vdis.vprecords.ExtendedAppearanceVPR;
 
+/**
+ * @author Tony Pinkston
+ */
 public class Entity {
 
     private static final String NOT_AVAILABLE = "(Not Available)";
@@ -40,7 +40,7 @@ public class Entity {
     private static final float KMH_CONVERSION = 3.6f;
 
     /** Factor for converting m/s to knots */
-    private static final float KNOTS_CONVERSION =  1.94384449f;
+    private static final float KNOTS_CONVERSION = 1.94384449f;
 
     private static final int SENT = 0;
     private static final int RECEIVED = 0;
@@ -94,85 +94,85 @@ public class Entity {
 
     public Entity() {
 
-        this.transmitters = new TreeMap<Integer, Transmitter>();
-        this.emitters = new TreeMap<Integer, EmitterSystemData>();
-        this.associations = new ArrayList<AbstractVPRecord>();
-        this.articulations = new ArrayList<AbstractVPRecord>();
-        this.shotsFired = new ArrayList<PDU>();
-        this.shotsReceived = new ArrayList<PDU>();
-        this.lastUpdate = new Date();
-        this.actionRequests = new int[] { 0, 0 };
-        this.actionResponses = new int[] { 0, 0 };
+        transmitters = new TreeMap<Integer, Transmitter>();
+        emitters = new TreeMap<Integer, EmitterSystemData>();
+        associations = new ArrayList<AbstractVPRecord>();
+        articulations = new ArrayList<AbstractVPRecord>();
+        shotsFired = new ArrayList<PDU>();
+        shotsReceived = new ArrayList<PDU>();
+        lastUpdate = new Date();
+        actionRequests = new int[] { 0, 0 };
+        actionResponses = new int[] { 0, 0 };
     }
 
     public EntityState getState() {
 
-        return (EntityState)this.state.getPDU();
+        return (EntityState) state.getPDU();
     }
 
     public String getId() {
 
-        if (this.state == null) {
+        if (state == null) {
 
             return UNKNOWN;
         }
         else {
 
-            return this.getState().getEntityId().toString();
+            return getState().getEntityId().toString();
         }
     }
 
     public EntityId getEntityId() {
 
-        if (this.state == null) {
+        if (state == null) {
 
             return null;
         }
         else {
 
-            return this.getState().getEntityId();
+            return getState().getEntityId();
         }
     }
 
     public String getType() {
 
-        if (this.state == null) {
+        if (state == null) {
 
             return UNKNOWN;
         }
         else {
 
-            return this.getState().getEntityType().toString();
+            return getState().getEntityType().toString();
         }
     }
 
     public EntityType getEntityType() {
 
-        if (this.state == null) {
+        if (state == null) {
 
             return null;
         }
         else {
 
-            return this.getState().getEntityType();
+            return getState().getEntityType();
         }
     }
 
     public String getMarking() {
 
-        if (this.state == null) {
+        if (state == null) {
 
             return UNKNOWN;
         }
         else {
 
-            return this.state.getMarking();
+            return state.getMarking();
         }
     }
 
     public String getForce() {
 
-        if (this.state == null) {
+        if (state == null) {
 
             return UNKNOWN;
         }
@@ -180,43 +180,44 @@ public class Entity {
 
             return VDIS.getDescription(
                 VDIS.FORCE_ID,
-                this.getState().getForceId());
+                getState().getForceId());
         }
     }
 
     public String getSource() {
 
-        if (this.state == null) {
+        if (state == null) {
 
             return UNKNOWN;
         }
         else {
 
-            return this.state.getSource();
+            return state.getSource();
         }
     }
 
     public Integer getPort() {
 
-        if (this.state == null) {
+        if (state == null) {
 
             return 0;
         }
         else {
 
-            return this.state.getPort();
+            return state.getPort();
         }
     }
 
     public long getTime() {
 
-        return this.lastUpdate.getTime();
+        return lastUpdate.getTime();
     }
 
     /**
      * Updates the EntityState PDU reference.
      *
-     * @param pdu - {@link PDU}
+     * @param pdu
+     *            - {@link PDU}
      *
      * @return True if any value presented in table cell is modified.
      */
@@ -228,38 +229,38 @@ public class Entity {
 
         if (pdu.getType() == VDIS.PDU_TYPE_ENTITY_STATE) {
 
-            if (this.state == null) {
+            if (state == null) {
 
                 updated = true;
             }
-            else if (!this.state.getMarking().equals(pdu.getMarking())) {
+            else if (!state.getMarking().equals(pdu.getMarking())) {
 
                 updated = true;
             }
 
-            this.state = pdu;
-            this.lastUpdate.setTime(pdu.getTime());
-            this.getState().getAssociations(this.associations);
-            this.getState().getArticulations(this.articulations);
+            state = pdu;
+            lastUpdate.setTime(pdu.getTime());
+
+            getState().getAssociations(associations);
+            getState().getArticulations(articulations);
         }
         else if (pdu.getType() == VDIS.PDU_TYPE_TRANSMITTER) {
 
             Transmitter transmitter = (Transmitter)pdu.getPDU();
 
-            if (!this.transmitters.containsKey(transmitter.getRadioId())) {
+            if (!transmitters.containsKey(transmitter.getRadioId())) {
 
-                this.transmitters.put(transmitter.getRadioId(), transmitter);
+                transmitters.put(transmitter.getRadioId(), transmitter);
                 updated = true;
             }
             else {
 
-                Transmitter radio = this.transmitters.get(
+                Transmitter radio = transmitters.get(
                     transmitter.getRadioId());
 
-                if (radio.getTransmitState() !=
-                    transmitter.getTransmitState()) {
+                if (radio.getTransmitState() != transmitter.getTransmitState()) {
 
-                    this.transmitters.put(
+                    transmitters.put(
                         transmitter.getRadioId(),
                         transmitter);
 
@@ -269,73 +270,73 @@ public class Entity {
         }
         else if (pdu.getType() == VDIS.PDU_TYPE_ACTION_REQUEST) {
 
-            if (this.state != null) {
+            if (state != null) {
 
                 ActionRequest request = (ActionRequest)pdu.getPDU();
 
-                if (this.getEntityId().equals(request.getOriginator())) {
+                if (getEntityId().equals(request.getOriginator())) {
 
-                    this.actionRequests[SENT]++;
+                    actionRequests[SENT]++;
                     updated = true;
                 }
-                else if (this.getEntityId().equals(request.getRecipient())) {
+                else if (getEntityId().equals(request.getRecipient())) {
 
-                    this.actionRequests[RECEIVED]++;
+                    actionRequests[RECEIVED]++;
                     updated = true;
                 }
             }
         }
         else if (pdu.getType() == VDIS.PDU_TYPE_ACTION_RESPONSE) {
 
-            if (this.state != null) {
+            if (state != null) {
 
                 ActionResponse response = (ActionResponse)pdu.getPDU();
 
-                if (this.getEntityId().equals(response.getOriginator())) {
+                if (getEntityId().equals(response.getOriginator())) {
 
-                    this.actionResponses[SENT]++;
+                    actionResponses[SENT]++;
                 }
-                else if (this.getEntityId().equals(response.getRecipient())) {
+                else if (getEntityId().equals(response.getRecipient())) {
 
-                    this.actionResponses[RECEIVED]++;
+                    actionResponses[RECEIVED]++;
                 }
             }
         }
         else if (pdu.getType() == VDIS.PDU_TYPE_FIRE) {
 
-            if (this.state != null) {
+            if (state != null) {
 
                 Fire fire = (Fire)pdu.getPDU();
 
-                if (this.getEntityId().equals(fire.getShooter())) {
+                if (getEntityId().equals(fire.getShooter())) {
 
-                    this.shotsFired.add(pdu);
+                    shotsFired.add(pdu);
                 }
-                else if (this.getEntityId().equals(fire.getTarget())) {
+                else if (getEntityId().equals(fire.getTarget())) {
 
-                    this.shotsReceived.add(pdu);
+                    shotsReceived.add(pdu);
                 }
             }
         }
         else if (pdu.getType() == VDIS.PDU_TYPE_DETONATION) {
 
-            if (this.state != null) {
+            if (state != null) {
 
                 Detonation detonation = (Detonation)pdu.getPDU();
                 List<PDU> list = null;
 
-                if (this.getEntityId().equals(detonation.getShooter())) {
+                if (getEntityId().equals(detonation.getShooter())) {
 
-                    list = this.shotsFired;
+                    list = shotsFired;
                 }
-                else if (this.getEntityId().equals(detonation.getTarget())) {
+                else if (getEntityId().equals(detonation.getTarget())) {
 
-                    list = this.shotsReceived;
+                    list = shotsReceived;
                 }
 
                 if (list != null) {
 
-                    for(PDU firePDU : list) {
+                    for (PDU firePDU : list) {
 
                         Fire fire = (Fire)firePDU.getPDU();
 
@@ -349,13 +350,12 @@ public class Entity {
         }
         else if (pdu.getType() == VDIS.PDU_TYPE_EM_EMISSION) {
 
-            ElectromagneticEmission emission =
-                (ElectromagneticEmission)pdu.getPDU();
+            ElectromagneticEmission emission = (ElectromagneticEmission)pdu.getPDU();
 
-            for(EmitterSystemData system : emission.getSystems()) {
+            for (EmitterSystemData system : emission.getSystems()) {
 
                 system.setTime(pdu.getTime());
-                this.emitters.put(system.getNumber(), system);
+                emitters.put(system.getNumber(), system);
                 updated = true;
             }
         }
@@ -368,42 +368,42 @@ public class Entity {
         HypertextBuffer basic = new HypertextBuffer();
         HypertextBuffer spatial = new HypertextBuffer();
         HypertextBuffer actions = new HypertextBuffer();
-        String update = dateFormat.format(this.lastUpdate);
+        String update = dateFormat.format(lastUpdate);
         String data[][] = new String[2][2];
 
-        basic.addAttribute("Marking", this.getMarking());
-        basic.addAttribute("Force Id", this.getForce());
-        basic.addAttribute("Entity Id", this.getId());
+        basic.addAttribute("Marking", getMarking());
+        basic.addAttribute("Force Id", getForce());
+        basic.addAttribute("Entity Id", getId());
         basic.addLabel("Entity Type");
         basic.addBreak();
-        this.getEntityType().toBuffer(basic);
+        getEntityType().toBuffer(basic);
 
         spatial.addAttribute(
             "Location (GCC)",
-            this.getState().getLocation().toStringGCC());
+            getState().getLocation().toStringGCC());
         spatial.addAttribute(
             "Location (GDC)",
-            this.getState().getLocation().toStringGDC());
+            getState().getLocation().toStringGDC());
         spatial.addAttribute(
             "Speed",
-            this.getSpeedString());
+            getSpeedString());
         spatial.addAttribute(
             "Velocity",
-            this.getState().getVelocity().toString());
+            getState().getVelocity().toString());
         spatial.addAttribute(
             "Orientation",
-            this.getState().getOrientation().toString());
+            getState().getOrientation().toString());
 
         actions.addLabel("Action Requests");
-        actions.addBold(Integer.toString(this.actionRequests[SENT]));
+        actions.addBold(Integer.toString(actionRequests[SENT]));
         actions.addText(" sent, ");
-        actions.addBold(Integer.toString(this.actionRequests[RECEIVED]));
+        actions.addBold(Integer.toString(actionRequests[RECEIVED]));
         actions.addText(" received");
         actions.addBreak();
         actions.addLabel("Action Responses");
-        actions.addBold(Integer.toString(this.actionResponses[SENT]));
+        actions.addBold(Integer.toString(actionResponses[SENT]));
         actions.addText(" sent, ");
-        actions.addBold(Integer.toString(this.actionResponses[RECEIVED]));
+        actions.addBold(Integer.toString(actionResponses[RECEIVED]));
         actions.addText(" received");
 
         data[0][0] = basic.toString();
@@ -424,19 +424,19 @@ public class Entity {
 
         HypertextBuffer buffer = new HypertextBuffer();
 
-        if (this.associations.isEmpty()) {
+        if (associations.isEmpty()) {
 
             buffer.addItalic(NONE);
         }
         else {
 
-            final int count = this.associations.size();
+            final int count = associations.size();
             String data[][] = new String[count][1];
 
-            for(int i = 0; i < count; ++i) {
+            for (int i = 0; i < count; ++i) {
 
                 HypertextBuffer html = new HypertextBuffer();
-                AbstractVPRecord record = this.associations.get(i);
+                AbstractVPRecord record = associations.get(i);
 
                 record.toBuffer(html);
 
@@ -453,19 +453,19 @@ public class Entity {
 
         HypertextBuffer buffer = new HypertextBuffer();
 
-        if (this.articulations.isEmpty()) {
+        if (articulations.isEmpty()) {
 
             buffer.addItalic(NONE);
         }
         else {
 
-            final int count = this.articulations.size();
+            final int count = articulations.size();
             String data[][] = new String[count][1];
 
-            for(int i = 0; i < count; ++i) {
+            for (int i = 0; i < count; ++i) {
 
                 HypertextBuffer html = new HypertextBuffer();
-                AbstractVPRecord record = this.articulations.get(i);
+                AbstractVPRecord record = articulations.get(i);
 
                 record.toBuffer(html);
 
@@ -484,11 +484,11 @@ public class Entity {
         HypertextBuffer basic = new HypertextBuffer();
         HypertextBuffer extended = new HypertextBuffer();
         String data[][] = new String[1][2];
-        EntityState state = this.getState();
+        EntityState state = getState();
 
         AbstractVPRecord appearance = null;
 
-        for(AbstractVPRecord record : this.getState().getRecords()) {
+        for (AbstractVPRecord record : getState().getRecords()) {
 
             if (record instanceof ExtendedAppearanceVPR) {
 
@@ -529,13 +529,13 @@ public class Entity {
 
         HypertextBuffer buffer = new HypertextBuffer();
 
-        if (this.transmitters.isEmpty()) {
+        if (transmitters.isEmpty()) {
 
             buffer.addItalic(NONE);
         }
         else {
 
-            int rows = (this.transmitters.size() + 1);
+            int rows = (transmitters.size() + 1);
             String data[][] = new String[rows][5];
 
             data[0][0] = "Id";
@@ -546,7 +546,7 @@ public class Entity {
 
             int i = 1;
 
-            for(Transmitter transmitter : this.transmitters.values()) {
+            for (Transmitter transmitter : transmitters.values()) {
 
                 data[i][0] = Integer.toString(transmitter.getRadioId());
                 data[i][1] = transmitter.getRadioType().description;
@@ -575,9 +575,9 @@ public class Entity {
         List<String> received = new ArrayList<String>();
         Date date = new Date();
 
-        for(PDU pdu : this.shotsFired){
+        for (PDU pdu : shotsFired) {
 
-            Fire fire = (Fire)pdu.getPDU();
+            Fire fire = (Fire) pdu.getPDU();
             HypertextBuffer buffer = new HypertextBuffer();
             BurstDescriptor burst = fire.getBurst();
 
@@ -609,9 +609,9 @@ public class Entity {
             fired.add(buffer.toString());
         }
 
-        for(PDU pdu : this.shotsReceived){
+        for (PDU pdu : shotsReceived) {
 
-            Fire fire = (Fire)pdu.getPDU();
+            Fire fire = (Fire) pdu.getPDU();
             HypertextBuffer buffer = new HypertextBuffer();
             BurstDescriptor burst = fire.getBurst();
 
@@ -643,11 +643,11 @@ public class Entity {
             received.add(buffer.toString());
         }
 
-        int rows = this.shotsFired.size();
+        int rows = shotsFired.size();
 
-        if (rows < this.shotsReceived.size()) {
+        if (rows < shotsReceived.size()) {
 
-            rows = this.shotsReceived.size();
+            rows = shotsReceived.size();
         }
 
         HypertextBuffer buffer = new HypertextBuffer();
@@ -668,7 +668,7 @@ public class Entity {
             data[0][0] = SHOTS_FIRED;
             data[0][1] = SHOTS_RECEIVED;
 
-            for(int i = 0; i < rows; ++i) {
+            for (int i = 0; i < rows; ++i) {
 
                 if (i < fired.size()) {
 
@@ -699,18 +699,18 @@ public class Entity {
 
         HypertextBuffer buffer = new HypertextBuffer();
 
-        if (this.emitters.isEmpty()) {
+        if (emitters.isEmpty()) {
 
             buffer.addItalic(NONE);
         }
         else {
 
-            int columns = this.emitters.size();
+            int columns = emitters.size();
             String data[][] = new String[1][columns];
 
             int i = 0;
 
-            for(EmitterSystemData system : this.emitters.values()) {
+            for (EmitterSystemData system : emitters.values()) {
 
                 HypertextBuffer hypertext = new HypertextBuffer();
 
@@ -735,8 +735,8 @@ public class Entity {
     private String getSpeedString() {
 
         String label;
-        int domain = this.state.getEntityDomain();
-        float speed = this.getState().getVelocity().getLength();
+        int domain = state.getEntityDomain();
+        float speed = getState().getVelocity().getLength();
 
         // Is is 'AIR' domain?
         if (domain == 2) {
@@ -752,5 +752,5 @@ public class Entity {
         }
 
         return (speedFormatter.format(speed) + label);
-   }
+    }
 }

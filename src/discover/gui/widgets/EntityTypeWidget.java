@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.widgets;
 
 import java.awt.event.ActionEvent;
@@ -16,6 +13,9 @@ import discover.vdis.types.EntityType;
 import discover.vdis.types.EntityTypes;
 import discover.vdis.types.Septuple;
 
+/**
+ * @author Tony Pinkston
+ */
 public class EntityTypeWidget extends ToggleWidget {
 
     private final JPanel panel = Utilities.getGridBagPanel("");
@@ -27,33 +27,33 @@ public class EntityTypeWidget extends ToggleWidget {
 
         super(title);
 
-        for(int i = 0; i < this.fields.length; ++i) {
+        for(int i = 0; i < fields.length; ++i) {
 
-            this.fields[i] = Utilities.getIntegerField(0);
-            this.fields[i].setValue(0);
-            this.fields[i].setColumns(3);
-            this.fields[i].addActionListener(this);
-            this.fields[i].addFocusListener(this);
+            fields[i] = Utilities.getIntegerField(0);
+            fields[i].setValue(0);
+            fields[i].setColumns(3);
+            fields[i].addActionListener(this);
+            fields[i].addFocusListener(this);
         }
 
-        this.updateLabel();
-        this.fill();
+        updateLabel();
+        fill();
     }
 
     @Override
     public JComponent getComponent() {
 
-        return this.panel;
+        return panel;
     }
 
     public void clear() {
 
-        for(int i = 0; i < this.fields.length; ++i) {
+        for(int i = 0; i < fields.length; ++i) {
 
-            this.fields[i].setValue(0);
+            fields[i].setValue(0);
         }
 
-        this.updateLabel();
+        updateLabel();
     }
 
     public long getLongValue() {
@@ -62,7 +62,7 @@ public class EntityTypeWidget extends ToggleWidget {
 
         for(int i = 0; i < values.length; ++i) {
 
-            values[i] = Utilities.getIntegerValue(this.fields[i]);
+            values[i] = Utilities.getIntegerValue(fields[i]);
         }
 
         long value = Septuple.toLong(
@@ -79,56 +79,56 @@ public class EntityTypeWidget extends ToggleWidget {
 
     public void setLongValue(long value) {
 
-        this.setValue(EntityTypes.getEntityType(value));
+        setValue(EntityTypes.getEntityType(value));
     }
 
     public EntityType getValue() {
 
-        return EntityTypes.getEntityType(this.getLongValue());
+        return EntityTypes.getEntityType(getLongValue());
     }
 
     public void setValue(EntityType type) {
 
         if (type == null) {
 
-            this.clear();
+            clear();
         }
         else {
 
-            this.fields[0].setValue(type.septuple.kind);
-            this.fields[1].setValue(type.septuple.domain);
-            this.fields[2].setValue(type.septuple.country);
-            this.fields[3].setValue(type.septuple.category);
-            this.fields[4].setValue(type.septuple.subcategory);
-            this.fields[5].setValue(type.septuple.specific);
-            this.fields[6].setValue(type.septuple.extension);
+            fields[0].setValue(type.septuple.kind);
+            fields[1].setValue(type.septuple.domain);
+            fields[2].setValue(type.septuple.country);
+            fields[3].setValue(type.septuple.category);
+            fields[4].setValue(type.septuple.subcategory);
+            fields[5].setValue(type.septuple.specific);
+            fields[6].setValue(type.septuple.extension);
 
-            this.updateLabel();
+            updateLabel();
         }
     }
 
     @Override
     public void actionPerformed(ActionEvent event) {
 
-        this.updateLabel();
+        updateLabel();
     }
 
     @Override
     public void focusLost(FocusEvent event) {
 
-        this.updateLabel();
+        updateLabel();
     }
 
     @Override
     public void focusGained(FocusEvent event) {
 
-        this.updateLabel();
+        updateLabel();
     }
 
     private void updateLabel() {
 
-        EntityType type = this.getValue();
-        this.label.setText(type.description);
+        EntityType type = getValue();
+        label.setText(type.description);
     }
 
     @Override
@@ -142,8 +142,8 @@ public class EntityTypeWidget extends ToggleWidget {
             int right = (i == 6) ? 6 : 1;
 
             Utilities.addComponent(
-                this.panel,
-                this.fields[i],
+                panel,
+                fields[i],
                 Utilities.HORIZONTAL,
                 i, 0,
                 1, 1,
@@ -152,8 +152,8 @@ public class EntityTypeWidget extends ToggleWidget {
         }
 
         Utilities.addComponent(
-            this.panel,
-            this.label,
+            panel,
+            label,
             Utilities.HORIZONTAL,
             0, 1,
             7, 1,

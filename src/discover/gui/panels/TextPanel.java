@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.panels;
 
 import java.awt.Dimension;
@@ -17,6 +14,9 @@ import javax.swing.JToolBar;
 
 import discover.gui.Utilities;
 
+/**
+ * @author Tony Pinkston
+ */
 public class TextPanel {
 
     private static final String INCREASE = "font_increase.gif";
@@ -41,33 +41,25 @@ public class TextPanel {
      */
     public TextPanel(String type, String font) {
 
-        this.pane.setContentType(type);
+        pane.setContentType(type);
 
-        if (font != null) {
-
-            this.fontName = font;
-        }
-        else {
-
-            this.fontName = this.pane.getName();
-        }
-
-        this.fontSize = this.pane.getFont().getSize();
-        this.size.setText(Integer.toString(this.fontSize));
+        fontName = ((font != null) ? font : pane.getName());
+        fontSize = pane.getFont().getSize();
+        size.setText(Integer.toString(fontSize));
 
         JToolBar tools = new JToolBar();
 
         tools.setFloatable(false);
-        tools.add(this.increase);
-        tools.add(this.decrease);
+        tools.add(increase);
+        tools.add(decrease);
         tools.addSeparator();
         tools.add(new JLabel("Size: "));
-        tools.add(this.size);
+        tools.add(size);
 
-        this.scroller.setViewportView(this.pane);
+        scroller.setViewportView(pane);
 
         Utilities.addComponent(
-            this.panel,
+            panel,
             tools,
             Utilities.HORIZONTAL,
             0, 0,
@@ -76,51 +68,51 @@ public class TextPanel {
             null);
 
         Utilities.addComponent(
-            this.panel,
-            this.scroller,
+            panel,
+            scroller,
             Utilities.BOTH,
             0, 1,
             1, 1,
             1.0, 1.0,
             null);
 
-        this.setFontSize(this.pane.getFont().getSize());
-        this.pane.setEditable(false);
+        setFontSize(pane.getFont().getSize());
+        pane.setEditable(false);
     }
 
     public JPanel getPanel() {
 
-        return this.panel;
+        return panel;
     }
 
     public void setTextPreferredSize(Dimension dimension) {
 
-        this.pane.setPreferredSize(dimension);
+        pane.setPreferredSize(dimension);
     }
 
     public void setText(String text) {
 
-      this.pane.setText(text);
+      pane.setText(text);
     }
 
     public void setCaretPosition(int position) {
 
-        this.pane.setCaretPosition(position);
+        pane.setCaretPosition(position);
     }
 
     public JScrollPane getScroller() {
 
-        return this.scroller;
+        return scroller;
     }
 
     public void setVerticalScrollBarPolicy(int policy) {
 
-        this.scroller.setVerticalScrollBarPolicy(policy);
+        scroller.setVerticalScrollBarPolicy(policy);
     }
 
     public void setHorizontalScrollBarPolicy(int policy) {
 
-        this.scroller.setHorizontalScrollBarPolicy(policy);
+        scroller.setHorizontalScrollBarPolicy(policy);
     }
 
     /**
@@ -130,19 +122,19 @@ public class TextPanel {
      */
     protected void setFontSize(int size) {
 
-        Font font = this.pane.getFont();
+        Font font = pane.getFont();
 
-        this.fontSize = size;
+        fontSize = size;
 
-        this.pane.setFont(new Font(
-            this.fontName,
+        pane.setFont(new Font(
+            fontName,
             font.getStyle(),
-            this.fontSize));
+            fontSize));
 
-        this.decrease.setEnabled(this.fontSize > MIN_FONT_SIZE);
-        this.increase.setEnabled(this.fontSize < MAX_FONT_SIZE);
+        decrease.setEnabled(fontSize > MIN_FONT_SIZE);
+        increase.setEnabled(fontSize < MAX_FONT_SIZE);
 
-        this.size.setText(Integer.toString(this.fontSize));
+        this.size.setText(Integer.toString(fontSize));
     }
 
     @SuppressWarnings("serial")
@@ -158,7 +150,7 @@ public class TextPanel {
         @Override
         public void actionPerformed(ActionEvent event) {
 
-            setFontSize(TextPanel.this.fontSize + 1);
+            setFontSize(fontSize + 1);
         }
     }
 
@@ -175,7 +167,7 @@ public class TextPanel {
         @Override
         public void actionPerformed(ActionEvent event) {
 
-            setFontSize(TextPanel.this.fontSize - 1);
+            setFontSize(fontSize - 1);
         }
     }
 }

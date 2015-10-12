@@ -1,12 +1,13 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.types;
 
 import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.Bufferable;
 import discover.vdis.enums.VDIS;
+import discover.vdis.enums.VDISNames;
 
+/**
+ * @author Tony Pinkston
+ */
 public class ObjectType implements Comparable<ObjectType>, Bufferable {
 
     /**
@@ -59,11 +60,11 @@ public class ObjectType implements Comparable<ObjectType>, Bufferable {
     @Override
     public int compareTo(ObjectType type) {
 
-        if (this.value < type.value) {
+        if (value < type.value) {
 
             return -1;
         }
-        else if (this.value == type.value) {
+        else if (value == type.value) {
 
             return 0;
         }
@@ -78,7 +79,7 @@ public class ObjectType implements Comparable<ObjectType>, Bufferable {
 
         if (object instanceof ObjectType) {
 
-            return (this.value == ((ObjectType)object).value);
+            return (value == ((ObjectType)object).value);
         }
         else {
 
@@ -97,7 +98,7 @@ public class ObjectType implements Comparable<ObjectType>, Bufferable {
      */
     public String getDomain() {
 
-        return VDIS.getHandle(VDIS.DOMAIN).getDescription(this.domain);
+        return VDIS.getHandle(VDIS.DOMAIN).getDescription(domain);
     }
 
     /**
@@ -105,7 +106,7 @@ public class ObjectType implements Comparable<ObjectType>, Bufferable {
      */
     public String getKind() {
 
-        return VDIS.getHandle(VDIS.OBJECT_KIND).getDescription(this.kind);
+        return VDIS.getHandle(VDIS.OBJECT_KIND).getDescription(kind);
     }
 
     /**
@@ -113,21 +114,21 @@ public class ObjectType implements Comparable<ObjectType>, Bufferable {
      */
     public String getGeometry() {
 
-        return VDIS.getHandle(VDIS.OBJECT_GEOMETRY).getDescription(this.geometry.ordinal());
+        return VDIS.getHandle(VDIS.OBJECT_GEOMETRY).getDescription(geometry.ordinal());
     }
 
     @Override
     public String toString() {
 
-        return this.tuple;
+        return tuple;
     }
 
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
-        buffer.addText(this.name);
+        buffer.addText(name);
         buffer.addBreak();
-        buffer.addText(this.tuple);
+        buffer.addText(tuple);
         buffer.addBreak();
     }
 }

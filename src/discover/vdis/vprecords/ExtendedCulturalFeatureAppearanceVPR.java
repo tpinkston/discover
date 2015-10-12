@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.vprecords;
 
 import java.io.DataInputStream;
@@ -13,6 +10,9 @@ import discover.vdis.common.ExtendedEquipmentCulturalFeature;
 import discover.vdis.common.ExtendedStatus;
 import discover.vdis.enums.VDIS;
 
+/**
+ * @author Tony Pinkston
+ */
 public class ExtendedCulturalFeatureAppearanceVPR extends ExtendedAppearanceVPR {
 
     public static final int LENGTH = 16;
@@ -32,7 +32,7 @@ public class ExtendedCulturalFeatureAppearanceVPR extends ExtendedAppearanceVPR 
     }
 
     public ExtendedStatus getStatus() { return status; }
-    public Abstract16Bits getEquipment() { return this.equipment; }
+    public Abstract16Bits getEquipment() { return equipment; }
 
     public void setEquipment(Abstract16Bits equipment) {
 
@@ -45,13 +45,13 @@ public class ExtendedCulturalFeatureAppearanceVPR extends ExtendedAppearanceVPR 
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
-        String title = VDIS.getDescription(VDIS.VP_RECORD_TYPE, super.type);
+        String title = VDIS.getDescription(VDIS.VP_RECORD_TYPE, getRecordType());
 
         buffer.addTitle(title.toUpperCase());
         buffer.addTitle("STATUS");
-        buffer.addBuffer(this.status);
+        buffer.addBuffer(status);
         buffer.addTitle("EQUIPMENT");
-        buffer.addBuffer(this.equipment);
+        buffer.addBuffer(equipment);
     }
 
     @Override
@@ -60,10 +60,10 @@ public class ExtendedCulturalFeatureAppearanceVPR extends ExtendedAppearanceVPR 
         stream.skipBytes(12);
 
         // 1 Byte
-        this.status.read(stream);
+        status.read(stream);
 
         // 2 bytes
-        this.equipment.read(stream);
+        equipment.read(stream);
     }
 
     @Override
@@ -76,7 +76,7 @@ public class ExtendedCulturalFeatureAppearanceVPR extends ExtendedAppearanceVPR 
         stream.writeInt(0x00);
         stream.writeInt(0x00);
 
-        this.status.write(stream);
-        this.equipment.write(stream);
+        status.write(stream);
+        equipment.write(stream);
     }
 }

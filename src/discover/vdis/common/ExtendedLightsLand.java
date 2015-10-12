@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.common;
 
 import java.util.ArrayList;
@@ -9,6 +6,9 @@ import java.util.List;
 import discover.vdis.bits.Abstract32Bits;
 import discover.vdis.bits.Bits;
 
+/**
+ * @author Tony Pinkston
+ */
 public class ExtendedLightsLand extends Abstract32Bits {
 
     private static final List<Bits> values;
@@ -51,7 +51,7 @@ public class ExtendedLightsLand extends Abstract32Bits {
 
         ExtendedLightsLand lights = new ExtendedLightsLand();
 
-        lights.set(super.get());
+        lights.set(get());
 
         return lights;
     }

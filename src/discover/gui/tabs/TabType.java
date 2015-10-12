@@ -1,8 +1,8 @@
+package discover.gui.tabs;
+
 /**
  * @author Tony Pinkston
  */
-package discover.gui.tabs;
-
 public enum TabType {
 
     // Add new enumerations to the end to preserve backwards compatibility
@@ -33,6 +33,6 @@ public enum TabType {
         this.description = description;
     }
 
-    public String getLabel() { return this.label; }
-    public String getDescription() { return this.description; }
+    public String getLabel() { return label; }
+    public String getDescription() { return description; }
 }

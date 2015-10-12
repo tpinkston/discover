@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.widgets;
 
 import javax.swing.JComboBox;
@@ -15,6 +12,9 @@ import discover.vdis.enums.VDIS;
 import discover.vdis.vprecords.AbstractVPRecord;
 import discover.vdis.vprecords.ArticulatedPartVPR;
 
+/**
+ * @author Tony Pinkston
+ */
 public class ArticulatedPartWidget extends AbstractVariableRecordWidget {
 
     private static final String LABELS[] = {
@@ -37,19 +37,19 @@ public class ArticulatedPartWidget extends AbstractVariableRecordWidget {
 
         super("Articulated Part");
 
-        this.type = new JComboBox<>();
-        this.metric = new JComboBox<>();
-        this.change = Utilities.getIntegerField(0);
-        this.attachment = Utilities.getIntegerField(0);
-        this.value = Utilities.getFloatField(0.0f, null);
+        type = new JComboBox<>();
+        metric = new JComboBox<>();
+        change = Utilities.getIntegerField(0);
+        attachment = Utilities.getIntegerField(0);
+        value = Utilities.getFloatField(0.0f, null);
 
-        this.fill();
+        fill();
     }
 
     @Override
     public JComponent getComponent() {
 
-        return this.panel;
+        return panel;
     }
 
     @Override
@@ -58,15 +58,15 @@ public class ArticulatedPartWidget extends AbstractVariableRecordWidget {
         ArticulatedPartVPR record = new ArticulatedPartVPR();
 
         record.setType(Utilities.getComboboxValue(
-            this.type,
+            type,
             VDIS.ARTICULATED_PARTS));
         record.setMetric(Utilities.getComboboxValue(
-            this.metric,
+            metric,
             VDIS.ARTICULATED_PARTS_METRIC));
 
-        record.setChange(Utilities.getIntegerValue(this.change));
-        record.setAttachmentId(Utilities.getIntegerValue(this.attachment));
-        record.setValue(Utilities.getFloatValue(this.value));
+        record.setChange(Utilities.getIntegerValue(change));
+        record.setAttachmentId(Utilities.getIntegerValue(attachment));
+        record.setValue(Utilities.getFloatValue(value));
 
         return record;
     }
@@ -79,17 +79,17 @@ public class ArticulatedPartWidget extends AbstractVariableRecordWidget {
             ArticulatedPartVPR part = (ArticulatedPartVPR)record;
 
             Utilities.setComboBoxValue(
-                this.type,
+                type,
                 VDIS.ARTICULATED_PARTS,
                 part.getType());
             Utilities.setComboBoxValue(
-                this.metric,
+                metric,
                 VDIS.ARTICULATED_PARTS_METRIC,
                 part.getMetric());
 
-            this.change.setValue(part.getChange());
-            this.attachment.setValue(part.getAttachmentId());
-            this.value.setValue(part.getValue());
+            change.setValue(part.getChange());
+            attachment.setValue(part.getAttachmentId());
+            value.setValue(part.getValue());
         }
     }
 
@@ -99,33 +99,33 @@ public class ArticulatedPartWidget extends AbstractVariableRecordWidget {
         super.fill();
 
         Utilities.configureComboBox(
-            this.type,
+            type,
             VDIS.ARTICULATED_PARTS,
             false);
         Utilities.configureComboBox(
-            this.metric,
+            metric,
             VDIS.ARTICULATED_PARTS_METRIC,
             false);
 
-        this.change.setValue(0);
-        this.change.setHorizontalAlignment(JTextField.RIGHT);
-        this.attachment.setValue(0);
-        this.attachment.setHorizontalAlignment(JTextField.RIGHT);
-        this.value.setValue(0.0f);
-        this.value.setHorizontalAlignment(JTextField.RIGHT);
+        change.setValue(0);
+        change.setHorizontalAlignment(JTextField.RIGHT);
+        attachment.setValue(0);
+        attachment.setHorizontalAlignment(JTextField.RIGHT);
+        value.setValue(0.0f);
+        value.setHorizontalAlignment(JTextField.RIGHT);
 
         JComponent components[] = new JComponent[5];
 
-        components[0] = this.type;
-        components[1] = this.metric;
-        components[2] = this.change;
-        components[3] = this.attachment;
-        components[4] = this.value;
+        components[0] = type;
+        components[1] = metric;
+        components[2] = change;
+        components[3] = attachment;
+        components[4] = value;
 
         for(int i = 0; i < components.length; ++i) {
 
             Utilities.addComponent(
-                this.panel,
+                panel,
                 new JLabel(LABELS[i]),
                 Utilities.HORIZONTAL,
                 0, i,
@@ -133,7 +133,7 @@ public class ArticulatedPartWidget extends AbstractVariableRecordWidget {
                 0.0, 0.0,
                 Utilities.getInsets(14, 6, 2, 4));
             Utilities.addComponent(
-                this.panel,
+                panel,
                 components[i],
                 Utilities.HORIZONTAL,
                 1, i,
@@ -143,8 +143,8 @@ public class ArticulatedPartWidget extends AbstractVariableRecordWidget {
         }
 
         Utilities.addComponent(
-            this.panel,
-            super.getRemoveButton(),
+            panel,
+            getRemoveButton(),
             Utilities.HORIZONTAL,
             0, components.length,
             2, 1,

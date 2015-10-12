@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.widgets;
 
 import javax.swing.JComboBox;
@@ -14,6 +11,9 @@ import discover.vdis.vprecords.AbstractVPRecord;
 import discover.vdis.vprecords.EntityAssociationVPR;
 import discover.vdis.vprecords.EntityOffsetVPR;
 
+/**
+ * @author Tony Pinkston
+ */
 public class EntityOffsetRecordWidget extends AbstractVariableRecordWidget {
 
     private final JPanel panel = Utilities.getGridBagPanel("");
@@ -26,11 +26,11 @@ public class EntityOffsetRecordWidget extends AbstractVariableRecordWidget {
         super("Entity Offset");
 
         Utilities.configureComboBox(
-            this.type,
+            type,
             VDIS.OFFSET_TYPE,
             false);
 
-        this.fill();
+        fill();
     }
 
     @Override
@@ -41,10 +41,10 @@ public class EntityOffsetRecordWidget extends AbstractVariableRecordWidget {
         record = new EntityOffsetVPR();
 
         record.setType(Utilities.getComboboxValue(
-            this.type,
+            type,
             VDIS.OFFSET_TYPE));
 
-        this.offset.getValue(record.getOffset());
+        offset.getValue(record.getOffset());
 
         return record;
     }
@@ -57,7 +57,7 @@ public class EntityOffsetRecordWidget extends AbstractVariableRecordWidget {
             EntityOffsetVPR offset = (EntityOffsetVPR)record;
 
             Utilities.setComboBoxValue(
-                this.type,
+                type,
                 VDIS.OFFSET_TYPE,
                 offset.getType());
 
@@ -68,15 +68,16 @@ public class EntityOffsetRecordWidget extends AbstractVariableRecordWidget {
     @Override
     public JComponent getComponent() {
 
-        return this.panel;
+        return panel;
     }
 
+    @Override
     protected void fill() {
 
         super.fill();
 
         Utilities.addComponent(
-            this.panel,
+            panel,
             new JLabel("Offset Type:"),
             Utilities.HORIZONTAL,
             0, 0,
@@ -84,8 +85,8 @@ public class EntityOffsetRecordWidget extends AbstractVariableRecordWidget {
             0.0, 0.0,
             Utilities.getInsets(10, 6, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            this.type,
+            panel,
+            type,
             Utilities.HORIZONTAL,
             1, 0,
             1, 1,
@@ -93,8 +94,8 @@ public class EntityOffsetRecordWidget extends AbstractVariableRecordWidget {
             Utilities.getInsets(4, 2, 2, 2));
 
         Utilities.addComponent(
-            this.panel,
-            this.offset.getPanel(),
+            panel,
+            offset.getPanel(),
             Utilities.HORIZONTAL,
             0, 1,
             2, 1,
@@ -102,8 +103,8 @@ public class EntityOffsetRecordWidget extends AbstractVariableRecordWidget {
             Utilities.getInsets(4, 2, 2, 2));
 
         Utilities.addComponent(
-            this.panel,
-            super.getRemoveButton(),
+            panel,
+            getRemoveButton(),
             Utilities.HORIZONTAL,
             0, 2,
             2, 1,

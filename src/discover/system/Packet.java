@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.system;
 
 import java.io.ByteArrayInputStream;
@@ -8,6 +5,9 @@ import java.io.DataInputStream;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 
+/**
+ * @author Tony Pinkston
+ */
 public class Packet {
 
     private static int BUFFER_SIZE = 2048;
@@ -23,7 +23,7 @@ public class Packet {
      */
     public Packet() {
 
-        this.port = -1;
+        port = -1;
     }
 
     /**
@@ -39,7 +39,7 @@ public class Packet {
      */
     public int getPort() {
 
-        return this.port;
+        return port;
     }
 
     /**
@@ -47,7 +47,7 @@ public class Packet {
      */
     public DatagramPacket getPacket() {
 
-        return this.packet;
+        return packet;
     }
 
     /**
@@ -55,7 +55,7 @@ public class Packet {
      */
     public int getLength() {
 
-        return this.packet.getLength();
+        return packet.getLength();
     }
 
     /**
@@ -63,7 +63,7 @@ public class Packet {
      */
     public byte[] getData() {
 
-        return this.packet.getData();
+        return packet.getData();
     }
 
     /**
@@ -71,7 +71,7 @@ public class Packet {
      */
     public InetAddress getAddress() {
 
-        return this.packet.getAddress();
+        return packet.getAddress();
     }
 
     /**
@@ -79,13 +79,13 @@ public class Packet {
      */
     public String getHostAddress() {
 
-        if (this.getAddress() == null) {
+        if (getAddress() == null) {
 
             return null;
         }
         else {
 
-            return this.getAddress().getHostAddress();
+            return getAddress().getHostAddress();
         }
     }
 
@@ -94,13 +94,13 @@ public class Packet {
      */
     public String getCanonicalHostName() {
 
-        if (this.getAddress() == null) {
+        if (getAddress() == null) {
 
             return null;
         }
         else {
 
-            return this.getAddress().getCanonicalHostName();
+            return getAddress().getCanonicalHostName();
         }
     }
 
@@ -109,7 +109,7 @@ public class Packet {
      */
     public DataInputStream getInputStream() {
 
-        byte buffer[] = this.packet.getData();
+        byte buffer[] = packet.getData();
 
         return new DataInputStream(new ByteArrayInputStream(buffer));
     }
@@ -123,11 +123,11 @@ public class Packet {
         StringBuffer buffer = new StringBuffer();
 
         buffer.append("[");
-        buffer.append(this.getLength());
+        buffer.append(getLength());
         buffer.append(" bytes, port ");
-        buffer.append(this.port);
+        buffer.append(port);
         buffer.append(", ");
-        buffer.append(this.getHostAddress());
+        buffer.append(getHostAddress());
         buffer.append("]");
 
         return buffer.toString();

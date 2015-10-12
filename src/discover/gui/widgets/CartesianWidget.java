@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.widgets;
 
 import java.text.NumberFormat;
@@ -16,6 +13,9 @@ import discover.vdis.common.Location24;
 import discover.vdis.common.Orientation;
 import discover.vdis.common.Velocity;
 
+/**
+ * @author Tony Pinkston
+ */
 public class CartesianWidget extends ToggleWidget {
 
     private final JPanel panel = Utilities.getGridBagPanel("");
@@ -37,7 +37,7 @@ public class CartesianWidget extends ToggleWidget {
     @Override
     public JComponent getComponent() {
 
-        return this.panel;
+        return panel;
     }
 
     public String[] getLabels() {
@@ -47,63 +47,63 @@ public class CartesianWidget extends ToggleWidget {
 
     public void clear() {
 
-        for(int i = 0; i < this.fields.length; ++i) {
+        for(int i = 0; i < fields.length; ++i) {
 
-            this.fields[i].setValue(0.0f);
+            fields[i].setValue(0.0f);
         }
     }
 
     public float getValue(int index) {
 
-        return ((Float)this.fields[index].getValue()).floatValue();
+        return ((Float)fields[index].getValue()).floatValue();
     }
 
     public void getValue(float values[]) {
 
-        values[0] = Utilities.getFloatValue(this.fields[0]);
-        values[1] = Utilities.getFloatValue(this.fields[1]);
-        values[2] = Utilities.getFloatValue(this.fields[2]);
+        values[0] = Utilities.getFloatValue(fields[0]);
+        values[1] = Utilities.getFloatValue(fields[1]);
+        values[2] = Utilities.getFloatValue(fields[2]);
     }
 
     public void getValue(Location12 location) {
 
-        location.setX(Utilities.getFloatValue(this.fields[0]));
-        location.setY(Utilities.getFloatValue(this.fields[1]));
-        location.setZ(Utilities.getFloatValue(this.fields[2]));
+        location.setX(Utilities.getFloatValue(fields[0]));
+        location.setY(Utilities.getFloatValue(fields[1]));
+        location.setZ(Utilities.getFloatValue(fields[2]));
     }
 
     public void getValue(Location24 location) {
 
-        location.setX(Utilities.getFloatValue(this.fields[0]));
-        location.setY(Utilities.getFloatValue(this.fields[1]));
-        location.setZ(Utilities.getFloatValue(this.fields[2]));
+        location.setX(Utilities.getFloatValue(fields[0]));
+        location.setY(Utilities.getFloatValue(fields[1]));
+        location.setZ(Utilities.getFloatValue(fields[2]));
     }
 
     public void getValue(Velocity velocity) {
 
-        velocity.setX(Utilities.getFloatValue(this.fields[0]));
-        velocity.setY(Utilities.getFloatValue(this.fields[1]));
-        velocity.setZ(Utilities.getFloatValue(this.fields[2]));
+        velocity.setX(Utilities.getFloatValue(fields[0]));
+        velocity.setY(Utilities.getFloatValue(fields[1]));
+        velocity.setZ(Utilities.getFloatValue(fields[2]));
     }
 
     public void getValue(Orientation orientation) {
 
-        orientation.setPsi(Utilities.getFloatValue(this.fields[0]));
-        orientation.setTheta(Utilities.getFloatValue(this.fields[1]));
-        orientation.setPhi(Utilities.getFloatValue(this.fields[2]));
+        orientation.setPsi(Utilities.getFloatValue(fields[0]));
+        orientation.setTheta(Utilities.getFloatValue(fields[1]));
+        orientation.setPhi(Utilities.getFloatValue(fields[2]));
     }
 
     public void setValue(float values[]) {
 
         if (values != null) {
 
-            this.fields[0].setValue(values[0]);
-            this.fields[1].setValue(values[1]);
-            this.fields[2].setValue(values[2]);
+            fields[0].setValue(values[0]);
+            fields[1].setValue(values[1]);
+            fields[2].setValue(values[2]);
         }
-        else for(int i = 0; i < this.fields.length; ++i) {
+        else for(int i = 0; i < fields.length; ++i) {
 
-            this.fields[i].setValue(0.0f);
+            fields[i].setValue(0.0f);
         }
     }
 
@@ -111,13 +111,13 @@ public class CartesianWidget extends ToggleWidget {
 
         if (location != null) {
 
-            this.fields[0].setValue(location.getX());
-            this.fields[1].setValue(location.getY());
-            this.fields[2].setValue(location.getZ());
+            fields[0].setValue(location.getX());
+            fields[1].setValue(location.getY());
+            fields[2].setValue(location.getZ());
         }
-        else for(int i = 0; i < this.fields.length; ++i) {
+        else for(int i = 0; i < fields.length; ++i) {
 
-            this.fields[i].setValue(0.0f);
+            fields[i].setValue(0.0f);
         }
     }
 
@@ -125,13 +125,13 @@ public class CartesianWidget extends ToggleWidget {
 
         if (location != null) {
 
-            this.fields[0].setValue((float)location.getX());
-            this.fields[1].setValue((float)location.getY());
-            this.fields[2].setValue((float)location.getZ());
+            fields[0].setValue((float)location.getX());
+            fields[1].setValue((float)location.getY());
+            fields[2].setValue((float)location.getZ());
         }
-        else for(int i = 0; i < this.fields.length; ++i) {
+        else for(int i = 0; i < fields.length; ++i) {
 
-            this.fields[i].setValue(0.0f);
+            fields[i].setValue(0.0f);
         }
     }
 
@@ -139,13 +139,13 @@ public class CartesianWidget extends ToggleWidget {
 
         if (velocity != null) {
 
-            this.fields[0].setValue(velocity.getX());
-            this.fields[1].setValue(velocity.getY());
-            this.fields[2].setValue(velocity.getZ());
+            fields[0].setValue(velocity.getX());
+            fields[1].setValue(velocity.getY());
+            fields[2].setValue(velocity.getZ());
         }
-        else for(int i = 0; i < this.fields.length; ++i) {
+        else for(int i = 0; i < fields.length; ++i) {
 
-            this.fields[i].setValue(0.0f);
+            fields[i].setValue(0.0f);
         }
     }
 
@@ -153,17 +153,17 @@ public class CartesianWidget extends ToggleWidget {
 
         super.fill();
 
-        String labels[] = this.getLabels();
+        String labels[] = getLabels();
         Float value = new Float(0.0f);
 
-        for(int i = 0; i < this.fields.length; ++i) {
+        for(int i = 0; i < fields.length; ++i) {
 
-            this.fields[i] = Utilities.getFloatField(value, format);
-            this.fields[i].setValue(value);
-            this.fields[i].setColumns(8);
+            fields[i] = Utilities.getFloatField(value, format);
+            fields[i].setValue(value);
+            fields[i].setColumns(8);
 
             Utilities.addComponent(
-                this.panel,
+                panel,
                 new JLabel(labels[i]),
                 Utilities.HORIZONTAL,
                 i, 0,
@@ -171,8 +171,8 @@ public class CartesianWidget extends ToggleWidget {
                 0.3, 0.0,
                 Utilities.getInsets(3, 7, 3, 3));
             Utilities.addComponent(
-                this.panel,
-                this.fields[i],
+                panel,
+                fields[i],
                 Utilities.HORIZONTAL,
                 i, 1,
                 1, 1,

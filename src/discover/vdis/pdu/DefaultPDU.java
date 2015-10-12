@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.pdu;
 
 import java.io.DataInputStream;
@@ -8,6 +5,9 @@ import java.io.IOException;
 
 import discover.common.buffer.AbstractBuffer;
 
+/**
+ * @author Tony Pinkston
+ */
 public final class DefaultPDU extends AbstractPDU {
 
     public DefaultPDU() {

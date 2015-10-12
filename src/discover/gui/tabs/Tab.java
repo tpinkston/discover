@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.tabs;
 
 import java.awt.GridBagLayout;
@@ -15,18 +12,22 @@ import org.slf4j.LoggerFactory;
 
 import discover.common.Version;
 
+/**
+ * @author Tony Pinkston
+ */
 public abstract class Tab {
 
     protected static final Logger logger = LoggerFactory.getLogger(Tab.class);
 
+    // TODO: Make private
     protected final JPanel panel;
     protected final TabType type;
 
-    protected Tab(String name, TabType type) {
+    protected Tab(String name, TabType tabType) {
 
-        this.type = type;
-        this.panel = new JPanel(new GridBagLayout());
-        this.panel.setName(name);
+        type = tabType;
+        panel = new JPanel(new GridBagLayout());
+        panel.setName(name);
     }
 
     public abstract void load(Version version, DataInputStream stream) throws IOException;
@@ -37,26 +38,26 @@ public abstract class Tab {
 
     public JPanel getPanel() {
 
-        return this.panel;
+        return panel;
     }
 
     public TabType getTabType() {
 
-        return this.type;
+        return type;
     }
 
     public String getTabName() {
 
-        return this.panel.getName();
+        return panel.getName();
     }
 
     public void setTabName(String name) {
 
-        this.panel.setName(name);
+        panel.setName(name);
     }
 
     public final boolean isPDUPanel() {
 
-        return (this.type == TabType.CAPTURE) || (this.type == TabType.PLAYBACK);
+        return (type == TabType.CAPTURE) || (type == TabType.PLAYBACK);
     }
 }

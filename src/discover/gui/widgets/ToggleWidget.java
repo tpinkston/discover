@@ -26,21 +26,21 @@ public abstract class ToggleWidget extends Widget {
 
         super(null);
 
-        this.label = new JLabel(title);
-        this.label.addMouseListener(this);
-        this.label.setToolTipText("Click to toggle visibility.");
+        label = new JLabel(title);
+        label.addMouseListener(this);
+        label.setToolTipText("Click to toggle visibility.");
     }
 
     public abstract JComponent getComponent();
 
     public JLabel getLabel() {
 
-        return this.label;
+        return label;
     }
 
     public void setText(String text) {
 
-        this.getLabel().setText(text);
+        getLabel().setText(text);
     }
 
     public void setVisible(boolean visible) {
@@ -48,7 +48,7 @@ public abstract class ToggleWidget extends Widget {
         if (this.visible != visible) {
 
             this.visible = visible;
-            this.update();
+            update();
         }
     }
 
@@ -59,58 +59,59 @@ public abstract class ToggleWidget extends Widget {
 
     public void toggle() {
 
-        this.visible = !this.visible;
-        this.update();
+        visible = !visible;
+        update();
     }
 
     public boolean isVisible() {
 
-        return this.visible;
+        return visible;
     }
 
+    @Override
     public void removed() {
 
         super.removed();
 
-        this.label.removeMouseListener(this);
+        label.removeMouseListener(this);
     }
 
     @Override
     public void mouseClicked(MouseEvent event) {
 
-        if (event.getSource() == this.label) {
+        if (event.getSource() == label) {
 
-            this.toggle();
+            toggle();
         }
     }
 
     protected void update() {
 
-        this.updateIcon();
-        this.updateVisibility();
+        updateIcon();
+        updateVisibility();
     }
 
     protected void updateIcon() {
 
-        if (this.visible) {
+        if (visible) {
 
-            this.getLabel().setIcon(HIDE_ICON);
+            getLabel().setIcon(HIDE_ICON);
         }
         else {
 
-            this.getLabel().setIcon(SHOW_ICON);
+            getLabel().setIcon(SHOW_ICON);
         }
     }
 
     protected void updateVisibility() {
 
-        JComponent component = this.getComponent();
+        JComponent component = getComponent();
 
         if (component != null) {
 
-            component.setVisible(this.visible);
+            component.setVisible(visible);
 
-            if (this.revalidation) {
+            if (revalidation) {
 
                 component.revalidate();
             }
@@ -119,19 +120,19 @@ public abstract class ToggleWidget extends Widget {
 
     protected void fill() {
 
-        this.update();
+        update();
 
         Utilities.addComponent(
-            super.getPanel(),
-            this.getLabel(),
+            getPanel(),
+            getLabel(),
             Utilities.HORIZONTAL,
             0, 0,
             1, 1,
             1.0, 0.0,
             Utilities.getInsets(2, 2, 2, 2));
         Utilities.addComponent(
-            super.getPanel(),
-            this.getComponent(),
+            getPanel(),
+            getComponent(),
             Utilities.BOTH,
             0, 1,
             1, 1,

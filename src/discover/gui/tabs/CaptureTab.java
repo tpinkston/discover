@@ -59,7 +59,7 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
 
         super(name, TabType.CAPTURE);
 
-        this.fill();
+        fill();
     }
 
     @Override
@@ -74,7 +74,7 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
 
             for(int i = 0; i < count; ++i) {
 
-                this.createPort(new Integer(stream.readInt()), true);
+                createPort(new Integer(stream.readInt()), true);
             }
         }
     }
@@ -84,9 +84,9 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
 
         super.save(stream);
 
-        stream.writeShort(this.ports.size());
+        stream.writeShort(ports.size());
 
-        for(Integer port : this.ports.keySet()) {
+        for(Integer port : ports.keySet()) {
 
             stream.writeInt(port.intValue());
         }
@@ -95,7 +95,7 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
     @Override
     public void close() {
 
-        for(Port port : this.ports.values()) {
+        for(Port port : ports.values()) {
 
             if (!port.thread.isStopped()) {
 
@@ -103,14 +103,14 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
             }
         }
 
-        if (this.entityTracker != null) {
+        if (entityTracker != null) {
 
-            this.entityTracker.destroy();
+            entityTracker.destroy();
         }
 
-        if (this.siteMap != null) {
+        if (siteMap != null) {
 
-            this.siteMap.destroy();
+            siteMap.destroy();
         }
     }
 
@@ -119,19 +119,19 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
 
         super.setTabName(name);
 
-        for(Port port : this.ports.values()) {
+        for(Port port : ports.values()) {
 
-            port.thread.setName(this.getThreadName(port.port));
+            port.thread.setName(getThreadName(port.port));
         }
 
-        if (this.entityTracker != null) {
+        if (entityTracker != null) {
 
-            this.entityTracker.setTitle(name);
+            entityTracker.setTitle(name);
         }
 
-        if (this.siteMap != null) {
+        if (siteMap != null) {
 
-            this.siteMap.setTitle(name);
+            siteMap.setTitle(name);
         }
     }
 
@@ -144,7 +144,7 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
     @Override
     public void deleteAll() {
 
-        if (super.getPDUCount() > 0) {
+        if (getPDUCount() > 0) {
 
             int result = JOptionPane.showConfirmDialog(
                 getPanel(),
@@ -155,7 +155,7 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
 
             if (result == JOptionPane.YES_OPTION) {
 
-                this.clearAll();
+                clearAll();
             }
         }
     }
@@ -170,10 +170,10 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
     public void copy(ArrayList<PDU> clipboard) {
 
         // Copy selected PDUs and add them to the list.
-        this.lock.readLock().lock();
-        int size = this.table.getRowCount();
-        int selections[] = this.table.getSelectedRows();
-        this.lock.readLock().unlock();
+        lock.readLock().lock();
+        int size = table.getRowCount();
+        int selections[] = table.getSelectedRows();
+        lock.readLock().unlock();
 
         logger.info(
             "Copying " + selections.length + " of " + size + " " +
@@ -183,11 +183,11 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
 
         for(int i = 0; i < selections.length; ++i) {
 
-            int index = this.sorter.convertRowIndexToModel(selections[i]);
+            int index = sorter.convertRowIndexToModel(selections[i]);
 
             logger.debug("Copying PDU at index: {}", index);
 
-            clipboard.add(this.getPDU(index).copy());
+            clipboard.add(getPDU(index).copy());
         }
     }
 
@@ -251,35 +251,35 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
 
         super.clearAll();
 
-        if (this.entityTracker != null) {
+        if (entityTracker != null) {
 
-            this.entityTracker.clearAll();
+            entityTracker.clearAll();
         }
 
-        if (this.siteMap != null) {
+        if (siteMap != null) {
 
-            this.siteMap.clearAll();
+            siteMap.clearAll();
         }
     }
 
     private void createPort(Integer number, boolean paused) {
 
-        if (this.ports.keySet().contains(number)) {
+        if (ports.keySet().contains(number)) {
 
             logger.error("Port already in use: {}", number);
         }
         else try {
 
             CaptureThread thread = new CaptureThread(
-                super.getThreadName(number),
+                getThreadName(number),
                 this,
                 number.intValue());
 
             Port port = new Port(thread, number.intValue(), paused);
 
-            super.tools.add(port.button);
+            tools.add(port.button);
 
-            this.ports.put(number, port);
+            ports.put(number, port);
 
             if (paused) {
 
@@ -309,12 +309,12 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
         JTabbedPane tabbed = new JTabbedPane(JTabbedPane.BOTTOM);
         Insets insets = new Insets(3, 3, 3, 20);
 
-        tabbed.add("Content", super.content.getPanel());
-        tabbed.add("Byte View", super.hexadecimal.getPanel());
+        tabbed.add("Content", content.getPanel());
+        tabbed.add("Byte View", hexadecimal.getPanel());
 
         Utilities.addComponent(
             status,
-            super.total,
+            total,
             Utilities.HORIZONTAL,
             0, 0,
             1, 1,
@@ -322,7 +322,7 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
             insets);
         Utilities.addComponent(
             status,
-            super.visible,
+            visible,
             Utilities.HORIZONTAL,
             1, 0,
             1, 1,
@@ -330,7 +330,7 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
             insets);
         Utilities.addComponent(
             status,
-            super.clipboard,
+            clipboard,
             Utilities.HORIZONTAL,
             2, 0,
             1, 1,
@@ -346,11 +346,11 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
             insets);
 
         JPanel panel = new JPanel(new BorderLayout());
-        JScrollPane scroller = new JScrollPane(super.table);
+        JScrollPane scroller = new JScrollPane(table);
 
         scroller.setPreferredSize(new Dimension(800, 700));
 
-        panel.add(super.tools, BorderLayout.NORTH);
+        panel.add(tools, BorderLayout.NORTH);
         panel.add(scroller, BorderLayout.CENTER);
         panel.add(status, BorderLayout.SOUTH);
 
@@ -358,19 +358,19 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
         split.setLeftComponent(panel);
         split.setRightComponent(tabbed);
 
-        super.tools.add(new ScrollAction());
-        super.tools.addSeparator();
-        super.tools.add(new FilterDialogAction());
-        super.tools.addSeparator();
-        super.tools.add(new SiteMapAction());
-        super.tools.add(new EntityTrackerAction());
-        super.tools.addSeparator();
-        super.tools.add(new AddPortAction());
-        super.tools.add(new RemovePortAction());
-        super.tools.addSeparator();
+        tools.add(new ScrollAction());
+        tools.addSeparator();
+        tools.add(new FilterDialogAction());
+        tools.addSeparator();
+        tools.add(new SiteMapAction());
+        tools.add(new EntityTrackerAction());
+        tools.addSeparator();
+        tools.add(new AddPortAction());
+        tools.add(new RemovePortAction());
+        tools.addSeparator();
 
         Utilities.addComponent(
-            super.panel,
+            getPanel(),
             split,
             Utilities.BOTH,
             0, 0,
@@ -392,46 +392,46 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
             this.port = port;
             this.thread = thread;
 
-            this.button = new JButton(Integer.toString(port));
-            this.button.addActionListener(this);
+            button = new JButton(Integer.toString(port));
+            button.addActionListener(this);
 
             if (paused) {
 
-                this.setInactive();
+                setInactive();
             }
             else {
 
-                this.setActive();
+                setActive();
             }
         }
 
         @Override
         public void actionPerformed(ActionEvent event) {
 
-            if (this.button.getForeground().equals(ACTIVE_COLOR)) {
+            if (button.getForeground().equals(ACTIVE_COLOR)) {
 
                 // Suspend notifications...
-                this.thread.setPaused(true);
-                this.setInactive();
+                thread.setPaused(true);
+                setInactive();
             }
-            else if (this.button.getForeground().equals(INACTIVE_COLOR)) {
+            else if (button.getForeground().equals(INACTIVE_COLOR)) {
 
                 // Resume notifications...
-                this.thread.setPaused(false);
-                this.setActive();
+                thread.setPaused(false);
+                setActive();
             }
         }
 
         void setActive() {
 
-            this.button.setToolTipText(CLICK_TO_SUSPEND + Integer.toString(port));
-            this.button.setForeground(ACTIVE_COLOR);
+            button.setToolTipText(CLICK_TO_SUSPEND + Integer.toString(port));
+            button.setForeground(ACTIVE_COLOR);
         }
 
         void setInactive() {
 
-            this.button.setToolTipText(CLICK_TO_RESUME + Integer.toString(port));
-            this.button.setForeground(INACTIVE_COLOR);
+            button.setToolTipText(CLICK_TO_RESUME + Integer.toString(port));
+            button.setForeground(INACTIVE_COLOR);
         }
     }
 
@@ -442,10 +442,10 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
 
             super("Add Port");
 
-            super.putValue(
+            putValue(
                 Action.SMALL_ICON,
                 Utilities.getImageIcon("port_add.gif"));
-            super.putValue(
+            putValue(
                 Action.SHORT_DESCRIPTION,
                 "Add capture port.");
         }
@@ -484,10 +484,10 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
 
             super("Remove Port");
 
-            super.putValue(
+            putValue(
                 Action.SMALL_ICON,
                 Utilities.getImageIcon("port_remove.gif"));
-            super.putValue(
+            putValue(
                 Action.SHORT_DESCRIPTION,
                 "Remove capture port.");
         }
@@ -537,10 +537,10 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
 
             super("Entity Tracker");
 
-            super.putValue(
+            putValue(
                 Action.SMALL_ICON,
                 Utilities.getImageIcon("entity_tracker.gif"));
-            super.putValue(
+            putValue(
                 Action.SHORT_DESCRIPTION,
                 "Show entity tracker.");
         }
@@ -564,7 +564,7 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
 
             super("Site Map");
 
-            super.putValue(
+            putValue(
                 Action.SMALL_ICON,
                 Utilities.getImageIcon("site_map.gif"));
             super.putValue(

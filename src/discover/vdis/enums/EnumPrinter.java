@@ -1,12 +1,12 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.enums;
 
 import java.io.PrintStream;
 
 import discover.common.Hexadecimal;
 
+/**
+ * @author Tony Pinkston
+ */
 public class EnumPrinter {
 
     public static void print(String parameter) {

@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui;
 
 import java.awt.Component;
@@ -44,6 +41,9 @@ import discover.vdis.enums.VDIS.Handle;
 import discover.vdis.types.EntityType;
 import discover.vdis.types.ObjectType;
 
+/**
+ * @author Tony Pinkston
+ */
 public class Utilities {
 
     private static final Logger logger = LoggerFactory.getLogger(Utilities.class);
@@ -802,7 +802,7 @@ public class Utilities {
             }
             catch(NumberFormatException exception) {
 
-                return this.defaultValue;
+                return defaultValue;
             }
         }
 
@@ -815,7 +815,7 @@ public class Utilities {
             }
             else if (value instanceof String) {
 
-                Object object = this.stringToValue(value.toString());
+                Object object = stringToValue(value.toString());
 
                 if (object != null) {
 
@@ -856,7 +856,7 @@ public class Utilities {
             }
             catch(NumberFormatException exception) {
 
-                object = this.defaultValue;
+                object = defaultValue;
             }
 
 //            System.out.println(
@@ -874,9 +874,9 @@ public class Utilities {
 
                 float value = ((Number)object).floatValue();
 
-                if (this.format != null) {
+                if (format != null) {
 
-                    string = this.format.format(value);
+                    string = format.format(value);
                 }
                 else {
 
@@ -885,7 +885,7 @@ public class Utilities {
             }
             else if (object instanceof String) {
 
-                Object value = this.stringToValue(object.toString());
+                Object value = stringToValue(object.toString());
 
                 if (value != null) {
 

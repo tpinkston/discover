@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.common;
 
 import java.util.ArrayList;
@@ -10,6 +7,9 @@ import discover.vdis.bits.Abstract8Bits;
 import discover.vdis.bits.Bits;
 import discover.vdis.enums.VDIS;
 
+/**
+ * @author Tony Pinkston
+ */
 public final class ConditionMaterial extends Abstract8Bits {
 
     private static final List<Bits> values;
@@ -35,7 +35,7 @@ public final class ConditionMaterial extends Abstract8Bits {
 
         ConditionMaterial record = new ConditionMaterial();
 
-        record.set(super.get());
+        record.set(get());
 
         return record;
     }

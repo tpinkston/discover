@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.common;
 
 import java.util.ArrayList;
@@ -9,6 +6,9 @@ import java.util.List;
 import discover.vdis.bits.Abstract32Bits;
 import discover.vdis.bits.Bits;
 
+/**
+ * @author Tony Pinkston
+ */
 public class EntityCapabilities extends Abstract32Bits {
 
     private static final List<Bits> values;
@@ -39,7 +39,7 @@ public class EntityCapabilities extends Abstract32Bits {
 
         EntityCapabilities capabilities = new EntityCapabilities();
 
-        capabilities.set(super.get());
+        capabilities.set(get());
 
         return capabilities;
     }

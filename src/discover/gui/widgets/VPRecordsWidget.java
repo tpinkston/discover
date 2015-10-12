@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.widgets;
 
 import java.awt.event.ActionEvent;
@@ -15,6 +12,9 @@ import discover.gui.dialogs.GetRecordTypeDialog;
 import discover.gui.frames.DiscoverFrame;
 import discover.vdis.vprecords.AbstractVPRecord;
 
+/**
+ * @author Tony Pinkston
+ */
 public class VPRecordsWidget extends Widget {
 
     private static final String ADD = "Add Record";
@@ -28,14 +28,14 @@ public class VPRecordsWidget extends Widget {
 
         super("Variable Parameter Records");
 
-        this.widgets = new ArrayList<AbstractVariableRecordWidget>();
+        widgets = new ArrayList<AbstractVariableRecordWidget>();
 
-        this.add.setActionCommand(ADD);
-        this.add.addActionListener(this);
+        add.setActionCommand(ADD);
+        add.addActionListener(this);
 
         Utilities.addComponent(
-            super.getPanel(),
-            this.add,
+            getPanel(),
+            add,
             Utilities.HORIZONTAL,
             0, 0,
             1, 1,
@@ -47,7 +47,7 @@ public class VPRecordsWidget extends Widget {
 
         list.clear();
 
-        for(AbstractVariableRecordWidget widget : this.widgets) {
+        for(AbstractVariableRecordWidget widget : widgets) {
 
             list.add(widget.getRecord());
         }
@@ -57,7 +57,7 @@ public class VPRecordsWidget extends Widget {
 
         for(AbstractVPRecord record : list) {
 
-            this.addRecord(record);
+            addRecord(record);
         }
     }
 
@@ -68,11 +68,11 @@ public class VPRecordsWidget extends Widget {
 
         if (command == ADD) {
 
-            this.addRecord(null);
+            addRecord(null);
         }
         else if (command == AbstractVariableRecordWidget.REMOVE) {
 
-            this.removeRecord(event.getSource());
+            removeRecord(event.getSource());
         }
     }
 
@@ -84,11 +84,11 @@ public class VPRecordsWidget extends Widget {
 
             GetRecordTypeDialog dialog = new GetRecordTypeDialog();
 
-            widget = this.getRecord(dialog.getRecordType());
+            widget = getRecord(dialog.getRecordType());
         }
         else {
 
-            widget = this.getRecord(record.getRecordType());
+            widget = getRecord(record.getRecordType());
         }
 
         if (widget != null) {
@@ -101,16 +101,16 @@ public class VPRecordsWidget extends Widget {
             widget.getRemoveButton().addActionListener(this);
 
             Utilities.addComponent(
-                super.getPanel(),
+                getPanel(),
                 widget.getPanel(),
                 Utilities.HORIZONTAL,
-                0, ++this.y,
+                0, ++y,
                 1, 1,
                 1.0, 0.0,
                 Utilities.getInsets(4, 2, 2, 2));
 
-            super.getPanel().revalidate();
-            this.widgets.add(widget);
+            getPanel().revalidate();
+            widgets.add(widget);
         }
     }
 
@@ -152,11 +152,11 @@ public class VPRecordsWidget extends Widget {
     private void removeRecord(Object source) {
 
         AbstractVariableRecordWidget widget = null;
-        int size = this.widgets.size();
+        int size = widgets.size();
 
         for(int i = 0; (i < size) && (widget == null); ++i) {
 
-            widget = this.widgets.get(i);
+            widget = widgets.get(i);
 
             if (source != widget.getRemoveButton()) {
 
@@ -181,9 +181,9 @@ public class VPRecordsWidget extends Widget {
                 widget.removed();
                 widget.getRemoveButton().removeActionListener(this);
 
-                this.widgets.remove(widget);
-                super.getPanel().remove(widget.getPanel());
-                super.getPanel().revalidate();
+                widgets.remove(widget);
+                getPanel().remove(widget.getPanel());
+                getPanel().revalidate();
             }
         }
     }

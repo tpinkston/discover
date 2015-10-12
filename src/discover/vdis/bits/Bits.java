@@ -1,11 +1,11 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.bits;
 
 import discover.vdis.enums.VDIS;
 import discover.vdis.enums.VDIS.Handle;
 
+/**
+ * @author Tony Pinkston
+ */
 public class Bits {
 
     /** Label for value of bit(s). */

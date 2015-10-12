@@ -1,10 +1,10 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.common;
 
 import discover.vdis.bits.Abstract16Bits;
 
+/**
+ * @author Tony Pinkston
+ */
 public class ExtendedEquipmentDefault extends Abstract16Bits {
 
     @Override
@@ -12,7 +12,7 @@ public class ExtendedEquipmentDefault extends Abstract16Bits {
 
         ExtendedEquipmentDefault equipment = new ExtendedEquipmentDefault();
 
-        equipment.set(super.get());
+        equipment.set(get());
 
         return equipment;
     }

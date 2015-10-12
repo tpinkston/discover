@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.datum;
 
 import java.io.DataInputStream;
@@ -13,6 +10,9 @@ import discover.common.buffer.AbstractBuffer;
 import discover.vdis.common.EntityId;
 import discover.vdis.enums.VDIS;
 
+/**
+ * @author Tony Pinkston
+ */
 public class SlingLoadCapability extends AbstractDatumRecord {
 
     private static final NumberFormat formatter;
@@ -40,16 +40,16 @@ public class SlingLoadCapability extends AbstractDatumRecord {
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
-        buffer.addAttribute("Datum Id", super.getDatumId(), VDIS.DATUM_IDS);
-        buffer.addAttribute("Datum Length (bytes)", Integer.toString(super.getValueSizeInBytes()));
-        buffer.addAttribute("Payload", this.payload.toString());
-        buffer.addAttribute("Carrier", this.carrier.toString());
-        buffer.addAttribute("Hook Type", this.hookType, VDIS.HOOK_TYPE);
-        buffer.addAttribute("Drag Coefficient", this.dragCoeffficient);
-        buffer.addAttribute("Current Mass (kg)", this.currentMass);
+        buffer.addAttribute("Datum Id", getDatumId(), VDIS.DATUM_IDS);
+        buffer.addAttribute("Datum Length (bytes)", Integer.toString(getValueSizeInBytes()));
+        buffer.addAttribute("Payload", payload.toString());
+        buffer.addAttribute("Carrier", carrier.toString());
+        buffer.addAttribute("Hook Type", hookType, VDIS.HOOK_TYPE);
+        buffer.addAttribute("Drag Coefficient", dragCoeffficient);
+        buffer.addAttribute("Current Mass (kg)", currentMass);
         buffer.addLabel("Lines Needed");
 
-        if (this.linesNeeded < 1) {
+        if (linesNeeded < 1) {
 
             buffer.addItalic("None");
         }
@@ -57,13 +57,13 @@ public class SlingLoadCapability extends AbstractDatumRecord {
 
             buffer.listStart();
 
-            for(int i = 0; i < this.linesNeeded; ++i) {
+            for(int i = 0; i < linesNeeded; ++i) {
 
                 buffer.listItemStart();
                 buffer.addLabel("Line Length (m)");
-                buffer.addItalic(formatter.format(this.lengths.get(i)));
+                buffer.addItalic(formatter.format(lengths.get(i)));
                 buffer.addLabel(", Hook Offset (m)");
-                buffer.addItalic(formatter.format(this.offsets.get(i)));
+                buffer.addItalic(formatter.format(offsets.get(i)));
                 buffer.listItemFinished();
             }
 
@@ -76,18 +76,18 @@ public class SlingLoadCapability extends AbstractDatumRecord {
 
         super.read(stream); // Record length (record type already read)
 
-        this.payload.read(stream); // 6 bytes
-        this.carrier.read(stream); // 6 bytes
-        this.dragCoeffficient = stream.readFloat(); // 4 bytes
-        this.currentMass = stream.readFloat(); // 4 bytes
+        payload.read(stream); // 6 bytes
+        carrier.read(stream); // 6 bytes
+        dragCoeffficient = stream.readFloat(); // 4 bytes
+        currentMass = stream.readFloat(); // 4 bytes
         stream.skipBytes(2); // 2 bytes padding
-        this.hookType = stream.readUnsignedByte(); // 1 byte
-        this.linesNeeded = stream.readUnsignedByte(); // 1 byte
+        hookType = stream.readUnsignedByte(); // 1 byte
+        linesNeeded = stream.readUnsignedByte(); // 1 byte
 
-        for(int i = 0; i < this.linesNeeded; ++i) {
+        for(int i = 0; i < linesNeeded; ++i) {
 
-            this.lengths.add(stream.readFloat()); // 4 bytes
-            this.offsets.add(stream.readFloat()); // 4 bytes
+            lengths.add(stream.readFloat()); // 4 bytes
+            offsets.add(stream.readFloat()); // 4 bytes
         }
     }
 }

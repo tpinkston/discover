@@ -1,17 +1,16 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.types;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.util.Arrays;
 
 import discover.common.Writable;
 import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.Bufferable;
 import discover.vdis.enums.VDIS;
 
+/**
+ * @author Tony Pinkston
+ */
 public class EntityType implements Comparable<EntityType>, Bufferable, Writable {
 
     public static final int LENGTH = 8;
@@ -38,7 +37,7 @@ public class EntityType implements Comparable<EntityType>, Bufferable, Writable 
         String alternate,
         String string) {
 
-        this.septuple = new Septuple(
+        septuple = new Septuple(
             string,
             kind,
             domain,
@@ -59,7 +58,7 @@ public class EntityType implements Comparable<EntityType>, Bufferable, Writable 
      */
     public String getKind() {
 
-        return VDIS.getHandle(VDIS.ENT_KIND).getDescription(this.septuple.kind);
+        return VDIS.getHandle(VDIS.ENT_KIND).getDescription(septuple.kind);
     }
 
     /**
@@ -67,7 +66,7 @@ public class EntityType implements Comparable<EntityType>, Bufferable, Writable 
      */
     public String getDomain() {
 
-        return VDIS.getHandle(VDIS.DOMAIN).getDescription(this.septuple.domain);
+        return VDIS.getHandle(VDIS.DOMAIN).getDescription(septuple.domain);
     }
 
     /**
@@ -75,27 +74,27 @@ public class EntityType implements Comparable<EntityType>, Bufferable, Writable 
      */
     public String getCountry() {
 
-        return VDIS.getHandle(VDIS.ENT_CNTRY).getDescription(this.septuple.country);
+        return VDIS.getHandle(VDIS.ENT_CNTRY).getDescription(septuple.country);
     }
 
     public String getCDTName() {
 
-        return this.cdtName;
+        return cdtName;
     }
 
     public void setCDTName(String name) {
 
-        this.cdtName = name;
+        cdtName = name;
     }
 
     @Override
     public int compareTo(EntityType type) {
 
-        if (this.value < type.value) {
+        if (value < type.value) {
 
             return -1;
         }
-        else if (this.value == type.value) {
+        else if (value == type.value) {
 
             return 0;
         }
@@ -110,7 +109,7 @@ public class EntityType implements Comparable<EntityType>, Bufferable, Writable 
 
         if (object instanceof EntityType) {
 
-            return (this.value == ((EntityType)object).value);
+            return (value == ((EntityType)object).value);
         }
         else {
 
@@ -127,36 +126,36 @@ public class EntityType implements Comparable<EntityType>, Bufferable, Writable 
     @Override
     public String toString() {
 
-        return this.septuple.string;
+        return septuple.string;
     }
 
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
-        buffer.addText(this.name);
+        buffer.addText(name);
         buffer.addBreak();
 
-        if (this.cdtName != null) {
+        if (cdtName != null) {
 
-            buffer.addText("CDT Model Name \"" + this.cdtName + "\"");
+            buffer.addText("CDT Model Name \"" + cdtName + "\"");
             buffer.addBreak();
         }
 
-        buffer.addText(this.septuple.string);
+        buffer.addText(septuple.string);
         buffer.addBreak();
-        buffer.addText("\"" + this.description + "\"");
+        buffer.addText("\"" + description + "\"");
         buffer.addBreak();
     }
 
     @Override
     public void write(DataOutputStream stream) throws IOException {
 
-        stream.writeByte(this.septuple.kind);
-        stream.writeByte(this.septuple.domain);
-        stream.writeShort(this.septuple.country);
-        stream.writeByte(this.septuple.category);
-        stream.writeByte(this.septuple.subcategory);
-        stream.writeByte(this.septuple.specific);
-        stream.writeByte(this.septuple.extension);
+        stream.writeByte(septuple.kind);
+        stream.writeByte(septuple.domain);
+        stream.writeShort(septuple.country);
+        stream.writeByte(septuple.category);
+        stream.writeByte(septuple.subcategory);
+        stream.writeByte(septuple.specific);
+        stream.writeByte(septuple.extension);
     }
 }

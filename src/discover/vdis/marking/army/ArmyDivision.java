@@ -1,10 +1,10 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.marking.army;
 
 import java.util.List;
 
+/**
+ * @author Tony Pinkston
+ */
 public class ArmyDivision extends AbstractEchelon {
 
     ArmyDivision(int value, String name, String description) {

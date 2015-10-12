@@ -1,12 +1,12 @@
-/**
- * @author Tony Pinkston
- */
 package discover.common.buffer;
 
 import java.text.NumberFormat;
 
 import discover.vdis.enums.VDIS;
 
+/**
+ * @author Tony Pinkston
+ */
 public abstract class AbstractBuffer {
 
     private static final String THIN_TEXT_SEPARATOR =
@@ -30,9 +30,10 @@ public abstract class AbstractBuffer {
 
     public abstract boolean isHTML();
 
+    @Override
     public final String toString() {
 
-        return this.buffer.toString();
+        return buffer.toString();
     }
 
     public void addBuffer(Bufferable bufferable) {
@@ -42,57 +43,57 @@ public abstract class AbstractBuffer {
 
     public void listStart() {
 
-        this.buffer.append(this.isHTML() ? "<ul>" : "\n");
+        buffer.append(isHTML() ? "<ul>" : "\n");
     }
 
     public void listFinished() {
 
-        this.buffer.append(this.isHTML() ? "</ul>" : "\n");
+        buffer.append(isHTML() ? "</ul>" : "\n");
     }
 
     public void listItemStart() {
 
-        this.buffer.append(this.isHTML() ? "<li>" : " - ");
+        buffer.append(isHTML() ? "<li>" : " - ");
     }
 
     public void listItemFinished() {
 
-        this.buffer.append(this.isHTML() ? "</li>" : "\n");
+        buffer.append(isHTML() ? "</li>" : "\n");
     }
 
     public void addBreak() {
 
-        this.buffer.append(this.isHTML() ? "<br/>" : "\n");
+        buffer.append(isHTML() ? "<br/>" : "\n");
     }
 
     public void addText(String text) {
 
         if (text == null) {
 
-            this.buffer.append(NULL);
+            buffer.append(NULL);
         }
         else {
 
-            this.buffer.append(text);
+            buffer.append(text);
         }
     }
 
     public void addSeparator() {
 
-        if (this.isHTML()) {
+        if (isHTML()) {
 
             buffer.append("<hr noshade/>");
         }
         else {
 
-            this.addText(THIN_TEXT_SEPARATOR);
-            this.addBreak();
+            addText(THIN_TEXT_SEPARATOR);
+            addBreak();
         }
     }
 
     public void addThickSeparator(String title) {
 
-        if (this.isHTML()) {
+        if (isHTML()) {
 
             buffer.append("<hr noshade/>");
         }
@@ -103,95 +104,95 @@ public abstract class AbstractBuffer {
             int length = spaced.length();
             int half = ((80 - length) / 2);
 
-            this.addText(THICK_TEXT_SEPARATOR.substring(0, half));
-            this.addText(spaced);
+            addText(THICK_TEXT_SEPARATOR.substring(0, half));
+            addText(spaced);
 
             if ((length % 2) == 0) {
 
-                this.addText(THICK_TEXT_SEPARATOR.substring(0, half));
+                addText(THICK_TEXT_SEPARATOR.substring(0, half));
             }
             else {
 
-                this.addText(THICK_TEXT_SEPARATOR.substring(0, (half + 1)));
+                addText(THICK_TEXT_SEPARATOR.substring(0, (half + 1)));
             }
         }
         else {
 
-            this.addText(THICK_TEXT_SEPARATOR);
-            this.addBreak();
+            addText(THICK_TEXT_SEPARATOR);
+            addBreak();
         }
     }
 
     public void addTitle(String title) {
 
-        this.addBold(title);
-        this.addBreak();
+        addBold(title);
+        addBreak();
     }
 
     public void addBold(String text) {
 
-        this.addHTML("<b>");
-        this.addText(text);
-        this.addHTML("</b>");
+        addHTML("<b>");
+        addText(text);
+        addHTML("</b>");
     }
 
     public void addItalic(String text) {
 
-        this.addHTML("<i>");
-        this.addText(text);
-        this.addHTML("</i>");
+        addHTML("<i>");
+        addText(text);
+        addHTML("</i>");
     }
 
     public void addFixedWidthItalic(String text) {
 
-        this.addHTML("<i><tt>");
-        this.addText(text);
-        this.addHTML("</tt></i>");
+        addHTML("<i><tt>");
+        addText(text);
+        addHTML("</tt></i>");
     }
 
     public void addFixedWidthText(String text) {
 
-        this.addHTML("<tt>");
-        this.addText(text);
-        this.addHTML("</tt>");
+        addHTML("<tt>");
+        addText(text);
+        addHTML("</tt>");
     }
 
     public void addLabel(String label) {
 
-        this.addText(label);
-        this.addText(": ");
+        addText(label);
+        addText(": ");
     }
 
     public void addBoldLabel(String label) {
 
-        this.addHTML("<b>");
-        this.addLabel(label);
-        this.addHTML("</b>");
+        addHTML("<b>");
+        addLabel(label);
+        addHTML("</b>");
     }
 
     public void addAttribute(String name, String value) {
 
-        this.addLabel(name);
-        this.addItalic(value);
-        this.addBreak();
+        addLabel(name);
+        addItalic(value);
+        addBreak();
     }
 
     public void addBoldAttribute(String name, String value) {
 
-        this.addBoldLabel(name);
-        this.addItalic(value);
-        this.addBreak();
+        addBoldLabel(name);
+        addItalic(value);
+        addBreak();
     }
 
     public void addAttribute(String name, Integer value) {
 
         if (value == null) {
 
-            this.addAttribute(name, NULL);
+            addAttribute(name, NULL);
         }
         else {
 
-            this.addAttribute(name, value.toString());
+            addAttribute(name, value.toString());
         }
     }
 
@@ -199,11 +200,11 @@ public abstract class AbstractBuffer {
 
         if (value == null) {
 
-            this.addBoldAttribute(name, NULL);
+            addBoldAttribute(name, NULL);
         }
         else {
 
-            this.addBoldAttribute(name, value.toString());
+            addBoldAttribute(name, value.toString());
         }
     }
 
@@ -211,11 +212,11 @@ public abstract class AbstractBuffer {
 
         if (value == null) {
 
-            this.addAttribute(name, NULL);
+            addAttribute(name, NULL);
         }
         else {
 
-            this.addAttribute(name, value.toString());
+            addAttribute(name, value.toString());
         }
     }
 
@@ -223,11 +224,11 @@ public abstract class AbstractBuffer {
 
         if (value == null) {
 
-            this.addAttribute(name, NULL);
+            addAttribute(name, NULL);
         }
         else {
 
-            this.addAttribute(name, number.format(value));
+            addAttribute(name, number.format(value));
         }
     }
 
@@ -239,15 +240,15 @@ public abstract class AbstractBuffer {
         text.concat(Integer.toHexString(value).toUpperCase());
         text.concat("]");
 
-        this.addAttribute(name, text);
+        addAttribute(name, text);
     }
 
     public void addListAttribute(String name, String value) {
 
-        this.listItemStart();
-        this.addLabel(name);
-        this.addItalic(value);
-        this.listItemFinished();
+        listItemStart();
+        addLabel(name);
+        addItalic(value);
+        listItemFinished();
     }
 
     public void addListAttribute(String name, int value, int type) {
@@ -258,14 +259,14 @@ public abstract class AbstractBuffer {
         text.concat(Integer.toHexString(value).toUpperCase());
         text.concat("]");
 
-        this.addListAttribute(name, text);
+        addListAttribute(name, text);
     }
 
     private void addHTML(String string) {
 
-        if (this.isHTML()) {
+        if (isHTML()) {
 
-            this.buffer.append(string);
+            buffer.append(string);
         }
     }
 }

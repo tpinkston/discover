@@ -1,11 +1,11 @@
-/**
- * @author Tony Pinkston
- */
 package discover.common;
 
 import java.io.DataInputStream;
 import java.io.IOException;
 
+/**
+ * @author Tony Pinkston
+ */
 public interface Readable {
 
     /**

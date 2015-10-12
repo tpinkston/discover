@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.vprecords;
 
 import java.io.DataInputStream;
@@ -12,6 +9,9 @@ import discover.common.buffer.AbstractBuffer;
 import discover.vdis.common.Location12;
 import discover.vdis.enums.VDIS;
 
+/**
+ * @author Tony Pinkston
+ */
 public class EntityOffsetVPR extends AbstractVPRecord {
 
     public static final int LENGTH = 16;
@@ -37,8 +37,8 @@ public class EntityOffsetVPR extends AbstractVPRecord {
         return LENGTH;
     }
 
-    public int getType() { return this.type; }
-    public Location12 getOffset() { return this.offset; }
+    public int getType() { return type; }
+    public Location12 getOffset() { return offset; }
 
     public void setType(int type) {
 
@@ -48,30 +48,30 @@ public class EntityOffsetVPR extends AbstractVPRecord {
     @Override
     public String toString() {
 
-        return this.offset.toString();
+        return offset.toString();
     }
 
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
-        String title = VDIS.getDescription(VDIS.VP_RECORD_TYPE, super.type);
+        String title = VDIS.getDescription(VDIS.VP_RECORD_TYPE, getRecordType());
 
         buffer.addTitle(title.toUpperCase());
         buffer.addAttribute(
             "Type",
-            VDIS.getDescription(VDIS.OFFSET_TYPE, this.type));
-        buffer.addAttribute("Offset", this.toString());
+            VDIS.getDescription(VDIS.OFFSET_TYPE, type));
+        buffer.addAttribute("Offset", toString());
     }
 
     @Override
     public void read(DataInputStream stream) throws IOException {
 
-        this.type = stream.readUnsignedByte();
+        type = stream.readUnsignedByte();
 
         // Padding of 2 bytes
         stream.skipBytes(2);
 
-        this.offset.read(stream);
+        offset.read(stream);
     }
 
     @Override
@@ -79,11 +79,11 @@ public class EntityOffsetVPR extends AbstractVPRecord {
 
         super.write(stream); // Writes record type (1 byte)
 
-        stream.writeByte(this.type);
+        stream.writeByte(type);
 
         stream.writeByte(0x00); // 1 byte padding.
         stream.writeByte(0x00); // 1 byte padding.
 
-        this.offset.write(stream);
+        offset.write(stream);
     }
 }

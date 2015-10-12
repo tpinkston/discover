@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.appearance;
 
 import java.util.ArrayList;
@@ -9,6 +6,9 @@ import java.util.List;
 import discover.vdis.bits.Bits;
 import discover.vdis.enums.VDIS;
 
+/**
+ * @author Tony Pinkston
+ */
 public class PlatformLandAppearance extends AbstractAppearance {
 
     public static final List<Bits> values;
@@ -56,7 +56,7 @@ public class PlatformLandAppearance extends AbstractAppearance {
 
         PlatformLandAppearance appearance = new PlatformLandAppearance();
 
-        appearance.set(super.get());
+        appearance.set(get());
 
         return appearance;
     }

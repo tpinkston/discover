@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.pdu;
 
 import java.io.DataInputStream;
@@ -12,6 +9,9 @@ import discover.vdis.common.EntityId;
 import discover.vdis.datum.DatumSpecificationRecord;
 import discover.vdis.enums.VDIS;
 
+/**
+ * @author Tony Pinkston
+ */
 public class ActionResponse extends AbstractPDU {
 
     private EntityId originator = new EntityId();
@@ -24,22 +24,22 @@ public class ActionResponse extends AbstractPDU {
 
     }
 
-    public int getStatus() { return this.status; }
+    public int getStatus() { return status; }
 
-    public EntityId getOriginator() { return this.originator; }
+    public EntityId getOriginator() { return originator; }
 
-    public EntityId getRecipient() { return this.recipient; }
+    public EntityId getRecipient() { return recipient; }
 
-    public DatumSpecificationRecord getSpecification() { return this.specification; }
+    public DatumSpecificationRecord getSpecification() { return specification; }
 
     @Override
     public void clear() {
 
-        this.originator.clear();
-        this.recipient.clear();
-        this.specification.clear();
-        this.requestId = 0;
-        this.status = 0;
+        originator.clear();
+        recipient.clear();
+        specification.clear();
+        requestId = 0;
+        status = 0;
     }
 
     @Override
@@ -48,12 +48,12 @@ public class ActionResponse extends AbstractPDU {
         super.toBuffer(buffer);
 
         buffer.addTitle("RESPONSE");
-        buffer.addAttribute("Originator", this.originator.toString());
-        buffer.addAttribute("Recipient", this.recipient.toString());
-        buffer.addAttribute("Request Id", Long.toString(this.requestId));
-        buffer.addAttribute("Status", this.status, VDIS.ACTRES_REQ_STATUS);
+        buffer.addAttribute("Originator", originator.toString());
+        buffer.addAttribute("Recipient", recipient.toString());
+        buffer.addAttribute("Request Id", Long.toString(requestId));
+        buffer.addAttribute("Status", status, VDIS.ACTRES_REQ_STATUS);
         buffer.addBreak();
-        buffer.addBuffer(this.specification);
+        buffer.addBuffer(specification);
     }
 
     @Override
@@ -61,10 +61,10 @@ public class ActionResponse extends AbstractPDU {
 
         super.read(stream); // (header)
 
-        this.originator.read(stream);
-        this.recipient.read(stream);
-        this.requestId = Common.toUnsigned32(stream.readInt());
-        this.status = stream.readInt();
-        this.specification.read(stream);
+        originator.read(stream);
+        recipient.read(stream);
+        requestId = Common.toUnsigned32(stream.readInt());
+        status = stream.readInt();
+        specification.read(stream);
     }
 }

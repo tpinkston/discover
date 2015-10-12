@@ -18,12 +18,19 @@ public abstract class NetworkThread extends Thread {
         super(name);
     }
 
-    public final synchronized boolean isPaused() { return this.paused; }
-    public final synchronized boolean isStopped() { return this.stopped; }
+    public final synchronized boolean isPaused() {
+
+        return paused;
+    }
+
+    public final synchronized boolean isStopped() {
+
+        return stopped;
+    }
 
     public synchronized void startPaused() {
 
-        this.paused = true;
+        paused = true;
 
         super.start();
     }

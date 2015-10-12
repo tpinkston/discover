@@ -102,18 +102,18 @@ public class EntityTab extends Tab implements ActionListener {
 
         this.pdu = pdu;
 
-        this.configureWidgets();
-        this.updateWidgets();
-        this.updateAppearance();
-        this.fill();
-        this.updateTextPanels();
+        configureWidgets();
+        updateWidgets();
+        updateAppearance();
+        fill();
+        updateTextPanels();
     }
 
     public EntityTab(String name) {
 
         super(name, TabType.ENTITY);
 
-        this.pdu = new PDU();
+        pdu = new PDU();
 
         EntityState state = new EntityState();
         state.getHeader().setProtocol(7);
@@ -122,61 +122,61 @@ public class EntityTab extends Tab implements ActionListener {
         state.getHeader().setExercise(1);
         state.getHeader().setLength(state.calculateLength());
 
-        this.pdu.setPort(DEFAULT_PORT);
-        this.pdu.setPDU(state);
-        this.pdu.encode();
+        pdu.setPort(DEFAULT_PORT);
+        pdu.setPDU(state);
+        pdu.encode();
 
-        this.configureWidgets();
-        this.apply();
-        this.fill();
-        this.updateTextPanels();
+        configureWidgets();
+        apply();
+        fill();
+        updateTextPanels();
     }
 
     @Override
     public void actionPerformed(ActionEvent event) {
 
-        if (!this.ignoreActions) {
+        if (!ignoreActions) {
 
             Object source = event.getSource();
 
-            if (source == this.start) {
+            if (source == start) {
 
-                this.start();
+                start();
             }
-            else if (source == this.stop) {
+            else if (source == stop) {
 
-                this.stop();
+                stop();
             }
-            else if (source == this.apply) {
+            else if (source == apply) {
 
-                this.updateAppearance();
-                this.apply();
-                this.updateTextPanels();
+                updateAppearance();
+                apply();
+                updateTextPanels();
             }
-            else if (this.timer != null) {
+            else if (timer != null) {
 
-                if (source == this.port) {
+                if (source == port) {
 
-                    Object object = this.port.getValue();
+                    Object object = port.getValue();
 
                     if (object instanceof Number) {
 
-                        this.pdu.setPort(((Number)object).intValue());
+                        pdu.setPort(((Number)object).intValue());
                     }
                 }
-                else if (source == this.interval) {
+                else if (source == interval) {
 
-                    int duration = this.getTimerDurationMillis();
+                    int duration = getTimerDurationMillis();
 
                     logger.info("Resetting timer for " + duration + " millis");
 
-                    this.timer.stop();
-                    this.timer = new Timer(duration, this);
-                    this.timer.start();
+                    timer.stop();
+                    timer = new Timer(duration, this);
+                    timer.start();
                 }
-                else if (source == this.timer) {
+                else if (source == timer) {
 
-                    this.sendEntityStatePDU(true);
+                    sendEntityStatePDU(true);
                 }
             }
         }
@@ -198,64 +198,64 @@ public class EntityTab extends Tab implements ActionListener {
 
             stream.read(buffer);
 
-            this.pdu.setPort(port);
-            this.pdu.setData(buffer);
-            this.pdu.decode(true);
+            pdu.setPort(port);
+            pdu.setData(buffer);
+            pdu.decode(true);
 
-            this.updateWidgets();
-            this.updateTextPanels();
+            updateWidgets();
+            updateTextPanels();
         }
     }
 
     @Override
     public void save(DataOutputStream stream) throws IOException {
 
-        stream.writeInt(super.getTabType().ordinal());
-        stream.writeUTF(super.getTabName());
-        stream.writeInt(this.pdu.getPort());
-        stream.writeInt(this.pdu.getDataLength());
+        stream.writeInt(getTabType().ordinal());
+        stream.writeUTF(getTabName());
+        stream.writeInt(pdu.getPort());
+        stream.writeInt(pdu.getDataLength());
 
-        if (this.pdu.getData() != null) {
+        if (pdu.getData() != null) {
 
-            stream.write(this.pdu.getData());
+            stream.write(pdu.getData());
         }
     }
 
     @Override
     public void close() {
 
-        this.start.removeActionListener(this);
-        this.stop.removeActionListener(this);
-        this.apply.removeActionListener(this);
-        this.port.removeActionListener(this);
-        this.interval.removeActionListener(this);
+        start.removeActionListener(this);
+        stop.removeActionListener(this);
+        apply.removeActionListener(this);
+        port.removeActionListener(this);
+        interval.removeActionListener(this);
 
-        this.stop();
+        stop();
     }
 
     private void start() {
 
-        if (this.socket == null) {
+        if (socket == null) {
 
             try {
 
-                int duration = this.getTimerDurationMillis();
+                int duration = getTimerDurationMillis();
 
-                this.socket = new DatagramSocket();
-                this.socket.setBroadcast(true);
+                socket = new DatagramSocket();
+                socket.setBroadcast(true);
 
-                this.start.setEnabled(false);
-                this.stop.setEnabled(true);
+                start.setEnabled(false);
+                stop.setEnabled(true);
 
                 logger.info("Setting timer for " + duration + " millis");
 
-                this.sendEntityStatePDU(false);
+                sendEntityStatePDU(false);
 
-                this.timer = new Timer(duration, this);
-                this.timer.start();
+                timer = new Timer(duration, this);
+                timer.start();
 
                 System.out.println(
-                    super.getTabName() +
+                    getTabName() +
                     ": Started Entity State generation.");
 
             }
@@ -266,7 +266,7 @@ public class EntityTab extends Tab implements ActionListener {
                 JOptionPane.showMessageDialog(
                     DiscoverFrame.getFrame(),
                     "Caught exception created network socket...",
-                    super.getTabName(),
+                    getTabName(),
                     JOptionPane.ERROR_MESSAGE);
             }
         }
@@ -274,63 +274,63 @@ public class EntityTab extends Tab implements ActionListener {
 
     private void stop() {
 
-        if (this.socket != null) {
+        if (socket != null) {
 
-            logger.info(super.getTabName() + ": closing socket");
+            logger.info(getTabName() + ": closing socket");
 
-            this.socket.close();
-            this.socket = null;
+            socket.close();
+            socket = null;
         }
 
-        if (this.timer != null) {
+        if (timer != null) {
 
-            logger.info(super.getTabName() + ": stopping timer");
+            logger.info(getTabName() + ": stopping timer");
 
-            this.timer.stop();
-            this.timer.removeActionListener(this);
-            this.timer = null;
+            timer.stop();
+            timer.removeActionListener(this);
+            timer = null;
 
-            this.start.setEnabled(true);
-            this.stop.setEnabled(false);
+            start.setEnabled(true);
+            stop.setEnabled(false);
 
             System.out.println(
-                super.getTabName() +
+                getTabName() +
                 ": Stopped Entity State generation.");
         }
     }
 
     private void sendEntityStatePDU(boolean incrementTimestamp) {
 
-        byte data[] = this.pdu.getData();
+        byte data[] = pdu.getData();
 
         if (incrementTimestamp) {
 
-            this.runningTimestamp.add(this.getTimerDurationSeconds());
+            runningTimestamp.add(getTimerDurationSeconds());
 
-            ByteArray.set32Bits(data, 4, this.runningTimestamp.getValue());
+            ByteArray.set32Bits(data, 4, runningTimestamp.getValue());
 
-            this.label.setText(this.runningTimestamp.toString());
+            label.setText(runningTimestamp.toString());
         }
         else {
 
-            Timestamp initial = this.pdu.getPDU().getHeader().getTimestamp();
+            Timestamp initial = pdu.getPDU().getHeader().getTimestamp();
 
-            this.runningTimestamp.setMinutes(initial.getMinutes());
-            this.runningTimestamp.setSeconds(initial.getSeconds());
-            this.runningTimestamp.setAbsolute(initial.isAbsolute());
+            runningTimestamp.setMinutes(initial.getMinutes());
+            runningTimestamp.setSeconds(initial.getSeconds());
+            runningTimestamp.setAbsolute(initial.isAbsolute());
 
-            this.label.setText(initial.toString());
+            label.setText(initial.toString());
         }
 
         DatagramPacket packet = new DatagramPacket(
             data,
             data.length,
             Network.getPlaybackAddress(),
-            this.pdu.getPort());
+            pdu.getPort());
 
         try {
 
-            this.socket.send(packet);
+            socket.send(packet);
         }
         catch(Exception exception) {
 
@@ -340,7 +340,7 @@ public class EntityTab extends Tab implements ActionListener {
 
     private float getTimerDurationSeconds() {
 
-        Object object = this.interval.getValue();
+        Object object = interval.getValue();
 
         if (object instanceof Number) {
 
@@ -352,12 +352,12 @@ public class EntityTab extends Tab implements ActionListener {
 
     private int getTimerDurationMillis() {
 
-        return (int)(1000.0f * this.getTimerDurationSeconds());
+        return (int)(1000.0f * getTimerDurationSeconds());
     }
 
     private void updateAppearance() {
 
-        EntityType type = this.primary.getValue();
+        EntityType type = primary.getValue();
         AbstractAppearance appearance = null;
         int value = 0x00;
 
@@ -376,7 +376,7 @@ public class EntityTab extends Tab implements ActionListener {
         // Keep original 32-bit value...
         appearance.set(value);
 
-        this.getState().setAppearance(appearance.clone());
+        getState().setAppearance(appearance.clone());
         this.appearance.setValue(appearance);
     }
 
@@ -385,33 +385,33 @@ public class EntityTab extends Tab implements ActionListener {
      */
     private void apply() {
 
-        EntityState state = this.getState();
+        EntityState state = getState();
 
-        this.entityId.getValue(state.getEntityId());
-        this.location.gcc.getValue(state.getLocation());
-        this.velocity.getValue(state.getVelocity());
-        this.orientation.getValue(state.getOrientation());
-        this.deadReckoning.getValue(state.getDeadReckoning());
+        entityId.getValue(state.getEntityId());
+        location.gcc.getValue(state.getLocation());
+        velocity.getValue(state.getVelocity());
+        orientation.getValue(state.getOrientation());
+        deadReckoning.getValue(state.getDeadReckoning());
 
         state.setForceId(Utilities.getComboboxValue(
-            this.force,
+            force,
             VDIS.FORCE_ID));
 
-        state.setEntityType(this.primary.getValue());
-        state.setAlternateType(this.alternative.getValue());
-        state.getMarking().setMarking(this.marking.getText());
+        state.setEntityType(primary.getValue());
+        state.setAlternateType(alternative.getValue());
+        state.getMarking().setMarking(marking.getText());
 
-        this.appearance.applyValue(state.getAppearance());
-        this.capabilities.applyValue(state.getCapabilities());
+        appearance.applyValue(state.getAppearance());
+        capabilities.applyValue(state.getCapabilities());
 
-        this.records.getRecords(state.getRecords());
+        records.getRecords(state.getRecords());
 
         PDUHeader header = state.getHeader();
 
-        header.setTimestamp(this.timestamp.getValue());
-        header.setExercise(Utilities.getIntegerValue(this.exercise));
+        header.setTimestamp(timestamp.getValue());
+        header.setExercise(Utilities.getIntegerValue(exercise));
         header.setProtocol(Utilities.getComboboxValue(
-            this.protocol,
+            protocol,
             VDIS.PROTOCOL_VERSION));
 
         // Must be done AFTER records have been set...
@@ -423,24 +423,24 @@ public class EntityTab extends Tab implements ActionListener {
 
             port = DEFAULT_PORT;
 
-            this.ignoreActions = true;
+            ignoreActions = true;
             this.port.setValue(port);
-            this.ignoreActions = false;
+            ignoreActions = false;
         }
 
-        this.pdu.setPort(port);
+        pdu.setPort(port);
 
-        this.playbackInterval = Utilities.getFloatValue(this.interval);
+        playbackInterval = Utilities.getFloatValue(interval);
 
-        if (this.playbackInterval < 0.1f) {
+        if (playbackInterval < 0.1f) {
 
-            this.playbackInterval = 0.2f;
-            this.ignoreActions = true;
-            this.interval.setValue(this.playbackInterval);
-            this.ignoreActions = false;
+            playbackInterval = 0.2f;
+            ignoreActions = true;
+            interval.setValue(playbackInterval);
+            ignoreActions = false;
         }
 
-        this.pdu.encode();
+        pdu.encode();
     }
 
     private void updateTextPanels() {
@@ -450,11 +450,11 @@ public class EntityTab extends Tab implements ActionListener {
             HypertextBuffer buffer = new HypertextBuffer();
 
             buffer.addText("<html><body>");
-            buffer.addBuffer(this.getState());
+            buffer.addBuffer(getState());
             buffer.addText("</body></html>");
 
-            this.content.setText(buffer.toString());
-            this.content.setCaretPosition(0);
+            content.setText(buffer.toString());
+            content.setCaretPosition(0);
         }
         catch(Exception exception) {
 
@@ -465,15 +465,15 @@ public class EntityTab extends Tab implements ActionListener {
 
             PlainTextBuffer buffer = new PlainTextBuffer();
 
-            byte data[] = this.pdu.getData();
+            byte data[] = pdu.getData();
 
             if (data != null) {
 
                 Hexadecimal.toBuffer(buffer,  "  -  ", 4, false, data);
             }
 
-            this.hexadecimal.setText(buffer.toString());
-            this.hexadecimal.setCaretPosition(0);
+            hexadecimal.setText(buffer.toString());
+            hexadecimal.setCaretPosition(0);
         }
         catch(Exception exception) {
 
@@ -486,17 +486,17 @@ public class EntityTab extends Tab implements ActionListener {
         JTabbedPane tabs = new JTabbedPane(JTabbedPane.BOTTOM);
         JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 
-        tabs.add("Content", this.content.getPanel());
-        tabs.add("Byte View", this.hexadecimal.getPanel());
+        tabs.add("Content", content.getPanel());
+        tabs.add("Byte View", hexadecimal.getPanel());
 
-        split.setLeftComponent(this.getSettingsPanel());
+        split.setLeftComponent(getSettingsPanel());
         split.setRightComponent(tabs);
         split.setContinuousLayout(true);
 
-        Utilities.setGridBagLayout(super.getPanel());
+        Utilities.setGridBagLayout(getPanel());
 
         Utilities.addComponent(
-            super.getPanel(),
+            getPanel(),
             split,
             Utilities.BOTH,
             0, 0,
@@ -510,81 +510,81 @@ public class EntityTab extends Tab implements ActionListener {
      */
     private void updateWidgets() {
 
-        EntityState state = this.getState();
+        EntityState state = getState();
 
-        this.exercise.setValue(state.getHeader().getExercise());
-        this.timestamp.setValue(state.getHeader().getTimestamp());
-        this.marking.setText(state.getMarking().getMarking());
-        this.entityId.setValue(state.getEntityId());
-        this.primary.setValue(state.getEntityType());
-        this.alternative.setValue(state.getAlternateType());
-        this.location.setValue(state.getLocation());
-        this.velocity.setValue(state.getVelocity());
-        this.orientation.setValue(state.getOrientation());
-        this.deadReckoning.setValue(state.getDeadReckoning());
-        this.appearance.setValue(state.getAppearance());
-        this.capabilities.setValue(state.getCapabilities());
-        this.records.setRecords(state.getRecords());
+        exercise.setValue(state.getHeader().getExercise());
+        timestamp.setValue(state.getHeader().getTimestamp());
+        marking.setText(state.getMarking().getMarking());
+        entityId.setValue(state.getEntityId());
+        primary.setValue(state.getEntityType());
+        alternative.setValue(state.getAlternateType());
+        location.setValue(state.getLocation());
+        velocity.setValue(state.getVelocity());
+        orientation.setValue(state.getOrientation());
+        deadReckoning.setValue(state.getDeadReckoning());
+        appearance.setValue(state.getAppearance());
+        capabilities.setValue(state.getCapabilities());
+        records.setRecords(state.getRecords());
 
         Utilities.setComboBoxValue(
-            this.protocol,
+            protocol,
             VDIS.PROTOCOL_VERSION,
             Integer.valueOf(state.getHeader().getProtocol()));
         Utilities.setComboBoxValue(
-            this.force,
+            force,
             VDIS.FORCE_ID,
             Integer.valueOf(state.getForceId()));
     }
 
     private void configureWidgets() {
 
-        this.start.setIcon(Utilities.getImageIcon("playback_play.png"));
-        this.start.setHideActionText(true);
-        this.start.addActionListener(this);
+        start.setIcon(Utilities.getImageIcon("playback_play.png"));
+        start.setHideActionText(true);
+        start.addActionListener(this);
 
-        this.stop.setIcon(Utilities.getImageIcon("playback_stop.png"));
-        this.stop.setHideActionText(true);
-        this.stop.addActionListener(this);
+        stop.setIcon(Utilities.getImageIcon("playback_stop.png"));
+        stop.setHideActionText(true);
+        stop.addActionListener(this);
 
-        this.apply.addActionListener(this);
+        apply.addActionListener(this);
 
-        this.port.setValue(this.pdu.getPort());
-        this.port.addActionListener(this);
-        this.port.setColumns(5);
-        this.port.setHorizontalAlignment(JTextField.RIGHT);
+        port.setValue(pdu.getPort());
+        port.addActionListener(this);
+        port.setColumns(5);
+        port.setHorizontalAlignment(JTextField.RIGHT);
 
-        this.interval.setValue(this.playbackInterval);
-        this.interval.addActionListener(this);
-        this.interval.setColumns(5);
-        this.interval.setHorizontalAlignment(JTextField.RIGHT);
+        interval.setValue(playbackInterval);
+        interval.addActionListener(this);
+        interval.setColumns(5);
+        interval.setHorizontalAlignment(JTextField.RIGHT);
 
-        this.exercise.setValue(this.pdu.getExercise());
-        this.exercise.setColumns(5);
-        this.exercise.setHorizontalAlignment(JTextField.RIGHT);
+        exercise.setValue(pdu.getExercise());
+        exercise.setColumns(5);
+        exercise.setHorizontalAlignment(JTextField.RIGHT);
 
-        this.timestamp.minutes.setValue(0);
-        this.timestamp.seconds.setValue(0.0f);
+        timestamp.minutes.setValue(0);
+        timestamp.seconds.setValue(0.0f);
 
-        this.marking.setColumns(15);
+        marking.setColumns(15);
 
         Utilities.configureComboBox(
-            this.protocol,
+            protocol,
             VDIS.PROTOCOL_VERSION,
             false);
         Utilities.setComboBoxValue(
-            this.protocol,
+            protocol,
             VDIS.PROTOCOL_VERSION,
             7); // PTCL_VER_IEEE_1278_1_200X_DRAFT (V-DIS)
 
         Utilities.configureComboBox(
-            this.force,
+            force,
             VDIS.FORCE_ID,
             false);
     }
 
     private EntityState getState() {
 
-        return (EntityState)this.pdu.getPDU();
+        return (EntityState)pdu.getPDU();
     }
 
     private JToolBar getTools() {
@@ -593,13 +593,13 @@ public class EntityTab extends Tab implements ActionListener {
 
         tools.setFloatable(false);
 
-        tools.add(this.start);
-        tools.add(this.stop);
+        tools.add(start);
+        tools.add(stop);
         tools.addSeparator();
-        tools.add(this.apply);
+        tools.add(apply);
         tools.addSeparator();
         tools.add(new JLabel("Current Timestamp: "));
-        tools.add(this.label);
+        tools.add(label);
 
         return tools;
     }
@@ -610,12 +610,12 @@ public class EntityTab extends Tab implements ActionListener {
         JPanel subpanel = Utilities.getGridBagPanel(null);
         JComponent components[] = new JComponent[6];
 
-        components[0] = this.getVDISPanel();
-        components[1] = this.getIdentificationPanel();
-        components[2] = this.getSpatialPanel();
-        components[3] = this.appearance.getPanel();
-        components[4] = this.capabilities.getPanel();
-        components[5] = this.records.getPanel();
+        components[0] = getVDISPanel();
+        components[1] = getIdentificationPanel();
+        components[2] = getSpatialPanel();
+        components[3] = appearance.getPanel();
+        components[4] = capabilities.getPanel();
+        components[5] = records.getPanel();
 
         for(int y = 0 ; y < components.length; ++y) {
 
@@ -640,7 +640,7 @@ public class EntityTab extends Tab implements ActionListener {
 
         Utilities.addComponent(
             panel,
-            this.getTools(),
+            getTools(),
             Utilities.HORIZONTAL,
             0, 0,
             1, 1,
@@ -675,7 +675,7 @@ public class EntityTab extends Tab implements ActionListener {
             Utilities.getInsets(6, 2, 2, 2));
         Utilities.addComponent(
             panel,
-            this.port,
+            port,
             Utilities.HORIZONTAL,
             1, 0,
             1, 1,
@@ -691,7 +691,7 @@ public class EntityTab extends Tab implements ActionListener {
             Utilities.getInsets(6, 2, 2, 2));
         Utilities.addComponent(
             panel,
-            this.exercise,
+            exercise,
             Utilities.HORIZONTAL,
             3, 0,
             1, 1,
@@ -707,7 +707,7 @@ public class EntityTab extends Tab implements ActionListener {
             Utilities.getInsets(6, 6, 2, 2));
         Utilities.addComponent(
             panel,
-            this.interval,
+            interval,
             Utilities.HORIZONTAL,
             5, 0,
             1, 1,
@@ -723,7 +723,7 @@ public class EntityTab extends Tab implements ActionListener {
             Utilities.getInsets(6, 2, 2, 2));
         Utilities.addComponent(
             panel,
-            this.protocol,
+            protocol,
             Utilities.HORIZONTAL,
             1, 1,
             5, 1,
@@ -731,7 +731,7 @@ public class EntityTab extends Tab implements ActionListener {
             Utilities.getInsets(2, 2, 2, 2));
         Utilities.addComponent(
             panel,
-            this.timestamp.getPanel(),
+            timestamp.getPanel(),
             Utilities.HORIZONTAL,
             0, 2,
             6, 1,
@@ -755,7 +755,7 @@ public class EntityTab extends Tab implements ActionListener {
             Utilities.getInsets(6, 2, 2, 2));
         Utilities.addComponent(
             panel,
-            this.marking,
+            marking,
             Utilities.HORIZONTAL,
             1, 0,
             1, 1,
@@ -771,7 +771,7 @@ public class EntityTab extends Tab implements ActionListener {
             Utilities.getInsets(6, 2, 2, 2));
         Utilities.addComponent(
             panel,
-            this.force,
+            force,
             Utilities.HORIZONTAL,
             3, 0,
             1, 1,
@@ -779,7 +779,7 @@ public class EntityTab extends Tab implements ActionListener {
             Utilities.getInsets(2, 2, 2, 2));
         Utilities.addComponent(
             panel,
-            this.entityId.getPanel(),
+            entityId.getPanel(),
             Utilities.HORIZONTAL,
             0, 1,
             4, 1,
@@ -787,7 +787,7 @@ public class EntityTab extends Tab implements ActionListener {
             Utilities.getInsets(6, 2, 2, 2));
         Utilities.addComponent(
             panel,
-            this.primary.getPanel(),
+            primary.getPanel(),
             Utilities.HORIZONTAL,
             0, 2,
             6, 1,
@@ -795,7 +795,7 @@ public class EntityTab extends Tab implements ActionListener {
             Utilities.getInsets(2, 2, 2, 2));
         Utilities.addComponent(
             panel,
-            this.alternative.getPanel(),
+            alternative.getPanel(),
             Utilities.HORIZONTAL,
             0, 3,
             6, 1,
@@ -811,7 +811,7 @@ public class EntityTab extends Tab implements ActionListener {
 
         Utilities.addComponent(
             panel,
-            this.location.getPanel(),
+            location.getPanel(),
             Utilities.HORIZONTAL,
             0, 0,
             1, 1,
@@ -819,7 +819,7 @@ public class EntityTab extends Tab implements ActionListener {
             Utilities.getInsets(4, 2, 2, 2));
         Utilities.addComponent(
             panel,
-            this.velocity.getPanel(),
+            velocity.getPanel(),
             Utilities.HORIZONTAL,
             0, 1,
             1, 1,
@@ -827,7 +827,7 @@ public class EntityTab extends Tab implements ActionListener {
             Utilities.getInsets(4, 2, 2, 2));
         Utilities.addComponent(
             panel,
-            this.orientation.getPanel(),
+            orientation.getPanel(),
             Utilities.HORIZONTAL,
             0, 2,
             1, 1,
@@ -835,7 +835,7 @@ public class EntityTab extends Tab implements ActionListener {
             Utilities.getInsets(4, 2, 2, 2));
         Utilities.addComponent(
             panel,
-            this.deadReckoning.getPanel(),
+            deadReckoning.getPanel(),
             Utilities.HORIZONTAL,
             0, 3,
             1, 1,

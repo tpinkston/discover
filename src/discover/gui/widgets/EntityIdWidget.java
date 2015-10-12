@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.widgets;
 
 import javax.swing.JFormattedTextField;
@@ -9,6 +6,9 @@ import javax.swing.JLabel;
 import discover.gui.Utilities;
 import discover.vdis.common.EntityId;
 
+/**
+ * @author Tony Pinkston
+ */
 public class EntityIdWidget extends Widget {
 
     private static final String LABELS[] = {
@@ -29,14 +29,14 @@ public class EntityIdWidget extends Widget {
 
         super("Entity Id");
 
-        for(int i = 0; i < this.fields.length; ++i) {
+        for(int i = 0; i < fields.length; ++i) {
 
-            this.fields[i] = Utilities.getIntegerField(0);
-            this.fields[i].setValue(0);
-            this.fields[i].setColumns(5);
+            fields[i] = Utilities.getIntegerField(0);
+            fields[i].setValue(0);
+            fields[i].setColumns(5);
 
             Utilities.addComponent(
-                super.getPanel(),
+                getPanel(),
                 new JLabel(LABELS[i]),
                 Utilities.HORIZONTAL,
                 (i * 2), 0,
@@ -44,8 +44,8 @@ public class EntityIdWidget extends Widget {
                 0.0, 0.0,
                 Utilities.getInsets(8, 2, 2, 2));
             Utilities.addComponent(
-                super.getPanel(),
-                this.fields[i],
+                getPanel(),
+                fields[i],
                 Utilities.HORIZONTAL,
                 ((i * 2) + 1), 0,
                 1, 1,
@@ -55,33 +55,33 @@ public class EntityIdWidget extends Widget {
 
         if (id != null) {
 
-            this.setValue(id);
+            setValue(id);
         }
     }
 
     public void clear() {
 
-        this.setValue(null);
+        setValue(null);
     }
 
     public void getValue(EntityId id) {
 
-        id.setSite(Utilities.getIntegerValue(this.fields[0]));
-        id.setApplication(Utilities.getIntegerValue(this.fields[1]));
-        id.setEntity(Utilities.getIntegerValue(this.fields[2]));
+        id.setSite(Utilities.getIntegerValue(fields[0]));
+        id.setApplication(Utilities.getIntegerValue(fields[1]));
+        id.setEntity(Utilities.getIntegerValue(fields[2]));
     }
 
     public void setValue(EntityId id) {
 
         if (id != null) {
 
-            this.fields[0].setValue(id.getSite());
-            this.fields[1].setValue(id.getApplication());
-            this.fields[2].setValue(id.getEntity());
+            fields[0].setValue(id.getSite());
+            fields[1].setValue(id.getApplication());
+            fields[2].setValue(id.getEntity());
         }
-        else for(int i = 0; i < this.fields.length; ++i) {
+        else for(int i = 0; i < fields.length; ++i) {
 
-            this.fields[i].setValue(0);
+            fields[i].setValue(0);
         }
     }
 }

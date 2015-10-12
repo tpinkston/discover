@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.common;
 
 import java.io.DataInputStream;
@@ -11,6 +8,9 @@ import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.Bufferable;
 import discover.vdis.enums.VDIS;
 
+/**
+ * @author Tony Pinkston
+ */
 public class IFFSystemIdentifier implements Bufferable, Readable {
 
     private int type = 0;
@@ -18,35 +18,35 @@ public class IFFSystemIdentifier implements Bufferable, Readable {
     private int mode = 0;
     private IFFChangeOptions options = new IFFChangeOptions();
 
-    public int getType() { return this.type; }
-    public int getName() { return this.name; }
-    public int getMode() { return this.mode; }
-    public IFFChangeOptions getOptions() { return this.options; }
+    public int getType() { return type; }
+    public int getName() { return name; }
+    public int getMode() { return mode; }
+    public IFFChangeOptions getOptions() { return options; }
 
     public void clear() {
 
-        this.type = 0;
-        this.name = 0;
-        this.mode = 0;
-        this.options.set((byte)0x00);
+        type = 0;
+        name = 0;
+        mode = 0;
+        options.set((byte)0x00);
     }
 
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
-        buffer.addAttribute("Type", this.type, VDIS.IFF_SYSTEM_TYPE);
-        buffer.addAttribute("Name", this.name, VDIS.IFF_SYSTEM_NAME);
-        buffer.addAttribute("Mode", this.mode, VDIS.IFF_SYSTEM_MODE);
+        buffer.addAttribute("Type", type, VDIS.IFF_SYSTEM_TYPE);
+        buffer.addAttribute("Name", name, VDIS.IFF_SYSTEM_NAME);
+        buffer.addAttribute("Mode", mode, VDIS.IFF_SYSTEM_MODE);
         buffer.addTitle("CHANGE/OPTIONS");
-        buffer.addBuffer(this.options);
+        buffer.addBuffer(options);
     }
 
     @Override
     public void read(DataInputStream stream) throws IOException {
 
-        this.type = stream.readUnsignedShort();
-        this.name = stream.readUnsignedShort();
-        this.mode = stream.readUnsignedByte();
-        this.options.read(stream);
+        type = stream.readUnsignedShort();
+        name = stream.readUnsignedShort();
+        mode = stream.readUnsignedByte();
+        options.read(stream);
     }
 }

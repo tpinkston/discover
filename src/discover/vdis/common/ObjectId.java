@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.common;
 
 import java.io.DataInputStream;
@@ -9,6 +6,9 @@ import java.util.Arrays;
 
 import discover.common.Readable;
 
+/**
+ * @author Tony Pinkston
+ */
 public class ObjectId implements Comparable<ObjectId>, Readable {
 
     private static final int SITE = 0;
@@ -17,9 +17,9 @@ public class ObjectId implements Comparable<ObjectId>, Readable {
 
     private final int values[] = new int[3];
 
-    public int getSite() { return this.values[SITE]; }
-    public int getApplication() { return this.values[APPLICATION]; }
-    public int getObject() { return this.values[OBJECT]; }
+    public int getSite() { return values[SITE]; }
+    public int getApplication() { return values[APPLICATION]; }
+    public int getObject() { return values[OBJECT]; }
 
     @Override
     public boolean equals(Object object) {
@@ -30,7 +30,7 @@ public class ObjectId implements Comparable<ObjectId>, Readable {
 
             for(int i = 0; i < 3; ++i) {
 
-                if (this.values[i] != id.values[i]) {
+                if (values[i] != id.values[i]) {
 
                     return false;
                 }
@@ -51,17 +51,17 @@ public class ObjectId implements Comparable<ObjectId>, Readable {
     public boolean matches(Integer site, Integer application, Integer entity) {
 
         if ((site != null) &&
-            (site.intValue() != this.getSite())) {
+            (site.intValue() != getSite())) {
 
             return false;
         }
         else if ((application != null) &&
-                 (application.intValue() != this.getApplication())) {
+                 (application.intValue() != getApplication())) {
 
             return false;
         }
         else if ((entity != null) &&
-                 (entity.intValue() != this.getObject())) {
+                 (entity.intValue() != getObject())) {
 
             return false;
         }
@@ -75,7 +75,7 @@ public class ObjectId implements Comparable<ObjectId>, Readable {
 
         for(int i = 0; i < 3; ++i) {
 
-            this.values[i] = 0;
+            values[i] = 0;
         }
     }
 
@@ -86,7 +86,7 @@ public class ObjectId implements Comparable<ObjectId>, Readable {
 
         for(int i = 1; i < 8; ++i) {
 
-            comparison = this.compare(this.values[i], id.values[i]);
+            comparison = Integer.compare(values[i], id.values[i]);
 
             if (comparison != 0) {
 
@@ -100,9 +100,9 @@ public class ObjectId implements Comparable<ObjectId>, Readable {
     @Override
     public String toString() {
 
-        return ("(" + this.values[SITE] +
-                ", " + this.values[APPLICATION] +
-                ", " + this.values[OBJECT] + ")");
+        return ("(" + values[SITE] +
+                ", " + values[APPLICATION] +
+                ", " + values[OBJECT] + ")");
     }
 
     @Override
@@ -110,23 +110,7 @@ public class ObjectId implements Comparable<ObjectId>, Readable {
 
         for(int i = 0; i < 3; ++i) {
 
-            this.values[i] = stream.readUnsignedShort();
-        }
-    }
-
-    private int compare(int first, int second) {
-
-        if (first < second) {
-
-            return -1;
-        }
-        else if (first > second) {
-
-            return 1;
-        }
-        else {
-
-            return 0;
+            values[i] = stream.readUnsignedShort();
         }
     }
 }

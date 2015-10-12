@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.vprecords;
 
 import java.io.DataInputStream;
@@ -11,6 +8,9 @@ import discover.common.buffer.AbstractBuffer;
 import discover.vdis.common.EntityId;
 import discover.vdis.enums.VDIS;
 
+/**
+ * @author Tony Pinkston
+ */
 public class EntityAssociationVPR extends AbstractVPRecord {
 
     public static final int LENGTH = 16;
@@ -35,14 +35,14 @@ public class EntityAssociationVPR extends AbstractVPRecord {
         return LENGTH;
     }
 
-    public EntityId getEntityId() { return this.entity; }
-    public int getStatus() { return this.status; }
-    public int getType() { return this.type; }
-    public int getConnection() { return this.connection; }
-    public int getStation() { return this.station; }
-    public int getMembership() { return this.membership; }
-    public int getChange() { return this.change; }
-    public int getGroup() { return this.group; }
+    public EntityId getEntityId() { return entity; }
+    public int getStatus() { return status; }
+    public int getType() { return type; }
+    public int getConnection() { return connection; }
+    public int getStation() { return station; }
+    public int getMembership() { return membership; }
+    public int getChange() { return change; }
+    public int getGroup() { return group; }
 
     public void setStatus(int status) {
 
@@ -82,43 +82,43 @@ public class EntityAssociationVPR extends AbstractVPRecord {
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
-        String title = VDIS.getDescription(VDIS.VP_RECORD_TYPE, super.type);
+        String title = VDIS.getDescription(VDIS.VP_RECORD_TYPE, getRecordType());
 
         buffer.addTitle(title.toUpperCase());
         buffer.addAttribute(
             "Type",
-            VDIS.getDescription(VDIS.PHYS_ASSOC_TYPE, this.type));
+            VDIS.getDescription(VDIS.PHYS_ASSOC_TYPE, type));
         buffer.addAttribute(
             "Status",
-            VDIS.getDescription(VDIS.ENT_ASSOC_STATUS, this.status));
+            VDIS.getDescription(VDIS.ENT_ASSOC_STATUS, status));
         buffer.addAttribute(
             "Connection",
-            VDIS.getDescription(VDIS.PHYS_CONN_TYPE, this.connection));
+            VDIS.getDescription(VDIS.PHYS_CONN_TYPE, connection));
         buffer.addAttribute(
             "Station",
-            VDIS.getDescription(VDIS.STATION_NAME, this.station));
+            VDIS.getDescription(VDIS.STATION_NAME, station));
         buffer.addAttribute(
             "Membership",
-            VDIS.getDescription(VDIS.GRP_MEM_TYPE, this.membership));
+            VDIS.getDescription(VDIS.GRP_MEM_TYPE, membership));
 
-        buffer.addAttribute("Entity", this.entity.toString());
-        buffer.addAttribute("Change", this.change);
-        buffer.addAttribute("Group", this.group);
+        buffer.addAttribute("Entity", entity.toString());
+        buffer.addAttribute("Change", change);
+        buffer.addAttribute("Group", group);
     }
 
     @Override
     public void read(DataInputStream stream) throws IOException {
 
-        this.change = stream.readUnsignedByte();
-        this.status = stream.readUnsignedByte();
-        this.type = stream.readUnsignedByte();
+        change = stream.readUnsignedByte();
+        status = stream.readUnsignedByte();
+        type = stream.readUnsignedByte();
 
-        this.entity.read(stream); // 6 bytes
+        entity.read(stream); // 6 bytes
 
-        this.station = stream.readUnsignedShort();
-        this.connection = stream.readUnsignedByte();
-        this.membership = stream.readUnsignedByte();
-        this.group = stream.readUnsignedShort();
+        station = stream.readUnsignedShort();
+        connection = stream.readUnsignedByte();
+        membership = stream.readUnsignedByte();
+        group = stream.readUnsignedShort();
     }
 
     @Override
@@ -126,15 +126,15 @@ public class EntityAssociationVPR extends AbstractVPRecord {
 
         super.write(stream); // Writes record type (1 byte)
 
-        stream.writeByte(this.change);
-        stream.writeByte(this.status);
-        stream.writeByte(this.type);
+        stream.writeByte(change);
+        stream.writeByte(status);
+        stream.writeByte(type);
 
-        this.entity.write(stream);
+        entity.write(stream);
 
-        stream.writeShort(this.station);
-        stream.writeByte(this.connection);
-        stream.writeByte(this.membership);
-        stream.writeShort(this.group);
+        stream.writeShort(station);
+        stream.writeByte(connection);
+        stream.writeByte(membership);
+        stream.writeShort(group);
     }
 }

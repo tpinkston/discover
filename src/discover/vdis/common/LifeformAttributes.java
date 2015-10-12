@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.common;
 
 import java.util.ArrayList;
@@ -10,6 +7,9 @@ import discover.vdis.bits.Abstract16Bits;
 import discover.vdis.bits.Bits;
 import discover.vdis.enums.VDIS;
 
+/**
+ * @author Tony Pinkston
+ */
 public class LifeformAttributes extends Abstract16Bits {
 
     private static final List<Bits> values;
@@ -34,7 +34,7 @@ public class LifeformAttributes extends Abstract16Bits {
 
         LifeformAttributes attributes = new LifeformAttributes();
 
-        attributes.set(this.get());
+        attributes.set(get());
 
         return attributes;
     }

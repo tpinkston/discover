@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.pdu;
 
 import java.io.DataInputStream;
@@ -15,6 +12,8 @@ import discover.vdis.common.Velocity;
 
 /**
  * Always 96 bytes
+ *
+ * @author Tony Pinkston
  */
 public class Fire extends AbstractPDU {
 
@@ -35,15 +34,15 @@ public class Fire extends AbstractPDU {
 
     }
 
-    public EntityId getShooter() { return this.shooter; }
-    public EntityId getTarget() { return this.target; }
-    public EntityId getMunition() { return this.munition; }
-    public EntityId getEvent() { return this.event; }
-    public Location24 getLocation() { return this.location; }
-    public Velocity getVelocity() { return this.velocity; }
-    public BurstDescriptor getBurst() { return this.burst; }
-    public long getFireMission() { return this.fireMission; }
-    public float getRange() { return this.range; }
+    public EntityId getShooter() { return shooter; }
+    public EntityId getTarget() { return target; }
+    public EntityId getMunition() { return munition; }
+    public EntityId getEvent() { return event; }
+    public Location24 getLocation() { return location; }
+    public Velocity getVelocity() { return velocity; }
+    public BurstDescriptor getBurst() { return burst; }
+    public long getFireMission() { return fireMission; }
+    public float getRange() { return range; }
     public Detonation getDetonation() { return detonation; }
 
     public void setDetonation(Detonation detonation) {
@@ -54,15 +53,15 @@ public class Fire extends AbstractPDU {
     @Override
     public void clear() {
 
-        this.shooter.clear();
-        this.target.clear();
-        this.munition.clear();
-        this.event.clear();
-        this.location.clear();
-        this.velocity.clear();
-        this.burst.clear();
-        this.fireMission = 0L;
-        this.range = 0.0f;
+        shooter.clear();
+        target.clear();
+        munition.clear();
+        event.clear();
+        location.clear();
+        velocity.clear();
+        burst.clear();
+        fireMission = 0L;
+        range = 0.0f;
     }
 
     @Override
@@ -71,20 +70,20 @@ public class Fire extends AbstractPDU {
         super.toBuffer(buffer);
 
         buffer.addTitle("IDENTIFICATION");
-        buffer.addAttribute("Shooter", this.shooter.toString());
-        buffer.addAttribute("Target", this.target.toString());
-        buffer.addAttribute("Munition", this.munition.toString());
-        buffer.addAttribute("Event", this.event.toString());
-        buffer.addAttribute("Fire Mission", this.fireMission);
+        buffer.addAttribute("Shooter", shooter.toString());
+        buffer.addAttribute("Target", target.toString());
+        buffer.addAttribute("Munition", munition.toString());
+        buffer.addAttribute("Event", event.toString());
+        buffer.addAttribute("Fire Mission", fireMission);
         buffer.addBreak();
 
         buffer.addTitle("SPATIAL");
-        buffer.addAttribute("Velocity", this.velocity.toString());
-        buffer.addAttribute("Location", this.location.toString());
-        buffer.addAttribute("Range", this.range);
+        buffer.addAttribute("Velocity", velocity.toString());
+        buffer.addAttribute("Location", location.toString());
+        buffer.addAttribute("Range", range);
         buffer.addBreak();
 
-        buffer.addBuffer(this.burst);
+        buffer.addBuffer(burst);
     }
 
     @Override
@@ -92,14 +91,14 @@ public class Fire extends AbstractPDU {
 
         super.read(stream); // (header)
 
-        this.shooter.read(stream); // 6 bytes
-        this.target.read(stream); // 6 bytes
-        this.munition.read(stream); // 6 bytes
-        this.event.read(stream); // 6 bytes
-        this.fireMission = Common.toUnsigned32(stream.readInt()); // 4 bytes
-        this.location.read(stream); // 24 bytes
-        this.burst.read(stream); // 16 bytes
-        this.velocity.read(stream); // 12 bytes
-        this.range = stream.readFloat(); // 4 bytes
+        shooter.read(stream); // 6 bytes
+        target.read(stream); // 6 bytes
+        munition.read(stream); // 6 bytes
+        event.read(stream); // 6 bytes
+        fireMission = Common.toUnsigned32(stream.readInt()); // 4 bytes
+        location.read(stream); // 24 bytes
+        burst.read(stream); // 16 bytes
+        velocity.read(stream); // 12 bytes
+        range = stream.readFloat(); // 4 bytes
     }
 }

@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.pdu;
 
 import java.io.DataInputStream;
@@ -13,6 +10,9 @@ import discover.vdis.common.IFFFundamentalOperationalData;
 import discover.vdis.common.IFFSystemIdentifier;
 import discover.vdis.common.Location12;
 
+/**
+ * @author Tony Pinkston
+ */
 public class IdentificationFriendOrFoe extends AbstractPDU {
 
     private EntityId emitter = new EntityId();
@@ -30,12 +30,12 @@ public class IdentificationFriendOrFoe extends AbstractPDU {
     @Override
     public void clear() {
 
-        this.emitter.clear();
-        this.event.clear();
-        this.location.clear();
-        this.identifier.clear();
-        this.operational.clear();
-        this.designator = 0x00;
+        emitter.clear();
+        event.clear();
+        location.clear();
+        identifier.clear();
+        operational.clear();
+        designator = 0x00;
     }
 
     @Override
@@ -44,29 +44,29 @@ public class IdentificationFriendOrFoe extends AbstractPDU {
         super.toBuffer(buffer);
 
         buffer.addTitle("IDENTIFICATION");
-        buffer.addAttribute("Emitter", this.emitter.toString());
-        buffer.addAttribute("Event", this.event.toString());
+        buffer.addAttribute("Emitter", emitter.toString());
+        buffer.addAttribute("Event", event.toString());
         buffer.addBreak();
 
         buffer.addTitle("SPATIAL");
-        buffer.addAttribute("Location", this.location.toString());
+        buffer.addAttribute("Location", location.toString());
         buffer.addBreak();
 
         buffer.addTitle("SYSTEM ID");
-        buffer.addBuffer(this.identifier);
+        buffer.addBuffer(identifier);
         buffer.addBreak();
 
         buffer.addTitle("FUNDAMENTAL OPERATIONAL DATA");
-        buffer.addBuffer(this.operational);
+        buffer.addBuffer(operational);
         buffer.addBreak();
 
         buffer.addTitle("SYSTEM DESIGNATOR");
-        buffer.addItalic(Binary.toString8(this.designator));
+        buffer.addItalic(Binary.toString8(designator));
         buffer.addBreak();
         buffer.addBreak();
 
         buffer.addTitle("SYSTEM SPECIFIC DATA");
-        buffer.addItalic(Binary.toString8(this.specific));
+        buffer.addItalic(Binary.toString8(specific));
         buffer.addBreak();
         buffer.addBreak();
     }
@@ -76,12 +76,12 @@ public class IdentificationFriendOrFoe extends AbstractPDU {
 
         super.read(stream); // (header)
 
-        this.emitter.read(stream);
-        this.event.read(stream);
-        this.location.read(stream);
-        this.identifier.read(stream);
-        this.designator = stream.readByte();
-        this.specific = stream.readByte();
-        this.operational.read(stream);
+        emitter.read(stream);
+        event.read(stream);
+        location.read(stream);
+        identifier.read(stream);
+        designator = stream.readByte();
+        specific = stream.readByte();
+        operational.read(stream);
     }
 }

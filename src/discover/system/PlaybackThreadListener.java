@@ -1,8 +1,8 @@
+package discover.system;
+
 /**
  * @author Tony Pinkston
  */
-package discover.system;
-
 public interface PlaybackThreadListener {
 
     /**

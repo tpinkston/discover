@@ -1,12 +1,12 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.tabs;
 
 import java.util.ArrayList;
 
 import discover.vdis.PDU;
 
+/**
+ * @author Tony Pinkston
+ */
 public interface ClipboardTab {
 
     public void cut(ArrayList<PDU> clipboard);

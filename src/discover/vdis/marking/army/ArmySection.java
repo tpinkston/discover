@@ -1,8 +1,8 @@
+package discover.vdis.marking.army;
+
 /**
  * @author Tony Pinkston
  */
-package discover.vdis.marking.army;
-
 public class ArmySection extends AbstractEchelon {
 
     private final String bumper;
@@ -21,7 +21,7 @@ public class ArmySection extends AbstractEchelon {
     @Override
     public final String getBumper() {
 
-        return this.bumper;
+        return bumper;
     }
 
     public static AbstractEchelon[] getValues() {

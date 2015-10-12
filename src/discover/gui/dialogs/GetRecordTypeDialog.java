@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.dialogs;
 
 import java.awt.GridLayout;
@@ -20,6 +17,9 @@ import discover.gui.Utilities;
 import discover.gui.frames.DiscoverFrame;
 import discover.vdis.enums.VDIS;
 
+/**
+ * @author Tony Pinkston
+ */
 public class GetRecordTypeDialog implements ActionListener {
 
     private static final int TYPES[] = {
@@ -58,49 +58,49 @@ public class GetRecordTypeDialog implements ActionListener {
 
     public GetRecordTypeDialog() {
 
-        this.fill();
+        fill();
 
-        this.okay.addActionListener(this);
-        this.cancel.addActionListener(this);
+        okay.addActionListener(this);
+        cancel.addActionListener(this);
 
-        this.dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        this.dialog.pack();
-        this.dialog.setModal(true);
+        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        dialog.pack();
+        dialog.setModal(true);
 
-        Utilities.center(DiscoverFrame.getFrame(), this.dialog);
+        Utilities.center(DiscoverFrame.getFrame(), dialog);
 
-        this.dialog.setVisible(true);
+        dialog.setVisible(true);
     }
 
     public Integer getRecordType() {
 
-        return this.type;
+        return type;
     }
 
     @Override
     public void actionPerformed(ActionEvent event) {
 
-        if (event.getSource() == this.okay) {
+        if (event.getSource() == okay) {
 
-            for(int i = 0; i < this.buttons.size(); ++i) {
+            for(int i = 0; i < buttons.size(); ++i) {
 
-                if (this.buttons.get(i).isSelected()) {
+                if (buttons.get(i).isSelected()) {
 
-                    this.type = TYPES[i];
+                    type = TYPES[i];
                 }
             }
         }
 
-        this.dialog.dispose();
+        dialog.dispose();
     }
 
     private void fill() {
 
 
-        Utilities.setGridBagLayout(this.dialog.getContentPane());
+        Utilities.setGridBagLayout(dialog.getContentPane());
 
         Utilities.addComponent(
-            this.dialog.getContentPane(),
+            dialog.getContentPane(),
             new JLabel("Select record type:"),
             Utilities.HORIZONTAL,
             0, 0,
@@ -120,12 +120,12 @@ public class GetRecordTypeDialog implements ActionListener {
                 button.setSelected(true);
             }
 
-            this.group.add(button);
+            group.add(button);
 
-            this.buttons.add(button);
+            buttons.add(button);
 
             Utilities.addComponent(
-                this.dialog.getContentPane(),
+                dialog.getContentPane(),
                 button,
                 Utilities.HORIZONTAL,
                 0, (count + 1),
@@ -137,8 +137,8 @@ public class GetRecordTypeDialog implements ActionListener {
         }
 
         Utilities.addComponent(
-            this.dialog.getContentPane(),
-            this.getButtonPanel(),
+            dialog.getContentPane(),
+            getButtonPanel(),
             Utilities.HORIZONTAL,
             0, (TYPES.length + 1),
             1, 1,
@@ -150,8 +150,8 @@ public class GetRecordTypeDialog implements ActionListener {
 
         JPanel panel = new JPanel(new GridLayout(1, 3, 10, 2));
 
-        panel.add(this.okay);
-        panel.add(this.cancel);
+        panel.add(okay);
+        panel.add(cancel);
 
         return panel;
     }

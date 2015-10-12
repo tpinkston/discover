@@ -1,8 +1,8 @@
+package discover.vdis.marking.army;
+
 /**
  * @author Tony Pinkston
  */
-package discover.vdis.marking.army;
-
 public class ArmyBrigade extends AbstractEchelon {
 
     ArmyBrigade(int value, String name, String description) {

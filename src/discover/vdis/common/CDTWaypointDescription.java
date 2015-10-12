@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.common;
 
 import java.util.ArrayList;
@@ -9,6 +6,9 @@ import java.util.List;
 import discover.vdis.bits.Abstract32Bits;
 import discover.vdis.bits.Bits;
 
+/**
+ * @author Tony Pinkston
+ */
 public class CDTWaypointDescription extends Abstract32Bits {
 
     private static final List<Bits> values;
@@ -36,7 +36,7 @@ public class CDTWaypointDescription extends Abstract32Bits {
 
         CDTWaypointDescription description = new CDTWaypointDescription();
 
-        description.set(super.get());
+        description.set(get());
 
         return description;
     }

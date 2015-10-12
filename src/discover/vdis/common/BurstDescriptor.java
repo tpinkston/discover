@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.common;
 
 import java.io.DataInputStream;
@@ -15,6 +12,8 @@ import discover.vdis.types.EntityTypes;
 
 /**
  * 16 byte record used in Fire and Detonation PDUs
+ *
+ * @author Tony Pinkston
  */
 public class BurstDescriptor implements Bufferable, Readable {
 
@@ -24,57 +23,57 @@ public class BurstDescriptor implements Bufferable, Readable {
     private int quantity = 0;
     private int rate = 0;
 
-    public EntityType getMunition() { return this.munition; }
-    public int getWarhead() { return this.warhead; }
-    public int getFuse() { return this.fuse; }
-    public int getQuantity() { return this.quantity; }
-    public int getRate() { return this.rate; }
+    public EntityType getMunition() { return munition; }
+    public int getWarhead() { return warhead; }
+    public int getFuse() { return fuse; }
+    public int getQuantity() { return quantity; }
+    public int getRate() { return rate; }
 
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
         buffer.addTitle("MUNITION");
-        this.munition.toBuffer(buffer);
+        munition.toBuffer(buffer);
         buffer.addBreak();
         buffer.addTitle("BURST DESCRIPTION");
         buffer.addAttribute(
             "Warhead",
-            this.warhead,
+            warhead,
             VDIS.WARHEAD_BURST_DESC);
         buffer.addAttribute(
             "Fuse",
-            this.fuse,
+            fuse,
             VDIS.FUSE_BURST_DESC);
-        buffer.addAttribute("Quantity", this.quantity);
-        buffer.addAttribute("Rate", this.rate);
+        buffer.addAttribute("Quantity", quantity);
+        buffer.addAttribute("Rate", rate);
         buffer.addBreak();
     }
 
     public void clear() {
 
-        this.munition = null;
-        this.warhead = 0;
-        this.fuse = 0;
-        this.quantity = 0;
-        this.rate = 0;
+        munition = null;
+        warhead = 0;
+        fuse = 0;
+        quantity = 0;
+        rate = 0;
     }
 
     @Override
     public void read(DataInputStream stream) throws IOException {
 
         // 8 bytes
-        this.munition = EntityTypes.read(stream);
+        munition = EntityTypes.read(stream);
 
         // 2 bytes
-        this.warhead = stream.readUnsignedShort();
+        warhead = stream.readUnsignedShort();
 
         // 2 bytes
-        this.fuse = stream.readUnsignedShort();
+        fuse = stream.readUnsignedShort();
 
         // 2 bytes
-        this.quantity = stream.readUnsignedShort();
+        quantity = stream.readUnsignedShort();
 
         // 2 bytes
-        this.rate = stream.readUnsignedShort();
+        rate = stream.readUnsignedShort();
     }
 }

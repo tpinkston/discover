@@ -1,10 +1,10 @@
-/**
- * @author Tony Pinkston
- */
 package discover.common;
 
 import discover.common.buffer.AbstractBuffer;
 
+/**
+ * @author Tony Pinkston
+ */
 public class Hexadecimal {
 
     private static final String ZERO = "0";

@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.dialogs;
 
 import java.awt.GridBagLayout;
@@ -18,6 +15,9 @@ import javax.swing.JTextField;
 import discover.gui.Utilities;
 import discover.gui.frames.DiscoverFrame;
 
+/**
+ * @author Tony Pinkston
+ */
 public class GetPortDialog implements ActionListener {
 
     @SuppressWarnings("serial")
@@ -47,113 +47,113 @@ public class GetPortDialog implements ActionListener {
      */
     public GetPortDialog(String title, Set<Integer> ports) {
 
-        this.dialog.setTitle(title);
+        dialog.setTitle(title);
 
         if (ports != null) {
 
-            this.port3000.setEnabled(!ports.contains(new Integer(3000)));
-            this.port4000.setEnabled(!ports.contains(new Integer(4000)));
-            this.port5000.setEnabled(!ports.contains(new Integer(5000)));
+            port3000.setEnabled(!ports.contains(new Integer(3000)));
+            port4000.setEnabled(!ports.contains(new Integer(4000)));
+            port5000.setEnabled(!ports.contains(new Integer(5000)));
         }
 
-        this.fill();
+        fill();
 
-        this.text.addActionListener(this);
-        this.port3000.addActionListener(this);
-        this.port4000.addActionListener(this);
-        this.port5000.addActionListener(this);
-        this.okay.addActionListener(this);
-        this.cancel.addActionListener(this);
+        text.addActionListener(this);
+        port3000.addActionListener(this);
+        port4000.addActionListener(this);
+        port5000.addActionListener(this);
+        okay.addActionListener(this);
+        cancel.addActionListener(this);
 
-        this.dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        this.dialog.pack();
-        this.dialog.setModal(true);
+        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        dialog.pack();
+        dialog.setModal(true);
 
-        Utilities.center(DiscoverFrame.getFrame(), this.dialog);
+        Utilities.center(DiscoverFrame.getFrame(), dialog);
 
-        this.dialog.setVisible(true);
+        dialog.setVisible(true);
     }
 
     public Integer getPort() {
 
-        return this.port;
+        return port;
     }
 
     @Override
     public void actionPerformed(ActionEvent event) {
 
-        if (event.getSource() == this.text) {
+        if (event.getSource() == text) {
 
-            this.addPort(null);
+            addPort(null);
         }
-        else if (event.getSource() == this.port3000) {
+        else if (event.getSource() == port3000) {
 
-            this.addPort(3000);
+            addPort(3000);
         }
-        else if (event.getSource() == this.port4000) {
+        else if (event.getSource() == port4000) {
 
-            this.addPort(4000);
+            addPort(4000);
         }
-        else if (event.getSource() == this.port5000) {
+        else if (event.getSource() == port5000) {
 
-            this.addPort(5000);
+            addPort(5000);
         }
-        else if (event.getSource() == this.okay) {
+        else if (event.getSource() == okay) {
 
-            this.addPort(null);
+            addPort(null);
         }
-        else if (event.getSource() == this.cancel) {
+        else if (event.getSource() == cancel) {
 
-            this.dialog.dispose();
+            dialog.dispose();
         }
     }
 
     private void disposing() {
 
-        this.text.removeActionListener(this);
-        this.port3000.removeActionListener(this);
-        this.port4000.removeActionListener(this);
-        this.port5000.removeActionListener(this);
-        this.okay.removeActionListener(this);
-        this.cancel.removeActionListener(this);
+        text.removeActionListener(this);
+        port3000.removeActionListener(this);
+        port4000.removeActionListener(this);
+        port5000.removeActionListener(this);
+        okay.removeActionListener(this);
+        cancel.removeActionListener(this);
     }
 
     private void addPort(Integer integer) {
 
-        this.port = integer;
+        port = integer;
 
-        if (this.port == null) {
+        if (port == null) {
 
             try {
 
-                this.port = Integer.parseInt(this.text.getText());
+                port = Integer.parseInt(text.getText());
             }
             catch(NumberFormatException exception) {
 
                 JOptionPane.showMessageDialog(
-                    this.dialog,
-                    "\"" + this.text.getText() + "\"",
+                    dialog,
+                    "\"" + text.getText() + "\"",
                     "Invalid Port",
                     JOptionPane.ERROR_MESSAGE);
 
-                this.port = null;
-                this.text.setText("");
+                port = null;
+                text.setText("");
             }
         }
 
-        if (this.port != null) {
+        if (port != null) {
 
-            this.dialog.dispose();
+            dialog.dispose();
         }
     }
 
     private void fill() {
 
-        Utilities.setGridBagLayout(this.dialog.getContentPane());
+        Utilities.setGridBagLayout(dialog.getContentPane());
 
         Utilities.addComponent(
-            this.dialog.getContentPane(),
-            this.getNorthPanel(),
+            dialog.getContentPane(),
+            getNorthPanel(),
             Utilities.HORIZONTAL,
             0, 0,
             1, 1,
@@ -161,8 +161,8 @@ public class GetPortDialog implements ActionListener {
             Utilities.getInsets(0, 0, 0, 0));
 
         Utilities.addComponent(
-            this.dialog.getContentPane(),
-            this.getSouthPanel(),
+            dialog.getContentPane(),
+            getSouthPanel(),
             Utilities.HORIZONTAL,
             0, 1,
             1, 1,
@@ -176,7 +176,7 @@ public class GetPortDialog implements ActionListener {
 
         Utilities.addComponent(
             panel,
-            this.text,
+            text,
             Utilities.HORIZONTAL,
             0, 0,
             3, 1,
@@ -185,7 +185,7 @@ public class GetPortDialog implements ActionListener {
 
         Utilities.addComponent(
             panel,
-            this.port3000,
+            port3000,
             Utilities.HORIZONTAL,
             0, 1,
             1, 1,
@@ -194,7 +194,7 @@ public class GetPortDialog implements ActionListener {
 
         Utilities.addComponent(
             panel,
-            this.port4000,
+            port4000,
             Utilities.HORIZONTAL,
             1, 1,
             1, 1,
@@ -203,7 +203,7 @@ public class GetPortDialog implements ActionListener {
 
         Utilities.addComponent(
             panel,
-            this.port5000,
+            port5000,
             Utilities.HORIZONTAL,
             2, 1,
             1, 1,
@@ -217,8 +217,8 @@ public class GetPortDialog implements ActionListener {
 
         JPanel panel = new JPanel(new GridLayout(1, 3, 10, 2));
 
-        panel.add(this.okay);
-        panel.add(this.cancel);
+        panel.add(okay);
+        panel.add(cancel);
 
         return panel;
     }

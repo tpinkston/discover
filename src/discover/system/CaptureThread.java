@@ -40,26 +40,26 @@ public class CaptureThread extends NetworkThread {
 
         String addresses[] = Network.getMulticastAddresses();
 
-        this.socket = new MulticastSocket(this.port);
+        socket = new MulticastSocket(this.port);
 
         if ((addresses == null) || (addresses.length == 0)) {
 
-            this.socket.setReuseAddress(true);
+            socket.setReuseAddress(true);
         }
         else {
 
-            for(String address : Network.getMulticastAddresses()) {
+            for (String address : Network.getMulticastAddresses()) {
 
                 InetAddress multicast = InetAddress.getByName(address);
 
                 if (multicast != null) {
 
-                    ((MulticastSocket)this.socket).joinGroup(multicast);
+                    ((MulticastSocket) socket).joinGroup(multicast);
                 }
             }
         }
 
-        this.socket.setSoTimeout(TIMEOUT);
+        socket.setSoTimeout(TIMEOUT);
     }
 
     public synchronized void setBundledPDUs(boolean bundled) {
@@ -69,7 +69,7 @@ public class CaptureThread extends NetworkThread {
 
     public void joinGroup(String address) {
 
-        if (this.socket instanceof MulticastSocket) {
+        if (socket instanceof MulticastSocket) {
 
             try {
 
@@ -77,10 +77,10 @@ public class CaptureThread extends NetworkThread {
 
                 if (multicast != null) {
 
-                    ((MulticastSocket)this.socket).joinGroup(multicast);
+                    ((MulticastSocket) socket).joinGroup(multicast);
                 }
             }
-            catch(Exception exception) {
+            catch (Exception exception) {
 
                 logger.warn("Caught exception!", exception);
             }
@@ -94,24 +94,24 @@ public class CaptureThread extends NetworkThread {
 
         logger.info("Thread started: " + super.getName());
 
-        while(!super.isStopped()) {
+        while (!super.isStopped()) {
 
             try {
 
-                this.receive(packet);
+                receive(packet);
 
-                if (!this.pdus.isEmpty()) {
+                if (!pdus.isEmpty()) {
 
-                    this.listener.pdusCaptured(this.pdus);
-                    this.pdus.clear();
+                    listener.pdusCaptured(pdus);
+                    pdus.clear();
                 }
             }
-            catch(SocketTimeoutException exception) {
+            catch (SocketTimeoutException exception) {
 
                 // No inbound PDUs, do nothing but continue in while loop
                 // if thread has not been stopped.
             }
-            catch(IOException exception) {
+            catch (IOException exception) {
 
                 logger.error("Caught exception!", exception);
             }
@@ -127,7 +127,7 @@ public class CaptureThread extends NetworkThread {
         int index = 0;
         int length = 0;
 
-        this.socket.receive(packet);
+        socket.receive(packet);
 
         if (!super.isPaused()) {
 
@@ -138,57 +138,58 @@ public class CaptureThread extends NetworkThread {
 
                 logger.debug(
                     "Packet from host: " + Network.getHostAddress(packet) +
-                    ", port: " + this.port +
-                    ", length: " + packet.getLength());
+                        ", port: " + port +
+                        ", length: " + packet.getLength());
             }
 
             // Need at least 12 bytes for PDU header.
             if (size > 11) {
 
-                if (!this.bundled) {
+                if (!bundled) {
 
-                    this.createPDU(packet, Arrays.copyOf(data, size));
+                    createPDU(packet, Arrays.copyOf(data, size));
                 }
-                else try {
+                else
+                    try {
 
-                    bytes = new ByteArrayInputStream(packet.getData());
-                    stream = new DataInputStream(bytes);
-                    index = 0;
+                        bytes = new ByteArrayInputStream(packet.getData());
+                        stream = new DataInputStream(bytes);
+                        index = 0;
 
-                    while(index < size) {
+                        while (index < size) {
 
-                        stream.skipBytes(8);
+                            stream.skipBytes(8);
 
-                        length = stream.readUnsignedShort();
+                            length = stream.readUnsignedShort();
 
-                        if (length < 12) {
+                            if (length < 12) {
 
-                            logger.error("Stream size less than 12 bytes!");
+                                logger.error("Stream size less than 12 bytes!");
+                            }
+                            else if (length > (size - index)) {
+
+                                logger.error("Stream size greater than data size!");
+                            }
+                            else {
+
+                                byte[] subbytes = new byte[size];
+
+                                System.arraycopy(data, index, subbytes, 0, length);
+
+                                createPDU(packet, subbytes);
+
+                                index += length;
+
+                                stream.skipBytes(length - 10);
+                            }
                         }
-                        else if (length > (size - index)) {
 
-                            logger.error("Stream size greater than data size!");
-                        }
-                        else {
-
-                            byte[] subbytes = new byte[size];
-
-                            System.arraycopy(data, index, subbytes, 0, length);
-
-                            this.createPDU(packet, subbytes);
-
-                            index += length;
-
-                            stream.skipBytes(length - 10);
-                        }
+                        stream.close();
                     }
+                    catch (IOException exception) {
 
-                    stream.close();
-                }
-                catch(IOException exception) {
-
-                    logger.error("Caught exception!", exception);
-                }
+                        logger.error("Caught exception!", exception);
+                    }
             }
         }
     }
@@ -201,10 +202,10 @@ public class CaptureThread extends NetworkThread {
         pdu.setTitle();
         pdu.setInitiator();
         pdu.setTimestamp(true);
-        pdu.setPort(this.port);
+        pdu.setPort(port);
         pdu.setTime(System.currentTimeMillis());
         pdu.setSource(Network.getHostAddress(packet));
 
-        this.pdus.add(pdu);
+        pdus.add(pdu);
     }
 }

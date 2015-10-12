@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.pdu;
 
 import java.io.DataInputStream;
@@ -12,6 +9,9 @@ import discover.vdis.common.EntityId;
 import discover.vdis.common.Timestamp;
 import discover.vdis.enums.VDIS;
 
+/**
+ * @author Tony Pinkston
+ */
 public class DataQuery extends AbstractPDU {
 
     private EntityId originator = new EntityId();
@@ -28,12 +28,12 @@ public class DataQuery extends AbstractPDU {
     @Override
     public void clear() {
 
-        this.originator.clear();
-        this.recipient.clear();
-        this.time.clear();
-        this.requestId = 0;
-        this.fixed = null;
-        this.variable = null;
+        originator.clear();
+        recipient.clear();
+        time.clear();
+        requestId = 0;
+        fixed = null;
+        variable = null;
     }
 
     @Override
@@ -42,39 +42,39 @@ public class DataQuery extends AbstractPDU {
         super.toBuffer(buffer);
 
         buffer.addTitle("DATA QUERY");
-        buffer.addAttribute("Originator", this.originator.toString());
-        buffer.addAttribute("Recipient", this.recipient.toString());
-        buffer.addAttribute("Time Interval", this.time.toString());
-        buffer.addAttribute("Request Id", this.requestId);
+        buffer.addAttribute("Originator", originator.toString());
+        buffer.addAttribute("Recipient", recipient.toString());
+        buffer.addAttribute("Time Interval", time.toString());
+        buffer.addAttribute("Request Id", requestId);
         buffer.addBreak();
         buffer.addTitle("FIXED DATUM IDS");
 
-        if (this.fixed == null) {
+        if (fixed == null) {
 
             buffer.addItalic("None");
             buffer.addBreak();
         }
-        else for(int i = 0, size = this.fixed.length; i < size; ++i) {
+        else for(int i = 0, size = fixed.length; i < size; ++i) {
 
             buffer.addAttribute(
                 Integer.toString(i + 1),
-                this.fixed[i],
+                fixed[i],
                 VDIS.DATUM_IDS);
         }
 
         buffer.addBreak();
         buffer.addTitle("VARIABLE DATUM IDS");
 
-        if (this.variable == null) {
+        if (variable == null) {
 
             buffer.addItalic("None");
             buffer.addBreak();
         }
-        else for(int i = 0, size = this.variable.length; i < size; ++i) {
+        else for(int i = 0, size = variable.length; i < size; ++i) {
 
             buffer.addAttribute(
                 Integer.toString(i + 1),
-                this.variable[i],
+                variable[i],
                 VDIS.DATUM_IDS);
         }
     }
@@ -84,22 +84,22 @@ public class DataQuery extends AbstractPDU {
 
         super.read(stream); // (header)
 
-        this.originator.read(stream);
-        this.recipient.read(stream);
-        this.requestId = Common.toUnsigned32(stream.readInt());
-        this.time.read(stream);
+        originator.read(stream);
+        recipient.read(stream);
+        requestId = Common.toUnsigned32(stream.readInt());
+        time.read(stream);
 
-        this.fixed = new int[stream.readInt()];
-        this.variable = new int[stream.readInt()];
+        fixed = new int[stream.readInt()];
+        variable = new int[stream.readInt()];
 
-        for(int i = 0; i < this.fixed.length; ++i) {
+        for(int i = 0; i < fixed.length; ++i) {
 
-            this.fixed[i] = stream.readInt();
+            fixed[i] = stream.readInt();
         }
 
-        for(int i = 0; i < this.variable.length; ++i) {
+        for(int i = 0; i < variable.length; ++i) {
 
-            this.variable[i] = stream.readInt();
+            variable[i] = stream.readInt();
         }
     }
 }

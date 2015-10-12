@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.widgets;
 
 import javax.swing.JComboBox;
@@ -14,6 +11,9 @@ import discover.vdis.enums.VDIS;
 import discover.vdis.vprecords.AbstractVPRecord;
 import discover.vdis.vprecords.EntityAssociationVPR;
 
+/**
+ * @author Tony Pinkston
+ */
 public class EntityAssociationRecordWidget extends AbstractVariableRecordWidget {
 
     private final JPanel panel = Utilities.getGridBagPanel("");
@@ -32,33 +32,33 @@ public class EntityAssociationRecordWidget extends AbstractVariableRecordWidget 
         super("Entity Association");
 
         Utilities.configureComboBox(
-            this.type,
+            type,
             VDIS.PHYS_ASSOC_TYPE,
             false);
         Utilities.configureComboBox(
-            this.status,
+            status,
             VDIS.ENT_ASSOC_STATUS,
             false);
         Utilities.configureComboBox(
-            this.connection,
+            connection,
             VDIS.PHYS_CONN_TYPE,
             false);
         Utilities.configureComboBox(
-            this.station,
+            station,
             VDIS.STATION_NAME,
             false);
         Utilities.configureComboBox(
-            this.membership,
+            membership,
             VDIS.GRP_MEM_TYPE,
             false);
 
-        this.fill();
+        fill();
     }
 
     @Override
     public JComponent getComponent() {
 
-        return this.panel;
+        return panel;
     }
 
     @Override
@@ -69,25 +69,25 @@ public class EntityAssociationRecordWidget extends AbstractVariableRecordWidget 
         record = new EntityAssociationVPR();
 
         record.setType(Utilities.getComboboxValue(
-            this.type,
+            type,
             VDIS.PHYS_ASSOC_TYPE));
         record.setStatus(Utilities.getComboboxValue(
-            this.status,
+            status,
             VDIS.ENT_ASSOC_STATUS));
         record.setConnection(Utilities.getComboboxValue(
-            this.connection,
+            connection,
             VDIS.PHYS_CONN_TYPE));
         record.setStation(Utilities.getComboboxValue(
-            this.station,
+            station,
             VDIS.STATION_NAME));
         record.setMembership(Utilities.getComboboxValue(
-            this.membership,
+            membership,
             VDIS.GRP_MEM_TYPE));
 
-        record.setChange(Utilities.getIntegerValue(this.change));
-        record.setGroup(Utilities.getIntegerValue(this.group));
+        record.setChange(Utilities.getIntegerValue(change));
+        record.setGroup(Utilities.getIntegerValue(group));
 
-        this.entity.getValue(record.getEntityId());
+        entity.getValue(record.getEntityId());
 
         return record;
     }
@@ -100,43 +100,44 @@ public class EntityAssociationRecordWidget extends AbstractVariableRecordWidget 
             EntityAssociationVPR association = (EntityAssociationVPR)record;
 
             Utilities.setComboBoxValue(
-                this.type,
+                type,
                 VDIS.PHYS_ASSOC_TYPE,
                 association.getType());
             Utilities.setComboBoxValue(
-                this.status,
+                status,
                 VDIS.ENT_ASSOC_STATUS,
                 association.getStatus());
             Utilities.setComboBoxValue(
-                this.connection,
+                connection,
                 VDIS.PHYS_CONN_TYPE,
                 association.getConnection());
             Utilities.setComboBoxValue(
-                this.station,
+                station,
                 VDIS.STATION_NAME,
                 association.getStation());
             Utilities.setComboBoxValue(
-                this.membership,
+                membership,
                 VDIS.GRP_MEM_TYPE,
                 association.getMembership());
 
-            this.change.setValue(association.getChange());
-            this.group.setValue(association.getGroup());
+            change.setValue(association.getChange());
+            group.setValue(association.getGroup());
         }
     }
 
+    @Override
     protected void fill() {
 
         super.fill();
 
-        this.change.setValue(0);
-        this.change.setColumns(4);
-        this.group.setValue(0);
-        this.group.setColumns(4);
+        change.setValue(0);
+        change.setColumns(4);
+        group.setValue(0);
+        group.setColumns(4);
 
         Utilities.addComponent(
-            this.panel,
-            this.entity.getPanel(),
+            panel,
+            entity.getPanel(),
             Utilities.HORIZONTAL,
             0, 0,
             4, 1,
@@ -144,7 +145,7 @@ public class EntityAssociationRecordWidget extends AbstractVariableRecordWidget 
             Utilities.getInsets(8, 4, 2, 2));
 
         Utilities.addComponent(
-            this.panel,
+            panel,
             new JLabel("Status:"),
             Utilities.HORIZONTAL,
             0, 1,
@@ -152,8 +153,8 @@ public class EntityAssociationRecordWidget extends AbstractVariableRecordWidget 
             0.0, 0.0,
             Utilities.getInsets(10, 6, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            this.status,
+            panel,
+            status,
             Utilities.HORIZONTAL,
             1, 1,
             3, 1,
@@ -161,7 +162,7 @@ public class EntityAssociationRecordWidget extends AbstractVariableRecordWidget 
             Utilities.getInsets(4, 2, 2, 2));
 
         Utilities.addComponent(
-            this.panel,
+            panel,
             new JLabel("Type:"),
             Utilities.HORIZONTAL,
             0, 2,
@@ -169,8 +170,8 @@ public class EntityAssociationRecordWidget extends AbstractVariableRecordWidget 
             0.0, 0.0,
             Utilities.getInsets(10, 6, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            this.type,
+            panel,
+            type,
             Utilities.HORIZONTAL,
             1, 2,
             3, 1,
@@ -178,7 +179,7 @@ public class EntityAssociationRecordWidget extends AbstractVariableRecordWidget 
             Utilities.getInsets(4, 2, 2, 2));
 
         Utilities.addComponent(
-            this.panel,
+            panel,
             new JLabel("Connection:"),
             Utilities.HORIZONTAL,
             0, 3,
@@ -186,8 +187,8 @@ public class EntityAssociationRecordWidget extends AbstractVariableRecordWidget 
             0.0, 0.0,
             Utilities.getInsets(10, 6, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            this.connection,
+            panel,
+            connection,
             Utilities.HORIZONTAL,
             1, 3,
             3, 1,
@@ -195,7 +196,7 @@ public class EntityAssociationRecordWidget extends AbstractVariableRecordWidget 
             Utilities.getInsets(4, 2, 2, 2));
 
         Utilities.addComponent(
-            this.panel,
+            panel,
             new JLabel("Station:"),
             Utilities.HORIZONTAL,
             0, 4,
@@ -203,8 +204,8 @@ public class EntityAssociationRecordWidget extends AbstractVariableRecordWidget 
             0.0, 0.0,
             Utilities.getInsets(10, 6, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            this.station,
+            panel,
+            station,
             Utilities.HORIZONTAL,
             1, 4,
             3, 1,
@@ -212,7 +213,7 @@ public class EntityAssociationRecordWidget extends AbstractVariableRecordWidget 
             Utilities.getInsets(4, 2, 2, 2));
 
         Utilities.addComponent(
-            this.panel,
+            panel,
             new JLabel("Membership:"),
             Utilities.HORIZONTAL,
             0, 5,
@@ -220,8 +221,8 @@ public class EntityAssociationRecordWidget extends AbstractVariableRecordWidget 
             0.0, 0.0,
             Utilities.getInsets(10, 6, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            this.membership,
+            panel,
+            membership,
             Utilities.HORIZONTAL,
             1, 5,
             3, 1,
@@ -229,7 +230,7 @@ public class EntityAssociationRecordWidget extends AbstractVariableRecordWidget 
             Utilities.getInsets(4, 2, 2, 2));
 
         Utilities.addComponent(
-            this.panel,
+            panel,
             new JLabel("Change:"),
             Utilities.HORIZONTAL,
             0, 6,
@@ -237,15 +238,15 @@ public class EntityAssociationRecordWidget extends AbstractVariableRecordWidget 
             0.0, 0.0,
             Utilities.getInsets(10, 6, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            this.change,
+            panel,
+            change,
             Utilities.HORIZONTAL,
             1, 6,
             1, 1,
             0.5, 0.0,
             Utilities.getInsets(4, 2, 2, 2));
         Utilities.addComponent(
-            this.panel,
+            panel,
             new JLabel("Group:"),
             Utilities.HORIZONTAL,
             2, 6,
@@ -253,8 +254,8 @@ public class EntityAssociationRecordWidget extends AbstractVariableRecordWidget 
             0.0, 0.0,
             Utilities.getInsets(10, 10, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            this.group,
+            panel,
+            group,
             Utilities.HORIZONTAL,
             3, 6,
             1, 1,
@@ -262,8 +263,8 @@ public class EntityAssociationRecordWidget extends AbstractVariableRecordWidget 
             Utilities.getInsets(4, 2, 2, 2));
 
         Utilities.addComponent(
-            this.panel,
-            super.getRemoveButton(),
+            panel,
+            getRemoveButton(),
             Utilities.HORIZONTAL,
             0, 7,
             4, 1,

@@ -79,51 +79,51 @@ public class BitRecordWidget extends ToggleWidget {
     public BitRecordWidget(AbstractBits bits) {
 
         super(getTitle(bits));
-        this.init(bits);
+        init(bits);
     }
 
     public BitRecordWidget(String title, AbstractBits bits) {
 
         super(title);
-        this.init(bits);
+        init(bits);
     }
 
     @Override
     public JComponent getComponent() {
 
-        return this.panel;
+        return panel;
     }
 
     public void clear() {
 
-        if (this.value instanceof Abstract8Bits) {
+        if (value instanceof Abstract8Bits) {
 
-            ((Abstract8Bits)this.value).set((byte)0x00);
+            ((Abstract8Bits)value).set((byte)0x00);
         }
-        else if (this.value instanceof Abstract16Bits) {
+        else if (value instanceof Abstract16Bits) {
 
-            ((Abstract16Bits)this.value).set((short)0x00);
+            ((Abstract16Bits)value).set((short)0x00);
         }
-        else if (this.value instanceof Abstract32Bits) {
+        else if (value instanceof Abstract32Bits) {
 
-            ((Abstract32Bits)this.value).set(0x00);
+            ((Abstract32Bits)value).set(0x00);
         }
 
-        this.model.fireTableDataChanged();
+        model.fireTableDataChanged();
     }
 
     public AbstractBits getValue() {
 
-        return this.value.clone();
+        return value.clone();
     }
 
     public void setValue(AbstractBits value) {
 
         this.value = value.clone();
-        this.model.fireTableDataChanged();
-        this.string.setText(this.value.getBitString());
+        model.fireTableDataChanged();
+        string.setText(this.value.getBitString());
 
-        super.getLabel().setText(getTitle(this.value));
+        getLabel().setText(getTitle(this.value));
     }
 
     public void applyValue(AbstractBits value) {
@@ -166,20 +166,20 @@ public class BitRecordWidget extends ToggleWidget {
 
         super.removed();
 
-        this.string.removeActionListener(this);
-        this.string.removeFocusListener(this);
+        string.removeActionListener(this);
+        string.removeFocusListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent event) {
 
-        this.updateValues();
+        updateValues();
     }
 
     @Override
     public void focusLost(FocusEvent event) {
 
-        this.updateValues();
+        updateValues();
     }
 
     @Override
@@ -188,7 +188,7 @@ public class BitRecordWidget extends ToggleWidget {
         super.fill();
 
         Utilities.addComponent(
-            this.panel,
+            panel,
             new JLabel("Bits:"),
             Utilities.NONE,
             0, 0,
@@ -196,16 +196,16 @@ public class BitRecordWidget extends ToggleWidget {
             0.0, 0.0,
             Utilities.getInsets(12, 6, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            this.string,
+            panel,
+            string,
             Utilities.HORIZONTAL,
             1, 0,
             1, 1,
             0.5, 0.0,
             Utilities.getInsets(6, 4, 2, 4));
        Utilities.addComponent(
-            this.panel,
-            this.getTablePanel(),
+            panel,
+            getTablePanel(),
             Utilities.BOTH,
             0, 2,
             2, 1,
@@ -215,19 +215,19 @@ public class BitRecordWidget extends ToggleWidget {
 
     private void init(AbstractBits bits) {
 
-        super.setRevalidation(true);
+        setRevalidation(true);
 
-        this.value = bits.clone();
-        this.model = new TableModel();
+        value = bits.clone();
+        model = new TableModel();
 
-        this.table.setModel(this.model);
-        this.model.fireTableDataChanged();
+        table.setModel(model);
+        model.fireTableDataChanged();
 
-        this.string.setText(this.value.getBitString());
-        this.string.addActionListener(this);
-        this.string.addFocusListener(this);
+        string.setText(value.getBitString());
+        string.addActionListener(this);
+        string.addFocusListener(this);
 
-        this.fill();
+        fill();
     }
 
     private void updateValues() {
@@ -261,13 +261,13 @@ public class BitRecordWidget extends ToggleWidget {
             }
         }
 
-        this.string.setText(this.value.getBitString());
-        this.model.fireTableDataChanged();
+        this.string.setText(value.getBitString());
+        model.fireTableDataChanged();
     }
 
     private JPanel getTablePanel() {
 
-        JScrollPane scroller = new JScrollPane(this.table);
+        JScrollPane scroller = new JScrollPane(table);
         JPanel panel = Utilities.getGridBagPanel(null);
 
         scroller.setPreferredSize(new Dimension(250, 200));
@@ -355,17 +355,17 @@ public class BitRecordWidget extends ToggleWidget {
 
             super.fireTableDataChanged();
 
-            this.setColumnWidths();
+            setColumnWidths();
         }
 
         public void setColumnWidths() {
 
-            for(int i = 0; i < this.getColumnCount(); ++i) {
+            for(int i = 0; i < getColumnCount(); ++i) {
 
                 TableColumn column = table.getColumnModel().getColumn(i);
 
                 column.setResizable(true);
-                column.setPreferredWidth(this.getColumnWidth(i));
+                column.setPreferredWidth(getColumnWidth(i));
             }
         }
 

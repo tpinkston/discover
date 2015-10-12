@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.frames;
 
 import java.awt.BorderLayout;
@@ -45,6 +42,9 @@ import discover.vdis.PDU;
 import discover.vdis.common.EntityId;
 import discover.vdis.enums.VDIS;
 
+/**
+ * @author Tony Pinkston
+ */
 @SuppressWarnings("serial")
 public class SiteMapFrame implements MouseListener, TreeSelectionListener {
 
@@ -75,59 +75,59 @@ public class SiteMapFrame implements MouseListener, TreeSelectionListener {
      */
     public SiteMapFrame(String title) {
 
-        this.frame = new JFrame();
-        this.popup = new JPopupMenu();
-        this.root = new World();
-        this.tree = new JTree(this.root);
-        this.description = new JEditorPane();
-        this.description.setContentType("text/html");
+        frame = new JFrame();
+        popup = new JPopupMenu();
+        root = new World();
+        tree = new JTree(root);
+        description = new JEditorPane();
+        description.setContentType("text/html");
 
-        this.popup.add(this.clear);
-        this.popup.add(this.remove);
+        popup.add(clear);
+        popup.add(remove);
 
-        this.tree.setRootVisible(true);
-        this.tree.setCellRenderer(new TreeCellRenderer());
-        this.tree.setRowHeight(20);
-        this.tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
-        this.tree.addMouseListener(this);
-        this.tree.addTreeSelectionListener(this);
+        tree.setRootVisible(true);
+        tree.setCellRenderer(new TreeCellRenderer());
+        tree.setRowHeight(20);
+        tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+        tree.addMouseListener(this);
+        tree.addTreeSelectionListener(this);
 
-        this.fill();
-        this.setTitle(title);
+        fill();
+        setTitle(title);
 
-        this.frame.setMinimumSize(new Dimension(600, 500));
-        this.frame.setPreferredSize(new Dimension(800, 600));
-        this.frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        this.frame.pack();
+        frame.setMinimumSize(new Dimension(600, 500));
+        frame.setPreferredSize(new Dimension(800, 600));
+        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        frame.pack();
     }
 
     public JFrame getFrame() {
 
-        return this.frame;
+        return frame;
     }
 
     public void destroy() {
 
-        this.tree.removeMouseListener(this);
-        this.tree.removeTreeSelectionListener(this);
-        this.frame.dispose();
+        tree.removeMouseListener(this);
+        tree.removeTreeSelectionListener(this);
+        frame.dispose();
     }
 
     public void setTitle(String title) {
 
-        this.frame.setTitle("Site Map [" + title + "]");
+        frame.setTitle("Site Map [" + title + "]");
     }
 
     public void clearAll() {
 
-        DefaultTreeModel model = (DefaultTreeModel)this.tree.getModel();
+        DefaultTreeModel model = (DefaultTreeModel)tree.getModel();
         List<TreeNode> nodes = new ArrayList<TreeNode>();
 
-        int count = this.root.getChildCount();
+        int count = root.getChildCount();
 
         for(int i = 0; i < count; ++i) {
 
-            nodes.add((TreeNode)this.root.getChildAt(i));
+            nodes.add((TreeNode)root.getChildAt(i));
         }
 
         for(TreeNode node : nodes) {
@@ -136,11 +136,11 @@ public class SiteMapFrame implements MouseListener, TreeSelectionListener {
             model.removeNodeFromParent(node);
         }
 
-        logger.info("Clearing node \"" + this.root.toString() + "\"");
+        logger.info("Clearing node \"" + root.toString() + "\"");
 
-        this.root.clear();
-        this.selection = this.root;
-        updateSelection(this.root);
+        root.clear();
+        selection = root;
+        updateSelection(root);
     }
 
     /**
@@ -153,15 +153,15 @@ public class SiteMapFrame implements MouseListener, TreeSelectionListener {
 
         if ((path == null) || (path.length == 0)) {
 
-            this.description.setText("");
+            description.setText("");
         }
         else {
 
-            this.selection = (TreeNode)path[path.length - 1];
+            selection = (TreeNode)path[path.length - 1];
 
-            logger.info("Selection: " + this.selection.toString());
+            logger.info("Selection: " + selection.toString());
 
-            this.showNode(this.selection);
+            showNode(selection);
         }
     }
 
@@ -178,19 +178,19 @@ public class SiteMapFrame implements MouseListener, TreeSelectionListener {
     @Override
     public void mouseClicked(MouseEvent event) {
 
-        this.showPopup(event);
+        showPopup(event);
     }
 
     @Override
     public void mousePressed(MouseEvent event) {
 
-        this.showPopup(event);
+        showPopup(event);
     }
 
     @Override
     public void mouseReleased(MouseEvent event) {
 
-        this.showPopup(event);
+        showPopup(event);
     }
 
     /**
@@ -232,18 +232,18 @@ public class SiteMapFrame implements MouseListener, TreeSelectionListener {
 
     private void updateSelection(TreeNode node) {
 
-        if (this.selection != null) {
+        if (selection != null) {
 
-            if (this.selection.isRoot() || (this.selection == node)) {
+            if (selection.isRoot() || (selection == node)) {
 
-                this.showNode(this.selection);
+                showNode(selection);
             }
-            else if ((this.selection instanceof Application) ||
-                     (this.selection instanceof Site)) {
+            else if ((selection instanceof Application) ||
+                     (selection instanceof Site)) {
 
-                if (this.selection.isChildNode(node)) {
+                if (selection.isChildNode(node)) {
 
-                    this.showNode(this.selection);
+                    showNode(selection);
                 }
             }
         }
@@ -251,7 +251,7 @@ public class SiteMapFrame implements MouseListener, TreeSelectionListener {
 
     private void insertNodeInto(TreeNode child, TreeNode parent, int index) {
 
-        DefaultTreeModel model = (DefaultTreeModel)this.tree.getModel();
+        DefaultTreeModel model = (DefaultTreeModel)tree.getModel();
 
         logger.debug("Inserting node '{}' into '{}'", child, parent);
 
@@ -260,7 +260,7 @@ public class SiteMapFrame implements MouseListener, TreeSelectionListener {
 
     private void removeNodeFromParent(TreeNode node) {
 
-        DefaultTreeModel model = (DefaultTreeModel)this.tree.getModel();
+        DefaultTreeModel model = (DefaultTreeModel)tree.getModel();
 
         model.removeNodeFromParent(node);
     }
@@ -273,30 +273,30 @@ public class SiteMapFrame implements MouseListener, TreeSelectionListener {
         buffer.addBuffer(node);
         buffer.addText("</body></html>");
 
-        this.description.setText(buffer.toString());
+        description.setText(buffer.toString());
     }
 
     private void showPopup(MouseEvent event) {
 
         if (event.isPopupTrigger()) {
 
-            final int row = this.tree.getRowForLocation(
+            final int row = tree.getRowForLocation(
                 event.getX(),
                 event.getY());
 
-            final int rows[] = this.tree.getSelectionRows();
+            final int rows[] = tree.getSelectionRows();
 
             if ((rows != null) && (rows.length == 1) && (rows[0] == row)) {
 
-                TreePath path = this.tree.getPathForLocation(
+                TreePath path = tree.getPathForLocation(
                     event.getX(),
                     event.getY());
 
                 TreeNode node = (TreeNode)path.getLastPathComponent();
 
-                this.clear.setNode(node);
-                this.remove.setNode(node);
-                this.popup.show(this.tree, event.getX(), event.getY());
+                clear.setNode(node);
+                remove.setNode(node);
+                popup.show(tree, event.getX(), event.getY());
             }
         }
     }
@@ -310,7 +310,7 @@ public class SiteMapFrame implements MouseListener, TreeSelectionListener {
      */
     private Entity getEntity(EntityId id) {
 
-        TreeNode site = this.root.getChildNode(id.getSite());
+        TreeNode site = root.getChildNode(id.getSite());
 
         if (site == null) {
 
@@ -347,16 +347,16 @@ public class SiteMapFrame implements MouseListener, TreeSelectionListener {
      */
     private void fill() {
 
-        JScrollPane scroller = new JScrollPane(this.tree);
+        JScrollPane scroller = new JScrollPane(tree);
         JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, true);
 
         scroller.setPreferredSize(TREE_PREFERRED);
 
         split.setContinuousLayout(true);
         split.setLeftComponent(scroller);
-        split.setRightComponent(this.description);
+        split.setRightComponent(description);
 
-        this.frame.add(split, BorderLayout.CENTER);
+        frame.add(split, BorderLayout.CENTER);
     }
 
     class ClearAction extends AbstractAction {
@@ -381,16 +381,16 @@ public class SiteMapFrame implements MouseListener, TreeSelectionListener {
         public void actionPerformed(ActionEvent event) {
 
             int choice = JOptionPane.showConfirmDialog(
-                SiteMapFrame.this.frame,
-                "Clear all PDU totals for " + this.node.toString() + "?",
+                frame,
+                "Clear all PDU totals for " + node.toString() + "?",
                 "Site Map",
                 JOptionPane.YES_NO_CANCEL_OPTION,
                 JOptionPane.QUESTION_MESSAGE);
 
             if (choice == JOptionPane.YES_OPTION) {
 
-                this.node.clear();
-                updateSelection(this.node);
+                node.clear();
+                updateSelection(node);
             }
         }
     }
@@ -419,15 +419,15 @@ public class SiteMapFrame implements MouseListener, TreeSelectionListener {
         public void actionPerformed(ActionEvent event) {
 
             int choice = JOptionPane.showConfirmDialog(
-                SiteMapFrame.this.frame,
-                "Remove " + this.node.toString() + " and sub-nodes?",
-                this.node.getClass().getSimpleName(),
+                frame,
+                "Remove " + node.toString() + " and sub-nodes?",
+                node.getClass().getSimpleName(),
                 JOptionPane.YES_NO_CANCEL_OPTION,
                 JOptionPane.QUESTION_MESSAGE);
 
             if (choice == JOptionPane.YES_OPTION) {
 
-                removeNodeFromParent(this.node);
+                removeNodeFromParent(node);
             }
         }
     }
@@ -472,7 +472,7 @@ public class SiteMapFrame implements MouseListener, TreeSelectionListener {
         public final void toBuffer(AbstractBuffer buffer) {
 
             buffer.addTitle(
-                "APPLICATION (" + this.getParentNode().getNumber() +
+                "APPLICATION (" + getParentNode().getNumber() +
                 ", " + super.getNumber() +", #)");
 
             super.toBuffer(buffer);
@@ -490,8 +490,8 @@ public class SiteMapFrame implements MouseListener, TreeSelectionListener {
         public final void toBuffer(AbstractBuffer buffer) {
 
             buffer.addTitle(
-                "ENTITY (" + this.getParentNode().getParentNode().getNumber() +
-                ", " + this.getParentNode().getNumber() +
+                "ENTITY (" + getParentNode().getParentNode().getNumber() +
+                ", " + getParentNode().getNumber() +
                 ", " + super.getNumber() +")");
 
             super.toBuffer(buffer);
@@ -508,13 +508,13 @@ public class SiteMapFrame implements MouseListener, TreeSelectionListener {
 
         protected TreeNode(int number) {
 
-            this.published = new TreeMap<Integer, Integer>();
+            published = new TreeMap<Integer, Integer>();
             this.number = number;
 
-            logger.info("Created node \"" + this.toString() + "\"");
+            logger.info("Created node \"" + toString() + "\"");
         }
 
-        public final int getNumber() { return this.number; }
+        public final int getNumber() { return number; }
 
         @Override
         public final boolean isRoot() {
@@ -581,15 +581,15 @@ public class SiteMapFrame implements MouseListener, TreeSelectionListener {
                 // Node not yet created, create a new one.
                 boolean inserted = false;
 
-                if (this.isRoot()) {
+                if (isRoot()) {
 
                     node = new Site(number);
                 }
-                else if (this.isSite()) {
+                else if (isSite()) {
 
                     node = new Application(number);
                 }
-                else if (this.isApplication()) {
+                else if (isApplication()) {
 
                     node = new Entity(number);
                 }
@@ -633,23 +633,23 @@ public class SiteMapFrame implements MouseListener, TreeSelectionListener {
 
         public final void publishedPDU(int type) {
 
-            Integer count = this.published.get(type);
+            Integer count = published.get(type);
 
-            if (this.isEntity()) {
+            if (isEntity()) {
 
                 logger.debug("Adding PDU ({}) for node: {}", type, toString());
             }
 
             if (count == null) {
 
-                this.published.put(type, new Integer(1));
+                published.put(type, new Integer(1));
             }
             else {
 
-                this.published.put(type, new Integer(count.intValue() + 1));
+                published.put(type, new Integer(count.intValue() + 1));
             }
 
-            TreeNode parent = this.getParentNode();
+            TreeNode parent = getParentNode();
 
             if (parent != null) {
 
@@ -659,9 +659,9 @@ public class SiteMapFrame implements MouseListener, TreeSelectionListener {
 
         public final void clear() {
 
-            logger.info("Clearing node \"" + this.toString() + "\"");
+            logger.info("Clearing node \"" + toString() + "\"");
 
-            this.published.clear();
+            published.clear();
 
             for(int i = 0; i < super.getChildCount(); ++i) {
 
@@ -674,13 +674,13 @@ public class SiteMapFrame implements MouseListener, TreeSelectionListener {
         @Override
         public final String toString() {
 
-            if (this.isRoot()) {
+            if (isRoot()) {
 
                 return SITE_MAP;
             }
             else {
 
-                return (this.getClass().getSimpleName() + ": " + this.number);
+                return (this.getClass().getSimpleName() + ": " + number);
             }
         }
 
@@ -692,9 +692,9 @@ public class SiteMapFrame implements MouseListener, TreeSelectionListener {
             buffer.addBreak();
             buffer.addTitle("Published PDUs:");
 
-            for(Integer type : this.published.keySet()) {
+            for(Integer type : published.keySet()) {
 
-                int count = this.published.get(type).intValue();
+                int count = published.get(type).intValue();
 
                 total += count;
 

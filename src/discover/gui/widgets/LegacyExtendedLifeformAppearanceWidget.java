@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.widgets;
 
 import javax.swing.JComboBox;
@@ -16,6 +13,9 @@ import discover.vdis.enums.VDIS;
 import discover.vdis.vprecords.AbstractVPRecord;
 import discover.vdis.vprecords.LegacyExtendedLifeformAppearanceVPR;
 
+/**
+ * @author Tony Pinkston
+ */
 public class LegacyExtendedLifeformAppearanceWidget extends AbstractVariableRecordWidget {
 
     private final JPanel panel = Utilities.getGridBagPanel("");
@@ -30,24 +30,24 @@ public class LegacyExtendedLifeformAppearanceWidget extends AbstractVariableReco
 
         super("Legacy Extended Lifeform Appearance");
 
-        this.status = new BitRecordWidget(new ExtendedStatus());
-        this.equipment = new BitRecordWidget(new ExtendedEquipmentLifeform());
-        this.attributes = new BitRecordWidget(new LifeformAttributes());
+        status = new BitRecordWidget(new ExtendedStatus());
+        equipment = new BitRecordWidget(new ExtendedEquipmentLifeform());
+        attributes = new BitRecordWidget(new LifeformAttributes());
 
         Utilities.configureComboBox(
-            this.clothing,
+            clothing,
             VDIS.LF_CLOTH_SCHEME,
             false);
         Utilities.configureComboBox(
-            this.primaryColor,
+            primaryColor,
             VDIS.COLORS,
             false);
         Utilities.configureComboBox(
-            this.secondaryColor,
+            secondaryColor,
             VDIS.COLORS,
             false);
 
-        this.fill();
+        fill();
     }
 
     @Override
@@ -58,18 +58,18 @@ public class LegacyExtendedLifeformAppearanceWidget extends AbstractVariableReco
         record = new LegacyExtendedLifeformAppearanceVPR();
 
         record.setClothing(Utilities.getComboboxValue(
-            this.clothing,
+            clothing,
             VDIS.LF_CLOTH_SCHEME));
         record.setPrimaryColor(Utilities.getComboboxValue(
-            this.primaryColor,
+            primaryColor,
             VDIS.COLORS));
         record.setSecondaryColor(Utilities.getComboboxValue(
-            this.secondaryColor,
+            secondaryColor,
             VDIS.COLORS));
 
-        this.status.applyValue(record.getStatus());
-        this.equipment.applyValue(record.getEquipment());
-        this.attributes.applyValue(record.getAttributes());
+        status.applyValue(record.getStatus());
+        equipment.applyValue(record.getEquipment());
+        attributes.applyValue(record.getAttributes());
 
         return record;
     }
@@ -84,36 +84,37 @@ public class LegacyExtendedLifeformAppearanceWidget extends AbstractVariableReco
             appearance = (LegacyExtendedLifeformAppearanceVPR)record;
 
             Utilities.setComboBoxValue(
-                this.clothing,
+                clothing,
                 VDIS.LF_CLOTH_SCHEME,
                 appearance.getClothing());
             Utilities.setComboBoxValue(
-                this.primaryColor,
+                primaryColor,
                 VDIS.COLORS,
                 appearance.getPrimaryColor());
             Utilities.setComboBoxValue(
-                this.secondaryColor,
+                secondaryColor,
                 VDIS.COLORS,
                 appearance.getSecondaryColor());
 
-            this.equipment.setValue(appearance.getEquipment());
-            this.status.setValue(appearance.getStatus());
-            this.attributes.setValue(appearance.getAttributes());
+            equipment.setValue(appearance.getEquipment());
+            status.setValue(appearance.getStatus());
+            attributes.setValue(appearance.getAttributes());
         }
     }
 
     @Override
     public JComponent getComponent() {
 
-        return this.panel;
+        return panel;
     }
 
+    @Override
     protected void fill() {
 
         super.fill();
 
         Utilities.addComponent(
-            this.panel,
+            panel,
             new JLabel("Clothing Scheme:"),
             Utilities.HORIZONTAL,
             0, 0,
@@ -121,15 +122,15 @@ public class LegacyExtendedLifeformAppearanceWidget extends AbstractVariableReco
             0.0, 0.0,
             Utilities.getInsets(10, 6, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            this.clothing,
+            panel,
+            clothing,
             Utilities.HORIZONTAL,
             1, 0,
             1, 1,
             0.0, 0.0,
             Utilities.getInsets(4, 2, 2, 2));
         Utilities.addComponent(
-            this.panel,
+            panel,
             new JLabel("Primary Color:"),
             Utilities.HORIZONTAL,
             0, 1,
@@ -137,15 +138,15 @@ public class LegacyExtendedLifeformAppearanceWidget extends AbstractVariableReco
             0.0, 0.0,
             Utilities.getInsets(10, 6, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            this.primaryColor,
+            panel,
+            primaryColor,
             Utilities.HORIZONTAL,
             1, 1,
             2, 1,
             0.0, 0.0,
             Utilities.getInsets(4, 2, 2, 2));
         Utilities.addComponent(
-            this.panel,
+            panel,
             new JLabel("Secondary Color:"),
             Utilities.HORIZONTAL,
             0, 2,
@@ -153,40 +154,40 @@ public class LegacyExtendedLifeformAppearanceWidget extends AbstractVariableReco
             0.0, 0.0,
             Utilities.getInsets(10, 6, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            this.secondaryColor,
+            panel,
+            secondaryColor,
             Utilities.HORIZONTAL,
             1, 2,
             1, 1,
             0.0, 0.0,
             Utilities.getInsets(4, 2, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            this.status.getPanel(),
+            panel,
+            status.getPanel(),
             Utilities.HORIZONTAL,
             0, 3,
             2, 1,
             0.0, 0.0,
             Utilities.getInsets(4, 2, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            this.equipment.getPanel(),
+            panel,
+            equipment.getPanel(),
             Utilities.HORIZONTAL,
             0, 4,
             2, 1,
             0.0, 0.0,
             Utilities.getInsets(4, 2, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            this.attributes.getPanel(),
+            panel,
+            attributes.getPanel(),
             Utilities.HORIZONTAL,
             0, 5,
             2, 1,
             0.0, 0.0,
             Utilities.getInsets(4, 2, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            super.remove,
+            panel,
+            remove,
             Utilities.HORIZONTAL,
             0, 6,
             2, 1,

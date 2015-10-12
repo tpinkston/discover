@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.common;
 
 import java.io.DataInputStream;
@@ -12,6 +9,9 @@ import discover.common.buffer.Bufferable;
 import discover.vdis.appearance.GenericObjectAppearance;
 import discover.vdis.appearance.SpecificObjectAppearance;
 
+/**
+ * @author Tony Pinkston
+ */
 public class LinearSegment implements Bufferable, Readable {
 
     private GenericObjectAppearance generic = new GenericObjectAppearance();
@@ -31,47 +31,47 @@ public class LinearSegment implements Bufferable, Readable {
 
     public LinearSegment(DataInputStream stream) throws IOException {
 
-        this.read(stream);
+        read(stream);
     }
 
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
         buffer.addSeparator();
-        buffer.addTitle("SEGMENT " + this.segment);
-        buffer.addAttribute("Modifications", this.modifications);
-        buffer.addAttribute("Location", this.location.toString());
-        buffer.addAttribute("Orientation", this.orientation.toString());
+        buffer.addTitle("SEGMENT " + segment);
+        buffer.addAttribute("Modifications", modifications);
+        buffer.addAttribute("Location", location.toString());
+        buffer.addAttribute("Orientation", orientation.toString());
         buffer.addBreak();
 
         buffer.addTitle("DIMENSIONS");
-        buffer.addAttribute("Length (meters)", this.length);
-        buffer.addAttribute("Width (meters)", this.width);
-        buffer.addAttribute("Height (meters)", this.height);
-        buffer.addAttribute("Depth (meters)", this.depth);
+        buffer.addAttribute("Length (meters)", length);
+        buffer.addAttribute("Width (meters)", width);
+        buffer.addAttribute("Height (meters)", height);
+        buffer.addAttribute("Depth (meters)", depth);
         buffer.addBreak();
 
         buffer.addTitle("GENERIC APPEARANCE");
-        buffer.addBuffer(this.generic);
+        buffer.addBuffer(generic);
         buffer.addBreak();
 
         buffer.addTitle("SPECIFIC APPEARANCE");
-        buffer.addBuffer(this.specific);
+        buffer.addBuffer(specific);
     }
 
     @Override
     public void read(DataInputStream stream) throws IOException {
 
-        this.segment = stream.readUnsignedByte();
-        this.modifications = stream.readUnsignedByte();
-        this.generic.read(stream);
-        this.specific.read(stream);
-        this.location.read(stream);
-        this.orientation.read(stream);
-        this.length = stream.readUnsignedShort();
-        this.width = stream.readUnsignedShort();
-        this.height = stream.readUnsignedShort();
-        this.depth = stream.readUnsignedShort();
+        segment = stream.readUnsignedByte();
+        modifications = stream.readUnsignedByte();
+        generic.read(stream);
+        specific.read(stream);
+        location.read(stream);
+        orientation.read(stream);
+        length = stream.readUnsignedShort();
+        width = stream.readUnsignedShort();
+        height = stream.readUnsignedShort();
+        depth = stream.readUnsignedShort();
 
         stream.readInt(); // 32 bits padding
     }

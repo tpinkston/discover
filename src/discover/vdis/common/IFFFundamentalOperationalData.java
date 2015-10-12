@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.common;
 
 import java.io.DataInputStream;
@@ -11,6 +8,9 @@ import discover.common.Readable;
 import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.Bufferable;
 
+/**
+ * @author Tony Pinkston
+ */
 public class IFFFundamentalOperationalData implements Bufferable, Readable {
 
     private IFFSystemStatus status = new IFFSystemStatus();
@@ -26,57 +26,57 @@ public class IFFFundamentalOperationalData implements Bufferable, Readable {
 
     public void clear() {
 
-        this.status.set((byte)0x00);
-        this.informationLayers.set((byte)0x00);
-        this.dataField1 = 0x00;
-        this.dataField2 = 0x00;
-        this.parameter1 = 0x00;
-        this.parameter2 = 0x00;
-        this.parameter3 = 0x00;
-        this.parameter4 = 0x00;
-        this.parameter5 = 0x00;
-        this.parameter6 = 0x00;
+        status.set((byte)0x00);
+        informationLayers.set((byte)0x00);
+        dataField1 = 0x00;
+        dataField2 = 0x00;
+        parameter1 = 0x00;
+        parameter2 = 0x00;
+        parameter3 = 0x00;
+        parameter4 = 0x00;
+        parameter5 = 0x00;
+        parameter6 = 0x00;
     }
 
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
         buffer.addTitle("System Status");
-        buffer.addBuffer(this.status);
+        buffer.addBuffer(status);
         buffer.addTitle("Information Layers");
-        buffer.addBuffer(this.informationLayers);
+        buffer.addBuffer(informationLayers);
         buffer.addTitle("Data Fields");
-        buffer.addAttribute("1", Binary.toString8(this.dataField1));
-        buffer.addAttribute("2", Binary.toString8(this.dataField2));
+        buffer.addAttribute("1", Binary.toString8(dataField1));
+        buffer.addAttribute("2", Binary.toString8(dataField2));
         buffer.addTitle("Parameters");
-        buffer.addAttribute("1", Binary.toString16(this.parameter1));
-        buffer.addAttribute("2", Binary.toString16(this.parameter2));
-        buffer.addAttribute("3", Binary.toString16(this.parameter3));
-        buffer.addAttribute("4", Binary.toString16(this.parameter4));
-        buffer.addAttribute("5", Binary.toString16(this.parameter5));
-        buffer.addAttribute("6", Binary.toString16(this.parameter6));
+        buffer.addAttribute("1", Binary.toString16(parameter1));
+        buffer.addAttribute("2", Binary.toString16(parameter2));
+        buffer.addAttribute("3", Binary.toString16(parameter3));
+        buffer.addAttribute("4", Binary.toString16(parameter4));
+        buffer.addAttribute("5", Binary.toString16(parameter5));
+        buffer.addAttribute("6", Binary.toString16(parameter6));
     }
 
     @Override
     public void read(DataInputStream stream) throws IOException {
 
-        this.status.read(stream);
-        this.dataField1 = stream.readByte();
-        this.informationLayers.read(stream);
-        this.dataField2 = stream.readByte();
-        this.parameter1 = this.readAvailableShort(stream);
-        this.parameter2 = this.readAvailableShort(stream);
-        this.parameter3 = this.readAvailableShort(stream);
-        this.parameter4 = this.readAvailableShort(stream);
-        this.parameter5 = this.readAvailableShort(stream);
+        status.read(stream);
+        dataField1 = stream.readByte();
+        informationLayers.read(stream);
+        dataField2 = stream.readByte();
+        parameter1 = readAvailableShort(stream);
+        parameter2 = readAvailableShort(stream);
+        parameter3 = readAvailableShort(stream);
+        parameter4 = readAvailableShort(stream);
+        parameter5 = readAvailableShort(stream);
 
         if (stream.available() > 0) {
 
-            this.parameter6 = stream.readShort();
+            parameter6 = stream.readShort();
         }
         else {
 
-            this.parameter6 = 0x00;
+            parameter6 = 0x00;
         }
     }
 

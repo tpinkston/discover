@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.common;
 
 import java.util.ArrayList;
@@ -9,6 +6,9 @@ import java.util.List;
 import discover.vdis.bits.Abstract8Bits;
 import discover.vdis.bits.Bits;
 
+/**
+ * @author Tony Pinkston
+ */
 public class IFFChangeOptions extends Abstract8Bits {
 
     private static final List<Bits> values;
@@ -37,7 +37,7 @@ public class IFFChangeOptions extends Abstract8Bits {
 
         IFFChangeOptions record = new IFFChangeOptions();
 
-        record.set(super.get());
+        record.set(get());
 
         return record;
     }

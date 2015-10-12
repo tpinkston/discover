@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.common;
 
 import java.io.DataInputStream;
@@ -11,6 +8,9 @@ import java.text.NumberFormat;
 import discover.common.Readable;
 import discover.common.Writable;
 
+/**
+ * @author Tony Pinkston
+ */
 public class Velocity implements Readable, Writable {
 
     public static final int LENGTH = 12;
@@ -27,9 +27,9 @@ public class Velocity implements Readable, Writable {
     private float y = 0.0f;
     private float z = 0.0f;
 
-    public float getX() { return this.x; }
-    public float getY() { return this.y; }
-    public float getZ() { return this.z; }
+    public float getX() { return x; }
+    public float getY() { return y; }
+    public float getZ() { return z; }
 
     public void setX(float x) { this.x = x; }
     public void setY(float y) { this.y = y; }
@@ -42,32 +42,32 @@ public class Velocity implements Readable, Writable {
 
     public void clear() {
 
-        this.x = 0.0f;
-        this.y = 0.0f;
-        this.z = 0.0f;
+        x = 0.0f;
+        y = 0.0f;
+        z = 0.0f;
     }
 
     @Override
     public String toString() {
 
-        return "(" + formatter.format(this.x) +
-               ", " + formatter.format(this.y) +
-               ", " + formatter.format(this.z) + ")";
+        return "(" + formatter.format(x) +
+               ", " + formatter.format(y) +
+               ", " + formatter.format(z) + ")";
     }
 
     @Override
     public void read(DataInputStream stream) throws IOException {
 
-        this.x = stream.readFloat();
-        this.y = stream.readFloat();
-        this.z = stream.readFloat();
+        x = stream.readFloat();
+        y = stream.readFloat();
+        z = stream.readFloat();
     }
 
     @Override
     public void write(DataOutputStream stream) throws IOException {
 
-        stream.writeFloat(this.x);
-        stream.writeFloat(this.y);
-        stream.writeFloat(this.z);
+        stream.writeFloat(x);
+        stream.writeFloat(y);
+        stream.writeFloat(z);
     }
 }

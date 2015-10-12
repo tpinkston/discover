@@ -1,10 +1,10 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.vprecords;
 
 import discover.vdis.types.EntityType;
 
+/**
+ * @author Tony Pinkston
+ */
 public abstract class ExtendedAppearanceVPR extends AbstractVPRecord {
 
     protected ExtendedAppearanceVPR(int type) {

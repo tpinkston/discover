@@ -1,8 +1,8 @@
+package discover.common.buffer;
+
 /**
  * @author Tony Pinkston
  */
-package discover.common.buffer;
-
 public interface Bufferable {
 
     /**

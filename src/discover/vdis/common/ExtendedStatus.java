@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.common;
 
 import java.util.ArrayList;
@@ -10,6 +7,9 @@ import discover.vdis.bits.Abstract8Bits;
 import discover.vdis.bits.Bits;
 import discover.vdis.enums.VDIS;
 
+/**
+ * @author Tony Pinkston
+ */
 public class ExtendedStatus extends Abstract8Bits {
 
     public static final List<Bits> values;
@@ -34,7 +34,7 @@ public class ExtendedStatus extends Abstract8Bits {
 
         ExtendedStatus record = new ExtendedStatus();
 
-        record.set(super.get());
+        record.set(get());
 
         return record;
     }

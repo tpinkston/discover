@@ -1,24 +1,25 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.widgets;
 
 import javax.swing.JButton;
 
 import discover.vdis.vprecords.AbstractVPRecord;
 
+/**
+ * @author Tony Pinkston
+ */
 public abstract class AbstractVariableRecordWidget extends ToggleWidget {
 
     public static final String REMOVE = "Remove ";
 
+    // TODO: Make private.
     protected final JButton remove = new JButton();
 
     protected AbstractVariableRecordWidget(String title) {
 
         super(title);
 
-        this.remove.setText(REMOVE + title);
-        this.remove.setActionCommand(REMOVE);
+        remove.setText(REMOVE + title);
+        remove.setActionCommand(REMOVE);
     }
 
     public abstract AbstractVPRecord getRecord();
@@ -27,6 +28,6 @@ public abstract class AbstractVariableRecordWidget extends ToggleWidget {
 
     JButton getRemoveButton() {
 
-        return this.remove;
+        return remove;
     }
 }

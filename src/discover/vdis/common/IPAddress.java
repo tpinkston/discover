@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.common;
 
 import java.io.DataInputStream;
@@ -11,6 +8,9 @@ import java.net.InetAddress;
 import discover.common.Readable;
 import discover.common.Writable;
 
+/**
+ * @author Tony Pinkston
+ */
 public class IPAddress implements Readable, Writable {
 
     public static final int MASK = 0x000000FF;
@@ -22,13 +22,13 @@ public class IPAddress implements Readable, Writable {
 
         StringBuilder string = new StringBuilder();
 
-        string.append(MASK & (int)this.address[0]);
+        string.append(MASK & address[0]);
         string.append(".");
-        string.append(MASK & (int)this.address[1]);
+        string.append(MASK & address[1]);
         string.append(".");
-        string.append(MASK & (int)this.address[2]);
+        string.append(MASK & address[2]);
         string.append(".");
-        string.append(MASK & (int)this.address[3]);
+        string.append(MASK & address[3]);
 
         return string.toString();
     }
@@ -46,12 +46,12 @@ public class IPAddress implements Readable, Writable {
     @Override
     public void read(DataInputStream stream) throws IOException {
 
-        stream.read(this.address, 0, 4);
+        stream.read(address, 0, 4);
     }
 
     @Override
     public void write(DataOutputStream stream) throws IOException {
 
-        stream.write(this.address, 0, 4);
+        stream.write(address, 0, 4);
     }
 }

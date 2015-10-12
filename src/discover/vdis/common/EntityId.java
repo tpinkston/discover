@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.common;
 
 import java.io.DataInputStream;
@@ -11,6 +8,9 @@ import java.util.Arrays;
 import discover.common.Readable;
 import discover.common.Writable;
 
+/**
+ * @author Tony Pinkston
+ */
 public class EntityId implements Comparable<EntityId>, Readable, Writable {
 
     public static final int LENGTH = 6;
@@ -30,53 +30,53 @@ public class EntityId implements Comparable<EntityId>, Readable, Writable {
 
     public EntityId() {
 
-        this.clear();
+        clear();
     }
 
     public EntityId(int site, int application, int entity) {
 
-        this.set(site, application, entity);
+        set(site, application, entity);
     }
 
-    public int getSite() { return this.values[SITE]; }
-    public int getApplication() { return this.values[APPLICATION]; }
-    public int getEntity() { return this.values[ENTITY]; }
+    public int getSite() { return values[SITE]; }
+    public int getApplication() { return values[APPLICATION]; }
+    public int getEntity() { return values[ENTITY]; }
 
-    public void setSite(int value) { this.values[SITE] = value; }
-    public void setApplication(int value) { this.values[APPLICATION] = value; }
-    public void setEntity(int value) { this.values[ENTITY] = value; }
+    public void setSite(int value) { values[SITE] = value; }
+    public void setApplication(int value) { values[APPLICATION] = value; }
+    public void setEntity(int value) { values[ENTITY] = value; }
 
     public int get(int index) {
 
-        return this.values[index];
+        return values[index];
     }
 
     public void set(int index, int value) {
 
-        this.values[index] = value;
+        values[index] = value;
     }
 
     public void set(int site, int application, int entity) {
 
-        this.setSite(site);
-        this.setApplication(application);
-        this.setEntity(entity);
+        setSite(site);
+        setApplication(application);
+        setEntity(entity);
     }
 
     public void set(EntityId id) {
 
-        this.setSite(id.values[SITE]);
-        this.setApplication(id.values[APPLICATION]);
-        this.setEntity(id.values[ENTITY]);
+        setSite(id.values[SITE]);
+        setApplication(id.values[APPLICATION]);
+        setEntity(id.values[ENTITY]);
     }
 
     @Override
     public EntityId clone() {
 
         return new EntityId(
-            this.values[SITE],
-            this.values[APPLICATION],
-            this.values[ENTITY]);
+            values[SITE],
+            values[APPLICATION],
+            values[ENTITY]);
     }
 
     @Override
@@ -88,7 +88,7 @@ public class EntityId implements Comparable<EntityId>, Readable, Writable {
 
             for(int i = 0; i < 3; ++i) {
 
-                if (this.values[i] != id.values[i]) {
+                if (values[i] != id.values[i]) {
 
                     return false;
                 }
@@ -109,17 +109,17 @@ public class EntityId implements Comparable<EntityId>, Readable, Writable {
     public boolean matches(Integer site, Integer application, Integer entity) {
 
         if ((site != null) &&
-            (site.intValue() != this.getSite())) {
+            (site.intValue() != getSite())) {
 
             return false;
         }
         else if ((application != null) &&
-                 (application.intValue() != this.getApplication())) {
+                 (application.intValue() != getApplication())) {
 
             return false;
         }
         else if ((entity != null) &&
-                 (entity.intValue() != this.getEntity())) {
+                 (entity.intValue() != getEntity())) {
 
             return false;
         }
@@ -133,7 +133,7 @@ public class EntityId implements Comparable<EntityId>, Readable, Writable {
 
         for(int i = 0; i < 3; ++i) {
 
-            this.values[i] = 0;
+            values[i] = 0;
         }
     }
 
@@ -144,7 +144,7 @@ public class EntityId implements Comparable<EntityId>, Readable, Writable {
 
         for(int i = 1; i < 3; ++i) {
 
-            comparison = this.compare(this.values[i], id.values[i]);
+            comparison = compare(values[i], id.values[i]);
 
             if (comparison != 0) {
 
@@ -158,16 +158,16 @@ public class EntityId implements Comparable<EntityId>, Readable, Writable {
     @Override
     public String toString() {
 
-        return ("(" + this.values[SITE] +
-                ", " + this.values[APPLICATION] +
-                ", " + this.values[ENTITY] + ")");
+        return ("(" + values[SITE] +
+                ", " + values[APPLICATION] +
+                ", " + values[ENTITY] + ")");
     }
 
     public String toHeadlessString() {
 
-        return (this.values[SITE] +
-                "." + this.values[APPLICATION] +
-                "." + this.values[ENTITY]);
+        return (values[SITE] +
+                "." + values[APPLICATION] +
+                "." + values[ENTITY]);
     }
 
     @Override
@@ -175,7 +175,7 @@ public class EntityId implements Comparable<EntityId>, Readable, Writable {
 
         for(int i = 0; i < 3; ++i) {
 
-            this.values[i] = stream.readUnsignedShort();
+            values[i] = stream.readUnsignedShort();
         }
     }
 
@@ -184,7 +184,7 @@ public class EntityId implements Comparable<EntityId>, Readable, Writable {
 
         for(int i = 0; i < 3; ++i) {
 
-            stream.writeShort(this.values[i]);
+            stream.writeShort(values[i]);
         }
     }
 
@@ -200,10 +200,10 @@ public class EntityId implements Comparable<EntityId>, Readable, Writable {
 
         for(int i = 0; i < 2; ++i) {
 
-            this.values[i] = stream.readUnsignedShort();
+            values[i] = stream.readUnsignedShort();
         }
 
-        this.values[2] = 0x00;
+        values[2] = 0x00;
     }
 
     private int compare(int first, int second) {

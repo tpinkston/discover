@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.datum;
 
 import java.io.DataInputStream;
@@ -11,6 +8,8 @@ import discover.common.buffer.Bufferable;
 
 /**
  * Variable datum records only!
+ *
+ * @author Tony Pinkston
  */
 public abstract class AbstractDatumRecord implements Bufferable, Readable {
 
@@ -25,14 +24,14 @@ public abstract class AbstractDatumRecord implements Bufferable, Readable {
         this.id = id;
     }
 
-    public final int getDatumId() { return this.id; }
-    public final int getDatumLength() { return this.length; }
+    public final int getDatumId() { return id; }
+    public final int getDatumLength() { return length; }
 
     public final int getValueSizeInBytes() {
 
-        int segments = (this.length / ALIGNMENT_BOUNDRY_BITS);
+        int segments = (length / ALIGNMENT_BOUNDRY_BITS);
 
-        if ((this.length % ALIGNMENT_BOUNDRY_BITS) > 0) {
+        if ((length % ALIGNMENT_BOUNDRY_BITS) > 0) {
 
             segments++;
         }
@@ -43,6 +42,6 @@ public abstract class AbstractDatumRecord implements Bufferable, Readable {
     @Override
     public void read(DataInputStream stream) throws IOException {
 
-        this.length = stream.readInt();
+        length = stream.readInt();
     }
 }

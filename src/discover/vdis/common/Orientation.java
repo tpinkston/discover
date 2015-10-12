@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.common;
 
 import java.io.DataInputStream;
@@ -12,6 +9,9 @@ import discover.common.Common;
 import discover.common.Readable;
 import discover.common.Writable;
 
+/**
+ * @author Tony Pinkston
+ */
 public class Orientation implements Readable, Writable  {
 
     public static final int LENGTH = 12;
@@ -37,28 +37,28 @@ public class Orientation implements Readable, Writable  {
         this.phi = phi;
     }
 
-    public float getPsi() { return this.psi; }
+    public float getPsi() { return psi; }
     public void setPsi(float psi) { this.psi = psi; }
 
-    public float getTheta() { return this.theta; }
+    public float getTheta() { return theta; }
     public void setTheta(float theta) { this.theta = theta; }
 
-    public float getPhi() { return this.phi; }
+    public float getPhi() { return phi; }
     public void setPhi(float phi) { this.phi = phi; }
 
     public void clear() {
 
-        this.psi = 0.0f;
-        this.theta = 0.0f;
-        this.phi = 0.0f;
+        psi = 0.0f;
+        theta = 0.0f;
+        phi = 0.0f;
     }
 
     @Override
     public String toString() {
 
-        float tempPsi = (float)Common.clampToPI(this.psi);
-        float tempTheta = (float)Common.clampToHalfPI(this.theta);
-        float tempPhi = (float)Common.clampToPI(this.phi);
+        float tempPsi = (float)Common.clampToPI(psi);
+        float tempTheta = (float)Common.clampToHalfPI(theta);
+        float tempPhi = (float)Common.clampToPI(phi);
 
         return "(psi: " + formatter.format(tempPsi) +
                ", theta: " + formatter.format(tempTheta) +
@@ -68,16 +68,16 @@ public class Orientation implements Readable, Writable  {
     @Override
     public void read(DataInputStream stream) throws IOException {
 
-        this.setPsi(stream.readFloat());
-        this.setTheta(stream.readFloat());
-        this.setPhi(stream.readFloat());
+        setPsi(stream.readFloat());
+        setTheta(stream.readFloat());
+        setPhi(stream.readFloat());
     }
 
     @Override
     public void write(DataOutputStream stream) throws IOException {
 
-        stream.writeFloat(this.psi);
-        stream.writeFloat(this.theta);
-        stream.writeFloat(this.phi);
+        stream.writeFloat(psi);
+        stream.writeFloat(theta);
+        stream.writeFloat(phi);
     }
 }

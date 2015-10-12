@@ -61,6 +61,7 @@ public abstract class PDUTab
 
     protected static Handle PDU_TYPE = null;
 
+    // TODO: Make private:
     protected final JTable table = new JTable();
     protected final JToolBar tools = new JToolBar();
     protected final JLabel total = new JLabel();
@@ -88,30 +89,30 @@ public abstract class PDUTab
             PDU_TYPE = VDIS.getHandle(VDIS.PDU_TYPE);
         }
 
-        this.tools.setFloatable(false);
+        tools.setFloatable(false);
 
-        this.sorter = new TableRowSorter<TableModel>(this.model);
-        this.sorter.setRowFilter(this.filter);
+        sorter = new TableRowSorter<TableModel>(model);
+        sorter.setRowFilter(filter);
 
-        this.table.setModel(this.model);
-        this.table.setRowSorter(this.sorter);
-        this.table.getSelectionModel().addListSelectionListener(this);
-        this.table.addMouseListener(this);
+        table.setModel(model);
+        table.setRowSorter(sorter);
+        table.getSelectionModel().addListSelectionListener(this);
+        table.addMouseListener(this);
 
-        this.popup.add(new WriteAction());
-        this.popup.addSeparator();
-        this.popup.add(new ApplyFilterAction());
-        this.popup.addSeparator();
-        this.popup.add(new EntityAction());
-        this.popup.addSeparator();
-        this.popup.add(DiscoverFrame.getInstance().getCutAction());
-        this.popup.add(DiscoverFrame.getInstance().getCopyAction());
-        this.popup.add(DiscoverFrame.getInstance().getPasteAction());
-        this.popup.addSeparator();
-        this.popup.add(DiscoverFrame.getInstance().getDeleteAction());
-        this.popup.add(DiscoverFrame.getInstance().getDeleteAllAction());
+        popup.add(new WriteAction());
+        popup.addSeparator();
+        popup.add(new ApplyFilterAction());
+        popup.addSeparator();
+        popup.add(new EntityAction());
+        popup.addSeparator();
+        popup.add(DiscoverFrame.getInstance().getCutAction());
+        popup.add(DiscoverFrame.getInstance().getCopyAction());
+        popup.add(DiscoverFrame.getInstance().getPasteAction());
+        popup.addSeparator();
+        popup.add(DiscoverFrame.getInstance().getDeleteAction());
+        popup.add(DiscoverFrame.getInstance().getDeleteAllAction());
 
-        TableColumnModel columnModel = this.table.getColumnModel();
+        TableColumnModel columnModel = table.getColumnModel();
 
         for(Column column : COLUMNS) {
 
@@ -122,14 +123,14 @@ public abstract class PDUTab
             tableColumn.setPreferredWidth(column.widthPreferred);
             tableColumn.setResizable(true);
 
-            this.sorter.setComparator(
+            sorter.setComparator(
                 column.ordinal(),
                 column.columnComparator);
         }
 
-        this.updateTotalStatus();
-        this.updateVisibleStatus();
-        this.updateClippedStatus(0);
+        updateTotalStatus();
+        updateVisibleStatus();
+        updateClippedStatus(0);
     }
 
     public abstract void delete();
@@ -149,29 +150,29 @@ public abstract class PDUTab
 
             if (pdu != null) {
 
-                this.list.add(pdu);
+                list.add(pdu);
             }
         }
 
-        this.model.fireTableDataChanged();
+        model.fireTableDataChanged();
     }
 
     @Override
     public void save(DataOutputStream stream) throws IOException {
 
-        stream.writeInt(super.getTabType().ordinal());
-        stream.writeUTF(super.getTabName());
+        stream.writeInt(getTabType().ordinal());
+        stream.writeUTF(getTabName());
 
-        this.lock.readLock().lock();
+        lock.readLock().lock();
 
-        stream.writeInt(this.list.size());
+        stream.writeInt(list.size());
 
-        for(int i = 0; i < this.list.size(); ++i) {
+        for(int i = 0; i < list.size(); ++i) {
 
-            this.list.get(i).save(stream);
+            list.get(i).save(stream);
         }
 
-        this.lock.readLock().unlock();
+        lock.readLock().unlock();
     }
 
     /**
@@ -181,22 +182,22 @@ public abstract class PDUTab
      */
     public void addPDU(PDU pdu) {
 
-        this.list.add(pdu);
+        list.add(pdu);
     }
 
     public List<PDU> getSelectedPDUs() {
 
         List<PDU> list = new ArrayList<PDU>();
 
-        this.lock.readLock().lock();
-        int selection[] = this.table.getSelectedRows();
-        this.lock.readLock().unlock();
+        lock.readLock().lock();
+        int selection[] = table.getSelectedRows();
+        lock.readLock().unlock();
 
         for(int i = 0; i < selection.length; ++i) {
 
-            int index = this.sorter.convertRowIndexToModel(selection[i]);
+            int index = sorter.convertRowIndexToModel(selection[i]);
 
-            list.add(this.getPDU(index));
+            list.add(getPDU(index));
         }
 
         return list;
@@ -206,13 +207,13 @@ public abstract class PDUTab
 
         PDU pdu = null;
 
-        this.lock.readLock().lock();
-        int selection[] = this.table.getSelectedRows();
-        this.lock.readLock().unlock();
+        lock.readLock().lock();
+        int selection[] = table.getSelectedRows();
+        lock.readLock().unlock();
 
         if (selection.length == 1) {
 
-            pdu = this.getPDU(selection[0]);
+            pdu = getPDU(selection[0]);
         }
 
         return pdu;
@@ -227,9 +228,9 @@ public abstract class PDUTab
 
         List<PDU> copy = new ArrayList<PDU>();
 
-        this.lock.readLock().lock();
-        copy.addAll(this.list);
-        this.lock.readLock().unlock();
+        lock.readLock().lock();
+        copy.addAll(list);
+        lock.readLock().unlock();
 
         return copy;
     }
@@ -239,9 +240,9 @@ public abstract class PDUTab
      */
     public int getPDUCount() {
 
-        this.lock.readLock().lock();
-        int count = this.list.size();
-        this.lock.readLock().unlock();
+        lock.readLock().lock();
+        int count = list.size();
+        lock.readLock().unlock();
 
         return count;
     }
@@ -251,9 +252,9 @@ public abstract class PDUTab
      */
     public int getVisiblePDUCount() {
 
-        this.lock.readLock().lock();
-        int count = this.sorter.getViewRowCount();
-        this.lock.readLock().unlock();
+        lock.readLock().lock();
+        int count = sorter.getViewRowCount();
+        lock.readLock().unlock();
 
         return count;
     }
@@ -261,25 +262,25 @@ public abstract class PDUTab
     @Override
     public void updateClipboardStatus(ArrayList<PDU> clipboard) {
 
-        this.updateClippedStatus((clipboard == null) ? 0 : clipboard.size());
+        updateClippedStatus((clipboard == null) ? 0 : clipboard.size());
     }
 
     @Override
     public void mousePressed(MouseEvent event) {
 
-        this.showPopup(event);
+        showPopup(event);
     }
 
     @Override
     public void mouseReleased(MouseEvent event) {
 
-        this.showPopup(event);
+        showPopup(event);
     }
 
     @Override
     public void mouseClicked(MouseEvent event) {
 
-        this.showPopup(event);
+        showPopup(event);
     }
 
     @Override
@@ -297,13 +298,13 @@ public abstract class PDUTab
 
         if (!event.getValueIsAdjusting()) {
 
-            int row = this.table.getSelectedRow();
+            int row = table.getSelectedRow();
 
             if (row > -1) {
 
-                row = this.sorter.convertRowIndexToModel(row);
+                row = sorter.convertRowIndexToModel(row);
 
-                this.show(this.getPDU(row));
+                this.show(getPDU(row));
             }
         }
     }
@@ -314,7 +315,7 @@ public abstract class PDUTab
 
         if (list == null) {
 
-            list = this.getListCopy();
+            list = getListCopy();
         }
 
         if (!list.isEmpty()) {
@@ -327,34 +328,34 @@ public abstract class PDUTab
 
     protected String getThreadName(Integer port) {
 
-        return (super.getTabName() + "[" + port + "]");
+        return (getTabName() + "[" + port + "]");
     }
 
     protected void clearAll() {
 
-        this.lock.writeLock().lock();
-        this.list.clear();
-        this.lock.writeLock().unlock();
+        lock.writeLock().lock();
+        list.clear();
+        lock.writeLock().unlock();
 
-        this.model.fireTableDataChanged();
+        model.fireTableDataChanged();
 
         this.show(null);
     }
 
     protected void show() {
 
-        this.show(this.current);
-        this.show(this.current);
+        this.show(current);
+        this.show(current);
     }
 
     protected void show(PDU pdu) {
 
-        this.current = pdu;
+        current = pdu;
 
-        if (this.current == null) {
+        if (current == null) {
 
-            this.content.setText("");
-            this.hexadecimal.setText("");
+            content.setText("");
+            hexadecimal.setText("");
         }
         else {
 
@@ -363,11 +364,11 @@ public abstract class PDUTab
                 HypertextBuffer buffer = new HypertextBuffer();
 
                 buffer.addText("<html><body>");
-                buffer.addBuffer(this.current);
+                buffer.addBuffer(current);
                 buffer.addText("</body></html>");
 
-                this.content.setText(buffer.toString());
-                this.content.setCaretPosition(0);
+                content.setText(buffer.toString());
+                content.setCaretPosition(0);
             }
             catch(Exception exception) {
 
@@ -385,8 +386,8 @@ public abstract class PDUTab
                     false,
                     pdu.getData());
 
-                this.hexadecimal.setText(buffer.toString());
-                this.hexadecimal.setCaretPosition(0);
+                hexadecimal.setText(buffer.toString());
+                hexadecimal.setCaretPosition(0);
             }
             catch(Exception exception) {
 
@@ -399,30 +400,30 @@ public abstract class PDUTab
 
         if (event.isPopupTrigger()) {
 
-            this.lock.readLock().lock();
-            int selections[] = this.table.getSelectedRows();
-            this.lock.readLock().unlock();
+            lock.readLock().lock();
+            int selections[] = table.getSelectedRows();
+            lock.readLock().unlock();
 
             if ((selections != null) && (selections.length > 0)) {
 
-                this.popup.show(this.table, event.getX(), event.getY());
+                popup.show(table, event.getX(), event.getY());
             }
         }
     }
 
     protected void updateTotalStatus() {
 
-        this.total.setText("Total: " + this.getPDUCount());
+        total.setText("Total: " + getPDUCount());
     }
 
     protected void updateVisibleStatus() {
 
-        this.visible.setText("Visible: " + this.getVisiblePDUCount());
+        visible.setText("Visible: " + getVisiblePDUCount());
     }
 
     protected void updateClippedStatus(int count) {
 
-        this.clipboard.setText("Clipboard: " + count);
+        clipboard.setText("Clipboard: " + count);
     }
 
     /**
@@ -432,9 +433,9 @@ public abstract class PDUTab
      */
     protected PDU getPDU(int index) {
 
-        this.lock.readLock().lock();
-        PDU pdu = this.list.get(index);
-        this.lock.readLock().unlock();
+        lock.readLock().lock();
+        PDU pdu = list.get(index);
+        lock.readLock().unlock();
 
         return pdu;
     }
@@ -446,9 +447,9 @@ public abstract class PDUTab
      */
     protected PDU cutPDU(int index) {
 
-        this.lock.readLock().lock();
-        PDU pdu = this.list.remove(index);
-        this.lock.readLock().unlock();
+        lock.readLock().lock();
+        PDU pdu = list.remove(index);
+        lock.readLock().unlock();
 
         return pdu;
     }
@@ -470,7 +471,7 @@ public abstract class PDUTab
         }
         else {
 
-            PDU pdu = this.getPDU(row);
+            PDU pdu = getPDU(row);
 
             switch(COLUMNS[column]) {
 
@@ -531,7 +532,7 @@ public abstract class PDUTab
 
             this.columnName = columnName;
             this.columnClass = columnClass;
-            this.columnComparator = Utilities.getComparator(columnClass);
+            columnComparator = Utilities.getComparator(columnClass);
             this.widthPreferred = widthPreferred;
             this.widthMinimum = widthMinimum;
             this.widthMaximum = widthMaximum;
@@ -586,7 +587,7 @@ public abstract class PDUTab
         @Override
         public void fireTableDataChanged() {
 
-            super.fireTableDataChanged();
+            fireTableDataChanged();
             updateTotalStatus();
             updateVisibleStatus();
         }
@@ -616,27 +617,27 @@ public abstract class PDUTab
             PDU pdu = getPDU(entry.getIdentifier());
 
             if (this.exclude(pdu.getType()) ||
-                this.exclude(this.request, pdu.getRequestId()) ||
-                this.exclude(this.port, pdu.getPort()) ||
-                this.exclude(this.exercise, pdu.getExercise()) ||
-                this.exclude(this.protocol, pdu.getProtocol()) ||
-                this.exclude(this.family, pdu.getFamily())) {
+                this.exclude(request, pdu.getRequestId()) ||
+                this.exclude(port, pdu.getPort()) ||
+                this.exclude(exercise, pdu.getExercise()) ||
+                this.exclude(protocol, pdu.getProtocol()) ||
+                this.exclude(family, pdu.getFamily())) {
 
                 return false;
             }
 
             if (pdu.getType() == VDIS.PDU_TYPE_ENTITY_STATE) {
 
-                if (this.exclude(this.site, pdu.getSiteId()) ||
-                    this.exclude(this.application, pdu.getApplicationId()) ||
-                    this.exclude(this.entity, pdu.getEntityId())) {
+                if (this.exclude(site, pdu.getSiteId()) ||
+                    this.exclude(application, pdu.getApplicationId()) ||
+                    this.exclude(entity, pdu.getEntityId())) {
 
                     return false;
                 }
 
-                if ((this.marking != null) && !this.marking.isEmpty()) {
+                if ((marking != null) && !marking.isEmpty()) {
 
-                    if (!pdu.getMarking().matches(this.marking)) {
+                    if (!pdu.getMarking().matches(marking)) {
 
                         return false;
                     }
@@ -645,12 +646,12 @@ public abstract class PDUTab
 
             if (pdu.hasEntityType()) {
 
-                if (this.exclude(this.kind, pdu.getEntityKind())) {
+                if (this.exclude(kind, pdu.getEntityKind())) {
 
                     return false;
                 }
 
-                if (this.exclude(this.domain, pdu.getEntityDomain())) {
+                if (this.exclude(domain, pdu.getEntityDomain())) {
 
                     return false;
                 }
@@ -659,23 +660,24 @@ public abstract class PDUTab
             return true;
         }
 
+        @Override
         public String toString() {
 
             StringBuffer buffer = new StringBuffer();
 
-            buffer.append("typesIncluded: " + this.includedTypes + "\n");
-            buffer.append("typesExcluded: " + this.excludedTypes + "\n");
-            buffer.append("port: " + this.port + "\n");
-            buffer.append("exercise: " + this.exercise + "\n");
-            buffer.append("protocol: " + this.protocol + "\n");
-            buffer.append("family: " + this.family + "\n");
-            buffer.append("domain: " + this.domain + "\n");
-            buffer.append("kind: " + this.kind + "\n");
-            buffer.append("site: " + this.site + "\n");
-            buffer.append("application: " + this.application + "\n");
-            buffer.append("entity: " + this.entity + "\n");
-            buffer.append("request: " + this.request + "\n");
-            buffer.append("marking: " + this.marking + "\n");
+            buffer.append("typesIncluded: " + includedTypes + "\n");
+            buffer.append("typesExcluded: " + excludedTypes + "\n");
+            buffer.append("port: " + port + "\n");
+            buffer.append("exercise: " + exercise + "\n");
+            buffer.append("protocol: " + protocol + "\n");
+            buffer.append("family: " + family + "\n");
+            buffer.append("domain: " + domain + "\n");
+            buffer.append("kind: " + kind + "\n");
+            buffer.append("site: " + site + "\n");
+            buffer.append("application: " + application + "\n");
+            buffer.append("entity: " + entity + "\n");
+            buffer.append("request: " + request + "\n");
+            buffer.append("marking: " + marking + "\n");
 
             return buffer.toString();
         }
@@ -687,13 +689,13 @@ public abstract class PDUTab
 
         private boolean exclude(int type) {
 
-            if (this.excludedTypes.contains(type)) {
+            if (excludedTypes.contains(type)) {
 
                 return true;
             }
-            else if (!this.includedTypes.isEmpty()) {
+            else if (!includedTypes.isEmpty()) {
 
-                return !this.includedTypes.contains(type);
+                return !includedTypes.contains(type);
             }
 
             return false;
@@ -707,10 +709,10 @@ public abstract class PDUTab
 
             super("Filter PDUs");
 
-            super.putValue(
+            putValue(
                 Action.SMALL_ICON,
                 Utilities.getImageIcon("filter.png"));
-            super.putValue(
+            putValue(
                 Action.SHORT_DESCRIPTION,
                 "Filter PDUs.");
         }
@@ -729,10 +731,10 @@ public abstract class PDUTab
 
             super("Apply to Filter");
 
-            super.putValue(
+            putValue(
                 Action.SMALL_ICON,
                 Utilities.getImageIcon("filter.png"));
-            super.putValue(
+            putValue(
                 Action.SHORT_DESCRIPTION,
                 "Applies the selected PDU to the filter.");
         }
@@ -760,10 +762,10 @@ public abstract class PDUTab
 
             super("Create Entity Tab");
 
-            super.putValue(
+            putValue(
                 Action.SMALL_ICON,
                 Utilities.getImageIcon("person.png"));
-            super.putValue(
+            putValue(
                 Action.SHORT_DESCRIPTION,
                 "Creates Entity Tab using the selected Entity State PDU.");
         }
@@ -800,10 +802,10 @@ public abstract class PDUTab
 
             super("Toggle Auto-scroll");
 
-            super.putValue(
+            putValue(
                 Action.SMALL_ICON,
-                this.lockedIcon);
-            super.putValue(
+                lockedIcon);
+            putValue(
                 Action.SHORT_DESCRIPTION,
                 "Locks PDU table auto-scrolling when PDUs are added.");
         }
@@ -813,9 +815,9 @@ public abstract class PDUTab
 
             scrollLocked = !scrollLocked;
 
-            super.putValue(
+            putValue(
                 Action.SMALL_ICON,
-                (scrollLocked ? this.lockedIcon : this.unlockedIcon));
+                (scrollLocked ? lockedIcon : unlockedIcon));
         }
     }
 
@@ -830,10 +832,10 @@ public abstract class PDUTab
 
             super(WRITE);
 
-            super.putValue(
+            putValue(
                 Action.SMALL_ICON,
                 Utilities.getImageIcon("file_save.gif"));
-            super.putValue(
+            putValue(
                 Action.SHORT_DESCRIPTION,
                 "Writes selected PDU(s) to text file.");
         }
@@ -843,15 +845,15 @@ public abstract class PDUTab
 
             List<PDU> selections = getSelectedPDUs();
 
-            if (this.chooser == null) {
+            if (chooser == null) {
 
-                this.chooser = new JFileChooser(
+                chooser = new JFileChooser(
                     DiscoverFrame.getInstance().getSavedDataPath());
             }
 
             if (selections.size() > 0) {
 
-                File file = Utilities.getSaveFile(WRITE, this.chooser);
+                File file = Utilities.getSaveFile(WRITE, chooser);
 
                 if (file != null) {
 
@@ -885,7 +887,7 @@ public abstract class PDUTab
 
                 PlainTextBuffer buffer = new PlainTextBuffer();
 
-                for(PDU pdu : this.pdus) {
+                for(PDU pdu : pdus) {
 
                     buffer.addBuffer(pdu);
                     buffer.addBreak();
@@ -902,7 +904,7 @@ public abstract class PDUTab
 
                 logger.info("Text writing complete...");
 
-                OutputStreamWriter writer = this.getWriter();
+                OutputStreamWriter writer = getWriter();
 
                 writer.append(buffer.toString());
                 writer.close();
@@ -917,7 +919,7 @@ public abstract class PDUTab
 
         private OutputStreamWriter getWriter() throws FileNotFoundException {
 
-            return new OutputStreamWriter(new FileOutputStream(this.file));
+            return new OutputStreamWriter(new FileOutputStream(file));
         }
     }
 }

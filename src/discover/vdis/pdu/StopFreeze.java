@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.pdu;
 
 import java.io.DataInputStream;
@@ -12,6 +9,9 @@ import discover.vdis.common.ClockTime;
 import discover.vdis.common.EntityId;
 import discover.vdis.enums.VDIS;
 
+/**
+ * @author Tony Pinkston
+ */
 public class StopFreeze extends AbstractPDU {
 
     private EntityId originator = new EntityId();
@@ -28,12 +28,12 @@ public class StopFreeze extends AbstractPDU {
     @Override
     public void clear() {
 
-        this.originator.clear();
-        this.recipient.clear();
-        this.real.clear();
-        this.reason = 0;
-        this.behavior = 0;
-        this.requestId = -1L;
+        originator.clear();
+        recipient.clear();
+        real.clear();
+        reason = 0;
+        behavior = 0;
+        requestId = -1L;
     }
 
     @Override
@@ -42,19 +42,19 @@ public class StopFreeze extends AbstractPDU {
         super.toBuffer(buffer);
 
         buffer.addTitle("IDENTIFICATION");
-        buffer.addAttribute("Originator", this.originator.toString());
-        buffer.addAttribute("Recipient", this.recipient.toString());
+        buffer.addAttribute("Originator", originator.toString());
+        buffer.addAttribute("Recipient", recipient.toString());
         buffer.addAttribute(
             "Reason",
-            VDIS.getDescription(VDIS.SF_REASON_CODES, this.reason));
+            VDIS.getDescription(VDIS.SF_REASON_CODES, reason));
         buffer.addAttribute(
             "Frozen Behavior",
-            VDIS.getDescription(VDIS.FROZEN_BEHAVIOR, this.behavior));
-        buffer.addAttribute("Request Id", this.requestId);
+            VDIS.getDescription(VDIS.FROZEN_BEHAVIOR, behavior));
+        buffer.addAttribute("Request Id", requestId);
         buffer.addBreak();
 
         buffer.addTitle("REAL TIME");
-        buffer.addBuffer(this.real);
+        buffer.addBuffer(real);
         buffer.addBreak();
     }
 
@@ -63,12 +63,12 @@ public class StopFreeze extends AbstractPDU {
 
         super.read(stream); // (header)
 
-        this.originator.read(stream);
-        this.recipient.read(stream);
-        this.real.read(stream);
-        this.reason = stream.readUnsignedByte();
-        this.behavior = stream.readUnsignedByte();
+        originator.read(stream);
+        recipient.read(stream);
+        real.read(stream);
+        reason = stream.readUnsignedByte();
+        behavior = stream.readUnsignedByte();
         stream.skipBytes(2); // 16 bit padding
-        this.requestId = Common.toUnsigned32(stream.readInt());
+        requestId = Common.toUnsigned32(stream.readInt());
     }
 }

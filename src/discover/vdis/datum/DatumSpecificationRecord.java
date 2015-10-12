@@ -27,38 +27,38 @@ public class DatumSpecificationRecord implements Bufferable, Readable, Writable 
     private long fixedLength = 0;
     private long variableLength = 0;
 
-    public List<FixedDatumRecord> getFixed() { return this.fixed; }
-    public List<AbstractDatumRecord> getVariable() { return this.variable; }
+    public List<FixedDatumRecord> getFixed() { return fixed; }
+    public List<AbstractDatumRecord> getVariable() { return variable; }
 
-    public long getFixedLength() { return this.fixedLength; }
-    public long getVariableLength() { return this.variableLength; }
+    public long getFixedLength() { return fixedLength; }
+    public long getVariableLength() { return variableLength; }
 
     public void clear() {
 
-        this.fixed.clear();
-        this.variable.clear();
+        fixed.clear();
+        variable.clear();
     }
 
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
-        buffer.addTitle("FIXED DATUM RECORDS (" + this.fixedLength + ")");
+        buffer.addTitle("FIXED DATUM RECORDS (" + fixedLength + ")");
 
-        for(int i = 0, size = this.fixed.size(); i < size; ++i) {
+        for(int i = 0, size = fixed.size(); i < size; ++i) {
 
             buffer.addBoldLabel("Record " + (i + 1));
             buffer.addBreak();
-            buffer.addBuffer(this.fixed.get(i));
+            buffer.addBuffer(fixed.get(i));
         }
 
         buffer.addBreak();
-        buffer.addTitle("VARIABLE DATUM RECORDS (" + this.variableLength + ")");
+        buffer.addTitle("VARIABLE DATUM RECORDS (" + variableLength + ")");
 
-        for(int i = 0, size = this.variable.size(); i < size; ++i) {
+        for(int i = 0, size = variable.size(); i < size; ++i) {
 
             buffer.addBoldLabel("Record " + (i + 1));
             buffer.addBreak();
-            buffer.addBuffer(this.variable.get(i));
+            buffer.addBuffer(variable.get(i));
         }
     }
 
@@ -66,21 +66,21 @@ public class DatumSpecificationRecord implements Bufferable, Readable, Writable 
     public void read(DataInputStream stream) throws IOException {
 
         AbstractDatumRecord record = null;
-        this.fixedLength = Common.toUnsigned32(stream.readInt()); // 4 bytes
-        this.variableLength = Common.toUnsigned32(stream.readInt()); // 4 bytes
+        fixedLength = Common.toUnsigned32(stream.readInt()); // 4 bytes
+        variableLength = Common.toUnsigned32(stream.readInt()); // 4 bytes
 
-        for(int i = 0; i < this.fixedLength; ++i) {
+        for(int i = 0; i < fixedLength; ++i) {
 
-            this.fixed.add(new FixedDatumRecord(stream));
+            fixed.add(new FixedDatumRecord(stream));
         }
 
-        for(int i = 0; i < this.variableLength; ++i) {
+        for(int i = 0; i < variableLength; ++i) {
 
             record = DatumRecordFactory.getVariableRecord(stream);
 
             if (record != null) {
 
-                this.variable.add(record);
+                variable.add(record);
             }
         }
     }
@@ -88,15 +88,15 @@ public class DatumSpecificationRecord implements Bufferable, Readable, Writable 
     @Override
     public void write(DataOutputStream stream) throws IOException {
 
-        stream.writeInt(this.fixed.size());
-        stream.writeInt(this.variable.size());
+        stream.writeInt(fixed.size());
+        stream.writeInt(variable.size());
 
-        for(FixedDatumRecord record : this.fixed) {
+        for(FixedDatumRecord record : fixed) {
 
             record.write(stream);
         }
 
-        for(AbstractDatumRecord record : this.variable) {
+        for(AbstractDatumRecord record : variable) {
 
             if (record instanceof Writable) {
 

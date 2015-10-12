@@ -1,12 +1,12 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.widgets;
 
 import java.text.NumberFormat;
 
 import discover.vdis.common.Orientation;
 
+/**
+ * @author Tony Pinkston
+ */
 public class OrientationWidget extends CartesianWidget {
 
     public OrientationWidget(String title) {
@@ -27,8 +27,8 @@ public class OrientationWidget extends CartesianWidget {
 
     public void setValue(Orientation orientation) {
 
-        super.fields[0].setValue(orientation.getPsi());
-        super.fields[1].setValue(orientation.getTheta());
-        super.fields[2].setValue(orientation.getPhi());
+        fields[0].setValue(orientation.getPsi());
+        fields[1].setValue(orientation.getTheta());
+        fields[2].setValue(orientation.getPhi());
     }
 }

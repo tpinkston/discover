@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.types;
 
 import java.io.BufferedReader;
@@ -18,6 +15,9 @@ import org.slf4j.LoggerFactory;
 import discover.vdis.enums.VDISNames;
 import discover.vdis.types.ObjectType.Geometry;
 
+/**
+ * @author Tony Pinkston
+ */
 public class ObjectTypes {
 
     private static final String FILE = "data/OBJECT_STATE.CSV";

@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.common;
 
 import java.io.DataInputStream;
@@ -13,6 +10,9 @@ import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.Bufferable;
 import discover.vdis.enums.VDIS;
 
+/**
+ * @author Tony Pinkston
+ */
 public class EmitterBeamData implements Bufferable, Readable {
 
     private List<EmitterTarget> targets = new ArrayList<EmitterTarget>();
@@ -37,44 +37,44 @@ public class EmitterBeamData implements Bufferable, Readable {
 
     public EmitterBeamData(DataInputStream stream) throws IOException {
 
-        this.read(stream);
+        read(stream);
     }
 
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
-        buffer.addTitle("BEAM DATA (" + this.beamIdNumber + ")");
+        buffer.addTitle("BEAM DATA (" + beamIdNumber + ")");
         buffer.addAttribute(
             "Function",
-            this.function,
+            function,
             VDIS.BEAM_FUNCTION);
-        buffer.addAttribute("Parameter Index", this.beamParameterIndex);
-        buffer.addAttribute("Status", (int)this.beamStatus);
+        buffer.addAttribute("Parameter Index", beamParameterIndex);
+        buffer.addAttribute("Status", (int)beamStatus);
         buffer.addAttribute(
             "High Density",
-            this.highDensityTrackJam,
+            highDensityTrackJam,
             VDIS.YESNO);
-        buffer.addAttribute("Targets", this.targetCount);
-        buffer.addAttribute("Jamming Technique", this.jammingTechnique);
-        buffer.addAttribute("Data Length", this.dataLength);
+        buffer.addAttribute("Targets", targetCount);
+        buffer.addAttribute("Jamming Technique", jammingTechnique);
+        buffer.addAttribute("Data Length", dataLength);
 
         buffer.addTitle("FUNDAMENTAL PARAMETER DATA");
-        buffer.addAttribute("Frequency", this.frequency);
-        buffer.addAttribute("Frequency Range", this.frequencyRange);
-        buffer.addAttribute("Effective Radiated Power", this.effectiveRadiatedPower);
-        buffer.addAttribute("Pulse Repetition Frequency", this.pulseRepetitionFrequency);
-        buffer.addAttribute("Pulse Width", this.pulseWidth);
+        buffer.addAttribute("Frequency", frequency);
+        buffer.addAttribute("Frequency Range", frequencyRange);
+        buffer.addAttribute("Effective Radiated Power", effectiveRadiatedPower);
+        buffer.addAttribute("Pulse Repetition Frequency", pulseRepetitionFrequency);
+        buffer.addAttribute("Pulse Width", pulseWidth);
 
         buffer.addTitle("BEAM DATA");
-        buffer.addAttribute("Azimuth Center", this.azimuthCenter);
-        buffer.addAttribute("Azimuth Sweep", this.azimuthSweep);
-        buffer.addAttribute("Elevation Center", this.elevationCenter);
-        buffer.addAttribute("Elevation Sweep", this.elevationSweep);
-        buffer.addAttribute("Sweep Sync", this.sweepSync);
+        buffer.addAttribute("Azimuth Center", azimuthCenter);
+        buffer.addAttribute("Azimuth Sweep", azimuthSweep);
+        buffer.addAttribute("Elevation Center", elevationCenter);
+        buffer.addAttribute("Elevation Sweep", elevationSweep);
+        buffer.addAttribute("Sweep Sync", sweepSync);
 
-        for(int i = 0, size = this.targets.size(); i < size; ++i) {
+        for(int i = 0, size = targets.size(); i < size; ++i) {
 
-            buffer.addBuffer(this.targets.get(i));
+            buffer.addBuffer(targets.get(i));
         }
     }
 
@@ -82,46 +82,46 @@ public class EmitterBeamData implements Bufferable, Readable {
     public void read(DataInputStream stream) throws IOException {
 
         // 1 byte
-        this.dataLength = stream.readUnsignedByte();
+        dataLength = stream.readUnsignedByte();
 
         // 1 byte
-        this.beamIdNumber = stream.readUnsignedByte();
+        beamIdNumber = stream.readUnsignedByte();
 
         // 2 bytes
-        this.beamParameterIndex = stream.readUnsignedShort();
+        beamParameterIndex = stream.readUnsignedShort();
 
         // Fundamental Parameter Data
-        this.frequency = stream.readFloat(); // 4 bytes
-        this.frequencyRange = stream.readFloat(); // 4 bytes
-        this.effectiveRadiatedPower = stream.readFloat(); // 4 bytes
-        this.pulseRepetitionFrequency = stream.readFloat(); // 4 bytes
-        this.pulseWidth = stream.readFloat(); // 4 bytes
+        frequency = stream.readFloat(); // 4 bytes
+        frequencyRange = stream.readFloat(); // 4 bytes
+        effectiveRadiatedPower = stream.readFloat(); // 4 bytes
+        pulseRepetitionFrequency = stream.readFloat(); // 4 bytes
+        pulseWidth = stream.readFloat(); // 4 bytes
 
         // Beam Data
-        this.azimuthCenter = stream.readFloat(); // 4 bytes
-        this.azimuthSweep = stream.readFloat(); // 4 bytes
-        this.elevationCenter = stream.readFloat(); // 4 bytes
-        this.elevationSweep = stream.readFloat(); // 4 bytes
-        this.sweepSync = stream.readFloat(); // 4 bytes
+        azimuthCenter = stream.readFloat(); // 4 bytes
+        azimuthSweep = stream.readFloat(); // 4 bytes
+        elevationCenter = stream.readFloat(); // 4 bytes
+        elevationSweep = stream.readFloat(); // 4 bytes
+        sweepSync = stream.readFloat(); // 4 bytes
 
         // 1 byte
-        this.function = stream.readUnsignedByte();
+        function = stream.readUnsignedByte();
 
         // 1 Byte
-        this.targetCount = stream.readUnsignedByte();
+        targetCount = stream.readUnsignedByte();
 
         // 1 byte
-        this.highDensityTrackJam = stream.readUnsignedByte();
+        highDensityTrackJam = stream.readUnsignedByte();
 
         // 1 byte
-        this.beamStatus = stream.readByte();
+        beamStatus = stream.readByte();
 
         // 4 bytes
-        this.jammingTechnique = stream.readInt();
+        jammingTechnique = stream.readInt();
 
-        for(int i = 0; i < this.targetCount; ++i) {
+        for(int i = 0; i < targetCount; ++i) {
 
-            this.targets.add(new EmitterTarget(stream));
+            targets.add(new EmitterTarget(stream));
         }
     }
 }

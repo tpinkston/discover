@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.headless;
 
 import java.text.DateFormat;
@@ -12,13 +9,21 @@ import discover.system.CaptureThread;
 import discover.system.CaptureThreadListener;
 import discover.vdis.PDU;
 
+/**
+ * @author Tony Pinkston
+ */
 public class Headless {
 
     private static final DateFormat format = DateFormat.getDateTimeInstance();
+
     private static Integer port = null;
+
     private static Integer exercise = null;
+
     private static Integer pdutype = null;
+
     private static Integer pdufamily = null;
+
     private static boolean verbose = false;
 
     /**
@@ -31,7 +36,7 @@ public class Headless {
 
         StringTokenizer tokenizer = new StringTokenizer(arguments, ",");
 
-        while(tokenizer.hasMoreTokens()) {
+        while (tokenizer.hasMoreTokens()) {
 
             String parameter = tokenizer.nextToken();
 
@@ -43,7 +48,7 @@ public class Headless {
 
                     port = Integer.parseInt(value);
                 }
-                catch(NumberFormatException exception) {
+                catch (NumberFormatException exception) {
 
                     System.err.println("Invalid port: '" + value + "'");
                     System.exit(0);
@@ -57,7 +62,7 @@ public class Headless {
 
                     exercise = Integer.parseInt(value);
                 }
-                catch(NumberFormatException exception) {
+                catch (NumberFormatException exception) {
 
                     System.err.println("Invalid exercise: '" + value + "'");
                     System.exit(0);
@@ -71,7 +76,7 @@ public class Headless {
 
                     pdutype = Integer.parseInt(value);
                 }
-                catch(NumberFormatException exception) {
+                catch (NumberFormatException exception) {
 
                     System.err.println("Invalid PDU type: '" + value + "'");
                     System.exit(0);
@@ -85,7 +90,7 @@ public class Headless {
 
                     pdufamily = Integer.parseInt(value);
                 }
-                catch(NumberFormatException exception) {
+                catch (NumberFormatException exception) {
 
                     System.err.println("Invalid PDU family: '" + value + "'");
                     System.exit(0);
@@ -115,7 +120,6 @@ public class Headless {
 
         if (pdutype != null) {
 
-
         }
 
         if (pdufamily != null) {
@@ -126,7 +130,7 @@ public class Headless {
 
             run();
         }
-        catch(Exception exception) {
+        catch (Exception exception) {
 
             exception.printStackTrace();
             System.exit(0);
@@ -144,7 +148,7 @@ public class Headless {
 
         System.out.println(
             "Running headless on port " + port +
-            ", press <ctrl-c> to stop...");
+                ", press <ctrl-c> to stop...");
 
         // No need to start new start since we're running headess, just run
         // the thread's main method.
@@ -157,10 +161,9 @@ public class Headless {
         @Override
         public void pdusCaptured(List<PDU> list) {
 
-            for(PDU pdu : list) {
+            for (PDU pdu : list) {
 
-                boolean
-                    process = true;
+                boolean process = true;
 
                 if (process && (exercise != null)) {
 
@@ -174,7 +177,7 @@ public class Headless {
 
                 if (process) {
 
-                    this.processPDU(pdu);
+                    processPDU(pdu);
                 }
             }
         }
@@ -230,4 +233,3 @@ public class Headless {
         }
     }
 }
- 

@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.pdu;
 
 import java.io.DataInputStream;
@@ -10,6 +7,9 @@ import discover.common.Common;
 import discover.common.buffer.AbstractBuffer;
 import discover.vdis.common.EntityId;
 
+/**
+ * @author Tony Pinkston
+ */
 public class RemoveEntity extends AbstractPDU {
 
     private EntityId originator = new EntityId();
@@ -23,9 +23,9 @@ public class RemoveEntity extends AbstractPDU {
     @Override
     public void clear() {
 
-        this.originator.clear();
-        this.recipient.clear();
-        this.requestId = -1;
+        originator.clear();
+        recipient.clear();
+        requestId = -1;
     }
 
     @Override
@@ -34,9 +34,9 @@ public class RemoveEntity extends AbstractPDU {
         super.toBuffer(buffer);
 
 
-        buffer.addAttribute("Originator", this.originator.toString());
-        buffer.addAttribute("Recipient", this.recipient.toString());
-        buffer.addAttribute("Request Id", this.requestId);
+        buffer.addAttribute("Originator", originator.toString());
+        buffer.addAttribute("Recipient", recipient.toString());
+        buffer.addAttribute("Request Id", requestId);
         buffer.addBreak();
     }
 
@@ -45,8 +45,8 @@ public class RemoveEntity extends AbstractPDU {
 
         super.read(stream); // (header)
 
-        this.originator.read(stream);
-        this.recipient.read(stream);
-        this.requestId = Common.toUnsigned32(stream.readInt());
+        originator.read(stream);
+        recipient.read(stream);
+        requestId = Common.toUnsigned32(stream.readInt());
     }
 }

@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.vprecords;
 
 import java.io.DataInputStream;
@@ -21,6 +18,9 @@ import discover.vdis.common.ExtendedStatus;
 import discover.vdis.common.ThermalIndicators;
 import discover.vdis.enums.VDIS;
 
+/**
+ * @author Tony Pinkston
+ */
 public class ExtendedPlatformAppearanceVPR extends ExtendedAppearanceVPR {
 
     public static final int LENGTH = 16;
@@ -44,7 +44,7 @@ public class ExtendedPlatformAppearanceVPR extends ExtendedAppearanceVPR {
     public ExtendedPlatformAppearanceVPR(int domain) {
 
         super(20); // VP_RECORD_TYPE_EXT_PLATFORM_APP
-        super.setDomain(domain);
+        setDomain(domain);
     }
 
     @Override
@@ -53,15 +53,15 @@ public class ExtendedPlatformAppearanceVPR extends ExtendedAppearanceVPR {
         return LENGTH;
     }
 
-    public int getPaintScheme() { return this.paintScheme; }
-    public int getDecalScheme() { return this.decalScheme; }
-    public int getPrimaryColor() { return this.primaryColor; }
-    public int getSecondaryColor() { return this.secondaryColor; }
-    public Abstract16Bits getEquipment() { return this.equipment; }
-    public Abstract32Bits getLights() { return this.lights; }
-    public ConditionMaterial getPrimaryCondition() { return this.primaryCondition; }
-    public ConditionMaterial getSecondaryCondition() { return this.secondaryCondition; }
-    public ThermalIndicators getThermalIndicators() { return this.thermalIndicators; }
+    public int getPaintScheme() { return paintScheme; }
+    public int getDecalScheme() { return decalScheme; }
+    public int getPrimaryColor() { return primaryColor; }
+    public int getSecondaryColor() { return secondaryColor; }
+    public Abstract16Bits getEquipment() { return equipment; }
+    public Abstract32Bits getLights() { return lights; }
+    public ConditionMaterial getPrimaryCondition() { return primaryCondition; }
+    public ConditionMaterial getSecondaryCondition() { return secondaryCondition; }
+    public ThermalIndicators getThermalIndicators() { return thermalIndicators; }
     public ExtendedStatus getStatus() { return status; }
 
     public void setPaintScheme(int paintScheme) {
@@ -105,7 +105,7 @@ public class ExtendedPlatformAppearanceVPR extends ExtendedAppearanceVPR {
 
         super.setDomain(domain);
 
-        this.createSubRecords();
+        createSubRecords();
     }
 
     @Override
@@ -121,36 +121,36 @@ public class ExtendedPlatformAppearanceVPR extends ExtendedAppearanceVPR {
 
         buffer.addAttribute(
             "Paint",
-            VDIS.getDescription(VDIS.PL_PAINT_SCHEME, this.paintScheme));
+            VDIS.getDescription(VDIS.PL_PAINT_SCHEME, paintScheme));
         buffer.addAttribute(
             "Decal",
-            VDIS.getDescription(VDIS.PL_DECAL_SCHEME, this.decalScheme));
+            VDIS.getDescription(VDIS.PL_DECAL_SCHEME, decalScheme));
 
         buffer.addTitle("PRIMARY APPEARANCE");
         buffer.addAttribute(
             "Color",
-            VDIS.getDescription(VDIS.COLORS, this.primaryColor));
+            VDIS.getDescription(VDIS.COLORS, primaryColor));
         buffer.addText("Condition ");
-        buffer.addBuffer(this.primaryCondition);
+        buffer.addBuffer(primaryCondition);
 
         buffer.addTitle("SECONDARY APPEARANCE");
         buffer.addAttribute(
             "Color",
-            VDIS.getDescription(VDIS.COLORS, this.secondaryColor));
+            VDIS.getDescription(VDIS.COLORS, secondaryColor));
         buffer.addText("Condition ");
-        buffer.addBuffer(this.secondaryCondition);
+        buffer.addBuffer(secondaryCondition);
 
         buffer.addTitle("LIGHTS (" + domain + ")");
-        buffer.addBuffer(this.lights);
+        buffer.addBuffer(lights);
 
         buffer.addTitle("THERMAL INDICATORS");
-        buffer.addBuffer(this.thermalIndicators);
+        buffer.addBuffer(thermalIndicators);
 
         buffer.addTitle("STATUS");
-        buffer.addBuffer(this.status);
+        buffer.addBuffer(status);
 
         buffer.addTitle("EQUIPMENT (" + domain + ")");
-        buffer.addBuffer(this.equipment);
+        buffer.addBuffer(equipment);
     }
 
     /**
@@ -159,37 +159,37 @@ public class ExtendedPlatformAppearanceVPR extends ExtendedAppearanceVPR {
     @Override
     public void read(DataInputStream stream) throws IOException {
 
-        this.createSubRecords();
+        createSubRecords();
 
         // 1 Byte
-        this.paintScheme = stream.readUnsignedByte();
+        paintScheme = stream.readUnsignedByte();
 
         // 2 Bytes
-        this.decalScheme = stream.readUnsignedShort();
+        decalScheme = stream.readUnsignedShort();
 
         // 1 Byte
-        this.primaryCondition.read(stream);
+        primaryCondition.read(stream);
 
         // 1 Byte
-        this.primaryColor =  stream.readUnsignedByte();
+        primaryColor =  stream.readUnsignedByte();
 
         // 1 Byte
-        this.secondaryCondition.read(stream);
+        secondaryCondition.read(stream);
 
         // 1 Byte
-        this.secondaryColor =  stream.readUnsignedByte();
+        secondaryColor =  stream.readUnsignedByte();
 
          // 4 Byte
-        this.lights.read(stream);
+        lights.read(stream);
 
         // 1 Byte
-        this.thermalIndicators.read(stream);
+        thermalIndicators.read(stream);
 
         // 1 Byte
-        this.status.read(stream);
+        status.read(stream);
 
         // 2 bytes
-        this.equipment.read(stream);
+        equipment.read(stream);
     }
 
     @Override
@@ -197,39 +197,39 @@ public class ExtendedPlatformAppearanceVPR extends ExtendedAppearanceVPR {
 
         super.write(stream); // Writes record type (1 byte)
 
-        stream.writeByte(this.paintScheme);
-        stream.writeShort(this.decalScheme);
+        stream.writeByte(paintScheme);
+        stream.writeShort(decalScheme);
 
-        this.primaryCondition.write(stream);
-        stream.writeByte(this.primaryColor);
+        primaryCondition.write(stream);
+        stream.writeByte(primaryColor);
 
-        this.secondaryCondition.write(stream);
-        stream.writeByte(this.secondaryColor);
+        secondaryCondition.write(stream);
+        stream.writeByte(secondaryColor);
 
-        this.lights.write(stream);
-        this.thermalIndicators.write(stream);
-        this.status.write(stream);
-        this.equipment.write(stream);
+        lights.write(stream);
+        thermalIndicators.write(stream);
+        status.write(stream);
+        equipment.write(stream);
     }
 
     private void createSubRecords() {
 
-        if (super.domain == 1) {
+        if (getDomain() == 1) {
 
             // LAND
-            this.lights = new ExtendedLightsLand();
-            this.equipment = new ExtendedEquipmentLand();
+            lights = new ExtendedLightsLand();
+            equipment = new ExtendedEquipmentLand();
         }
-        else if (super.domain == 2) {
+        else if (getDomain() == 2) {
 
             // AIR
-            this.lights = new ExtendedLightsAir();
-            this.equipment = new ExtendedEquipmentAir();
+            lights = new ExtendedLightsAir();
+            equipment = new ExtendedEquipmentAir();
         }
         else {
 
-            this.lights = new ExtendedLightsDefault();
-            this.equipment = new ExtendedEquipmentDefault();
+            lights = new ExtendedLightsDefault();
+            equipment = new ExtendedEquipmentDefault();
         }
     }
 }

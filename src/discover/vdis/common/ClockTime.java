@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.common;
 
 import java.io.DataInputStream;
@@ -12,6 +9,9 @@ import discover.common.Readable;
 import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.Bufferable;
 
+/**
+ * @author Tony Pinkston
+ */
 public class ClockTime implements Bufferable, Readable {
 
     private static final int MILLIS_PER_SECOND = 1000;
@@ -27,30 +27,30 @@ public class ClockTime implements Bufferable, Readable {
 
     public void clear() {
 
-        this.timestamp.clear();
-        this.hours = 0L;
-        this.system = 0L;
-        this.date = null;
+        timestamp.clear();
+        hours = 0L;
+        system = 0L;
+        date = null;
     }
 
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
-        buffer.addAttribute("Hours", this.hours);
-        buffer.addAttribute("Time Past Hour", this.timestamp.toString());
-        buffer.addAttribute("Epoch", this.date);
+        buffer.addAttribute("Hours", hours);
+        buffer.addAttribute("Time Past Hour", timestamp.toString());
+        buffer.addAttribute("Epoch", date);
     }
 
     @Override
     public void read(DataInputStream stream) throws IOException {
 
-        this.hours = Common.toUnsigned32(stream.readInt());
-        this.timestamp.read(stream);
+        hours = Common.toUnsigned32(stream.readInt());
+        timestamp.read(stream);
 
-        this.system = (this.hours * MILLIS_PER_HOUR);
-        this.system += (this.timestamp.getMinutes() * MILLIS_PER_MINUTE);
-        this.system += (int)(this.timestamp.getSeconds() * MILLIS_PER_SECOND);
+        system = (hours * MILLIS_PER_HOUR);
+        system += (timestamp.getMinutes() * MILLIS_PER_MINUTE);
+        system += (int)(timestamp.getSeconds() * MILLIS_PER_SECOND);
 
-        this.date = format.format(this.system);
+        date = format.format(system);
     }
 }

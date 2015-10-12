@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.system;
 
 import java.io.IOException;
@@ -12,6 +9,9 @@ import java.util.List;
 
 import discover.vdis.PDU;
 
+/**
+ * @author Tony Pinkston
+ */
 public class PlaybackThread extends NetworkThread {
 
     private final List<PDU> list;
@@ -36,32 +36,39 @@ public class PlaybackThread extends NetworkThread {
         this.port = port;
         this.list = list;
         this.listener = listener;
-        this.socket = new MulticastSocket();
-        this.socket.setBroadcast(true);
-        this.socket.setReuseAddress(true);
+        socket = new MulticastSocket();
+        socket.setBroadcast(true);
+        socket.setReuseAddress(true);
     }
 
-    public int getPort() { return this.port; }
+    public int getPort() {
 
-    public Exception getException() { return this.exception; }
+        return port;
+    }
 
+    public Exception getException() {
+
+        return exception;
+    }
+
+    @Override
     public void setPaused(boolean paused) {
 
         if (super.isPaused() != paused) {
 
             super.setPaused(paused);
-            this.sendStatus(PlaybackStatus.PAUSED);
+            sendStatus(PlaybackStatus.PAUSED);
         }
     }
 
     @Override
     public void run() {
 
-        this.sendStatus(PlaybackStatus.STARTED);
+        sendStatus(PlaybackStatus.STARTED);
 
         try {
 
-            while(!super.isStopped()) {
+            while (!super.isStopped()) {
 
                 if (super.isPaused()) {
 
@@ -69,16 +76,16 @@ public class PlaybackThread extends NetworkThread {
                 }
                 else {
 
-                    PDU pdu = this.list.get(this.index);
+                    PDU pdu = list.get(index);
 
-                    this.sendPDU(pdu);
+                    sendPDU(pdu);
 
-                    this.sendStatus(PlaybackStatus.SENDING);
-                    this.index++;
+                    sendStatus(PlaybackStatus.SENDING);
+                    index++;
 
-                    if (this.index < this.list.size()) {
+                    if (index < list.size()) {
 
-                        PDU next = this.list.get(this.index);
+                        PDU next = list.get(index);
 
                         long duration = (next.getTime() - pdu.getTime());
 
@@ -96,19 +103,19 @@ public class PlaybackThread extends NetworkThread {
                 }
             }
         }
-        catch(Exception exception) {
+        catch (Exception exception) {
 
             this.exception = exception;
             logger.error("Caught exception!", exception);
         }
 
-        this.socket.close();
-        this.sendStatus(PlaybackStatus.COMPLETE);
+        socket.close();
+        sendStatus(PlaybackStatus.COMPLETE);
     }
 
     public void sendPDU(PDU pdu) throws IOException {
 
-        this.sendBuffer(pdu.getData(), pdu.getLength());
+        sendBuffer(pdu.getData(), pdu.getLength());
     }
 
     public void sendBuffer(byte buffer[], int length) throws IOException {
@@ -116,16 +123,16 @@ public class PlaybackThread extends NetworkThread {
         DatagramPacket packet = new DatagramPacket(
             buffer,
             length,
-            this.address,
-            this.port);
+            address,
+            port);
 
-        this.socket.send(packet);
+        socket.send(packet);
     }
 
     private void sendStatus(PlaybackStatus status) {
 
-        float percent = ((float)this.index / (float)this.list.size());
+        float percent = ((float) index / (float) list.size());
 
-        this.listener.sendStatus(status, (int)(percent * 100.0f));
+        listener.sendStatus(status, (int) (percent * 100.0f));
     }
 }

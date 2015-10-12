@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.pdu;
 
 import java.io.DataInputStream;
@@ -11,6 +8,9 @@ import discover.common.buffer.AbstractBuffer;
 import discover.vdis.common.ClockTime;
 import discover.vdis.common.EntityId;
 
+/**
+ * @author Tony Pinkston
+ */
 public class StartResume extends AbstractPDU {
 
     private EntityId originator = new EntityId();
@@ -26,11 +26,11 @@ public class StartResume extends AbstractPDU {
     @Override
     public void clear() {
 
-        this.originator.clear();
-        this.recipient.clear();
-        this.real.clear();
-        this.simulation.clear();
-        this.requestId = -1L;
+        originator.clear();
+        recipient.clear();
+        real.clear();
+        simulation.clear();
+        requestId = -1L;
     }
 
     @Override
@@ -39,17 +39,17 @@ public class StartResume extends AbstractPDU {
         super.toBuffer(buffer);
 
         buffer.addTitle("IDENTIFICATION");
-        buffer.addAttribute("Originator", this.originator.toString());
-        buffer.addAttribute("Recipient", this.recipient.toString());
-        buffer.addAttribute("Request Id", this.requestId);
+        buffer.addAttribute("Originator", originator.toString());
+        buffer.addAttribute("Recipient", recipient.toString());
+        buffer.addAttribute("Request Id", requestId);
         buffer.addBreak();
 
         buffer.addTitle("REAL TIME");
-        buffer.addBuffer(this.real);
+        buffer.addBuffer(real);
         buffer.addBreak();
 
         buffer.addTitle("SIMULATION TIME");
-        buffer.addBuffer(this.simulation);
+        buffer.addBuffer(simulation);
         buffer.addBreak();
     }
 
@@ -58,10 +58,10 @@ public class StartResume extends AbstractPDU {
 
         super.read(stream); // (header)
 
-        this.originator.read(stream);
-        this.recipient.read(stream);
-        this.real.read(stream);
-        this.simulation.read(stream);
-        this.requestId = Common.toUnsigned32(stream.readInt());
+        originator.read(stream);
+        recipient.read(stream);
+        real.read(stream);
+        simulation.read(stream);
+        requestId = Common.toUnsigned32(stream.readInt());
     }
 }

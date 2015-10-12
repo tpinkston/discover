@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.gui.widgets;
 
 import javax.swing.JComponent;
@@ -12,6 +9,9 @@ import discover.vdis.common.ExtendedStatus;
 import discover.vdis.vprecords.AbstractVPRecord;
 import discover.vdis.vprecords.ExtendedSupplyAppearanceVPR;
 
+/**
+ * @author Tony Pinkston
+ */
 public class ExtendedSupplyAppearanceWidget extends AbstractVariableRecordWidget {
 
     private final JPanel panel = Utilities.getGridBagPanel("");
@@ -22,10 +22,10 @@ public class ExtendedSupplyAppearanceWidget extends AbstractVariableRecordWidget
 
         super("Extended Supply Appearance");
 
-        this.status = new BitRecordWidget(new ExtendedStatus());
-        this.equipment = new BitRecordWidget(new ExtendedEquipmentSupply());
+        status = new BitRecordWidget(new ExtendedStatus());
+        equipment = new BitRecordWidget(new ExtendedEquipmentSupply());
 
-        this.fill();
+        fill();
     }
 
     @Override
@@ -35,8 +35,8 @@ public class ExtendedSupplyAppearanceWidget extends AbstractVariableRecordWidget
 
         record = new ExtendedSupplyAppearanceVPR();
 
-        this.status.applyValue(record.getStatus());
-        this.equipment.applyValue(record.getEquipment());
+        status.applyValue(record.getStatus());
+        equipment.applyValue(record.getEquipment());
 
         return record;
     }
@@ -50,40 +50,41 @@ public class ExtendedSupplyAppearanceWidget extends AbstractVariableRecordWidget
 
             appearance = (ExtendedSupplyAppearanceVPR)record;
 
-            this.status.setValue(appearance.getStatus());
-            this.equipment.setValue(appearance.getEquipment());
+            status.setValue(appearance.getStatus());
+            equipment.setValue(appearance.getEquipment());
         }
     }
 
     @Override
     public JComponent getComponent() {
 
-        return this.panel;
+        return panel;
     }
 
+    @Override
     protected void fill() {
 
         super.fill();
 
         Utilities.addComponent(
-            this.panel,
-            this.status.getPanel(),
+            panel,
+            status.getPanel(),
             Utilities.HORIZONTAL,
             0, 0,
             1, 1,
             0.0, 0.0,
             Utilities.getInsets(8, 2, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            this.equipment.getPanel(),
+            panel,
+            equipment.getPanel(),
             Utilities.HORIZONTAL,
             0, 1,
             1, 1,
             0.0, 0.0,
             Utilities.getInsets(8, 2, 2, 2));
         Utilities.addComponent(
-            this.panel,
-            super.remove,
+            panel,
+            remove,
             Utilities.HORIZONTAL,
             0, 2,
             1, 1,

@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.pdu;
 
 import java.io.DataInputStream;
@@ -15,6 +12,9 @@ import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.Bufferable;
 import discover.vdis.common.PDUHeader;
 
+/**
+ * @author Tony Pinkston
+ */
 public abstract class AbstractPDU implements Bufferable, Readable {
 
     protected static final Logger logger = LoggerFactory.getLogger(AbstractPDU.class);
@@ -31,7 +31,7 @@ public abstract class AbstractPDU implements Bufferable, Readable {
 
     public PDUHeader getHeader() {
 
-        return this.header;
+        return header;
     }
 
     /**
@@ -44,7 +44,7 @@ public abstract class AbstractPDU implements Bufferable, Readable {
      */
     public boolean isEditable(int bit, int index) {
 
-        if (!isByteEditable(this.header.getType(), index)) {
+        if (!isByteEditable(header.getType(), index)) {
 
             return false;
         }
@@ -91,12 +91,12 @@ public abstract class AbstractPDU implements Bufferable, Readable {
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
-        buffer.addBuffer(this.header);
+        buffer.addBuffer(header);
     }
 
     @Override
     public void read(DataInputStream stream) throws IOException {
 
-        this.header.read(stream);
+        header.read(stream);
     }
 }

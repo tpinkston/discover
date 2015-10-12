@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.common;
 
 import java.util.ArrayList;
@@ -10,6 +7,9 @@ import discover.vdis.bits.Abstract16Bits;
 import discover.vdis.bits.Bits;
 import discover.vdis.enums.VDIS;
 
+/**
+ * @author Tony Pinkston
+ */
 public class ExtendedEquipmentSupply extends Abstract16Bits {
 
     private static final List<Bits> values;
@@ -33,7 +33,7 @@ public class ExtendedEquipmentSupply extends Abstract16Bits {
 
         ExtendedEquipmentSupply equipment = new ExtendedEquipmentSupply();
 
-        equipment.set(super.get());
+        equipment.set(get());
 
         return equipment;
     }

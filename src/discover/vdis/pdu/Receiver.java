@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.pdu;
 
 import java.io.DataInputStream;
@@ -10,6 +7,9 @@ import discover.common.buffer.AbstractBuffer;
 import discover.vdis.common.EntityId;
 import discover.vdis.enums.VDIS;
 
+/**
+ * @author Tony Pinkston
+ */
 public class Receiver extends AbstractPDU {
 
     private EntityId entityId = new EntityId();
@@ -26,12 +26,12 @@ public class Receiver extends AbstractPDU {
     @Override
     public void clear() {
 
-        this.entityId.clear();
-        this.transmitterEntityId.clear();
-        this.receiverState = 0;
-        this.radioId = 0;
-        this.transmitterRadioId = 0;
-        this.power = 0.0f;
+        entityId.clear();
+        transmitterEntityId.clear();
+        receiverState = 0;
+        radioId = 0;
+        transmitterRadioId = 0;
+        power = 0.0f;
     }
 
     @Override
@@ -40,20 +40,20 @@ public class Receiver extends AbstractPDU {
         super.toBuffer(buffer);
 
         buffer.addTitle("IDENTIFICATION");
-        buffer.addAttribute("Entity", this.entityId.toString());
-        buffer.addAttribute("Radio", this.radioId);
+        buffer.addAttribute("Entity", entityId.toString());
+        buffer.addAttribute("Radio", radioId);
         buffer.addBreak();
 
         buffer.addTitle("RECEIVER");
         buffer.addAttribute(
             "State",
-            VDIS.getDescription(VDIS.RECEIVER, this.receiverState));
-        buffer.addAttribute("Power (dBm)", this.power);
+            VDIS.getDescription(VDIS.RECEIVER, receiverState));
+        buffer.addAttribute("Power (dBm)", power);
         buffer.addBreak();
 
         buffer.addTitle("TRANSMITTER");
-        buffer.addAttribute("Entity", this.transmitterEntityId.toString());
-        buffer.addAttribute("Radio", this.transmitterRadioId);
+        buffer.addAttribute("Entity", transmitterEntityId.toString());
+        buffer.addAttribute("Radio", transmitterRadioId);
     }
 
     @Override
@@ -61,12 +61,12 @@ public class Receiver extends AbstractPDU {
 
         super.read(stream); // (header)
 
-        this.entityId.read(stream);
-        this.radioId = stream.readUnsignedShort();
-        this.receiverState = stream.readUnsignedShort();
+        entityId.read(stream);
+        radioId = stream.readUnsignedShort();
+        receiverState = stream.readUnsignedShort();
         stream.skipBytes(2); // padding
-        this.power = stream.readFloat();
-        this.transmitterEntityId.read(stream);
-        this.radioId = stream.readUnsignedShort();
+        power = stream.readFloat();
+        transmitterEntityId.read(stream);
+        radioId = stream.readUnsignedShort();
     }
 }

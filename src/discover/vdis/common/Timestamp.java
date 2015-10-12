@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.common;
 
 import java.io.DataInputStream;
@@ -11,6 +8,9 @@ import java.text.NumberFormat;
 import discover.common.Binary;
 import discover.common.Readable;
 
+/**
+ * @author Tony Pinkston
+ */
 public class Timestamp implements Readable {
 
     private static final float TIME_UNIT_TO_SECONDS;
@@ -34,78 +34,78 @@ public class Timestamp implements Readable {
 
     public Timestamp() {
 
-        this.updateValue();
+        updateValue();
     }
 
     public Timestamp(int value) {
 
         this.value = value;
-        this.updateAttributes();
+        updateAttributes();
     }
 
-    public int getValue() { return this.value; }
-    public int getMinutes() { return this.minutes; }
-    public float getSeconds() { return this.seconds; }
-    public boolean isAbsolute() { return this.absolute; }
+    public int getValue() { return value; }
+    public int getMinutes() { return minutes; }
+    public float getSeconds() { return seconds; }
+    public boolean isAbsolute() { return absolute; }
 
     public void setValue(int value) {
 
         this.value = value;
-        this.updateAttributes();
+        updateAttributes();
     }
 
     public void setValue(Timestamp timestamp) {
 
-        this.value = timestamp.value;
-        this.updateAttributes();
+        value = timestamp.value;
+        updateAttributes();
     }
 
     public void setMinutes(int minutes) {
 
         this.minutes = minutes;
-        this.updateValue();
+        updateValue();
     }
 
     public void setSeconds(float seconds) {
 
         this.seconds = seconds;
-        this.updateValue();
+        updateValue();
     }
 
     public void setAbsolute(boolean absolute) {
 
         this.absolute = absolute;
-        this.updateValue();
+        updateValue();
     }
 
-    public void add(float seconds) {
+    public void add(float timeSeconds) {
 
-        int minutes = (int)(seconds / 60.0f);
+        int timeMinutes = (int)(timeSeconds / 60.0f);
 
-        seconds -= (60.0f * minutes);
+        timeSeconds -= (60.0f * timeMinutes);
 
-        this.minutes += minutes;
-        this.seconds += seconds;
-        this.updateValue();
+        minutes += timeMinutes;
+        seconds += timeSeconds;
+        updateValue();
     }
 
     public void clear() {
 
-        this.minutes = 0;
-        this.seconds = 0.0f;
-        this.absolute = false;
+        minutes = 0;
+        seconds = 0.0f;
+        absolute = false;
     }
 
     @Override
     public void read(DataInputStream stream) throws IOException {
 
-        this.value = stream.readInt();
-        this.updateAttributes();
+        value = stream.readInt();
+        updateAttributes();
     }
 
     public void write(DataOutputStream stream) throws IOException {
 
-        stream.writeInt(this.value);
+        stream.writeInt(value);
     }
 
     @Override
@@ -113,9 +113,9 @@ public class Timestamp implements Readable {
 
         Timestamp copy = new Timestamp();
 
-        copy.absolute = this.absolute;
-        copy.minutes = this.minutes;
-        copy.seconds = this.seconds;
+        copy.absolute = absolute;
+        copy.minutes = minutes;
+        copy.seconds = seconds;
         copy.updateValue();
 
         return copy;
@@ -126,10 +126,10 @@ public class Timestamp implements Readable {
 
         StringBuffer buffer = new StringBuffer();
 
-        buffer.append(this.minutes);
+        buffer.append(minutes);
         buffer.append("m ");
-        buffer.append(formatter.format(this.seconds));
-        buffer.append(this.absolute ? "s ABS" : "s REL");
+        buffer.append(formatter.format(seconds));
+        buffer.append(absolute ? "s ABS" : "s REL");
 
         return buffer.toString();
     }
@@ -138,27 +138,27 @@ public class Timestamp implements Readable {
 
         float time = 0.0f;
 
-        this.absolute = (Binary.get1Bit(0, this.value) > 0);
+        absolute = (Binary.get1Bit(0, value) > 0);
 
-        time = (TIME_UNIT_TO_SECONDS * (this.value >>> 1));
+        time = (TIME_UNIT_TO_SECONDS * (value >>> 1));
 
-        this.minutes = (int)(time / 60.0);
+        minutes = (int)(time / 60.0);
 
-        time -= (this.minutes * 60.0);
+        time -= (minutes * 60.0);
 
-        this.seconds = time;
+        seconds = time;
     }
 
     private void updateValue() {
 
-        float time = (this.seconds + (this.minutes * 60.0f));
+        float time = (seconds + (minutes * 60.0f));
 
         long units = (long)(time * SECONDS_TO_TIME_UNITS);
 
         units = units << 1;
 
-        this.value = (int)(units & 0xFFFFFFFF);
+        value = (int)(units & 0xFFFFFFFF);
 
-        this.value = Binary.set1Bit(0, this.value, (this.absolute ? 1 : 0));
+        value = Binary.set1Bit(0, value, (absolute ? 1 : 0));
     }
 }

@@ -77,32 +77,32 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
 
         super(name, TabType.BUILDER);
 
-        this.table.setModel(this.model);
-        this.table.addMouseListener(this);
-        this.table.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        table.setModel(model);
+        table.addMouseListener(this);
+        table.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
-        this.setPDULength();
-        this.updateClipboardStatus(null);
-        this.fill();
-        this.show();
+        setPDULength();
+        updateClipboardStatus(null);
+        fill();
+        show();
     }
 
     @Override
     public void mousePressed(MouseEvent event) {
 
-        this.showPopup(event);
+        showPopup(event);
     }
 
     @Override
     public void mouseReleased(MouseEvent event) {
 
-        this.showPopup(event);
+        showPopup(event);
     }
 
     @Override
     public void mouseClicked(MouseEvent event) {
 
-        this.showPopup(event);
+        showPopup(event);
     }
 
     @Override
@@ -124,7 +124,7 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
     @Override
     public void copy(ArrayList<PDU> clipboard) {
 
-        PDU pdu = new PDU(this.buffer);
+        PDU pdu = new PDU(buffer);
 
         pdu.setSource(BUILDER_TAB);
         pdu.setTimestamp(true);
@@ -159,7 +159,7 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
 
                 PDU pdu = clipboard.remove(0);
 
-                this.setBuffer(
+                setBuffer(
                     Arrays.copyOf(pdu.getData(), pdu.getLength()),
                     true);
             }
@@ -189,20 +189,20 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
             bytes[i] = stream.readByte();
         }
 
-        this.setBuffer(bytes, true);
+        setBuffer(bytes, true);
     }
 
     @Override
     public void save(DataOutputStream stream) throws IOException {
 
-        stream.writeInt(super.getTabType().ordinal());
-        stream.writeUTF(super.getTabName());
+        stream.writeInt(getTabType().ordinal());
+        stream.writeUTF(getTabName());
 
-        stream.writeInt(this.buffer.length);
+        stream.writeInt(buffer.length);
 
-        for(int i = 0; i < this.buffer.length; ++i) {
+        for(int i = 0; i < buffer.length; ++i) {
 
-            stream.writeByte(this.buffer[i]);
+            stream.writeByte(buffer[i]);
         }
     }
 
@@ -214,22 +214,22 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
 
     private void setPDULength() {
 
-        if ((this.buffer != null) && (this.buffer.length > 10)) {
+        if ((buffer != null) && (buffer.length > 10)) {
 
             // Set PDU length in PDU header.
-            ByteArray.set16Bits(this.buffer, 8, this.buffer.length);
+            ByteArray.set16Bits(buffer, 8, buffer.length);
         }
     }
 
     private int getRows() {
 
-        if (this.buffer == null) {
+        if (buffer == null) {
 
             return 0;
         }
         else {
 
-            return (this.buffer.length / 4);
+            return (buffer.length / 4);
         }
     }
 
@@ -256,13 +256,13 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
 
             if (bytes.length > 11) {
 
-                this.buffer = bytes;
-                this.model.fireTableStructureChanged();
-                this.setPDULength();
+                buffer = bytes;
+                model.fireTableStructureChanged();
+                setPDULength();
 
                 if (show) {
 
-                    this.show();
+                    show();
                 }
             }
         }
@@ -274,29 +274,29 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
 
             Point point = event.getPoint();
 
-            int row = this.table.rowAtPoint(point);
-            int column = this.table.columnAtPoint(point);
+            int row = table.rowAtPoint(point);
+            int column = table.columnAtPoint(point);
 
-            this.insert.row = row;
-            this.insert.column = column;
+            insert.row = row;
+            insert.column = column;
 
-            this.delete.rows = this.table.getSelectedRows();
-            this.delete.setEnabled(this.buffer.length > 12);
+            delete.rows = table.getSelectedRows();
+            delete.setEnabled(buffer.length > 12);
 
-            this.popup.show(this.table, point.x, point.y);
+            popup.show(table, point.x, point.y);
         }
     }
 
     private void show() {
 
-        if (this.buffer == null) {
+        if (buffer == null) {
 
-            this.content.setText("No buffer to display.");
-            this.hexadecimal.setText("No buffer to display.");
+            content.setText("No buffer to display.");
+            hexadecimal.setText("No buffer to display.");
         }
         else {
 
-            PDU pdu = new PDU(this.buffer);
+            PDU pdu = new PDU(buffer);
 
             pdu.setSource(BUILDER_TAB);
             pdu.setTimestamp(true);
@@ -314,8 +314,8 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
                     buffer.addBuffer(pdu);
                     buffer.addText("</body></html>");
 
-                    this.content.setText(buffer.toString());
-                    this.content.setCaretPosition(0);
+                    content.setText(buffer.toString());
+                    content.setCaretPosition(0);
                 }
                 catch(Exception exception) {
 
@@ -333,8 +333,8 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
                         false,
                         pdu.getData());
 
-                    this.hexadecimal.setText(buffer.toString());
-                    this.hexadecimal.setCaretPosition(0);
+                    hexadecimal.setText(buffer.toString());
+                    hexadecimal.setCaretPosition(0);
                 }
                 catch(Exception exception) {
 
@@ -345,8 +345,8 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
 
                 logger.error("Caught exception!", exception);
 
-                this.content.setText("Caught exception, nothing to display.");
-                this.hexadecimal.setText("Caught exception, nothing to display.");
+                content.setText("Caught exception, nothing to display.");
+                hexadecimal.setText("Caught exception, nothing to display.");
             }
         }
     }
@@ -358,12 +358,12 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
         JTabbedPane tabbed = new JTabbedPane(JTabbedPane.BOTTOM);
         Insets insets = new Insets(3, 3, 3, 20);
 
-        tabbed.add("Content", this.content.getPanel());
-        tabbed.add("Byte View", this.hexadecimal.getPanel());
+        tabbed.add("Content", content.getPanel());
+        tabbed.add("Byte View", hexadecimal.getPanel());
 
         Utilities.addComponent(
             status,
-            this.clipboard,
+            clipboard,
             Utilities.HORIZONTAL,
             0, 0,
             1, 1,
@@ -371,11 +371,11 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
             insets);
 
         JPanel panel = new JPanel(new BorderLayout());
-        JScrollPane scroller = new JScrollPane(this.table);
+        JScrollPane scroller = new JScrollPane(table);
 
         scroller.setPreferredSize(new Dimension(800, 700));
 
-        panel.add(this.tools, BorderLayout.NORTH);
+        panel.add(tools, BorderLayout.NORTH);
         panel.add(scroller, BorderLayout.CENTER);
         panel.add(status, BorderLayout.SOUTH);
 
@@ -383,12 +383,12 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
         split.setLeftComponent(panel);
         split.setRightComponent(tabbed);
 
-        this.tools.add(new Apply());
-        this.tools.addSeparator();
-        this.tools.add(new Custom());
+        tools.add(new Apply());
+        tools.addSeparator();
+        tools.add(new Custom());
 
         Utilities.addComponent(
-            super.panel,
+            getPanel(),
             split,
             Utilities.BOTH,
             0, 0,
@@ -398,10 +398,10 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
 
         split.setDividerLocation(0.5);
 
-        this.popup.add(this.insert);
-        this.popup.add(this.delete);
+        popup.add(insert);
+        popup.add(delete);
 
-        this.tools.setFloatable(false);
+        tools.setFloatable(false);
     }
 
     @SuppressWarnings("serial")
@@ -530,34 +530,34 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
                 "Select PDU",
                 JOptionPane.PLAIN_MESSAGE,
                 null,
-                this.pdus,
-                this.pdus[0]);
+                pdus,
+                pdus[0]);
 
             System.out.println(object);
 
             if (object.equals(pdus[0])) {
 
-                this.createCDTScriptedEntityState();
+                createCDTScriptedEntityState();
             }
             else if (object.equals(pdus[1])) {
 
-                this.createCDTGeneralDiscovery();
+                createCDTGeneralDiscovery();
             }
             else if (object.equals(pdus[2])) {
 
-                this.createCDTSpecificConnection();
+                createCDTSpecificConnection();
             }
             else if (object.equals(pdus[3])) {
 
-                this.createCDTEdeConfiguration();
+                createCDTEdeConfiguration();
             }
             else if (object.equals(pdus[4])) {
 
-                this.createCDTOneSAFConfiguration();
+                createCDTOneSAFConfiguration();
             }
             else if (object.equals(pdus[5])) {
 
-                this.createCDTWaypoints();
+                createCDTWaypoints();
             }
         }
 
@@ -837,13 +837,13 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
 
                 index = 11;
             }
-            else if (this.column == 0) {
+            else if (column == 0) {
 
-                index = getBufferIndex(1, this.row);
+                index = getBufferIndex(1, row);
             }
             else {
 
-                index = getBufferIndex(this.column, this.row);
+                index = getBufferIndex(column, row);
             }
 
             if (index < 11) {
@@ -900,11 +900,11 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
         @Override
         public void actionPerformed(ActionEvent event) {
 
-            if ((this.rows != null) && (this.rows.length > 0)) {
+            if ((rows != null) && (rows.length > 0)) {
 
-                int count = (this.rows.length * 4);
+                int count = (rows.length * 4);
 
-                if (this.tooShort(count)) {
+                if (tooShort(count)) {
 
                     JOptionPane.showMessageDialog(
                         DiscoverFrame.getFrame(),
@@ -912,7 +912,7 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
                         "Delete Selected Rows",
                         JOptionPane.ERROR_MESSAGE);
                 }
-                else if (this.headerSelected()) {
+                else if (headerSelected()) {
 
                     JOptionPane.showMessageDialog(
                         DiscoverFrame.getFrame(),
@@ -928,7 +928,7 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
 
                     for(int i = 0; i < buffer.length; ++i) {
 
-                        if (!this.inDeletedRow(i)) {
+                        if (!inDeletedRow(i)) {
 
                             bytes[index] = buffer[i];
                             index++;
@@ -949,9 +949,9 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
 
             int row = getRow(index);
 
-            for(int i = 0; i < this.rows.length; ++i) {
+            for(int i = 0; i < rows.length; ++i) {
 
-                if (this.rows[i] == row) {
+                if (rows[i] == row) {
 
                     return true;
                 }
@@ -962,10 +962,10 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
 
         private boolean headerSelected() {
 
-            for(int i = 0; i < this.rows.length; ++i) {
+            for(int i = 0; i < rows.length; ++i) {
 
                 // Rows 0, 1 and 2 are header rows.
-                if (this.rows[i] < 3) {
+                if (rows[i] < 3) {
 
                     return true;
                 }

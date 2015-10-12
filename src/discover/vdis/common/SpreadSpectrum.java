@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.common;
 
 import java.util.ArrayList;
@@ -9,13 +6,14 @@ import java.util.List;
 import discover.vdis.bits.Abstract16Bits;
 import discover.vdis.bits.Bits;
 
+/**
+ * @author Tony Pinkston
+ */
 public class SpreadSpectrum extends Abstract16Bits {
 
-    public static final List<Bits> values;
+    public static final List<Bits> values = new ArrayList<Bits>();
 
     static {
-
-        values = new ArrayList<Bits>();
 
         values.add(Bits.getYesNo("Frequency Hopping", 0));
         values.add(Bits.getYesNo("Pseudo Noise", 1));
@@ -33,7 +31,7 @@ public class SpreadSpectrum extends Abstract16Bits {
 
         SpreadSpectrum object = new SpreadSpectrum();
 
-        object.set(super.get());
+        object.set(get());
 
         return object;
     }

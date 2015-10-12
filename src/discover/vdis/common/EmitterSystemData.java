@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.common;
 
 import java.io.DataInputStream;
@@ -13,6 +10,9 @@ import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.Bufferable;
 import discover.vdis.enums.VDIS;
 
+/**
+ * @author Tony Pinkston
+ */
 public class EmitterSystemData implements Bufferable, Readable {
 
     private Location12 location = new Location12();
@@ -26,11 +26,11 @@ public class EmitterSystemData implements Bufferable, Readable {
 
     public EmitterSystemData(DataInputStream stream) throws IOException {
 
-        this.read(stream);
+        read(stream);
     }
 
-    public int getNumber() { return this.number; }
-    public long getTime() { return this.time; }
+    public int getNumber() { return number; }
+    public long getTime() { return time; }
 
     public void setTime(long time) {
 
@@ -41,16 +41,16 @@ public class EmitterSystemData implements Bufferable, Readable {
     public void toBuffer(AbstractBuffer buffer) {
 
         buffer.addTitle("EMITTER SYSTEM");
-        buffer.addAttribute("Name", this.name, VDIS.EMITTER_NAME);
-        buffer.addAttribute("Number", this.number);
-        buffer.addAttribute("Function", this.function, VDIS.EMITTER_FUNCTION);
-        buffer.addAttribute("Location", this.location.toString());
-        buffer.addAttribute("Data Length", this.dataLength);
-        buffer.addAttribute("Beam Count", this.beamCount);
+        buffer.addAttribute("Name", name, VDIS.EMITTER_NAME);
+        buffer.addAttribute("Number", number);
+        buffer.addAttribute("Function", function, VDIS.EMITTER_FUNCTION);
+        buffer.addAttribute("Location", location.toString());
+        buffer.addAttribute("Data Length", dataLength);
+        buffer.addAttribute("Beam Count", beamCount);
 
-        for(int i = 0, size = this.beams.size(); i < size; ++i) {
+        for(int i = 0, size = beams.size(); i < size; ++i) {
 
-            buffer.addBuffer(this.beams.get(i));
+            buffer.addBuffer(beams.get(i));
         }
     }
 
@@ -58,25 +58,25 @@ public class EmitterSystemData implements Bufferable, Readable {
     public void read(DataInputStream stream) throws IOException {
 
         // 1 byte
-        this.dataLength = stream.readUnsignedByte();
+        dataLength = stream.readUnsignedByte();
 
         // 1 byte
-        this.beamCount = stream.readUnsignedByte();
+        beamCount = stream.readUnsignedByte();
 
         // 2 bytes padding
         stream.skipBytes(2);
 
         // Emitter System
-        this.name = stream.readUnsignedShort(); // 2 bytes
-        this.function = stream.readUnsignedByte(); // 1 byte
-        this.number = stream.readUnsignedByte(); // 1 byte
+        name = stream.readUnsignedShort(); // 2 bytes
+        function = stream.readUnsignedByte(); // 1 byte
+        number = stream.readUnsignedByte(); // 1 byte
 
         // 12 bytes
-        this.location.read(stream);
+        location.read(stream);
 
-        for(int i = 0; i < this.beamCount; ++i) {
+        for(int i = 0; i < beamCount; ++i) {
 
-            this.beams.add(new EmitterBeamData(stream));
+            beams.add(new EmitterBeamData(stream));
         }
     }
 }

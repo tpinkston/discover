@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.pdu;
 
 import java.io.DataInputStream;
@@ -12,6 +9,9 @@ import discover.common.buffer.AbstractBuffer;
 import discover.vdis.common.EntityId;
 import discover.vdis.enums.VDIS;
 
+/**
+ * @author Tony Pinkston
+ */
 public class Signal extends AbstractPDU {
 
     private EntityId entityId = new EntityId();
@@ -32,16 +32,16 @@ public class Signal extends AbstractPDU {
     @Override
     public void clear() {
 
-        this.entityId.clear();
-        this.encodingType = 0;
-        this.encodingClass = 0;
-        this.tdlType = 0;
-        this.tdlMessages = 0;
-        this.radioId = 0;
-        this.sampleRate = 0;
-        this.dataLength = 0;
-        this.samples = 0;
-        this.data = null;
+        entityId.clear();
+        encodingType = 0;
+        encodingClass = 0;
+        tdlType = 0;
+        tdlMessages = 0;
+        radioId = 0;
+        sampleRate = 0;
+        dataLength = 0;
+        samples = 0;
+        data = null;
     }
 
     @Override
@@ -50,29 +50,29 @@ public class Signal extends AbstractPDU {
         super.toBuffer(buffer);
 
         buffer.addTitle("IDENTIFICATION");
-        buffer.addAttribute("Entity", this.entityId.toString());
-        buffer.addAttribute("Radio", this.radioId);
+        buffer.addAttribute("Entity", entityId.toString());
+        buffer.addAttribute("Radio", radioId);
         buffer.addBreak();
 
         buffer.addTitle("ENCODING");
         buffer.addAttribute(
             "Encoding Class",
-            VDIS.getDescription(VDIS.ENCODING_CLASS, this.encodingClass));
+            VDIS.getDescription(VDIS.ENCODING_CLASS, encodingClass));
         buffer.addAttribute(
             "Encoding Type",
-            VDIS.getDescription(VDIS.ENCODING_TYPE, this.encodingType));
+            VDIS.getDescription(VDIS.ENCODING_TYPE, encodingType));
         buffer.addAttribute(
             "TDL Type",
-            VDIS.getDescription(VDIS.TDL_TYPE, this.tdlType));
-        buffer.addAttribute("TDL Message Count", this.tdlMessages);
-        buffer.addAttribute("Sample Rate", this.sampleRate);
-        buffer.addAttribute("Samples", this.samples);
+            VDIS.getDescription(VDIS.TDL_TYPE, tdlType));
+        buffer.addAttribute("TDL Message Count", tdlMessages);
+        buffer.addAttribute("Sample Rate", sampleRate);
+        buffer.addAttribute("Samples", samples);
         buffer.addBreak();
 
         buffer.addTitle("DATA");
-        buffer.addAttribute("Data Length", (this.dataLength + " Bits"));
+        buffer.addAttribute("Data Length", (dataLength + " Bits"));
 
-        if (this.data == null) {
+        if (data == null) {
 
             buffer.addItalic("Empty");
             buffer.addBreak();
@@ -84,7 +84,7 @@ public class Signal extends AbstractPDU {
                 "     ",
                 4,
                 false,
-                this.data);
+                data);
         }
     }
 
@@ -93,42 +93,42 @@ public class Signal extends AbstractPDU {
 
         super.read(stream); // (header)
 
-        this.entityId.read(stream);
-        this.radioId = stream.readUnsignedShort();
+        entityId.read(stream);
+        radioId = stream.readUnsignedShort();
 
         // Encoding Scheme
         int eScheme = stream.readUnsignedShort();
 
         // Encoding class is the bits 14-15 of the encoding scheme.
-        this.encodingClass = Binary.get2Bits(15, eScheme);
+        encodingClass = Binary.get2Bits(15, eScheme);
 
-        if (this.encodingClass == 0) {
+        if (encodingClass == 0) {
 
             // ENCODED_AUDIO, bits 0-13 is the encoding type.
-            this.encodingType = (eScheme & 0x3FFF);
+            encodingType = (eScheme & 0x3FFF);
         }
         else {
 
             // Bits 0-13 is the number of Tactical Data Link (TDL) messages.
-            this.tdlMessages = (eScheme & 0x3FFF);
-            this.encodingType = 0;
+            tdlMessages = (eScheme & 0x3FFF);
+            encodingType = 0;
         }
 
-        this.tdlType = stream.readUnsignedShort();
-        this.sampleRate = stream.readInt();
-        this.dataLength = stream.readUnsignedShort();
-        this.samples = stream.readUnsignedShort();
+        tdlType = stream.readUnsignedShort();
+        sampleRate = stream.readInt();
+        dataLength = stream.readUnsignedShort();
+        samples = stream.readUnsignedShort();
 
-        if (this.dataLength > 0) {
+        if (dataLength > 0) {
 
             // Data length is the number of bits!
-            final int length = (this.dataLength / 8);
+            final int length = (dataLength / 8);
 
-            this.data = new byte[length];
+            data = new byte[length];
 
             for(int i = 0; i < length; ++i) {
 
-                this.data[i] = stream.readByte();
+                data[i] = stream.readByte();
             }
         }
 

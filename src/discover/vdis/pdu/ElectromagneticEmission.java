@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.pdu;
 
 import java.io.DataInputStream;
@@ -12,6 +9,9 @@ import discover.common.buffer.AbstractBuffer;
 import discover.vdis.common.EmitterSystemData;
 import discover.vdis.common.EntityId;
 
+/**
+ * @author Tony Pinkston
+ */
 public class ElectromagneticEmission extends AbstractPDU {
 
     private EntityId emitter = new EntityId();
@@ -26,17 +26,17 @@ public class ElectromagneticEmission extends AbstractPDU {
 
     public List<EmitterSystemData> getSystems() {
 
-        return this.systems;
+        return systems;
     }
 
     @Override
     public void clear() {
 
-        this.emitter.clear();
-        this.event.clear();
-        this.systems.clear();
-        this.update = 0;
-        this.systemCount = 0;
+        emitter.clear();
+        event.clear();
+        systems.clear();
+        update = 0;
+        systemCount = 0;
     }
 
     @Override
@@ -45,16 +45,16 @@ public class ElectromagneticEmission extends AbstractPDU {
         super.toBuffer(buffer);
 
         buffer.addTitle("IDENTIFICATION");
-        buffer.addAttribute("Emitting Entity", this.emitter.toString());
-        buffer.addAttribute("Event", this.event.toString());
-        buffer.addAttribute("State Update Indicator", this.update);
-        buffer.addAttribute("Systems", this.systemCount);
+        buffer.addAttribute("Emitting Entity", emitter.toString());
+        buffer.addAttribute("Event", event.toString());
+        buffer.addAttribute("State Update Indicator", update);
+        buffer.addAttribute("Systems", systemCount);
 
-        for(int i = 0, size = this.systems.size(); i < size; ++i) {
+        for(int i = 0, size = systems.size(); i < size; ++i) {
 
             buffer.addBreak();
             buffer.addSeparator();
-            buffer.addBuffer(this.systems.get(i));
+            buffer.addBuffer(systems.get(i));
         }
     }
 
@@ -65,23 +65,23 @@ public class ElectromagneticEmission extends AbstractPDU {
         super.read(stream);
 
         // 6 bytes
-        this.emitter.read(stream);
+        emitter.read(stream);
 
         // 6 bytes
-        this.event.read(stream);
+        event.read(stream);
 
         // 1 byte
-        this.update = stream.readUnsignedByte();
+        update = stream.readUnsignedByte();
 
         // 1 byte
-        this.systemCount = stream.readUnsignedByte();
+        systemCount = stream.readUnsignedByte();
 
         // 2 bytes padding
         stream.skipBytes(2);
 
-        for(int i = 0; i < this.systemCount; ++i) {
+        for(int i = 0; i < systemCount; ++i) {
 
-            this.systems.add(new EmitterSystemData(stream));
+            systems.add(new EmitterSystemData(stream));
         }
     }
 }

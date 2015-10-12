@@ -1,6 +1,3 @@
-/**
- * @author Tony Pinkston
- */
 package discover.vdis.common;
 
 import java.io.DataInputStream;
@@ -12,6 +9,9 @@ import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.Bufferable;
 import discover.vdis.enums.VDIS;
 
+/**
+ * @author Tony Pinkston
+ */
 public class PDUStatus implements Bufferable, Readable {
 
     /** Transferred Entity Indicator */
@@ -49,7 +49,7 @@ public class PDUStatus implements Bufferable, Readable {
     private IAI iai = null;
     private DMI dmi = null;
 
-    public byte getValue() { return this.value; }
+    public byte getValue() { return value; }
 
     /**
      * Sets enumeration values from byte value depending on the type on
@@ -60,229 +60,229 @@ public class PDUStatus implements Bufferable, Readable {
      */
     public void setEnumValues(int type) {
 
-        this.tei = null;
-        this.lvci = null;
-        this.fti = null;
-        this.dti = null;
-        this.cei = null;
-        this.rai = null;
-        this.iai = null;
-        this.dmi = null;
+        tei = null;
+        lvci = null;
+        fti = null;
+        dti = null;
+        cei = null;
+        rai = null;
+        iai = null;
+        dmi = null;
 
         // All PDU types have the CEI value:
-        this.setCEI();
+        setCEI();
 
         // All other PDU types have selective values:
 
         if (type == VDIS.PDU_TYPE_ENTITY_STATE) {
 
-            this.setDMI();
-            this.setTEI();
-            this.setLVCI();
+            setDMI();
+            setTEI();
+            setLVCI();
         }
         else if (type == VDIS.PDU_TYPE_FIRE) {
 
-            this.setFTI();
-            this.setLVCI();
+            setFTI();
+            setLVCI();
         }
         else if (type == VDIS.PDU_TYPE_DETONATION) {
 
-            this.setDTI();
-            this.setLVCI();
+            setDTI();
+            setLVCI();
         }
         else if ((type == VDIS.PDU_TYPE_EM_EMISSION) ||
                  (type == VDIS.PDU_TYPE_DESIGNATOR) ||
                  (type == VDIS.PDU_TYPE_IFF)) {
 
-            this.setTEI();
-            this.setLVCI();
+            setTEI();
+            setLVCI();
         }
         else if ((type == VDIS.PDU_TYPE_TRANSMITTER) ||
                  (type == VDIS.PDU_TYPE_SIGNAL) ||
                  (type == VDIS.PDU_TYPE_RECEIVER)) {
 
-            this.setRAI();
-            this.setTEI();
-            this.setLVCI();
+            setRAI();
+            setTEI();
+            setLVCI();
         }
         else if ((type == VDIS.PDU_TYPE_INTERCOM_SIGNAL) ||
                  (type == VDIS.PDU_TYPE_INTERCOM_CONTROL)) {
 
-            this.setIAI();
+            setIAI();
         }
     }
 
     @Override
     public void read(DataInputStream stream) throws IOException {
 
-        this.value = stream.readByte();
+        value = stream.readByte();
     }
 
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
-        buffer.addAttribute("Status Bits", Binary.toString8(this.value));
+        buffer.addAttribute("Status Bits", Binary.toString8(value));
 
-        if ((this.cei != null) && (this.cei != CEI.NOT_COUPLED)) {
+        if ((cei != null) && (cei != CEI.NOT_COUPLED)) {
 
-            buffer.addAttribute("Coupled Extension", this.cei.toString());
+            buffer.addAttribute("Coupled Extension", cei.toString());
         }
 
-        if ((this.dmi != null) && (this.dmi != DMI.GUISE_MODE)) {
+        if ((dmi != null) && (dmi != DMI.GUISE_MODE)) {
 
-            buffer.addAttribute("Disguise Mode", this.dmi.toString());
+            buffer.addAttribute("Disguise Mode", dmi.toString());
         }
 
-        if (this.dti != null) {
+        if (dti != null) {
 
-            buffer.addAttribute("Detonation Type", this.dti.toString());
+            buffer.addAttribute("Detonation Type", dti.toString());
         }
 
-        if (this.fti != null) {
+        if (fti != null) {
 
-            buffer.addAttribute("Fire Type", this.fti.toString());
+            buffer.addAttribute("Fire Type", fti.toString());
         }
 
-        if ((this.tei != null) && (this.tei != TEI.NO_DIFF)) {
+        if ((tei != null) && (tei != TEI.NO_DIFF)) {
 
-            buffer.addAttribute("Transferred Entity", this.tei.toString());
+            buffer.addAttribute("Transferred Entity", tei.toString());
         }
 
-        if ((this.lvci != null) && (this.lvci != LVCI.NO_STATEMENT)) {
+        if ((lvci != null) && (lvci != LVCI.NO_STATEMENT)) {
 
-            buffer.addAttribute("Simulation Type", this.lvci.toString());
+            buffer.addAttribute("Simulation Type", lvci.toString());
         }
 
-        if ((this.rai != null) && (this.rai != RAI.NO_STATEMENT)) {
+        if ((rai != null) && (rai != RAI.NO_STATEMENT)) {
 
-            buffer.addAttribute("Radio Attached", this.rai.toString());
+            buffer.addAttribute("Radio Attached", rai.toString());
         }
 
-        if ((this.iai != null) && (this.iai != IAI.NO_STATEMENT)) {
+        if ((iai != null) && (iai != IAI.NO_STATEMENT)) {
 
-            buffer.addAttribute("Intercom Attached", this.iai.toString());
+            buffer.addAttribute("Intercom Attached", iai.toString());
         }
     }
 
     private void setCEI() {
 
-        if (Binary.get1Bit(3, this.value) == 1) {
+        if (Binary.get1Bit(3, value) == 1) {
 
-            this.cei = CEI.COUPLED;
+            cei = CEI.COUPLED;
         }
         else {
 
-            this.cei = CEI.NOT_COUPLED;
+            cei = CEI.NOT_COUPLED;
         }
     }
 
     private void setTEI() {
 
-        if (Binary.get1Bit(0, this.value) == 1) {
+        if (Binary.get1Bit(0, value) == 1) {
 
-            this.tei = TEI.DIFF;
+            tei = TEI.DIFF;
         }
         else {
 
-            this.tei = TEI.NO_DIFF;
+            tei = TEI.NO_DIFF;
         }
     }
 
     private void setDMI() {
 
-        if (Binary.get1Bit(4, this.value) == 1) {
+        if (Binary.get1Bit(4, value) == 1) {
 
-            this.dmi = DMI.DISGUISE_MODE;
+            dmi = DMI.DISGUISE_MODE;
         }
         else {
 
-            this.dmi = DMI.GUISE_MODE;
+            dmi = DMI.GUISE_MODE;
         }
     }
 
     private void setFTI() {
 
-        if (Binary.get1Bit(4, this.value) == 1) {
+        if (Binary.get1Bit(4, value) == 1) {
 
-            this.fti = FTI.EXPENDABLE;
+            fti = FTI.EXPENDABLE;
         }
         else {
 
-            this.fti = FTI.MUNITION;
+            fti = FTI.MUNITION;
         }
     }
 
     private void setDTI() {
 
-        int ordinal = Binary.get2Bits(5, this.value);
+        int ordinal = Binary.get2Bits(5, value);
 
         switch(ordinal) {
 
             case 0:
-                this.dti = DTI.MUNITION;
+                dti = DTI.MUNITION;
                 break;
             case 1:
-                this.dti = DTI.EXPENDABLE;
+                dti = DTI.EXPENDABLE;
                 break;
             case 2:
-                this.dti = DTI.NON_MUNITION_EXPLOSION;
+                dti = DTI.NON_MUNITION_EXPLOSION;
                 break;
         }
     }
 
     private void setRAI() {
 
-        int ordinal = Binary.get2Bits(5, this.value);
+        int ordinal = Binary.get2Bits(5, value);
 
         switch(ordinal) {
 
             case 0:
-                this.rai = RAI.NO_STATEMENT;
+                rai = RAI.NO_STATEMENT;
                 break;
             case 1:
-                this.rai = RAI.NOT_ATTACHED;
+                rai = RAI.NOT_ATTACHED;
                 break;
             case 2:
-                this.rai = RAI.ATTACHED;
+                rai = RAI.ATTACHED;
                 break;
         }
     }
 
     private void setIAI() {
 
-        int ordinal = Binary.get2Bits(5, this.value);
+        int ordinal = Binary.get2Bits(5, value);
 
         switch(ordinal) {
 
             case 0:
-                this.iai = IAI.NO_STATEMENT;
+                iai = IAI.NO_STATEMENT;
                 break;
             case 1:
-                this.iai = IAI.NOT_ATTACHED;
+                iai = IAI.NOT_ATTACHED;
                 break;
             case 2:
-                this.iai = IAI.ATTACHED;
+                iai = IAI.ATTACHED;
                 break;
         }
     }
 
     private void setLVCI() {
 
-        int ordinal = Binary.get2Bits(2, this.value);
+        int ordinal = Binary.get2Bits(2, value);
 
         switch(ordinal) {
 
             case 0:
-                this.lvci = LVCI.NO_STATEMENT;
+                lvci = LVCI.NO_STATEMENT;
                 break;
             case 1:
-                this.lvci = LVCI.LIVE;
+                lvci = LVCI.LIVE;
                 break;
             case 2:
-                this.lvci = LVCI.VIRTUAL;
+                lvci = LVCI.VIRTUAL;
                 break;
             case 3:
-                this.lvci = LVCI.CONSTRUCTIVE;
+                lvci = LVCI.CONSTRUCTIVE;
                 break;
         }
     }

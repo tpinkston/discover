@@ -1,11 +1,10 @@
-/**
- * @author Tony Pinkston
- */
 package discover.common;
 
 /**
  * No index checking is made on byte arrays to allow for
  * {@link ArrayIndexOutOfBoundsException}
+ * 
+ * @author Tony Pinkston
  */
 public class ByteArray {
 
