@@ -12,6 +12,7 @@
   <property name="classes" value="classes"/>
   <property name="library" value="lib"/>
   <property name="test" value="default"/>
+  <property name="logs" value="logs"/>
   <property name="jar" value="discover.jar"/>
   <property name="main.class" value="discover.Discover"/>
 
@@ -21,6 +22,7 @@
 
   <target name="clean">
     <delete verbose="${verbose}" dir="${classes}"/>
+    <delete verbose="${verbose}" dir="${logs}"/>
     <delete verbose="${verbose}" file="${enums}/generate_enums"/>
     <delete verbose="true" file="${library}/${jar}"/>
   </target>
