@@ -33,46 +33,6 @@ public class DatumRecordFactory {
                 record = new SlingLoadCapability(id);
                 break;
 
-            // DID_CDT_WAYPOINT:
-            case 405100:
-                record = new CDTWaypoint(id);
-                break;
-
-            // DID_CDT_GENERAL_DISCOVERY:
-            case 400100:
-                record = new CDTGeneralDiscoveryRecord(id);
-                break;
-
-            // DID_CDT_SPECIFIC_CONNECTION:
-            case 400200:
-                record = new CDTSpecificConnectionRecord(id);
-                break;
-
-            // DID_CDT_ONESAF_CONFIGURATION:
-            case 400400:
-                record = new CDTOneSAFConfigurationRecord(id);
-                break;
-
-            // DID_CDT_APPLICATION_CONFIGURATION:
-            case 400500:
-                record = new CDTApplicationConfiguration(id);
-                break;
-
-            // DID_CDT_CONTROLLER_PING:
-            case 986881:
-                record = new CDTOneSAFControllerPingRecord(id);
-                break;
-
-            // DID_CDT_CONTROLLER_PING:
-            case 986882:
-                record = new CDTOneSAFControllerKillRecord(id);
-                break;
-
-            // DID_CDT_ONESAF_NODE:
-            case 986883:
-                record = new CDTOneSAFControllerNodeRecord(id);
-                break;
-
             default:
                 record = new VariableDatumRecord(id);
         }

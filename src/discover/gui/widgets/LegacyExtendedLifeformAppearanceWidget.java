@@ -187,7 +187,7 @@ public class LegacyExtendedLifeformAppearanceWidget extends AbstractVariableReco
             Utilities.getInsets(4, 2, 2, 2));
         Utilities.addComponent(
             panel,
-            remove,
+            getRemoveButton(),
             Utilities.HORIZONTAL,
             0, 6,
             2, 1,

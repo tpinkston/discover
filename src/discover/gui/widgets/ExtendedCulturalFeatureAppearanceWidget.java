@@ -84,7 +84,7 @@ public class ExtendedCulturalFeatureAppearanceWidget extends AbstractVariableRec
             Utilities.getInsets(8, 2, 2, 2));
         Utilities.addComponent(
             panel,
-            remove,
+            getRemoveButton(),
             Utilities.HORIZONTAL,
             0, 2,
             1, 1,

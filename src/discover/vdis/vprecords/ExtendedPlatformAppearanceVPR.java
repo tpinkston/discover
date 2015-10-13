@@ -111,9 +111,9 @@ public class ExtendedPlatformAppearanceVPR extends ExtendedAppearanceVPR {
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
-        String title = VDIS.getDescription(VDIS.VP_RECORD_TYPE, super.type);
+        String title = VDIS.getDescription(VDIS.VP_RECORD_TYPE, getRecordType());
 
-        String domain = VDIS.getDescription(VDIS.DOMAIN, super.domain);
+        String domain = VDIS.getDescription(VDIS.DOMAIN, getDomain());
 
         domain = domain.toUpperCase();
 

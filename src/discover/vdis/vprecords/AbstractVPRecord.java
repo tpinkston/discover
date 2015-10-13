@@ -17,13 +17,12 @@ public abstract class AbstractVPRecord implements Bufferable, Readable, Writable
 
     protected static final Logger logger = LoggerFactory.getLogger(AbstractVPRecord.class);
 
-    // TODO: Make private
-    protected int type = -1; // VP_RECORD_TYPE
-    protected int domain = -1;
+    private int type = -1; // VP_RECORD_TYPE
+    private int domain = -1;
 
-    protected AbstractVPRecord(int type) {
+    protected AbstractVPRecord(int value) {
 
-        this.type = type;
+        type = value;
     }
 
     public abstract int getLength();
@@ -33,9 +32,9 @@ public abstract class AbstractVPRecord implements Bufferable, Readable, Writable
         return type;
     }
 
-    public void setRecordType(int type) {
+    public void setRecordType(int value) {
 
-        this.type = type;
+        type = value;
     }
 
     public int getDomain() {
@@ -43,9 +42,9 @@ public abstract class AbstractVPRecord implements Bufferable, Readable, Writable
         return domain;
     }
 
-    public void setDomain(int domain) {
+    public void setDomain(int value) {
 
-        this.domain = domain;
+        domain = value;
     }
 
     @Override

@@ -11,8 +11,7 @@ public abstract class AbstractVariableRecordWidget extends ToggleWidget {
 
     public static final String REMOVE = "Remove ";
 
-    // TODO: Make private.
-    protected final JButton remove = new JButton();
+    private final JButton remove = new JButton();
 
     protected AbstractVariableRecordWidget(String title) {
 

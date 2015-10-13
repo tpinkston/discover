@@ -1167,20 +1167,6 @@ value,name,desc,CAT,type,length,units,new,deleted,SISO
 301101,DID_DISPLAY_MODE_2,Display Mode 2,unknown,fixed,unknown,unknown,0,0,0
 301102,DID_DISPLAY_MODE_3,Display Mode 3,unknown,fixed,unknown,unknown,0,0,0
 327680,DID_ENVIRONMENT_PROCESS_GEOMETRY_UNIFORM,EP Geometry - Uniform,Environment,variable,64-bits,unknown,0,0,0
-400100,DID_CDT_GENERAL_DISCOVERY,CDT General Discovery,unknown,variable,unknown,unknown,0,0,0
-400200,DID_CDT_SPECIFIC_CONNECTION,CDT Specific Connection,unknown,variable,unknown,unknown,0,0,0
-400300,DID_CDT_CONFIGURATION,CDT Configuration,unknown,variable,unknown,unknown,0,0,0
-400400,DID_CDT_ONESAF_CONFIGURATION,CDT OneSAF Configuration,unknown,variable,unknown,unknown,0,0,0
-400500,DID_CDT_APPLICATION_CONFIGURATION,CDT Application Configuration,unknown,variable,unknown,unknown,0,0,0
-404100,DID_CDT_WAYPOINTS_CURRENT,CDT Waypoints Current,unknown,fixed,unknown,unknown,0,0,0
-404200,DID_CDT_WAYPOINTS_NUMBER,CDT Waypoints Number,unknown,fixed,unknown,unknown,0,0,0
-405100,DID_CDT_WAYPOINT,CDT Waypoint,unknown,variable,unknown,unknown,0,0,0
-405200,DID_CDT_OCU_PANEL,CDT Talon OCU Panel,unknown,variable,unknown,unknown,0,0,0
-405300,DID_CDT_TALON_SCORE,CDT Talon Score,unknown,fixed,unknown,unknown,0,0,0
-405400,DID_CDT_LT_FLAIL_SCORE,CDT Light Flail Score,unknown,fixed,unknown,unknown,0,0,0
-405500,DID_CDT_MALFUNCTION_TYPE,CDT Malfunction Type,unknown,fixed,unknown,unknown,0,0,0
-405510,DID_CDT_MALFUNCTION_STATE,CDT Malfunction State,unknown,fixed,unknown,unknown,0,0,0
-405600,DID_CDT_WEATHER_CHANGE,CDT Weather Change,unknown,variable,unknown,unknown,0,0,0
 500001,DID_ENTITY_STATUS_MUNITION_RECORD,Entity Status - Munition Record,Entity Status,variable,128-bits,unknown,0,0,0
 500002,DID_ENTITY_STATUS_ENGINE_FUEL_RECORD,Entity Status - Engine Fuel Record,Entity Status,variable,64-bits,unknown,0,0,0
 500003,DID_ENTITY_STATUS_STORAGE_FUEL_RECORD,Entity Status - Storage Fuel Record,Entity Status,variable,64-bits,unknown,0,0,0

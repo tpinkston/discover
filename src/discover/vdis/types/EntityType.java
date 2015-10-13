@@ -21,8 +21,6 @@ public class EntityType implements Comparable<EntityType>, Bufferable, Writable 
     public final String description;
     public final String alternate;
 
-    private String cdtName = null;
-
     EntityType(
         int kind,
         int domain,
@@ -77,16 +75,6 @@ public class EntityType implements Comparable<EntityType>, Bufferable, Writable 
         return VDIS.getHandle(VDIS.ENT_CNTRY).getDescription(septuple.country);
     }
 
-    public String getCDTName() {
-
-        return cdtName;
-    }
-
-    public void setCDTName(String name) {
-
-        cdtName = name;
-    }
-
     @Override
     public int compareTo(EntityType type) {
 
@@ -134,13 +122,6 @@ public class EntityType implements Comparable<EntityType>, Bufferable, Writable 
 
         buffer.addText(name);
         buffer.addBreak();
-
-        if (cdtName != null) {
-
-            buffer.addText("CDT Model Name \"" + cdtName + "\"");
-            buffer.addBreak();
-        }
-
         buffer.addText(septuple.string);
         buffer.addBreak();
         buffer.addText("\"" + description + "\"");

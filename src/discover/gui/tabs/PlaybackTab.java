@@ -21,7 +21,6 @@ import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
 import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
@@ -45,7 +44,6 @@ import discover.vdis.PDU;
 public class PlaybackTab extends PDUTab implements PlaybackThreadListener {
 
     private final JProgressBar progress = new JProgressBar(0, 100);
-    private final JPopupMenu popup = new JPopupMenu();
 
     private final AbstractAction bulkAction = new BulkEditAction();
     private final AbstractAction binaryAction = new BinaryEditAction();

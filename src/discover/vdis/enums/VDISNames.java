@@ -5,7 +5,7 @@ package discover.vdis.enums;
  */
 public class VDISNames {
 
-    public static final String ACK_ACKNOWLEDGE_FLAG[] = {
+    public static final String ACK_ACKNOWLEDGE_FLAG[] = { 
         "ACK_FLAG_CREATE_ENTITY", // 1
         "ACK_FLAG_REMOVE_ENTITY", // 2
         "ACK_FLAG_START_RESUME", // 3
@@ -13,14 +13,14 @@ public class VDISNames {
         "ACK_FLAG_TRANSFER_CONTROL_REQUEST"  // 5
     };
 
-    public static final String ACK_RESPONSE_FLAG[] = {
+    public static final String ACK_RESPONSE_FLAG[] = { 
         "ACK_RESP_OTHER", // 0
         "ACK_RESP_ABLE_TO_COMPLY", // 1
         "ACK_RESP_UNABLE_TO_COMPLY", // 2
         "ACK_RESP_PENDING_OPER_ACT"  // 3
     };
 
-    public static final String ACTREQ_ACTION_IDS[] = {
+    public static final String ACTREQ_ACTION_IDS[] = { 
         "ACTREQ_ID_OTHER", // 0
         "ACTREQ_ID_LOCAL_STORAGE_REQ_INFO", // 1
         "ACTREQ_ID_INFORM_EVENT_RAN_OUT_OF_AMMO", // 2
@@ -73,24 +73,10 @@ public class VDISNames {
         "ACTREQ_ID_TACCSF_LOS_REQ_TYPE_2", // 101
         "ACTREQ_ID_SLING_CAPABILITY_REQ", // 4300
         "ACTREQ_ID_SLING_ATTACH_REQ", // 4301
-        "ACTREQ_ID_SLING_RELEASE_REQ", // 4302
-        "ACTID_CDT_REPORT_AVAILABILITY", // 5100
-        "ACTID_CDT_REPORT_AVAILABILITY_ATSIO", // 5105
-        "ACTID_CDT_AVAILABLE", // 5110
-        "ACTID_CDT_NOT_AVAILABLE", // 5120
-        "ACTID_CDT_CONNECT", // 5200
-        "ACTID_CDT_CONNECTION_ACK", // 5210
-        "ACTID_CDT_CONNECTION_NACK", // 5230
-        "ACTID_CDT_DISCONNECT", // 5300
-        "ACTID_CDT_DISCONNECTION_ACK", // 5310
-        "ACTID_CDT_DISCONNECTION_NACK", // 5320
-        "ACTID_CDT_CONFIGURATION", // 5400
-        "ACTID_CDT_CONFIGURATION_ACK", // 5410
-        "ACTID_CDT_CONFIGURATION_NACK", // 5420
-        "ACTID_CDT_WAYPOINTS"  // 5600
+        "ACTREQ_ID_SLING_RELEASE_REQ"  // 4302
     };
 
-    public static final String ACTRES_REQ_STATUS[] = {
+    public static final String ACTRES_REQ_STATUS[] = { 
         "ACTRES_REQ_OTHER", // 0
         "ACTRES_REQ_PENDING", // 1
         "ACTRES_REQ_EXECUTING", // 2
@@ -107,21 +93,21 @@ public class VDISNames {
         "ACTRES_REQ_JOIN_EXERCISE_REQ_REJECTED"  // 201
     };
 
-    public static final String AIR_EQ_SLINGLOAD[] = {
+    public static final String AIR_EQ_SLINGLOAD[] = { 
         "AIRPLAT_EQ_SLNGLD_NOT_PRESENT", // 0
         "AIRPLAT_EQ_SLNGLD_EMPTY", // 1
         "AIRPLAT_EQ_SLNGLD_LOADED", // 2
         "AIRPLAT_EQ_SLNGLD_DAMAGED"  // 3
     };
 
-    public static final String AIR_SMOKE[] = {
+    public static final String AIR_SMOKE[] = { 
         "AIR_SMOKE_NONE", // 0
         "AIR_SMOKE_TRAILING", // 1
         "AIR_SMOKE_ENGINE", // 2
         "AIR_SMOKE_ENGINE_TRAILING"  // 3
     };
 
-    public static final String AMPLITUDE[] = {
+    public static final String AMPLITUDE[] = { 
         "AMPLITUDE_OTHER", // 0
         "AMPLITUDE_AFSK", // 1
         "AMPLITUDE_AM", // 2
@@ -135,25 +121,25 @@ public class VDISNames {
         "AMPLITUDE_VSB"  // 10
     };
 
-    public static final String AMPLITUDE_AND_ANGLE[] = {
+    public static final String AMPLITUDE_AND_ANGLE[] = { 
         "AMP_ANG_OTHER", // 0
         "AMP_ANG_AMPLITUDE_AND_ANGLE"  // 1
     };
 
-    public static final String ANGLE[] = {
+    public static final String ANGLE[] = { 
         "ANGLE_OTHER", // 0
         "ANGLE_FM", // 1
         "ANGLE_FSK", // 2
         "ANGLE_PM"  // 3
     };
 
-    public static final String ANTENNA_PATTERN_TYPE[] = {
+    public static final String ANTENNA_PATTERN_TYPE[] = { 
         "ANTENNA_PATTERN_OMNI_DIRECTIONAL", // 0
         "ANTENNA_PATTERN_BEAM", // 1
         "ANTENNA_PATTERN_SPHERICAL_HARMONIC"  // 2
     };
 
-    public static final String APP_CTRL_APPLICATION_TYPE[] = {
+    public static final String APP_CTRL_APPLICATION_TYPE[] = { 
         "APP_CTRL_APPLICATION_OTHER", // 0
         "APP_CTRL_APPLICATION_RESOURCE_MANAGER", // 1
         "APP_CTRL_APPLICATION_SIMULATION_MANAGER", // 2
@@ -162,7 +148,7 @@ public class VDISNames {
         "APP_CTRL_APPLICATION_TACTICAL_INTERNET_INTERFACE"  // 5
     };
 
-    public static final String APP_CTRL_CONTROL_TYPE[] = {
+    public static final String APP_CTRL_CONTROL_TYPE[] = { 
         "APP_CTRL_CONTROL_OTHER", // 0
         "APP_CTRL_CONTROL_SHUTDOWN", // 1
         "APP_CTRL_CONTROL_DATA_QUERY", // 2
@@ -173,7 +159,7 @@ public class VDISNames {
         "APP_CTRL_CONTROL_STATUS"  // 7
     };
 
-    public static final String ARTICULATED_PARTS[] = {
+    public static final String ARTICULATED_PARTS[] = { 
         "ARTPART_RUDDER", // 1024
         "ARTPART_LEFT_FLAP", // 1056
         "ARTPART_RIGHT_FLAP", // 1088
@@ -185,17 +171,6 @@ public class VDISNames {
         "ARTPART_PERISCOPE", // 2048
         "ARTPART_GENERIC_ANTENNA", // 2080
         "ARTPART_SNORKEL", // 2112
-        "ARTPART_CDT_LOWER_ARM_OTHER", // 2144
-        "ARTPART_CDT_UPPER_ARM", // 2176
-        "ARTPART_CDT_ELBOW_CAMERA", // 2208
-        "ARTPART_CDT_GRIPPER_ASSEMBLY", // 2240
-        "ARTPART_CDT_GRIPPER_HAND", // 2272
-        "ARTPART_CDT_GRIPPER_JAWS", // 2304
-        "ARTPART_CDT_GRIPPER_CAMERA", // 2336
-        "ARTPART_CDT_PAN_TILT_ASSEMBLY", // 2368
-        "ARTPART_CDT_PAN_TILT_CAMERA", // 2400
-        "ARTPART_CDT_FRONT_CAMERA", // 2432
-        "ARTPART_CDT_REAR_CAMERA", // 2464
         "ARTPART_LANDING_GEAR", // 3072
         "ARTPART_TAIL_HOOK", // 3104
         "ARTPART_SPEED_BRAKE", // 3136
@@ -325,7 +300,7 @@ public class VDISNames {
         "ARTPART_FUSELAGE_FOLD"  // 7616
     };
 
-    public static final String ARTICULATED_PARTS_METRIC[] = {
+    public static final String ARTICULATED_PARTS_METRIC[] = { 
         "EMPTY", // 0
         "POSITION", // 1
         "POSITION_RATE", // 2
@@ -345,7 +320,7 @@ public class VDISNames {
         "ROTATION_RATE"  // 16
     };
 
-    public static final String ATTACHED_PARTS[] = {
+    public static final String ATTACHED_PARTS[] = { 
         "ATCHPART_EMPTY", // 0
         "ATCHPART_FUSELAGE_STATION_1", // 512
         "ATCHPART_FUSELAGE_STATION_2", // 513
@@ -744,7 +719,7 @@ public class VDISNames {
         "ATCHPART_CARGO_PARACHUTE"  // 906
     };
 
-    public static final String BEAM_FUNCTION[] = {
+    public static final String BEAM_FUNCTION[] = { 
         "BEAM_FUNC_OTHER", // 0
         "BEAM_FUNC_SEARCH", // 1
         "BEAM_FUNC_HEIGHT_FINDER", // 2
@@ -771,31 +746,7 @@ public class VDISNames {
         "BEAM_FUNC_TIME_SHARED_JAMMING"  // 25
     };
 
-    public static final String CDT_ONESAF_STATUS[] = {
-        "CDT_ONESAF_NOT_PRESENT", // 0
-        "CDT_ONESAF_PRESENT_AVAILABLE", // 1
-        "CDT_ONESAF_PRESENT_RESERVED", // 2
-        "CDT_ONESAF_PRESENT_IN_USE"  // 3
-    };
-
-    public static final String CDT_WAYPOINT_TRIGGER_TYPE[] = {
-        "CDT_WAYPOINT_TRIGGER_NONE", // 0
-        "CDT_WAYPOINT_TRIGGER_WAIT", // 1
-        "CDT_WAYPOINT_TRIGGER_DISTANCE", // 2
-        "CDT_WAYPOINT_TRIGGER_TIME"  // 3
-    };
-
-    public static final String CDT_WEATHER_TYPE[] = {
-        "CDT_WEATHER_TYPE_NONE", // 0
-        "CDT_WEATHER_TYPE_DUST", // 1
-        "CDT_WEATHER_TYPE_FOG", // 2
-        "CDT_WEATHER_TYPE_RAIN", // 3
-        "CDT_WEATHER_TYPE_SNOW", // 4
-        "CDT_WEATHER_TYPE_TOD", // 5
-        "CDT_WEATHER_TYPE_WIND"  // 6
-    };
-
-    public static final String COLORS[] = {
+    public static final String COLORS[] = { 
         "COLOR_NOT_SPECIFIED", // 0
         "COLOR_WHITE_VGA", // 1
         "COLOR_RED_VGA", // 2
@@ -958,12 +909,12 @@ public class VDISNames {
         "COLOR_WHITE"  // 159
     };
 
-    public static final String COMBINATION[] = {
+    public static final String COMBINATION[] = { 
         "COMBO_OTHER", // 0
         "COMBO_AMPLITUDE_ANGLE_PULSE"  // 1
     };
 
-    public static final String CRYPTO_SYS[] = {
+    public static final String CRYPTO_SYS[] = { 
         "CRYPTO_OTHER", // 0
         "CRYPTO_KY_28", // 1
         "CRYPTO_VINSON", // 2
@@ -971,14 +922,14 @@ public class VDISNames {
         "CRYPTO_WSVE"  // 4
     };
 
-    public static final String CUSTOM_AIR_SMOKE[] = {
+    public static final String CUSTOM_AIR_SMOKE[] = { 
         "AIR_SMOKE_NONE", // 0
         "AIR_SMOKE_TRAILING", // 1
         "AIR_SMOKE_ENGINE", // 2
         "AIR_SMOKE_ENGINE_TRAILING"  // 3
     };
 
-    public static final String CUSTOM_ARTICULATED_PARTS_METRIC[] = {
+    public static final String CUSTOM_ARTICULATED_PARTS_METRIC[] = { 
         "EMPTY", // 0
         "POSITION", // 1
         "POSITION_RATE", // 2
@@ -998,7 +949,7 @@ public class VDISNames {
         "ROTATION_RATE"  // 16
     };
 
-    public static final String CUSTOM_ENT_CNTRY[] = {
+    public static final String CUSTOM_ENT_CNTRY[] = { 
         "ENT_CNTRY_OTHER", // 0
         "ENT_CNTRY_AFGHANISTAN", // 1
         "ENT_CNTRY_ALBANIA", // 2
@@ -1268,7 +1219,7 @@ public class VDISNames {
         "ENT_CNTRY_UZBEKISTAN"  // 266
     };
 
-    public static final String CUSTOM_ENT_DOMAIN[] = {
+    public static final String CUSTOM_ENT_DOMAIN[] = { 
         "ENT_DOMAIN_OTHER", // 0
         "ENT_DOMAIN_LAND", // 1
         "ENT_DOMAIN_AIR", // 2
@@ -1277,7 +1228,7 @@ public class VDISNames {
         "ENT_DOMAIN_SPACE"  // 5
     };
 
-    public static final String CUSTOM_ENT_KIND[] = {
+    public static final String CUSTOM_ENT_KIND[] = { 
         "ENT_KIND_OTHER", // 0
         "ENT_KIND_PLATFORM", // 1
         "ENT_KIND_MUNITION", // 2
@@ -1290,7 +1241,7 @@ public class VDISNames {
         "ENT_KIND_SENSOR_EMITTER"  // 9
     };
 
-    public static final String CUSTOM_FROZEN_BEHAVIOR[] = {
+    public static final String CUSTOM_FROZEN_BEHAVIOR[] = { 
         "RUN_INTERNAL_SIMULATION_CLOCK", // 0
         "TRANSMIT_PDUS", // 1
         "UPDATE_MODELS_OF_OTHER_ENTITIES", // 2
@@ -1299,57 +1250,57 @@ public class VDISNames {
         "CONTINUE_MODELS_OF_OTHER_ENTITIES"  // 5
     };
 
-    public static final String CUSTOM_IED_PRESENCE[] = {
+    public static final String CUSTOM_IED_PRESENCE[] = { 
         "NONE", // 0
         "VISIBLE", // 1
         "PARTIALLY_HIDDEN", // 2
         "COMPLETELY_HIDDEN"  // 3
     };
 
-    public static final String CUSTOM_LAND_SMOKE[] = {
+    public static final String CUSTOM_LAND_SMOKE[] = { 
         "LAND_SMOKE_NONE", // 0
         "LAND_SMOKE_RISING", // 1
         "LAND_SMOKE_ENGINE", // 2
         "LAND_SMOKE_ENGINE_RISING"  // 3
     };
 
-    public static final String CUSTOM_LF_EQ_LASER[] = {
+    public static final String CUSTOM_LF_EQ_LASER[] = { 
         "NONE", // 0
         "LASER_POINTER", // 1
         "LASER_RANGE_FINDER"  // 2
     };
 
-    public static final String CUSTOM_OBJ_DAMAGE[] = {
+    public static final String CUSTOM_OBJ_DAMAGE[] = { 
         "NO_DAMAGE", // 0
         "DAMAGED", // 1
         "DESTROYED"  // 2
     };
 
-    public static final String CUSTOM_ONOFF[] = {
+    public static final String CUSTOM_ONOFF[] = { 
         "CUSTOM_ONOFF_OFF", // 0
         "CUSTOM_ONOFF_ON"  // 1
     };
 
-    public static final String CUSTOM_SEVERITY[] = {
+    public static final String CUSTOM_SEVERITY[] = { 
         "SEVERITY_NONE", // 0
         "SEVERITY_SLIGHT", // 1
         "SEVERITY_MODERATE", // 2
         "SEVERITY_HEAVY"  // 3
     };
 
-    public static final String CUSTOM_SLING_DAMAGE[] = {
+    public static final String CUSTOM_SLING_DAMAGE[] = { 
         "NONE", // 0
         "SLING_DAMAGED", // 1
         "LINE_DAMAGED", // 2
         "SLING_OR_LINE_DAMAGED"  // 3
     };
 
-    public static final String CUSTOM_YESNO[] = {
+    public static final String CUSTOM_YESNO[] = { 
         "YESNO_NO", // 0
         "YESNO_YES"  // 1
     };
 
-    public static final String DATUM_IDS[] = {
+    public static final String DATUM_IDS[] = { 
         "DID_ENVIRONMENT_PROCESS_STATE_COMBIC", // 256
         "DID_ENVIRONMENT_PROCESS_STATE_FLARE", // 259
         "DID_DE_PRECISION_AIMPOINT", // 4000
@@ -2518,20 +2469,6 @@ public class VDISNames {
         "DID_DISPLAY_MODE_2", // 301101
         "DID_DISPLAY_MODE_3", // 301102
         "DID_ENVIRONMENT_PROCESS_GEOMETRY_UNIFORM", // 327680
-        "DID_CDT_GENERAL_DISCOVERY", // 400100
-        "DID_CDT_SPECIFIC_CONNECTION", // 400200
-        "DID_CDT_CONFIGURATION", // 400300
-        "DID_CDT_ONESAF_CONFIGURATION", // 400400
-        "DID_CDT_APPLICATION_CONFIGURATION", // 400500
-        "DID_CDT_WAYPOINTS_CURRENT", // 404100
-        "DID_CDT_WAYPOINTS_NUMBER", // 404200
-        "DID_CDT_WAYPOINT", // 405100
-        "DID_CDT_OCU_PANEL", // 405200
-        "DID_CDT_TALON_SCORE", // 405300
-        "DID_CDT_LT_FLAIL_SCORE", // 405400
-        "DID_CDT_MALFUNCTION_TYPE", // 405500
-        "DID_CDT_MALFUNCTION_STATE", // 405510
-        "DID_CDT_WEATHER_CHANGE", // 405600
         "DID_ENTITY_STATUS_MUNITION_RECORD", // 500001
         "DID_ENTITY_STATUS_ENGINE_FUEL_RECORD", // 500002
         "DID_ENTITY_STATUS_STORAGE_FUEL_RECORD", // 500003
@@ -2567,7 +2504,7 @@ public class VDISNames {
         "DID_ENVIRONMENT_PROCESS_GEOMETRY_GAUSSIAN_PUFF_RECORD"  // 1879048192
     };
 
-    public static final String DEAD_RECKONING[] = {
+    public static final String DEAD_RECKONING[] = { 
         "DEAD_RECK_OTHER", // 0
         "DEAD_RECK_STATIC", // 1
         "DEAD_RECK_DRM_F_P_W", // 2
@@ -2580,20 +2517,20 @@ public class VDISNames {
         "DEAD_RECK_DRM_F_V_B"  // 9
     };
 
-    public static final String DESIG_MOTION_PATTERN[] = {
+    public static final String DESIG_MOTION_PATTERN[] = { 
         "DES_MOT_PATT_NO_STATEMENT", // 0
         "DES_MOT_PATT_ROPING", // 1
         "DES_MOT_PATT_SNAKING"  // 2
     };
 
-    public static final String DESIG_OBJ_STATUS[] = {
+    public static final String DESIG_OBJ_STATUS[] = { 
         "DES_OBJ_STATUS_OTHER", // 0
         "DES_OBJ_STATUS_INITIAL_REPORT", // 1
         "DES_OBJ_STATUS_CHANGE_REPORT", // 2
         "DES_OBJ_STATUS_FINAL_REPORT"  // 3
     };
 
-    public static final String DESIG_SPOT_TYPE[] = {
+    public static final String DESIG_SPOT_TYPE[] = { 
         "DES_SPOT_TYPE_NOT_SPECIFIED", // 0
         "DES_SPOT_TYPE_TERRAIN_MODEL", // 1
         "DES_SPOT_TYPE_NO_TERRAIN_MODEL", // 2
@@ -2605,7 +2542,7 @@ public class VDISNames {
         "DES_SPOT_TYPE_NON_INCIDENT"  // 8
     };
 
-    public static final String DESIG_SYSTEM_NAME[] = {
+    public static final String DESIG_SYSTEM_NAME[] = { 
         "DES_SYS_NAME_NO_STATEMENT", // 0
         "DES_SYS_NAME_AN_AAQ_16", // 1
         "DES_SYS_NAME_AN_AAQ_22A", // 2
@@ -2637,7 +2574,7 @@ public class VDISNames {
         "DES_SYS_NAME_ACP_2A_AIR_COMMANDER_POINTER_IR_AIMING_LASER"  // 28
     };
 
-    public static final String DETONATION_RESULT[] = {
+    public static final String DETONATION_RESULT[] = { 
         "DET_RESULT_OTHER", // 0
         "DET_RESULT_ENTITY_IMPACT", // 1
         "DET_RESULT_ENTITY_PROXIMATE", // 2
@@ -2674,14 +2611,14 @@ public class VDISNames {
         "DET_RESULT_MISS_FLY_OUT_END_GAME_FAILURE"  // 33
     };
 
-    public static final String DISGUISE_STATUS[] = {
+    public static final String DISGUISE_STATUS[] = { 
         "DISGUISE_STATUS_NOT_SPECIFIED", // 0
         "DISGUISE_STATUS_NO_DISGUISE", // 1
         "DISGUISE_STATUS_DISGUISED", // 2
         "DISGUISE_STATUS_INDISTINGUISHABLE"  // 3
     };
 
-    public static final String DOMAIN[] = {
+    public static final String DOMAIN[] = { 
         "DOMAIN_OTHER", // 0
         "DOMAIN_LAND", // 1
         "DOMAIN_AIR", // 2
@@ -2690,14 +2627,14 @@ public class VDISNames {
         "DOMAIN_SPACE"  // 5
     };
 
-    public static final String DR_TYPE[] = {
+    public static final String DR_TYPE[] = { 
         "DRVP_DR_TYPE_NOT_SPECIFIED", // 0
         "DRVP_DR_TYPE_LINEAR_VELOCITY", // 1
         "DRVP_DR_TYPE_LINEAR_ACCELERATION", // 2
         "DRVP_DR_TYPE_ANGULAR_VELOCITY"  // 3
     };
 
-    public static final String EMITTER_FUNCTION[] = {
+    public static final String EMITTER_FUNCTION[] = { 
         "EMITTER_FUNC_OTHER", // 0
         "EMITTER_FUNC_MULTI_FUNCTION", // 1
         "EMITTER_FUNC_EARLY_WARNING_SURVEILLANCE", // 2
@@ -2768,7 +2705,7 @@ public class VDISNames {
         "EMITTER_FUNC_WEAPON_LETHAL"  // 97
     };
 
-    public static final String EMITTER_NAME[] = {
+    public static final String EMITTER_NAME[] = { 
         "EMITTER_1RL138", // 10
         "EMITTER_1226_DECCA_MIL", // 45
         "EMITTER_9GR400", // 80
@@ -4011,14 +3948,14 @@ public class VDISNames {
         "EMITTER_HAVOC"  // 65044
     };
 
-    public static final String ENCODING_CLASS[] = {
+    public static final String ENCODING_CLASS[] = { 
         "ENCODING_CLASS_ENCODED_AUDIO", // 0
         "ENCODING_CLASS_RAW_BINARY_DATA", // 1
         "ENCODING_CLASS_APPLICATION_SPECIFIC_DATA", // 2
         "ENCODING_CLASS_DATABASE_INDEX"  // 3
     };
 
-    public static final String ENCODING_TYPE[] = {
+    public static final String ENCODING_TYPE[] = { 
         "ENCODING_TYPE_8_BIT_MU_LAW", // 1
         "ENCODING_TYPE_CVSD_PER_MIL_STD_188_113", // 2
         "ENCODING_TYPE_ADPCM_PER_CCITT_G_721", // 3
@@ -4027,14 +3964,14 @@ public class VDISNames {
         "ENCODING_TYPE_VQ_VECTOR_QUANTIZATION"  // 6
     };
 
-    public static final String ENTITY_MARKING[] = {
+    public static final String ENTITY_MARKING[] = { 
         "ENTITY_MARKING_UNUSED", // 0
         "ENTITY_MARKING_ASCII", // 1
         "ENTITY_MARKING_US_ARMY", // 2
         "ENTITY_MARKING_DIGIT_CHEVRON"  // 3
     };
 
-    public static final String ENT_ASSOC_STATUS[] = {
+    public static final String ENT_ASSOC_STATUS[] = { 
         "EAVP_ENT_ASSOC_STATUS_NOT_SPECIFIED", // 0
         "EAVP_ENT_ASSOC_STATUS_PHYS_ASSOC_TARGET", // 1
         "EAVP_ENT_ASSOC_STATUS_NON_PHYSICAL_ASSOC", // 2
@@ -4042,7 +3979,7 @@ public class VDISNames {
         "EAVP_ENT_ASSOC_STATUS_PHYS_ASSOC_CARRIER"  // 4
     };
 
-    public static final String ENT_CNTRY[] = {
+    public static final String ENT_CNTRY[] = { 
         "ENT_CNTRY_OTHER", // 0
         "ENT_CNTRY_AFGHANISTAN", // 1
         "ENT_CNTRY_ALBANIA", // 2
@@ -4312,7 +4249,7 @@ public class VDISNames {
         "ENT_CNTRY_UZBEKISTAN"  // 266
     };
 
-    public static final String ENT_KIND[] = {
+    public static final String ENT_KIND[] = { 
         "ENT_KIND_OTHER", // 0
         "ENT_KIND_PLATFORM", // 1
         "ENT_KIND_MUNITION", // 2
@@ -4325,7 +4262,7 @@ public class VDISNames {
         "ENT_KIND_SENSOR_EMITTER"  // 9
     };
 
-    public static final String ETHNICITY[] = {
+    public static final String ETHNICITY[] = { 
         "LF_ETHN_NOT_SPECIFIED", // 0
         "LF_ETHN_ASIAN", // 1
         "LF_ETHN_PACIFIC_ISLANDER", // 2
@@ -4338,7 +4275,7 @@ public class VDISNames {
         "LF_ETHN_INDIGENOUS_CTRY"  // 9
     };
 
-    public static final String FORCE_ID[] = {
+    public static final String FORCE_ID[] = { 
         "FORCE_ID_OTHER", // 0
         "FORCE_ID_FRIENDLY", // 1
         "FORCE_ID_OPPOSING", // 2
@@ -4372,7 +4309,7 @@ public class VDISNames {
         "FORCE_ID_NEUTRAL_10"  // 30
     };
 
-    public static final String FROZEN_BEHAVIOR[] = {
+    public static final String FROZEN_BEHAVIOR[] = { 
         "RUN_INTERNAL_SIMULATION_CLOCK", // 0
         "TRANSMIT_PDUS", // 1
         "UPDATE_MODELS_OF_OTHER_ENTITIES", // 2
@@ -4381,7 +4318,7 @@ public class VDISNames {
         "CONTINUE_MODELS_OF_OTHER_ENTITIES"  // 5
     };
 
-    public static final String FUSE_BURST_DESC[] = {
+    public static final String FUSE_BURST_DESC[] = { 
         "FUSE_BURST_DESC_OTHER", // 0
         "FUSE_BURST_DESC_INTELLIGENT_INFLUENCE", // 10
         "FUSE_BURST_DESC_SENSOR", // 20
@@ -4480,12 +4417,12 @@ public class VDISNames {
         "FUSE_BURST_DESC_MECHANICAL_TAIL"  // 9620
     };
 
-    public static final String GENERIC_PRESENCE[] = {
+    public static final String GENERIC_PRESENCE[] = { 
         "GENERIC_PRESENCE_NOT_PRESENT", // 0
         "GENERIC_PRESENCE_PRESENT"  // 1
     };
 
-    public static final String GRP_MEM_TYPE[] = {
+    public static final String GRP_MEM_TYPE[] = { 
         "GRP_MEM_TYPE_NOT_SPECIFIED", // 0
         "GRP_MEM_TYPE_GROUP_LEADER", // 1
         "GRP_MEM_TYPE_GROUP_MEMBER", // 2
@@ -4495,7 +4432,7 @@ public class VDISNames {
         "GRP_MEM_TYPE_CONVOY_MEMBER"  // 6
     };
 
-    public static final String HOOK_TYPE[] = {
+    public static final String HOOK_TYPE[] = { 
         "HOOK_TYPE_NOT_SPECIFIED", // 0
         "HOOK_TYPE_SINGLE", // 1
         "HOOK_TYPE_FORWARD", // 2
@@ -4507,7 +4444,7 @@ public class VDISNames {
         "HOOK_TYPE_ALL"  // 8
     };
 
-    public static final String HUMAN_AGE_GROUP[] = {
+    public static final String HUMAN_AGE_GROUP[] = { 
         "LF_HUMAN_AGE_NOT_SPECIFIED", // 0
         "LF_HUMAN_AGE_NEWBORN", // 1
         "LF_HUMAN_AGE_INFANT", // 2
@@ -4524,14 +4461,14 @@ public class VDISNames {
         "LF_HUMAN_AGE_CENTURION"  // 13
     };
 
-    public static final String IED_PRESENCE[] = {
+    public static final String IED_PRESENCE[] = { 
         "NONE", // 0
         "VISIBLE", // 1
         "PARTIALLY_HIDDEN", // 2
         "COMPLETELY_HIDDEN"  // 3
     };
 
-    public static final String IFF_SYSTEM_MODE[] = {
+    public static final String IFF_SYSTEM_MODE[] = { 
         "IFF_SYS_MODE_NO_STATEMENT", // 0
         "IFF_SYS_MODE_OFF", // 1
         "IFF_SYS_MODE_STANDBY", // 2
@@ -4539,7 +4476,7 @@ public class VDISNames {
         "IFF_SYS_MODE_EMERGENCY"  // 4
     };
 
-    public static final String IFF_SYSTEM_NAME[] = {
+    public static final String IFF_SYSTEM_NAME[] = { 
         "IFF_SYS_NAME_OTHER", // 0
         "IFF_SYS_NAME_MARK_X", // 1
         "IFF_SYS_NAME_MARK_XII", // 2
@@ -4561,7 +4498,7 @@ public class VDISNames {
         "IFF_SYS_NAME_MARK_X_SIF"  // 18
     };
 
-    public static final String IFF_SYSTEM_TYPE[] = {
+    public static final String IFF_SYSTEM_TYPE[] = { 
         "IFF_SYS_TYPE_NOT_USED", // 0
         "IFF_SYS_TYPE_MARK_X_XII_ATCRBS_TRANS", // 1
         "IFF_SYS_TYPE_MARK_X_XII_ATCRBS_INT", // 2
@@ -4579,7 +4516,7 @@ public class VDISNames {
         "IFF_SYS_TYPE_TCAS_ACAS_TRANSCEIVER"  // 14
     };
 
-    public static final String INPUT_SOURCE[] = {
+    public static final String INPUT_SOURCE[] = { 
         "INPUT_SRC_OTHER", // 0
         "INPUT_SRC_PILOT", // 1
         "INPUT_SRC_COPILOT", // 2
@@ -4593,20 +4530,20 @@ public class VDISNames {
         "INPUT_SRC_AUDIO_JAMMER"  // 10
     };
 
-    public static final String JAMMING_TECHNIQUE[] = {
+    public static final String JAMMING_TECHNIQUE[] = { 
         "JAM_TECH_OTHER", // 0
         "JAM_TECH_NOISE", // 1
         "JAM_TECH_DECEPTION"  // 2
     };
 
-    public static final String LAND_SMOKE[] = {
+    public static final String LAND_SMOKE[] = { 
         "LAND_SMOKE_NONE", // 0
         "LAND_SMOKE_RISING", // 1
         "LAND_SMOKE_ENGINE", // 2
         "LAND_SMOKE_ENGINE_RISING"  // 3
     };
 
-    public static final String LASER_FUNCTION[] = {
+    public static final String LASER_FUNCTION[] = { 
         "LASER_FUNCTION_DESIGNATING", // 0
         "LASER_FUNCTION_RANGING", // 1
         "LASER_FUNCTION_IR_DESIGNATING", // 2
@@ -4616,14 +4553,14 @@ public class VDISNames {
         "LASER_FUNCTION_NVG_MARKING"  // 6
     };
 
-    public static final String LF_CAMOUFLAGE[] = {
+    public static final String LF_CAMOUFLAGE[] = { 
         "LF_CAMOUFLAGE_DESERT", // 0
         "LF_CAMOUFLAGE_WINTER", // 1
         "LF_CAMOUFLAGE_FOREST", // 2
         "LF_CAMOUFLAGE_NONE"  // 3
     };
 
-    public static final String LF_CLOTH_SCHEME[] = {
+    public static final String LF_CLOTH_SCHEME[] = { 
         "LF_CLOTH_SCHEME_DEFAULT", // 0
         "LF_CLOTH_SCHEME_SOLID", // 1
         "LF_CLOTH_SCHEME_TWO_TONE", // 2
@@ -4643,12 +4580,12 @@ public class VDISNames {
         "LF_CLOTH_SCHEME_TRADITIONAL"  // 16
     };
 
-    public static final String LF_CLOTH_TYPE[] = {
+    public static final String LF_CLOTH_TYPE[] = { 
         "LF_CLOTH_TYPE_UNIFORM_COLOR", // 0
         "LF_CLOTH_TYPE_CAMOUFLAGE"  // 1
     };
 
-    public static final String LF_COMPLIANCE[] = {
+    public static final String LF_COMPLIANCE[] = { 
         "LF_COMPLIANCE_OTHER", // 0
         "LF_COMPLIANCE_DETAINED", // 1
         "LF_COMPLIANCE_SURRENDER", // 2
@@ -4667,33 +4604,33 @@ public class VDISNames {
         "LF_COMPLIANCE_USING_NON_LETHAL_WEAPON_6"  // 15
     };
 
-    public static final String LF_COND_EXT_DMG[] = {
+    public static final String LF_COND_EXT_DMG[] = { 
         "LIFE_COND_EXT_DMG_NOT_SPECIFIED", // 0
         "LIFE_COND_EXT_DMG_SLIGHT", // 1
         "LIFE_COND_EXT_DMG_MODERATE", // 2
         "LIFE_COND_EXT_DMG_HEAVY"  // 3
     };
 
-    public static final String LF_EQ_CHUTE[] = {
+    public static final String LF_EQ_CHUTE[] = { 
         "LF_EQUIP_CHUTE_DOES_NOT_HAVE", // 0
         "LF_EQUIP_CHUTE_NOT_DEPLOYED", // 1
         "LF_EQUIP_CHUTE_DEPLOYED"  // 2
     };
 
-    public static final String LF_EQ_LASER[] = {
+    public static final String LF_EQ_LASER[] = { 
         "NONE", // 0
         "LASER_POINTER", // 1
         "LASER_RANGE_FINDER"  // 2
     };
 
-    public static final String LF_HEALTH[] = {
+    public static final String LF_HEALTH[] = { 
         "LF_HEALTH_NO_INJURY", // 0
         "LF_HEALTH_SLIGHT_INJURY", // 1
         "LF_HEALTH_MODERATE_INJURY", // 2
         "LF_HEALTH_FATAL_INJURY"  // 3
     };
 
-    public static final String LF_POSTURE[] = {
+    public static final String LF_POSTURE[] = { 
         "LF_POSTURE_OTHER", // 0
         "LF_POSTURE_UPRIGHT_STANDING_STILL", // 1
         "LF_POSTURE_UPRIGHT_WALKING", // 2
@@ -4712,14 +4649,14 @@ public class VDISNames {
         "LF_POSTURE_DETAINED"  // 15
     };
 
-    public static final String LF_WEAPON_STATE[] = {
+    public static final String LF_WEAPON_STATE[] = { 
         "LF_WEAPON_STATE_NONE", // 0
         "LF_WEAPON_STATE_STOWED", // 1
         "LF_WEAPON_STATE_DEPLOYED", // 2
         "LF_WEAPON_STATE_FIRING_POSITION"  // 3
     };
 
-    public static final String MAJOR_MODULATION[] = {
+    public static final String MAJOR_MODULATION[] = { 
         "MAJ_MOD_OTHER", // 0
         "MAJ_MOD_AMPLITUDE", // 1
         "MAJ_MOD_AMPLITUDE_AND_ANGLE", // 2
@@ -4730,20 +4667,20 @@ public class VDISNames {
         "MAJ_MOD_CPSM"  // 7
     };
 
-    public static final String OBJECT_DAMAGE[] = {
+    public static final String OBJECT_DAMAGE[] = { 
         "NO_DAMAGE", // 0
         "DAMAGED", // 1
         "DESTROYED"  // 2
     };
 
-    public static final String OBJECT_GEOMETRY[] = {
+    public static final String OBJECT_GEOMETRY[] = { 
         "UNKNOWN", // 0
         "POINT", // 1
         "LINEAR", // 2
         "AREAL"  // 3
     };
 
-    public static final String OBJECT_KIND[] = {
+    public static final String OBJECT_KIND[] = { 
         "OBJECT_KIND_OTHER", // 0
         "OBJECT_KIND_OBSTACLE", // 1
         "OBJECT_KIND_PREPARED_POSITION", // 2
@@ -4754,7 +4691,7 @@ public class VDISNames {
         "OBJECT_KIND_OBSTACLE_BREACH"  // 7
     };
 
-    public static final String OFFSET_TYPE[] = {
+    public static final String OFFSET_TYPE[] = { 
         "OFFVP_OFFSET_TYPE_CARRIER_ORIGIN", // 0
         "OFFVP_OFFSET_TYPE_STATION_LOC", // 1
         "OFFVP_OFFSET_TYPE_POS_MOD_BY_CARRIER", // 2
@@ -4762,12 +4699,12 @@ public class VDISNames {
         "OFFVP_OFFSET_TYPE_CENTER_OF_GRAVITY"  // 100
     };
 
-    public static final String ONOFF[] = {
+    public static final String ONOFF[] = { 
         "ONOFF_OFF", // 0
         "ONOFF_ON"  // 1
     };
 
-    public static final String PDU_FAMILY[] = {
+    public static final String PDU_FAMILY[] = { 
         "PDU_FAMILY_OTHER", // 0
         "PDU_FAMILY_ENTITY_INFORMATION_INTERACTION", // 1
         "PDU_FAMILY_WARFARE", // 2
@@ -4785,46 +4722,46 @@ public class VDISNames {
         "PDU_FAMILY_EXPERIMENTAL_V_DIS"  // 130
     };
 
-    public static final String PDU_STATUS_CEI[] = {
+    public static final String PDU_STATUS_CEI[] = { 
         "PDU_STATUS_CEI_NOT_COUPLED", // 0
         "PDU_STATUS_CEI_COUPLED"  // 1
     };
 
-    public static final String PDU_STATUS_DMI[] = {
+    public static final String PDU_STATUS_DMI[] = { 
         "PDU_STATUS_DMI_GUISE_MODE", // 0
         "PDU_STATUS_DMI_DISGUISE_MODE"  // 1
     };
 
-    public static final String PDU_STATUS_DTI[] = {
+    public static final String PDU_STATUS_DTI[] = { 
         "PDU_STATUS_DTI_MUNITION", // 0
         "PDU_STATUS_DTI_EXPENDABLE", // 1
         "PDU_STATUS_DTI_NON_MUNITION_EXPLOSION"  // 2
     };
 
-    public static final String PDU_STATUS_FTI[] = {
+    public static final String PDU_STATUS_FTI[] = { 
         "PDU_STATUS_FTI_MUNITION", // 0
         "PDU_STATUS_FTI_EXPENDABLE"  // 1
     };
 
-    public static final String PDU_STATUS_LVCI[] = {
+    public static final String PDU_STATUS_LVCI[] = { 
         "PDU_STATUS_LVCI_NO_STATEMENT", // 0
         "PDU_STATUS_LVCI_LIVE", // 1
         "PDU_STATUS_LVCI_VIRTUAL", // 2
         "PDU_STATUS_LVCI_CONSTRUCTIVE"  // 3
     };
 
-    public static final String PDU_STATUS_RAI[] = {
+    public static final String PDU_STATUS_RAI[] = { 
         "PDU_STATUS_RAI_NO_STATEMENT", // 0
         "PDU_STATUS_RAI_NOT_ATTACHED", // 1
         "PDU_STATUS_RAI_ATTACHED"  // 2
     };
 
-    public static final String PDU_STATUS_TEI[] = {
+    public static final String PDU_STATUS_TEI[] = { 
         "PDU_STATUS_TEI_NO_DIFF", // 0
         "PDU_STATUS_TEI_DIFF"  // 1
     };
 
-    public static final String PDU_TYPE[] = {
+    public static final String PDU_TYPE[] = { 
         "PDU_TYPE_OTHER", // 0
         "PDU_TYPE_ENTITY_STATE", // 1
         "PDU_TYPE_FIRE", // 2
@@ -4901,7 +4838,7 @@ public class VDISNames {
         "PDU_TYPE_APPLICATION_CTRL"  // 200
     };
 
-    public static final String PHYS_ASSOC_TYPE[] = {
+    public static final String PHYS_ASSOC_TYPE[] = { 
         "EAVP_PHYS_ASSOC_TYPE_NOT_SPECIFIED", // 0
         "EAVP_PHYS_ASSOC_TYPE_TOWED_IN_AIR", // 1
         "EAVP_PHYS_ASSOC_TYPE_TOWED_ON_LAND", // 2
@@ -4932,7 +4869,7 @@ public class VDISNames {
         "EAVP_PHYS_ASSOC_TYPE_ROOF"  // 93
     };
 
-    public static final String PHYS_CONN_TYPE[] = {
+    public static final String PHYS_CONN_TYPE[] = { 
         "EAVP_PHYS_CONN_TYPE_NOT_SPECIFIED", // 0
         "EAVP_PHYS_CONN_TYPE_ATTACHED_TO_SURFACE", // 1
         "EAVP_PHYS_CONN_TYPE_CABLE_WIRE", // 2
@@ -4947,21 +4884,21 @@ public class VDISNames {
         "EAVP_PHYS_CONN_TYPE_IN_CONTACT_WITH"  // 11
     };
 
-    public static final String PL_COND_EXT_DMG[] = {
+    public static final String PL_COND_EXT_DMG[] = { 
         "PLAT_COND_EXT_DMG_NOT_SPECIFIED", // 0
         "PLAT_COND_EXT_DMG_SLIGHT", // 1
         "PLAT_COND_EXT_DMG_MODERATE", // 2
         "PLAT_COND_EXT_DMG_HEAVY"  // 3
     };
 
-    public static final String PL_COND_MTL[] = {
+    public static final String PL_COND_MTL[] = { 
         "PLAT_COND_MTL_NOT_SPECIFIED", // 0
         "PLAT_COND_MTL_METALLIC", // 1
         "PLAT_COND_MTL_PLASTIC", // 2
         "PLAT_COND_MTL_ROUGH"  // 3
     };
 
-    public static final String PL_DECAL_SCHEME[] = {
+    public static final String PL_DECAL_SCHEME[] = { 
         "PLAT_DECAL_SCHEME_NONE", // 0
         "PLAT_DECAL_SCHEME_UN", // 1
         "PLAT_DECAL_SCHEME_FED_EX", // 2
@@ -4971,7 +4908,7 @@ public class VDISNames {
         "PLAT_DECAL_SCHEME_CHANNEL_5_NEWS"  // 6
     };
 
-    public static final String PL_PAINT_SCHEME[] = {
+    public static final String PL_PAINT_SCHEME[] = { 
         "PLAT_PAINT_SCHEME_DEFAULT", // 0
         "PLAT_PAINT_SCHEME_SOLID", // 1
         "PLAT_PAINT_SCHEME_TWO_TONE_TOP_BOTTOM", // 2
@@ -4992,7 +4929,7 @@ public class VDISNames {
         "PLAT_PAINT_SCHEME_JINGLE"  // 17
     };
 
-    public static final String PRESENT_DOMAIN[] = {
+    public static final String PRESENT_DOMAIN[] = { 
         "PRESENT_DOM_ENUM_UNCHANGED", // 0
         "PRESENT_DOM_ENUM_LAND", // 1
         "PRESENT_DOM_ENUM_AIR", // 2
@@ -5009,7 +4946,7 @@ public class VDISNames {
         "PRESENT_DOM_ENUM_EXTERIOR_OTHER_ENTITY"  // 13
     };
 
-    public static final String PROTOCOL_VERSION[] = {
+    public static final String PROTOCOL_VERSION[] = { 
         "PTCL_VER_OTHER", // 0
         "PTCL_VER_DIS_1_0_MAY_1992", // 1
         "PTCL_VER_IEEE_1278_1993", // 2
@@ -5020,14 +4957,14 @@ public class VDISNames {
         "PTCL_VER_IEEE_1278_1_200X_DRAFT"  // 7
     };
 
-    public static final String PULSE[] = {
+    public static final String PULSE[] = { 
         "PULSE_OTHER", // 0
         "PULSE_PULSE", // 1
         "PULSE_X_BAND_TACAN_PULSE", // 2
         "PULSE_Y_BAND_TACAN_PULSE"  // 3
     };
 
-    public static final String RADIO_SYSTEM[] = {
+    public static final String RADIO_SYSTEM[] = { 
         "RADIO_OTHER", // 0
         "RADIO_GENERIC", // 1
         "RADIO_HQ", // 2
@@ -5041,25 +4978,25 @@ public class VDISNames {
         "RADIO_ENHANCED_SINCGARS_7_3"  // 10
     };
 
-    public static final String RECEIVER[] = {
+    public static final String RECEIVER[] = { 
         "RECEIVER_OFF", // 0
         "RECEIVER_ON_BUT_NOT_RECEIVING", // 1
         "RECEIVER_ON_AND_RECEIVING"  // 2
     };
 
-    public static final String SEVERITY[] = {
+    public static final String SEVERITY[] = { 
         "SEVERITY_NONE", // 0
         "SEVERITY_SLIGHT", // 1
         "SEVERITY_MODERATE", // 2
         "SEVERITY_HEAVY"  // 3
     };
 
-    public static final String SEX[] = {
+    public static final String SEX[] = { 
         "LF_SEX_MALE", // 0
         "LF_SEX_FEMALE"  // 1
     };
 
-    public static final String SF_REASON_CODES[] = {
+    public static final String SF_REASON_CODES[] = { 
         "SF_REASON_OTHER", // 0
         "SF_REASON_RECESS", // 1
         "SF_REASON_TERMINATION", // 2
@@ -5071,14 +5008,14 @@ public class VDISNames {
         "SF_REASON_ABORT_TRAINING_RETURN_TAC_OPS"  // 8
     };
 
-    public static final String SLING_DAMAGE[] = {
+    public static final String SLING_DAMAGE[] = { 
         "NONE", // 0
         "SLING_DAMAGED", // 1
         "LINE_DAMAGED", // 2
         "SLING_OR_LINE_DAMAGED"  // 3
     };
 
-    public static final String STATION_NAME[] = {
+    public static final String STATION_NAME[] = { 
         "STATION_OTHER", // 0
         "STATION_AIRCRAFT_WINGSTATION", // 1
         "STATION_SHIPS_FORWARD_GUNMOUNT_STARBOARD", // 2
@@ -5098,7 +5035,7 @@ public class VDISNames {
         "STATION_ON_STATION_XYZ"  // 16
     };
 
-    public static final String TDL_TYPE[] = {
+    public static final String TDL_TYPE[] = { 
         "TDL_OTHER", // 0
         "TDL_PADIL", // 1
         "TDL_NATO_LINK_1", // 2
@@ -5180,18 +5117,18 @@ public class VDISNames {
         "TDL_CURSOR_ON_TARGET"  // 110
     };
 
-    public static final String TRANSMIT_STATE[] = {
+    public static final String TRANSMIT_STATE[] = { 
         "TRANSMIT_OFF", // 0
         "TRANSMIT_ON_BUT_NOT_TRANSMITTING", // 1
         "TRANSMIT_ON_AND_TRANSMITTING"  // 2
     };
 
-    public static final String UNMODULATED[] = {
+    public static final String UNMODULATED[] = { 
         "UNMOD_OTHER", // 0
         "UNMOD_CONTINUOUS_WAVE_EMISSION"  // 1
     };
 
-    public static final String VP_RECORD_TYPE[] = {
+    public static final String VP_RECORD_TYPE[] = { 
         "VP_RECORD_TYPE_ARTICULATED_PART", // 0
         "VP_RECORD_TYPE_ATTACHED_PART", // 1
         "VP_RECORD_TYPE_SEPARATION", // 2
@@ -5212,7 +5149,7 @@ public class VDISNames {
         "VP_RECORD_TYPE_EXT_SUPPLY_APP"  // 32
     };
 
-    public static final String WARHEAD_BURST_DESC[] = {
+    public static final String WARHEAD_BURST_DESC[] = { 
         "WARHEAD_BURST_DESC_OTHER", // 0
         "WARHEAD_BURST_DESC_CARGO", // 10
         "WARHEAD_BURST_DESC_FUEL_AIR_EXPLOSIVE", // 20
@@ -5283,7 +5220,7 @@ public class VDISNames {
         "WARHEAD_BURST_DESC_BIOLOGICAL_TOXIN"  // 9500
     };
 
-    public static final String YESNO[] = {
+    public static final String YESNO[] = { 
         "YESNO_NO", // 0
         "YESNO_YES"  // 1
     };

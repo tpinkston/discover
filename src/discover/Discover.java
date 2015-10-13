@@ -59,7 +59,7 @@ public class Discover {
         Gdc_To_Gcc_Converter.Init(ellipsoid);
 
         ArmyTracking.load();
-        EntityTypes.load(false); // TODO: REMOTE CDT FUNCTIONALITY
+        EntityTypes.load();
         ObjectTypes.load();
 
         if (enumeration != null) {
@@ -69,7 +69,7 @@ public class Discover {
         else {
 
             initializeNetwork(iface, playback, unbundled, multicast);
-            
+
             if (headless != null) {
 
                 Headless.run(headless);
@@ -103,9 +103,9 @@ public class Discover {
     private static String getPropertyValue(String name, String value) {
 
         String property = System.getProperty(name);
-        
+
         if (property == null) {
-            
+
             property = value;
         }
 

@@ -11,15 +11,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.TreeMap;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
 /**
  * @author Tony Pinkston
@@ -29,8 +22,6 @@ public class EntityTypes {
     private static final Logger logger = LoggerFactory.getLogger(EntityTypes.class);
 
     private static final String UNKNOWN = "Unknown Type";
-
-    private static final String CDT = "data/cdtCompositionMappings.xml";
 
     private static final String FILES[] = {
 
@@ -53,8 +44,6 @@ public class EntityTypes {
 
     /** List of all EntityType objects read from data file. */
     private static final ArrayList<EntityType> listing;
-
-    private static boolean includingCDT = false;
 
     static {
 
@@ -148,12 +137,10 @@ public class EntityTypes {
     /**
      * Loads known enumerations from XML files.
      */
-    public static void load(boolean cdt) {
+    public static void load() {
 
         long start = System.currentTimeMillis();
         int total = 0;
-
-        includingCDT = cdt;
 
         for(String file : FILES) {
 
@@ -166,16 +153,6 @@ public class EntityTypes {
 
         System.out.print("Loaded " + total + " entity types in ");
         System.out.println(duration + " milliseconds");
-
-        if (includingCDT) {
-
-            start = System.currentTimeMillis();
-            total = loadCDT();
-            duration = (System.currentTimeMillis() - start);
-
-            System.out.print("Loaded " + total + " CDT models in ");
-            System.out.println(duration + " milliseconds");
-        }
     }
 
     private static int load(String filename) {
@@ -297,56 +274,6 @@ public class EntityTypes {
             logger.error(
                 "Caught exception parsing file " + filename,
                 exception);
-        }
-
-        return count;
-    }
-
-    private static int loadCDT() {
-
-        InputStream stream = EntityTypes.class.getResourceAsStream(CDT);
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        int count = 0;
-
-        try {
-
-            DocumentBuilder builder = factory.newDocumentBuilder();
-            Document document = builder.parse(stream);
-            NodeList nodes = document.getDocumentElement().getChildNodes();
-
-            for(int i = 0, size = nodes.getLength(); i < size; ++i) {
-
-                Node node = nodes.item(i);
-                Septuple septuple = null;
-                EntityType entityType = null;
-
-                if (node.getNodeName().equals("entry")) {
-
-                    NamedNodeMap map = node.getAttributes();
-                    Node model = map.getNamedItem("model");
-                    Node type = map.getNamedItem("type");
-                    Node composition = map.getNamedItem("composition");
-
-                    if ((model != null) &&
-                        (model.getNodeValue() != null) &&
-                        (type != null) &&
-                        (type.getNodeValue() != null) &&
-                        (composition != null) &&
-                        (composition.getNodeValue() != null)) {
-
-                        septuple = Septuple.parse(type.getNodeValue());
-                        entityType = getEntityType(septuple.toLong());
-
-                        entityType.setCDTName(model.getNodeValue());
-
-                        ++count;
-                    }
-                }
-            }
-        }
-        catch(Exception exception) {
-
-            logger.error("Caught exception parsing " + CDT, exception);
         }
 
         return count;

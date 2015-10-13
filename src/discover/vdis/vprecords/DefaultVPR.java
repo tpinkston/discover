@@ -35,7 +35,7 @@ public class DefaultVPR extends AbstractVPRecord {
 
         super.setRecordType(type);
 
-        bytes[0] = (byte)super.type;
+        bytes[0] = (byte)type;
     }
 
     @Override
