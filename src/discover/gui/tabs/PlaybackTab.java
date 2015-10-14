@@ -41,6 +41,7 @@ import discover.vdis.PDU;
 /**
  * @author Tony Pinkston
  */
+@SuppressWarnings("serial")
 public class PlaybackTab extends PDUTab implements PlaybackThreadListener {
 
     private final JProgressBar progress = new JProgressBar(0, 100);
@@ -149,7 +150,7 @@ public class PlaybackTab extends PDUTab implements PlaybackThreadListener {
             if (thread.getException() != null) {
 
                 JOptionPane.showMessageDialog(
-                    getPanel(),
+                    this,
                     "There was exception thrown during playback: " +
                     thread.getException().getClass().getSimpleName(),
                     "Outbound Playback",
@@ -199,7 +200,7 @@ public class PlaybackTab extends PDUTab implements PlaybackThreadListener {
 
             logger.info(
                 "Deleting " + selections.length + " of " + size + " " +
-                getTabName() + " PDUs...");
+                getName() + " PDUs...");
 
             if (logger.isDebugEnabled()) {
 
@@ -232,7 +233,7 @@ public class PlaybackTab extends PDUTab implements PlaybackThreadListener {
             model.fireTableDataChanged();
             enablePlayAction();
             updateDuration();
-            this.show(null);
+            showPDU(null);
         }
     }
 
@@ -246,9 +247,9 @@ public class PlaybackTab extends PDUTab implements PlaybackThreadListener {
         else if (getPDUCount() > 0) {
 
             int result = JOptionPane.showConfirmDialog(
-                getPanel(),
+                this,
                 "Delete all playback PDUs (cannot be undone)?",
-                getTabName(),
+                getName(),
                 JOptionPane.OK_CANCEL_OPTION,
                 JOptionPane.QUESTION_MESSAGE);
 
@@ -278,7 +279,7 @@ public class PlaybackTab extends PDUTab implements PlaybackThreadListener {
 
             logger.info(
                 "Cutting " + selections.length + " of " + size + " " +
-                getTabName() + " PDUs...");
+                getName() + " PDUs...");
 
             if (logger.isDebugEnabled()) {
 
@@ -328,7 +329,7 @@ public class PlaybackTab extends PDUTab implements PlaybackThreadListener {
 
             logger.info(
                 "Copying " + selections.length + " of " + size + " " +
-                getTabName() + " PDUs...");
+                getName() + " PDUs...");
 
             logger.debug("Selected rows: {}", Arrays.toString(selections));
 
@@ -358,7 +359,7 @@ public class PlaybackTab extends PDUTab implements PlaybackThreadListener {
 
             logger.info(
                 "Pasting " + clipboard.size() + " " +
-                getTabName() + " PDUs...");
+                getName() + " PDUs...");
 
             lock.writeLock().lock();
 
@@ -412,11 +413,11 @@ public class PlaybackTab extends PDUTab implements PlaybackThreadListener {
 
         if (column != Column.TIME.ordinal()) {
 
-            return getCellValue(row, column);
+            return super.getCellValue(row, column);
         }
         else if (time.booleanValue()) {
 
-            return getCellValue(row, column);
+            return super.getCellValue(row, column);
         }
         else {
 
@@ -480,7 +481,7 @@ public class PlaybackTab extends PDUTab implements PlaybackThreadListener {
 
         if (current == pdu) {
 
-            show(pdu);
+            showPDU(pdu);
         }
     }
 
@@ -549,8 +550,8 @@ public class PlaybackTab extends PDUTab implements PlaybackThreadListener {
         JTabbedPane tabbed = new JTabbedPane(JTabbedPane.BOTTOM);
         Insets insets = new Insets(3, 3, 3, 20);
 
-        tabbed.add("Content", content.getPanel());
-        tabbed.add("Byte View", hexadecimal.getPanel());
+        tabbed.add("Content", content);
+        tabbed.add("Byte View", hexadecimal);
 
         Utilities.addComponent(
             status,
@@ -615,7 +616,7 @@ public class PlaybackTab extends PDUTab implements PlaybackThreadListener {
         popup.add(bulkAction);
 
         Utilities.addComponent(
-            getPanel(),
+            this,
             split,
             Utilities.BOTH,
             0, 0,
@@ -646,7 +647,6 @@ public class PlaybackTab extends PDUTab implements PlaybackThreadListener {
         }
     }
 
-    @SuppressWarnings("serial")
     class BulkEditAction extends AbstractAction {
 
         public BulkEditAction() {
@@ -672,7 +672,6 @@ public class PlaybackTab extends PDUTab implements PlaybackThreadListener {
         }
     }
 
-    @SuppressWarnings("serial")
     class BinaryEditAction extends AbstractAction {
 
         public BinaryEditAction() {
@@ -698,7 +697,6 @@ public class PlaybackTab extends PDUTab implements PlaybackThreadListener {
         }
     }
 
-    @SuppressWarnings("serial")
     class PlayAction extends AbstractAction {
 
         public PlayAction() {
@@ -728,7 +726,7 @@ public class PlaybackTab extends PDUTab implements PlaybackThreadListener {
                 }
                 else {
 
-                    logger.error(getTabName() + ": Already started sending!");
+                    logger.error(getName() + ": Already started sending!");
                 }
             }
             else try {
@@ -755,7 +753,6 @@ public class PlaybackTab extends PDUTab implements PlaybackThreadListener {
         }
     }
 
-    @SuppressWarnings("serial")
     class PauseAction extends AbstractAction {
 
         public PauseAction() {
@@ -780,7 +777,6 @@ public class PlaybackTab extends PDUTab implements PlaybackThreadListener {
         }
     }
 
-    @SuppressWarnings("serial")
     class StopAction extends AbstractAction {
 
         public StopAction() {
@@ -805,7 +801,6 @@ public class PlaybackTab extends PDUTab implements PlaybackThreadListener {
         }
     }
 
-    @SuppressWarnings("serial")
     class TimeAction extends AbstractAction {
 
         public TimeAction() {
@@ -833,7 +828,6 @@ public class PlaybackTab extends PDUTab implements PlaybackThreadListener {
         }
     }
 
-    @SuppressWarnings("serial")
     class PortAction extends AbstractAction {
 
         public PortAction() {

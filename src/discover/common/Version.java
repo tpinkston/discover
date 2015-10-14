@@ -42,6 +42,8 @@ public enum Version {
             }
         }
 
+        System.err.println("Unknown version: " + Long.toHexString(value));
+
         return null;
     }
 

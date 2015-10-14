@@ -61,54 +61,15 @@ import discover.vdis.PDU;
  * @author Tony Pinkston
  */
 @SuppressWarnings("serial")
-public class DiscoverFrame implements ActionListener, ChangeListener, MouseListener {
+public class DiscoverFrame
+        extends JFrame
+        implements ActionListener, ChangeListener, MouseListener {
 
     private static DiscoverFrame instance = null;
 
     private static final Logger logger = LoggerFactory.getLogger(DiscoverFrame.class);
 
     private static final String SEPARATOR = "-";
-
-    private final JFrame frame = new JFrame() {
-
-        @Override
-        public void dispose() {
-
-            if (ArmyTrackingFrame.getFrame() != null) {
-
-                ArmyTrackingFrame.getFrame().dispose();
-            }
-
-            if (ConversionFrame.getFrame() != null) {
-
-                ConversionFrame.getFrame().dispose();
-            }
-
-            if (EntityTypesFrame.getFrame() != null) {
-
-                EntityTypesFrame.getFrame().dispose();
-            }
-
-            if (ObjectTypesFrame.getFrame() != null) {
-
-                ObjectTypesFrame.getFrame().dispose();
-            }
-
-            if (BinaryEditorFrame.getFrame() != null) {
-
-                BinaryEditorFrame.getFrame().dispose();
-            }
-
-            if (BulkEditorFrame.getFrame() != null) {
-
-                BulkEditorFrame.getFrame().dispose();
-            }
-
-            closeTabs();
-
-            super.dispose();
-        }
-    };
 
     private final JMenuBar menus = new JMenuBar();
     private final JToolBar tools = new JToolBar();
@@ -135,66 +96,104 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
 
     public DiscoverFrame() {
 
-        this.clipboard = new ArrayList<PDU>();
-        this.tabs = new TreeMap<String, Tab>();
-        this.counters = new TreeMap<TabType, Integer>();
+        clipboard = new ArrayList<PDU>();
+        tabs = new TreeMap<String, Tab>();
+        counters = new TreeMap<TabType, Integer>();
 
-        this.createMenus();
-        this.createTools();
+        createMenus();
+        createTools();
 
-        this.saveAction.setEnabled(false);
-        this.removeTabAction.setEnabled(false);
-        this.renameTabAction.setEnabled(false);
-        this.reordersTabAction.setEnabled(false);
-        this.deleteAllAction.setEnabled(false);
-        this.deleteAction.setEnabled(false);
-        this.cutAction.setEnabled(false);
-        this.copyAction.setEnabled(false);
-        this.pasteAction.setEnabled(false);
+        saveAction.setEnabled(false);
+        removeTabAction.setEnabled(false);
+        renameTabAction.setEnabled(false);
+        reordersTabAction.setEnabled(false);
+        deleteAllAction.setEnabled(false);
+        deleteAction.setEnabled(false);
+        cutAction.setEnabled(false);
+        copyAction.setEnabled(false);
+        pasteAction.setEnabled(false);
 
-        this.pane.addChangeListener(this);
-        this.pane.addMouseListener(this);
+        pane.addChangeListener(this);
+        pane.addMouseListener(this);
 
-        this.popup.add(this.addTabAction);
-        this.popup.add(this.removeTabAction);
-        this.popup.addSeparator();
-        this.popup.add(this.stalkerAction);
-        this.popup.add(this.textAction);
+        popup.add(addTabAction);
+        popup.add(removeTabAction);
+        popup.addSeparator();
+        popup.add(stalkerAction);
+        popup.add(textAction);
 
-        this.frame.setJMenuBar(this.menus);
-        this.frame.add(this.tools, BorderLayout.NORTH);
-        this.frame.add(this.pane, BorderLayout.CENTER);
-        this.frame.setTitle("Discover (" + Network.getHostname() + ")");
-        this.frame.setMinimumSize(new Dimension(700, 550));
-        this.frame.setPreferredSize(new Dimension(1200, 700));
-        this.frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.frame.pack();
-        this.frame.setVisible(true);
+        setJMenuBar(menus);
+        add(tools, BorderLayout.NORTH);
+        add(pane, BorderLayout.CENTER);
+        setTitle("Discover (" + Network.getHostname() + ")");
+        setMinimumSize(new Dimension(700, 550));
+        setPreferredSize(new Dimension(1200, 700));
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        pack();
+        setVisible(true);
+    }
+
+    @Override
+    public void dispose() {
+
+        if (ArmyTrackingFrame.getFrame() != null) {
+
+            ArmyTrackingFrame.getFrame().dispose();
+        }
+
+        if (ConversionFrame.getFrame() != null) {
+
+            ConversionFrame.getFrame().dispose();
+        }
+
+        if (EntityTypesFrame.getFrame() != null) {
+
+            EntityTypesFrame.getFrame().dispose();
+        }
+
+        if (ObjectTypesFrame.getFrame() != null) {
+
+            ObjectTypesFrame.getFrame().dispose();
+        }
+
+        if (BinaryEditorFrame.getFrame() != null) {
+
+            BinaryEditorFrame.getFrame().dispose();
+        }
+
+        if (BulkEditorFrame.getFrame() != null) {
+
+            BulkEditorFrame.getFrame().dispose();
+        }
+
+        closeTabs();
+
+        super.dispose();
     }
 
     public AbstractAction getDeleteAllAction() {
 
-        return this.deleteAllAction;
+        return deleteAllAction;
     }
 
     public AbstractAction getDeleteAction() {
 
-        return this.deleteAction;
+        return deleteAction;
     }
 
     public AbstractAction getCutAction() {
 
-        return this.cutAction;
+        return cutAction;
     }
 
     public AbstractAction getCopyAction() {
 
-        return this.copyAction;
+        return copyAction;
     }
 
     public AbstractAction getPasteAction() {
 
-        return this.pasteAction;
+        return pasteAction;
     }
 
     /**
@@ -211,52 +210,52 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
     @Override
     public void stateChanged(ChangeEvent event) {
 
-        Tab tab = this.getSelectedTab();
-        int tabs = this.pane.getComponentCount();
+        Tab tab = getSelectedTab();
+        int tabs = pane.getComponentCount();
 
-        this.saveAction.setEnabled(tabs > 0);
-        this.removeTabAction.setEnabled(tabs > 0);
-        this.renameTabAction.setEnabled(tabs > 0);
-        this.reordersTabAction.setEnabled(tabs > 1);
+        saveAction.setEnabled(tabs > 0);
+        removeTabAction.setEnabled(tabs > 0);
+        renameTabAction.setEnabled(tabs > 0);
+        reordersTabAction.setEnabled(tabs > 1);
 
         if (tabs == 0) {
 
-            this.saveAction.setEnabled(false);
-            this.removeTabAction.setEnabled(false);
-            this.deleteAllAction.setEnabled(false);
-            this.deleteAction.setEnabled(false);
-            this.cutAction.setEnabled(false);
-            this.copyAction.setEnabled(false);
-            this.pasteAction.setEnabled(false);
+            saveAction.setEnabled(false);
+            removeTabAction.setEnabled(false);
+            deleteAllAction.setEnabled(false);
+            deleteAction.setEnabled(false);
+            cutAction.setEnabled(false);
+            copyAction.setEnabled(false);
+            pasteAction.setEnabled(false);
         }
         else {
 
-            this.saveAction.setEnabled(true);
-            this.removeTabAction.setEnabled(true);
+            saveAction.setEnabled(true);
+            removeTabAction.setEnabled(true);
 
             if (tab instanceof CaptureTab) {
 
-                this.deleteAllAction.setEnabled(true);
-                this.deleteAction.setEnabled(false);
-                this.cutAction.setEnabled(false);
-                this.copyAction.setEnabled(true);
-                this.pasteAction.setEnabled(false);
+                deleteAllAction.setEnabled(true);
+                deleteAction.setEnabled(false);
+                cutAction.setEnabled(false);
+                copyAction.setEnabled(true);
+                pasteAction.setEnabled(false);
             }
             else if (tab instanceof PlaybackTab) {
 
-                this.deleteAllAction.setEnabled(true);
-                this.deleteAction.setEnabled(true);
-                this.cutAction.setEnabled(true);
-                this.copyAction.setEnabled(true);
-                this.pasteAction.setEnabled(true);
+                deleteAllAction.setEnabled(true);
+                deleteAction.setEnabled(true);
+                cutAction.setEnabled(true);
+                copyAction.setEnabled(true);
+                pasteAction.setEnabled(true);
             }
             else if (tab instanceof BuilderTab) {
 
-                this.deleteAllAction.setEnabled(false);
-                this.deleteAction.setEnabled(false);
-                this.cutAction.setEnabled(false);
-                this.copyAction.setEnabled(true);
-                this.pasteAction.setEnabled(true);
+                deleteAllAction.setEnabled(false);
+                deleteAction.setEnabled(false);
+                cutAction.setEnabled(false);
+                copyAction.setEnabled(true);
+                pasteAction.setEnabled(true);
             }
         }
     }
@@ -267,7 +266,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
     @Override
     public void mousePressed(MouseEvent event) {
 
-        this.showPopup(event);
+        showPopup(event);
     }
 
     /**
@@ -276,7 +275,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
     @Override
     public void mouseReleased(MouseEvent event) {
 
-        this.showPopup(event);
+        showPopup(event);
     }
 
     /**
@@ -285,7 +284,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
     @Override
     public void mouseClicked(MouseEvent event) {
 
-        this.showPopup(event);
+        showPopup(event);
     }
 
     /**
@@ -328,7 +327,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
 
         if (instance != null) {
 
-            return instance.frame;
+            return instance;
         }
         else {
 
@@ -355,11 +354,11 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
 
     public String[] getCurrentTabNames() {
 
-        final String names[] = new String[this.pane.getTabCount()];
+        final String names[] = new String[pane.getTabCount()];
 
         for(int i = 0; i < names.length; ++i) {
 
-            names[i] = this.pane.getComponent(i).getName();
+            names[i] = pane.getComponent(i).getName();
         }
 
         return names;
@@ -369,9 +368,9 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
 
         int count = 0;
 
-        for(Tab panel : this.tabs.values()) {
+        for(Tab panel : tabs.values()) {
 
-            if ((type == null) || (panel.getTabType() == type)) {
+            if ((type == null) || (panel.getType() == type)) {
 
                 ++count;
             }
@@ -384,14 +383,14 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
 
         String label = type.getLabel();
 
-        this.increment(type);
+        increment(type);
 
-        return (label + SEPARATOR + this.getTabCount(type));
+        return (label + SEPARATOR + getTabCount(type));
     }
 
     public Tab getSelectedTab() {
 
-        Component component = this.pane.getSelectedComponent();
+        Component component = pane.getSelectedComponent();
 
         if (component == null) {
 
@@ -399,7 +398,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
         }
         else {
 
-            return this.getTab(component.getName());
+            return getTab(component.getName());
         }
     }
 
@@ -407,54 +406,55 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
 
         EntityTab tab = new EntityTab(pdu);
 
-        this.addTab(tab);
+        addTab(tab);
     }
 
     private Tab getTab(String name) {
 
-        return this.tabs.get(name);
+        return tabs.get(name);
     }
 
     private void addTab(Tab tab) {
 
-        String name = tab.getTabName();
+        String name = tab.getName();
 
-        if (this.getTab(name) != null) {
+        if (getTab(name) != null) {
 
-            tab.setTabName(this.getSubsequentName(name));
+            tab.setName(getSubsequentName(name));
 
-            name = tab.getTabName();
+            name = tab.getName();
         }
 
         if (tab instanceof PDUTab) {
 
-            ((PDUTab)tab).updateClipboardStatus(this.clipboard);
+            ((PDUTab)tab).updateClipboardStatus(clipboard);
         }
 
-        this.tabs.put(name, tab);
-        this.pane.add(name, tab.getPanel());
-        this.pane.setSelectedComponent(tab.getPanel());
+        tabs.put(name, tab);
+        pane.add(name, tab);
+        pane.setSelectedComponent(tab);
 
-        System.out.println(
-            "Added " + tab.getTabType().getLabel() +
-            " tab: " + tab.getTabName());
+        System.out.printf(
+            "Added %s tab: %s\n",
+            tab.getType().getLabel(),
+            tab.getName());
 
-        this.checkName(name);
+        checkName(name);
     }
 
     private int getTabCount(TabType type) {
 
-        if (!this.counters.containsKey(type)) {
+        if (!counters.containsKey(type)) {
 
-            this.counters.put(type, new Integer(0));
+            counters.put(type, new Integer(0));
         }
 
-        return this.counters.get(type).intValue();
+        return counters.get(type).intValue();
     }
 
     private void closeTabs() {
 
-        for(Tab tab : this.tabs.values()) {
+        for(Tab tab : tabs.values()) {
 
             tab.close();
         }
@@ -462,44 +462,44 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
 
     private void removeAllTabs() {
 
-        while(!this.tabs.isEmpty()) {
+        while(!tabs.isEmpty()) {
 
-            String name = this.tabs.firstKey();
+            String name = tabs.firstKey();
 
-            this.tabs.get(name).close();
-            this.tabs.remove(name);
+            tabs.get(name).close();
+            tabs.remove(name);
         }
 
-        this.pane.removeAll();
+        pane.removeAll();
     }
 
     private void fireClipboardUpdate() {
 
-        for(Tab tab : this.tabs.values()) {
+        for(Tab tab : tabs.values()) {
 
             if (tab instanceof PDUTab) {
 
-                ((PDUTab)tab).updateClipboardStatus(this.clipboard);
+                ((PDUTab)tab).updateClipboardStatus(clipboard);
             }
         }
     }
 
     private void showPopup(MouseEvent event) {
 
-        ((StalkerAction)this.stalkerAction).setTab(this.getSelectedTab());
-        ((TextAction)this.textAction).setTab(this.getSelectedTab());
+        ((StalkerAction)stalkerAction).setTab(getSelectedTab());
+        ((TextAction)textAction).setTab(getSelectedTab());
 
         if (event.isPopupTrigger()) {
 
-            this.popup.show(this.pane, event.getX(), event.getY());
+            popup.show(pane, event.getX(), event.getY());
         }
     }
 
     private void increment(TabType type) {
 
-        int count = this.getTabCount(type);
+        int count = getTabCount(type);
 
-        this.counters.put(type, new Integer(count + 1));
+        counters.put(type, new Integer(count + 1));
 
         if (logger.isDebugEnabled()) {
 
@@ -512,7 +512,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
 
     private void reset(TabType type, int count) {
 
-        this.counters.put(type, new Integer(count));
+        counters.put(type, new Integer(count));
 
         if (logger.isDebugEnabled()) {
 
@@ -522,7 +522,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
 
     private String getSubsequentName(String previous) {
 
-        String prefix = this.getPrefix(previous);
+        String prefix = getPrefix(previous);
         String subsequent = null;
 
         if (prefix == null) {
@@ -531,7 +531,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
         }
         else {
 
-            Integer number = this.getNumber(prefix, previous);
+            Integer number = getNumber(prefix, previous);
 
             if (number == null) {
 
@@ -555,7 +555,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
 
             subsequent = (prefix + SEPARATOR + count);
 
-            if (this.tabs.containsKey(subsequent)) {
+            if (tabs.containsKey(subsequent)) {
 
                 subsequent = null;
                 ++count;
@@ -617,13 +617,13 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
         for(TabType type : TabType.values()) {
 
             String label = type.getLabel();
-            Integer number = this.getNumber(label, name);
+            Integer number = getNumber(label, name);
 
             if (number != null) {
 
-                if (number > this.getTabCount(type)) {
+                if (number > getTabCount(type)) {
 
-                    this.reset(type, number.intValue());
+                    reset(type, number.intValue());
                 }
             }
         }
@@ -651,7 +651,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
 
     private PDUTab createPDUTab(TabType type) {
 
-        String name = this.getNextTabName(type);
+        String name = getNextTabName(type);
 
         if (type == TabType.CAPTURE) {
 
@@ -678,22 +678,22 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
         JMenu options = new JMenu("Options");
         JCheckBoxMenuItem item = null;
 
-        file.add(this.loadAction);
-        file.add(this.saveAction);
+        file.add(loadAction);
+        file.add(saveAction);
         file.addSeparator();
         file.add(new ExitAction());
 
-        edit.add(this.deleteAllAction);
-        edit.add(this.deleteAction);
+        edit.add(deleteAllAction);
+        edit.add(deleteAction);
         edit.addSeparator();
-        edit.add(this.cutAction);
-        edit.add(this.copyAction);
-        edit.add(this.pasteAction);
+        edit.add(cutAction);
+        edit.add(copyAction);
+        edit.add(pasteAction);
 
-        tabs.add(this.addTabAction);
-        tabs.add(this.removeTabAction);
-        tabs.add(this.renameTabAction);
-        tabs.add(this.reordersTabAction);
+        tabs.add(addTabAction);
+        tabs.add(removeTabAction);
+        tabs.add(renameTabAction);
+        tabs.add(reordersTabAction);
 
         network.add(new NetworkInfoAction());
         network.add(new MulticastAddressesAction());
@@ -707,29 +707,29 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
         item.setSelected(true);
         options.add(item);
 
-        this.menus.add(file);
-        this.menus.add(edit);
-        this.menus.add(tabs);
-        this.menus.add(network);
-        this.menus.add(tools);
-        this.menus.add(options);
+        menus.add(file);
+        menus.add(edit);
+        menus.add(tabs);
+        menus.add(network);
+        menus.add(tools);
+        menus.add(options);
     }
 
     private void createTools() {
 
-        this.tools.setFloatable(false);
-        this.tools.add(this.saveAction);
-        this.tools.add(this.loadAction);
-        this.tools.addSeparator();
-        this.tools.add(this.addTabAction);
-        this.tools.add(this.removeTabAction);
-        this.tools.addSeparator();
-        this.tools.add(this.deleteAllAction);
-        this.tools.add(this.deleteAction);
-        this.tools.addSeparator();
-        this.tools.add(this.cutAction);
-        this.tools.add(this.copyAction);
-        this.tools.add(this.pasteAction);
+        tools.setFloatable(false);
+        tools.add(saveAction);
+        tools.add(loadAction);
+        tools.addSeparator();
+        tools.add(addTabAction);
+        tools.add(removeTabAction);
+        tools.addSeparator();
+        tools.add(deleteAllAction);
+        tools.add(deleteAction);
+        tools.addSeparator();
+        tools.add(cutAction);
+        tools.add(copyAction);
+        tools.add(pasteAction);
     }
 
     private TabType getTabType(DataInputStream stream) throws IOException {
@@ -773,18 +773,18 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
             if (tabs.isEmpty()) {
 
                 JOptionPane.showMessageDialog(
-                    frame,
+                    DiscoverFrame.this,
                     "No data to save!",
                     SAVE,
                     JOptionPane.ERROR_MESSAGE);
             }
             else {
 
-                File file = this.getFile();
+                File file = getFile();
 
                 if (file != null) {
 
-                    this.save(file);
+                    save(file);
                 }
             }
         }
@@ -793,23 +793,23 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
 
             File file = null;
 
-            if (this.chooser == null) {
+            if (chooser == null) {
 
-                this.chooser = new JFileChooser(getSavedDataPath());
+                chooser = new JFileChooser(getSavedDataPath());
             }
 
-            int choice = this.chooser.showDialog(getFrame(), SAVE);
+            int choice = chooser.showDialog(getFrame(), SAVE);
 
             if (choice == JFileChooser.APPROVE_OPTION) {
 
-                file = this.chooser.getSelectedFile();
+                file = chooser.getSelectedFile();
 
                 if ((file != null) && file.exists()) {
 
                     if (!file.isFile()) {
 
                         JOptionPane.showMessageDialog(
-                            frame,
+                            DiscoverFrame.this,
                             "Not a file: " + file.getName(),
                             "Save Error",
                             JOptionPane.ERROR_MESSAGE);
@@ -819,7 +819,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
                     else if (!file.canWrite()) {
 
                         JOptionPane.showMessageDialog(
-                            frame,
+                            DiscoverFrame.this,
                             "File cannnot be over-written: " + file.getName(),
                             "Save Error",
                             JOptionPane.ERROR_MESSAGE);
@@ -829,7 +829,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
                     else {
 
                         choice = JOptionPane.showConfirmDialog(
-                            frame,
+                            DiscoverFrame.this,
                             "Overwrite existing file: " + file.getName() + "?",
                             SAVE,
                             JOptionPane.YES_NO_CANCEL_OPTION,
@@ -941,26 +941,26 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
         @Override
         public void actionPerformed(ActionEvent event) {
 
-            if ((this.tab == null) || (this.tab.getPDUCount() == 0)) {
+            if ((tab == null) || (tab.getPDUCount() == 0)) {
 
                 JOptionPane.showMessageDialog(
-                    frame,
+                    DiscoverFrame.this,
                     "No data to save!",
                     SAVE,
                     JOptionPane.ERROR_MESSAGE);
             }
             else {
 
-                if (this.chooser == null) {
+                if (chooser == null) {
 
-                    this.chooser = new JFileChooser(getSavedDataPath());
+                    chooser = new JFileChooser(getSavedDataPath());
                 }
 
-                File file = Utilities.getSaveFile(SAVE, this.chooser);
+                File file = Utilities.getSaveFile(SAVE, chooser);
 
                 if (file != null) {
 
-                    this.save(file, this.tab.getListCopy());
+                    save(file, tab.getListCopy());
                 }
             }
         }
@@ -1039,26 +1039,26 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
         @Override
         public void actionPerformed(ActionEvent event) {
 
-            if ((this.tab == null) || (this.tab.getPDUCount() == 0)) {
+            if ((tab == null) || (tab.getPDUCount() == 0)) {
 
                 JOptionPane.showMessageDialog(
-                    frame,
+                    DiscoverFrame.this,
                     "No data to save!",
                     SAVE,
                     JOptionPane.ERROR_MESSAGE);
             }
             else {
 
-                if (this.chooser == null) {
+                if (chooser == null) {
 
-                    this.chooser = new JFileChooser(getSavedDataPath());
+                    chooser = new JFileChooser(getSavedDataPath());
                 }
 
-                File file = Utilities.getSaveFile(SAVE, this.chooser);
+                File file = Utilities.getSaveFile(SAVE, chooser);
 
                 if (file != null) {
 
-                    this.tab.writeTextTo(file, null);
+                    tab.writeTextTo(file, null);
                 }
             }
         }
@@ -1091,7 +1091,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
             if (count > 0) {
 
                 choice = JOptionPane.showConfirmDialog(
-                    frame,
+                    DiscoverFrame.this,
                     "Close existing tabs before loading?",
                     LOAD,
                     JOptionPane.YES_NO_CANCEL_OPTION,
@@ -1105,11 +1105,11 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
                     removeAllTabs();
                 }
 
-                File file = this.getFile();
+                File file = getFile();
 
                 if (file != null) {
 
-                    this.load(file);
+                    load(file);
                 }
             }
         }
@@ -1118,23 +1118,23 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
 
             File file = null;
 
-            if (this.chooser == null) {
+            if (chooser == null) {
 
-                this.chooser = new JFileChooser(getSavedDataPath());
+                chooser = new JFileChooser(getSavedDataPath());
             }
 
-            int choice = this.chooser.showDialog(getFrame(), LOAD);
+            int choice = chooser.showDialog(getFrame(), LOAD);
 
             if (choice == JFileChooser.APPROVE_OPTION) {
 
-                file = this.chooser.getSelectedFile();
+                file = chooser.getSelectedFile();
 
                 if ((file != null) && file.exists()) {
 
                     if (!file.isFile()) {
 
                         JOptionPane.showMessageDialog(
-                            frame,
+                            DiscoverFrame.this,
                             "Not a file: " + file.getName(),
                             "Load Error",
                             JOptionPane.ERROR_MESSAGE);
@@ -1144,7 +1144,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
                     else if (!file.canRead()) {
 
                         JOptionPane.showMessageDialog(
-                            frame,
+                            DiscoverFrame.this,
                             "File is not readable: " + file.getName(),
                             "Save Error",
                             JOptionPane.ERROR_MESSAGE);
@@ -1191,6 +1191,9 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
                     builder.append(formatter.format(bytes));
                     builder.append(" bytes\n  data version: ");
                     builder.append(version.toString());
+                    builder.append(" [");
+                    builder.append(Long.toHexString(version.getValue()));
+                    builder.append(" ]");
 
                     System.out.println(builder.toString());
 
@@ -1198,7 +1201,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
 
                     if (version == Version.PDU_STALKER) {
 
-                        this.loadPDUStalker(stream);
+                        loadPDUStalker(stream);
                     }
                     else if (version == Version.PCAP_SWAP_V2_4) {
 
@@ -1217,13 +1220,13 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
                     else if (version == Version.DISCOVER_V1) {
 
                         // Multiple tabs unsupported by version 1.
-                        this.loadPrevious(stream);
+                        loadPrevious(stream);
                     }
                     else {
 
                         // Differences in saved data from V2+ are handled by
                         // classes that extend the abstract TabData class.
-                        this.loadCurrent(version, stream);
+                        loadCurrent(version, stream);
                     }
 
                     if (stream.available() > 0) {
@@ -1259,7 +1262,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
 
             logger.info(
                 "Loading " + count +
-                " PDU Stalker PDUs to " + tab.getTabName());
+                " PDU Stalker PDUs to " + tab.getName());
 
             for(int i = 0; i < count; ++i) {
 
@@ -1593,7 +1596,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
 
             if (tab != null) {
 
-                String name = tab.getTabName();
+                String name = tab.getName();
 
                 int result = JOptionPane.showConfirmDialog(
                     DiscoverFrame.getFrame(),
@@ -1608,7 +1611,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
 
                     tab.close();
                     tabs.remove(name);
-                    pane.remove(tab.getPanel());
+                    pane.remove(tab);
                 }
             }
         }
@@ -1641,7 +1644,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
                     name = JOptionPane.showInputDialog(
                         DiscoverFrame.getFrame(),
                         "Enter new unique name:",
-                        tab.getTabName());
+                        tab.getName());
 
                     if (name == null) {
 
@@ -1666,23 +1669,23 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
 
                 if (name != null) {
 
-                    String original = tab.getTabName();
+                    String original = tab.getName();
                     checkName(name);
 
                     int count = pane.getComponentCount();
 
-                    tab.setTabName(name);
+                    tab.setName(name);
 
                     for(int i = 0; i < count; ++i) {
 
-                        if (pane.getComponentAt(i) == tab.getPanel()) {
+                        if (pane.getComponentAt(i) == tab) {
 
                             pane.removeTabAt(i);
 
                             pane.insertTab(
                                 name,
                                 null, // icon
-                                tab.getPanel(),
+                                tab,
                                 null, // tool tip
                                 i);
 
@@ -1728,9 +1731,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
 
                     for(int i = 0; i < count; ++i) {
 
-                        pane.add(
-                            names[i],
-                            tabs.get(names[i]).getPanel());
+                        pane.add(names[i], tabs.get(names[i]));
 
                         if (names[i] == selection) {
 
@@ -1766,7 +1767,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
             if (info.isEmpty()) {
 
                 JOptionPane.showMessageDialog(
-                    frame,
+                    DiscoverFrame.this,
                     "No network information available.",
                     "Network Information",
                     JOptionPane.ERROR_MESSAGE);
@@ -1787,7 +1788,7 @@ public class DiscoverFrame implements ActionListener, ChangeListener, MouseListe
                 tabs.setPreferredSize(new Dimension(500, 250));
 
                 JOptionPane.showMessageDialog(
-                    frame,
+                    DiscoverFrame.this,
                     tabs,
                     "Network Information",
                     JOptionPane.INFORMATION_MESSAGE);

@@ -2,6 +2,7 @@ package discover.gui.panels;
 
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
@@ -17,14 +18,14 @@ import discover.gui.Utilities;
 /**
  * @author Tony Pinkston
  */
-public class TextPanel {
+@SuppressWarnings("serial")
+public class TextPanel extends JPanel {
 
     private static final String INCREASE = "font_increase.gif";
     private static final String DECREASE = "font_decrease.gif";
     private static final int MIN_FONT_SIZE = 6;
     private static final int MAX_FONT_SIZE = 30;
 
-    private final JPanel panel = Utilities.getGridBagPanel(null);
     private final JScrollPane scroller = new JScrollPane();
     private final JEditorPane pane = new JEditorPane();
     private final JLabel size = new JLabel();
@@ -40,6 +41,10 @@ public class TextPanel {
      * @param font - Font name for JEditorPane (null for default)
      */
     public TextPanel(String type, String font) {
+
+        super(new GridBagLayout());
+
+        Utilities.setBorder(this, null);
 
         pane.setContentType(type);
 
@@ -59,7 +64,7 @@ public class TextPanel {
         scroller.setViewportView(pane);
 
         Utilities.addComponent(
-            panel,
+            this,
             tools,
             Utilities.HORIZONTAL,
             0, 0,
@@ -68,7 +73,7 @@ public class TextPanel {
             null);
 
         Utilities.addComponent(
-            panel,
+            this,
             scroller,
             Utilities.BOTH,
             0, 1,
@@ -80,11 +85,6 @@ public class TextPanel {
         pane.setEditable(false);
     }
 
-    public JPanel getPanel() {
-
-        return panel;
-    }
-
     public void setTextPreferredSize(Dimension dimension) {
 
         pane.setPreferredSize(dimension);
@@ -92,7 +92,7 @@ public class TextPanel {
 
     public void setText(String text) {
 
-      pane.setText(text);
+        pane.setText(text);
     }
 
     public void setCaretPosition(int position) {
@@ -137,7 +137,6 @@ public class TextPanel {
         this.size.setText(Integer.toString(fontSize));
     }
 
-    @SuppressWarnings("serial")
     class Increase extends AbstractAction {
 
         public Increase() {
@@ -154,7 +153,6 @@ public class TextPanel {
         }
     }
 
-    @SuppressWarnings("serial")
     class Decrease extends AbstractAction {
 
         public Decrease() {

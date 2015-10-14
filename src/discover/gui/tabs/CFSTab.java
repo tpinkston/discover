@@ -46,6 +46,7 @@ import discover.vdis.types.EntityTypes;
 /**
  * @author Tony Pinkston
  */
+@SuppressWarnings("serial")
 public class CFSTab
         extends Tab
         implements ActionListener, CaptureThreadListener, FocusListener {
@@ -207,8 +208,8 @@ public class CFSTab
     @Override
     public void save(DataOutputStream stream) throws IOException {
 
-        stream.writeInt(getTabType().ordinal());
-        stream.writeUTF(getTabName());
+        stream.writeInt(getType().ordinal());
+        stream.writeUTF(getName());
         stream.writeShort(data.entityId.getSite());
         stream.writeShort(data.entityId.getApplication());
         stream.writeShort(data.entityId.getEntity());
@@ -437,16 +438,16 @@ public class CFSTab
         try {
 
             cfsCaptureThread = new CaptureThread(
-                (getTabName() + ":" + data.cfsPort),
+                (getName() + ":" + data.cfsPort),
                 this,
                 data.cfsPort);
             safCaptureThread = new CaptureThread(
-                (getTabName() + ":" + data.safPort),
+                (getName() + ":" + data.safPort),
                 this,
                 data.safPort);
 
             System.out.println(
-                getTabName() +
+                getName() +
                 ": Listening on ports: " + data.cfsPort +
                 " and " + data.safPort);
 
@@ -673,10 +674,10 @@ public class CFSTab
 
     private void fill() {
 
-        Utilities.setGridBagLayout(getPanel());
+        Utilities.setGridBagLayout(this);
 
         Utilities.addComponent(
-            getPanel(),
+            this,
             getTools(),
             Utilities.HORIZONTAL,
             0, 0,
@@ -684,7 +685,7 @@ public class CFSTab
             0.0, 0.0,
             Utilities.getInsets(2, 2, 8, 2));
         Utilities.addComponent(
-            getPanel(),
+            this,
             getIdentificationPanel(),
             Utilities.HORIZONTAL,
             0, 1,
@@ -692,7 +693,7 @@ public class CFSTab
             0.0, 0.0,
             Utilities.getInsets(2, 2, 2, 2));
         Utilities.addComponent(
-            getPanel(),
+            this,
             getCFSSettingsPanel(),
             Utilities.HORIZONTAL,
             0, 2,
@@ -700,7 +701,7 @@ public class CFSTab
             0.0, 0.0,
             Utilities.getInsets(2, 2, 2, 2));
         Utilities.addComponent(
-            getPanel(),
+            this,
             getSAFSettingsPanel(),
             Utilities.HORIZONTAL,
             1, 2,
@@ -708,7 +709,7 @@ public class CFSTab
             0.0, 0.0,
             Utilities.getInsets(2, 2, 2, 2));
         Utilities.addComponent(
-            getPanel(),
+            this,
             new JLabel("  "),
             Utilities.BOTH,
             0, 3,
@@ -716,7 +717,7 @@ public class CFSTab
             0.0, 1.0,
             Utilities.getInsets(2, 2, 2, 2));
         Utilities.addComponent(
-            getPanel(),
+            this,
             getStatusPanel(),
             Utilities.BOTH,
             2, 1,

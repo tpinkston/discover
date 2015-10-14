@@ -55,6 +55,7 @@ import discover.vdis.types.EntityType;
 /**
  * @author Tony Pinkston
  */
+@SuppressWarnings("serial")
 public class EntityTab extends Tab implements ActionListener {
 
     private static final String HTML = "text/html";
@@ -210,8 +211,8 @@ public class EntityTab extends Tab implements ActionListener {
     @Override
     public void save(DataOutputStream stream) throws IOException {
 
-        stream.writeInt(getTabType().ordinal());
-        stream.writeUTF(getTabName());
+        stream.writeInt(getType().ordinal());
+        stream.writeUTF(getName());
         stream.writeInt(pdu.getPort());
         stream.writeInt(pdu.getDataLength());
 
@@ -255,7 +256,7 @@ public class EntityTab extends Tab implements ActionListener {
                 timer.start();
 
                 System.out.println(
-                    getTabName() +
+                    getName() +
                     ": Started Entity State generation.");
 
             }
@@ -266,7 +267,7 @@ public class EntityTab extends Tab implements ActionListener {
                 JOptionPane.showMessageDialog(
                     DiscoverFrame.getFrame(),
                     "Caught exception created network socket...",
-                    getTabName(),
+                    getName(),
                     JOptionPane.ERROR_MESSAGE);
             }
         }
@@ -276,7 +277,7 @@ public class EntityTab extends Tab implements ActionListener {
 
         if (socket != null) {
 
-            logger.info(getTabName() + ": closing socket");
+            logger.info(getName() + ": closing socket");
 
             socket.close();
             socket = null;
@@ -284,7 +285,7 @@ public class EntityTab extends Tab implements ActionListener {
 
         if (timer != null) {
 
-            logger.info(getTabName() + ": stopping timer");
+            logger.info(getName() + ": stopping timer");
 
             timer.stop();
             timer.removeActionListener(this);
@@ -294,7 +295,7 @@ public class EntityTab extends Tab implements ActionListener {
             stop.setEnabled(false);
 
             System.out.println(
-                getTabName() +
+                getName() +
                 ": Stopped Entity State generation.");
         }
     }
@@ -486,17 +487,15 @@ public class EntityTab extends Tab implements ActionListener {
         JTabbedPane tabs = new JTabbedPane(JTabbedPane.BOTTOM);
         JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 
-        tabs.add("Content", content.getPanel());
-        tabs.add("Byte View", hexadecimal.getPanel());
+        tabs.add("Content", content);
+        tabs.add("Byte View", hexadecimal);
 
         split.setLeftComponent(getSettingsPanel());
         split.setRightComponent(tabs);
         split.setContinuousLayout(true);
 
-        Utilities.setGridBagLayout(getPanel());
-
         Utilities.addComponent(
-            getPanel(),
+            this,
             split,
             Utilities.BOTH,
             0, 0,

@@ -199,7 +199,7 @@ public class ObjectTypesFrame implements ActionListener, ListSelectionListener {
         filter.setFloatable(false);
 
         splitter.setTopComponent(scroller);
-        splitter.setBottomComponent(text.getPanel());
+        splitter.setBottomComponent(text);
 
         frame.add(filter, BorderLayout.NORTH);
         frame.add(splitter, BorderLayout.CENTER);

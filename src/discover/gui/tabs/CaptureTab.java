@@ -42,6 +42,7 @@ import discover.vdis.PDU;
 /**
  * @author Tony Pinkston
  */
+@SuppressWarnings("serial")
 public class CaptureTab extends PDUTab implements CaptureThreadListener {
 
     private static final Color ACTIVE_COLOR = Color.BLACK;
@@ -49,7 +50,7 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
     private static final String CLICK_TO_SUSPEND = "Click to suspend PDU capture on port: ";
     private static final String CLICK_TO_RESUME = "Click to resume PDU capture on port: ";
 
-    private final Map<Integer, Port> ports = new TreeMap<Integer, Port>();
+    private Map<Integer, Port> ports = null;
 
     private EntityTrackerFrame entityTracker = null;
 
@@ -84,22 +85,32 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
 
         super.save(stream);
 
-        stream.writeShort(ports.size());
+        if (ports == null) {
 
-        for(Integer port : ports.keySet()) {
+            stream.writeShort(0);
+        }
+        else {
 
-            stream.writeInt(port.intValue());
+            stream.writeShort(ports.size());
+
+            for(Integer port : ports.keySet()) {
+
+                stream.writeInt(port.intValue());
+            }
         }
     }
 
     @Override
     public void close() {
 
-        for(Port port : ports.values()) {
+        if (ports != null) {
 
-            if (!port.thread.isStopped()) {
+            for(Port port : ports.values()) {
 
-                port.thread.setStopped(true);
+                if (!port.thread.isStopped()) {
+
+                    port.thread.setStopped(true);
+                }
             }
         }
 
@@ -115,13 +126,16 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
     }
 
     @Override
-    public void setTabName(String name) {
+    public void setName(String name) {
 
-        super.setTabName(name);
+        super.setName(name);
 
-        for(Port port : ports.values()) {
+        if (ports != null) {
 
-            port.thread.setName(getThreadName(port.port));
+            for(Port port : ports.values()) {
+
+                port.thread.setName(getThreadName(port.port));
+            }
         }
 
         if (entityTracker != null) {
@@ -147,9 +161,9 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
         if (getPDUCount() > 0) {
 
             int result = JOptionPane.showConfirmDialog(
-                getPanel(),
+                this,
                 "Delete all captured PDUs (cannot be undone)?",
-                getPanel().getName(),
+                getName(),
                 JOptionPane.OK_CANCEL_OPTION,
                 JOptionPane.QUESTION_MESSAGE);
 
@@ -177,7 +191,7 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
 
         logger.info(
             "Copying " + selections.length + " of " + size + " " +
-            getTabName() + " PDUs...");
+            getName() + " PDUs...");
 
         logger.debug("Selected rows: {}", Arrays.toString(selections));
 
@@ -264,6 +278,11 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
 
     private void createPort(Integer number, boolean paused) {
 
+        if (ports == null) {
+
+            ports = new TreeMap<>();
+        }
+
         if (ports.keySet().contains(number)) {
 
             logger.error("Port already in use: {}", number);
@@ -309,8 +328,8 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
         JTabbedPane tabbed = new JTabbedPane(JTabbedPane.BOTTOM);
         Insets insets = new Insets(3, 3, 3, 20);
 
-        tabbed.add("Content", content.getPanel());
-        tabbed.add("Byte View", hexadecimal.getPanel());
+        tabbed.add("Content", content);
+        tabbed.add("Byte View", hexadecimal);
 
         Utilities.addComponent(
             status,
@@ -370,7 +389,7 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
         tools.addSeparator();
 
         Utilities.addComponent(
-            getPanel(),
+            this,
             split,
             Utilities.BOTH,
             0, 0,
@@ -435,7 +454,6 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
         }
     }
 
-    @SuppressWarnings("serial")
     class AddPortAction extends AbstractAction {
 
         public AddPortAction() {
@@ -455,13 +473,13 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
 
             GetPortDialog dialog = new GetPortDialog(
                 "Inbound Port",
-                ports.keySet());
+                ((ports == null) ? null : ports.keySet()));
 
             Integer number = dialog.getPort();
 
             if (number != null) {
 
-                if (!ports.containsKey(number)) {
+                if ((ports == null) || !ports.containsKey(number)) {
 
                     createPort(number, false);
                 }
@@ -477,7 +495,6 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
         }
     }
 
-    @SuppressWarnings("serial")
     class RemovePortAction extends AbstractAction {
 
         public RemovePortAction() {
@@ -495,9 +512,9 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
         @Override
         public void actionPerformed(ActionEvent event) {
 
-            Set<Integer> choices = ports.keySet();
+            Set<Integer> choices = ((ports != null) ? ports.keySet() : null);
 
-            if (!choices.isEmpty()) {
+            if ((choices != null) && !choices.isEmpty()) {
 
                 RemovePortDialog dialog = new RemovePortDialog(choices);
 
@@ -522,7 +539,7 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
                         ports.remove(number);
 
                         System.out.println(
-                            getTabName() +
+                            getName() +
                             ": Removed port: " + number);
                     }
                 }
@@ -530,7 +547,6 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
         }
     }
 
-    @SuppressWarnings("serial")
     class EntityTrackerAction extends AbstractAction {
 
         public EntityTrackerAction() {
@@ -550,14 +566,13 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
 
             if (entityTracker == null) {
 
-                entityTracker = new EntityTrackerFrame(getTabName());
+                entityTracker = new EntityTrackerFrame(getName());
             }
 
-            entityTracker.getFrame().setVisible(true);
+            entityTracker.setVisible(true);
         }
     }
 
-    @SuppressWarnings("serial")
     class SiteMapAction extends AbstractAction {
 
         public SiteMapAction() {
@@ -575,13 +590,12 @@ public class CaptureTab extends PDUTab implements CaptureThreadListener {
         @Override
         public void actionPerformed(ActionEvent event) {
 
-
             if (siteMap == null) {
 
-                siteMap = new SiteMapFrame(getTabName());
+                siteMap = new SiteMapFrame(getName());
             }
 
-            siteMap.getFrame().setVisible(true);
+            siteMap.setVisible(true);
         }
     }
 }

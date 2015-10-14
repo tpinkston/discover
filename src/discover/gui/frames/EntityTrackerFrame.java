@@ -50,7 +50,10 @@ import discover.vdis.types.EntityType;
 /**
  * @author Tony Pinkston
  */
-public class EntityTrackerFrame implements ActionListener, KeyListener, ListSelectionListener {
+@SuppressWarnings("serial")
+public class EntityTrackerFrame
+        extends JFrame
+        implements ActionListener, KeyListener, ListSelectionListener {
 
     private static final Logger logger = LoggerFactory.getLogger(EntityTrackerFrame.class);
 
@@ -79,7 +82,6 @@ public class EntityTrackerFrame implements ActionListener, KeyListener, ListSele
         numberFormatter.setMaximumFractionDigits(1);
     }
 
-    private final JFrame frame = new JFrame();
     private final JTable table = new JTable();
     private final JEditorPane general = new JEditorPane();
     private final JEditorPane associations = new JEditorPane();
@@ -125,52 +127,52 @@ public class EntityTrackerFrame implements ActionListener, KeyListener, ListSele
 
     public EntityTrackerFrame(String title) {
 
-        this.sorter = new TableRowSorter<TableModel>(this.model);
+        sorter = new TableRowSorter<TableModel>(model);
 
-        this.timer = new Timer(500, this);
-        this.timer.start();
+        timer = new Timer(500, this);
+        timer.start();
 
-        this.setThreshold = new JMenuItem("Set Threshold");
-        this.setThreshold.addActionListener(this);
-        this.setThreshold.setEnabled(false);
-        this.setThreshold.setToolTipText(
+        setThreshold = new JMenuItem("Set Threshold");
+        setThreshold.addActionListener(this);
+        setThreshold.setEnabled(false);
+        setThreshold.setToolTipText(
             "Set the time duration at which entities expire.");
 
-        this.toggleExpiration = new JCheckBoxMenuItem("Expiration");
-        this.toggleExpiration.setSelected(false);
-        this.toggleExpiration.addActionListener(this);
-        this.toggleExpiration.setToolTipText(
+        toggleExpiration = new JCheckBoxMenuItem("Expiration");
+        toggleExpiration.setSelected(false);
+        toggleExpiration.addActionListener(this);
+        toggleExpiration.setToolTipText(
             "Select to automatically remove expired entities " +
             "(no longer publishing entity states).");
 
-        this.trackTransmitters = new JCheckBoxMenuItem("Track Transmitters");
-        this.trackTransmitters.setSelected(this.trackingTransmitters);
-        this.trackTransmitters.addActionListener(this);
+        trackTransmitters = new JCheckBoxMenuItem("Track Transmitters");
+        trackTransmitters.setSelected(trackingTransmitters);
+        trackTransmitters.addActionListener(this);
 
-        this.trackEmissions = new JCheckBoxMenuItem("Track Emissions");
-        this.trackEmissions.setSelected(this.trackingEmissions);
-        this.trackEmissions.addActionListener(this);
+        trackEmissions = new JCheckBoxMenuItem("Track Emissions");
+        trackEmissions.setSelected(trackingEmissions);
+        trackEmissions.addActionListener(this);
 
-        this.panes.add(this.general);
-        this.panes.add(this.associations);
-        this.panes.add(this.articulations);
-        this.panes.add(this.appearance);
-        this.panes.add(this.transmitters);
-        this.panes.add(this.warfare);
-        this.panes.add(this.emissions);
+        panes.add(general);
+        panes.add(associations);
+        panes.add(articulations);
+        panes.add(appearance);
+        panes.add(transmitters);
+        panes.add(warfare);
+        panes.add(emissions);
 
-        for(int i = 0, size = this.panes.size(); i < size; ++i) {
+        for(int i = 0, size = panes.size(); i < size; ++i) {
 
-            this.panes.get(i).setEditable(false);
-            this.panes.get(i).setContentType("text/html");
+            panes.get(i).setEditable(false);
+            panes.get(i).setContentType("text/html");
         }
 
-        this.table.addKeyListener(this);
-        this.table.setModel(this.model);
-        this.table.setRowSorter(this.sorter);
-        this.table.getSelectionModel().addListSelectionListener(this);
+        table.addKeyListener(this);
+        table.setModel(model);
+        table.setRowSorter(sorter);
+        table.getSelectionModel().addListSelectionListener(this);
 
-        TableColumnModel columnModel = this.table.getColumnModel();
+        TableColumnModel columnModel = table.getColumnModel();
 
         for(Column column : Column.values()) {
 
@@ -179,47 +181,44 @@ public class EntityTrackerFrame implements ActionListener, KeyListener, ListSele
             tableColumn.setResizable(true);
             tableColumn.setPreferredWidth(column.columnWidth);
 
-            this.sorter.setComparator(
+            sorter.setComparator(
                 column.ordinal(),
                 column.columnComparator);
         }
 
-        this.fill();
-        this.setTitle(title);
+        fill();
+        setTitle(title);
 
-        this.frame.setMinimumSize(new Dimension(700, 500));
-        this.frame.setPreferredSize(new Dimension(900, 700));
-        this.frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        this.frame.pack();
-    }
-
-    public JFrame getFrame() {
-
-        return this.frame;
+        setMinimumSize(new Dimension(700, 500));
+        setPreferredSize(new Dimension(900, 700));
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
+        pack();
     }
 
     public void destroy() {
 
-        this.timer.stop();
-        this.timer.removeActionListener(this);
-        this.setThreshold.removeActionListener(this);
-        this.toggleExpiration.removeActionListener(this);
-        this.trackTransmitters.removeActionListener(this);
-        this.trackEmissions.removeActionListener(this);
-        this.table.removeKeyListener(this);
-        this.table.getSelectionModel().removeListSelectionListener(this);
-        this.frame.dispose();
+        timer.stop();
+        timer.removeActionListener(this);
+        setThreshold.removeActionListener(this);
+        toggleExpiration.removeActionListener(this);
+        trackTransmitters.removeActionListener(this);
+        trackEmissions.removeActionListener(this);
+        table.removeKeyListener(this);
+        table.getSelectionModel().removeListSelectionListener(this);
+
+        dispose();
     }
 
+    @Override
     public void setTitle(String title) {
 
-        this.frame.setTitle("Entity Tracker [" + title + "]");
+        super.setTitle("Entity Tracker [" + title + "]");
     }
 
     public void clearAll() {
 
-        this.list.clear();
-        this.model.fireTableDataChanged();
+        list.clear();
+        model.fireTableDataChanged();
         this.show(null);
     }
 
@@ -229,36 +228,36 @@ public class EntityTrackerFrame implements ActionListener, KeyListener, ListSele
     @Override
     public void actionPerformed(ActionEvent event) {
 
-        if (event.getSource() == this.timer) {
+        if (event.getSource() == timer) {
 
             final long current = System.currentTimeMillis();
 
-            this.date.setTime(current);
-            this.time.setText(dateFormat.format(this.date));
+            date.setTime(current);
+            time.setText(dateFormat.format(date));
 
-            if (this.purgeEntities) {
+            if (purgeEntities) {
 
-                if ((current - this.lastPurge) >= PURGE_DURATION) {
+                if ((current - lastPurge) >= PURGE_DURATION) {
 
-                    this.purgeExpirations(current);
+                    purgeExpirations(current);
                 }
             }
         }
-        else if (event.getSource() == this.setThreshold) {
+        else if (event.getSource() == setThreshold) {
 
-            this.setExpirationThreshold();
+            setExpirationThreshold();
         }
-        else if (event.getSource() == this.toggleExpiration) {
+        else if (event.getSource() == toggleExpiration) {
 
-            this.toggleEntityExpiration();
+            toggleEntityExpiration();
         }
-        else if (event.getSource() == this.trackTransmitters) {
+        else if (event.getSource() == trackTransmitters) {
 
-            this.trackingTransmitters = this.trackTransmitters.isSelected();
+            trackingTransmitters = trackTransmitters.isSelected();
         }
-        else if (event.getSource() == this.trackEmissions) {
+        else if (event.getSource() == trackEmissions) {
 
-            this.trackingEmissions = this.trackEmissions.isSelected();
+            trackingEmissions = trackEmissions.isSelected();
         }
     }
 
@@ -277,20 +276,20 @@ public class EntityTrackerFrame implements ActionListener, KeyListener, ListSele
 
         if (event.getKeyChar() == KeyEvent.VK_DELETE) {
 
-            int rows[] = this.table.getSelectedRows();
+            int rows[] = table.getSelectedRows();
 
             if ((rows != null) && (rows.length > 0)) {
 
                 for(int i = 0; i < rows.length; ++i) {
 
-                    rows[i] = this.sorter.convertRowIndexToModel(rows[i]);
+                    rows[i] = sorter.convertRowIndexToModel(rows[i]);
                 }
             }
 
             if ((rows != null) && (rows.length > 0)) {
 
                 int choice = JOptionPane.showConfirmDialog(
-                    this.frame,
+                    this,
                     "Delete " + rows.length + " selected entity(s)?",
                     TITLE,
                     JOptionPane.YES_NO_CANCEL_OPTION,
@@ -300,7 +299,7 @@ public class EntityTrackerFrame implements ActionListener, KeyListener, ListSele
 
                     Arrays.sort(rows);
 
-                    this.deleteEntities(rows);
+                    deleteEntities(rows);
                 }
             }
         }
@@ -314,17 +313,17 @@ public class EntityTrackerFrame implements ActionListener, KeyListener, ListSele
 
         if (!event.getValueIsAdjusting()) {
 
-            int row = this.table.getSelectedRow();
+            int row = table.getSelectedRow();
 
             if (row > -1) {
 
-                int index = this.sorter.convertRowIndexToModel(row);
+                int index = sorter.convertRowIndexToModel(row);
 
                 this.show(this.getEntity(index));
             }
-            else for(int i = 0, size = this.panes.size(); i < size; ++i) {
+            else for(int i = 0, size = panes.size(); i < size; ++i) {
 
-                this.panes.get(i).setText("");
+                panes.get(i).setText("");
             }
         }
     }
@@ -362,12 +361,12 @@ public class EntityTrackerFrame implements ActionListener, KeyListener, ListSele
 
                 logger.info("Updated entity: " + pdu.getEntityId());
 
-                this.model.fireTableDataChanged();
+                model.fireTableDataChanged();
             }
 
-            if (this.current == entity) {
+            if (current == entity) {
 
-                this.show(this.current);
+                this.show(current);
             }
         }
         else {
@@ -377,9 +376,9 @@ public class EntityTrackerFrame implements ActionListener, KeyListener, ListSele
             entity = new Entity();
             entity.update(pdu);
 
-            this.list.add(entity);
-            this.model.fireTableDataChanged();
-            this.count.setText(ENTITY_COUNT + this.list.size());
+            list.add(entity);
+            model.fireTableDataChanged();
+            count.setText(ENTITY_COUNT + list.size());
         }
     }
 
@@ -390,12 +389,12 @@ public class EntityTrackerFrame implements ActionListener, KeyListener, ListSele
 
         if ((entity1 != null) && entity1.update(pdu)) {
 
-            this.show(this.current);
+            this.show(current);
         }
 
         if ((entity2 != null) && entity2.update(pdu)) {
 
-            this.show(this.current);
+            this.show(current);
         }
     }
 
@@ -406,26 +405,26 @@ public class EntityTrackerFrame implements ActionListener, KeyListener, ListSele
 
         if ((entity1 != null) && entity1.update(pdu)) {
 
-            this.show(this.current);
+            this.show(current);
         }
 
         if ((entity2 != null) && entity2.update(pdu)) {
 
-            this.show(this.current);
+            this.show(current);
         }
     }
 
     private void processTransmitter(PDU pdu) {
 
-        if (this.trackingTransmitters) {
+        if (trackingTransmitters) {
 
             Entity entity = this.getEntity(pdu.getId());
 
             if ((entity != null) && entity.update(pdu)) {
 
-                if (this.current == entity) {
+                if (current == entity) {
 
-                    this.show(this.current);
+                    this.show(current);
                 }
             }
         }
@@ -438,12 +437,12 @@ public class EntityTrackerFrame implements ActionListener, KeyListener, ListSele
 
         if ((entity1 != null) && entity1.update(pdu)) {
 
-            this.show(this.current);
+            this.show(current);
         }
 
         if ((entity2 != null) && entity2.update(pdu)) {
 
-            this.show(this.current);
+            this.show(current);
         }
     }
 
@@ -455,26 +454,26 @@ public class EntityTrackerFrame implements ActionListener, KeyListener, ListSele
 
         if ((entity1 != null) && entity1.update(pdu)) {
 
-            this.show(this.current);
+            this.show(current);
         }
 
         if ((entity2 != null) && entity2.update(pdu)) {
 
-            this.show(this.current);
+            this.show(current);
         }
     }
 
     private void processEmission(PDU pdu) {
 
-        if (this.trackingEmissions) {
+        if (trackingEmissions) {
 
             Entity entity = this.getEntity(pdu.getId());
 
             if ((entity != null) && entity.update(pdu)) {
 
-                if (this.current == entity) {
+                if (current == entity) {
 
-                    this.show(this.current);
+                    this.show(current);
                 }
             }
         }
@@ -482,19 +481,19 @@ public class EntityTrackerFrame implements ActionListener, KeyListener, ListSele
 
     private String getSeconds() {
 
-        double seconds = ((double)this.purgeThreshold / 1000.0);
+        double seconds = (purgeThreshold / 1000.0);
 
         return numberFormatter.format(seconds);
     }
 
     private int getEntityCount() {
 
-        return this.list.size();
+        return list.size();
     }
 
     private Entity getEntity(int index) {
 
-        return this.list.get(index);
+        return list.get(index);
     }
 
     private Entity getEntity(EntityId id) {
@@ -514,21 +513,21 @@ public class EntityTrackerFrame implements ActionListener, KeyListener, ListSele
 
         for(int i = (indexes.length - 1); i >= 0; --i) {
 
-            Entity entity = this.list.remove(indexes[i]);
+            Entity entity = list.remove(indexes[i]);
 
-            if (this.current == entity) {
+            if (current == entity) {
 
                 this.show(null);
             }
         }
 
-        this.model.fireTableDataChanged();
+        model.fireTableDataChanged();
     }
 
     private void setExpirationThreshold() {
 
         String value = JOptionPane.showInputDialog(
-            this.frame,
+            this,
             "Enter expiration time in seconds,\n" +
             "current time is " + getSeconds() + ":",
             ENTITY_EXPIRATION,
@@ -543,20 +542,20 @@ public class EntityTrackerFrame implements ActionListener, KeyListener, ListSele
                 if (seconds < 1) {
 
                     JOptionPane.showMessageDialog(
-                        this.frame,
+                        this,
                         "Threshold must be at least one second!",
                         ENTITY_EXPIRATION,
                         JOptionPane.ERROR_MESSAGE);
                 }
                 else {
 
-                    this.purgeThreshold = (long)(seconds * 1000.0);
+                    purgeThreshold = (long)(seconds * 1000.0);
                 }
             }
             catch(NumberFormatException exception) {
 
                 JOptionPane.showMessageDialog(
-                    this.frame,
+                    this,
                     "Not a valid number: " + value,
                     ENTITY_EXPIRATION,
                     JOptionPane.ERROR_MESSAGE);
@@ -566,71 +565,71 @@ public class EntityTrackerFrame implements ActionListener, KeyListener, ListSele
 
     private void toggleEntityExpiration() {
 
-        if (this.purgeEntities) {
+        if (purgeEntities) {
 
-            this.purgeEntities = false;
+            purgeEntities = false;
         }
         else {
 
             int choice = JOptionPane.showConfirmDialog(
-                EntityTrackerFrame.this.frame,
+                this,
                 "Turn on expiration?  This will actively and permanently\n" +
                 "remove entities for which Entity State PDUs are no longer\n" +
                 "being received after current duration of " +
-                this.getSeconds() + " seconds...",
+                getSeconds() + " seconds...",
                 ENTITY_EXPIRATION,
                 JOptionPane.YES_NO_CANCEL_OPTION,
                 JOptionPane.QUESTION_MESSAGE);
 
-            this.purgeEntities = (choice == JOptionPane.YES_OPTION);
+            purgeEntities = (choice == JOptionPane.YES_OPTION);
         }
 
-        this.setThreshold.setEnabled(this.purgeEntities);
-        this.toggleExpiration.setSelected(this.purgeEntities);
+        setThreshold.setEnabled(purgeEntities);
+        toggleExpiration.setSelected(purgeEntities);
     }
 
     private void show(Entity entity) {
 
         if (entity == null) {
 
-            for(JEditorPane pane : this.panes) {
+            for(JEditorPane pane : panes) {
 
                 pane.setText("");
             }
         }
         else {
 
-            this.general.setText(entity.getGeneralHTML());
-            this.associations.setText(entity.getAssociationsHTML());
-            this.articulations.setText(entity.getArticulationsHTML());
-            this.appearance.setText(entity.getAppearanceHTML());
-            this.warfare.setText(entity.getWarfareHTML());
+            general.setText(entity.getGeneralHTML());
+            associations.setText(entity.getAssociationsHTML());
+            articulations.setText(entity.getArticulationsHTML());
+            appearance.setText(entity.getAppearanceHTML());
+            warfare.setText(entity.getWarfareHTML());
 
-            if (this.trackingTransmitters) {
+            if (trackingTransmitters) {
 
-                this.transmitters.setText(entity.getTransmittersHTML());
+                transmitters.setText(entity.getTransmittersHTML());
             }
             else {
 
-                this.transmitters.setText("Transitters Disabled.");
+                transmitters.setText("Transitters Disabled.");
             }
 
-            if (this.trackingEmissions) {
+            if (trackingEmissions) {
 
-                this.emissions.setText(entity.getEmissionsHTML());
+                emissions.setText(entity.getEmissionsHTML());
             }
             else {
 
-                this.emissions.setText("Emissions Disabled.");
+                emissions.setText("Emissions Disabled.");
             }
        }
 
-        this.current = entity;
+        current = entity;
     }
 
     private void purgeExpirations(long current) {
 
-        Iterator<Entity> iterator = this.list.iterator();
+        Iterator<Entity> iterator = list.iterator();
         boolean purged = false;
 
         while(iterator.hasNext()) {
@@ -639,7 +638,7 @@ public class EntityTrackerFrame implements ActionListener, KeyListener, ListSele
 
             long elapsed = (current - entity.getTime());
 
-            if (elapsed >= this.purgeThreshold) {
+            if (elapsed >= purgeThreshold) {
 
                 iterator.remove();
                 purged = true;
@@ -651,17 +650,17 @@ public class EntityTrackerFrame implements ActionListener, KeyListener, ListSele
                 }
 
                 logger.info(
-                    "Purging entity {}: {}", 
-                    entity.getId(), 
+                    "Purging entity {}: {}",
+                    entity.getId(),
                     entity.getMarking());
             }
         }
 
-        this.lastPurge = current;
+        lastPurge = current;
 
         if (purged) {
 
-            this.model.fireTableDataChanged();
+            model.fireTableDataChanged();
         }
     }
 
@@ -670,7 +669,7 @@ public class EntityTrackerFrame implements ActionListener, KeyListener, ListSele
      */
     private void fill() {
 
-        JScrollPane scroller = new JScrollPane(this.table);
+        JScrollPane scroller = new JScrollPane(table);
         JTabbedPane tabs = new JTabbedPane(JTabbedPane.TOP);
         JSplitPane split = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
         JToolBar status = new JToolBar();
@@ -688,37 +687,37 @@ public class EntityTrackerFrame implements ActionListener, KeyListener, ListSele
         scroller.setMinimumSize(minimum);
         scroller.setPreferredSize(preferred);
 
-        tabs.add("General", new JScrollPane(this.general));
-        tabs.add("Associations", new JScrollPane(this.associations));
-        tabs.add("Articulations", new JScrollPane(this.articulations));
-        tabs.add("Appearance", new JScrollPane(this.appearance));
-        tabs.add("Transmitters", new JScrollPane(this.transmitters));
-        tabs.add("Warfare", new JScrollPane(this.warfare));
-        tabs.add("Emissions", new JScrollPane(this.emissions));
+        tabs.add("General", new JScrollPane(general));
+        tabs.add("Associations", new JScrollPane(associations));
+        tabs.add("Articulations", new JScrollPane(articulations));
+        tabs.add("Appearance", new JScrollPane(appearance));
+        tabs.add("Transmitters", new JScrollPane(transmitters));
+        tabs.add("Warfare", new JScrollPane(warfare));
+        tabs.add("Emissions", new JScrollPane(emissions));
         tabs.setMinimumSize(minimum);
         tabs.setPreferredSize(preferred);
 
-        status.add(this.time);
+        status.add(time);
         status.addSeparator();
-        status.add(this.count);
+        status.add(count);
         status.setFloatable(false);
 
         split.setContinuousLayout(true);
         split.setLeftComponent(scroller);
         split.setRightComponent(tabs);
 
-        expiration.add(this.toggleExpiration);
-        expiration.add(this.setThreshold);
+        expiration.add(toggleExpiration);
+        expiration.add(setThreshold);
 
-        options.add(this.trackTransmitters);
-        options.add(this.trackEmissions);
+        options.add(trackTransmitters);
+        options.add(trackEmissions);
 
         menus.add(expiration);
         menus.add(options);
 
-        this.frame.setJMenuBar(menus);
-        this.frame.add(split, BorderLayout.CENTER);
-        this.frame.add(status, BorderLayout.SOUTH);
+        setJMenuBar(menus);
+        add(split, BorderLayout.CENTER);
+        add(status, BorderLayout.SOUTH);
     }
 
     class PDUProcessor implements Runnable {
@@ -733,7 +732,7 @@ public class EntityTrackerFrame implements ActionListener, KeyListener, ListSele
         @Override
         public void run() {
 
-            for(PDU pdu : this.list) {
+            for(PDU pdu : list) {
 
                 switch(pdu.getType()) {
 
@@ -785,11 +784,10 @@ public class EntityTrackerFrame implements ActionListener, KeyListener, ListSele
             this.columnName = columnName;
             this.columnClass = columnClass;
             this.columnWidth = columnWidth;
-            this.columnComparator = Utilities.getComparator(columnClass);
+            columnComparator = Utilities.getComparator(columnClass);
         }
     }
 
-    @SuppressWarnings("serial")
     class TableModel extends AbstractTableModel {
 
         @Override

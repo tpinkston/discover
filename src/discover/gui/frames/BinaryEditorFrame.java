@@ -44,8 +44,10 @@ import discover.vdis.PDU;
  * @author Tony Pinkston
  */
 @SuppressWarnings("serial")
-public class BinaryEditorFrame implements ActionListener, MouseListener {
-    
+public class BinaryEditorFrame
+        extends JFrame
+        implements ActionListener, MouseListener {
+
     private static final Logger logger = LoggerFactory.getLogger(BinaryEditorFrame.class);
 
     private static final String TITLE = "Binary Editor";
@@ -71,18 +73,6 @@ public class BinaryEditorFrame implements ActionListener, MouseListener {
     private static final int COLUMNS = 4;
 
     private static BinaryEditorFrame instance = null;
-
-    private final JFrame frame = new JFrame() {
-
-        @Override
-        public void dispose() {
-
-            instance = null;
-
-            cleanup();
-            super.dispose();
-        }
-    };
 
     private final JLabel offset = new JLabel();
     private final JLabel index = new JLabel();
@@ -130,70 +120,74 @@ public class BinaryEditorFrame implements ActionListener, MouseListener {
 
     public static JFrame getFrame() {
 
-        if (instance == null) {
-
-            return null;
-        }
-        else {
-
-            return instance.frame;
-        }
+        return instance;
     }
 
     private BinaryEditorFrame(PlaybackTab tab, PDU pdu) {
 
-        this.frame.setTitle(TITLE + ": " + tab.getTabName());
+        super(TITLE + ": " + tab.getName());
+
         this.tab = tab;
         this.pdu = pdu;
-        this.copy = pdu.copy();
-        this.length = this.pdu.getLength();
-        this.original = Arrays.copyOf(pdu.getData(), this.length);
-        this.bytes = new ByteLabel[this.length];
 
-        System.arraycopy(this.pdu.getData(), 0, this.original, 0, this.length);
+        copy = pdu.copy();
+        length = this.pdu.getLength();
+        original = Arrays.copyOf(pdu.getData(), length);
+        bytes = new ByteLabel[length];
 
-        this.setOriginalBytes();
-        this.updateLabels(-1, -1);
+        System.arraycopy(this.pdu.getData(), 0, original, 0, length);
 
-        this.save.setEnabled(false);
-        this.save.setActionCommand(SAVE);
-        this.save.addActionListener(this);
-        this.save.setToolTipText("Saves PDU and closes window.");
+        setOriginalBytes();
+        updateLabels(-1, -1);
 
-        this.apply.setEnabled(false);
-        this.apply.setActionCommand(APPLY);
-        this.apply.addActionListener(this);
-        this.apply.setToolTipText("Applies changes to PDU data.");
+        save.setEnabled(false);
+        save.setActionCommand(SAVE);
+        save.addActionListener(this);
+        save.setToolTipText("Saves PDU and closes window.");
 
-        this.undo.setEnabled(false);
-        this.undo.setActionCommand(UNDO);
-        this.undo.addActionListener(this);
-        this.undo.setToolTipText("Undo last change to PDU data.");
+        apply.setEnabled(false);
+        apply.setActionCommand(APPLY);
+        apply.addActionListener(this);
+        apply.setToolTipText("Applies changes to PDU data.");
 
-        this.revert.setEnabled(false);
-        this.revert.setActionCommand(REVERT);
-        this.revert.addActionListener(this);
-        this.revert.setToolTipText("Reverts PDU to original data.");
+        undo.setEnabled(false);
+        undo.setActionCommand(UNDO);
+        undo.addActionListener(this);
+        undo.setToolTipText("Undo last change to PDU data.");
 
-        this.cancel.setEnabled(true);
-        this.cancel.setActionCommand(CANCEL);
-        this.cancel.addActionListener(this);
-        this.cancel.setToolTipText("Cancel changes and closes window.");
+        revert.setEnabled(false);
+        revert.setActionCommand(REVERT);
+        revert.addActionListener(this);
+        revert.setToolTipText("Reverts PDU to original data.");
 
-        this.fill();
+        cancel.setEnabled(true);
+        cancel.setActionCommand(CANCEL);
+        cancel.addActionListener(this);
+        cancel.setToolTipText("Cancel changes and closes window.");
 
-        this.popup.add(this.clearByte);
-        this.popup.add(this.setByte);
+        fill();
 
-        this.frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.frame.setPreferredSize(new Dimension(800, 600));
-        this.frame.pack();
+        popup.add(clearByte);
+        popup.add(setByte);
 
-        this.show(this.copy);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setPreferredSize(new Dimension(800, 600));
+        pack();
 
-        Utilities.center(DiscoverFrame.getFrame(), this.frame);
+        show(copy);
 
-        this.frame.setVisible(true);
+        Utilities.center(DiscoverFrame.getFrame(), this);
+
+        setVisible(true);
+    }
+
+    @Override
+    public void dispose() {
+
+        instance = null;
+
+        cleanup();
+        super.dispose();
     }
 
     @Override
@@ -206,24 +200,24 @@ public class BinaryEditorFrame implements ActionListener, MouseListener {
         }
         else if (command.equals(SAVE)) {
 
-            this.saveChanges();
-            this.frame.dispose();
+            saveChanges();
+            dispose();
         }
         else if (command.equals(APPLY)) {
 
-            this.applyChanges();
+            applyChanges();
         }
         else if (command.equals(UNDO)) {
 
-            this.undoLastChange();
+            undoLastChange();
         }
        else if (command.equals(REVERT)) {
 
-            this.revertChanges();
+            revertChanges();
         }
         else if (command.equals(CANCEL)) {
 
-            this.frame.dispose();
+            dispose();
         }
     }
 
@@ -240,7 +234,7 @@ public class BinaryEditorFrame implements ActionListener, MouseListener {
 
                 label.toggle();
 
-                this.modified(label, new Boolean(!label.isSet()));
+                modified(label, new Boolean(!label.isSet()));
             }
         }
     }
@@ -251,15 +245,15 @@ public class BinaryEditorFrame implements ActionListener, MouseListener {
         if (event.isPopupTrigger()) {
 
             BitLabel label1 = (BitLabel)event.getSource();
-            ByteLabel label2 = this.bytes[label1.getIndex()];
+            ByteLabel label2 = bytes[label1.getIndex()];
 
             if (label2.isEditable()) {
 
-                this.clearByte.setEnabled(label2.getValue() != (byte)0);
-                this.clearByte.label = label2;
-                this.setByte.label = label2;
+                clearByte.setEnabled(label2.getValue() != (byte)0);
+                clearByte.label = label2;
+                setByte.label = label2;
 
-                this.popup.show(
+                popup.show(
                     (Component)event.getSource(),
                     event.getX(),
                     event.getY());
@@ -279,35 +273,35 @@ public class BinaryEditorFrame implements ActionListener, MouseListener {
 
             BitLabel label = (BitLabel)event.getSource();
 
-            this.updateLabels(label.getOffset(), label.getIndex());
+            updateLabels(label.getOffset(), label.getIndex());
         }
    }
 
     @Override
     public void mouseExited(MouseEvent event) {
 
-        this.updateLabels(-1, -1);
+        updateLabels(-1, -1);
     }
 
     private void applyChanges() {
 
-        this.copy.setData(this.getUpdatedBytes());
+        copy.setData(getUpdatedBytes());
 
-        this.show(this.copy);
+        show(copy);
 
-        this.apply.setEnabled(false);
-        this.save.setEnabled(true);
+        apply.setEnabled(false);
+        save.setEnabled(true);
     }
 
     private void undoLastChange() {
 
-        if (this.changes.size() == 1) {
+        if (changes.size() == 1) {
 
-            this.revertChanges();
+            revertChanges();
         }
-        else if (this.changes.size() > 1) {
+        else if (changes.size() > 1) {
 
-            Change change = this.changes.removeLast();
+            Change change = changes.removeLast();
 
             if (change.source instanceof ByteLabel) {
 
@@ -328,43 +322,43 @@ public class BinaryEditorFrame implements ActionListener, MouseListener {
 
     private void revertChanges() {
 
-        this.copy.setData(this.original);
+        copy.setData(original);
 
-        this.show(this.copy);
+        show(copy);
 
-        this.changes.clear();
+        changes.clear();
 
-        this.save.setEnabled(false);
-        this.apply.setEnabled(false);
-        this.undo.setEnabled(false);
-        this.revert.setEnabled(false);
+        save.setEnabled(false);
+        apply.setEnabled(false);
+        undo.setEnabled(false);
+        revert.setEnabled(false);
 
-        this.setOriginalBytes();
+        setOriginalBytes();
     }
 
     private void saveChanges() {
 
-        this.pdu.setData(this.getUpdatedBytes());
-        this.pdu.decode(true);
-        this.tab.modified(this.pdu);
+        pdu.setData(getUpdatedBytes());
+        pdu.decode(true);
+        tab.modified(pdu);
     }
 
     private void modified(Object source, Object previous) {
 
-        this.save.setEnabled(false);
-        this.apply.setEnabled(true);
-        this.undo.setEnabled(true);
-        this.revert.setEnabled(true);
+        save.setEnabled(false);
+        apply.setEnabled(true);
+        undo.setEnabled(true);
+        revert.setEnabled(true);
 
-        this.changes.addLast(new Change(source, previous));
+        changes.addLast(new Change(source, previous));
     }
 
     private void show(PDU pdu) {
 
         if (pdu == null) {
 
-            this.content.setText("");
-            this.hexadecimal.setText("");
+            content.setText("");
+            hexadecimal.setText("");
         }
         else {
 
@@ -378,8 +372,8 @@ public class BinaryEditorFrame implements ActionListener, MouseListener {
                 buffer.addBuffer(pdu);
                 buffer.addText("</body></html>");
 
-                this.content.setText(buffer.toString());
-                this.content.setCaretPosition(0);
+                content.setText(buffer.toString());
+                content.setCaretPosition(0);
             }
             catch(Exception exception) {
 
@@ -397,8 +391,8 @@ public class BinaryEditorFrame implements ActionListener, MouseListener {
                     false,
                     pdu.getData());
 
-                this.hexadecimal.setText(buffer.toString());
-                this.hexadecimal.setCaretPosition(0);
+                hexadecimal.setText(buffer.toString());
+                hexadecimal.setCaretPosition(0);
             }
             catch(Exception exception) {
 
@@ -409,11 +403,11 @@ public class BinaryEditorFrame implements ActionListener, MouseListener {
 
     private byte[] getUpdatedBytes() {
 
-        byte array[] = new byte[this.length];
+        byte array[] = new byte[length];
 
-        for(int index = 0; index < this.length; ++index) {
+        for(int index = 0; index < length; ++index) {
 
-            array[index] = this.bytes[index].getValue();
+            array[index] = bytes[index].getValue();
         }
 
         return array;
@@ -421,18 +415,18 @@ public class BinaryEditorFrame implements ActionListener, MouseListener {
 
     private void setOriginalBytes() {
 
-        for(int index = 0; index < this.length; ++index) {
+        for(int index = 0; index < length; ++index) {
 
-            if (this.bytes[index] == null) {
+            if (bytes[index] == null) {
 
-                this.bytes[index] = new ByteLabel(
-                    this.pdu,
+                bytes[index] = new ByteLabel(
+                    pdu,
                     index,
-                    this.original[index]);
+                    original[index]);
             }
             else {
 
-                this.bytes[index].setValue(this.original[index]);
+                bytes[index].setValue(original[index]);
             }
         }
     }
@@ -461,7 +455,7 @@ public class BinaryEditorFrame implements ActionListener, MouseListener {
     private void error(String message) {
 
         JOptionPane.showMessageDialog(
-            this.frame,
+            this,
             message,
             TITLE,
             JOptionPane.ERROR_MESSAGE);
@@ -469,15 +463,15 @@ public class BinaryEditorFrame implements ActionListener, MouseListener {
 
     private void cleanup() {
 
-        this.frame.removeAll();
+        removeAll();
 
-        this.save.removeActionListener(this);
-        this.apply.removeActionListener(this);
-        this.undo.removeActionListener(this);
-        this.revert.removeActionListener(this);
-        this.cancel.removeActionListener(this);
+        save.removeActionListener(this);
+        apply.removeActionListener(this);
+        undo.removeActionListener(this);
+        revert.removeActionListener(this);
+        cancel.removeActionListener(this);
 
-        for(ByteLabel label : this.bytes) {
+        for(ByteLabel label : bytes) {
 
             for(BitLabel bit : label.labels) {
 
@@ -499,21 +493,21 @@ public class BinaryEditorFrame implements ActionListener, MouseListener {
         scroller.setMinimumSize(BINARY_MINIMUM);
         scroller.setPreferredSize(BINARY_PREFERRED);
 
-        buttons.add(this.save);
-        buttons.add(this.apply);
-        buttons.add(this.undo);
-        buttons.add(this.revert);
-        buttons.add(this.cancel);
+        buttons.add(save);
+        buttons.add(apply);
+        buttons.add(undo);
+        buttons.add(revert);
+        buttons.add(cancel);
 
-        tabs.addTab("Content", this.content.getPanel());
-        tabs.addTab("Hexadecimal", this.hexadecimal.getPanel());
+        tabs.addTab("Content", content);
+        tabs.addTab("Hexadecimal", hexadecimal);
 
         status.setFloatable(false);
         status.add(new JLabel("Bit: "));
-        status.add(this.offset);
+        status.add(offset);
         status.addSeparator();
         status.add(new JLabel("Byte: "));
-        status.add(this.index);
+        status.add(index);
 
         panel.add(status, BorderLayout.NORTH);
         panel.add(scroller, BorderLayout.CENTER);
@@ -525,7 +519,7 @@ public class BinaryEditorFrame implements ActionListener, MouseListener {
         int index = 0;
         int gridy = 0;
 
-        while(index < this.length) {
+        while(index < length) {
 
             int gridx = 0;
 
@@ -542,16 +536,16 @@ public class BinaryEditorFrame implements ActionListener, MouseListener {
 
             for(int column = 0; column < COLUMNS; ++index, ++column) {
 
-                if (index < this.length) {
+                if (index < length) {
 
-                    gridx = this.addByte(labels, index, column, gridx, gridy);
+                    gridx = addByte(labels, index, column, gridx, gridy);
                 }
             }
 
             ++gridy;
         }
 
-        this.frame.add(split, BorderLayout.CENTER);
+        add(split, BorderLayout.CENTER);
     }
 
     private int addByte(
@@ -563,7 +557,7 @@ public class BinaryEditorFrame implements ActionListener, MouseListener {
 
         if (column > 0) {
 
-            this.addSeparator(panel, gridx, gridy);
+            addSeparator(panel, gridx, gridy);
             ++gridx;
         }
 
@@ -584,7 +578,7 @@ public class BinaryEditorFrame implements ActionListener, MouseListener {
 
                 Utilities.addComponent(
                     panel,
-                    this.bytes[index].labels[7 - i],
+                    bytes[index].labels[7 - i],
                     Utilities.HORIZONTAL,
                     gridx, gridy,
                     1, 1,
@@ -656,11 +650,11 @@ public class BinaryEditorFrame implements ActionListener, MouseListener {
         @Override
         public void actionPerformed(ActionEvent event) {
 
-            Byte previous = new Byte(this.label.getValue());
+            Byte previous = new Byte(label.getValue());
 
-            this.label.setValue(ZERO_BYTE);
+            label.setValue(ZERO_BYTE);
 
-            modified(this.label, previous);
+            modified(label, previous);
         }
     }
 
@@ -681,20 +675,20 @@ public class BinaryEditorFrame implements ActionListener, MouseListener {
         public void actionPerformed(ActionEvent event) {
 
             String input = JOptionPane.showInputDialog(
-                frame,
+                BinaryEditorFrame.this,
                 "Enter new byte value as decimal (-128 to 127):",
-                Integer.toString(this.label.getValue()));
+                Integer.toString(label.getValue()));
 
             if (input != null) {
 
                 try {
 
-                    Byte previous = new Byte(this.label.getValue());
+                    Byte previous = new Byte(label.getValue());
                     Byte value = Byte.parseByte(input);
 
-                    this.label.setValue(value.byteValue());
+                    label.setValue(value.byteValue());
 
-                    modified(this.label, previous);
+                    modified(label, previous);
                 }
                 catch(NumberFormatException exception) {
 
@@ -716,7 +710,7 @@ public class BinaryEditorFrame implements ActionListener, MouseListener {
 
             for(int bit = 0; bit < 8; ++bit) {
 
-                this.labels[bit] = new BitLabel(
+                labels[bit] = new BitLabel(
                     index,
                     bit,
                     Binary.get1Bit(bit, value),
@@ -728,7 +722,7 @@ public class BinaryEditorFrame implements ActionListener, MouseListener {
 
             for(int bit = 0; bit < 8; ++bit) {
 
-                this.labels[bit].set(Binary.get1Bit(bit, value));
+                labels[bit].set(Binary.get1Bit(bit, value));
             }
         }
 
@@ -738,7 +732,7 @@ public class BinaryEditorFrame implements ActionListener, MouseListener {
 
             for(int bit = 0; bit < 8; ++bit) {
 
-                value = setBit(bit, value, this.labels[bit].isSet());
+                value = setBit(bit, value, labels[bit].isSet());
             }
 
             return value;
@@ -746,7 +740,7 @@ public class BinaryEditorFrame implements ActionListener, MouseListener {
 
         public boolean isEditable() {
 
-            for(BitLabel label : this.labels) {
+            for(BitLabel label : labels) {
 
                 if (!label.isEditable()) {
 
@@ -764,7 +758,7 @@ public class BinaryEditorFrame implements ActionListener, MouseListener {
 
             for(int bit = 8; bit >= 0; --bit) {
 
-                buffer.append(this.labels[bit].getText());
+                buffer.append(labels[bit].getText());
             }
 
             return buffer.toString();
@@ -789,10 +783,10 @@ public class BinaryEditorFrame implements ActionListener, MouseListener {
 
             this.index = index;
             this.bit = bit;
-            this.offset = ((this.index * 8) + (7 - this.bit));
+            offset = ((this.index * 8) + (7 - this.bit));
             this.editable = editable;
 
-            this.set(value);
+            set(value);
 
             super.addMouseListener(BinaryEditorFrame.this);
 
@@ -802,19 +796,19 @@ public class BinaryEditorFrame implements ActionListener, MouseListener {
             }
         }
 
-        int getIndex() { return this.index; }
+        int getIndex() { return index; }
 
-        int getBit() { return this.bit; }
+        int getBit() { return bit; }
 
-        int getOffset() { return this.offset; }
+        int getOffset() { return offset; }
 
-        boolean isEditable() { return this.editable; }
+        boolean isEditable() { return editable; }
 
         boolean isSet() { return super.getText().equals(VALUES[1]); }
 
         void toggle() {
 
-            this.set(this.isSet() ? 0 : 1);
+            set(isSet() ? 0 : 1);
         }
 
         void set(int value) {

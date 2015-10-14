@@ -46,7 +46,9 @@ import discover.vdis.enums.VDIS;
  * @author Tony Pinkston
  */
 @SuppressWarnings("serial")
-public class SiteMapFrame implements MouseListener, TreeSelectionListener {
+public class SiteMapFrame
+        extends JFrame
+        implements MouseListener, TreeSelectionListener {
 
     private static final Logger logger = LoggerFactory.getLogger(SiteMapFrame.class);
 
@@ -59,7 +61,6 @@ public class SiteMapFrame implements MouseListener, TreeSelectionListener {
 
     private static final Dimension TREE_PREFERRED = new Dimension(300, 500);
 
-    private final JFrame frame;
     private final JTree tree;
     private final JPopupMenu popup;
     private final TreeNode root;
@@ -75,7 +76,6 @@ public class SiteMapFrame implements MouseListener, TreeSelectionListener {
      */
     public SiteMapFrame(String title) {
 
-        frame = new JFrame();
         popup = new JPopupMenu();
         root = new World();
         tree = new JTree(root);
@@ -95,27 +95,23 @@ public class SiteMapFrame implements MouseListener, TreeSelectionListener {
         fill();
         setTitle(title);
 
-        frame.setMinimumSize(new Dimension(600, 500));
-        frame.setPreferredSize(new Dimension(800, 600));
-        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        frame.pack();
-    }
-
-    public JFrame getFrame() {
-
-        return frame;
+        setMinimumSize(new Dimension(600, 500));
+        setPreferredSize(new Dimension(800, 600));
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
+        pack();
     }
 
     public void destroy() {
 
         tree.removeMouseListener(this);
         tree.removeTreeSelectionListener(this);
-        frame.dispose();
+        dispose();
     }
 
+    @Override
     public void setTitle(String title) {
 
-        frame.setTitle("Site Map [" + title + "]");
+        super.setTitle("Site Map [" + title + "]");
     }
 
     public void clearAll() {
@@ -356,7 +352,7 @@ public class SiteMapFrame implements MouseListener, TreeSelectionListener {
         split.setLeftComponent(scroller);
         split.setRightComponent(description);
 
-        frame.add(split, BorderLayout.CENTER);
+        add(split, BorderLayout.CENTER);
     }
 
     class ClearAction extends AbstractAction {
@@ -381,7 +377,7 @@ public class SiteMapFrame implements MouseListener, TreeSelectionListener {
         public void actionPerformed(ActionEvent event) {
 
             int choice = JOptionPane.showConfirmDialog(
-                frame,
+                SiteMapFrame.this,
                 "Clear all PDU totals for " + node.toString() + "?",
                 "Site Map",
                 JOptionPane.YES_NO_CANCEL_OPTION,
@@ -419,7 +415,7 @@ public class SiteMapFrame implements MouseListener, TreeSelectionListener {
         public void actionPerformed(ActionEvent event) {
 
             int choice = JOptionPane.showConfirmDialog(
-                frame,
+                SiteMapFrame.this,
                 "Remove " + node.toString() + " and sub-nodes?",
                 node.getClass().getSimpleName(),
                 JOptionPane.YES_NO_CANCEL_OPTION,

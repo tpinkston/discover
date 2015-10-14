@@ -28,7 +28,8 @@ import discover.gui.Utilities;
 /**
  * @author Tony Pinkston
  */
-public class ConversionFrame implements ActionListener {
+@SuppressWarnings("serial")
+public class ConversionFrame extends JFrame implements ActionListener {
 
     private static ConversionFrame instance = null;
 
@@ -41,8 +42,6 @@ public class ConversionFrame implements ActionListener {
         format.setMinimumFractionDigits(1);
         format.setMaximumFractionDigits(12);
     }
-
-    private final JFrame frame = new JFrame("Number Conversion");
 
     private final JButton convert = new JButton("Convert");
     private final JButton reset = new JButton("Reset");
@@ -67,14 +66,7 @@ public class ConversionFrame implements ActionListener {
 
     public static JFrame getFrame() {
 
-        if (instance == null) {
-
-            return null;
-        }
-        else {
-
-            return instance.frame;
-        }
+        return instance;
     }
 
     public static void setVisible() {
@@ -84,64 +76,66 @@ public class ConversionFrame implements ActionListener {
             instance = new ConversionFrame();
         }
 
-        if (!instance.frame.isVisible()) {
+        if (!instance.isVisible()) {
 
-            instance.frame.setVisible(true);
+            instance.setVisible(true);
         }
     }
 
-    public ConversionFrame() {
+    private ConversionFrame() {
+
+        super("Number Conversion");
 
         ButtonGroup type = new ButtonGroup();
-        type.add(this.ascii);
-        type.add(this.integer);
-        type.add(this.floating);
+        type.add(ascii);
+        type.add(integer);
+        type.add(floating);
 
         ButtonGroup base = new ButtonGroup();
-        base.add(this.decimal);
-        base.add(this.hexadecimal);
-        base.add(this.binary);
+        base.add(decimal);
+        base.add(hexadecimal);
+        base.add(binary);
 
         ButtonGroup size = new ButtonGroup();
-        size.add(this.size8bits);
-        size.add(this.size16bits);
-        size.add(this.size32bits);
-        size.add(this.size64bits);
+        size.add(size8bits);
+        size.add(size16bits);
+        size.add(size32bits);
+        size.add(size64bits);
 
         JToolBar tools = new JToolBar();
         tools.setFloatable(false);
-        tools.add(this.ascii);
-        tools.add(this.integer);
-        tools.add(this.floating);
+        tools.add(ascii);
+        tools.add(integer);
+        tools.add(floating);
         tools.addSeparator();
-        tools.add(this.decimal);
-        tools.add(this.hexadecimal);
-        tools.add(this.binary);
+        tools.add(decimal);
+        tools.add(hexadecimal);
+        tools.add(binary);
         tools.addSeparator();
-        tools.add(this.size8bits);
-        tools.add(this.size16bits);
-        tools.add(this.size32bits);
-        tools.add(this.size64bits);
+        tools.add(size8bits);
+        tools.add(size16bits);
+        tools.add(size32bits);
+        tools.add(size64bits);
         tools.addSeparator();
-        tools.add(this.reset);
+        tools.add(reset);
 
-        this.input.addActionListener(this);
-        this.convert.addActionListener(this);
-        this.reset.addActionListener(this);
-        this.ascii.addActionListener(this);
-        this.integer.addActionListener(this);
-        this.floating.addActionListener(this);
+        input.addActionListener(this);
+        convert.addActionListener(this);
+        reset.addActionListener(this);
+        ascii.addActionListener(this);
+        integer.addActionListener(this);
+        floating.addActionListener(this);
 
-        this.output.setEditable(false);
-        this.integer.setSelected(true);
-        this.decimal.setSelected(true);
-        this.size32bits.setSelected(true);
+        output.setEditable(false);
+        integer.setSelected(true);
+        decimal.setSelected(true);
+        size32bits.setSelected(true);
 
         JPanel panel = Utilities.getGridBagPanel(null);
 
         Utilities.addComponent(
             panel,
-            this.input,
+            input,
             Utilities.HORIZONTAL,
             0, 0,
             1, 1,
@@ -149,7 +143,7 @@ public class ConversionFrame implements ActionListener {
             Utilities.getInsets(5, 5, 2, 1));
         Utilities.addComponent(
             panel,
-            this.convert,
+            convert,
             Utilities.HORIZONTAL,
             1, 0,
             1, 1,
@@ -157,19 +151,19 @@ public class ConversionFrame implements ActionListener {
             Utilities.getInsets(5, 1, 2, 5));
         Utilities.addComponent(
             panel,
-            this.scroller,
+            scroller,
             Utilities.BOTH,
             0, 1,
             2, 1,
             1.0, 1.0,
             Utilities.getInsets(2, 5, 5, 5));
 
-        this.frame.add(tools, BorderLayout.NORTH);
-        this.frame.add(panel, BorderLayout.CENTER);
-        this.frame.setMinimumSize(new Dimension(750, 300));
-        this.frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        add(tools, BorderLayout.NORTH);
+        add(panel, BorderLayout.CENTER);
+        setMinimumSize(new Dimension(750, 300));
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
 
-        Utilities.center(DiscoverFrame.getFrame(), this.frame);
+        Utilities.center(DiscoverFrame.getFrame(), this);
     }
 
     @Override
@@ -177,53 +171,53 @@ public class ConversionFrame implements ActionListener {
 
         Object source = event.getSource();
 
-        if ((source == this.convert) || (source == this.input)) {
+        if ((source == convert) || (source == input)) {
 
-            this.convert();
+            convert();
         }
-        else if (source == this.reset) {
+        else if (source == reset) {
 
-            this.input.setText("");
-            this.output.setText("");
+            input.setText("");
+            output.setText("");
         }
-        else if (source == this.ascii) {
+        else if (source == ascii) {
 
-            this.size8bits.setSelected(true);
-            this.size8bits.setEnabled(true);
-            this.size16bits.setEnabled(false);
-            this.size32bits.setEnabled(false);
-            this.size64bits.setEnabled(false);
+            size8bits.setSelected(true);
+            size8bits.setEnabled(true);
+            size16bits.setEnabled(false);
+            size32bits.setEnabled(false);
+            size64bits.setEnabled(false);
 
-            this.decimal.setEnabled(false);
-            this.hexadecimal.setEnabled(false);
-            this.binary.setEnabled(false);
+            decimal.setEnabled(false);
+            hexadecimal.setEnabled(false);
+            binary.setEnabled(false);
         }
-        else if (source == this.integer) {
+        else if (source == integer) {
 
-            this.size8bits.setEnabled(true);
-            this.size16bits.setEnabled(true);
-            this.size32bits.setEnabled(true);
-            this.size64bits.setEnabled(true);
+            size8bits.setEnabled(true);
+            size16bits.setEnabled(true);
+            size32bits.setEnabled(true);
+            size64bits.setEnabled(true);
 
-            this.decimal.setEnabled(true);
-            this.hexadecimal.setEnabled(true);
-            this.binary.setEnabled(true);
+            decimal.setEnabled(true);
+            hexadecimal.setEnabled(true);
+            binary.setEnabled(true);
         }
-        else if (source == this.floating) {
+        else if (source == floating) {
 
-            if (this.size8bits.isSelected() || this.size16bits.isSelected()) {
+            if (size8bits.isSelected() || size16bits.isSelected()) {
 
-                this.size32bits.setSelected(true);
+                size32bits.setSelected(true);
             }
 
-            this.size8bits.setEnabled(false);
-            this.size16bits.setEnabled(false);
-            this.size32bits.setEnabled(true);
-            this.size64bits.setEnabled(true);
+            size8bits.setEnabled(false);
+            size16bits.setEnabled(false);
+            size32bits.setEnabled(true);
+            size64bits.setEnabled(true);
 
-            this.decimal.setEnabled(true);
-            this.hexadecimal.setEnabled(true);
-            this.binary.setEnabled(true);
+            decimal.setEnabled(true);
+            hexadecimal.setEnabled(true);
+            binary.setEnabled(true);
         }
     }
 
@@ -233,7 +227,7 @@ public class ConversionFrame implements ActionListener {
 
         try {
 
-            Number number = this.getNumber();
+            Number number = getNumber();
 
             if (number == null) {
 
@@ -250,24 +244,24 @@ public class ConversionFrame implements ActionListener {
                 if (number instanceof Float) {
 
                     buffer.append(" (");
-                    buffer.append(format.format((Float)number));
+                    buffer.append(format.format(number));
                     buffer.append(")");
                 }
                 else if (number instanceof Double) {
 
                     buffer.append(" (");
-                    buffer.append(format.format((Double)number));
+                    buffer.append(format.format(number));
                     buffer.append(")");
                 }
 
                 buffer.append("\n");
 
-                this.convertToHexadecimal(number, buffer);
-                this.convertToBinary(number, buffer);
+                convertToHexadecimal(number, buffer);
+                convertToBinary(number, buffer);
 
-                if (this.size8bits.isSelected()) {
+                if (size8bits.isSelected()) {
 
-                    this.convertToASCII(number, buffer);
+                    convertToASCII(number, buffer);
                 }
             }
         }
@@ -279,10 +273,10 @@ public class ConversionFrame implements ActionListener {
             buffer.append("\n");
         }
 
-        this.output.append(buffer.toString());
-        this.output.scrollRectToVisible(new Rectangle(
+        output.append(buffer.toString());
+        output.scrollRectToVisible(new Rectangle(
             0,
-            (this.output.getHeight() - 2),
+            (output.getHeight() - 2),
             1,
             1));
     }
@@ -293,7 +287,7 @@ public class ConversionFrame implements ActionListener {
 
         buffer.append("ASCII: ");
 
-        if (this.isPrintable(value)) {
+        if (isPrintable(value)) {
 
             buffer.append("\"");
             buffer.append(value);
@@ -362,13 +356,13 @@ public class ConversionFrame implements ActionListener {
 
     private Number getNumber() throws NumberFormatException {
 
-        final String value = this.input.getText();
+        final String value = input.getText();
         final boolean floating = this.floating.isSelected();
-        final int size = this.getSize();
+        final int size = getNumberSize();
 
         if (size > 0) {
 
-            if (this.ascii.isSelected()) {
+            if (ascii.isSelected()) {
 
                 if (value.length() > 1) {
 
@@ -380,15 +374,15 @@ public class ConversionFrame implements ActionListener {
                     return new Byte((byte)value.charAt(0));
                 }
             }
-            else if (this.decimal.isSelected()) {
+            else if (decimal.isSelected()) {
 
                 return Common.getNumber(value, size, Common.DEC, floating);
             }
-            else if (this.hexadecimal.isSelected()) {
+            else if (hexadecimal.isSelected()) {
 
                 return Common.getNumber(value, size, Common.HEX, floating);
             }
-            else if (this.binary.isSelected()) {
+            else if (binary.isSelected()) {
 
                 return Common.getNumber(value, size, Common.BIN, floating);
             }
@@ -397,23 +391,23 @@ public class ConversionFrame implements ActionListener {
         return null;
     }
 
-    private int getSize() {
+    private int getNumberSize() {
 
         int size = 0;
 
-        if (this.size64bits.isSelected()) {
+        if (size64bits.isSelected()) {
 
             size = Common.SIZE64;
         }
-        else if (this.size32bits.isSelected()) {
+        else if (size32bits.isSelected()) {
 
             size = Common.SIZE32;
         }
-        else if (this.size16bits.isSelected()) {
+        else if (size16bits.isSelected()) {
 
             size = Common.SIZE16;
         }
-        else if (this.size8bits.isSelected()) {
+        else if (size8bits.isSelected()) {
 
             size = Common.SIZE8;
         }

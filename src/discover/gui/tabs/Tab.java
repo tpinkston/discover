@@ -15,19 +15,20 @@ import discover.common.Version;
 /**
  * @author Tony Pinkston
  */
-public abstract class Tab {
+@SuppressWarnings("serial")
+public abstract class Tab extends JPanel {
 
     protected static final Logger logger = LoggerFactory.getLogger(Tab.class);
 
-    // TODO: Make private
-    protected final JPanel panel;
-    protected final TabType type;
+    private final TabType type;
 
     protected Tab(String name, TabType tabType) {
 
+        super(new GridBagLayout());
+
         type = tabType;
-        panel = new JPanel(new GridBagLayout());
-        panel.setName(name);
+
+        setName(name);
     }
 
     public abstract void load(Version version, DataInputStream stream) throws IOException;
@@ -36,28 +37,13 @@ public abstract class Tab {
 
     public abstract void close();
 
-    public JPanel getPanel() {
-
-        return panel;
-    }
-
-    public TabType getTabType() {
+    public final TabType getType() {
 
         return type;
     }
 
-    public String getTabName() {
-
-        return panel.getName();
-    }
-
-    public void setTabName(String name) {
-
-        panel.setName(name);
-    }
-
     public final boolean isPDUPanel() {
 
-        return (type == TabType.CAPTURE) || (type == TabType.PLAYBACK);
+        return (this instanceof PDUTab);
     }
 }

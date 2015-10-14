@@ -42,6 +42,7 @@ import discover.vdis.PDU;
 /**
  * @author Tony Pinkston
  */
+@SuppressWarnings("serial")
 public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
 
     public static final String BUILDER_TAB = "(Builder Tab)";
@@ -72,7 +73,7 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
         setPDULength();
         updateClipboardStatus(null);
         fill();
-        show();
+        showPDU();
     }
 
     @Override
@@ -183,8 +184,8 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
     @Override
     public void save(DataOutputStream stream) throws IOException {
 
-        stream.writeInt(getTabType().ordinal());
-        stream.writeUTF(getTabName());
+        stream.writeInt(getType().ordinal());
+        stream.writeUTF(getName());
 
         stream.writeInt(buffer.length);
 
@@ -250,7 +251,7 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
 
                 if (show) {
 
-                    show();
+                    showPDU();
                 }
             }
         }
@@ -275,7 +276,7 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
         }
     }
 
-    private void show() {
+    private void showPDU() {
 
         if (buffer == null) {
 
@@ -346,8 +347,8 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
         JTabbedPane tabbed = new JTabbedPane(JTabbedPane.BOTTOM);
         Insets insets = new Insets(3, 3, 3, 20);
 
-        tabbed.add("Content", content.getPanel());
-        tabbed.add("Byte View", hexadecimal.getPanel());
+        tabbed.add("Content", content);
+        tabbed.add("Byte View", hexadecimal);
 
         Utilities.addComponent(
             status,
@@ -376,7 +377,7 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
         tools.add(new Custom());
 
         Utilities.addComponent(
-            getPanel(),
+            this,
             split,
             Utilities.BOTH,
             0, 0,
@@ -392,7 +393,6 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
         tools.setFloatable(false);
     }
 
-    @SuppressWarnings("serial")
     class TableModel extends AbstractTableModel {
 
         @Override
@@ -475,7 +475,6 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
         }
     }
 
-    @SuppressWarnings("serial")
     class Apply extends AbstractAction {
 
         public Apply() {
@@ -487,11 +486,10 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
         public void actionPerformed(ActionEvent event) {
 
             setPDULength();
-            show();
+            showPDU();
         }
     }
 
-    @SuppressWarnings("serial")
     class Custom extends AbstractAction {
 
         public Custom() {
@@ -505,7 +503,6 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
         }
     }
 
-    @SuppressWarnings("serial")
     class InsertBytes extends AbstractAction {
 
         public int row = 0;
@@ -575,7 +572,6 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
         }
     }
 
-    @SuppressWarnings("serial")
     class DeleteBytes extends AbstractAction {
 
         int rows[] = null;

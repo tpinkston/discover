@@ -49,9 +49,10 @@ import discover.vdis.enums.VDIS.Handle;
 /**
  * @author Tony Pinkston
  */
+@SuppressWarnings("serial")
 public abstract class PDUTab
-    extends Tab
-    implements ClipboardTab, ListSelectionListener, MouseListener {
+        extends Tab
+        implements ClipboardTab, ListSelectionListener, MouseListener {
 
     protected static final DateFormat format = DateFormat.getDateTimeInstance();
 
@@ -160,8 +161,8 @@ public abstract class PDUTab
     @Override
     public void save(DataOutputStream stream) throws IOException {
 
-        stream.writeInt(getTabType().ordinal());
-        stream.writeUTF(getTabName());
+        stream.writeInt(getType().ordinal());
+        stream.writeUTF(getName());
 
         lock.readLock().lock();
 
@@ -304,7 +305,7 @@ public abstract class PDUTab
 
                 row = sorter.convertRowIndexToModel(row);
 
-                this.show(getPDU(row));
+                showPDU(getPDU(row));
             }
         }
     }
@@ -328,7 +329,7 @@ public abstract class PDUTab
 
     protected String getThreadName(Integer port) {
 
-        return (getTabName() + "[" + port + "]");
+        return (getName() + "[" + port + "]");
     }
 
     protected void clearAll() {
@@ -339,16 +340,16 @@ public abstract class PDUTab
 
         model.fireTableDataChanged();
 
-        this.show(null);
+        showPDU(null);
     }
 
-    protected void show() {
+    protected void showPDU() {
 
-        this.show(current);
-        this.show(current);
+        showPDU(current);
+        showPDU(current);
     }
 
-    protected void show(PDU pdu) {
+    protected void showPDU(PDU pdu) {
 
         current = pdu;
 
@@ -539,7 +540,6 @@ public abstract class PDUTab
         }
     }
 
-    @SuppressWarnings("serial")
     public class TableModel extends AbstractTableModel {
 
         @Override
@@ -587,7 +587,7 @@ public abstract class PDUTab
         @Override
         public void fireTableDataChanged() {
 
-            fireTableDataChanged();
+            super.fireTableDataChanged();
             updateTotalStatus();
             updateVisibleStatus();
         }
@@ -702,7 +702,6 @@ public abstract class PDUTab
         }
     }
 
-    @SuppressWarnings("serial")
     class FilterDialogAction extends AbstractAction {
 
         public FilterDialogAction() {
@@ -720,11 +719,10 @@ public abstract class PDUTab
         @Override
         public void actionPerformed(ActionEvent event) {
 
-            new FilterDialog(getTabName(), model, filter);
+            new FilterDialog(getName(), model, filter);
         }
     }
 
-    @SuppressWarnings("serial")
     class ApplyFilterAction extends AbstractAction {
 
         public ApplyFilterAction() {
@@ -747,7 +745,7 @@ public abstract class PDUTab
             if (selections.size() == 1) {
 
                 new FilterDialog(
-                    getPanel().getName(),
+                    getName(),
                     selections.get(0),
                     model,
                     filter);
@@ -755,7 +753,6 @@ public abstract class PDUTab
         }
     }
 
-    @SuppressWarnings("serial")
     class EntityAction extends AbstractAction {
 
         public EntityAction() {
@@ -790,7 +787,6 @@ public abstract class PDUTab
         }
     }
 
-    @SuppressWarnings("serial")
     class ScrollAction extends AbstractAction {
 
         private Icon lockedIcon = Utilities.getImageIcon(
@@ -821,7 +817,6 @@ public abstract class PDUTab
         }
     }
 
-    @SuppressWarnings("serial")
     class WriteAction extends AbstractAction {
 
         private static final String WRITE = "Write to Text File";

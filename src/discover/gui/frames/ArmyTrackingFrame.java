@@ -31,22 +31,14 @@ import discover.vdis.marking.army.ArmyTracking;
 /**
  * @author Tony Pinkston
  */
-public class ArmyTrackingFrame {
+@SuppressWarnings("serial")
+public class ArmyTrackingFrame extends JFrame {
 
     private static ArmyTrackingFrame instance = null;
 
-    private final JFrame frame = new JFrame("Army Tracking");
-
     public static JFrame getFrame() {
 
-        if (instance == null) {
-
-            return null;
-        }
-        else {
-
-            return instance.frame;
-        }
+        return instance;
     }
 
     public static void setVisible() {
@@ -56,13 +48,15 @@ public class ArmyTrackingFrame {
             instance = new ArmyTrackingFrame();
         }
 
-        if (!instance.frame.isVisible()) {
+        if (!instance.isVisible()) {
 
-            instance.frame.setVisible(true);
+            instance.setVisible(true);
         }
     }
 
     private ArmyTrackingFrame() {
+
+        super("Army Tracking");
 
         JTabbedPane tabs = new JTabbedPane();
 
@@ -73,10 +67,10 @@ public class ArmyTrackingFrame {
         tabs.add("Squads", new JScrollPane(getSquadTable()));
         tabs.add("Teams", new JScrollPane(getTeamTable()));
 
-        frame.getContentPane().add(tabs, BorderLayout.CENTER);
-        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
+        getContentPane().add(tabs, BorderLayout.CENTER);
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
+        pack();
+        setVisible(true);
     }
 
     private JTable getCompanyTable() {
@@ -284,7 +278,6 @@ public class ArmyTrackingFrame {
         }
     }
 
-    @SuppressWarnings("serial")
     static class TableModel extends AbstractTableModel {
 
         private final Column columns[];
@@ -363,7 +356,6 @@ public class ArmyTrackingFrame {
         }
     }
 
-    @SuppressWarnings("serial")
     static class TreeCellRenderer extends DefaultTreeCellRenderer {
 
         @Override

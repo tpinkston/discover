@@ -33,13 +33,15 @@ import discover.vdis.types.EntityTypes;
 /**
  * @author Tony Pinkston
  */
-public class EntityTypesFrame implements ActionListener, ListSelectionListener {
+@SuppressWarnings("serial")
+public class EntityTypesFrame
+        extends JFrame
+        implements ActionListener, ListSelectionListener {
 
     private static EntityTypesFrame instance = null;
 
     private static final Column COLUMNS[] = Column.values();
 
-    private final JFrame frame = new JFrame("Entity Types");
     private final JComboBox<String> domains = new JComboBox<>();
     private final JComboBox<String> kinds = new JComboBox<>();
     private final JComboBox<String> countries = new JComboBox<>();
@@ -53,14 +55,7 @@ public class EntityTypesFrame implements ActionListener, ListSelectionListener {
 
     public static JFrame getFrame() {
 
-        if (instance == null) {
-
-            return null;
-        }
-        else {
-
-            return instance.frame;
-        }
+        return instance;
     }
 
     public static void setVisible() {
@@ -70,13 +65,15 @@ public class EntityTypesFrame implements ActionListener, ListSelectionListener {
             instance = new EntityTypesFrame();
         }
 
-        if (!instance.frame.isVisible()) {
+        if (!instance.isVisible()) {
 
-            instance.frame.setVisible(true);
+            instance.setVisible(true);
         }
     }
 
     private EntityTypesFrame() {
+
+        super("Entity Types");
 
         types = EntityTypes.getValues();
 
@@ -111,9 +108,9 @@ public class EntityTypesFrame implements ActionListener, ListSelectionListener {
         fill();
         setVisibleObjectCount();
 
-        frame.setPreferredSize(new Dimension(800, 600));
-        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        frame.pack();
+        setPreferredSize(new Dimension(800, 600));
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
+        pack();
     }
 
     @Override
@@ -199,11 +196,11 @@ public class EntityTypesFrame implements ActionListener, ListSelectionListener {
         filter.setFloatable(false);
 
         splitter.setTopComponent(scroller);
-        splitter.setBottomComponent(text.getPanel());
+        splitter.setBottomComponent(text);
 
-        frame.add(filter, BorderLayout.NORTH);
-        frame.add(splitter, BorderLayout.CENTER);
-        frame.add(visible, BorderLayout.SOUTH);
+        add(filter, BorderLayout.NORTH);
+        add(splitter, BorderLayout.CENTER);
+        add(visible, BorderLayout.SOUTH);
     }
 
     public static enum Column {
@@ -226,7 +223,6 @@ public class EntityTypesFrame implements ActionListener, ListSelectionListener {
         }
     }
 
-    @SuppressWarnings("serial")
     class TableModel extends AbstractTableModel {
 
         @Override

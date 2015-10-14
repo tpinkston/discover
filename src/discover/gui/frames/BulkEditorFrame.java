@@ -36,7 +36,9 @@ import discover.vdis.PDU;
  * @author Tony Pinkston
  */
 @SuppressWarnings("serial")
-public class BulkEditorFrame implements ActionListener, MouseListener {
+public class BulkEditorFrame
+        extends JFrame
+        implements ActionListener, MouseListener {
 
     private static final Logger logger = LoggerFactory.getLogger(BulkEditorFrame.class);
 
@@ -56,18 +58,6 @@ public class BulkEditorFrame implements ActionListener, MouseListener {
 
         WAIT_CURSOR = Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR);
     }
-
-    private final JFrame frame = new JFrame() {
-
-        @Override
-        public void dispose() {
-
-            instance = null;
-
-            cleanup();
-            super.dispose();
-        }
-    };
 
     private final JTable table = new JTable();
     private final JPopupMenu popup = new JPopupMenu();
@@ -100,53 +90,56 @@ public class BulkEditorFrame implements ActionListener, MouseListener {
 
     public static JFrame getFrame() {
 
-        if (instance == null) {
-
-            return null;
-        }
-        else {
-
-            return instance.frame;
-        }
+        return instance;
     }
 
     private BulkEditorFrame(PlaybackTab tab, List<PDU> list) {
 
+        super(TITLE + ": " + tab.getName());
+
         logger.debug("Creating with {} PDUs", list.size());
 
-        this.frame.setTitle(TITLE + ": " + tab.getTabName());
         this.tab = tab;
         this.list.addAll(list);
 
-        this.okay.addActionListener(this);
-        this.okay.setActionCommand(OKAY);
-        this.cancel.addActionListener(this);
-        this.cancel.setActionCommand(CANCEL);
+        okay.addActionListener(this);
+        okay.setActionCommand(OKAY);
+        cancel.addActionListener(this);
+        cancel.setActionCommand(CANCEL);
 
-        this.table.setModel(this.model);
-        this.table.addMouseListener(this);
-        this.table.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        table.setModel(model);
+        table.addMouseListener(this);
+        table.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-        this.setColumnSizes();
-        this.fill();
+        setColumnSizes();
+        fill();
 
-        this.insert.addActionListener(this);
-        this.insert.setActionCommand(INSERT_BYTE);
-        this.insert.setToolTipText("Inserts new byte before selected byte.");
-        this.popup.add(insert);
+        insert.addActionListener(this);
+        insert.setActionCommand(INSERT_BYTE);
+        insert.setToolTipText("Inserts new byte before selected byte.");
+        popup.add(insert);
 
-        this.remove.addActionListener(this);
-        this.remove.setActionCommand(REMOVE_BYTE);
-        this.remove.setToolTipText("Remove selected byte from byte array.");
-        this.popup.add(remove);
+        remove.addActionListener(this);
+        remove.setActionCommand(REMOVE_BYTE);
+        remove.setToolTipText("Remove selected byte from byte array.");
+        popup.add(remove);
 
-        this.frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.frame.setPreferredSize(new Dimension(400, 300));
-        this.frame.pack();
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setPreferredSize(new Dimension(400, 300));
+        pack();
 
-        Utilities.center(DiscoverFrame.getFrame(), this.frame);
+        Utilities.center(DiscoverFrame.getFrame(), this);
 
-        this.frame.setVisible(true);
+        setVisible(true);
+    }
+
+    @Override
+    public void dispose() {
+
+        instance = null;
+
+        cleanup();
+        super.dispose();
     }
 
     @Override
@@ -160,7 +153,7 @@ public class BulkEditorFrame implements ActionListener, MouseListener {
         else if (command.equals(OKAY)) {
 
             int option = JOptionPane.showConfirmDialog(
-                this.frame,
+                this,
                 "Apply changes to PDUs?",
                 TITLE,
                 JOptionPane.YES_NO_OPTION,
@@ -168,39 +161,39 @@ public class BulkEditorFrame implements ActionListener, MouseListener {
 
             if (option == JOptionPane.YES_OPTION) {
 
-                this.save();
+                save();
             }
         }
         else if (command.equals(CANCEL)) {
 
-            this.frame.dispose();
+            dispose();
         }
         else if (command.equals(INSERT_BYTE)) {
 
-            this.insertByte();
+            insertByte();
         }
         else if (command.equals(REMOVE_BYTE)) {
 
-            this.removeByte();
+            removeByte();
         }
     }
 
     @Override
     public void mousePressed(MouseEvent event) {
 
-        this.showPopup(event);
+        showPopup(event);
     }
 
     @Override
     public void mouseReleased(MouseEvent event) {
 
-        this.showPopup(event);
+        showPopup(event);
     }
 
     @Override
     public void mouseClicked(MouseEvent event) {
 
-        this.showPopup(event);
+        showPopup(event);
     }
 
     @Override
@@ -215,22 +208,22 @@ public class BulkEditorFrame implements ActionListener, MouseListener {
 
     private void save() {
 
-        Cursor original = this.frame.getCursor();
-        int total = this.list.size();
+        Cursor original = getCursor();
+        int total = list.size();
         int failures = 0;
 
-        this.frame.setCursor(WAIT_CURSOR);
+        setCursor(WAIT_CURSOR);
 
         // Check for un-editable bytes first.
         for(int j = 0; (j < total); ++j) {
 
             boolean failure = false;
 
-            for(int i = 0; (i < this.indexes.length) && !failure; ++i) {
+            for(int i = 0; (i < indexes.length) && !failure; ++i) {
 
-                PDU pdu = this.list.get(j);
+                PDU pdu = list.get(j);
 
-                if (!PDU.isByteEditable(pdu.getType(), this.indexes[i])) {
+                if (!PDU.isByteEditable(pdu.getType(), indexes[i])) {
 
                     failure = true;
                 }
@@ -241,9 +234,9 @@ public class BulkEditorFrame implements ActionListener, MouseListener {
 
         if (failures > 0) {
 
-            this.frame.setCursor(original);
+            setCursor(original);
 
-            this.warning(
+            warning(
                 "Cannot edit PDUs, " + failures + " of " + total +
                 " have index restrictions.");
         }
@@ -251,13 +244,13 @@ public class BulkEditorFrame implements ActionListener, MouseListener {
 
             int count = 0;
 
-            for(PDU pdu : this.list) {
+            for(PDU pdu : list) {
 
                 byte data[] = Arrays.copyOf(pdu.getData(), pdu.getLength());
 
-                for(int i = 0; i < this.indexes.length; ++i) {
+                for(int i = 0; i < indexes.length; ++i) {
 
-                    data[this.indexes[i]] = this.bytes[i];
+                    data[indexes[i]] = bytes[i];
                 }
 
                 pdu.setData(data);
@@ -268,16 +261,16 @@ public class BulkEditorFrame implements ActionListener, MouseListener {
 
             logger.debug("Modified {} PDUs...", count);
 
-            this.tab.modified(this.list);
-            this.frame.setCursor(original);
-            this.frame.dispose();
+            tab.modified(list);
+            setCursor(original);
+            dispose();
         }
     }
 
     private void insertByte() {
 
-        final int length = this.indexes.length;
-        final int selection = this.table.getSelectedRow();
+        final int length = indexes.length;
+        final int selection = table.getSelectedRow();
 
         int newIndexes[] = new int[length + 1];
         byte newBytes[] = new byte[length + 1];
@@ -286,12 +279,12 @@ public class BulkEditorFrame implements ActionListener, MouseListener {
 
             if (i > selection) {
 
-                newIndexes[i] = (this.indexes[i - 1] + 1);
-                newBytes[i] = this.bytes[i - 1];
+                newIndexes[i] = (indexes[i - 1] + 1);
+                newBytes[i] = bytes[i - 1];
             }
             else {
 
-                newIndexes[i] = this.indexes[i];
+                newIndexes[i] = indexes[i];
 
                 if (i == selection) {
 
@@ -299,24 +292,24 @@ public class BulkEditorFrame implements ActionListener, MouseListener {
                 }
                 else {
 
-                    newBytes[i] = this.bytes[i];
+                    newBytes[i] = bytes[i];
                 }
             }
         }
 
-        this.indexes = newIndexes;
-        this.bytes = newBytes;
+        indexes = newIndexes;
+        bytes = newBytes;
 
-        this.model.fireTableDataChanged();
+        model.fireTableDataChanged();
     }
 
     private void removeByte() {
 
-        final int length = this.indexes.length;
+        final int length = indexes.length;
 
         if (length > 1) {
 
-            final int selection = this.table.getSelectedRow();
+            final int selection = table.getSelectedRow();
 
             int newIndexes[] = new int[length - 1];
             byte newBytes[] = new byte[length - 1];
@@ -325,31 +318,31 @@ public class BulkEditorFrame implements ActionListener, MouseListener {
 
                 if (i < selection) {
 
-                    newIndexes[i] = this.indexes[i];
-                    newBytes[i] = this.bytes[i];
+                    newIndexes[i] = indexes[i];
+                    newBytes[i] = bytes[i];
                 }
                 else if (i == 0) {
 
-                    newIndexes[i] = this.indexes[i + 1];
-                    newBytes[i] = this.bytes[i + 1];
+                    newIndexes[i] = indexes[i + 1];
+                    newBytes[i] = bytes[i + 1];
                 }
                 else {
 
-                    newIndexes[i] = (this.indexes[i - 1] + 1);
-                    newBytes[i] = this.bytes[i + 1];
+                    newIndexes[i] = (indexes[i - 1] + 1);
+                    newBytes[i] = bytes[i + 1];
                 }
             }
 
-            this.indexes = newIndexes;
-            this.bytes = newBytes;
+            indexes = newIndexes;
+            bytes = newBytes;
 
-            this.model.fireTableDataChanged();
+            model.fireTableDataChanged();
         }
     }
 
     private void setColumnSizes() {
 
-        TableColumnModel model = this.table.getColumnModel();
+        TableColumnModel model = table.getColumnModel();
 
         for(Column column : COLUMNS) {
 
@@ -364,13 +357,13 @@ public class BulkEditorFrame implements ActionListener, MouseListener {
 
         if (event.isPopupTrigger()) {
 
-            int selection = this.table.getSelectedRow();
+            int selection = table.getSelectedRow();
 
             if (selection != -1) {
 
-                this.remove.setEnabled(this.model.getRowCount() > 1);
+                remove.setEnabled(model.getRowCount() > 1);
 
-                this.popup.show(this.table, event.getX(), event.getY());
+                popup.show(table, event.getX(), event.getY());
             }
         }
     }
@@ -380,13 +373,13 @@ public class BulkEditorFrame implements ActionListener, MouseListener {
         switch(COLUMNS[column]) {
 
             case INDEX:
-                return this.indexes[row];
+                return indexes[row];
             case DECIMAL:
-                return this.bytes[row];
+                return bytes[row];
             case BINARY:
-                return Binary.toString8(this.bytes[row]);
+                return Binary.toString8(bytes[row]);
             case HEXADECIMAL:
-                return Hexadecimal.toString8(this.bytes[row]);
+                return Hexadecimal.toString8(bytes[row]);
             default:
                 return null;
         }
@@ -397,23 +390,23 @@ public class BulkEditorFrame implements ActionListener, MouseListener {
         switch(COLUMNS[column]) {
 
             case INDEX:
-                this.modifyIndex(row, (Integer)object);
+                modifyIndex(row, (Integer)object);
                 break;
             case DECIMAL:
-                this.modifyByte(row, (Byte)object);
+                modifyByte(row, (Byte)object);
                 break;
             case BINARY:
-                this.modifyBinary(row, (String)object);
+                modifyBinary(row, (String)object);
                 break;
             case HEXADECIMAL:
-                this.modifyHexadecimal(row, (String)object);
+                modifyHexadecimal(row, (String)object);
                 break;
         }
     }
 
     private void modifyIndex(int row, int index) {
 
-        int newIndexes[] = new int[this.indexes.length];
+        int newIndexes[] = new int[indexes.length];
 
         newIndexes[row] = index;
 
@@ -422,28 +415,28 @@ public class BulkEditorFrame implements ActionListener, MouseListener {
             newIndexes[i] = (newIndexes[i + 1] - 1);
         }
 
-        for(int i = (row + 1); i < this.indexes.length; ++i) {
+        for(int i = (row + 1); i < indexes.length; ++i) {
 
             newIndexes[i] = (newIndexes[i - 1] + 1);
         }
 
         if (newIndexes[0] < 0) {
 
-            this.error("Buffer index cannot be negative!");
+            error("Buffer index cannot be negative!");
         }
         else {
 
-            this.indexes = newIndexes;
+            indexes = newIndexes;
 
-            this.model.fireTableDataChanged();
+            model.fireTableDataChanged();
         }
     }
 
     private void modifyByte(int row, byte value) {
 
-        this.bytes[row] = value;
+        bytes[row] = value;
 
-        this.model.fireTableDataChanged();
+        model.fireTableDataChanged();
     }
 
     private void modifyBinary(int row, String value) {
@@ -452,13 +445,13 @@ public class BulkEditorFrame implements ActionListener, MouseListener {
 
             Integer number = Integer.parseInt(value, 2);
 
-            this.bytes[row] = number.byteValue();
+            bytes[row] = number.byteValue();
 
-            this.model.fireTableDataChanged();
+            model.fireTableDataChanged();
         }
         catch(NumberFormatException exception) {
 
-            this.error("Not a valid binary byte value: " + value);
+            error("Not a valid binary byte value: " + value);
         }
     }
 
@@ -468,20 +461,20 @@ public class BulkEditorFrame implements ActionListener, MouseListener {
 
             Integer number = Integer.parseInt(value, 16);
 
-            this.bytes[row] = number.byteValue();
+            bytes[row] = number.byteValue();
 
-            this.model.fireTableDataChanged();
+            model.fireTableDataChanged();
         }
         catch(NumberFormatException exception) {
 
-            this.error("Not a valid hexadecimal byte value: " + value);
+            error("Not a valid hexadecimal byte value: " + value);
         }
     }
 
     private void warning(String message) {
 
         JOptionPane.showMessageDialog(
-            this.frame,
+            this,
             message,
             TITLE,
             JOptionPane.WARNING_MESSAGE);
@@ -490,7 +483,7 @@ public class BulkEditorFrame implements ActionListener, MouseListener {
     private void error(String message) {
 
         JOptionPane.showMessageDialog(
-            this.frame,
+            this,
             message,
             TITLE,
             JOptionPane.ERROR_MESSAGE);
@@ -498,25 +491,25 @@ public class BulkEditorFrame implements ActionListener, MouseListener {
 
     private void cleanup() {
 
-        this.frame.removeAll();
-        this.popup.removeAll();
+        removeAll();
+        popup.removeAll();
 
-        this.okay.removeActionListener(this);
-        this.cancel.removeActionListener(this);
-        this.table.removeMouseListener(this);
-        this.insert.removeActionListener(this);
-        this.remove.removeActionListener(this);
+        okay.removeActionListener(this);
+        cancel.removeActionListener(this);
+        table.removeMouseListener(this);
+        insert.removeActionListener(this);
+        remove.removeActionListener(this);
     }
 
     private void fill() {
 
-        Utilities.setGridBagLayout(this.frame);
+        Utilities.setGridBagLayout(this);
 
         int gridy = 0;
 
         Utilities.addComponent(
-            this.frame,
-            new JLabel("Total PDUs to edit: " + this.list.size()),
+            this,
+            new JLabel("Total PDUs to edit: " + list.size()),
             Utilities.BOTH,
             0, gridy,
             2, 1,
@@ -526,7 +519,7 @@ public class BulkEditorFrame implements ActionListener, MouseListener {
         ++gridy;
 
         Utilities.addComponent(
-            this.frame,
+            this,
             new JLabel("(Right click within table below to add/remove bytes.)"),
             Utilities.BOTH,
             0, gridy,
@@ -537,8 +530,8 @@ public class BulkEditorFrame implements ActionListener, MouseListener {
         ++gridy;
 
         Utilities.addComponent(
-            this.frame,
-            new JScrollPane(this.table),
+            this,
+            new JScrollPane(table),
             Utilities.BOTH,
             0, gridy,
             2, 1,
@@ -548,16 +541,16 @@ public class BulkEditorFrame implements ActionListener, MouseListener {
         ++gridy;
 
         Utilities.addComponent(
-            this.frame,
-            this.okay,
+            this,
+            okay,
             Utilities.HORIZONTAL,
             0, gridy,
             1, 1,
             1.0, 0.0,
             Utilities.getInsets(5, 5, 5, 5));
         Utilities.addComponent(
-            this.frame,
-            this.cancel,
+            this,
+            cancel,
             Utilities.HORIZONTAL,
             1, gridy,
             1, 1,

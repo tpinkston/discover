@@ -522,9 +522,9 @@ public class PDU implements Bufferable {
 
         if (hasRequestId()) {
 
-            builder.append(" [");
+            builder.append(" (");
             builder.append(getRequestId());
-            builder.append("]");
+            builder.append(")");
         }
 
         title = builder.toString();
