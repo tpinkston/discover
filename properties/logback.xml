@@ -12,19 +12,31 @@
   <logger name="discover.vdis" level="warn"/>
   <logger name="discover.vdis.pdu" level="warn"/>
 
-  <timestamp key="log-file-timestamp" datePattern="yyyyMMdd_HHmmss"/>
+  <timestamp key="file-timestamp" datePattern="yyyyMMdd_HHmmss"/>
 
-  <appender name="log-file" class="ch.qos.logback.core.FileAppender">
+  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+        <level>warn</level>
+    </filter>
     <encoder>
+      <charset>UTF-8</charset>
       <pattern>[%-5p] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%t] %C.%M\(\): %L%n%msg%n%n</pattern>
     </encoder>
-    <!--  file>logs/log_${log-file-timestamp}.txt</file -->
+  </appender>
+
+  <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+    <encoder>
+      <charset>UTF-8</charset>
+      <pattern>[%-5p] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%t] %C.%M\(\): %L%n%msg%n%n</pattern>
+    </encoder>
+    <!--  file>logs/log_${file-timestamp}.txt</file -->
     <file>logs/log.txt</file>
     <append>false</append>
   </appender>
   
   <root level="warn" >
-    <appender-ref ref="log-file"/>
+    <appender-ref ref="FILE"/>
+    <appender-ref ref="CONSOLE"/>
   </root>
   
 </configuration>
