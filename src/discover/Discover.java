@@ -42,11 +42,11 @@ public class Discover {
 
         boolean unbundled = Boolean.getBoolean("discover.unbundled");
         boolean multicast = Boolean.getBoolean("discover.multicast");
-        String headless = getPropertyValue("discover.headless", null);
-        String iface = getPropertyValue("discover.iface", "eth0");
-        String playback = getPropertyValue("discover.playback", null);
-        String enumeration = getPropertyValue("discover.enum", null);
-        String laf = getPropertyValue("discover.laf", null);
+        String headless = System.getProperty("discover.headless");
+        String iface = System.getProperty("discover.iface");
+        String playback = System.getProperty("discover.playback");
+        String enumeration = System.getProperty("discover.enum");
+        String laf = System.getProperty("discover.laf");
 
         for(String name : EXTERNAL_CLASSES) {
 
@@ -98,18 +98,6 @@ public class Discover {
                 });
             }
         }
-    }
-
-    private static String getPropertyValue(String name, String value) {
-
-        String property = System.getProperty(name);
-
-        if (property == null) {
-
-            property = value;
-        }
-
-        return property;
     }
 
     private static void setLookAndFeel(String name) {
@@ -170,6 +158,19 @@ public class Discover {
         NetworkInterface networkInterface = null;
 
         try {
+
+            if (name == null) {
+
+                name = Network.getDefaultInterface();
+
+                if (name == null) {
+
+                    throw new NullPointerException(
+                        "No default network interface!");
+                }
+
+                System.out.println("Using default network interface: " + name);
+            }
 
             networkInterface = NetworkInterface.getByName(name);
 

@@ -145,6 +145,42 @@ public class Network {
     }
 
     /**
+     * @return Name for the default network interface.
+     */
+    public static String getDefaultInterface() {
+
+        Enumeration<NetworkInterface> interfaces = null;
+
+        try {
+
+            NetworkInterface iface = NetworkInterface.getByName("eth0");
+
+            if (iface != null) {
+
+                return iface.getName();
+            }
+
+            interfaces = NetworkInterface.getNetworkInterfaces();
+
+            while((interfaces != null) & interfaces.hasMoreElements()) {
+
+                iface = interfaces.nextElement();
+
+                if (iface.isUp() && !iface.isLoopback()) {
+
+                    return iface.getName();
+                }
+            }
+        }
+        catch(SocketException exception) {
+
+            logger.error("Caught exception!", exception);
+        }
+
+        return null;
+    }
+
+    /**
      * @return {@link InetAddress}
      */
     public static InetAddress getCaptureAddress() {
