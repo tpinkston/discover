@@ -10,21 +10,33 @@
   <property name="types" value="discover/vdis/types/data"/>
   <property name="system" value="discover/system"/>
   <property name="classes" value="classes"/>
+  <property name="properties" value="properties"/>
   <property name="library" value="lib"/>
-  <property name="test" value="default"/>
   <property name="logs" value="logs"/>
   <property name="jar" value="discover.jar"/>
   <property name="main.class" value="discover.Discover"/>
 
-  <path id="classpath">
-    <fileset dir="${library}" includes="**/*.jar"/>
+  <path id="classpath-internal-classes">
+    <pathelement path="${classes}"/>
+  </path>
+
+  <path id="classpath-internal-jar">
+    <fileset dir="${library}" includes="discover.jar"/>
+  </path>
+
+  <path id="classpath-internal-properties">
+    <pathelement path="${properties}"/>
+  </path>
+
+  <path id="classpath-external">
+    <fileset dir="${library}" includes="geotransform.jar,junit.jar,logback-classic-1.0.6.jar,logback-core-1.0.6.jar,slf4j-api-1.6.6.jar"/>
   </path>
 
   <target name="clean">
     <delete verbose="${verbose}" dir="${classes}"/>
     <delete verbose="${verbose}" dir="${logs}"/>
     <delete verbose="${verbose}" file="${enums}/generate_enums"/>
-    <delete verbose="true" file="${library}/${jar}"/>
+    <delete verbose="${verbose}" file="${library}/${jar}"/>
   </target>
 
   <target name="buildenums">
@@ -42,7 +54,7 @@
     <javac srcdir="${source}"
            destdir="${classes}"
            verbose="${verbose}"
-           classpathref="classpath"
+           classpathref="classpath-external"
            debug="${debug}"
            listfiles="${listfiles}"
            includeantruntime="false">
@@ -50,7 +62,10 @@
     </javac>
   </target>
 
-  <target name="jar" depends="compile, copyfiles">
+  <target name="build" depends="compile, copyfiles">
+  </target>
+
+  <target name="jar" depends="build">
     <jar destfile="${library}/${jar}" basedir="${classes}">
       <manifest>
         <attribute name="Main-Class" value="${main.class}"/>
@@ -62,7 +77,9 @@
   <target name="run" depends="jar">
     <java fork="true" classname="${main.class}">
       <classpath>
-        <path refid="classpath"/>
+        <path refid="classpath-external"/>
+        <path refid="classpath-internal-jar"/>
+        <path refid="classpath-internal-properties"/>
       </classpath>
     </java>
   </target>
@@ -70,14 +87,18 @@
   <target name="all" depends="clean, buildenums, jar">
   </target>
 
-  <target name="test" depends="jar">
-    <java fork="true" classname="${main.class}">
+  <target name="junit" depends="build">
+    <junit printsummary="no">
       <classpath>
-        <path refid="classpath"/>
+        <path refid="classpath-external"/>
+        <path refid="classpath-internal-classes"/>
+        <path refid="classpath-internal-properties"/>
       </classpath>
-      <arg value="--level=FINEST"/>
-      <arg value="--test=${test}"/>
-    </java>
+    <formatter type="plain" usefile="false"/>
+      <batchtest fork="yes">
+        <fileset dir="${classes}" includes="discover/test/Test*.class"/>
+      </batchtest>
+    </junit>
   </target>
 
   <target name="copyfiles">

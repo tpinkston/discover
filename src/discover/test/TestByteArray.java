@@ -1,39 +1,15 @@
 package discover.test;
 
-import java.io.ByteArrayInputStream;
-import java.io.DataInputStream;
-import java.io.IOException;
 import java.util.Arrays;
 
+import org.junit.Test;
+
 import discover.common.ByteArray;
-import discover.vdis.types.EntityType;
-import discover.vdis.types.EntityTypes;
 
-/**
- * @author Tony Pinkston
- */
-public class Test {
+public class TestByteArray {
 
-    public static void test(String test) {
-
-        if (test.equalsIgnoreCase("default")) {
-
-        }
-        else if (test.equalsIgnoreCase("byte_array")) {
-
-            testByteArray();
-        }
-        else if (test.equalsIgnoreCase("entity_types")) {
-
-            testEntityTypes();
-        }
-        else {
-
-            System.err.println("ERROR: Invalid test name: " + test);
-        }
-    }
-
-    private static void testByteArray() {
+    @Test
+    public void test() {
 
         byte data[] = {
             0, 1, -45, -1, 13, -88, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
@@ -88,28 +64,4 @@ public class Test {
         System.out.println(Arrays.toString(ByteArray.getArray(data, 8, 8)));
     }
 
-    private static void testEntityTypes() {
-
-        byte bytes[] = {
-            6, 0, 0, 0, 0, 13, 5, 2
-        };
-        ByteArrayInputStream stream1 = new ByteArrayInputStream(bytes);
-        DataInputStream stream2 = new DataInputStream(stream1);
-
-        try {
-
-            EntityType type = EntityTypes.read(stream2);
-
-            System.out.println(type.name);
-            System.out.println(type.septuple.string);
-            System.out.println(type.description);
-            System.out.println(type.alternate);
-
-            stream2.close();
-        }
-        catch (IOException exception) {
-
-            exception.printStackTrace();
-        }
-    }
 }
