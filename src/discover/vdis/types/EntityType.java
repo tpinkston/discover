@@ -15,7 +15,7 @@ public class EntityType implements Comparable<EntityType>, Bufferable, Writable 
 
     public static final int LENGTH = 8;
 
-    public long value = 0;
+    public final Long value;
     public final Septuple septuple;
     public final String name;
     public final String description;
@@ -45,7 +45,7 @@ public class EntityType implements Comparable<EntityType>, Bufferable, Writable 
             specific,
             extension);
 
-        this.value = value;
+        this.value = Long.valueOf(value);
         this.name = name;
         this.description = description;
         this.alternate = alternate;
@@ -108,7 +108,7 @@ public class EntityType implements Comparable<EntityType>, Bufferable, Writable 
     @Override
     public int hashCode() {
 
-        return Long.hashCode(value);
+        return value.hashCode();
     }
 
     @Override
