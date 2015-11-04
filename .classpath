@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="src" output="classes"/>
+	<classpathentry kind="src" path="vdis/src" output="vdis/classes"/>
 	<classpathentry kind="lib" path="lib/geotransform.jar" sourcepath="lib/geovrml_src.zip"/>
 	<classpathentry kind="lib" path="lib/junit.jar"/>
 	<classpathentry kind="lib" path="lib/logback-classic-1.0.6.jar"/>
 	<classpathentry kind="lib" path="lib/logback-core-1.0.6.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-api-1.6.6.jar"/>
-	<classpathentry kind="output" path="classes"/>
+    <classpathentry kind="lib" path="lib/xmlbeans-2.4.0.jar"/>
+	<classpathentry kind="lib" path="lib/poi-3.13/poi-3.13-20150929.jar" sourcepath="lib/poi-3.13/poi-src-3.13-20150929.zip"/>
+	<classpathentry kind="lib" path="lib/poi-3.13/poi-ooxml-3.13-20150929.jar" sourcepath="lib/poi-3.13/poi-src-3.13-20150929.zip"/>
+	<classpathentry kind="lib" path="lib/poi-3.13/poi-ooxml-schemas-3.13-20150929.jar" sourcepath="lib/poi-3.13/poi-src-3.13-20150929.zip"/>
+    <classpathentry kind="lib" path="lib/xerces-2.11.0/xercesImpl.jar"/>
+    <classpathentry kind="lib" path="lib/xerces-2.11.0/xml-apis.jar"/>
 </classpath>
