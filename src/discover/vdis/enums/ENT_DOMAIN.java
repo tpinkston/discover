@@ -1,6 +1,6 @@
 package discover.vdis.enums;
 
-public enum ENTITY_DOMAIN implements VdisEnum {
+public enum ENT_DOMAIN implements VdisEnum {
 
     OTHER(0, "Other"),
     LAND(1, "Land"),
@@ -12,7 +12,7 @@ public enum ENTITY_DOMAIN implements VdisEnum {
     private final int value;
     private final String description;
 
-    private ENTITY_DOMAIN(int value, String description) {
+    private ENT_DOMAIN(int value, String description) {
 
         this.value = value;
         this.description = description;

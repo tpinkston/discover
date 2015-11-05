@@ -1,6 +1,6 @@
 package discover.vdis.enums;
 
-public enum MUNITION_DOMAIN {
+public enum MUN_DOMAIN {
 
     OTHER(0, "Other"),
     ANTI_AIR(1, "Anti-Air"),
@@ -19,7 +19,7 @@ public enum MUNITION_DOMAIN {
     private final int value;
     private final String description;
 
-    private MUNITION_DOMAIN(int value, String description) {
+    private MUN_DOMAIN(int value, String description) {
 
         this.value = value;
         this.description = description;
