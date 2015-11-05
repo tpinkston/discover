@@ -1,6 +1,6 @@
-package discover.vdis.enums;
+package discover.vdis;
 
-public interface VdisEnum {
+public interface EnumInterface {
 
     /**
      * @return VDIS enumeration value.

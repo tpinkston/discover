@@ -64,10 +64,12 @@ public class EnumGenerator {
 
         writer.println("package discover.vdis.enums;");
         writer.println();
+        writer.println("import discover.vdis.EnumInterface;");
+        writer.println();
         writer.println("/**");
         writer.println(" * This file is auto-generated (see " + getClass().getName() + ")");
         writer.println(" */");
-        writer.println("public enum " + name + " implements VdisEnum {");
+        writer.println("public enum " + name + " implements EnumInterface {");
         writer.println();
 
         for(int i = 0; i < elements.size(); ++i) {

@@ -1,9 +1,11 @@
 package discover.vdis.enums;
 
+import discover.vdis.EnumInterface;
+
 /**
  * This file is auto-generated (see vdis.EnumGenerator)
  */
-public enum COUNTRY implements VdisEnum {
+public enum COUNTRY implements EnumInterface {
 
     OTHER(0, "Other"),
     AF(1, "Afghanistan"),

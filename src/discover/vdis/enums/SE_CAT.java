@@ -1,9 +1,11 @@
 package discover.vdis.enums;
 
+import discover.vdis.EnumInterface;
+
 /**
  * This file is auto-generated (see vdis.EnumGenerator)
  */
-public enum SE_CAT implements VdisEnum {
+public enum SE_CAT implements EnumInterface {
 
     OTH(0, "Other"),
     MSPEC(1, "Multi-spectral"),

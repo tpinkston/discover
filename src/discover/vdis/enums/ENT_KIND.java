@@ -1,6 +1,8 @@
 package discover.vdis.enums;
 
-public enum ENT_KIND implements VdisEnum {
+import discover.vdis.EnumInterface;
+
+public enum ENT_KIND implements EnumInterface {
 
     PLATFORMS(1, "Platforms"),
     MUNITIONS(2, "Munitions"),

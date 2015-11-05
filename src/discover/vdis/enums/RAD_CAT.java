@@ -1,9 +1,11 @@
 package discover.vdis.enums;
 
+import discover.vdis.EnumInterface;
+
 /**
  * This file is auto-generated (see vdis.EnumGenerator)
  */
-public enum RAD_CAT implements VdisEnum {
+public enum RAD_CAT implements EnumInterface {
 
     OTH(0, "Other"),
     VTR(1, "Voice Transmission/Reception"),

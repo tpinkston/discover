@@ -1,9 +1,11 @@
 package discover.vdis.enums;
 
+import discover.vdis.EnumInterface;
+
 /**
  * This file is auto-generated (see vdis.EnumGenerator)
  */
-public enum PLAT_CAT_LAND implements VdisEnum {
+public enum PLAT_CAT_LAND implements EnumInterface {
 
     OTH(0, "Other"),
     TANK(1, "Tank"),

@@ -1,9 +1,11 @@
 package discover.vdis.enums;
 
+import discover.vdis.EnumInterface;
+
 /**
  * This file is auto-generated (see vdis.EnumGenerator)
  */
-public enum CF_CAT_SUBSURFACE implements VdisEnum {
+public enum CF_CAT_SUBSURFACE implements EnumInterface {
 
     OTH(0, "Other"),
     OIL(1, "Oil Derrick"),

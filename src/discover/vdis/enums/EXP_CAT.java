@@ -1,9 +1,11 @@
 package discover.vdis.enums;
 
+import discover.vdis.EnumInterface;
+
 /**
  * This file is auto-generated (see vdis.EnumGenerator)
  */
-public enum EXP_CAT implements VdisEnum {
+public enum EXP_CAT implements EnumInterface {
 
     OTH(0, "Other"),
     CHAFF(1, "Chaff"),

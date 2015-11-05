@@ -1,9 +1,11 @@
 package discover.vdis.enums;
 
+import discover.vdis.EnumInterface;
+
 /**
  * This file is auto-generated (see vdis.EnumGenerator)
  */
-public enum ENV_CAT_SPACE implements VdisEnum {
+public enum ENV_CAT_SPACE implements EnumInterface {
 
     OTH(0, "Other");
 

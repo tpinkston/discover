@@ -1,6 +1,8 @@
 package discover.vdis.enums;
 
-public enum ENT_DOMAIN implements VdisEnum {
+import discover.vdis.EnumInterface;
+
+public enum ENT_DOMAIN implements EnumInterface {
 
     OTHER(0, "Other"),
     LAND(1, "Land"),
