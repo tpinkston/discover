@@ -3,8 +3,9 @@ package discover.vdis.enums;
 /**
  * This file is auto-generated (see vdis.EnumGenerator)
  */
-public enum EXPENDABLE_CAT implements VdisEnum {
+public enum EXP_CAT implements VdisEnum {
 
+    OTH(0, "Other"),
     CHAFF(1, "Chaff"),
     FLARE(2, "Flare"),
     COMB(3, "Combined chaff and flare"),
@@ -15,7 +16,7 @@ public enum EXPENDABLE_CAT implements VdisEnum {
     private final int value;
     private final String description;
 
-    private EXPENDABLE_CAT(int value, String description) {
+    private EXP_CAT(int value, String description) {
 
         this.value = value;
         this.description = description;

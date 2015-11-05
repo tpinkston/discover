@@ -3,8 +3,9 @@ package discover.vdis.enums;
 /**
  * This file is auto-generated (see vdis.EnumGenerator)
  */
-public enum RADIO_CAT implements VdisEnum {
+public enum RAD_CAT implements VdisEnum {
 
+    OTH(0, "Other"),
     VTR(1, "Voice Transmission/Reception"),
     DLTR(2, "Data Link Transmission/Reception"),
     VDLTR(3, "Voice and Data Link Transmission/Reception"),
@@ -39,7 +40,7 @@ public enum RADIO_CAT implements VdisEnum {
     private final int value;
     private final String description;
 
-    private RADIO_CAT(int value, String description) {
+    private RAD_CAT(int value, String description) {
 
         this.value = value;
         this.description = description;

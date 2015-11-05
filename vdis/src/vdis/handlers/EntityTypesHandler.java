@@ -54,11 +54,11 @@ public class EntityTypesHandler extends AbstractSheetHandler {
     @Override
     public void startRow(int row) {
 
-        super.startRow(row);
-
         // The first row is the header row, no data.  Skip it.
         //
-        if (row > 1) {
+        if (row > 0) {
+
+            super.startRow(row);
 
             current = new EntityType();
         }

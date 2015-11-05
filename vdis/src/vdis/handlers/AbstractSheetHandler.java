@@ -13,6 +13,9 @@ import org.xml.sax.ContentHandler;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 
+import vdis.EnumGenerator;
+import vdis.EnumGenerator.Element;
+
 public abstract class AbstractSheetHandler implements SheetContentsHandler {
 
     private Integer row = null;
@@ -32,20 +35,17 @@ public abstract class AbstractSheetHandler implements SheetContentsHandler {
             throw new RuntimeException("Row not ended!");
         }
 
-        this.row = Integer.valueOf(row);
+        // Even though sheets start at row 1, POI starts them at 0...
+        //
+        this.row = Integer.valueOf(row + 1);
     }
 
     @Override
     public void endRow(int row) {
 
-        if (this.row == null) {
+        if ((this.row != null) && (this.row.intValue() != (row + 1))) {
 
-            throw new RuntimeException("Row not started!");
-        }
-
-        if (this.row.intValue() != row) {
-
-            throw new RuntimeException("Row mismatch!");
+            throw new RuntimeException("Row mismatch: " + row);
         }
 
         this.row = null;
@@ -85,6 +85,38 @@ public abstract class AbstractSheetHandler implements SheetContentsHandler {
 
     protected void parseCompleted() throws Exception {
 
+    }
+
+    protected Element addElement(Element element, EnumGenerator generator) {
+
+        if (element != null) {
+
+            if (element.isValid()) {
+
+                if (element.name.equalsIgnoreCase("reserved")) {
+
+                    element.name += (" " + element.value.toString());
+                }
+
+                generator.addElement(element);
+            }
+
+            element = null;
+        }
+
+        return element;
+    }
+
+    protected Integer getInteger(String string) {
+
+        try {
+
+            return Integer.parseInt(string);
+        }
+        catch(NumberFormatException exception) {
+
+            return null;
+        }
     }
 
     protected boolean isInteger(String string) {

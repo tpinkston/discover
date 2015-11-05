@@ -3,17 +3,17 @@ package discover.vdis.enums;
 /**
  * This file is auto-generated (see vdis.EnumGenerator)
  */
-public enum PLAT_CAT_SPACE implements VdisEnum {
+public enum CF_CAT_SUBSURFACE implements VdisEnum {
 
     OTH(0, "Other"),
-    MAN(1, "Manned"),
-    UNMAN(2, "Unmanned"),
-    BOOS(3, "Booster");
+    OIL(1, "Oil Derrick"),
+    BUOY(2, "Buoy"),
+    SHIP(3, "Sunken Ship");
 
     private final int value;
     private final String description;
 
-    private PLAT_CAT_SPACE(int value, String description) {
+    private CF_CAT_SUBSURFACE(int value, String description) {
 
         this.value = value;
         this.description = description;

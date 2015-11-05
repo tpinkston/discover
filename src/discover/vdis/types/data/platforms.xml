@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <types>
+  <type name="OTHER_PLAT_LAND_CIV_GEN_MOTORCYCLE" value="1.1.0.80.0.0.0" description="Generic Motorcycle"/>
   <type name="OTHER_PLAT_LAND_CIV_GEN_MOTORCYCLE_SMALL" value="1.1.0.80.1.0.0" description="Generic Scooter (Small)"/>
   <type name="OTHER_PLAT_LAND_CIV_GEN_MOTORCYCLE_MIDSIZE" value="1.1.0.80.2.0.0" description="Generic Sport/Street (Mid-Size)"/>
   <type name="OTHER_PLAT_LAND_CIV_GEN_MOTORCYCLE_LARGE" value="1.1.0.80.3.0.0" description="Generic Cruiser (Large)"/>

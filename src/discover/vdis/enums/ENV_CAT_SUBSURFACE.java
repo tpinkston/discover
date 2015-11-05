@@ -3,17 +3,23 @@ package discover.vdis.enums;
 /**
  * This file is auto-generated (see vdis.EnumGenerator)
  */
-public enum PLAT_CAT_SPACE implements VdisEnum {
+public enum ENV_CAT_SUBSURFACE implements VdisEnum {
 
     OTH(0, "Other"),
-    MAN(1, "Manned"),
-    UNMAN(2, "Unmanned"),
-    BOOS(3, "Booster");
+    SVP(1, "Sound Velocity Profile"),
+    ICEB(2, "Ice Berg"),
+    CP(3, "Current Profile"),
+    BIO(4, "Biologics"),
+    TRANS(5, "Transmissivity profile"),
+    ICEM(6, "Ice Merchant"),
+    KELP(7, "Kelp Bed"),
+    KNUC(8, "Knuckle"),
+    DEB(9, "Debris/Clutter");
 
     private final int value;
     private final String description;
 
-    private PLAT_CAT_SPACE(int value, String description) {
+    private ENV_CAT_SUBSURFACE(int value, String description) {
 
         this.value = value;
         this.description = description;

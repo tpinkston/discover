@@ -3,8 +3,9 @@ package discover.vdis.enums;
 /**
  * This file is auto-generated (see vdis.EnumGenerator)
  */
-public enum SENSOR_EMITTER_CAT implements VdisEnum {
+public enum SE_CAT implements VdisEnum {
 
+    OTH(0, "Other"),
     MSPEC(1, "Multi-spectral"),
     RFA(2, "RF Active"),
     RFP(3, "RF Passive (intercept and DF)"),
@@ -25,7 +26,7 @@ public enum SENSOR_EMITTER_CAT implements VdisEnum {
     private final int value;
     private final String description;
 
-    private SENSOR_EMITTER_CAT(int value, String description) {
+    private SE_CAT(int value, String description) {
 
         this.value = value;
         this.description = description;

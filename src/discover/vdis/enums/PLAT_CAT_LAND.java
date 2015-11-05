@@ -5,6 +5,7 @@ package discover.vdis.enums;
  */
 public enum PLAT_CAT_LAND implements VdisEnum {
 
+    OTH(0, "Other"),
     TANK(1, "Tank"),
     AFV(2, "Armored Fighting Vehicle"),
     AUV(3, "Armored Utility Vehicle"),

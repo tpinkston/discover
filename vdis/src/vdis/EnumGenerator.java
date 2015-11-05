@@ -43,12 +43,12 @@ public class EnumGenerator {
 
         if (findName(element.name)) {
 
-            throw new IllegalArgumentException("Duplicate name: " + element.name);
+            element.name += (" " + element.value.toString());
         }
 
         if (findOrdinal(element.value)) {
 
-            System.err.println(
+            System.out.println(
                 "WARNING: Duplicate ordinal " + element.value +
                 " for '" + element.name + "'...");
         }
@@ -77,6 +77,11 @@ public class EnumGenerator {
 
             name = name.toUpperCase();
             name = name.replace(' ', '_');
+            name = name.replace('-', '_');
+            name = name.replace('/', '_');
+            name = name.replaceAll(",", "");
+            name = name.replaceAll("\\(", "");
+            name = name.replaceAll("\\)", "");
 
             writer.print("    " + name + "(" + element.value);
             writer.print(", \"" + element.description + "\")");
@@ -146,6 +151,18 @@ public class EnumGenerator {
         public boolean isValid() {
 
             return ((name != null) && !name.isEmpty() && (value != null) && (value >= 0));
+        }
+
+        @Override
+        public String toString() {
+
+            StringBuilder builder = new StringBuilder();
+
+            builder.append("[value = ").append(value).append("]");
+            builder.append("[name = ").append(name).append("]");
+            builder.append("[description = ").append(description).append("]");
+
+            return builder.toString();
         }
     }
 }

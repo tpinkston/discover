@@ -5,19 +5,15 @@ import org.apache.poi.xssf.usermodel.XSSFComment;
 import vdis.EnumGenerator;
 import vdis.EnumGenerator.Element;
 
-public class PlatformCategoryHandler extends AbstractSheetHandler {
+public class CulturalFeatureCategoryHandler extends AbstractSheetHandler {
 
-    private final EnumGenerator land = new EnumGenerator("PLAT_CAT_LAND");
-    private final EnumGenerator air = new EnumGenerator("PLAT_CAT_AIR");
-    private final EnumGenerator surface = new EnumGenerator("PLAT_CAT_SURFACE");
-    private final EnumGenerator subsurface = new EnumGenerator("PLAT_CAT_SUBSURFACE");
-    private final EnumGenerator space = new EnumGenerator("PLAT_CAT_SPACE");
+    private final EnumGenerator land = new EnumGenerator("CF_CAT_LAND");
+    private final EnumGenerator surface = new EnumGenerator("CF_CAT_SURFACE");
+    private final EnumGenerator subsurface = new EnumGenerator("CF_CAT_SUBSURFACE");
 
     private Element currentLand = null;
-    private Element currentAir = null;
     private Element currentSurface = null;
     private Element currentSubsurface = null;
-    private Element currentSpace = null;
 
     @Override
     public void startRow(int row) {
@@ -29,10 +25,8 @@ public class PlatformCategoryHandler extends AbstractSheetHandler {
             super.startRow(row);
 
             currentLand = new Element();
-            currentAir = new Element();
             currentSurface = new Element();
             currentSubsurface = new Element();
-            currentSpace = new Element();
         }
     }
 
@@ -42,10 +36,8 @@ public class PlatformCategoryHandler extends AbstractSheetHandler {
         super.endRow(row);
 
         currentLand = addElement(currentLand, land);
-        currentAir = addElement(currentAir, air);
         currentSurface = addElement(currentSurface, surface);
         currentSubsurface = addElement(currentSubsurface, subsurface);
-        currentSpace = addElement(currentSpace, space);
     }
 
     @Override
@@ -66,56 +58,29 @@ public class PlatformCategoryHandler extends AbstractSheetHandler {
                 case 'C':
                     currentLand.description = value;
                     break;
-                case 'D':
-                    // TODO: Land sub-category (see spreadsheet)...
-                    break;
 
-                // ------------------------------------------------------------
-                // AIR
-                case 'E':
-                    currentAir.value = getInteger(value);
-                    break;
-                case 'F':
-                    currentAir.name = value;
-                    break;
-                case 'G':
-                    currentAir.description = value;
-                    break;
-
-                // ------------------------------------------------------------
+                 // ------------------------------------------------------------
                 // SURFACE
-                case 'H':
+                case 'D':
                     currentSurface.value = getInteger(value);
                     break;
-                case 'I':
+                case 'E':
                     currentSurface.name = value;
                     break;
-                case 'J':
+                case 'F':
                     currentSurface.description = value;
                     break;
 
                 // ------------------------------------------------------------
                 // SUBSURFACE
-                case 'K':
+                case 'G':
                     currentSubsurface.value = getInteger(value);
                     break;
-                case 'L':
+                case 'H':
                     currentSubsurface.name = value;
                     break;
-                case 'M':
+                case 'I':
                     currentSubsurface.description = value;
-                    break;
-
-                // ------------------------------------------------------------
-                // SPACE
-                case 'N':
-                    currentSpace.value = getInteger(value);
-                    break;
-                case 'O':
-                    currentSpace.name = value;
-                    break;
-                case 'P':
-                    currentSpace.description = value;
                     break;
             }
         }
@@ -125,9 +90,7 @@ public class PlatformCategoryHandler extends AbstractSheetHandler {
     protected void parseCompleted() throws Exception {
 
         land.generate();
-        air.generate();
         surface.generate();
         subsurface.generate();
-        space.generate();
     }
 }

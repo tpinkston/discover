@@ -5,6 +5,7 @@ package discover.vdis.enums;
  */
 public enum PLAT_CAT_AIR implements VdisEnum {
 
+    OTH(0, "Other"),
     FAD(1, "Fighter/Air Defense"),
     ATK(2, "Attack/Strike"),
     BOMB(3, "Bomber"),

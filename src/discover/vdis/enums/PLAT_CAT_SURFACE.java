@@ -5,6 +5,7 @@ package discover.vdis.enums;
  */
 public enum PLAT_CAT_SURFACE implements VdisEnum {
 
+    OTH(0, "Other"),
     CAR(1, "Carrier"),
     COM(2, "Command Ship/Cruiser"),
     GMC(3, "Guided Missile Cruiser"),

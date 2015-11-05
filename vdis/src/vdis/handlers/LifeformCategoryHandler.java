@@ -5,13 +5,13 @@ import org.apache.poi.xssf.usermodel.XSSFComment;
 import vdis.EnumGenerator;
 import vdis.EnumGenerator.Element;
 
-public class PlatformCategoryHandler extends AbstractSheetHandler {
+public class LifeformCategoryHandler extends AbstractSheetHandler {
 
-    private final EnumGenerator land = new EnumGenerator("PLAT_CAT_LAND");
-    private final EnumGenerator air = new EnumGenerator("PLAT_CAT_AIR");
-    private final EnumGenerator surface = new EnumGenerator("PLAT_CAT_SURFACE");
-    private final EnumGenerator subsurface = new EnumGenerator("PLAT_CAT_SUBSURFACE");
-    private final EnumGenerator space = new EnumGenerator("PLAT_CAT_SPACE");
+    private final EnumGenerator land = new EnumGenerator("LF_CAT_LAND");
+    private final EnumGenerator air = new EnumGenerator("LF_CAT_AIR");
+    private final EnumGenerator surface = new EnumGenerator("LF_CAT_SURFACE");
+    private final EnumGenerator subsurface = new EnumGenerator("LF_CAT_SUBSURFACE");
+    private final EnumGenerator space = new EnumGenerator("LF_CAT_SPACE");
 
     private Element currentLand = null;
     private Element currentAir = null;
@@ -51,7 +51,9 @@ public class PlatformCategoryHandler extends AbstractSheetHandler {
     @Override
     public void cell(String reference, String value, XSSFComment comment) {
 
-        if (getCurrentRow() != null) {
+        // The format for this sheet changes after row 10...
+        //
+        if ((getCurrentRow() != null) && (getCurrentRow() < 10)) {
 
             switch(reference.charAt(0)) {
 
@@ -66,56 +68,119 @@ public class PlatformCategoryHandler extends AbstractSheetHandler {
                 case 'C':
                     currentLand.description = value;
                     break;
-                case 'D':
-                    // TODO: Land sub-category (see spreadsheet)...
-                    break;
 
                 // ------------------------------------------------------------
                 // AIR
-                case 'E':
+                case 'D':
                     currentAir.value = getInteger(value);
                     break;
-                case 'F':
+                case 'E':
                     currentAir.name = value;
                     break;
-                case 'G':
+                case 'F':
                     currentAir.description = value;
                     break;
 
                 // ------------------------------------------------------------
                 // SURFACE
-                case 'H':
+                case 'G':
                     currentSurface.value = getInteger(value);
                     break;
-                case 'I':
+                case 'H':
                     currentSurface.name = value;
                     break;
-                case 'J':
+                case 'I':
                     currentSurface.description = value;
                     break;
 
                 // ------------------------------------------------------------
                 // SUBSURFACE
-                case 'K':
+                case 'J':
                     currentSubsurface.value = getInteger(value);
                     break;
-                case 'L':
+                case 'K':
                     currentSubsurface.name = value;
                     break;
-                case 'M':
+                case 'L':
                     currentSubsurface.description = value;
                     break;
 
                 // ------------------------------------------------------------
                 // SPACE
-                case 'N':
+                case 'M':
                     currentSpace.value = getInteger(value);
                     break;
-                case 'O':
+                case 'N':
                     currentSpace.name = value;
                     break;
-                case 'P':
+                case 'O':
                     currentSpace.description = value;
+                    break;
+            }
+        }
+        else if (getCurrentRow() != null) {
+
+            switch(reference.charAt(0)) {
+
+                // ------------------------------------------------------------
+                // LAND
+                case 'A':
+                    currentLand.value = getInteger(value);
+                    break;
+                case 'B':
+                    currentLand.name = value;
+                    currentLand.description = value;
+                    break;
+                case 'C':
+                    currentLand.description += (" " + value);
+                    break;
+                case 'D':
+                    currentLand.description += (" " + value);
+                    break;
+
+                // ------------------------------------------------------------
+                // AIR
+                case 'G':
+                    currentAir.value = getInteger(value);
+                    break;
+                case 'H':
+                    currentAir.name = value;
+                    currentAir.description = value;
+                    break;
+                case 'I':
+                    currentAir.description += (" " + value);
+                    break;
+
+                // ------------------------------------------------------------
+                // SURFACE
+                case 'J':
+                    currentSurface.value = getInteger(value);
+                    break;
+                case 'K':
+                    currentSurface.name = value;
+                    currentSurface.description = value;
+                    break;
+                case 'L':
+                    currentSurface.description += (" " + value);
+                    break;
+                case 'M':
+                    currentSurface.description += (" " + value);
+                    break;
+
+                // ------------------------------------------------------------
+                // SUBSURFACE
+                case 'N':
+                    currentSubsurface.value = getInteger(value);
+                    break;
+                case 'O':
+                    currentSubsurface.name = value;
+                    currentSubsurface.description = value;
+                    break;
+                case 'P':
+                    currentSubsurface.description += (" " + value);
+                    break;
+                case 'Q':
+                    currentSubsurface.description += (" " + value);
                     break;
             }
         }

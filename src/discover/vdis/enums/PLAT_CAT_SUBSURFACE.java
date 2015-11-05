@@ -5,6 +5,7 @@ package discover.vdis.enums;
  */
 public enum PLAT_CAT_SUBSURFACE implements VdisEnum {
 
+    OTH(0, "Other"),
     SSBN(1, "SSBN (Nuclear Ballistic Missile)"),
     SSGN(2, "SSGN (Nuclear Guided Missile)"),
     SSN(3, "SSN (Nuclear Attack - Torpedo)"),

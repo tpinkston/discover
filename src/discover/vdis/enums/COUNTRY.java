@@ -5,6 +5,7 @@ package discover.vdis.enums;
  */
 public enum COUNTRY implements VdisEnum {
 
+    OTHER(0, "Other"),
     AF(1, "Afghanistan"),
     ALB(2, "Albania"),
     ALG(3, "Algeria"),

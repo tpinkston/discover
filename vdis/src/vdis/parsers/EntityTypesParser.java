@@ -6,8 +6,11 @@ import org.apache.poi.xssf.eventusermodel.ReadOnlySharedStringsTable;
 import org.apache.poi.xssf.model.StylesTable;
 
 import vdis.handlers.AbstractSheetHandler;
+import vdis.handlers.CulturalFeatureCategoryHandler;
 import vdis.handlers.EntityTypesHandler;
+import vdis.handlers.EnvironmentCategoryHandler;
 import vdis.handlers.GenericEnumerationHandler;
+import vdis.handlers.LifeformCategoryHandler;
 import vdis.handlers.PlatformCategoryHandler;
 
 public class EntityTypesParser extends AbstractSpreadsheetParser {
@@ -43,21 +46,33 @@ public class EntityTypesParser extends AbstractSpreadsheetParser {
 
             handler = new PlatformCategoryHandler();
         }
+        else if ("Lifeform Cat LUT".equalsIgnoreCase(name)) {
+
+            handler = new LifeformCategoryHandler();
+        }
         else if ("Mun Cat LUT".equalsIgnoreCase(name)) {
 
-            handler = new GenericEnumerationHandler("MUNITION_CAT");
+            handler = new GenericEnumerationHandler("MUN_CAT");
+        }
+        else if ("ENV Cat LUT".equalsIgnoreCase(name)) {
+
+            handler = new EnvironmentCategoryHandler();
+        }
+        else if ("CF Cat LUT".equalsIgnoreCase(name)) {
+
+            handler = new CulturalFeatureCategoryHandler();
         }
         else if ("Radio Cat LUT".equalsIgnoreCase(name)) {
 
-            handler = new GenericEnumerationHandler("RADIO_CAT");
+            handler = new GenericEnumerationHandler("RAD_CAT");
         }
         else if ("EXP Cat LUT".equalsIgnoreCase(name)) {
 
-            handler = new GenericEnumerationHandler("EXPENDABLE_CAT");
+            handler = new GenericEnumerationHandler("EXP_CAT");
         }
         else if ("SE Cat LUT".equalsIgnoreCase(name)) {
 
-            handler = new GenericEnumerationHandler("SENSOR_EMITTER_CAT");
+            handler = new GenericEnumerationHandler("SE_CAT");
         }
 
         if (handler != null) {
