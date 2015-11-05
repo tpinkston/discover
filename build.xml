@@ -1,60 +1,47 @@
 <project name="discover" basedir="." default="jar">
+	  
+  <echo>discover.basedir: ${basedir}</echo>
+    
+  <property name="discover.source" value="${basedir}/src"/>
+  <property name="discover.classes" value="${basedir}/classes"/>
+  <property name="discover.lib" value="${basedir}/lib"/>
+  <property name="discover.logs" value="${basedir}/logs"/>
+  <property name="discover.props" value="${basedir}/properties"/>
+  <property name="discover.vdis" value="${basedir}/vdis"/>
+	
+  <property name="discover.jar.file" value="discover.jar"/>
+  <property name="discover.main.class" value="discover.Discover"/>
 
-  <property name="debug" value="true"/>
-  <property name="verbose" value="false"/>
-  <property name="listfiles" value="false"/>
-  <property name="enums" value="enums"/>
-  <property name="source" value="src"/>
-  <property name="icons" value="discover/gui/icons"/>
-  <property name="army-marking" value="discover/vdis/marking/army"/>
-  <property name="types" value="discover/vdis/types/data"/>
-  <property name="system" value="discover/system"/>
-  <property name="classes" value="classes"/>
-  <property name="properties" value="properties"/>
-  <property name="library" value="lib"/>
-  <property name="logs" value="logs"/>
-  <property name="jar" value="discover.jar"/>
-  <property name="main.class" value="discover.Discover"/>
-
-  <path id="classpath-internal-classes">
-    <pathelement path="${classes}"/>
-  </path>
-
-  <path id="classpath-internal-jar">
-    <fileset dir="${library}" includes="discover.jar"/>
-  </path>
-
-  <path id="classpath-internal-properties">
-    <pathelement path="${properties}"/>
-  </path>
-
-  <path id="classpath-external">
-    <fileset dir="${library}" includes="geotransform.jar,junit.jar,logback-classic-1.0.6.jar,logback-core-1.0.6.jar,slf4j-api-1.6.6.jar"/>
+  <path id="discover.classpath.id">
+    <fileset dir="${discover.lib}">
+        <include name="*.jar"/>
+        <exclude name="${discover.jar.file}"/>
+    </fileset>
   </path>
 
   <target name="clean">
-    <delete verbose="${verbose}" dir="${classes}"/>
-    <delete verbose="${verbose}" dir="${logs}"/>
-    <delete verbose="${verbose}" file="${enums}/generate_enums"/>
-    <delete verbose="${verbose}" file="${library}/${jar}"/>
+    <delete verbose="${verbose}" dir="${discover.classes}"/>
+    <delete verbose="${verbose}" dir="${discover.logs}"/>
+    <delete verbose="${verbose}" file="${discover.lib}/${discover.jar.file}"/>
+    <subant target="clean">
+      <property name="basedir" value="${discover.vdis}"/>
+      <fileset dir="${discover.vdis}" includes="build.xml"/>
+    </subant>
   </target>
 
-  <target name="buildenums">
-    <exec executable="g++" dir="${enums}" failonerror="true">
-      <arg value="generate_enums.cpp"/>
-      <arg value="-o"/>
-      <arg value="generate_enums"/>
-    </exec>
-      <exec executable="${enums}/generate_enums" failonerror="true">
-    </exec>
+  <target name="vdis">
+    <subant target="run">
+      <property name="basedir" value="${discover.vdis}"/>
+      <fileset dir="${discover.vdis}" includes="build.xml"/>
+    </subant>
   </target>
 
   <target name="compile">
-    <mkdir dir="${classes}"/>
-    <javac srcdir="${source}"
-           destdir="${classes}"
+    <mkdir dir="${discover.classes}"/>
+    <javac srcdir="${discover.source}"
+           destdir="${discover.classes}"
            verbose="${verbose}"
-           classpathref="classpath-external"
+           classpathref="discover.classpath.id"
            debug="${debug}"
            listfiles="${listfiles}"
            includeantruntime="false">
@@ -62,65 +49,36 @@
     </javac>
   </target>
 
-  <target name="build" depends="compile, copyfiles">
-  </target>
+  <target name="build" depends="compile, copyfiles"/>
 
   <target name="jar" depends="build">
-    <jar destfile="${library}/${jar}" basedir="${classes}">
+    <jar destfile="${discover.lib}/${discover.jar.file}" basedir="classes">
       <manifest>
-        <attribute name="Main-Class" value="${main.class}"/>
-        <attribute name="Class-Path" value="geotransform.jar"/>
+        <attribute name="Main-Class" value="${discover.main.class}"/>
       </manifest>
     </jar>
   </target>
 
-  <target name="run" depends="jar">
-    <java fork="true" classname="${main.class}">
-      <classpath>
-        <path refid="classpath-external"/>
-        <path refid="classpath-internal-jar"/>
-        <path refid="classpath-internal-properties"/>
-      </classpath>
-    </java>
-  </target>
-
-  <target name="all" depends="clean, buildenums, jar">
+  <target name="all" depends="clean, vdis, jar">
   </target>
 
   <target name="junit" depends="build">
     <junit printsummary="no">
       <classpath>
-        <path refid="classpath-external"/>
-        <path refid="classpath-internal-classes"/>
-        <path refid="classpath-internal-properties"/>
+        <path refid="discover.classpath.id"/>
+        <path path="${discover.classes}"/>
+        <path path="${discover.props}"/>
       </classpath>
-    <formatter type="plain" usefile="false"/>
+      <formatter type="plain" usefile="false"/>
       <batchtest fork="yes">
-        <fileset dir="${classes}" includes="discover/test/Test*.class"/>
+        <fileset dir="${discover.classes}" includes="discover/test/*.class"/>
       </batchtest>
     </junit>
   </target>
 
   <target name="copyfiles">
-    <copy verbose="${verbose}" todir="${classes}/${icons}">
-      <fileset dir="${source}/${icons}">
-        <exclude name="*.java"/>
-      </fileset>
-    </copy>
-    <copy verbose="${verbose}" todir="${classes}/${system}">
-      <fileset dir="${source}/${system}">
-        <exclude name="*.java"/>
-      </fileset>
-    </copy>
-    <copy verbose="${verbose}" todir="${classes}/${army-marking}">
-      <fileset dir="${source}/${army-marking}">
-        <exclude name="*.java"/>
-      </fileset>
-    </copy>
-    <copy verbose="${verbose}" todir="${classes}/${types}">
-      <fileset dir="${source}/${types}">
-        <exclude name="*.java"/>
-      </fileset>
+    <copy verbose="${verbose}" todir="${discover.classes}">
+      <fileset dir="${discover.source}" includes="**/*.xml **/*.png **/*.gif **/*.CSV"/>
     </copy>
   </target>
 

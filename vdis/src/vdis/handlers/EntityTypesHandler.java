@@ -16,15 +16,15 @@ public class EntityTypesHandler extends AbstractSheetHandler {
 
     static {
 
-        files.put(1, "src/discover/vdis/types/data/platforms.xml");
-        files.put(2, "src/discover/vdis/types/data/munitions.xml");
-        files.put(3, "src/discover/vdis/types/data/lifeforms.xml");
-        files.put(4, "src/discover/vdis/types/data/environmentals.xml");
-        files.put(5, "src/discover/vdis/types/data/cultural_features.xml");
-        files.put(6, "src/discover/vdis/types/data/supplies.xml");
-        files.put(7, "src/discover/vdis/types/data/radios.xml");
-        files.put(8, "src/discover/vdis/types/data/expendables.xml");
-        files.put(9, "src/discover/vdis/types/data/sensor_emitters.xml");
+        files.put(1, "../src/discover/vdis/types/data/platforms.xml");
+        files.put(2, "../src/discover/vdis/types/data/munitions.xml");
+        files.put(3, "../src/discover/vdis/types/data/lifeforms.xml");
+        files.put(4, "../src/discover/vdis/types/data/environmentals.xml");
+        files.put(5, "../src/discover/vdis/types/data/cultural_features.xml");
+        files.put(6, "../src/discover/vdis/types/data/supplies.xml");
+        files.put(7, "../src/discover/vdis/types/data/radios.xml");
+        files.put(8, "../src/discover/vdis/types/data/expendables.xml");
+        files.put(9, "../src/discover/vdis/types/data/sensor_emitters.xml");
     }
 
     private final List<EntityType> types = new ArrayList<>();

@@ -1,0 +1,41 @@
+<project name="vdis" basedir="." default="build">
+	  
+  <echo>vdis.basedir: ${basedir}</echo>
+
+  <property name="vdis.source" value="${basedir}/src"/>
+  <property name="vdis.classes" value="${basedir}/classes"/>
+  <property name="vdis.lib" value="${basedir}/lib"/>
+	
+  <property name="vdis.main.class" value="vdis.VDIS"/>
+
+  <path id="vdis.classpath.id">
+    <fileset dir="${vdis.lib}">
+        <include name="*.jar"/>
+    </fileset>
+  </path>
+
+  <target name="clean">
+    <delete verbose="${verbose}" dir="${vdis.classes}"/>
+  </target>
+
+  <target name="compile">
+    <mkdir dir="${vdis.classes}"/>
+    <javac srcdir="${vdis.source}"
+           destdir="${vdis.classes}"
+           verbose="${verbose}"
+           classpathref="vdis.classpath.id"
+           debug="${debug}"
+           listfiles="${listfiles}"
+           includeantruntime="false">
+      <compilerarg value="-Xlint"/>
+    </javac>
+  </target>
+
+  <target name="build" depends="compile">
+  </target>
+
+  <target name="run" depends="build">
+    <java fork="true" classname="${vdis.main.class}" classpath="${vdis.classes}:${toString:vdis.classpath.id}" failonerror="true"/>
+  </target>
+
+</project>

@@ -18,6 +18,6 @@ public abstract class AbstractSpreadsheetParser {
 
     public String getFilePath() {
 
-        return "vdis/docs";
+        return "../vdis/docs";
     }
 }
