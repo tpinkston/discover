@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<types>
+  <type name="ENV_LAND_RADAR_COLLECTED_NOISE" value="4.1.0.1.0.0.0" description="Radar Collected Noise"/>
+  <type name="ENV_LAND_RADAR_COLLECTED_NOISE_VERY_SMALL" value="4.1.0.1.20.0.0" description="Radar Collected Noise, Very Small"/>
+  <type name="ENV_LAND_RADAR_COLLECTED_NOISE_SMALL" value="4.1.0.1.40.0.0" description="Radar Collected Noise, Small"/>
+  <type name="ENV_LAND_RADAR_COLLECTED_NOISE_MED" value="4.1.0.1.60.0.0" description="Radar Collected Noise, Medium"/>
+  <type name="ENV_LAND_RADAR_COLLECTED_NOISE_LARGE" value="4.1.0.1.80.0.0" description="Radar Collected Noise, Large"/>
+  <type name="ENV_LAND_RADAR_COLLECTED_NOISE_VERY_LARGE" value="4.1.0.1.100.0.0" description="Radar Collected Noise, Very Large"/>
+  <type name="ENV_LAND_POWDER_SPILL" value="4.1.0.2.0.0.0" description="Powder Spill"/>
+  <type name="ENV_LAND_POWDER_SPILL_VERY_SMALL" value="4.1.0.2.20.0.0" description="Powder Spill, Very Small"/>
+  <type name="ENV_LAND_POWDER_SPILL_SMALL" value="4.1.0.2.40.0.0" description="Powder Spill, Small"/>
+  <type name="ENV_LAND_POWDER_SPILL_MED" value="4.1.0.2.60.0.0" description="Powder Spill, Medium"/>
+  <type name="ENV_LAND_POWDER_SPILL_LARGE" value="4.1.0.2.80.0.0" description="Powder Spill, Large"/>
+  <type name="ENV_LAND_POWDER_SPILL_VERY_LARGE" value="4.1.0.2.100.0.0" description="Powder Spill, Very Large"/>
+  <type name="ENV_LAND_POWDER_SPILL_RESIDUE" value="4.1.0.2.0.1.0" description="Powder Spill, Residue"/>
+  <type name="ENV_LAND_POWDER_SPILL_RESIDUE_VERY_SMALL" value="4.1.0.2.20.1.0" description="Powder Spill, Residue, Very Small"/>
+  <type name="ENV_LAND_POWDER_SPILL_RESIDUE_SMALL" value="4.1.0.2.40.1.0" description="Powder Spill, Residue, Small"/>
+  <type name="ENV_LAND_POWDER_SPILL_RESIDUE_MED" value="4.1.0.2.60.1.0" description="Powder Spill, Residue, Medium"/>
+  <type name="ENV_LAND_POWDER_SPILL_RESIDUE_LARGE" value="4.1.0.2.80.1.0" description="Powder Spill, Residue, Large"/>
+  <type name="ENV_LAND_POWDER_SPILL_RESIDUE_VERY_LARGE" value="4.1.0.2.100.1.0" description="Powder Spill, Residue, Very Large"/>
+  <type name="ENV_LAND_LIQUID_SPILL" value="4.1.0.3.0.0.0" description="Liquid Spill"/>
+  <type name="ENV_LAND_LIQUID_SPILL_VERY_SMALL" value="4.1.0.3.20.0.0" description="Liquid Spill, Very Small"/>
+  <type name="ENV_LAND_LIQUID_SPILL_SMALL" value="4.1.0.3.40.0.0" description="Liquid Spill, Small"/>
+  <type name="ENV_LAND_LIQUID_SPILL_MED" value="4.1.0.3.60.0.0" description="Liquid Spill, Medium"/>
+  <type name="ENV_LAND_LIQUID_SPILL_LARGE" value="4.1.0.3.80.0.0" description="Liquid Spill, Large"/>
+  <type name="ENV_LAND_LIQUID_SPILL_VERY_LARGE" value="4.1.0.3.100.0.0" description="Liquid Spill, Very Large"/>
+  <type name="ENV_LAND_FOREST_FIRE" value="4.1.0.4.0.0.0" description="Fire, Forest"/>
+  <type name="ENV_LAND_FOREST_FIRE_SPOT" value="4.1.0.4.20.0.0" description="Fire, Forest, Spot"/>
+  <type name="ENV_LAND_FOREST_FIRE_SMALL" value="4.1.0.4.40.0.0" description="Fire, Forest, Small"/>
+  <type name="ENV_LAND_FOREST_FIRE_MED" value="4.1.0.4.60.0.0" description="Fire, Forest, Medium"/>
+  <type name="ENV_LAND_FOREST_FIRE_LARGE" value="4.1.0.4.80.0.0" description="Fire, Forest, Large"/>
+  <type name="ENV_AIR_SMOKE" value="4.2.0.1.0.0.0" description="Smoke"/>
+  <type name="ENV_AIR_SMOKE_VERY_SMALL" value="4.2.0.1.20.0.0" description="Smoke, Very Small"/>
+  <type name="ENV_AIR_SMOKE_SMALL" value="4.2.0.1.40.0.0" description="Smoke, Small"/>
+  <type name="ENV_AIR_SMOKE_MED" value="4.2.0.1.60.0.0" description="Smoke, Medium"/>
+  <type name="ENV_AIR_SMOKE_LARGE" value="4.2.0.1.80.0.0" description="Smoke, Large"/>
+  <type name="ENV_AIR_SMOKE_VERY_LARGE" value="4.2.0.1.100.0.0" description="Smoke, Very Large"/>
+  <type name="ENV_AIR_FOG" value="4.2.0.2.0.0.0" description="Fog"/>
+  <type name="ENV_AIR_FOG_VERY_SMALL" value="4.2.0.2.20.0.0" description="Fog, Very Small"/>
+  <type name="ENV_AIR_FOG_SMALL" value="4.2.0.2.40.0.0" description="Fog, Small"/>
+  <type name="ENV_AIR_FOG_MED" value="4.2.0.2.60.0.0" description="Fog, Medium"/>
+  <type name="ENV_AIR_FOG_LARGE" value="4.2.0.2.80.0.0" description="Fog, Large"/>
+  <type name="ENV_AIR_FOG_VERY_LARGE" value="4.2.0.2.100.0.0" description="Fog, Very Large"/>
+  <type name="ENV_AIR_CLD" value="4.2.0.3.0.0.0" description="Cloud"/>
+  <type name="ENV_AIR_CLD_VERY_SMALL" value="4.2.0.3.20.0.0" description="Cloud, Very Small"/>
+  <type name="ENV_AIR_CLD_SMALL" value="4.2.0.3.40.0.0" description="Cloud, Small"/>
+  <type name="ENV_AIR_CLD_MED" value="4.2.0.3.60.0.0" description="Cloud, Medium"/>
+  <type name="ENV_AIR_CLD_LARGE" value="4.2.0.3.80.0.0" description="Cloud, Large"/>
+  <type name="ENV_AIR_CLD_VERY_LARGE" value="4.2.0.3.100.0.0" description="Cloud, Very Large"/>
+  <type name="ENV_AIR_CLDRN_W_RAIN_FALLING" value="4.2.0.4.0.0.0" description="Cloud With Rain Falling"/>
+  <type name="ENV_AIR_CLDRN_W_RAIN_FALLING_VERY_SMALL" value="4.2.0.4.20.0.0" description="Cloud, Rain Falling, Very Small"/>
+  <type name="ENV_AIR_CLDRN_W_RAIN_FALLING_SMALL" value="4.2.0.4.40.0.0" description="Cloud, Rain Falling, Small"/>
+  <type name="ENV_AIR_CLDRN_W_RAIN_FALLING_MED" value="4.2.0.4.60.0.0" description="Cloud, Rain Falling, Medium"/>
+  <type name="ENV_AIR_CLDRN_W_RAIN_FALLING_LARGE" value="4.2.0.4.80.0.0" description="Cloud, Rain Falling, Large"/>
+  <type name="ENV_AIR_CLDRN_W_RAIN_FALLING_VERY_LARGE" value="4.2.0.4.100.0.0" description="Cloud, Rain Falling, Very Large"/>
+  <type name="ENV_AIR_CLDSN_W_SNOW_FALLING" value="4.2.0.5.0.0.0" description="Cloud With Snow Falling"/>
+  <type name="ENV_AIR_CLDSN_W_SNOW_FALLING_VERY_SMALL" value="4.2.0.5.20.0.0" description="Cloud, Snow Falling, Very Small"/>
+  <type name="ENV_AIR_CLDSN_W_SNOW_FALLING_SMALL" value="4.2.0.5.40.0.0" description="Cloud, Snow Falling, Small"/>
+  <type name="ENV_AIR_CLDSN_W_SNOW_FALLING_MED" value="4.2.0.5.60.0.0" description="Cloud, Snow Falling, Medium"/>
+  <type name="ENV_AIR_CLDSN_W_SNOW_FALLING_LARGE" value="4.2.0.5.80.0.0" description="Cloud, Snow Falling, Large"/>
+  <type name="ENV_AIR_CLDSN_W_SNOW_FALLING_VERY_LARGE" value="4.2.0.5.100.0.0" description="Cloud, Snow Falling, Very Large"/>
+  <type name="ENV_AIR_HAZE" value="4.2.0.6.0.0.0" description="Haze"/>
+  <type name="ENV_AIR_HAZE_VERY_SMALL" value="4.2.0.6.20.0.0" description="Haze, Very Small"/>
+  <type name="ENV_AIR_HAZE_SMALL" value="4.2.0.6.40.0.0" description="Haze, Small"/>
+  <type name="ENV_AIR_HAZE_MED" value="4.2.0.6.60.0.0" description="Haze, Medium"/>
+  <type name="ENV_AIR_HAZE_LARGE" value="4.2.0.6.80.0.0" description="Haze, Large"/>
+  <type name="ENV_AIR_HAZE_VERY_LARGE" value="4.2.0.6.100.0.0" description="Haze, Very Large"/>
+  <type name="ENV_AIR_DUST" value="4.2.0.7.0.0.0" description="Dust/Sandstorm"/>
+  <type name="ENV_AIR_DUST_VERY_SMALL" value="4.2.0.7.20.0.0" description="Dust/Sandstorm, Very Small"/>
+  <type name="ENV_AIR_DUST_SMALL" value="4.2.0.7.40.0.0" description="Dust/Sandstorm, Small"/>
+  <type name="ENV_AIR_DUST_MED" value="4.2.0.7.60.0.0" description="Dust/Sandstorm, Medium"/>
+  <type name="ENV_AIR_DUST_LARGE" value="4.2.0.7.80.0.0" description="Dust/Sandstorm, Large"/>
+  <type name="ENV_AIR_DUST_VERY_LARGE" value="4.2.0.7.100.0.0" description="Dust/Sandstorm, Very Large"/>
+  <type name="ENV_AIR_CLDSL_W_SLEET_FALLING" value="4.2.0.8.0.0.0" description="Cloud with sleet falling"/>
+  <type name="ENV_AIR_CLDSL_W_SLEET_FALLING_VERY_SMALL" value="4.2.0.8.20.0.0" description="Cloud, Sleet Falling, Very Small"/>
+  <type name="ENV_AIR_CLDSL_W_SLEET_FALLING_SMALL" value="4.2.0.8.40.0.0" description="Cloud, Sleet Falling, Small"/>
+  <type name="ENV_AIR_CLDSL_W_SLEET_FALLING_MED" value="4.2.0.8.60.0.0" description="Cloud, Sleet Falling, Medium"/>
+  <type name="ENV_AIR_CLDSL_W_SLEET_FALLING_LARGE" value="4.2.0.8.80.0.0" description="Cloud, Sleet Falling, Large"/>
+  <type name="ENV_AIR_CLDSL_W_SLEET_FALLING_VERY_LARGE" value="4.2.0.8.100.0.0" description="Cloud, Sleet Falling, Very Large"/>
+  <type name="ENV_SURF_SEA" value="4.3.0.1.0.0.0" description="Sea State"/>
+  <type name="ENV_SURF_SEA_VERY_SMALL" value="4.3.0.1.20.0.0" description="Sea State, Very Small"/>
+  <type name="ENV_SURF_SEA_SMALL" value="4.3.0.1.40.0.0" description="Sea State, Small"/>
+  <type name="ENV_SURF_SEA_MED" value="4.3.0.1.60.0.0" description="Sea State, Medium"/>
+  <type name="ENV_SURF_SEA_LARGE" value="4.3.0.1.80.0.0" description="Sea State, Large"/>
+  <type name="ENV_SURF_SEA_VERY_LARGE" value="4.3.0.1.100.0.0" description="Sea State, Very Large"/>
+  <type name="ENV_SURF_OIL" value="4.3.0.2.0.0.0" description="Oil Slick"/>
+  <type name="ENV_SURF_OIL_VERY_SMALL" value="4.3.0.2.20.0.0" description="Oil Slick, Very Small"/>
+  <type name="ENV_SURF_OIL_SMALL" value="4.3.0.2.40.0.0" description="Oil Slick, Small"/>
+  <type name="ENV_SURF_OIL_MED" value="4.3.0.2.60.0.0" description="Oil Slick, Medium"/>
+  <type name="ENV_SURF_OIL_LARGE" value="4.3.0.2.80.0.0" description="Oil Slick, Large"/>
+  <type name="ENV_SURF_OIL_VERY_LARGE" value="4.3.0.2.100.0.0" description="Oil Slick, Very Large"/>
+  <type name="ENV_SURF_ICE" value="4.3.0.3.0.0.0" description="Ice"/>
+  <type name="ENV_SURF_ICE_VERY_SMALL" value="4.3.0.3.20.0.0" description="Ice, Very Small"/>
+  <type name="ENV_SURF_ICE_SMALL" value="4.3.0.3.40.0.0" description="Ice, Small"/>
+  <type name="ENV_SURF_ICE_MED" value="4.3.0.3.60.0.0" description="Ice, Medium"/>
+  <type name="ENV_SURF_ICE_LARGE" value="4.3.0.3.80.0.0" description="Ice, Large"/>
+  <type name="ENV_SURF_ICE_VERY_LARGE" value="4.3.0.3.100.0.0" description="Ice, Very Large"/>
+  <type name="ENV_SURF_DEB" value="4.3.0.4.0.0.0" description="Debris"/>
+  <type name="ENV_SURF_DEB_VERY_SMALL" value="4.3.0.4.20.0.0" description="Debris, Very Small"/>
+  <type name="ENV_SURF_DEB_SMALL" value="4.3.0.4.40.0.0" description="Debris, Small"/>
+  <type name="ENV_SURF_DEB_MED" value="4.3.0.4.60.0.0" description="Debris, Medium"/>
+  <type name="ENV_SURF_DEB_LARGE" value="4.3.0.4.80.0.0" description="Debris, Large"/>
+  <type name="ENV_SURF_DEB_VERY_LARGE" value="4.3.0.4.100.0.0" description="Debris, Very Large"/>
+  <type name="ENV_SURF_SURNO" value="4.3.0.5.0.0.0" description="Surf Noise"/>
+  <type name="ENV_SURF_SURNO_VERY_SMALL" value="4.3.0.5.20.0.0" description="Surf Noise, Very Small"/>
+  <type name="ENV_SURF_SURNO_SMALL" value="4.3.0.5.40.0.0" description="Surf Noise, Small"/>
+  <type name="ENV_SURF_SURNO_MED" value="4.3.0.5.60.0.0" description="Surf Noise, Medium"/>
+  <type name="ENV_SURF_SURNO_LARGE" value="4.3.0.5.80.0.0" description="Surf Noise, Large"/>
+  <type name="ENV_SURF_SURNO_VERY_LARGE" value="4.3.0.5.100.0.0" description="Surf Noise, Very Large"/>
+  <type name="ENV_SURF_ISLE" value="4.3.0.6.0.0.0" description="Island"/>
+  <type name="ENV_SURF_ISLE_VERY_SMALL" value="4.3.0.6.20.0.0" description="Island, Very Small"/>
+  <type name="ENV_SURF_ISLE_SMALL" value="4.3.0.6.40.0.0" description="Island, Small"/>
+  <type name="ENV_SURF_ISLE_MED" value="4.3.0.6.60.0.0" description="Island, Medium"/>
+  <type name="ENV_SURF_ISLE_LARGE" value="4.3.0.6.80.0.0" description="Island, Large"/>
+  <type name="ENV_SURF_ISLE_VERY_LARGE" value="4.3.0.6.100.0.0" description="Island, Very Large"/>
+  <type name="ENV_SUBS_SVP" value="4.4.0.1.0.0.0" description="Sound Velocity Profile"/>
+  <type name="ENV_SUBS_SVP_VERY_SMALL" value="4.4.0.1.20.0.0" description="Sound Velocity Profile, Very Small"/>
+  <type name="ENV_SUBS_SVP_SMALL" value="4.4.0.1.40.0.0" description="Sound Velocity Profile, Small"/>
+  <type name="ENV_SUBS_SVP_MED" value="4.4.0.1.60.0.0" description="Sound Velocity Profile, Medium"/>
+  <type name="ENV_SUBS_SVP_LARGE" value="4.4.0.1.80.0.0" description="Sound Velocity Profile, Large"/>
+  <type name="ENV_SUBS_SVP_VERY_LARGE" value="4.4.0.1.100.0.0" description="Sound Velocity Profile, Very Large"/>
+  <type name="ENV_SUBS_ICEB" value="4.4.0.2.0.0.0" description="Ice Berg"/>
+  <type name="ENV_SUBS_ICEB_VERY_SMALL" value="4.4.0.2.20.0.0" description="Ice Berg, Very Small"/>
+  <type name="ENV_SUBS_ICEB_SMALL" value="4.4.0.2.40.0.0" description="Ice Berg, Small"/>
+  <type name="ENV_SUBS_ICEB_MED" value="4.4.0.2.60.0.0" description="Ice Berg, Medium"/>
+  <type name="ENV_SUBS_ICEB_LARGE" value="4.4.0.2.80.0.0" description="Ice Berg, Large"/>
+  <type name="ENV_SUBS_ICEB_VERY_LARGE" value="4.4.0.2.100.0.0" description="Ice Berg, Very Large"/>
+  <type name="ENV_SUBS_CP" value="4.4.0.3.0.0.0" description="Current Profile"/>
+  <type name="ENV_SUBS_CP_VERY_SMALL" value="4.4.0.3.20.0.0" description="Current Profile, Very Small"/>
+  <type name="ENV_SUBS_CP_SMALL" value="4.4.0.3.40.0.0" description="Current Profile, Small"/>
+  <type name="ENV_SUBS_CP_MED" value="4.4.0.3.60.0.0" description="Current Profile, Medium"/>
+  <type name="ENV_SUBS_CP_LARGE" value="4.4.0.3.80.0.0" description="Current Profile, Large"/>
+  <type name="ENV_SUBS_CP_VERY_LARGE" value="4.4.0.3.100.0.0" description="Current Profile, Very Large"/>
+  <type name="ENV_SUBS_BIO" value="4.4.0.4.0.0.0" description="Biologics"/>
+  <type name="ENV_SUBS_BIO_VERY_SMALL_OTHER" value="4.4.0.4.20.0.0" description="Biologics, Very Small"/>
+  <type name="ENV_SUBS_BIO_SMALL_OTHER" value="4.4.0.4.40.0.0" description="Biologics, Small"/>
+  <type name="ENV_SUBS_BIO_MED_OTHER" value="4.4.0.4.60.0.0" description="Biologics, Medium"/>
+  <type name="ENV_SUBS_BIO_LARGE_OTHER" value="4.4.0.4.80.0.0" description="Biologics, Large"/>
+  <type name="ENV_SUBS_BIO_VERY_LARGE_OTHER" value="4.4.0.4.100.0.0" description="Biologics, Very Large"/>
+  <type name="ENV_SUBS_BIO_OTHER_BIOLUMINESCENCE" value="4.4.0.4.0.1.0" description="Bioluminescence"/>
+  <type name="ENV_SUBS_BIO_VERY_SMALL_BIOLUMINESCENCE" value="4.4.0.4.20.1.0" description="Biologics, Bioluminescence, Very Small"/>
+  <type name="ENV_SUBS_BIO_SMALL_BIOLUMINESCENCE" value="4.4.0.4.40.1.0" description="Biologics, Bioluminescence, Small"/>
+  <type name="ENV_SUBS_BIO_MED_BIOLUMINESCENCE" value="4.4.0.4.60.1.0" description="Biologics, Bioluminescence, Medium"/>
+  <type name="ENV_SUBS_BIO_LARGE_BIOLUMINESCENCE" value="4.4.0.4.80.1.0" description="Biologics, Bioluminescence, Large"/>
+  <type name="ENV_SUBS_BIO_VERY_LARGE_BIOLUMINESCENCE" value="4.4.0.4.100.1.0" description="Biologics, Bioluminescence, Very Large"/>
+  <type name="ENV_SUBS_TRANS" value="4.4.0.5.0.0.0" description="Transmissivity Profile"/>
+  <type name="ENV_SUBS_TRANS_VERY_SMALL" value="4.4.0.5.20.0.0" description="Transmissivity Profile, Very Small"/>
+  <type name="ENV_SUBS_TRANS_SMALL" value="4.4.0.5.40.0.0" description="Transmissivity Profile, Small"/>
+  <type name="ENV_SUBS_TRANS_MED" value="4.4.0.5.60.0.0" description="Transmissivity Profile, Medium"/>
+  <type name="ENV_SUBS_TRANS_LARGE" value="4.4.0.5.80.0.0" description="Transmissivity Profile, Large"/>
+  <type name="ENV_SUBS_TRANS_VERY_LARGE" value="4.4.0.5.100.0.0" description="Transmissivity Profile, Very Large"/>
+  <type name="ENV_SUBS_ICEM" value="4.4.0.6.0.0.0" description="Ice Merchant"/>
+  <type name="ENV_SUBS_ICEM_VERY_SMALL" value="4.4.0.6.20.0.0" description="Ice Merchant, Very Small"/>
+  <type name="ENV_SUBS_ICEM_SMALL" value="4.4.0.6.40.0.0" description="Ice Merchant, Small"/>
+  <type name="ENV_SUBS_ICEM_MED" value="4.4.0.6.60.0.0" description="Ice Merchant, Medium"/>
+  <type name="ENV_SUBS_ICEM_LARGE" value="4.4.0.6.80.0.0" description="Ice Merchant, Large"/>
+  <type name="ENV_SUBS_ICEM_VERY_LARGE" value="4.4.0.6.100.0.0" description="Ice Merchant, Very Large"/>
+  <type name="ENV_SUBS_KELP" value="4.4.0.7.0.0.0" description="Kelp Bed"/>
+  <type name="ENV_SUBS_KELP_VERY_SMALL" value="4.4.0.7.20.0.0" description="Kelp Bed, Very Small"/>
+  <type name="ENV_SUBS_KELP_SMALL" value="4.4.0.7.40.0.0" description="Kelp Bed, Small"/>
+  <type name="ENV_SUBS_KELP_MED" value="4.4.0.7.60.0.0" description="Kelp Bed, Medium"/>
+  <type name="ENV_SUBS_KELP_LARGE" value="4.4.0.7.80.0.0" description="Kelp Bed, Large"/>
+  <type name="ENV_SUBS_KELP_VERY_LARGE" value="4.4.0.7.100.0.0" description="Kelp Bed, Very Large"/>
+  <type name="ENV_SUBS_KNUC" value="4.4.0.8.0.0.0" description="Knuckle"/>
+  <type name="ENV_SUBS_KNUC_VERY_SMALL" value="4.4.0.8.20.0.0" description="Knuckle, Very Small"/>
+  <type name="ENV_SUBS_KNUC_SMALL" value="4.4.0.8.40.0.0" description="Knuckle, Small"/>
+  <type name="ENV_SUBS_KNUC_MED" value="4.4.0.8.60.0.0" description="Knuckle, Medium"/>
+  <type name="ENV_SUBS_KNUC_LARGE" value="4.4.0.8.80.0.0" description="Knuckle, Large"/>
+  <type name="ENV_SUBS_KNUC_VERY_LARGE" value="4.4.0.8.100.0.0" description="Knuckle, Very Large"/>
+  <type name="ENV_SUBS_DEB" value="4.4.0.9.0.0.0" description="Debris/Clutter"/>
+  <type name="ENV_SUBS_DEB_VERY_SMALL" value="4.4.0.9.20.0.0" description="Debris/Clutter, Very Small"/>
+  <type name="ENV_SUBS_DEB_SMALL" value="4.4.0.9.40.0.0" description="Debris/Clutter, Small"/>
+  <type name="ENV_SUBS_DEB_MED" value="4.4.0.9.60.0.0" description="Debris/Clutter, Medium"/>
+  <type name="ENV_SUBS_DEB_LARGE" value="4.4.0.9.80.0.0" description="Debris/Clutter, Large"/>
+  <type name="ENV_SUBS_DEB_VERY_LARGE" value="4.4.0.9.100.0.0" description="Debris/Clutter, Very Large"/>
+</types>

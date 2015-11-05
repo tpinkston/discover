@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<types>
+  <type name="OTHER_SUPL" value="6.0.0.0.0.0.0" description="Other"/>
+  <type name="OTHER_SUPL_FUELS" value="6.0.0.0.1.0.0" description="Fuels"/>
+  <type name="OTHER_SUPL_FUELS_GASOLINE" value="6.0.0.0.1.1.0" description="Gasoline"/>
+  <type name="OTHER_SUPL_FUELS_DIESEL_FUEL" value="6.0.0.0.1.2.0" description="Diesel Fuel"/>
+  <type name="OTHER_SUPL_FUELS_JP4" value="6.0.0.0.1.3.0" description="JP4"/>
+  <type name="OTHER_SUPL_FUELS_FUEL_OIL" value="6.0.0.0.1.4.0" description="Fuel Oil"/>
+  <type name="OTHER_SUPL_FUELS_JP_8_FUEL" value="6.0.0.0.1.5.0" description="JP-8 Fuel"/>
+  <type name="OTHER_SUPL_FUELS_FOG_OIL" value="6.0.0.0.1.6.0" description="Fog oil"/>
+  <type name="OTHER_SUPL_FUELS_MULTI_SPECTRAL_FOG_OIL" value="6.0.0.0.1.7.0" description="Multi-Spectral Fog Oil"/>
+  <type name="OTHER_SUPL_OILS" value="6.0.0.0.2.0.0" description="Oils"/>
+  <type name="OTHER_SUPL_LUBRICANTS" value="6.0.0.0.3.0.0" description="Lubricants"/>
+  <type name="OTHER_SUPL_FOOD" value="6.0.0.0.4.0.0" description="Food"/>
+  <type name="OTHER_SUPL_FOOD_WATER_DRINKING_STERILE_CLEAR_COLORLESS_BULK" value="6.0.0.0.4.1.0" description="Water, Drinking, Sterile, Clear Colorless (bulk)"/>
+  <type name="OTHER_SUPL_FOOD_WATER_DRINKING_DISTILLED_OR_SPARKLING" value="6.0.0.0.4.2.0" description="Water, Drinking, Distilled or Sparkling"/>
+  <type name="OTHER_SUPL_FOOD_MRE_INDIVIDUALS_MENUS_NO_1" value="6.0.0.0.4.3.0" description="Meal Ready To Eat Individuals Menus NO.1"/>
+  <type name="OTHER_SUPL_FOOD_HUMANITARIAN_DAILY_RATION" value="6.0.0.0.4.4.0" description="Humanitarian Daily Ration"/>
+  <type name="OTHER_SUPL_FOOD_VEGETARIAN_MRE" value="6.0.0.0.4.5.0" description="Vegetarian MRE"/>
+  <type name="OTHER_SUPL_FOOD_BREAD_SHELF_STABLE_WHITE" value="6.0.0.0.4.6.0" description="Bread, Shelf-Stable White"/>
+  <type name="OTHER_SUPL_FOOD_MEAL_COLD_WEATHER" value="6.0.0.0.4.7.0" description="Meal, Cold Weather"/>
+  <type name="OTHER_SUPL_OFOOD_LONG_RANGE_PATROL_RATION" value="6.0.0.0.4.8.0" description="Long Range Patrol Ration"/>
+  <type name="OTHER_SUPL_SPARE_PARTS" value="6.0.0.0.5.0.0" description="Spare Parts"/>
+  <type name="OTHER_SUPL_PERSONNEL" value="6.0.0.0.6.0.0" description="Personnel"/>
+  <type name="OTHER_SUPL_PERSONNEL_DI" value="6.0.0.0.6.1.0" description="Dismounted Infantry"/>
+  <type name="OTHER_SUPL_EQUIPMENT" value="6.0.0.0.7.0.0" description="Equipment"/>
+  <type name="OTHER_SUPL_EQUIP_MINE_PLOW" value="6.0.0.0.7.1.0" description="Mine Plow"/>
+  <type name="OTHER_SUPL_EQUIP_MINE_ROLLERS" value="6.0.0.0.7.2.0" description="Mine Rollers"/>
+  <type name="OTHER_SUPL_EQUIP_TIP" value="6.0.0.0.7.3.0" description="Thermal Identification Panel (TIP)"/>
+  <type name="OTHER_SUPL_EQUIP_TIP_ORANGE" value="6.0.0.0.7.3.1" description="TIP, Orange"/>
+  <type name="OTHER_SUPL_EQUIP_TIP_OD" value="6.0.0.0.7.3.2" description="TIP, Olive Drab (OD)"/>
+  <type name="OTHER_SUPL_EQUIP_TIP_TAN" value="6.0.0.0.7.3.3" description="TIP, Tan"/>
+  <type name="OTHER_SUPL_EQUIP_TIP_ORANGE_TAN" value="6.0.0.0.7.3.4" description="TIP, Orange/Tan"/>
+  <type name="OTHER_SUPL_EQUIP_TIP_PERSONAL" value="6.0.0.0.7.4.0" description="TIP, Personal"/>
+  <type name="OTHER_SUPL_EQUIP_TIP_PERSONAL_ORANGE" value="6.0.0.0.7.4.1" description="TIP, Personal Orange"/>
+  <type name="OTHER_SUPL_EQUIP_TIP_PERSONAL_OD" value="6.0.0.0.7.4.2" description="TIP, Personal Olive Drab (OD)"/>
+  <type name="OTHER_SUPL_EQUIP_TIP_PERSONAL_TAN" value="6.0.0.0.7.4.3" description="TIP, Personal Tan"/>
+  <type name="OTHER_SUPL_EQUIP_TIP_PERSONAL_ORANGE_TAN" value="6.0.0.0.7.4.4" description="TIP, Personal Orange/Tan"/>
+  <type name="OTHER_SUPL_EQUIP_CIP" value="6.0.0.0.7.5.0" description="Combat Identification Panel (CIP)"/>
+  <type name="OTHER_SUPL_EQUIP_PARACHUTE" value="6.0.0.0.7.6.0" description="Parachute"/>
+  <type name="OTHER_SUPL_EQUIP_PARACHUTE_DEPLOYED_ON_GROUND" value="6.0.0.0.7.6.1" description="Parachute, deployed, on ground"/>
+  <type name="OTHER_SUPL_EQUIP_PARACHUTE_DEPLOYED_IN_TREE" value="6.0.0.0.7.6.2" description="Parachute, deployed, in tree"/>
+  <type name="OTHER_SUPL_EQUIP_LITTER" value="6.0.0.0.7.7.0" description="Litter"/>
+  <type name="OTHER_SUPL_EQUIP_NAILS" value="6.0.0.0.7.15.0" description="Nails"/>
+  <type name="OTHER_SUPL_EQUIP_NAILS_BOX" value="6.0.0.0.7.15.1" description="Nails, Box"/>
+  <type name="OTHER_SUPL_AMMO_PALLET" value="6.0.0.0.8.0.0" description="Pallets with ammunition"/>
+  <type name="OTHER_SUPL_AMMO_PALLET_VERY_SMALL" value="6.0.0.0.8.0.20" description="Ammo Pallet, Very Small"/>
+  <type name="OTHER_SUPL_AMMO_PALLET_SMALL" value="6.0.0.0.8.0.40" description="Ammo Pallet, Small"/>
+  <type name="OTHER_SUPL_AMMO_PALLET_MED" value="6.0.0.0.8.0.60" description="Ammo Pallet, Medium"/>
+  <type name="OTHER_SUPL_AMMO_PALLET_LARGE" value="6.0.0.0.8.0.80" description="Ammo Pallet, Large"/>
+  <type name="OTHER_SUPL_AMMO_PALLET_VERY_LARGE" value="6.0.0.0.8.0.100" description="Ammo Pallet, Very Large"/>
+  <type name="OTHER_SUPL_OTH_PALLETS_W_WATER" value="6.0.0.0.9.0.0" description="Pallets with water"/>
+  <type name="OTHER_SUPL_PALLETS_OF_FUEL_JP8" value="6.0.0.0.10.0.0" description="Pallets of fuel (JP8)"/>
+  <type name="OTHER_SUPL_DECONTAMINATION_SUPPLIES" value="6.0.0.0.11.0.0" description="Decontamination supplies"/>
+  <type name="OTHER_SUPL_DECONTAMINATION_SUPPLIES_DECON_AGENT_STB" value="6.0.0.0.11.1.0" description="Decon Agent STB"/>
+  <type name="OTHER_SUPL_DECONTAMINATION_SUPPLIES_FERRIC_CHLORIDE_AN_100_1_LB" value="6.0.0.0.11.2.0" description="Ferric Chloride AN 100 1 LB"/>
+  <type name="OTHER_SUPL_PALLET_EQ" value="6.0.0.0.12.0.0" description="Pallets w/ Equipment"/>
+  <type name="OTHER_SUPL_CARGO_PALLET" value="6.0.0.0.12.1.0" description="Cargo Pallet"/>
+  <type name="OTHER_SUPL_PALLET_OF_SPARE_PARTS" value="6.0.0.0.12.2.0" description="Pallet of Spare Parts"/>
+  <type name="OTHER_SUPL_SLING_LOAD" value="6.0.0.0.13.0.0" description="Sling Load"/>
+  <type name="OTHER_SUPL_SLING_LOAD_BLIVET" value="6.0.0.0.13.1.0" description="Sling Load, Blivet"/>
+  <type name="OTHER_SUPL_SLING_LOAD_BLIVET_SINGLE" value="6.0.0.0.13.1.1" description="Sling Load, Blivet, Single"/>
+  <type name="OTHER_SUPL_SLING_LOAD_BLIVET_DOUBLE" value="6.0.0.0.13.1.2" description="Sling Load, Blivet, Double"/>
+  <type name="OTHER_SUPL_SLING_LOAD_BLIVET_SIX" value="6.0.0.0.13.1.3" description="Sling Load, Blivet, Six"/>
+  <type name="OTHER_SUPL_SLING_LOAD_CRATE" value="6.0.0.0.13.2.0" description="Sling Load, Crate"/>
+  <type name="OTHER_SUPL_SLING_LOAD_CRATE_4500_LB" value="6.0.0.0.13.2.1" description="Sling Load, Crate, 4500 lb"/>
+  <type name="OTHER_SUPL_SLING_LOAD_CRATE_7500_LB" value="6.0.0.0.13.2.2" description="Sling Load, Crate, 7500 lb"/>
+  <type name="OTHER_SUPL_SLING_LOAD_CRATE_17500_LB" value="6.0.0.0.13.2.3" description="Sling Load, Crate, 17500 lb"/>
+  <type name="OTHER_SUPL_SLING_LOAD_WATER_BUCKET" value="6.0.0.0.13.3.0" description="Sling Load, Water Bucket"/>
+  <type name="OTHER_SUPL_SLING_LOAD_WATER_BUCKET_BAMBI_120G" value="6.0.0.0.13.3.1" description="Sling Load, Bambi Bucket (BB 1012), 120 Gal"/>
+  <type name="OTHER_SUPL_SLING_LOAD_HMMWV" value="6.0.0.0.13.4.0" description="Sling Load, HMMWV"/>
+  <type name="OTHER_SUPL_SLING_LOAD_HMMWV_M998_SINGLE_HOOK" value="6.0.0.0.13.4.1" description="Sling Load, HMMWV, M998, Single Hook"/>
+  <type name="OTHER_SUPL_SLING_LOAD_HMMWV_M998_TANDEM_HOOK" value="6.0.0.0.13.4.2" description="Sling Load, HMMWV, M998, Tandem Hook"/>
+  <type name="OTHER_SUPL_SLING_LOAD_HMMWV_M1043_SINGLE_HOOK" value="6.0.0.0.13.4.3" description="Sling Load, HMMWV, M1043, Single Hook"/>
+  <type name="OTHER_SUPL_SLING_LOAD_HMMWV_M1043_TANDEM_HOOK" value="6.0.0.0.13.4.4" description="Sling Load, HMMWV, M1043, Tandem Hook"/>
+  <type name="OTHER_SUPL_SLING_LOAD_HMMWV_M1045" value="6.0.0.0.13.4.5" description="Sling Load, HMMWV, M1045"/>
+  <type name="OTHER_SUPL_SLING_LOAD_HMMWV_SHOTGUN" value="6.0.0.0.13.4.6" description="Sling Load, HMMWV, Shotgun (tandem)"/>
+  <type name="OTHER_SUPL_SLING_LOAD_HOW" value="6.0.0.0.13.5.0" description="Sling Load, Howitzer"/>
+  <type name="OTHER_SUPL_SLING_LOAD_HOW_TWIN_M119" value="6.0.0.0.13.5.1" description="Sling Load, Howitzer, Twin M119, 9040 lb"/>
+  <type name="OTHER_SUPL_SLING_LOAD_HOW_M198" value="6.0.0.0.13.5.2" description="Sling Load, Howitzer, M198, 15741 lb"/>
+  <type name="OTHER_SUPL_SLING_LOAD_COLLAPSIBLE" value="6.0.0.0.13.6.0" description="Sling Load, Collapsible"/>
+  <type name="OTHER_SUPL_SLING_LOAD_COLLAPSIBLE_250_GAL" value="6.0.0.0.13.6.1" description="Sling Load, Collapsible, 250 Gal"/>
+  <type name="OTHER_SUPL_SLING_LOAD_COLLAPSIBLE_500_GAL" value="6.0.0.0.13.6.2" description="Sling Load, Collapsible, 500 Gal"/>
+  <type name="OTHER_SUPL_SLING_LOAD_COLLAPSIBLE_5000_GAL" value="6.0.0.0.13.6.3" description="Sling Load, Collapsible, 5000 Gal"/>
+  <type name="OTHER_SUPL_SLING_LOAD_COLLAPSIBLE_DOUBLE_500_GAL" value="6.0.0.0.13.6.4" description="Sling Load, Collapsible, Double 500 Gal"/>
+  <type name="OTHER_SUPL_SLING_LOAD_BLADDER" value="6.0.0.0.13.7.0" description="Sling Load, Bladder"/>
+  <type name="OTHER_SUPL_SLING_LOAD_BLADDER_500_GAL" value="6.0.0.0.13.7.1" description="Sling Load, Bladder, 500 Gal"/>
+  <type name="OTHER_SUPL_SLING_LOAD_BLADDER_5000_GAL" value="6.0.0.0.13.7.2" description="Sling Load, Bladder, 5000 Gal"/>
+  <type name="OTHER_SUPL_SLING_LOAD_BLADDER_10000_GAL" value="6.0.0.0.13.7.3" description="Sling Load, Bladder, 10000 Gal"/>
+  <type name="OTHER_SUPL_SLING_LOAD_PALLET_OF_CRATES" value="6.0.0.0.13.8.0" description="Sling Load, Pallet of Crates"/>
+  <type name="OTHER_SUPL_SLING_LOAD_PALLET_OF_CRATES_4500_LBS" value="6.0.0.0.13.8.1" description="Sling Load, Pallet of Crates, 4500 lbs"/>
+  <type name="OTHER_SUPL_SLING_LOAD_PALLET_OF_CRATES_7500_LBS" value="6.0.0.0.13.8.2" description="Sling Load, Pallet of Crates, 7500 lbs"/>
+  <type name="OTHER_SUPL_SLING_LOAD_PALLET_OF_CRATES_1719_LBS" value="6.0.0.0.13.8.3" description="Sling Load, Pallet of Crates, 1719 lbs"/>
+  <type name="OTHER_SUPL_SLING_LOAD_PALLET_OF_CRATES_4000_LBS" value="6.0.0.0.13.8.4" description="Sling Load, Pallet of Crates, 4000 lbs"/>
+  <type name="OTHER_SUPL_SLING_LOAD_AH64" value="6.0.0.0.13.9.0" description="Sling Load, Apache AH-64"/>
+  <type name="OTHER_SUPL_SLING_LOAD_AH64_STRIPPED_DOWN" value="6.0.0.0.13.9.1" description="Sling Load, Apache AH-64, Stripped Down, 8000 lb"/>
+  <type name="OTHER_SUPL_SLING_LOAD_AH64_CENTER_HOOK" value="6.0.0.0.13.9.2" description="Sling Load, Apache AH-64, Center Hook, 11500 lb"/>
+  <type name="OTHER_SUPL_SLING_LOAD_AFV_AUV" value="6.0.0.0.13.10.0" description="Sling Load, AFV/AUV"/>
+  <type name="OTHER_SUPL_SLING_LOAD_AUV_M577" value="6.0.0.0.13.10.1" description="Sling Load, AFV/AUV, M577"/>
+  <type name="OTHER_SUPL_SLING_LOAD_AUV_M577A3" value="6.0.0.0.13.10.2" description="Sling Load, AFV/AUV, M577A3"/>
+  <type name="OTHER_SUPL_SLING_LOAD_AFV_M113A3" value="6.0.0.0.13.10.3" description="Sling Load, AFV/AUV, M113A3"/>
+  <type name="OTHER_SUPL_SLING_LOAD_HOIST" value="6.0.0.0.13.11.0" description="Sling Load, Hoist"/>
+  <type name="OTHER_SUPL_SLING_LOAD_HOIST_JP" value="6.0.0.0.13.11.1" description="Jungle Penetrator (JP)"/>
+  <type name="OTHER_SUPL_SLING_LOAD_HOIST_SKED" value="6.0.0.0.13.11.2" description="Sked Stretcher"/>
+  <type name="OTHER_SUPL_SLING_LOAD_HOIST_STOKES" value="6.0.0.0.13.11.3" description="Stokes Basket"/>
+</types>

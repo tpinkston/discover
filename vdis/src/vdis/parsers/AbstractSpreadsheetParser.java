@@ -1,5 +1,6 @@
 package vdis.parsers;
 
+import java.io.File;
 import java.io.InputStream;
 
 import org.apache.poi.xssf.eventusermodel.ReadOnlySharedStringsTable;
@@ -18,6 +19,15 @@ public abstract class AbstractSpreadsheetParser {
 
     public String getFilePath() {
 
-        return "../vdis/docs";
+        // Working directory may be './discover' or './discover/vdis'
+        //
+        File docs = new File("vdis/docs");
+
+        if (docs.exists() && docs.isDirectory()) {
+
+            return docs.getPath();
+        }
+
+        return ("../" + docs.getPath());
     }
 }

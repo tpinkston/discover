@@ -86,4 +86,22 @@ public abstract class AbstractSheetHandler implements SheetContentsHandler {
     protected void parseCompleted() throws Exception {
 
     }
+
+    protected boolean isInteger(String string) {
+
+        if ((string != null) && !string.isEmpty()) {
+
+            for(int i = 0; i < string.length(); ++i) {
+
+                if (!Character.isDigit(string.charAt(i))) {
+
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        return false;
+    }
 }

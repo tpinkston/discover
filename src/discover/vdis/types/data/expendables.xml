@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<types>
+  <type name="CIS_EXP_AIR_CHAFF" value="8.2.222.1.0.0.0" description="Chaff"/>
+  <type name="CIS_EXP_AIR_CHAFF_BUNDLE_OTHER" value="8.2.222.1.1.0.0" description="Bundle"/>
+  <type name="CIS_EXP_AIR_CHAFF_BUNDLE_TACCSF_NOTIONAL_HOSTILE_CHAFF" value="8.2.222.1.1.0.1" description="TACCSF notional hostile chaff"/>
+  <type name="CIS_EXP_AIR_CHAFF_BUNDLE_VERY_SMALL" value="8.2.222.1.1.1.0" description="Very small"/>
+  <type name="CIS_EXP_AIR_CHAFF_BUNDLE_SMALL" value="8.2.222.1.1.2.0" description="Small"/>
+  <type name="CIS_EXP_AIR_CHAFF_BUNDLE_MED" value="8.2.222.1.1.3.0" description="Medium"/>
+  <type name="CIS_EXP_AIR_CHAFF_BUNDLE_LARGE" value="8.2.222.1.1.4.0" description="Large"/>
+  <type name="CIS_EXP_AIR_CHAFF_BUNDLE_VERY_LARGE" value="8.2.222.1.1.5.0" description="Very Large"/>
+  <type name="CIS_EXP_AIR_CHAFF_BUNDLE_26MM_CHAFF_CARTRIDGE" value="8.2.222.1.1.6.0" description="26mm chaff cartridge"/>
+  <type name="CIS_EXP_AIR_CHAFF_BUNDLE_50MM_CHAFF_CARTRIDGE" value="8.2.222.1.1.7.0" description="50mm chaff cartridge"/>
+  <type name="CIS_EXP_AIR_FLARE" value="8.2.222.2.0.0.0" description="Flare"/>
+  <type name="CIS_EXP_AIR_FLARE_OTHER_TACCSF_NOTINOAL_HOSTILE_CHAFF" value="8.2.222.2.0.1.0" description="TACCSF notional hostile flare"/>
+  <type name="CIS_EXP_AIR_FLARE_26MM_FLARE" value="8.2.222.2.1.0.0" description="26mm Flare"/>
+  <type name="CIS_EXP_AIR_FLARE_50MM_FLARE" value="8.2.222.2.2.0.0" description="50mm Flare"/>
+  <type name="US_EXP_AIR_CHAFF" value="8.2.225.1.0.0.0" description="Chaff"/>
+  <type name="US_EXP_AIR_CHAFF_BUNDLE" value="8.2.225.1.1.0.0" description="Bundle"/>
+  <type name="US_EXP_AIR_CHAFF_TACCSF_NOTIONAL_FRIENDLY_CHAFF" value="8.2.225.1.1.0.1" description="TACCSF notional friendly chaff"/>
+  <type name="US_EXP_AIR_CHAFF_BUNDLE_VERY_SMALL" value="8.2.225.1.1.1.0" description="Very small"/>
+  <type name="US_EXP_AIR_CHAFF_BUNDLE_SMALL" value="8.2.225.1.1.2.0" description="Small"/>
+  <type name="US_EXP_AIR_CHAFF_BUNDLE_MED" value="8.2.225.1.1.3.0" description="Medium"/>
+  <type name="US_EXP_AIR_CHAFF_BUNDLE_LARGE" value="8.2.225.1.1.4.0" description="Large"/>
+  <type name="US_EXP_AIR_CHAFF_BUNDLE_VERY_LARGE" value="8.2.225.1.1.5.0" description="Very Large"/>
+  <type name="US_EXP_AIR_CHAFF_BUNDLE_RR_170_CHAFF" value="8.2.225.1.1.6.0" description="RR-170 Chaff"/>
+  <type name="US_EXP_AIR_CHAFF_BUNDLE_RR_180_CHAFF" value="8.2.225.1.1.7.0" description="RR-180 Chaff"/>
+  <type name="US_EXP_AIR_CHAFF_BUNDLE_RR_188_CHAFF" value="8.2.225.1.1.8.0" description="RR-188 Chaff"/>
+  <type name="US_EXP_AIR_CHAFF_BUNDLE_RR_129_CHAFF" value="8.2.225.1.1.9.0" description="RR-129 Chaff"/>
+  <type name="US_EXP_AIR_CHAFF_BUNDLE_RR_144_CHAFF" value="8.2.225.1.1.10.0" description="RR-144 Chaff"/>
+  <type name="US_EXP_AIR_CHAFF_BUNDLE_M_1_CHAFF" value="8.2.225.1.1.11.0" description="M-1 Chaff"/>
+  <type name="US_EXP_AIR_CHAFF_CORRIDOR_OTHER" value="8.2.225.1.2.0.0" description="Corridor"/>
+  <type name="US_EXP_AIR_CHAFF_CORRIDOR_VERY_SMALL" value="8.2.225.1.2.1.0" description="Very small"/>
+  <type name="US_EXP_AIR_CHAFF_CORRIDOR_SMALL" value="8.2.225.1.2.2.0" description="Small"/>
+  <type name="US_EXP_AIR_CHAFF_CORRIDOR_MED" value="8.2.225.1.2.3.0" description="Medium"/>
+  <type name="US_EXP_AIR_CHAFF_CORRIDOR_LARGE" value="8.2.225.1.2.4.0" description="Large"/>
+  <type name="US_EXP_AIR_CHAFF_CORRIDOR_VERY_LARGE" value="8.2.225.1.2.5.0" description="Very Large"/>
+  <type name="US_EXP_AIR_FLARE" value="8.2.225.2.0.0.0" description="Flare"/>
+  <type name="US_EXP_AIR_FLARE_TACCSF_NOTIONAL_FRIENDLY_FLARE" value="8.2.225.2.0.1.0" description="TACCSF notional friendly flare"/>
+  <type name="US_EXP_AIR_FLARE_M_206" value="8.2.225.2.1.0.0" description="M-206 Flare"/>
+  <type name="US_EXP_AIR_FLARE_MJU_7" value="8.2.225.2.2.0.0" description="MJU-7 Flare"/>
+  <type name="US_EXP_AIR_FLARE_MJU_10" value="8.2.225.2.3.0.0" description="MJU-10 Flare"/>
+  <type name="US_EXP_AIR_FLARE_MJU_8_MK46" value="8.2.225.2.4.0.0" description="MJU-8 Flare"/>
+  <type name="US_EXP_AIR_FLARE_MK47" value="8.2.225.2.5.0.0" description="Mk47 Flare"/>
+  <type name="US_EXP_AIR_FLARE_M_211" value="8.2.225.2.6.0.0" description="Flare, M211"/>
+  <type name="US_EXP_AIR_FLARE_M_212" value="8.2.225.2.7.0.0" description="Flare, M212"/>
+  <type name="US_EXP_AIR_COMB_CHAFF_FLARE" value="8.2.225.3.0.0.0" description="Combined chaff/flare"/>
+  <type name="US_EXP_AIR_AE" value="8.2.225.4.0.0.0" description="Active emitter"/>
+  <type name="US_EXP_AIR_AE_TOW_DECOY" value="8.2.225.4.1.0.0" description="Towed Decoy"/>
+  <type name="US_EXP_AIR_AE_TOW_DECOY_AN_ALE_50_ADV_AIRBORNE_EXPENDABLE_DECOY_AAED" value="8.2.225.4.1.1.0" description="AN/ALE-50 Advanced Airborne Expendable Decoy (AAED)"/>
+  <type name="US_EXP_AIR_AE_TOW_DECOY_AN_ALE_55_FIBER_OPTIC_TOW_DECOY_FOTD" value="8.2.225.4.1.2.0" description="AN/ALE-55 Fiber Optic Towed Decoy (FOTD)"/>
+  <type name="US_EXP_AIR_AE_TOW_DECOY_HIGH_POWER_FIBER_OPTIC_TOW_DECOY_HPFOTD" value="8.2.225.4.1.3.0" description="High Power Fiber Optic Towed Decoy (HPFOTD)"/>
+  <type name="US_EXP_AIR_PDEC" value="8.2.225.5.0.0.0" description="Passive decoy"/>
+  <type name="US_EXP_AIR_WDEC" value="8.2.225.6.0.0.0" description="Winged Decoy"/>
+  <type name="US_EXP_AIR_WDEC_TACT_AIR_LNCHED" value="8.2.225.6.1.0.0" description="Tactical Air-Launched Decoy"/>
+  <type name="US_EXP_AIR_WDEC_A_B37U_1_V_1_CHAFF_DISPENSING" value="8.2.225.6.1.1.0" description="A/B37U-1(V)1 chaff-dispensing"/>
+  <type name="US_EXP_AIR_WDEC_A_B37U_1_V_2_PASSIVE_RF_AUGMENTATION" value="8.2.225.6.1.2.0" description="A/B37U-1(V)2 passive RF augmentation"/>
+  <type name="US_EXP_AIR_WDEC_ADM_141A_PASSIVE_AND_ACTIVE_RF_AUGMENTATION" value="8.2.225.6.1.3.0" description="ADM-141A passive and active RF augmentation"/>
+  <type name="US_EXP_AIR_WDEC_ADM_141B_CHAFF_DISPENSING" value="8.2.225.6.1.4.0" description="ADM-141B chaff-dispensing"/>
+  <type name="US_EXP_AIR_WDEC_ADM_141C_IMPROVED_TALD" value="8.2.225.6.1.5.0" description="ADM-141C Improved TALD"/>
+  <type name="US_EXP_AIR_SIGILL_FLARE" value="8.2.225.7.0.0.0" description="Signal/Illumination Flare"/>
+  <type name="US_EXP_AIR_SIG_FLARE" value="8.2.225.7.1.0.0" description="Signal Flare"/>
+  <type name="US_EXP_AIR_ILL_FLARE" value="8.2.225.7.2.0.0" description="Illumination Flare"/>
+  <type name="US_EXP_AIR_ILL_FLARE_HYDRA_70_M257" value="8.2.225.7.2.5.0" description="Hydra 70 w/ M257 Illumination Warhead"/>
+  <type name="US_EXP_AIR_ILL_FLARE_HYDRA_70_M257_PAYLOAD" value="8.2.225.7.2.5.1" description="M257 Illumination Warhead Payload (M257 Illumination Flare)"/>
+  <type name="US_EXP_AIR_ILL_FLARE_HYDRA_70_M278IR" value="8.2.225.7.2.6.0" description="Hydra 70 w/ M278 IR Illumination Warhead"/>
+  <type name="US_EXP_AIR_ILL_FLARE_HYDRA_70_M278IR_PAYLOAD" value="8.2.225.7.2.6.1" description="M278 IR Illumination Warhead Payload (M278 IR Illumination Flare)"/>
+  <type name="US_EXP_AIR_SMOKE_GEN" value="8.2.225.8.0.0.0" description="Smoke Generator"/>
+  <type name="US_EXP_AIR_SMOKE_SCREEN" value="8.2.225.8.1.0.0" description="Smoke Screen"/>
+  <type name="US_EXP_AIR_SMOKE_SCREEN_HYDRA_70_M264" value="8.2.225.8.1.1.0" description="Hydra 70 w/ M264 RP Smoke Warhead"/>
+  <type name="US_EXP_AIR_SMOKE_SCREEN_HYDRA_70_M264_SUBMUN" value="8.2.225.8.1.1.1" description="M264 RP Smoke Warhead Submunition (RP Pellet)"/>
+  <type name="US_EXP_AIR_TARGET_SPOT_MARKER" value="8.2.225.8.2.0.0" description="Target/Spot Marker"/>
+  <type name="US_EXP_AIR_TARGET_SPOT_MARKER_HYDRA_70_M156" value="8.2.225.8.2.1.0" description="Hydra 70 w/ M156 WP Smoke Warhead"/>
+  <type name="US_EXP_AIR_TARGET_SPOT_MARKER_HYDRA_70_MK67_MOD0" value="8.2.225.8.2.2.0" description="Hydra 70 w/ Mk 67 Mod 0 WP Smoke Warhead"/>
+  <type name="US_EXP_AIR_TARGET_SPOT_MARKER_HYDRA_70_MK67_MOD1" value="8.2.225.8.2.3.0" description="Hydra 70 w/ Mk 67 Mod 1 RP Smoke Warhead"/>
+  <type name="AUL_EXP_SURF_OTH_NULKA" value="8.3.13.0.0.1.0" description="Nulka"/>
+  <type name="US_EXP_SURF_FLARE" value="8.3.225.2.0.0.0" description="Flare"/>
+  <type name="US_EXP_SURF_AE" value="8.3.225.4.0.0.0" description="Active emitter"/>
+  <type name="US_EXP_SURF_AE_OTHER_NIXIE" value="8.3.225.4.0.1.0" description="Nixie SLQ 25"/>
+  <type name="US_EXP_SURF_PDEC" value="8.3.225.5.0.0.0" description="Passive decoy"/>
+  <type name="CIS_EXP_SUBS_AE" value="8.4.222.4.0.0.0" description="Active Emitter"/>
+  <type name="CIS_EXP_SUBS_AE_UC_2S" value="8.4.222.4.1.0.0" description="UC-2S"/>
+  <type name="CIS_EXP_SUBS_AE_UC_5M" value="8.4.222.4.2.0.0" description="UC-5M"/>
+  <type name="CIS_EXP_SUBS_AE_UC_2_COUNTERMEASURE" value="8.4.222.4.3.0.0" description="UC-2 Countermeasure"/>
+  <type name="US_EXP_SUBS_AE" value="8.4.225.4.0.0.0" description="Active Emitter"/>
+  <type name="US_EXP_SUBS_AE_CM_NAE" value="8.4.225.4.1.0.0" description="CM NAE"/>
+  <type name="US_EXP_SUBS_AE_CM_ADC_MK_3_T" value="8.4.225.4.2.0.0" description="CM ADC Mk 3 T"/>
+  <type name="US_EXP_SUBS_AE_CM_ADC_MK_3_S" value="8.4.225.4.3.0.0" description="CM ADC Mk 3 S"/>
+  <type name="US_EXP_SUBS_AE_CM_ADC_MK_3_N" value="8.4.225.4.4.0.0" description="CM ADC Mk 3 N"/>
+  <type name="US_EXP_SUBS_AE_CM_ADC_MK_4" value="8.4.225.4.5.0.0" description="CM ADC Mk 4"/>
+  <type name="US_EXP_SUBS_AE_CM_ADC_MK_4_CM_ADC_MK_4_BBNR" value="8.4.225.4.5.1.0" description="CM ADC MK-4 BBNR"/>
+  <type name="US_EXP_SUBS_AE_CM_ADC_MK_5_CM_ADC_MK_4_BBN" value="8.4.225.4.5.2.0" description="CM ADC MK-4 BBN"/>
+  <type name="US_EXP_SUBS_AE_CM_ADC_MK_6_CM_ADC_MK_4_SFJR" value="8.4.225.4.5.3.0" description="CM ADC MK-4 SFJR"/>
+  <type name="US_EXP_SUBS_AE_CM_ADC_MK_7_CM_ADC_MK_4_SFJ" value="8.4.225.4.5.4.0" description="CM ADC MK-4 SFJ"/>
+  <type name="US_EXP_SUBS_AE_CM_ADC_MK_3" value="8.4.225.4.6.0.0" description="CM ADC MK-3"/>
+  <type name="US_EXP_SUBS_AE_CM_ADC_MK_3_CM_ADC_MK_3_R3" value="8.4.225.4.6.1.0" description="CM ADC MK-3 R3"/>
+  <type name="US_EXP_SUBS_AE_CM_ADC_MK_4_CM_ADC_MK_3_BN" value="8.4.225.4.6.2.0" description="CM ADC MK-3 BN"/>
+  <type name="US_EXP_SUBS_AE_CM_ADC_MK_5_CM_ADC_MK_3_NPN" value="8.4.225.4.6.3.0" description="CM ADC MK-3 NPN"/>
+  <type name="US_EXP_SUBS_AE_CM_ADC_MK_6_CM_ADC_MK_3_IR_3" value="8.4.225.4.6.4.0" description="CM ADC MK-3 IR 3"/>
+  <type name="US_EXP_SUBS_AE_CM_ADC_MK_1" value="8.4.225.4.7.0.0" description="CM ADC MK-1"/>
+</types>

@@ -10,21 +10,41 @@ import java.util.Map;
 
 import org.apache.poi.xssf.usermodel.XSSFComment;
 
+/**
+ * Handler for sheet "Entity Types" in Entity_Types.xlsx
+ *
+ * @author Tony Pinkston
+ *
+ */
 public class EntityTypesHandler extends AbstractSheetHandler {
 
     private static final Map<Integer, String> files = new HashMap<>();
 
     static {
 
-        files.put(1, "../src/discover/vdis/types/data/platforms.xml");
-        files.put(2, "../src/discover/vdis/types/data/munitions.xml");
-        files.put(3, "../src/discover/vdis/types/data/lifeforms.xml");
-        files.put(4, "../src/discover/vdis/types/data/environmentals.xml");
-        files.put(5, "../src/discover/vdis/types/data/cultural_features.xml");
-        files.put(6, "../src/discover/vdis/types/data/supplies.xml");
-        files.put(7, "../src/discover/vdis/types/data/radios.xml");
-        files.put(8, "../src/discover/vdis/types/data/expendables.xml");
-        files.put(9, "../src/discover/vdis/types/data/sensor_emitters.xml");
+        File data = new File("src/discover/vdis/types/data");
+        String path = null;
+
+        // Working directory may be './discover' or './discover/vdis'
+        //
+        if (data.exists() && data.isDirectory()) {
+
+            path = data.getPath();
+        }
+        else {
+
+            path = ("../" + data.getPath());
+        }
+
+        files.put(1, path + "/platforms.xml");
+        files.put(2, path + "/munitions.xml");
+        files.put(3, path + "/lifeforms.xml");
+        files.put(4, path + "/environmentals.xml");
+        files.put(5, path + "/cultural_features.xml");
+        files.put(6, path + "/supplies.xml");
+        files.put(7, path + "/radios.xml");
+        files.put(8, path + "/expendables.xml");
+        files.put(9, path + "/sensor_emitters.xml");
     }
 
     private final List<EntityType> types = new ArrayList<>();
@@ -36,6 +56,8 @@ public class EntityTypesHandler extends AbstractSheetHandler {
 
         super.startRow(row);
 
+        // The first row is the header row, no data.  Skip it.
+        //
         if (row > 1) {
 
             current = new EntityType();

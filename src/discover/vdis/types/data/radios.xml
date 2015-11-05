@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<types>
+  <type name="US_RAD_LAND_VTR" value="7.1.225.1.0.0.0" description="Voice Transmission/Reception"/>
+  <type name="US_RAD_LAND_VTR_DAFIF_DERIVED_TRAFFIC_CTRL_VOICE_RADIO" value="7.1.225.1.0.3.0" description="Typical DAFIF Derived Traffic Control Voice Radio"/>
+  <type name="US_RAD_LAND_ILSGT" value="7.1.225.4.0.0.0" description="Instrumented Landing System (ILS) Glideslope"/>
+  <type name="US_RAD_LAND_ILSGT_DAFIF_DERIVED_ILS_GLIDESLOPE_TRANS" value="7.1.225.4.0.3.0" description="Typical DAFIF Derived ILS Glideslope Transmitter"/>
+  <type name="US_RAD_LAND_ILSLT" value="7.1.225.5.0.0.0" description="Instrumented Landing System (ILS) Localizer Transmitter"/>
+  <type name="US_RAD_LAND_ILSLT_LOCALIZER_TRANS_TYPICAL_DAFIF_DERIVED_ILS_LOCALIZER_TRANS" value="7.1.225.5.0.3.0" description="Typical DAFIF Derived ILS Localizer Transmitter"/>
+  <type name="US_RAD_LAND_TACAN_T" value="7.1.225.10.0.0.0" description="Tactical Air Navigation (TACAN) Transmitter (Ground Fixed Equipment)"/>
+  <type name="US_RAD_LAND_TACAN_T_DAFIF_DERIVED_TACAN" value="7.1.225.10.0.3.0" description="Typical DAFIF Derived TACAN"/>
+  <type name="US_RAD_LAND_TACAN_TR" value="7.1.225.12.0.0.0" description="Tactical Air Navigation (TACAN) Transmitter/Receiver (Moving Platform Equipment)"/>
+  <type name="US_RAD_LAND_TACAN_TR_JETDS" value="7.1.225.12.1.0.0" description="Joint Electronics Type Designation System (JETDS) Nomenclature (AN/ per Mil-STD-196)"/>
+  <type name="US_RAD_LAND_TACAN_TR_JETDS_AN_ARN_118" value="7.1.225.12.1.1.0" description="AN/ARN-118"/>
+  <type name="US_RAD_LAND_TACAN_TR_JETDS_AN_ARN_139" value="7.1.225.12.1.2.0" description="AN/ARN-139"/>
+</types>

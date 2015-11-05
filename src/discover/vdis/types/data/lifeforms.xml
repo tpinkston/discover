@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<types>
+  <type name="OTH_LF_CIV_UNARMED" value="3.1.0.3.0.0.0" description="Civilian, unarmed"/>
+  <type name="OTH_LF_CIV_UNARMED_MIXED_AGE_18_SWA" value="3.1.0.3.0.0.1" description="Other Civilian, Unarmed, Mixed Age Group, 18 Southwest Asian"/>
+  <type name="OTH_LF_CIV_UNARMED_MIXED_AGE_18_EURO" value="3.1.0.3.0.0.2" description="Other Civilian, Unarmed, Mixed Age Group, 18 European"/>
+  <type name="OTH_LF_CIV_UNARMED_LITTER_PATIENT_BEARERS_RED_CROSS" value="3.1.0.3.0.0.3" description="Other Civilian, Unarmed, Litter Patient w/ two litter bearers (Red Cross)"/>
+  <type name="OTH_LF_CIV_UNARMED_LITTER_PATIENT_BEARERS_RED_CRESCENT" value="3.1.0.3.0.0.4" description="Other Civilian, Unarmed, Litter Patient w/ two litter bearers (Red Crescent)"/>
+  <type name="OTH_LF_CIV_UNARMED_NON_GOVERNMENT" value="3.1.0.3.1.0.0" description="Civilian, non government"/>
+  <type name="OTH_LF_CIV_UNARMED_NON_GOVERNMENT_CONTRACTOR" value="3.1.0.3.1.1.0" description="Contractor"/>
+  <type name="OTH_LF_CIV_UNARMED_NON_GOVERNMENT_MEDIA" value="3.1.0.3.1.2.0" description="Media"/>
+  <type name="OTH_LF_CIV_UNARMED_NON_GOVERNMENT_MEDIC" value="3.1.0.3.1.3.0" description="Civilian, unarmed, non-government, medic"/>
+  <type name="OTH_LF_CIV_UNARMED_LOCAL_OFFICIAL" value="3.1.0.3.2.0.0" description="Local Officials"/>
+  <type name="OTH_LF_CIV_UNARMED_LOCAL_OFFICIAL_MAYOR" value="3.1.0.3.2.1.0" description="Mayor"/>
+  <type name="OTH_LF_CIV_UNARMED_LOCAL_OFFICIAL_POLICEMAN" value="3.1.0.3.2.2.0" description="Policeman"/>
+  <type name="OTH_LF_CIV_UNARMED_LOCAL_OFFICIAL_POLICE_CHIEF" value="3.1.0.3.2.3.0" description="Police Chief"/>
+  <type name="OTH_LF_CIV_UNARMED_LOCAL_OFFICIAL_VIP" value="3.1.0.3.2.4.0" description="VIP"/>
+  <type name="OTH_LF_CIV_UNARMED_LOCAL_OFFICIAL_RELIGIOUS_LEADER" value="3.1.0.3.2.5.0" description="Religious Leader"/>
+  <type name="OTH_LF_CIV_UNARMED_NATIONAL_OFFICIAL" value="3.1.0.3.3.0.0" description="Civilian, unarmed, national officials"/>
+  <type name="OTH_LF_CIV_UNARMED_NATIONAL_OFFICIAL_POLICE" value="3.1.0.3.3.1.0" description="Civilian, unarmed, national officials, national police"/>
+  <type name="OTH_LF_CIV_UNARMED_NATIONAL_OFFICIAL_BORDER_PATROL" value="3.1.0.3.3.2.0" description="Civilian, unarmed, national officials, national border patrol"/>
+  <type name="OTH_LF_CIV_AKM" value="3.1.0.4.205.1.0" description="Other Civilian, AKM"/>
+  <type name="OTH_LF_CIV_AK_74" value="3.1.0.4.206.1.0" description="Other Civilian, AK-74"/>
+  <type name="OTH_LF_CIV_SVD" value="3.1.0.4.208.1.0" description="Other Civilian, SVD Dragunov"/>
+  <type name="OTH_LF_CIV_SA_16" value="3.1.0.4.232.1.0" description="Other Civilian, SA-16 Gimlet"/>
+  <type name="OTH_LF_CIV_RPG_7" value="3.1.0.4.246.1.0" description="Other Civilian, RPG-7"/>
+  <type name="OTH_LF_CIV_RPG_29" value="3.1.0.4.249.1.0" description="Other Civilian, RPG-29"/>
+  <type name="OTH_LF_CIV_LASER_DESIG" value="3.1.0.4.250.1.0" description="Other Civilian, Laser Designator"/>
+  <type name="OTH_LF_ANI_CAMEL" value="3.1.0.83.0.0.0" description="Animal, Camel"/>
+  <type name="OTH_LF_ANI_CAMEL_DROMEDARY" value="3.1.0.83.1.0.0" description="Animal, Camel, Dromedary"/>
+  <type name="OTH_LF_ANI_CATTLE" value="3.1.0.86.0.0.0" description="Animal, Cattle"/>
+  <type name="OTH_LF_ANI_COW" value="3.1.0.86.0.128.0" description="Animal, Cow"/>
+  <type name="OTH_LF_ANI_DOG" value="3.1.0.91.0.0.0" description="Animal, Dog"/>
+  <type name="OTH_LF_ANI_DOG_LARGE" value="3.1.0.91.1.0.0" description="Animal, Dog, Large"/>
+  <type name="OTH_LF_ANI_DOG_MEDIUM" value="3.1.0.91.70.0.0" description="Animal, Dog, Medium"/>
+  <type name="OTH_LF_ANI_DONKEY" value="3.1.0.92.0.0.0" description="Animal, Donkey"/>
+  <type name="OTH_LF_ANI_DONKEY_MALE_CHILD_RIDER" value="3.1.0.92.0.0.8" description="Animal, Donkey, Male Child Rider"/>
+  <type name="OTH_LF_ANI_GOAT" value="3.1.0.100.0.0.0" description="Animal, Goat"/>
+  <type name="OTH_LF_ANI_GOAT_MED_HERD" value="3.1.0.100.0.0.2" description="Animal, Goat, Medium Herd"/>
+  <type name="AF_LF_DI_AK_74" value="3.1.1.1.206.1.0" description="Afghan DI, AK-74"/>
+  <type name="AF_LF_CIV_UNARMED" value="3.1.1.3.0.0.0" description="Afghan Civilian, Unarmed"/>
+  <type name="AF_LF_CIV_UNARMED_CELL_PHONE" value="3.1.1.3.0.0.1" description="Afghan civilian, cell phone"/>
+  <type name="AF_LF_CIV_UNARMED_CAMERA" value="3.1.1.3.0.0.2" description="Afghan civilian, camera"/>
+  <type name="AF_LF_CIV_MEDIC" value="3.1.1.3.1.3.0" description="Afghan Medic"/>
+  <type name="AF_LF_CIV_NATIONAL_OFFICIAL" value="3.1.1.3.3.0.0" description="Afghan National Official"/>
+  <type name="AF_LF_CIV_NATIONAL_POLICE" value="3.1.1.3.3.1.0" description="Afghan National Police"/>
+  <type name="AF_LF_CIV_NATIONAL_BORDER_PATROL" value="3.1.1.3.3.2.0" description="Afghan National Border Patrol"/>
+  <type name="AF_LF_CIV_OTHER_EXPLOSIVE_VEST" value="3.1.1.4.1.1.0" description="Afghan civilian, other, explosive vest"/>
+  <type name="CH_LF_CIV_UNARMED" value="3.1.45.3.0.0.0" description="China Civilian, Unarmed"/>
+  <type name="GER_LF_CIV_UNARMED" value="3.1.78.3.0.0.0" description="German Civilian, Unarmed"/>
+  <type name="CIS_LF_DI_UNARMED" value="3.1.222.1.0.1.0" description="C.I.S. DI, Unarmed"/>
+  <type name="CIS_LF_DI_AKM" value="3.1.222.1.205.1.0" description="C.I.S. DI, AKM"/>
+  <type name="CIS_LF_DI_AK_74" value="3.1.222.1.206.1.0" description="C.I.S. DI, AK-74"/>
+  <type name="CIS_LF_FIRE_TEAM_AK_74" value="3.1.222.1.206.101.0" description="C.I.S. Fire Team, AK-74"/>
+  <type name="CIS_LF_SQUAD_AK_74" value="3.1.222.1.206.102.0" description="C.I.S. Squad, AK-74"/>
+  <type name="CIS_LF_DI_RPK_74" value="3.1.222.1.217.1.0" description="C.I.S. DI, RPK-74"/>
+  <type name="CIS_LF_FIRE_TEAM_RPK_74" value="3.1.222.1.217.101.0" description="C.I.S. Fire Team, RPK-74"/>
+  <type name="CIS_LF_SQUAD_RPK_74" value="3.1.222.1.217.102.0" description="C.I.S. Squad, RPK-74"/>
+  <type name="CIS_LF_DI_AGS_17" value="3.1.222.1.227.1.0" description="C.I.S. DI, AGS-17"/>
+  <type name="CIS_LF_DI_SA_16" value="3.1.222.1.232.1.0" description="C.I.S. DI, SA-16 Gimlet"/>
+  <type name="CIS_LF_DI_SA_7" value="3.1.222.1.233.1.0" description="C.I.S. DI, SA-7 Grail"/>
+  <type name="CIS_LF_DI_SAXHORN_AT_7" value="3.1.222.1.236.1.0" description="C.I.S. DI, Saxhorn AT-7"/>
+  <type name="CIS_LF_DI_SA_14_GREMLIN" value="3.1.222.1.237.1.0" description="Soldier SA-14 Gremlin"/>
+  <type name="CIS_LF_DI_SA_18" value="3.1.222.1.238.1.0" description="C.I.S. DI, SA-18"/>
+  <type name="CIS_LF_DI_RPG_7" value="3.1.222.1.246.1.0" description="C.I.S. DI, RPG-7"/>
+  <type name="CIS_LF_DI_RPG_29" value="3.1.222.1.249.1.0" description="C.I.S. DI, RPG-29"/>
+  <type name="CIS_LF_DI_AT_4_SPIGOT" value="3.1.222.1.251.1.0" description="C.I.S. DI, AT-4 Spigot"/>
+  <type name="CIS_LF_DI_SA_24_IGLA_S" value="3.1.222.1.252.1.0" description="Soldier SA-24 Igla-S"/>
+  <type name="CIS_LF_DI_CHINESE_TYPE_69_RPG" value="3.1.222.1.253.1.0" description="Chinese Type 69 RPG"/>
+  <type name="CIS_LF_CIV_UNARMED" value="3.1.222.3.0.0.0" description="C.I.S. Civilian, Unarmed"/>
+  <type name="UK_LF_CIV_UNARMED" value="3.1.224.3.0.0.0" description="U.K. Civilian, Unarmed"/>
+  <type name="US_LF_DI_UNARMED" value="3.1.225.1.0.1.0" description="U.S. DI, Unarmed"/>
+  <type name="US_LF_DI_LITTER" value="3.1.225.1.0.3.1" description="Litter Patient w/ two litter bearers"/>
+  <type name="US_LF_DI_M9_BERETTA" value="3.1.225.1.11.1.0" description="U.S. DI, M9 Beretta 9mm"/>
+  <type name="US_LF_DI_M16A2_CARBINE" value="3.1.225.1.32.1.0" description="U.S. DI, M16A2 Carbine"/>
+  <type name="US_LF_USMC_M16A2_CARBINE" value="3.1.225.1.32.1.1" description="U.S. Marine, M16A2 Carbine"/>
+  <type name="US_LF_DI_M4_CARBINE" value="3.1.225.1.41.1.0" description="U.S. DI, M4 Carbine"/>
+  <type name="US_LF_FIRE_TEAM_M4_CARBINE" value="3.1.225.1.41.101.0" description="U.S. FireTeam, M4 Carbine"/>
+  <type name="US_LF_SQUAD_M4_CARBINE" value="3.1.225.1.41.102.0" description="U.S. Squad, M4 Carbine"/>
+  <type name="US_LF_DI_M203_M16" value="3.1.225.1.73.1.0" description="U.S. DI, M-203 / M-16"/>
+  <type name="US_LF_DI_JAVELIN" value="3.1.225.1.81.1.0" description="U.S. DI, Javelin"/>
+  <type name="US_LF_DI_STINGER" value="3.1.225.1.85.1.0" description="U.S. DI, Stinger"/>
+  <type name="US_LF_DI_DRAGON" value="3.1.225.1.92.1.0" description="U.S. DI, Dragon"/>
+  <type name="US_LF_DI_AT4_M136" value="3.1.225.1.97.1.0" description="U.S. DI, AT4 M136"/>
+  <type name="US_LF_DI_M249_SAW" value="3.1.225.1.116.1.0" description="U.S. DI, M249 SAW"/>
+  <type name="US_LF_DI_CLAYMORE" value="3.1.225.1.120.1.0" description="U.S. DI, Claymore"/>
+  <type name="US_LF_DI_M240" value="3.1.225.1.134.1.0" description="U.S. DI, M240"/>
+  <type name="US_LF_FIRE_TEAM_M240" value="3.1.225.1.134.101.0" description="U.S. Fire Team, M240"/>
+  <type name="US_LF_SQUAD_M240" value="3.1.225.1.134.102.0" description="U.S. Squad, M240"/>
+  <type name="US_LF_CIV_UNARMED" value="3.1.225.3.0.0.0" description="U.S. Civilian, Unarmed"/>
+  <type name="US_LF_PARATROOPER_M16A2" value="3.2.225.1.32.1.0" description="U.S. Paratrooper, M16A2"/>
+  <type name="US_LF_PARATROOPER_M4" value="3.2.225.1.41.1.0" description="U.S. Paratrooper, M4 Carbine"/>
+</types>

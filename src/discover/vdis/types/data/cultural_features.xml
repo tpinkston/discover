@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<types>
+  <type name="OTHER_CULT_LAND_BRD" value="5.1.0.1.0.0.0" description="Bridge"/>
+  <type name="OTHER_CULT_LAND_BRD_CONCRETE_TWO_LANE" value="5.1.0.1.1.0.0" description="Concrete, two-lane"/>
+  <type name="OTHER_CULT_LAND_BRD_CONCRETE_FOUR_LANE" value="5.1.0.1.2.0.0" description="Concrete, four-lane"/>
+  <type name="OTHER_CULT_LAND_BRD_TRUSS_TWO_LANE" value="5.1.0.1.3.0.0" description="Truss, two-lane"/>
+  <type name="OTHER_CULT_LAND_BRD_TRUSS_FOUR_LANE" value="5.1.0.1.4.0.0" description="Truss, four-lane"/>
+  <type name="OTHER_CULT_LAND_BRD_SUSPENSION_TWO_LANE" value="5.1.0.1.5.0.0" description="Suspension, two-lane"/>
+  <type name="OTHER_CULT_LAND_BRD_SUSPENSION_FOUR_LANE" value="5.1.0.1.6.0.0" description="Suspension, four-lane"/>
+  <type name="OTHER_CULT_LAND_BLDG" value="5.1.0.2.0.0.0" description="Building"/>
+  <type name="OTHER_CULT_LAND_BLDG_ONE_STORY" value="5.1.0.2.1.0.0" description="One-story"/>
+  <type name="OTHER_CULT_LAND_BLDG_ONE_STORY_TRAPEZOIDAL_AIRCRAFT_SHELTER_TRIHANGAR" value="5.1.0.2.1.1.0" description="Trapezoidal Aircraft Shelter (Trihangar)"/>
+  <type name="OTHER_CULT_LAND_BLDG_ONE_STORY_CURVILINEAR_AIRCRAFT_SHELTER" value="5.1.0.2.1.2.0" description="Curvilinear Aircraft Shelter"/>
+  <type name="OTHER_CULT_LAND_BLDG_ONE_STORY_BERMED_STORAGE_BUNKER" value="5.1.0.2.1.3.0" description="Bermed Storage Bunker"/>
+  <type name="OTHER_CULT_LAND_BLDG_ONE_STORY_HARDENED_CURVILINEAR_MUNITIONS_BUNKER" value="5.1.0.2.1.4.0" description="Hardened Curvilinear Munitions Bunker"/>
+  <type name="OTHER_CULT_LAND_BLDG_TWO_STORY" value="5.1.0.2.2.0.0" description="Two-story"/>
+  <type name="OTHER_CULT_LAND_BLDG_THREE_STORY" value="5.1.0.2.3.0.0" description="Three-story"/>
+  <type name="OTHER_CULT_LAND_BLDG_FOUR_STORY" value="5.1.0.2.4.0.0" description="Four-story"/>
+  <type name="OTHER_CULT_LAND_BLDG_FIVE_STORY" value="5.1.0.2.5.0.0" description="Five story"/>
+  <type name="OTHER_CULT_LAND_BLDG_SIX_STORY" value="5.1.0.2.6.0.0" description="Six story"/>
+  <type name="OTHER_CULT_LAND_BLDG_SEVEN_STORY" value="5.1.0.2.7.0.0" description="Seven story"/>
+  <type name="OTHER_CULT_LAND_BLDG_EIGHT_STORY" value="5.1.0.2.8.0.0" description="Eight story"/>
+  <type name="OTHER_CULT_LAND_BLDG_NINE_STORY" value="5.1.0.2.9.0.0" description="Nine story"/>
+  <type name="OTHER_CULT_LAND_BLDG_TEN_STORY" value="5.1.0.2.10.0.0" description="Ten story"/>
+  <type name="OTHER_CULT_LAND_TRAK" value="5.1.0.3.0.0.0" description="Tracks"/>
+  <type name="OTHER_CULT_LAND_TRAK_TANK" value="5.1.0.3.1.0.0" description="Tank"/>
+  <type name="OTHER_CULT_LAND_CRAT" value="5.1.0.4.0.0.0" description="Crater"/>
+  <type name="OTHER_CULT_LAND_OBS" value="5.1.0.5.0.0.0" description="Obstacle"/>
+  <type name="OTHER_CULT_LAND_OBS_DITCH" value="5.1.0.5.1.0.0" description="Ditch"/>
+  <type name="OTHER_CULT_LAND_OBS_TANK_DITCH_100X4_M" value="5.1.0.5.2.0.0" description="Tank ditch, 100x4 M"/>
+  <type name="OTHER_CULT_LAND_OBS_TANK_DITCH_200X4_M" value="5.1.0.5.3.0.0" description="Tank ditch, 200x4 M"/>
+  <type name="OTHER_CULT_LAND_OBS_TANK_DITCH_300X4_M" value="5.1.0.5.4.0.0" description="Tank ditch, 300x4 M"/>
+  <type name="OTHER_CULT_LAND_OBS_ABATIS_8_TREE" value="5.1.0.5.5.0.0" description="Abatis, 8-tree"/>
+  <type name="OTHER_CULT_LAND_OBS_CONCERT_FENCE_3_ROLL" value="5.1.0.5.6.0.0" description="Concertina fence, 3-roll"/>
+  <type name="OTHER_CULT_LAND_OBS_LOG_CRIB_RECT" value="5.1.0.5.7.0.0" description="Log crib, rectangular"/>
+  <type name="OTHER_CULT_LAND_OBS_AMMO_PRESTOCK" value="5.1.0.5.8.0.0" description="Ammo prestock"/>
+  <type name="OTHER_CULT_LAND_OBS_FUEL_PRESTOCK" value="5.1.0.5.9.0.0" description="Fuel prestock"/>
+  <type name="OTHER_CULT_LAND_OBS_MINEFIELD_HASTY_0_300_M" value="5.1.0.5.10.0.0" description="Minefield, hasty, 0-300 M"/>
+  <type name="OTHER_CULT_LAND_OBS_MINEFIELD_PREPARED_0_500_M" value="5.1.0.5.11.0.0" description="Minefield, prepared, 0-500 M"/>
+  <type name="OTHER_CULT_LAND_OBS_MINEFIELD_SCATTERABLE_OVAL" value="5.1.0.5.12.0.0" description="Minefield, scatterable oval"/>
+  <type name="OTHER_CULT_LAND_OBS_BARBED_WIRE" value="5.1.0.5.13.0.0" description="Barbed wire"/>
+  <type name="OTHER_CULT_LAND_OBS_DRAGONS_TEETH" value="5.1.0.5.14.0.0" description="Dragon's teeth"/>
+  <type name="OTHER_CULT_LAND_OBS_JERSEY_BARRIER" value="5.1.0.5.15.0.0" description="Jersey Barrier"/>
+  <type name="OTHER_CULT_LAND_OBS_ROADBLOCK_IMP" value="5.1.0.5.16.0.0" description="Roadblock, Improvised"/>
+  <type name="OTHER_CULT_LAND_OBS_ROADBLOCK_TIRES" value="5.1.0.5.18.0.0" description="Roadblock, Tires"/>
+  <type name="OTHER_CULT_LAND_OBS_TRASH_CANS" value="5.1.0.5.19.0.0" description="Trash Cans"/>
+  <type name="OTHER_CULT_LAND_OBS_TRASH_CANS_SMALL" value="5.1.0.5.19.1.0" description="Trash Cans Small"/>
+  <type name="OTHER_CULT_LAND_OBS_TRASH_CANS_MED" value="5.1.0.5.19.2.0" description="Trash Cans Medium"/>
+  <type name="OTHER_CULT_LAND_OBS_TRASH_CANS_LARGE" value="5.1.0.5.19.3.0" description="Trash Cans Large"/>
+  <type name="OTHER_CULT_LAND_OBS_TRASH_CANS_EXTRA_LARGE" value="5.1.0.5.19.4.0" description="Trash Cans, Extra Large"/>
+  <type name="OTHER_CULT_LAND_OBS_TRASH_CANS_SINGLE" value="5.1.0.5.19.10.0" description="Trash Cans, single"/>
+  <type name="OTHER_CULT_LAND_OBS_RUBBLE" value="5.1.0.5.20.0.0" description="Rubble"/>
+  <type name="OTHER_CULT_LAND_OBS_CARDBOARD_BOXES" value="5.1.0.5.21.0.0" description="Cardboard Boxes"/>
+  <type name="OTHER_CULT_LAND_OBS_CARDBOARD_BOXES_SMALL" value="5.1.0.5.21.1.0" description="Cardboard Boxes Small"/>
+  <type name="OTHER_CULT_LAND_OBS_CARDBOARD_BOXES_MED" value="5.1.0.5.21.2.0" description="Cardboard Boxes Medium"/>
+  <type name="OTHER_CULT_LAND_OBS_CARDBOARD_BOXES_LARGE" value="5.1.0.5.21.3.0" description="Cardboard Boxes Large"/>
+  <type name="OTHER_CULT_LAND_OBS_CARDBOARD_BOXES_EXTRA_LARGE" value="5.1.0.5.21.4.0" description="Cardboard Boxes, Extra Large"/>
+  <type name="OTHER_CULT_LAND_OBS_CARDBOARD_BOXES_SINGLE" value="5.1.0.5.21.10.0" description="Cardboard Boxes, single"/>
+  <type name="OTHER_CULT_LAND_OBS_TRASH_BAGS" value="5.1.0.5.22.0.0" description="Trash Bags"/>
+  <type name="OTHER_CULT_LAND_OBS_TRASH_BAGS_SMALL" value="5.1.0.5.22.1.0" description="Trash Bags Small"/>
+  <type name="OTHER_CULT_LAND_OBS_TRASH_BAGS_MED" value="5.1.0.5.22.2.0" description="Trash Bags Medium"/>
+  <type name="OTHER_CULT_LAND_OBS_TRASH_BAGS_LARGE" value="5.1.0.5.22.3.0" description="Trash Bags Large"/>
+  <type name="OTHER_CULT_LAND_OBS_TRASH_BAGS_EX_LARGE" value="5.1.0.5.22.4.0" description="Trash Bags Extra Large"/>
+  <type name="OTHER_CULT_LAND_OBS_TRASH_BAGS_SINGLE" value="5.1.0.5.22.10.0" description="Trash Bags, single"/>
+  <type name="OTHER_CULT_LAND_OBS_DRUM_55_GAL" value="5.1.0.5.23.0.0" description="Fuel Drum (55 gal.)"/>
+  <type name="OTHER_CULT_LAND_OBS_WPNS_STACK" value="5.1.0.5.24.0.0" description="Weapons Stack, 20 Count, AK/RPK/RPG"/>
+  <type name="OTHER_CULT_LAND_OBS_TARGET" value="5.1.0.5.25.0.0" description="Target"/>
+  <type name="OTHER_CULT_LAND_OBS_BORESIGHT_TARGET" value="5.1.0.5.25.1.0" description="Target, Boresight"/>
+  <type name="OTHER_CULT_LAND_OBS_BORESIGHT_TARGET_CHECKERBOARD" value="5.1.0.5.25.1.1" description="Target, Boresight, Checkerboard"/>
+  <type name="OTHER_CULT_LAND_OBS_BORESIGHT_TARGET_DARTBOARD" value="5.1.0.5.25.1.2" description="Target, Boresight, Dartboard"/>
+  <type name="OTHER_CULT_LAND_OBS_BORESIGHT_TARGET_BULLSEYE" value="5.1.0.5.25.1.3" description="Target, Boresight, Bullseye"/>
+  <type name="OTHER_CULT_LAND_OBS_ZEROING_TARGET" value="5.1.0.5.25.2.0" description="Target, Zeroing"/>
+  <type name="OTHER_CULT_LAND_OBS_TARGET_VEHICLE" value="5.1.0.5.25.3.0" description="Target, Vehicle"/>
+  <type name="OTHER_CULT_LAND_OBS_TARGET_VEHICLE_TANK_FRONT" value="5.1.0.5.25.3.1" description="Target, Tank, Front"/>
+  <type name="OTHER_CULT_LAND_OBS_TARGET_VEHICLE_TANK_FLANK" value="5.1.0.5.25.3.2" description="Target, Tank, Flank"/>
+  <type name="OTHER_CULT_LAND_OBS_TARGET_VEHICLE_APC_FRONT" value="5.1.0.5.25.3.3" description="Target, APC, Front"/>
+  <type name="OTHER_CULT_LAND_OBS_TARGET_VEHICLE_APC_FLANK" value="5.1.0.5.25.3.4" description="Target, APC, Flank"/>
+  <type name="OTHER_CULT_LAND_OBS_TARGET_VEHICLE_TECH_TRUCK_FRONT" value="5.1.0.5.25.3.5" description="Target, Technical Truck, Front"/>
+  <type name="OTHER_CULT_LAND_OBS_TARGET_VEHICLE_TECH_TRUCK_FLANK" value="5.1.0.5.25.3.6" description="Target, Technical Truck, Flank"/>
+  <type name="OTHER_CULT_LAND_OBS_TARGET_VEHICLE_BRDM_FRONT" value="5.1.0.5.25.3.7" description="Target, BRDM, Front"/>
+  <type name="OTHER_CULT_LAND_OBS_TARGET_VEHICLE_BRDM_FLANK" value="5.1.0.5.25.3.8" description="Target, BRDM, Flank"/>
+  <type name="OTHER_CULT_LAND_OBS_TARGET_PERSON" value="5.1.0.5.25.4.0" description="Target, Person"/>
+  <type name="OTHER_CULT_LAND_OBS_TARGET_PERSON_SNIPER" value="5.1.0.5.25.4.1" description="Target, Person, Sniper"/>
+  <type name="OTHER_CULT_LAND_OBS_TARGET_PERSON_RPG_TEAM" value="5.1.0.5.25.4.2" description="Target, Person, RPG Team"/>
+  <type name="OTHER_CULT_LAND_OBS_TARGET_PERSON_TROOP_LOW_PROFILE" value="5.1.0.5.25.4.3" description="Target, Person, Troop, Low Profile"/>
+  <type name="OTHER_CULT_LAND_OBS_TARGET_PERSON_TROOP_HIGH_PROFILE" value="5.1.0.5.25.4.4" description="Target, Person, Troop, High Profile"/>
+  <type name="OTHER_CULT_LAND_OBS_TARGET_PERSON_TROOP_3D" value="5.1.0.5.25.4.5" description="Target, Person, Troop, 3D"/>
+  <type name="OTHER_CULT_LAND_OBS_TRASH_PILE" value="5.1.0.5.28.0.0" description="Trash pile"/>
+  <type name="OTHER_CULT_LAND_OBS_TRASH_PILE_SMALL" value="5.1.0.5.28.1.0" description="Trash pile, small"/>
+  <type name="OTHER_CULT_LAND_OBS_TRASH_PILE_MED" value="5.1.0.5.28.2.0" description="Trash pile, medium"/>
+  <type name="OTHER_CULT_LAND_OBS_TRASH_PILE_LARGE" value="5.1.0.5.28.3.0" description="Trash pile, large"/>
+  <type name="OTHER_CULT_LAND_OBS_TRASH_PILE_SINGLE" value="5.1.0.5.28.10.0" description="Trash pile, single"/>
+  <type name="OTHER_CULT_LAND_OBS_TRASH_PILE_BURN_PIT_25M" value="5.1.0.5.28.11.0" description="Burn Pit, 25m"/>
+  <type name="OTHER_CULT_LAND_OBS_BARRELS_30GAL" value="5.1.0.5.29.0.0" description="barrels, 30 gal"/>
+  <type name="OTHER_CULT_LAND_OBS_BARRELS_30GAL_SMALL" value="5.1.0.5.29.1.0" description="barrels, 30 gal, small"/>
+  <type name="OTHER_CULT_LAND_OBS_BARRELS_30GAL_MED" value="5.1.0.5.29.2.0" description="barrels, 30 gal, medium"/>
+  <type name="OTHER_CULT_LAND_OBS_BARRELS_30GAL_LARGE" value="5.1.0.5.29.3.0" description="barrels, 30 gal, large"/>
+  <type name="OTHER_CULT_LAND_OBS_BARRELS_30GAL_EXTRA_LARGE" value="5.1.0.5.29.4.0" description="Barrels, 30 Gal, Extra Large"/>
+  <type name="OTHER_CULT_LAND_OBS_BARRELS_30GAL_SINGLE" value="5.1.0.5.29.10.0" description="barrels, 30 gal, single"/>
+  <type name="OTHER_CULT_LAND_OBS_EXPOSED_ORD" value="5.1.0.5.30.0.0" description="Exposed Ordnance"/>
+  <type name="OTHER_CULT_LAND_OBS_EXPOSED_ORD_155MM" value="5.1.0.5.30.1.0" description="Exposed Ordnance, 155mm"/>
+  <type name="OTHER_CULT_LAND_OBS_EXPOSED_ORD_M15_W_FUSE" value="5.1.0.5.30.2.0" description="AT Mine (M15) with Fuse"/>
+  <type name="OTHER_CULT_LAND_OBS_EXPOSED_ORD_MORTARS_W_FUSE" value="5.1.0.5.30.3.0" description="Mortars (3 x 82mm) with Fuse"/>
+  <type name="OTHER_CULT_LAND_OBS_EXPOSED_ORD_PARCEL_W_FUSE" value="5.1.0.5.30.4.0" description="Parcel with Fuse, Small"/>
+  <type name="OTHER_CULT_LAND_OBS_EXPOSED_ORD_PRESSURE_PLATE" value="5.1.0.5.30.5.0" description="Pressure Plate IED, Wooden (.36m x .1m)"/>
+  <type name="OTHER_CULT_LAND_OBS_EXPOSED_ORD_SODA_CAN" value="5.1.0.5.30.6.0" description="Soda Can"/>
+  <type name="OTHER_CULT_LAND_OBS_EXPOSED_ORD_SODA_CAN_FUSE" value="5.1.0.5.30.6.1" description="Soda Can w/ Fuse"/>
+  <type name="OTHER_CULT_LAND_OBS_CONTAINER_5GAL" value="5.1.0.5.31.0.0" description="Container, 5 Gallon (18.93L)"/>
+  <type name="OTHER_CULT_LAND_OBS_CONTAINER_5GAL_HEATING_OIL" value="5.1.0.5.31.1.0" description="Container, 5 Gallon (18.93L), Heating Oil"/>
+  <type name="OTHER_CULT_LAND_OBS_CONTAINER_5GAL_OLIVE_OIL" value="5.1.0.5.31.2.0" description="Container, 5 Gallon (18.93L), Olive Oil"/>
+  <type name="OTHER_CULT_LAND_OBS_CONTAINER_5GAL_FUEL_JUG" value="5.1.0.5.31.3.0" description="Container, 5 Gallon (18.93L), Fuel Jug"/>
+  <type name="OTHER_CULT_LAND_OBS_CONTAINER_5L" value="5.1.0.5.32.0.0" description="Container, 5L"/>
+  <type name="OTHER_CULT_LAND_OBS_CONTAINER_5L_ACID" value="5.1.0.5.32.1.0" description="Container, 5L, Acid"/>
+  <type name="OTHER_CULT_LAND_OBS_BAG_50_LBS" value="5.1.0.5.33.0.0" description="Bag, 50 lbs"/>
+  <type name="OTHER_CULT_LAND_OBS_BAG_50_LBS_AMMONIUM_NITRATE" value="5.1.0.5.33.1.0" description="Bag, 50 lbs, Ammonium Nitrate"/>
+  <type name="OTHER_CULT_LAND_OBS_MAKESHIFT_BAG_LITTER" value="5.1.0.5.34.0.0" description="Makeshift Bag (Litter)"/>
+  <type name="OTHER_CULT_LAND_OBS_PLASTIC_SHOPPING_BAG_W_EXPLOSIVES" value="5.1.0.5.34.1.0" description="Makeshift Bag, Plastic Shopping Bag with Explosives"/>
+  <type name="OTHER_CULT_LAND_OBS_TIRE_PILE" value="5.1.0.5.35.0.0" description="Tire pile"/>
+  <type name="OTHER_CULT_LAND_OBS_TIRE_PILE_SMALL" value="5.1.0.5.35.1.0" description="Tire pile, small"/>
+  <type name="OTHER_CULT_LAND_OBS_TIRE_PILE_MED" value="5.1.0.5.35.2.0" description="Tire pile, medium"/>
+  <type name="OTHER_CULT_LAND_OBS_TIRE_PILE_LARGE" value="5.1.0.5.35.3.0" description="Tire pile, large"/>
+  <type name="OTHER_CULT_LAND_OBS_TIRE_PILE_SINGLE" value="5.1.0.5.35.10.0" description="Tire pile, single"/>
+  <type name="OTHER_CULT_LAND_OBS_TIRE_WITH_BAG_RAW_RICE" value="5.1.0.5.35.10.1" description="Tire w/ bag of raw rice"/>
+  <type name="OTHER_CULT_LAND_OBS_TIRE_WITH_BOX" value="5.1.0.5.35.10.2" description="Tire w/ box"/>
+  <type name="OTHER_CULT_LAND_OBS_TREE_LIMBS" value="5.1.0.5.41.0.0" description="Pile, Tree Trunks/Limbs"/>
+  <type name="OTHER_CULT_LAND_OBS_TRAFFIC_SIGN" value="5.1.0.5.51.0.0" description="Traffic Sign"/>
+  <type name="OTHER_CULT_LAND_OBS_TRAFFIC_LIGHT" value="5.1.0.5.52.0.0" description="Traffic Light"/>
+  <type name="OTHER_CULT_LAND_OBS_BRICK" value="5.1.0.5.53.0.0" description="Brick"/>
+  <type name="OTHER_CULT_LAND_OBS_BRICK_SMALL" value="5.1.0.5.53.1.0" description="Brick, Small"/>
+  <type name="OTHER_CULT_LAND_OBS_BRICK_MED" value="5.1.0.5.53.2.0" description="Brick, Medium"/>
+  <type name="OTHER_CULT_LAND_OBS_BRICK_LARGE" value="5.1.0.5.53.3.0" description="Brick, Large"/>
+  <type name="OTHER_CULT_LAND_FLAG" value="5.1.0.6.0.0.0" description="Flags/markers"/>
+  <type name="OTHER_CULT_LAND_FLAG_BREACHED_LANE" value="5.1.0.6.1.0.0" description="Breached lane"/>
+  <type name="OTHER_CULT_LAND_FLAG_MINEFIELD" value="5.1.0.6.2.0.0" description="Minefield"/>
+  <type name="OTHER_CULT_LAND_FLAG_MINEFIELD_MARKERS_OVAL" value="5.1.0.6.2.1.0" description="Minefield markers, Oval"/>
+  <type name="OTHER_CULT_LAND_FLAG_MINEFIELD_MARKERS_RECT" value="5.1.0.6.2.2.0" description="Minefield markers, Rectangular"/>
+  <type name="OTHER_CULT_LAND_FLAG_NBC_HAZARD_MARKERS" value="5.1.0.6.3.0.0" description="NBC Hazard Markers"/>
+  <type name="OTHER_CULT_LAND_FLAG_GROUND_MARKINGS" value="5.1.0.6.4.0.0" description="Ground Markings"/>
+  <type name="OTHER_CULT_LAND_FLAG_GROUND_MARKINGS_PANEL" value="5.1.0.6.4.1.0" description="Panel (Other)"/>
+  <type name="OTHER_CULT_LAND_FLAG_GROUND_MARKINGS_PANEL_OD" value="5.1.0.6.4.1.1" description="Panel (Olive Drab)"/>
+  <type name="OTHER_CULT_LAND_FLAG_GROUND_MARKINGS_PANEL_ORANGE" value="5.1.0.6.4.1.2" description="Panel (Orange)"/>
+  <type name="OTHER_CULT_LAND_FLAG_GROUND_MARKINGS_PANEL_TAN" value="5.1.0.6.4.1.3" description="Panel (Tan)"/>
+  <type name="OTHER_CULT_LAND_FLAG_GROUND_MARKINGS_HALF_PANEL" value="5.1.0.6.4.2.0" description="Half Panel (Other)"/>
+  <type name="OTHER_CULT_LAND_FLAG_GROUND_MARKINGS_HALF_PANEL_OD" value="5.1.0.6.4.2.1" description="Half Panel (Olive Drab)"/>
+  <type name="OTHER_CULT_LAND_FLAG_GROUND_MARKINGS_HALF_PANEL_ORANGE" value="5.1.0.6.4.2.2" description="Half Panel (Orange)"/>
+  <type name="OTHER_CULT_LAND_FLAG_GROUND_MARKINGS_HALF_PANEL_TAN" value="5.1.0.6.4.2.3" description="Half Panel (Tan)"/>
+  <type name="OTHER_CULT_LAND_FLAG_GROUND_MARKINGS_TRAFFIC_CONE" value="5.1.0.6.4.5.0" description="Traffic cone"/>
+  <type name="OTHER_CULT_LAND_FLAG_LP" value="5.1.0.6.5.0.0" description="Light Point"/>
+  <type name="OTHER_CULT_LAND_FLAG_LP_SINGLE" value="5.1.0.6.5.1.0" description="Light Point, Single"/>
+  <type name="OTHER_CULT_LAND_FLAG_LP_SINGLE_WHITE" value="5.1.0.6.5.1.1" description="Light Point, Single, White"/>
+  <type name="OTHER_CULT_LAND_FLAG_LP_SINGLE_RED" value="5.1.0.6.5.1.2" description="Light Point, Single, Red"/>
+  <type name="OTHER_CULT_LAND_FLAG_LP_SINGLE_BLUE" value="5.1.0.6.5.1.3" description="Light Point, Single, Blue"/>
+  <type name="OTHER_CULT_LAND_FLAG_LP_SINGLE_GREEN" value="5.1.0.6.5.1.4" description="Light Point, Single, Green"/>
+  <type name="OTHER_CULT_LAND_FLAG_LP_SINGLE_YELLOW" value="5.1.0.6.5.1.5" description="Light Point, Single, Yellow"/>
+  <type name="OTHER_CULT_LAND_FLAG_LP_SINGLE_INFRARED" value="5.1.0.6.5.1.6" description="Light Point, Single, Infrared"/>
+  <type name="OTHER_CULT_LAND_FLAG_LP_Y" value="5.1.0.6.5.2.0" description="Y Light Point"/>
+  <type name="OTHER_CULT_LAND_FLAG_LP_Y_WHITE" value="5.1.0.6.5.2.1" description="Y Light Point, White"/>
+  <type name="OTHER_CULT_LAND_FLAG_LP_Y_RED" value="5.1.0.6.5.2.2" description="Y Light Point, Red"/>
+  <type name="OTHER_CULT_LAND_FLAG_LP_Y_BLUE" value="5.1.0.6.5.2.3" description="Y Light Point, Blue"/>
+  <type name="OTHER_CULT_LAND_FLAG_LP_Y_GREEN" value="5.1.0.6.5.2.4" description="Y Light Point, Green"/>
+  <type name="OTHER_CULT_LAND_FLAG_LP_Y_YELLOW" value="5.1.0.6.5.2.5" description="Y Light Point, Yellow"/>
+  <type name="OTHER_CULT_LAND_FLAG_LP_Y_INFRARED" value="5.1.0.6.5.2.6" description="Y Light Point, Infrared"/>
+  <type name="OTHER_CULT_LAND_FLAG_SURVEY_STAKE" value="5.1.0.6.8.0.0" description="Survey stake"/>
+  <type name="OTHER_CULT_LAND_FLAG_SURVEY_STAKE_FLAGGED" value="5.1.0.6.8.1.0" description="Survey stake, flagged"/>
+  <type name="OTHER_CULT_LAND_FLAG_SURVEY_STAKE_FLAGGED_RED" value="5.1.0.6.8.1.1" description="Survey stake, red flag"/>
+  <type name="OTHER_CULT_LAND_FLAG_SURVEY_STAKE_FLAGGED_YELLOW" value="5.1.0.6.8.1.2" description="Survey stake, yellow flag"/>
+  <type name="OTHER_CULT_LAND_OBS_ROCK_PILE" value="5.1.0.6.9.0.0" description="Rock pile"/>
+  <type name="OTHER_CULT_LAND_OBS_ROCK_PILE_SMALL" value="5.1.0.6.9.1.0" description="Rock pile, small"/>
+  <type name="OTHER_CULT_LAND_OBS_ROCK_PILE_MED" value="5.1.0.6.9.2.0" description="Rock pile, medium"/>
+  <type name="OTHER_CULT_LAND_OBS_ROCK_PILE_LARGE" value="5.1.0.6.9.3.0" description="Rock pile, large"/>
+  <type name="OTHER_CULT_LAND_OBS_ROCK_PILE_SINGLE" value="5.1.0.6.9.10.0" description="Rock pile, single"/>
+  <type name="OTHER_CULT_LAND_OBS_ROCK_PILE_SINGLE_SMALL" value="5.1.0.6.9.11.0" description="Rock pile, single, small"/>
+  <type name="OTHER_CULT_LAND_OBS_ROCK_PILE_SINGLE_MEDIUM" value="5.1.0.6.9.12.0" description="Rock pile, single, medium"/>
+  <type name="OTHER_CULT_LAND_OBS_ROCK_PILE_SINGLE_LARGE" value="5.1.0.6.9.13.0" description="Rock pile, single, large (2m x 2.3m)"/>
+  <type name="OTHER_CULT_LAND_OBS_RANGE_FLAGS" value="5.1.0.6.10.0.0" description="Range Flags/Markers"/>
+  <type name="OTHER_CULT_LAND_OBS_RANGE_MARKER_OUTER_LIMIT" value="5.1.0.6.10.1.0" description="Range Marker, Outer Limit"/>
+  <type name="OTHER_CULT_LAND_PREP" value="5.1.0.7.0.0.0" description="Prepared positions"/>
+  <type name="OTHER_CULT_LAND_PREP_ARMORED_HULL_DEFILADE" value="5.1.0.7.1.0.0" description="Armored, hull defilade"/>
+  <type name="OTHER_CULT_LAND_PREP_FIGHTING_HULL_DEFILADE" value="5.1.0.7.2.0.0" description="Fighting, hull defilade"/>
+  <type name="OTHER_CULT_LAND_PREP_MORTAR_CARR_HULL_DEFILADE" value="5.1.0.7.3.0.0" description="Mortar carrier, hull defilade"/>
+  <type name="OTHER_CULT_LAND_PREP_TANK_HULL_DEFILADE" value="5.1.0.7.4.0.0" description="Tank, hull defilade"/>
+  <type name="OTHER_CULT_LAND_PREP_INFANTRY_FIGHTING" value="5.1.0.7.5.0.0" description="Infantry fighting"/>
+  <type name="OTHER_CULT_LAND_PREP_MACHINE_GUN" value="5.1.0.7.6.0.0" description="Machine gun"/>
+  <type name="OTHER_CULT_LAND_PREP_COVERED_MACHINE_GUN_BUNKER" value="5.1.0.7.7.0.0" description="Covered machine gun bunker"/>
+  <type name="OTHER_CULT_LAND_PREP_OVERHEAD_COVERED_INFANTRY" value="5.1.0.7.8.0.0" description="Overhead covered infantry"/>
+  <type name="OTHER_CULT_LAND_PREP_FARP" value="5.1.0.7.9.0.0" description="Forward Area Re-arming Point (FARP)"/>
+  <type name="OTHER_CULT_LAND_UGRD" value="5.1.0.8.0.0.0" description="Underground facility"/>
+  <type name="OTHER_CULT_LAND_UGRD_SINGLE_LEVEL" value="5.1.0.8.1.0.0" description="Single level"/>
+  <type name="OTHER_CULT_LAND_UGRD_TWO_LEVELS" value="5.1.0.8.2.0.0" description="Two levels"/>
+  <type name="OTHER_CULT_LAND_UGRD_THREE_LEVELS" value="5.1.0.8.3.0.0" description="Three levels"/>
+  <type name="OTHER_CULT_LAND_SSM" value="5.1.0.9.0.0.0" description="SSM Site"/>
+  <type name="OTHER_CULT_LAND_SSM_FIXED" value="5.1.0.9.1.0.0" description="Fixed"/>
+  <type name="OTHER_CULT_LAND_SSM_TOW" value="5.1.0.9.2.0.0" description="Towed"/>
+  <type name="OTHER_CULT_LAND_SSM_SP" value="5.1.0.9.3.0.0" description="Self-propelled"/>
+  <type name="OTHER_CULT_LAND_RNWY" value="5.1.0.10.0.0.0" description="Runway"/>
+  <type name="OTHER_CULT_LAND_RNWY_5M_X_150M" value="5.1.0.10.1.0.0" description="5m x 150m"/>
+  <type name="OTHER_CULT_LAND_SAM" value="5.1.0.11.0.0.0" description="SAM Site"/>
+  <type name="OTHER_CULT_LAND_SAM_FIXED" value="5.1.0.11.1.0.0" description="Fixed"/>
+  <type name="OTHER_CULT_LAND_SAM_TOW" value="5.1.0.11.2.0.0" description="Towed"/>
+  <type name="OTHER_CULT_LAND_SAM_SP" value="5.1.0.11.3.0.0" description="Self-propelled"/>
+  <type name="OTHER_CULT_LAND_NUKE" value="5.1.0.12.0.0.0" description="Nuclear Power Plant"/>
+  <type name="OTHER_CULT_LAND_NUKE_PRESSURIZED_WATER_REACTOR" value="5.1.0.12.1.0.0" description="Pressurized Water Reactor"/>
+  <type name="OTHER_CULT_LAND_NUKE_PRESSURIZED_WATER_REACTOR_ONE_REACTOR_UNIT" value="5.1.0.12.1.1.0" description="One Reactor Unit"/>
+  <type name="OTHER_CULT_LAND_NUKE_PRESSURIZED_WATER_REACTOR_TWO_REACTOR_UNITS" value="5.1.0.12.1.2.0" description="Two Reactor Units"/>
+  <type name="OTHER_CULT_LAND_NUKE_GAS_COOLED_GRAPHITE_REACTOR" value="5.1.0.12.2.0.0" description="Gas-Cooled Graphite Reactor"/>
+  <type name="OTHER_CULT_LAND_NUKE_GAS_COOLED_GRAPHITE_REACTOR_ONE_REACTOR_UNIT" value="5.1.0.12.2.1.0" description="One Reactor Unit"/>
+  <type name="OTHER_CULT_LAND_NUKE_GAS_COOLED_GRAPHITE_REACTOR_TWO_REACTOR_UNITS" value="5.1.0.12.2.2.0" description="Two Reactor Units"/>
+  <type name="OTHER_CULT_LAND_NUKE_HIGH_TEMPERATURE_GAS_COOLED_REACTOR_HTGR_OTHER" value="5.1.0.12.3.0.0" description="High Temperature Gas-cooled Reactor (HTGR)"/>
+  <type name="OTHER_CULT_LAND_NUKE_HIGH_TEMPERATURE_GAS_COOLED_REACTOR_HTGR_ONE_REACTOR_UNIT" value="5.1.0.12.3.1.0" description="One Reactor Unit"/>
+  <type name="OTHER_CULT_LAND_NUKE_HIGH_TEMPERATURE_GAS_COOLED_REACTOR_HTGR_TWO_REACTOR_UNITS" value="5.1.0.12.3.2.0" description="Two Reactor Units"/>
+  <type name="OTHER_CULT_LAND_NUKE_BOILING_WATER_REACTOR_OTHER" value="5.1.0.12.4.0.0" description="Boiling Water Reactor"/>
+  <type name="OTHER_CULT_LAND_NUKE_BOILING_WATER_REACTOR_ONE_REACTOR_UNIT" value="5.1.0.12.4.1.0" description="One Reactor Unit"/>
+  <type name="OTHER_CULT_LAND_NUKE_BOILING_WATER_REACTOR_TWO_REACTOR_UNITS" value="5.1.0.12.4.2.0" description="Two Reactor Units"/>
+  <type name="OTHER_CULT_LAND_RAIL" value="5.1.0.13.0.0.0" description="Railyard"/>
+  <type name="OTHER_CULT_LAND_CTF" value="5.1.0.14.0.0.0" description="Camp Lejeune MOUT Collective Training Facility (CTF)"/>
+  <type name="OTHER_CULT_LAND_CTF_PUBLIC_BUILDING" value="5.1.0.14.1.0.0" description="Public Building"/>
+  <type name="OTHER_CULT_LAND_CTF_PUBLIC_BUILDING_CITY_HALL" value="5.1.0.14.1.1.0" description="City Hall"/>
+  <type name="OTHER_CULT_LAND_CTF_PUBLIC_BUILDING_CHURCH" value="5.1.0.14.1.2.0" description="Church"/>
+  <type name="OTHER_CULT_LAND_CTF_PUBLIC_BUILDING_SCHOOL" value="5.1.0.14.1.3.0" description="School"/>
+  <type name="OTHER_CULT_LAND_CTF_PUBLIC_BUILDING_SCHOOL_GYMNASIUM" value="5.1.0.14.1.4.0" description="School Gymnasium"/>
+  <type name="OTHER_CULT_LAND_CTF_COMMERCIAL_BUILDING" value="5.1.0.14.2.0.0" description="Commercial Building"/>
+  <type name="OTHER_CULT_LAND_CTF_COMMERCIAL_BUILDING_BANK" value="5.1.0.14.2.1.0" description="Bank"/>
+  <type name="OTHER_CULT_LAND_CTF_COMMERCIAL_BUILDING_HOTEL" value="5.1.0.14.2.2.0" description="Hotel"/>
+  <type name="OTHER_CULT_LAND_CTF_COMMERCIAL_BUILDING_STRIP_MALL" value="5.1.0.14.2.3.0" description="Strip Mall"/>
+  <type name="OTHER_CULT_LAND_CTF_COMMERCIAL_BUILDING_SERVICE_STATION" value="5.1.0.14.2.4.0" description="Service Station"/>
+  <type name="OTHER_CULT_LAND_CTF_COMMERCIAL_BUILDING_WAREHOUSE" value="5.1.0.14.2.5.0" description="Warehouse"/>
+  <type name="OTHER_CULT_LAND_CTF_COMMERCIAL_BUILDING_2_STORY_OFFICE_BUILDING" value="5.1.0.14.2.6.0" description="2-story Office Building"/>
+  <type name="OTHER_CULT_LAND_CTF_COMMERCIAL_BUILDING_3_STORY_OFFICE_BUILDING" value="5.1.0.14.2.7.0" description="3-story Office Building"/>
+  <type name="OTHER_CULT_LAND_CTF_LAND_RESIDENTIAL_BUILDING" value="5.1.0.14.3.0.0" description="Residential Building"/>
+  <type name="OTHER_CULT_LAND_CTF_1_STORY_HOUSE" value="5.1.0.14.3.1.0" description="1-story House"/>
+  <type name="OTHER_CULT_LAND_CTF_1_STORY_HOUSE_W_FIREPLACE" value="5.1.0.14.3.2.0" description="1-story House with Fireplace"/>
+  <type name="OTHER_CULT_LAND_CTF_2_STORY_HOUSE" value="5.1.0.14.3.3.0" description="2-story House"/>
+  <type name="OTHER_CULT_LAND_CTF_TOWN_HOUSE" value="5.1.0.14.3.4.0" description="Town House"/>
+  <type name="OTHER_CULT_LAND_CTF_2_STORY_APARTMENT_BUILDING" value="5.1.0.14.3.5.0" description="2-story Apartment Building"/>
+  <type name="OTHER_CULT_LAND_CTF_3_STORY_APARTMENT_BUILDING" value="5.1.0.14.3.6.0" description="3-story Apartment Building"/>
+  <type name="OTHER_CULT_LAND_PST" value="5.1.0.15.0.0.0" description="POL Storage Tank"/>
+  <type name="OTHER_CULT_LAND_CARGO" value="5.1.0.16.0.0.0" description="Cargo Container"/>
+  <type name="OTHER_CULT_LAND_CARGO_MILVAN" value="5.1.0.16.1.0.0" description="MILVAN"/>
+  <type name="OTHER_CULT_LAND_CARGO_MILVAN_EMPTY_20FT" value="5.1.0.16.1.1.0" description="MILVAN, Empty, 20ft (6.09m)"/>
+  <type name="OTHER_CULT_LAND_CARGO_MILVAN_FULL_20FT" value="5.1.0.16.1.2.0" description="MILVAN, Full, 20ft (6.09m)"/>
+  <type name="OTHER_CULT_LAND_CARGO_MILVAN_EMPTY_40FT" value="5.1.0.16.1.10.0" description="MILVAN, Empty, 40ft (12.2m)"/>
+  <type name="OTHER_CULT_LAND_CARGO_MILVAN_FULL_40FT" value="5.1.0.16.1.11.0" description="MILVAN, Full, 40ft (12.2m)"/>
+  <type name="OTHER_CULT_LAND_TOWER" value="5.1.0.17.0.0.0" description="Tower"/>
+  <type name="OTHER_CULT_LAND_TOWER_ANTENNA" value="5.1.0.17.1.0.0" description="Antenna"/>
+  <type name="OTHER_CULT_LAND_TOWER_WATER" value="5.1.0.17.2.0.0" description="Water"/>
+  <type name="OTHER_CULT_LAND_TOWER_OBSERVATION" value="5.1.0.17.3.0.0" description="Observation"/>
+  <type name="OTHER_CULT_LAND_TOWER_ATC" value="5.1.0.17.4.0.0" description="Air Traffic Control"/>
+  <type name="OTHER_CULT_LAND_AAA" value="5.1.0.18.0.0.0" description="AAA site"/>
+  <type name="OTHER_CULT_LAND_AAA_FIXED" value="5.1.0.18.1.0.0" description="Fixed"/>
+  <type name="OTHER_CULT_LAND_AAA_TOW" value="5.1.0.18.2.0.0" description="Towed"/>
+  <type name="OTHER_CULT_LAND_AAA_SP" value="5.1.0.18.3.0.0" description="Self-propelled"/>
+  <type name="OTHER_CULT_LAND_BRDSP" value="5.1.0.19.0.0.0" description="Bridge Span"/>
+  <type name="OTHER_CULT_LAND_BRDSP_SLEW" value="5.1.0.19.1.0.0" description="Single Lane Each Way"/>
+  <type name="OTHER_CULT_LAND_BRDSP_SLEW_SL_CONCRETE_GIRDER" value="5.1.0.19.1.1.0" description="Single Lane Concrete Girder Bridge Span"/>
+  <type name="OTHER_CULT_LAND_BRDSP_SLEW_SL_CONCRETE_PIER" value="5.1.0.19.1.2.0" description="Single Lane Concrete Pier Bridge Span"/>
+  <type name="OTHER_CULT_LAND_BRDSP_SLEW_SL_MASONRY_ARCH" value="5.1.0.19.1.3.0" description="Single Lane Masonry Arch Bridge Span"/>
+  <type name="OTHER_CULT_LAND_BRDSP_SLEW_SL_STEEL_FLOATING" value="5.1.0.19.1.4.0" description="Single Lane Steel Floating Bridge Span"/>
+  <type name="OTHER_CULT_LAND_BRDSP_SLEW_SL_STEEL_GIRDER" value="5.1.0.19.1.5.0" description="Single Lane Steel Girder Bridge Span"/>
+  <type name="OTHER_CULT_LAND_BRDSP_SLEW_SL_STEEL_PIER" value="5.1.0.19.1.6.0" description="Single Lane Steel Pier Bridge Span"/>
+  <type name="OTHER_CULT_LAND_BRDSP_SLEW_SL_STEEL_SUSPENSION" value="5.1.0.19.1.7.0" description="Single Lane Steel Suspension Bridge Span"/>
+  <type name="OTHER_CULT_LAND_BRDSP_SLEW_SL_STEEL_TRESTLE" value="5.1.0.19.1.8.0" description="Single Lane Steel Trestle Bridge Span"/>
+  <type name="OTHER_CULT_LAND_BRDSP_SLEW_ROPE_SUSPENSION" value="5.1.0.19.1.9.0" description="Rope Suspension Bridge Span"/>
+  <type name="OTHER_CULT_LAND_BRDSP_SLEW_SL_WOOD_GIRDER" value="5.1.0.19.1.10.0" description="Single Lane Wood Girder Bridge Span"/>
+  <type name="OTHER_CULT_LAND_BRDSP_SLEW_SL_WOOD_PIER" value="5.1.0.19.1.11.0" description="Single Lane Wood Pier Bridge Span"/>
+  <type name="OTHER_CULT_LAND_BRDSP_SLEW_SL_WOOD_TRESTLE" value="5.1.0.19.1.12.0" description="Single Lane Wood Trestle Bridge Span"/>
+  <type name="OTHER_CULT_LAND_BRDSP_DLEW" value="5.1.0.19.2.0.0" description="Double Lane Each Way"/>
+  <type name="OTHER_CULT_LAND_BRDSP_DLEW_DL_CONCRETE_GIRDER" value="5.1.0.19.2.1.0" description="Double Lane Concrete Girder Bridge Span"/>
+  <type name="OTHER_CULT_LAND_BRDSP_DLEW_DL_CONCRETE_PIER" value="5.1.0.19.2.2.0" description="Double Lane Concrete Pier Bridge Span"/>
+  <type name="OTHER_CULT_LAND_BRDSP_DLEW_DL_MASONRY_ARCH" value="5.1.0.19.2.3.0" description="Double Lane Masonry Arch Bridge Span"/>
+  <type name="OTHER_CULT_LAND_BRDSP_DLEW_DL_STEEL_FLOATING" value="5.1.0.19.2.4.0" description="Double Lane Steel Floating Bridge Span"/>
+  <type name="OTHER_CULT_LAND_BRDSP_DLEW_DL_STEEL_GIRDER" value="5.1.0.19.2.5.0" description="Double Lane Steel Girder Bridge Span"/>
+  <type name="OTHER_CULT_LAND_BRDSP_DLEW_DL_STEEL_PIER" value="5.1.0.19.2.6.0" description="Double Lane Steel Pier Bridge Span"/>
+  <type name="OTHER_CULT_LAND_BRDSP_DLEW_DL_STEEL_SUSPENSION" value="5.1.0.19.2.7.0" description="Double Lane Steel Suspension Bridge Span"/>
+  <type name="OTHER_CULT_LAND_BRDSP_DLEW_DL_STEEL_TRESTLE" value="5.1.0.19.2.8.0" description="Double Lane Steel Trestle Bridge Span"/>
+  <type name="OTHER_CULT_LAND_BRDSP_DLEW_DL_WOOD_GIRDER" value="5.1.0.19.2.9.0" description="Double Lane Wood Girder Bridge Span"/>
+  <type name="OTHER_CULT_LAND_BRDSP_DLEW_DL_WOOD_PIER" value="5.1.0.19.2.10.0" description="Double Lane Wood Pier Bridge Span"/>
+  <type name="OTHER_CULT_LAND_BRDSP_DLEW_DL_WOOD_TRESTLE" value="5.1.0.19.2.11.0" description="Double Lane Wood Pier Trestle Span"/>
+  <type name="OTHER_CULT_LAND_ROAD" value="5.1.0.20.0.0.0" description="Road element"/>
+  <type name="OTHER_CULT_LAND_ROAD_SECTION_STRAIGHT" value="5.1.0.20.1.0.0" description="Road Section Straight"/>
+  <type name="OTHER_CULT_LAND_ROAD_SECTION_STRAIGHT_ONE_LANE" value="5.1.0.20.1.1.0" description="One Lane"/>
+  <type name="OTHER_CULT_LAND_ROAD_SECTION_STRAIGHT_TWO_LANE" value="5.1.0.20.1.2.0" description="Two Lane"/>
+  <type name="OTHER_CULT_LAND_ROAD_SECTION_STRAIGHT_THREE_LANE" value="5.1.0.20.1.3.0" description="Three Lane"/>
+  <type name="OTHER_CULT_LAND_ROAD_SECTION_STRAIGHT_FOUR_LANE" value="5.1.0.20.1.4.0" description="Four Lane"/>
+  <type name="OTHER_CULT_LAND_ROAD_SECTION_CURVED" value="5.1.0.20.2.0.0" description="Road Section Curved"/>
+  <type name="OTHER_CULT_LAND_ROAD_SECTION_CURVED_ROAD_SECTION_CURVED_ONE_LANE" value="5.1.0.20.2.1.0" description="Road Section Curved, One Lane"/>
+  <type name="OTHER_CULT_LAND_ROAD_SECTION_CURVED_ROAD_SECTION_CURVED_TWO_LANE" value="5.1.0.20.2.2.0" description="Road Section Curved, Two Lane"/>
+  <type name="OTHER_CULT_LAND_ROAD_SECTION_CURVED_ROAD_SECTION_CURVED_THREE_LANE" value="5.1.0.20.2.3.0" description="Road Section Curved, Three Lane"/>
+  <type name="OTHER_CULT_LAND_ROAD_SECTION_CURVED_ROAD_SECTION_CURVED_FOUR_LANE" value="5.1.0.20.2.4.0" description="Road Section Curved, Four Lane"/>
+  <type name="OTHER_CULT_LAND_ROAD_INTERSECTION" value="5.1.0.20.3.0.0" description="Intersection"/>
+  <type name="OTHER_CULT_LAND_ROAD_INTERSECTION_ONE_LANE_TO_ONE_LANE" value="5.1.0.20.3.11.0" description="Intersection, One Lane to One Lane"/>
+  <type name="OTHER_CULT_LAND_ROAD_INTERSECTION_ONE_LANE_TO_TWO_LANE" value="5.1.0.20.3.12.0" description="Intersection, One Lane to Two Lane"/>
+  <type name="OTHER_CULT_LAND_ROAD_INTERSECTION_ONE_LANE_TO_THREE_LANE" value="5.1.0.20.3.13.0" description="Intersection, One Lane to Three Lane"/>
+  <type name="OTHER_CULT_LAND_ROAD_INTERSECTION_ONE_LANE_TO_FOUR_LANE" value="5.1.0.20.3.14.0" description="Intersection, One Lane to Four Lane"/>
+  <type name="OTHER_CULT_LAND_ROAD_INTERSECTION_TWO_LANE_TO_TWO_LANE" value="5.1.0.20.3.22.0" description="Intersection, Two Lane to Two Lane"/>
+  <type name="OTHER_CULT_LAND_ROAD_INTERSECTION_TWO_LANE_TO_THREE_LANE" value="5.1.0.20.3.23.0" description="Intersection, Two Lane to Three Lane"/>
+  <type name="OTHER_CULT_LAND_ROAD_INTERSECTION_TWO_LANE_TO_FOUR_LANE" value="5.1.0.20.3.24.0" description="Intersection, Two Lane to Four Lane"/>
+  <type name="OTHER_CULT_LAND_ROAD_INTERSECTION_THREE_LANE_TO_THREE_LANE" value="5.1.0.20.3.33.0" description="Intersection, Three Lane to Three Lane"/>
+  <type name="OTHER_CULT_LAND_ROAD_INTERSECTION_THREE_LANE_TO_FOUR_LANE" value="5.1.0.20.3.34.0" description="Intersection, Three Lane to Four Lane"/>
+  <type name="OTHER_CULT_LAND_ROAD_INTERSECTION_FOUR_LANE_TO_FOUR_LANE" value="5.1.0.20.3.44.0" description="Intersection, Four Lane to Four Lane"/>
+  <type name="OTHER_CULT_LAND_APPL" value="5.1.0.22.0.0.0" description="Appliances"/>
+  <type name="OTHER_CULT_LAND_APPL_CTOP" value="5.1.0.22.1.0.0" description="Countertop"/>
+  <type name="OTHER_CULT_LAND_APPL_CTOP_SLOW_COOKER" value="5.1.0.22.1.1.0" description="Slow cooker"/>
+  <type name="OTHER_CULT_LAND_APPL_CTOP_RICE_COOKER" value="5.1.0.22.1.2.0" description="Rice cooker"/>
+  <type name="OTHER_CULT_LAND_APPL_CTOP_RICE_COOKER_WHITE" value="5.1.0.22.1.2.1" description="Rice cooker, white"/>
+  <type name="OTHER_CULT_LAND_APPL_CTOP_RICE_COOKER_SILVER" value="5.1.0.22.1.2.2" description="Rice cooker, silver"/>
+  <type name="OTHER_CULT_LAND_APPL_CTOP_PRESSURE_COOKER" value="5.1.0.22.1.3.0" description="Pressure cooker"/>
+  <type name="OTHER_CULT_LAND_APPL_CTOP_PRESSURE_COOKER_WHITE" value="5.1.0.22.1.3.1" description="Pressure cooker, white"/>
+  <type name="OTHER_CULT_LAND_APPL_CTOP_PRESSURE_COOKER_SILVER" value="5.1.0.22.1.3.2" description="Pressure cooker, silver"/>
+  <type name="OTHER_CULT_LAND_APPL_CTOP_PRESSURE_COOKER_WIRE" value="5.1.0.22.1.4.0" description="Pressure cooker with wire"/>
+  <type name="OTHER_CULT_LAND_APPL_CTOP_PRESSURE_COOKER_WIRE_WHITE" value="5.1.0.22.1.4.1" description="Pressure cooker wire, white"/>
+  <type name="OTHER_CULT_LAND_APPL_CTOP_PRESSURE_COOKER_WIRE_SILVER" value="5.1.0.22.1.4.2" description="Pressure cooker wire, silver"/>
+  <type name="OTHER_CULT_LAND_APPL_INDOOR" value="5.1.0.22.2.0.0" description="Indoor"/>
+  <type name="OTHER_CULT_LAND_APPL_INDOOR_FRIDGE" value="5.1.0.22.2.1.0" description="Refrigerator"/>
+  <type name="OTHER_CULT_LAND_APPL_INDOOR_FREEZER" value="5.1.0.22.2.2.0" description="Freezer"/>
+  <type name="OTHER_CULT_LAND_APPL_INDOOR_RANGE" value="5.1.0.22.2.3.0" description="Range"/>
+  <type name="OTHER_CULT_LAND_APPL_INDOOR_OVEN" value="5.1.0.22.2.4.0" description="Oven"/>
+  <type name="OTHER_CULT_LAND_APPL_INDOOR_WASH_MACH" value="5.1.0.22.2.5.0" description="Washing machine"/>
+  <type name="OTHER_CULT_LAND_APPL_INDOOR_WASH_MACH_TIMER" value="5.1.0.22.2.5.1" description="Washing Machine Timer"/>
+  <type name="OTHER_CULT_LAND_APPL_INDOOR_DRYER" value="5.1.0.22.2.6.0" description="Dryer"/>
+  <type name="OTHER_CULT_LAND_APPL_OUTDOOR" value="5.1.0.22.3.0.0" description="Outdoor"/>
+  <type name="OTHER_CULT_LAND_FURN" value="5.1.0.23.0.0.0" description="Furniture"/>
+  <type name="OTHER_CULT_LAND_FURN_INDOOR" value="5.1.0.23.1.0.0" description="Indoor"/>
+  <type name="OTHER_CULT_LAND_FURN_INDOOR_CHAIR" value="5.1.0.23.1.1.0" description="Chair"/>
+  <type name="OTHER_CULT_LAND_FURN_INDOOR_TABLE" value="5.1.0.23.1.2.0" description="Table"/>
+  <type name="OTHER_CULT_LAND_FURN_INDOOR_DESK" value="5.1.0.23.1.3.0" description="Desk"/>
+  <type name="OTHER_CULT_LAND_FURN_INDOOR_BED" value="5.1.0.23.1.4.0" description="Bed"/>
+  <type name="OTHER_CULT_LAND_FURN_INDOOR_LAMP" value="5.1.0.23.1.5.0" description="Lamp"/>
+  <type name="OTHER_CULT_LAND_FURN_OUTDOOR" value="5.1.0.23.2.0.0" description="Outdoor"/>
+  <type name="OTHER_CULT_LAND_INFO" value="5.1.0.24.0.0.0" description="Informational"/>
+  <type name="OTHER_CULT_LAND_INFO_BOOK" value="5.1.0.24.1.0.0" description="Book"/>
+  <type name="OTHER_CULT_LAND_INFO_MAPCHART" value="5.1.0.24.2.0.0" description="Map/Chart"/>
+  <type name="OTHER_CULT_LAND_INFO_TICKET" value="5.1.0.24.3.0.0" description="Ticket"/>
+  <type name="OTHER_CULT_LAND_INFO_ID" value="5.1.0.24.4.0.0" description="Identification"/>
+  <type name="OTHER_CULT_LAND_TOOLS" value="5.1.0.25.0.0.0" description="Tools"/>
+  <type name="OTHER_CULT_LAND_TOOLS_POWER" value="5.1.0.25.1.0.0" description="Power"/>
+  <type name="OTHER_CULT_LAND_TOOLS_HOUSEHOLD" value="5.1.0.25.2.0.0" description="Household"/>
+  <type name="OTHER_CULT_LAND_TOOLS_GARDEN" value="5.1.0.25.3.0.0" description="Garden"/>
+  <type name="OTHER_CULT_LAND_TOOLS_GARDEN_LADDER" value="5.1.0.25.3.1.0" description="Ladder"/>
+  <type name="OTHER_CULT_LAND_TOOLS_GARDEN_LADDER_MAKESHIFT_22FT" value="5.1.0.25.3.1.1" description="Ladder, 22ft, Makeshift"/>
+  <type name="OTHER_CULT_LAND_PERSONAL" value="5.1.0.26.0.0.0" description="Personal"/>
+  <type name="OTHER_CULT_LAND_PERSONAL_CLOTHING" value="5.1.0.26.1.0.0" description="Clothing"/>
+  <type name="OTHER_CULT_LAND_PERSONAL_HEADWEAR" value="5.1.0.26.2.0.0" description="Headwear"/>
+  <type name="OTHER_CULT_LAND_PERSONAL_FOOTWEAR" value="5.1.0.26.3.0.0" description="Footwear"/>
+  <type name="OTHER_CULT_LAND_PERSONAL_MEDICAL" value="5.1.0.26.4.0.0" description="Medical"/>
+  <type name="OTHER_CULT_LAND_ELECTRONICS" value="5.1.0.27.0.0.0" description="Electronics"/>
+  <type name="OTHER_CULT_LAND_ELECTRONICS_VIDEO" value="5.1.0.27.1.0.0" description="Video"/>
+  <type name="OTHER_CULT_LAND_ELECTRONICS_COMP" value="5.1.0.27.2.0.0" description="Computer"/>
+  <type name="OTHER_CULT_LAND_ELECTRONICS_COMP_DESKTOP" value="5.1.0.27.2.1.0" description="Desktop"/>
+  <type name="OTHER_CULT_LAND_ELECTRONICS_COMP_NOTEBOOK" value="5.1.0.27.2.2.0" description="Notebook"/>
+  <type name="OTHER_CULT_LAND_ELECTRONICS_COMP_TABLET" value="5.1.0.27.2.3.0" description="Tablet"/>
+  <type name="OTHER_CULT_LAND_ELECTRONICS_COMP_SERVER" value="5.1.0.27.2.4.0" description="Server"/>
+  <type name="OTHER_CULT_LAND_ELECTRONICS_COMP_PRINTER" value="5.1.0.27.2.5.0" description="Printer"/>
+  <type name="OTHER_CULT_LAND_ELECTRONICS_AUDIO" value="5.1.0.27.3.0.0" description="Audio"/>
+  <type name="OTHER_CULT_LAND_ELECTRONICS_AUDIO_TELEPHONE" value="5.1.0.27.3.1.0" description="Telephone (land line)"/>
+  <type name="OTHER_CULT_LAND_ELECTRONICS_AUDIO_CELL_PHONE" value="5.1.0.27.3.2.0" description="Cell phone"/>
+  <type name="OTHER_CULT_LAND_ELECTRONICS_FAX" value="5.1.0.27.4.0.0" description="Fax"/>
+  <type name="OTHER_CULT_LAND_ELECTRONICS_STORAGE" value="5.1.0.27.5.0.0" description="Storage"/>
+  <type name="OTHER_CULT_LAND_ELECTRONICS_STORAGE_OPT" value="5.1.0.27.5.1.0" description="Optical"/>
+  <type name="OTHER_CULT_LAND_ELECTRONICS_STORAGE_HD" value="5.1.0.27.5.2.0" description="Hard Drive"/>
+  <type name="OTHER_CULT_LAND_ELECTRONICS_STORAGE_FLASH" value="5.1.0.27.5.3.0" description="Flash"/>
+  <type name="OTHER_CULT_LAND_ELECTRONICS_STORAGE_TAPE" value="5.1.0.27.5.4.0" description="Tape"/>
+  <type name="OTHER_CULT_LAND_ELECTRONICS_WIRE" value="5.1.0.27.6.0.0" description="Wire"/>
+  <type name="OTHER_CULT_LAND_CONTRABAND" value="5.1.0.28.0.0.0" description="Contraband"/>
+  <type name="OTHER_CULT_LAND_CONTRABAND_DRUG_BALE" value="5.1.0.28.1.0.0" description="Drug Bale"/>
+  <type name="OTHER_CULT_LAND_CONTRABAND_DRUG_BALE_MARIJUANA" value="5.1.0.28.1.1.0" description="Drug Bale, Marijuana"/>
+  <type name="OTHER_CULT_LAND_CONTRABAND_DRUG_BALE_MARIJUANA_2X3" value="5.1.0.28.1.1.1" description="Drug Bale, Marijuana, 2x3"/>
+  <type name="OTHER_CULT_LAND_CONTRABAND_DRUG_BALE_COCAINE" value="5.1.0.28.1.2.0" description="Drug Bale, Cocaine"/>
+  <type name="OTHER_CULT_LAND_CONTRABAND_DRUG_CANISTER" value="5.1.0.28.2.0.0" description="Drug Canister"/>
+  <type name="OTHER_CULT_SURF_OIL_PLATFORM" value="5.3.0.1.0.0.0" description="Oil Platform"/>
+  <type name="OTHER_CULT_SURF_OIL_PLATFORM_FIXED" value="5.3.0.1.1.0.0" description="Oil Platform, Fixed"/>
+  <type name="OTHER_CULT_SURF_OIL_PLATFORM_COMPLIANT_TOWERS" value="5.3.0.1.2.0.0" description="Oil Platform, Compliant Towers"/>
+  <type name="OTHER_CULT_SURF_OIL_PLATFORM_SEMI_SUBMERSIBLE" value="5.3.0.1.3.0.0" description="Oil Platform, Semi-Submersible"/>
+  <type name="OTHER_CULT_SURF_OIL_PLATFORM_MDU" value="5.3.0.1.4.0.0" description="Oil Platform, Jack-Up Mobile Drilling Unit (MDU)"/>
+  <type name="OTHER_CULT_SURF_OIL_PLATFORM_DRILLSHIP" value="5.3.0.1.5.0.0" description="Oil Platform, Drillship"/>
+  <type name="OTHER_CULT_SURF_OIL_PLATFORM_FPSO" value="5.3.0.1.6.0.0" description="Oil Platform, Floating Production, Storage, and Offloading (FPSO)"/>
+  <type name="OTHER_CULT_SURF_OIL_PLATFORM_TLP" value="5.3.0.1.7.0.0" description="Oil Platform, Tension-Leg Platform (TLP)"/>
+  <type name="OTHER_CULT_SURF_OIL_PLATFORM_GBS" value="5.3.0.1.8.0.0" description="Oil Platform, Gravity-Based Structure (GBS)"/>
+  <type name="OTHER_CULT_SURF_OIL_PLATFORM_SPAR" value="5.3.0.1.9.0.0" description="Oil Platform, Spar"/>
+  <type name="OTHER_CULT_SURF_OIL_PLATFORM_CONDEEP" value="5.3.0.1.10.0.0" description="Oil Platform, Condeep"/>
+  <type name="OTHER_CULT_SURF_OIL_PLATFORM_NUI" value="5.3.0.1.11.0.0" description="Oil Platform, Normally Unmanned Installation (NUI)"/>
+  <type name="OTHER_CULT_SURF_OIL_PLATFORM_CONDUCTOR_SUPPORT" value="5.3.0.1.12.0.0" description="Oil Platform, Conductor Support"/>
+  <type name="OTHER_CULT_SURF_BUOY" value="5.3.0.2.0.0.0" description="Buoy"/>
+  <type name="OTHER_CULT_SURF_BUOY_LTED_BUOY" value="5.3.0.2.1.0.0" description="Lighted buoy"/>
+  <type name="OTHER_CULT_SURF_BUOY_LTED_FIXED_LT" value="5.3.0.2.1.1.0" description="Fixed Light"/>
+  <type name="OTHER_CULT_SURF_BUOY_LTED_FLASHING_LT" value="5.3.0.2.1.2.0" description="Flashing Light"/>
+  <type name="OTHER_CULT_SURF_BUOY_LTED_RED_LTED_FLASHING" value="5.3.0.2.1.3.0" description="Red lighted (flashing)"/>
+  <type name="OTHER_CULT_SURF_BUOY_LTED_GREEN_LTED_FLASHING" value="5.3.0.2.1.4.0" description="Green lighted (flashing)"/>
+  <type name="OTHER_CULT_SURF_BUOY_LTED_YELLOW_LTED_FLASHING" value="5.3.0.2.1.5.0" description="Yellow lighted (flashing)"/>
+  <type name="OTHER_CULT_SURF_BUOY_CAN" value="5.3.0.2.2.0.0" description="Can"/>
+  <type name="OTHER_CULT_SURF_BUOY_CAN_BLACK_BUOY" value="5.3.0.2.2.1.0" description="Black buoy"/>
+  <type name="OTHER_CULT_SURF_BUOY_CAN_GREEN_BUOY" value="5.3.0.2.2.2.0" description="Green buoy"/>
+  <type name="OTHER_CULT_SURF_BUOY_SOUND" value="5.3.0.2.3.0.0" description="Sound buoy"/>
+  <type name="OTHER_CULT_SURF_BUOY_NUN" value="5.3.0.2.4.0.0" description="Nun"/>
+  <type name="OTHER_CULT_SURF_BUOY_SPHERICAL" value="5.3.0.2.5.0.0" description="Spherical"/>
+  <type name="OTHER_CULT_SURF_PIER" value="5.3.0.3.0.0.0" description="Pier"/>
+  <type name="OTHER_CULT_SURF_MARK" value="5.3.0.4.0.0.0" description="Marker"/>
+  <type name="OTHER_CULT_SURF_MARK_CTR_CHANNEL_MARKER" value="5.3.0.4.1.0.0" description="Center channel marker"/>
+  <type name="OTHER_CULT_SURF_MARK_RANGE_MARKER" value="5.3.0.4.2.0.0" description="Range marker"/>
+  <type name="OTHER_CULT_SURF_MARK_DAY_MARKER" value="5.3.0.4.3.0.0" description="Day marker"/>
+  <type name="OTHER_CULT_SURF_DAT" value="5.3.0.5.0.0.0" description="Datum"/>
+  <type name="OTHER_CULT_SURF_SPNT" value="5.3.0.6.0.0.0" description="Special Point"/>
+  <type name="OTHER_CULT_SURF_SPNT_MINE" value="5.3.0.6.1.0.0" description="Mine"/>
+  <type name="OTHER_CULT_SURF_SPNT_DLRP" value="5.3.0.6.2.0.0" description="DLRP"/>
+  <type name="OTHER_CULT_SURF_SPNT_NAVIGATION_HAZARD" value="5.3.0.6.3.0.0" description="Navigation Hazard"/>
+  <type name="OTHER_CULT_SURF_SPNT_DOWNED_A_C" value="5.3.0.6.4.0.0" description="Downed A/C"/>
+  <type name="OTHER_CULT_SURF_SPNT_MAN_IN_WATER" value="5.3.0.6.5.0.0" description="Man in Water"/>
+  <type name="OTHER_CULT_SURF_SPNT_DISTRESSED_VESSEL" value="5.3.0.6.6.0.0" description="Distressed Vessel"/>
+  <type name="OTHER_CULT_SURF_SPNT_REFERENCE_POINT" value="5.3.0.6.7.0.0" description="Reference Point"/>
+  <type name="OTHER_CULT_SURF_SPNT_WAYPOINT" value="5.3.0.6.8.0.0" description="Waypoint"/>
+  <type name="OTHER_CULT_SURF_SPNT_POSITION_OF_INTENDED_MOVEMENT_PIM" value="5.3.0.6.9.0.0" description="Position of Intended Movement (PIM)"/>
+  <type name="OTHER_CULT_SURF_SPNT_COMBAT_AIR_PATROL_CAP" value="5.3.0.6.10.0.0" description="Combat Air Patrol (CAP)"/>
+  <type name="OTHER_CULT_SURF_SPNT_STRIKE_INITIAL_POINT_SIP" value="5.3.0.6.11.0.0" description="Strike Initial Point (SIP)"/>
+  <type name="OTHER_CULT_SURF_SPNT_FLT_RENDEZVOUS_POINT" value="5.3.0.6.12.0.0" description="Flight Rendezvous Point"/>
+  <type name="OTHER_CULT_SURF_SPNT_ORBIT_POINT" value="5.3.0.6.13.0.0" description="Orbit Point"/>
+  <type name="OTHER_CULT_SURF_SPNT_RADAR_SITE" value="5.3.0.6.14.0.0" description="Radar Site"/>
+  <type name="OTHER_CULT_SUBS_OIL_WELL" value="5.4.0.1.0.0.0" description="Oil Well"/>
+  <type name="OTHER_CULT_SUBS_OIL_WELL_WORKING" value="5.4.0.1.1.0.0" description="Oil Well, Working"/>
+  <type name="OTHER_CULT_SUBS_OIL_WELL_CAPPED" value="5.4.0.1.2.0.0" description="Oil Well, Capped"/>
+  <type name="OTHER_CULT_SUBS_BUOY" value="5.4.0.2.0.0.0" description="Buoy"/>
+  <type name="OTHER_CULT_SUBS_SHIP_SUNKEN_SHIP" value="5.4.0.3.0.0.0" description="Sunken ship"/>
+</types>

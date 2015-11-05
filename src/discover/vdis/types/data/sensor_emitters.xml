@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<types>
+  <type name="OTHER_SE_LAND_RFA" value="9.1.0.2.0.0.0" description="RF Active"/>
+  <type name="OTHER_SE_LAND_RFA_MULTI_FUNC" value="9.1.0.2.1.0.0" description="Multi-function"/>
+  <type name="OTHER_SE_LAND_RFA_MULTI_FUNC_FIXED" value="9.1.0.2.1.1.0" description="Fixed"/>
+  <type name="OTHER_SE_LAND_RFA_MULTI_FUNC_MOBILE" value="9.1.0.2.1.2.0" description="Mobile"/>
+  <type name="CH_SE_LAND_RFA" value="9.1.45.2.0.0.0" description="RF Active"/>
+  <type name="CH_SE_LAND_RFA_MULTI_FUNC" value="9.1.45.2.1.0.0" description="Multi-function"/>
+  <type name="CH_SE_LAND_RFA_MULTI_FUNC_FIXED" value="9.1.45.2.1.1.0" description="Fixed"/>
+  <type name="CH_SE_LAND_RFA_MULTI_FUNC_MOBILE" value="9.1.45.2.1.2.0" description="Mobile"/>
+  <type name="CH_SE_LAND_RFA_EARLY_WARNING_SURV_RADAR" value="9.1.45.2.2.0.0" description="Early Warning / Surveillance Radar"/>
+  <type name="CH_SE_LAND_RFA_EARLY_WARNING_SURV_RADAR_CROSS_LEGS" value="9.1.45.2.2.1.0" description="Cross Legs"/>
+  <type name="CH_SE_LAND_RFA_EARLY_WARNING_SURV_RADAR_HN_503" value="9.1.45.2.2.2.0" description="HN-503"/>
+  <type name="CH_SE_LAND_RFA_EARLY_WARNING_SURV_RADAR_JY_8" value="9.1.45.2.2.3.0" description="JY-8"/>
+  <type name="CH_SE_LAND_RFA_EARLY_WARNING_SURV_RADAR_JY_8_JY_8A" value="9.1.45.2.2.3.1" description="JY-8A"/>
+  <type name="CH_SE_LAND_RFA_EARLY_WARNING_SURV_RADAR_JY_9" value="9.1.45.2.2.4.0" description="JY-9"/>
+  <type name="CH_SE_LAND_RFA_EARLY_WARNING_SURV_RADAR_JY_14" value="9.1.45.2.2.5.0" description="JY-14"/>
+  <type name="CH_SE_LAND_RFA_EARLY_WARNING_SURV_RADAR_NANJING_B_C" value="9.1.45.2.2.6.0" description="Nanjing B/C"/>
+  <type name="CH_SE_LAND_RFA_EARLY_WARNING_SURV_RADAR_NANJING_B_C_NANJING_B" value="9.1.45.2.2.6.1" description="Nanjing B"/>
+  <type name="CH_SE_LAND_RFA_EARLY_WARNING_SURV_RADAR_NANJING_B_C_NANJING_C" value="9.1.45.2.2.6.2" description="Nanjing C"/>
+  <type name="CH_SE_LAND_RFA_EARLY_WARNING_SURV_RADAR_PIN_JIB" value="9.1.45.2.2.7.0" description="Pin Jib"/>
+  <type name="CH_SE_LAND_RFA_EARLY_WARNING_SURV_RADAR_SLOT_REST" value="9.1.45.2.2.8.0" description="Slot Rest"/>
+  <type name="CH_SE_LAND_RFA_FIRE_CTRL_RADAR" value="9.1.45.2.4.0.0" description="Fire Control Radar"/>
+  <type name="CH_SE_LAND_RFA_FIRE_CTRL_RADAR_TEAM_WORK" value="9.1.45.2.4.1.0" description="Team Work"/>
+  <type name="CH_SE_LAND_RFA_TARGET_ACQUISITION_RADAR" value="9.1.45.2.5.0.0" description="Target Acquisition Radar"/>
+  <type name="CH_SE_LAND_RFA_TARGET_ACQUISITION_RADAR_RICE_PAD" value="9.1.45.2.5.1.0" description="Rice Pad"/>
+  <type name="CH_SE_LAND_RFA_SURFACE_SEARCH_RADAR" value="9.1.45.2.18.0.0" description="Surface-Search Radar"/>
+  <type name="CH_SE_LAND_RFA_SURFACE_SEARCH_RADAR_CROSS_SLOT" value="9.1.45.2.18.1.0" description="Cross Slot"/>
+  <type name="CZ_SE_LAND_RFP" value="9.1.56.3.0.0.0" description="RF Passive (intercept and DF)"/>
+  <type name="CZ_SE_LAND_RFP_IDENTIFICATION_CLASSIFICATION_RADAR" value="9.1.56.3.16.0.0" description="Identification/Classification Radar"/>
+  <type name="CZ_SE_LAND_RFP_IDENTIFICATION_CLASSIFICATION_RADAR_RAMONA_SOFT_BALL" value="9.1.56.3.16.1.0" description="Ramona (Soft Ball)"/>
+  <type name="CZ_SE_LAND_RFP_IDENTIFICATION_CLASSIFICATION_RADAR_TAMARA_TRASH_DRUM" value="9.1.56.3.16.2.0" description="Tamara (Trash Drum)"/>
+  <type name="FR_SE_LAND_RFA" value="9.1.71.2.0.0.0" description="RF Active"/>
+  <type name="FR_SE_LAND_RFA_MULTI_FUNC" value="9.1.71.2.1.0.0" description="Multi-function"/>
+  <type name="FR_SE_LAND_RFA_MULTI_FUNC_FIXED" value="9.1.71.2.1.1.0" description="Fixed"/>
+  <type name="FR_SE_LAND_RFA_MULTI_FUNC_MOBILE" value="9.1.71.2.1.2.0" description="Mobile"/>
+  <type name="FR_SE_LAND_RFA_EWSR" value="9.1.71.2.2.0.0" description="Early Warning/Surveillance Radar"/>
+  <type name="FR_SE_LAND_RFA_EWSR_THOMPSON_LP_23_TRS_2050" value="9.1.71.2.2.1.0" description="Thompson LP-23 (TRS-2050)"/>
+  <type name="FR_SE_LAND_RFA_EWSR_TIGER_S_TRS_2100" value="9.1.71.2.2.2.0" description="Tiger-S (TRS-2100)"/>
+  <type name="FR_SE_LAND_RFA_EWSR_TIGER_G_TRS_2105" value="9.1.71.2.2.3.0" description="Tiger-G (TRS-2105)"/>
+  <type name="FR_SE_LAND_RFA_EWSR_THD_1940_PICADOR" value="9.1.71.2.2.4.0" description="THD 1940 (Picador)"/>
+  <type name="FR_SE_LAND_RFA_EWSR_VOLEX_III_IV" value="9.1.71.2.2.5.0" description="Volex III/IV"/>
+  <type name="FR_SE_LAND_RFA_BATTLEFIELD_SURV" value="9.1.71.2.24.0.0" description="Battlefield Surveillance"/>
+  <type name="FR_SE_LAND_RFA_BS_RASIT_GSR" value="9.1.71.2.24.1.0" description="Rasit Ground Surveillance Radar"/>
+  <type name="FR_SE_LAND_EO" value="9.1.71.5.0.0.0" description="Electro-Optical"/>
+  <type name="FR_SE_LAND_EO_MSL_GUIDANCE" value="9.1.71.5.60.0.0" description="Missile Guidance"/>
+  <type name="FR_SE_LAND_EO_DHY_307_LASER_TARGET_DESIGNATOR" value="9.1.71.5.60.1.0" description="DHY-307 Laser Target Designator"/>
+  <type name="GER_SE_LAND_RFA" value="9.1.78.2.0.0.0" description="RF Active"/>
+  <type name="GER_SE_LAND_RFA_MULTIFUNC_RADAR" value="9.1.78.2.1.0.0" description="Multifunction Radar"/>
+  <type name="GER_SE_LAND_RFA_MULTIFUNC_RADAR_DELETED" value="9.1.78.2.1.1.0" description="Roland II radar"/>
+  <type name="GER_SE_LAND_RFA_BATTLEFIELD_SURV" value="9.1.78.2.24.0.0" description="RF Active Battlefield Surveillance"/>
+  <type name="IRAN_SE_LAND_RFA" value="9.1.101.2.0.0.0" description="RF Active"/>
+  <type name="IRAN_SE_LAND_RFA_MULTI_FUNC" value="9.1.101.2.1.0.0" description="Multi-function"/>
+  <type name="IRAN_SE_LAND_RFA_MULTI_FUNC_FIXED" value="9.1.101.2.1.1.0" description="Fixed"/>
+  <type name="IRAN_SE_LAND_RFA_MULTI_FUNC_MOBILE" value="9.1.101.2.1.2.0" description="Mobile"/>
+  <type name="IRAQ_SE_LAND_RFA" value="9.1.102.2.0.0.0" description="RF Active"/>
+  <type name="IRAQ_SE_LAND_RFA_MULTI_FUNC" value="9.1.102.2.1.0.0" description="Multi-function"/>
+  <type name="IRAQ_SE_LAND_RFA_MULTI_FUNC_FIXED" value="9.1.102.2.1.1.0" description="Fixed"/>
+  <type name="IRAQ_SE_LAND_RFA_MULTI_FUNC_MOBILE" value="9.1.102.2.1.2.0" description="Mobile"/>
+  <type name="IT_SE_LAND_RFA" value="9.1.106.2.0.0.0" description="RF Active"/>
+  <type name="IT_SE_LAND_RFA_MULTI_FUNC" value="9.1.106.2.1.0.0" description="Multi-function"/>
+  <type name="IT_SE_LAND_RFA_MULTI_FUNC_FIXED" value="9.1.106.2.1.1.0" description="Fixed"/>
+  <type name="IT_SE_LAND_RFA_EARLY_WARNING_SURV_RADAR" value="9.1.106.2.2.0.0" description="Early Warning/Surveillance Radar"/>
+  <type name="IT_SE_LAND_RFA_EARLY_WARNING_SURV_RADAR_PLUTO" value="9.1.106.2.2.1.0" description="Pluto"/>
+  <type name="IT_SE_LAND_RFA_EARLY_WARNING_SURV_RADAR_RAT_31S" value="9.1.106.2.2.2.0" description="RAT-31S"/>
+  <type name="IT_SE_LAND_RFA_EARLY_WARNING_SURV_RADAR_ATCR_33_SELENIA" value="9.1.106.2.2.3.0" description="ATCR-33 (Selenia)"/>
+  <type name="JAP_SE_LAND_RFA" value="9.1.110.2.0.0.0" description="RF Active"/>
+  <type name="JAP_SE_LAND_RFA_MULTI_FUNC" value="9.1.110.2.2.0.0" description="Multi-function"/>
+  <type name="JAP_SE_LAND_RFA_MULTI_FUNC_FR_2855W" value="9.1.110.2.2.1.0" description="FR-2855W"/>
+  <type name="DPRNK_SE_LAND_RFA" value="9.1.119.2.0.0.0" description="RF Active"/>
+  <type name="DPRNK_SE_LAND_RFA_MULTI_FUNC" value="9.1.119.2.1.0.0" description="Multi-function"/>
+  <type name="DPRNK_SE_LAND_RFA_MULTI_FUNC_FIXED" value="9.1.119.2.1.1.0" description="Fixed"/>
+  <type name="DPRNK_SE_LAND_RFA_MULTI_FUNC_MOBILE" value="9.1.119.2.1.2.0" description="Mobile"/>
+  <type name="DPRNK_SE_LAND_RFA_FIRE_CTRL_RADAR" value="9.1.119.2.4.0.0" description="Fire Control Radar"/>
+  <type name="DPRNK_SE_LAND_RFA_RADAR_DRUM_TILT_B" value="9.1.119.2.4.1.0" description="Drum Tilt B"/>
+  <type name="NETH_SE_LAND_RFA" value="9.1.153.2.0.0.0" description="RF Active"/>
+  <type name="NETH_SE_LAND_RFA_MULTI_FUNC" value="9.1.153.2.1.0.0" description="Multi-function"/>
+  <type name="NETH_SE_LAND_RFA_MULTI_FUNC_FIXED" value="9.1.153.2.1.1.0" description="Fixed"/>
+  <type name="SA_SE_LAND_RFA" value="9.1.197.2.0.0.0" description="RF Active"/>
+  <type name="SA_SE_LAND_RFA_MULTI_FUNC" value="9.1.197.2.1.0.0" description="Multi-function"/>
+  <type name="SA_SE_LAND_RFA_GSY_1800_ESM_JAMMER" value="9.1.197.2.1.1.0" description="GSY 1800 ESM/Jammer"/>
+  <type name="SWE_SE_LAND_RFA" value="9.1.205.2.0.0.0" description="RF Active"/>
+  <type name="SWE_SE_LAND_RFA_TAR" value="9.1.205.2.5.0.0" description="Target Acquisition Radar"/>
+  <type name="SWE_SE_LAND_RFA_TAR_GIRAFFE" value="9.1.205.2.5.1.0" description="Giraffe"/>
+  <type name="SWE_SE_LAND_RFA_TAR_GIRAFFE_40" value="9.1.205.2.5.1.1" description="Giraffe-40"/>
+  <type name="SWE_SE_LAND_RFA_TAR_GIRAFFE_50_AT" value="9.1.205.2.5.1.2" description="Giraffe-50 AT"/>
+  <type name="SWE_SE_LAND_RFA_TAR_GIRAFFE_75" value="9.1.205.2.5.1.3" description="Giraffe-75"/>
+  <type name="SWE_SE_LAND_RFA_TAR_HARD_PS_91" value="9.1.205.2.5.2.0" description="HARD (PS-91)"/>
+  <type name="SWE_SE_LAND_ACOUSTIC_PASSIVE" value="9.1.205.11.0.0.0" description="Acoustic, Passive"/>
+  <type name="SWE_SE_LAND_AP_FPLPL" value="9.1.205.11.8.0.0" description="Firing point/launch point location"/>
+  <type name="SWE_SE_LAND_AP_FPLPL_SORAS_6" value="9.1.205.11.8.1.0" description="SORAS-6 Sound Ranging System"/>
+  <type name="SWI_SE_LAND_RFA" value="9.1.206.2.0.0.0" description="RF Active"/>
+  <type name="SWI_SE_LAND_RFA_FIRE_CTRL_RADAR" value="9.1.206.2.4.0.0" description="Fire Control Radar"/>
+  <type name="SWI_SE_LAND_RFA_FIRE_CTRL_RADAR_SKYGUARD" value="9.1.206.2.4.1.0" description="Skyguard"/>
+  <type name="SWI_SE_LAND_RFA_FIRE_CTRL_RADAR_SKYGUARD_III" value="9.1.206.2.4.1.1" description="Skyguard III"/>
+  <type name="SWI_SE_LAND_RFA_FIRE_CTRL_RADAR_SUPER_FLEDERMAUS" value="9.1.206.2.4.2.0" description="Super Fledermaus"/>
+  <type name="CIS_SE_LAND_MSPEC" value="9.1.222.1.0.0.0" description="Multi-spectral"/>
+  <type name="CIS_SE_LAND_MSPEC_LAND_RADAR_HOSTILE_FIXED" value="9.1.222.1.1.0.0" description="Land Radar Hostile Fixed"/>
+  <type name="CIS_SE_LAND_MSPEC_LAND_RADAR_HOSTILE_DYNAMIC" value="9.1.222.1.2.0.0" description="Land Radar Hostile Dynamic"/>
+  <type name="CIS_SE_LAND_RFA" value="9.1.222.2.0.0.0" description="RF Active"/>
+  <type name="CIS_SE_LAND_RFA_MULTI_FUNC" value="9.1.222.2.1.0.0" description="Multi-function"/>
+  <type name="CIS_SE_LAND_RFA_MULTI_FUNC_FIXED" value="9.1.222.2.1.1.0" description="Fixed"/>
+  <type name="CIS_SE_LAND_RFA_MULTI_FUNC_MOBILE" value="9.1.222.2.1.2.0" description="Mobile"/>
+  <type name="CIS_SE_LAND_RFA_EARLY_WARNING_SURV_RADAR" value="9.1.222.2.2.0.0" description="Early Warning/Surveillance Radar"/>
+  <type name="CIS_SE_LAND_RFA_EARLY_WARNING_SURV_RADAR_BACK_TRAP" value="9.1.222.2.2.1.0" description="Back Trap"/>
+  <type name="CIS_SE_LAND_RFA_EARLY_WARNING_SURV_RADAR_BAR_LOCK_P_35_P_37_P_50" value="9.1.222.2.2.2.0" description="Bar Lock (P-35/P-37/P-50)"/>
+  <type name="CIS_SE_LAND_RFA_EARLY_WARNING_SURV_RADAR_FLAT_FACE_P_15_CASTA_2E1" value="9.1.222.2.2.3.0" description="Flat Face (P-15, CASTA-2E1)"/>
+  <type name="CIS_SE_LAND_RFA_EARLY_WARNING_SURV_RADAR_LONG_TRACK" value="9.1.222.2.2.4.0" description="Long Track"/>
+  <type name="CIS_SE_LAND_RFA_EARLY_WARNING_SURV_RADAR_SPOON_REST_P_12" value="9.1.222.2.2.5.0" description="Spoon Rest (P-12)"/>
+  <type name="CIS_SE_LAND_RFA_EARLY_WARNING_SURV_RADAR_SQUAT_EYE_P_15M" value="9.1.222.2.2.6.0" description="Squat Eye (P-15M)"/>
+  <type name="CIS_SE_LAND_RFA_EARLY_WARNING_SURV_RADAR_TALL_KING_P_14" value="9.1.222.2.2.7.0" description="Tall King (P-14)"/>
+  <type name="CIS_SE_LAND_RFA_EARLY_WARNING_SURV_RADAR_TIN_SHIELD" value="9.1.222.2.2.8.0" description="Tin Shield"/>
+  <type name="CIS_SE_LAND_RFA_EARLY_WARNING_SURV_RADAR_KNIFE_REST_P_10" value="9.1.222.2.2.9.0" description="Knife Rest (P-10)"/>
+  <type name="CIS_SE_LAND_RFA_EARLY_WARNING_SURV_RADAR_TIN_TRAP" value="9.1.222.2.2.10.0" description="Tin Trap"/>
+  <type name="CIS_SE_LAND_RFA_EARLY_WARNING_SURV_RADAR_BOX_SPRING" value="9.1.222.2.2.11.0" description="Box Spring"/>
+  <type name="CIS_SE_LAND_RFA_HEIGHT_FINDING_RADAR" value="9.1.222.2.3.0.0" description="Height Finding Radar"/>
+  <type name="CIS_SE_LAND_RFA_HEIGHT_FINDING_RADAR_ODD_GROUP" value="9.1.222.2.3.1.0" description="Odd Group"/>
+  <type name="CIS_SE_LAND_RFA_HEIGHT_FINDING_RADAR_ODD_PAIR" value="9.1.222.2.3.2.0" description="Odd Pair"/>
+  <type name="CIS_SE_LAND_RFA_HEIGHT_FINDING_RADAR_SIDE_NET_PRV_11" value="9.1.222.2.3.3.0" description="Side Net (PRV-11)"/>
+  <type name="CIS_SE_LAND_RFA_HEIGHT_FINDING_RADAR_THIN_SKIN" value="9.1.222.2.3.4.0" description="Thin Skin"/>
+  <type name="CIS_SE_LAND_RFA_FIRE_CTRL_RADAR" value="9.1.222.2.4.0.0" description="Fire Control Radar"/>
+  <type name="CIS_SE_LAND_RFA_FIRE_CTRL_RADAR_FIRE_CAN" value="9.1.222.2.4.1.0" description="Fire Can"/>
+  <type name="CIS_SE_LAND_RFA_FIRE_CTRL_RADAR_FLAP_WHEEL" value="9.1.222.2.4.2.0" description="Flap Wheel"/>
+  <type name="CIS_SE_LAND_RFA_FIRE_CTRL_RADAR_WHIFF" value="9.1.222.2.4.3.0" description="Whiff"/>
+  <type name="CIS_SE_LAND_RFA_FIRE_CTRL_RADAR_DELETED" value="9.1.222.2.4.4.0" description="Gun Dish (RPK-2)"/>
+  <type name="CIS_SE_LAND_RFA_TARGET_ACQUISITION_RADAR" value="9.1.222.2.5.0.0" description="Target Acquisition Radar"/>
+  <type name="CIS_SE_LAND_RFA_TARGET_ACQUISITION_RADAR_DOG_EAR" value="9.1.222.2.5.1.0" description="Dog Ear"/>
+  <type name="CIS_SE_LAND_RFA_TARGET_ACQUISITION_RADAR_SNOW_DRIFT_9S18M1" value="9.1.222.2.5.2.0" description="Snow Drift (9S18M1)"/>
+  <type name="CIS_SE_LAND_RFA_TARGET_ACQUISITION_RADAR_MT_LB_MOUNTED_ARK_1" value="9.1.222.2.5.3.0" description="MT-LB mounted ARK-1"/>
+  <type name="CIS_SE_LAND_RFA_TARGET_ACQUISITION_RADAR_MT_LB_MOUNTED_ZOOPARK" value="9.1.222.2.5.4.0" description="MT-LB mounted ZOOPARK"/>
+  <type name="CIS_SE_LAND_RFA_TARGET_ACQUISITION_RADAR_TRUCK_TRAILER_MOUNTED_SNAR_10" value="9.1.222.2.5.5.0" description="Truck/trailer mounted SNAR-10"/>
+  <type name="CIS_SE_LAND_RFA_TARGET_ACQUISITION_RADAR_MT_LB_MOUNTED_BIG_FRED" value="9.1.222.2.5.6.0" description="MT-LB mounted BIG FRED"/>
+  <type name="CIS_SE_LAND_RFA_FPLPL" value="9.1.222.2.8.0.0" description="Firing point/launch point location"/>
+  <type name="CIS_SE_LAND_RFA_FPLPL_IL_220U" value="9.1.222.2.8.1.0" description="IL-220U CM/CB Radar"/>
+  <type name="CIS_SE_LAND_RFA_METEOROLOGICAL_RADAR" value="9.1.222.2.14.0.0" description="Meteorological Radar"/>
+  <type name="CIS_SE_LAND_RFA_METEOROLOGICAL_RADAR_END_TRAY" value="9.1.222.2.14.1.0" description="End Tray"/>
+  <type name="CIS_SE_LAND_RFA_SURFACE_SEARCH_RADAR" value="9.1.222.2.18.0.0" description="Surface Search Radar"/>
+  <type name="CIS_SE_LAND_RFA_SURFACE_SEARCH_RADAR_SHEET_BEND" value="9.1.222.2.18.1.0" description="Sheet Bend"/>
+  <type name="CIS_SE_LAND_RFA_BATTLEFIELD_SURV" value="9.1.222.2.24.0.0" description="Battlefield Surveillance"/>
+  <type name="CIS_SE_LAND_RFA_BATTLEFIELD_SURV_PSNR_5K_TALL_MIKE" value="9.1.222.2.24.1.0" description="PSNR-5K (TALL MIKE)"/>
+  <type name="CIS_SE_LAND_RFA_BATTLEFIELD_SURV_FARA_1_SBR_3" value="9.1.222.2.24.2.0" description="FARA-1 (SBR-3)"/>
+  <type name="CIS_SE_LAND_RFA_PORK_TROUGH_SNAR" value="9.1.222.2.24.3.0" description="Pork Trough (SNAR-1/2/6)"/>
+  <type name="CIS_SE_LAND_RFA_CREDO_1E" value="9.1.222.2.24.4.0" description="Credo-1E"/>
+  <type name="CIS_SE_LAND_RFP" value="9.1.222.3.0.0.0" description="RF Passive (intercept and DF)"/>
+  <type name="CIS_SE_LAND_RFP_ID" value="9.1.222.3.16.0.0" description="Identification/Classification (including IFF)"/>
+  <type name="CIS_SE_LAND_RFP_ID_TURN_CUT" value="9.1.222.3.16.1.0" description="Turn Cut R-381-1"/>
+  <type name="CIS_SE_LAND_RFP_ID_TURN_SPIKE" value="9.1.222.3.16.2.0" description="Turn Spike R-381-2"/>
+  <type name="CIS_SE_LAND_RFP_ID_TURN_TWIST" value="9.1.222.3.16.3.0" description="Turn Twist R-381-3"/>
+  <type name="CIS_SE_LAND_RFP_ID_TURN_POLE" value="9.1.222.3.16.4.0" description="Turn Pole R-381-4"/>
+  <type name="CIS_SE_LAND_RFP_ID_FULL_HOUSE" value="9.1.222.3.16.5.0" description="Full House R-339"/>
+  <type name="CIS_SE_LAND_RFP_ID_SPIKE_SQUARE" value="9.1.222.3.16.6.0" description="Spike Square R-363"/>
+  <type name="CIS_SE_LAND_RFP_ID_LONE_BOX" value="9.1.222.3.16.7.0" description="Lone Box SRTR-2"/>
+  <type name="CIS_SE_LAND_RFP_ID_TWIN_BOX_5M" value="9.1.222.3.16.8.0" description="Twin Box RPS-5M"/>
+  <type name="CIS_SE_LAND_RFP_ID_TWIN_BOX_6" value="9.1.222.3.16.9.0" description="Twin Box RPS-6"/>
+  <type name="CIS_SE_LAND_RFP_ID_TUBE_TREE" value="9.1.222.3.16.10.0" description="Tube Tree"/>
+  <type name="CIS_SE_LAND_RFP_ID_POLE_DISH" value="9.1.222.3.16.11.0" description="Pole Dish (NRS-1)"/>
+  <type name="CIS_SE_LAND_EO" value="9.1.222.5.0.0.0" description="Electro-Optical"/>
+  <type name="CIS_SE_LAND_EO_LRF" value="9.1.222.5.9.0.0" description="Ranging"/>
+  <type name="CIS_SE_LAND_EO_LRF_DAK_1_SAGE_GLOSS" value="9.1.222.5.9.1.0" description="LRF DAK-1 (Sage Gloss)"/>
+  <type name="CIS_SE_LAND_EO_MSL_GUIDANCE" value="9.1.222.5.60.0.0" description="Missile Guidance"/>
+  <type name="CIS_SE_LAND_EO_1D15_LASER_DESIG" value="9.1.222.5.60.1.0" description="1D15 Laser Target Designator"/>
+  <type name="CIS_SE_LAND_EO_1D22_LASER_DESIG" value="9.1.222.5.60.2.0" description="1D22 Laser Target Designator"/>
+  <type name="UK_SE_LAND_RFA" value="9.1.224.2.0.0.0" description="RF Active"/>
+  <type name="UK_SE_LAND_RFA_MULTI_FUNC" value="9.1.224.2.1.0.0" description="Multi-function"/>
+  <type name="UK_SE_LAND_RFA_MULTI_FUNC_FIXED" value="9.1.224.2.1.1.0" description="Fixed"/>
+  <type name="UK_SE_LAND_RFA_MULTI_FUNC_MOBILE" value="9.1.224.2.1.2.0" description="Mobile"/>
+  <type name="UK_SE_LAND_RFA_EARLY_WARNING_SURV_RADAR" value="9.1.224.2.2.0.0" description="Early Warning/Surveillance Radar"/>
+  <type name="UK_SE_LAND_RFA_EARLY_WARNING_SURV_RADAR_PLESSEY_AR_5" value="9.1.224.2.2.1.0" description="Plessey AR-5"/>
+  <type name="UK_SE_LAND_RFA_HEIGHT_FINDING" value="9.1.224.2.3.0.0" description="Height Finding"/>
+  <type name="UK_SE_LAND_RFA_HEIGHT_FINDING_DECCA_HF_200" value="9.1.224.2.3.1.0" description="Decca HF 200"/>
+  <type name="UK_SE_LAND_RFA_TARGET_TRACKING_RADAR" value="9.1.224.2.6.0.0" description="Target Tracking Radar"/>
+  <type name="US_SE_LAND_MSPEC" value="9.1.225.1.0.0.0" description="Multi-spectral"/>
+  <type name="US_SE_LAND_MSPEC_AN_GSQ_187_REMBASS" value="9.1.225.1.24.1.0" description="AN/GSQ-187 Remote Battlefield Sensor System (REMBASS)"/>
+  <type name="US_SE_LAND_MSPEC_AN_GSQ_187_IREMBASS" value="9.1.225.1.24.2.0" description="AN/GSQ-187 Improved REMBASS"/>
+  <type name="US_SE_LAND_MSPEC_DT_562_GSQ_ACOUSTIC_SEISMIC" value="9.1.225.1.24.2.1" description="DT-562/GSQ - Acoustic/Seismic"/>
+  <type name="US_SE_LAND_MSPEC_DT_561_GSQ_MAGNETIC" value="9.1.225.1.24.2.2" description="DT-561/GSQ - Magnetic"/>
+  <type name="US_SE_LAND_MSPEC_DT_565_GSQ_IR" value="9.1.225.1.24.2.3" description="DT-565/GSQ - Infrared"/>
+  <type name="US_SE_LAND_MSPEC_STEEL_RATTLER" value="9.1.225.1.24.3.0" description="Steel Rattler"/>
+  <type name="US_SE_LAND_RFA" value="9.1.225.2.0.0.0" description="RF Active"/>
+  <type name="US_SE_LAND_RFA_MULTI_FUNC" value="9.1.225.2.1.0.0" description="Multi-function"/>
+  <type name="US_SE_LAND_RFA_MULTI_FUNC_FIXED" value="9.1.225.2.1.1.0" description="Fixed"/>
+  <type name="US_SE_LAND_RFA_MULTI_FUNC_MOBILE" value="9.1.225.2.1.2.0" description="Mobile"/>
+  <type name="US_SE_LAND_RFA_EARLY_WARNING_SURV_RADAR" value="9.1.225.2.2.0.0" description="Early Warning / Surveillance Radar"/>
+  <type name="US_SE_LAND_RFA_EWSR_AN_TPS_43" value="9.1.225.2.2.1.0" description="AN/TPS-43"/>
+  <type name="US_SE_LAND_RFA_EWSR_AN_TPS_59" value="9.1.225.2.2.2.0" description="AN/TPS-59"/>
+  <type name="US_SE_LAND_RFA_EWSR_AN_TPS_63" value="9.1.225.2.2.3.0" description="AN/TPS-63"/>
+  <type name="US_SE_LAND_RFA_EWSR_AN_TPS_75" value="9.1.225.2.2.4.0" description="AN/TPS-75"/>
+  <type name="US_SE_LAND_RFA_EWSR_AN_FPS_117" value="9.1.225.2.2.5.0" description="AN/FPS-117"/>
+  <type name="US_SE_LAND_RFA_EWSR_AN_FPS_89" value="9.1.225.2.2.6.0" description="AN/FPS-89"/>
+  <type name="US_SE_LAND_RFA_EWSR_AN_TPS_70" value="9.1.225.2.2.7.0" description="AN/TPS-70"/>
+  <type name="US_SE_LAND_RFA_EWSR_AN_TPS_24" value="9.1.225.2.2.8.0" description="AN/TPS-24"/>
+  <type name="US_SE_LAND_RFA_EWSR_AN_TPS_65" value="9.1.225.2.2.9.0" description="AN/TPS-65"/>
+  <type name="US_SE_LAND_RFA_EWSR_ASR_4" value="9.1.225.2.2.10.0" description="ASR-4"/>
+  <type name="US_SE_LAND_RFA_EWSR_ASR_4D" value="9.1.225.2.2.10.1" description="ASR-4D"/>
+  <type name="US_SE_LAND_RFA_EWSR_ASR_4_LRSR" value="9.1.225.2.2.10.2" description="ASR-4 LRSR"/>
+  <type name="US_SE_LAND_RFA_EWSR_ASR_5" value="9.1.225.2.2.11.0" description="ASR-5"/>
+  <type name="US_SE_LAND_RFA_EWSR_ASR_7" value="9.1.225.2.2.12.0" description="ASR-7"/>
+  <type name="US_SE_LAND_RFA_EWSR_ASR_8" value="9.1.225.2.2.13.0" description="ASR-8"/>
+  <type name="US_SE_LAND_RFA_EWSR_ASR_9" value="9.1.225.2.2.14.0" description="ASR-9"/>
+  <type name="US_SE_LAND_RFA_EWSR_ASR_10" value="9.1.225.2.2.15.0" description="ASR-10"/>
+  <type name="US_SE_LAND_RFA_EWSR_ASR_10_SS" value="9.1.225.2.2.15.1" description="ASR-10 SS"/>
+  <type name="US_SE_LAND_RFA_EWSR_ASR_11" value="9.1.225.2.2.16.0" description="ASR-11"/>
+  <type name="US_SE_LAND_RFA_EWSR_ASR_11_DASR" value="9.1.225.2.2.16.1" description="ASR-11/DASR"/>
+  <type name="US_SE_LAND_RFA_EWSR_ASR_12" value="9.1.225.2.2.17.0" description="ASR-12"/>
+  <type name="US_SE_LAND_RFA_EWSR_ASR_23" value="9.1.225.2.2.18.0" description="ASR-23"/>
+  <type name="US_SE_LAND_RFA_EWSR_ASR_23_SS" value="9.1.225.2.2.18.1" description="ASR-23 SS"/>
+  <type name="US_SE_LAND_RFA_EWSR_AN_TPS_73" value="9.1.225.2.2.19.0" description="AN/TPS-73"/>
+  <type name="US_SE_LAND_RFA_EWSR_AN_UPS_3" value="9.1.225.2.2.20.0" description="AN/UPS-3"/>
+  <type name="US_SE_LAND_RFA_TARGET_ACQUISITION_RADAR" value="9.1.225.2.5.0.0" description="Target Acquisition Radar"/>
+  <type name="US_SE_LAND_RFA_TAR_AN_MPQ_64_FAAD_GBS" value="9.1.225.2.5.1.0" description="AN/MPQ-64 FAAD GBS"/>
+  <type name="US_SE_LAND_RFA_FIRING_POINT_LNCH_POINT_DETERMINATION_SENSOR" value="9.1.225.2.8.0.0" description="Firing Point/Launch Point Determination Sensor"/>
+  <type name="US_SE_LAND_RFA_FPLPDS_AN_TPQ_36" value="9.1.225.2.8.1.0" description="AN/TPQ-36"/>
+  <type name="US_SE_LAND_RFA_FPLPDS_AN_TPQ_37_FIREFINDER" value="9.1.225.2.8.2.0" description="AN/TPQ-37 Firefinder"/>
+  <type name="US_SE_LAND_RFA_FPLPDS_TRAILER_MOUNTED_AN_TPQ_38_V8" value="9.1.225.2.8.3.0" description="Trailer mounted AN/TPQ-38 (V8)"/>
+  <type name="US_SE_LAND_RFA_FPLPDS_TRAILER_MOUNTED_AN_TPQ_47" value="9.1.225.2.8.4.0" description="Trailer mounted AN/TPQ-47"/>
+  <type name="US_SE_LAND_RFA_FPLPDS_AN_TPQ_47" value="9.1.225.2.8.5.0" description="AN/TPQ-47"/>
+  <type name="US_SE_LAND_RFA_BATTLEFIELD_SURV" value="9.1.225.2.24.0.0" description="Battlefield Surveillance"/>
+  <type name="US_SE_LAND_RFA_BATTLEFIELD_SURV_AN_PPS_5" value="9.1.225.2.24.1.0" description="AN/PPS-5"/>
+  <type name="US_SE_LAND_RFA_BATTLEFIELD_SURV_AN_PPS_15A_V1" value="9.1.225.2.24.2.0" description="AN/PPS-15A (V1)"/>
+  <type name="US_SE_LAND_RFA_JAMMING" value="9.1.225.2.42.0.0" description="Jamming"/>
+  <type name="US_SE_LAND_RFA_AN_TSQ_152_TRACKWOLF" value="9.1.225.2.42.1.0" description="AN/TSQ-152 Trackwolf"/>
+  <type name="US_SE_LAND_RFA_AN_TLQ_17A_TRAFFIC_JAM" value="9.1.225.2.42.2.0" description="AN/TLQ-17A Traffic Jam"/>
+  <type name="US_SE_LAND_RFA_AN_TSQ_199_ET" value="9.1.225.2.42.3.0" description="AN/TSQ-199 ET (Enhanced Trackwolf)"/>
+  <type name="US_SE_LAND_RFP" value="9.1.225.3.0.0.0" description="RF Passive"/>
+  <type name="US_SE_LAND_RFP_MULTI_FUNC" value="9.1.225.3.1.0.0" description="Multi-function"/>
+  <type name="US_SE_LAND_RFP_AN_TSQ_114_TRAILBLAZER" value="9.1.225.3.1.1.0" description="AN/TSQ-114 Trailblazer"/>
+  <type name="US_SE_LAND_RFP_AN_TSQ_138_TRAILBLAZER" value="9.1.225.3.1.2.0" description="AN/TSQ-138 Trailblazer"/>
+  <type name="US_SE_LAND_RFP_EARLY_WARNING_SURV_RADAR" value="9.1.225.3.2.0.0" description="Early Warning/Surveillance"/>
+  <type name="US_SE_LAND_RFP_AN_PRD_13" value="9.1.225.3.2.1.0" description="AN/PRD-13"/>
+  <type name="US_SE_LAND_RFP_JAMMING" value="9.1.225.3.42.0.0" description="Jamming"/>
+  <type name="US_SE_LAND_RFP_AN_TRQ_32_TEAMMATE" value="9.1.225.3.42.1.0" description="AN/TRQ-32 Teammate"/>
+  <type name="US_SE_LAND_RFP_FIRING_POINT_LNCH_POINT_DETERMINATION_SENSOR" value="9.1.225.3.8.0.0" description="Firing Point/Launch Point Determination Sensor"/>
+  <type name="US_SE_LAND_RFP_FIRING_POINT_LNCH_POINT_DETERMINATION_SENSOR_EXPERT_MSL_TRACKER_ADJUNCT_TO_AN_TPS_75" value="9.1.225.3.8.1.0" description="Expert Missile Tracker (adjunct to AN/TPS-75)"/>
+  <type name="US_SE_LAND_EO" value="9.1.225.5.0.0.0" description="Electro-Optical"/>
+  <type name="US_SE_LAND_EO_MSL_GUIDANCE" value="9.1.225.5.60.0.0" description="Missile Guidance"/>
+  <type name="US_SE_LAND_EO_AN_TVQ_2_GVLLD" value="9.1.225.5.60.1.0" description="AN/TVQ-2 Ground/Vehicular Laser Locator Designator (G/VLLD)"/>
+  <type name="US_SE_LAND_SEIS" value="9.1.225.6.0.0.0" description="Seismic"/>
+  <type name="US_SE_LAND_SEIS_EWS" value="9.1.225.6.2.0.0" description="Early Warning/Surveillance"/>
+  <type name="US_SE_LAND_SEIS_AN_TRS_2_V_PEWS" value="9.1.225.6.2.1.0" description="AN/TRS-2(V) Platoon Early Warning System (PEWS)"/>
+  <type name="US_SE_LAND_CHEMPD" value="9.1.225.7.0.0.0" description="Chemical, point detector"/>
+  <type name="US_SE_LAND_CHEMPD_ACADA" value="9.1.225.7.1.0.0" description="Multi-function"/>
+  <type name="US_SE_LAND_CHEMPD_ACADA_TL" value="9.1.225.7.1.1.0" description="w/Telemetry Link"/>
+  <type name="US_SE_LAND_CHEMPD_M43A1" value="9.1.225.7.2.0.0" description="Early Warning/Surveillance"/>
+  <type name="US_SE_LAND_CHEMPD_M43A1_TL" value="9.1.225.7.2.1.0" description="M43A1 Chemical Alarm"/>
+  <type name="US_SE_LAND_CHEMPD_BAWS" value="9.1.225.7.2.3.0" description="Biological Aerosol Warning System (BAWS)"/>
+  <type name="US_SE_LAND_CHEMS_CHEM_STANDOFF" value="9.1.225.8.0.0.0" description="Chemical, standoff"/>
+  <type name="US_SE_LAND_CHEMS_CHEM_STANDOFF_M21" value="9.1.225.8.1.0.0" description="Multi-function"/>
+  <type name="SEMO_SE_LAND_RFA" value="9.1.240.2.0.0.0" description="RF Active"/>
+  <type name="SEMO_SE_LAND_RFA_MULTI_FUNC" value="9.1.240.2.1.0.0" description="Multi-function"/>
+  <type name="SEMO_SE_LAND_RFA_MULTI_FUNC_FIXED" value="9.1.240.2.1.1.0" description="Fixed"/>
+  <type name="SEMO_SE_LAND_RFA_MULTI_FUNC_MOBILE" value="9.1.240.2.1.2.0" description="Mobile"/>
+  <type name="US_SE_AIR_RFA" value="9.2.225.2.0.0.0" description="RF active"/>
+  <type name="US_SE_AIR_RFA_EARLY_WARNING_SURV" value="9.2.225.2.2.0.0" description="Early Warning/Surveillance"/>
+  <type name="US_SE_AIR_RFA_EARLY_WARNING_SURV_JLENS_PTIR_SENSOR" value="9.2.225.2.2.1.0" description="JLENS PTIR Sensor"/>
+  <type name="US_SE_AIR_RFA_EARLY_WARNING_SURV_JLENS_SUR_SENSOR" value="9.2.225.2.2.2.0" description="JLENS SuR Sensor"/>
+  <type name="CIS_SE_SURF_ACUA" value="9.3.222.10.0.0.0" description="Acoustic active"/>
+  <type name="CIS_SE_SURF_ACUA_SONOBUOY" value="9.3.222.10.77.0.0" description="Sonobuoy"/>
+  <type name="CIS_SE_SURF_ACUA_TOW_COUNTER_MEASURE" value="9.3.222.10.79.0.0" description="Towed Counter Measure"/>
+  <type name="CIS_SE_SURF_ACUA_TOW_COUNTER_MEASURE_TOW_CM_BAT_1" value="9.3.222.10.79.1.0" description="Towed CM BAT-1"/>
+  <type name="US_SE_SURF_ACUA" value="9.3.225.10.0.0.0" description="Acoustic, active"/>
+  <type name="US_SE_SURF_ACUA_SONOBUOY" value="9.3.225.10.77.0.0" description="Sonobuoy"/>
+  <type name="US_SE_SURF_ACUA_SONOBUOY_ICEPICK_GEOBUOY" value="9.3.225.10.77.1.0" description="ICEPICK (GEOBUOY)"/>
+  <type name="OTHER_SE_SUBS_ACUA" value="9.4.0.10.0.0.0" description="Acoustic, active"/>
+  <type name="OTHER_SE_SUBS_ACUA_JAMMING_NOISE" value="9.4.0.10.64.0.0" description="Jamming noise"/>
+  <type name="AUL_SE_SUBS_ACUP" value="9.4.13.11.0.0.0" description="Acoustic, passive"/>
+  <type name="AUL_SE_SUBS_ACUP_SONOBUOY" value="9.4.13.11.77.0.0" description="Sonobuoy"/>
+  <type name="AUL_SE_SUBS_ACUP_SONOBUOY_AN_SSQ_801B_BARRA" value="9.4.13.11.77.1.0" description="AN/SSQ-801B Barra"/>
+  <type name="CAN_SE_SUBS_THERM" value="9.4.39.9.0.0.0" description="Thermal (temperature sensing)"/>
+  <type name="CAN_SE_SUBS_THERM_BATHYTHERMAL_SENSOR" value="9.4.39.9.78.0.0" description="Bathythermal Sensor"/>
+  <type name="CAN_SE_SUBS_THERM_BATHYTHERMAL_SENSOR_AN_SSQ_536B_BTS_BATHYTHERMOGRAPH_TRANSTING_SET" value="9.4.39.9.78.1.0" description="AN/SSQ-536B BTS (Bathythermograph Transmitting Set)"/>
+  <type name="CIS_SE_SUBS_ACUA" value="9.4.222.10.0.0.0" description="Acoustic, active"/>
+  <type name="CIS_SE_SUBS_ACUA_DECOY_MIMIC" value="9.4.222.10.28.0.0" description="Decoy/Mimic"/>
+  <type name="UK_SE_SUBS_ACUP" value="9.4.224.11.0.0.0" description="Acoustic, Passive"/>
+  <type name="UK_SE_SUBS_ACUP_SONOBUOY" value="9.4.224.11.77.0.0" description="Sonobuoy"/>
+  <type name="UK_SE_SUBS_ACUP_SONOBUOY_AN_SSQ_955_HIDAR_HIGH_INSTANTANEOUS_DYNAMIC_RANGE" value="9.4.224.11.77.1.0" description="AN/SSQ-955 HIDAR (High Instantaneous Dynamic Range)"/>
+  <type name="US_SE_SUBS_THERM" value="9.4.225.9.0.0.0" description="Thermal (temperature sensing)"/>
+  <type name="US_SE_SUBS_THERM_BATHYTHERMAL_SENSOR" value="9.4.225.9.78.0.0" description="Bathythermal Sensor"/>
+  <type name="US_SE_SUBS_THERM_BATHYTHERMAL_SENSOR_AN_SSQ_36B_BTS_BATHYTHERMOGRAPH_TRANSTING_SET" value="9.4.225.9.78.1.0" description="AN/SSQ-36B BTS (Bathythermograph Transmitting Set)"/>
+  <type name="US_SE_SUBS_ACUA" value="9.4.225.10.0.0.0" description="Acoustic, active"/>
+  <type name="US_SE_SUBS_ACUA_ACQUISITION_DET" value="9.4.225.10.5.0.0" description="Acquisition / detection"/>
+  <type name="US_SE_SUBS_ACUA_SONOBUOY" value="9.4.225.10.77.0.0" description="Sonobuoy"/>
+  <type name="US_SE_SUBS_ACUA_SONOBUOY_AN_SSQ_62_DICASS_DIRECTIONAL_COM_ACTIVE_SONOBUOY_SYS" value="9.4.225.10.77.1.0" description="AN/SSQ-62 DICASS (Directional Command Active Sonobuoy System)"/>
+  <type name="US_SE_SUBS_ACUA_SONOBUOY_AN_SSQ_62_DICASS_DIRECTIONAL_COM_ACTIVE_SONOBUOY_SYS_AN_SSQ_62D_DICASS" value="9.4.225.10.77.1.1" description="AN/SSQ-62D DICASS"/>
+  <type name="US_SE_SUBS_ACUA_SONOBUOY_AN_SSQ_62_DICASS_DIRECTIONAL_COM_ACTIVE_SONOBUOY_SYS_AN_SSQ_62D1_DICASS" value="9.4.225.10.77.1.2" description="AN/SSQ-62D1 DICASS"/>
+  <type name="US_SE_SUBS_ACUA_SONOBUOY_AN_SSQ_62_DICASS_DIRECTIONAL_COM_ACTIVE_SONOBUOY_SYS_AN_SSQ_62D2_DICASS" value="9.4.225.10.77.1.3" description="AN/SSQ-62D2 DICASS"/>
+  <type name="US_SE_SUBS_ACUA_SONOBUOY_AN_SSQ_62_DICASS_DIRECTIONAL_COM_ACTIVE_SONOBUOY_SYS_AN_SSQ_62E_DICASS" value="9.4.225.10.77.1.4" description="AN/SSQ-62E DICASS"/>
+  <type name="US_SE_SUBS_ACUA_SONOBUOY_AN_SSQ_62_DICASS_DIRECTIONAL_COM_ACTIVE_SONOBUOY_SYS_AN_SSQ_62E1_DICASS" value="9.4.225.10.77.1.5" description="AN/SSQ-62E1 DICASS"/>
+  <type name="US_SE_SUBS_ACUA_SONOBUOY_AN_SSQ_62_DICASS_DIRECTIONAL_COM_ACTIVE_SONOBUOY_SYS_AN_SSQ_62E2_DICASS" value="9.4.225.10.77.1.6" description="AN/SSQ-62E2 DICASS"/>
+  <type name="US_SE_SUBS_ACUA_SONOBUOY_AN_SSQ_110_EER_EXTENDED_ECHO_RANGING_A_K_A_SUS_SIGNAL_UNDERWATER_SOUND" value="9.4.225.10.77.2.0" description="AN/SSQ-110 EER (Extended Echo Ranging), a.k.a. SUS (Signal, Underwater Sound)"/>
+  <type name="US_SE_SUBS_ACUA_SONOBUOY_AN_SSQ_110_EER_EXTENDED_ECHO_RANGING_A_K_A_SUS_SIGNAL_UNDERWATER_SOUND_AN_SSQ_110A_EER" value="9.4.225.10.77.2.1" description="AN/SSQ-110A EER"/>
+  <type name="US_SE_SUBS_ACUA_SONOBUOY_AN_SSQ_110_EER_EXTENDED_ECHO_RANGING_A_K_A_SUS_SIGNAL_UNDERWATER_SOUND_AN_SSQ_110B_EER" value="9.4.225.10.77.2.2" description="AN/SSQ-110B EER"/>
+  <type name="US_SE_SUBS_ACUP" value="9.4.225.11.0.0.0" description="Acoustic, Passive"/>
+  <type name="US_SE_SUBS_ACUP_SONOBUOY" value="9.4.225.11.77.0.0" description="Sonobuoy"/>
+  <type name="US_SE_SUBS_ACUP_SONOBUOY_AN_SSQ_53_DIFAR_DIRECTIONAL_FREQUENCY_ANALYSIS_RECORDING" value="9.4.225.11.77.1.0" description="AN/SSQ-53 DIFAR (Directional Frequency Analysis Recording)"/>
+  <type name="US_SE_SUBS_ACUP_SONOBUOY_AN_SSQ_53_DIFAR_DIRECTIONAL_FREQUENCY_ANALYSIS_RECORDING_AN_SSQ_53D_DIFAR" value="9.4.225.11.77.1.1" description="AN/SSQ-53D DIFAR"/>
+  <type name="US_SE_SUBS_ACUP_SONOBUOY_AN_SSQ_53_DIFAR_DIRECTIONAL_FREQUENCY_ANALYSIS_RECORDING_AN_SSQ_53E_DIFAR" value="9.4.225.11.77.1.2" description="AN/SSQ-53E DIFAR"/>
+  <type name="US_SE_SUBS_ACUP_SONOBUOY_AN_SSQ_53_DIFAR_DIRECTIONAL_FREQUENCY_ANALYSIS_RECORDING_AN_SSQ_53F_DIFAR" value="9.4.225.11.77.1.3" description="AN/SSQ-53F DIFAR"/>
+  <type name="US_SE_SUBS_ACUP_SONOBUOY_AN_SSQ_57_ANM_AMBIENT_NOISE_MEASUREMENT" value="9.4.225.11.77.2.0" description="AN/SSQ-57 ANM (Ambient Noise Measurement)"/>
+  <type name="US_SE_SUBS_ACUP_SONOBUOY_AN_SSQ_57_ANM_AMBIENT_NOISE_MEASUREMENT_AN_SSQ_57C1_ANM" value="9.4.225.11.77.2.1" description="AN/SSQ-57C1 ANM"/>
+  <type name="US_SE_SUBS_ACUP_SONOBUOY_AN_SSQ_77_VLAD_VERTICAL_LINE_ARRAY_DIFAR" value="9.4.225.11.77.3.0" description="AN/SSQ-77 VLAD (Vertical Line Array DIFAR)"/>
+  <type name="US_SE_SUBS_ACUP_SONOBUOY_AN_SSQ_77_VLAD_VERTICAL_LINE_ARRAY_DIFAR_AN_SSQ_77B_VLAD" value="9.4.225.11.77.3.1" description="AN/SSQ-77B VLAD"/>
+  <type name="US_SE_SUBS_ACUP_SONOBUOY_AN_SSQ_77_VLAD_VERTICAL_LINE_ARRAY_DIFAR_AN_SSQ_77C_VLAD" value="9.4.225.11.77.3.2" description="AN/SSQ-77C VLAD"/>
+</types>
