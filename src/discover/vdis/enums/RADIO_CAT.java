@@ -3,7 +3,7 @@ package discover.vdis.enums;
 /**
  * This file is auto-generated (see vdis.EnumGenerator)
  */
-public enum RADIO_CAT {
+public enum RADIO_CAT implements VdisEnum {
 
     VTR(1, "Voice Transmission/Reception"),
     DLTR(2, "Data Link Transmission/Reception"),
@@ -45,11 +45,13 @@ public enum RADIO_CAT {
         this.description = description;
     }
 
+    @Override
     public int getValue() {
 
         return value;
     }
 
+    @Override
     public String getDescription() {
 
         return description;

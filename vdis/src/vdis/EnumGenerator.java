@@ -67,7 +67,7 @@ public class EnumGenerator {
         writer.println("/**");
         writer.println(" * This file is auto-generated (see " + getClass().getName() + ")");
         writer.println(" */");
-        writer.println("public enum " + name + " {");
+        writer.println("public enum " + name + " implements VdisEnum {");
         writer.println();
 
         for(int i = 0; i < elements.size(); ++i) {
@@ -93,11 +93,13 @@ public class EnumGenerator {
         writer.println("        this.description = description;");
         writer.println("    }");
         writer.println();
+        writer.println("    @Override");
         writer.println("    public int getValue() {");
         writer.println();
         writer.println("        return value;");
         writer.println("    }");
         writer.println();
+        writer.println("    @Override");
         writer.println("    public String getDescription() {");
         writer.println("");
         writer.println("        return description;");

@@ -3,7 +3,7 @@ package discover.vdis.enums;
 /**
  * This file is auto-generated (see vdis.EnumGenerator)
  */
-public enum COUNTRY {
+public enum COUNTRY implements VdisEnum {
 
     AF(1, "Afghanistan"),
     ALB(2, "Albania"),
@@ -280,11 +280,13 @@ public enum COUNTRY {
         this.description = description;
     }
 
+    @Override
     public int getValue() {
 
         return value;
     }
 
+    @Override
     public String getDescription() {
 
         return description;

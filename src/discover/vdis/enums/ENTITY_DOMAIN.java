@@ -1,6 +1,6 @@
 package discover.vdis.enums;
 
-public enum ENTITY_DOMAIN {
+public enum ENTITY_DOMAIN implements VdisEnum {
 
     OTHER(0, "Other"),
     LAND(1, "Land"),
@@ -18,11 +18,13 @@ public enum ENTITY_DOMAIN {
         this.description = description;
     }
 
+    @Override
     public int getValue() {
 
         return value;
     }
 
+    @Override
     public String getDescription() {
 
         return description;

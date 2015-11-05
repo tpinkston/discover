@@ -3,7 +3,7 @@ package discover.vdis.enums;
 /**
  * This file is auto-generated (see vdis.EnumGenerator)
  */
-public enum PLAT_CAT_LAND {
+public enum PLAT_CAT_LAND implements VdisEnum {
 
     TANK(1, "Tank"),
     AFV(2, "Armored Fighting Vehicle"),
@@ -73,11 +73,13 @@ public enum PLAT_CAT_LAND {
         this.description = description;
     }
 
+    @Override
     public int getValue() {
 
         return value;
     }
 
+    @Override
     public String getDescription() {
 
         return description;

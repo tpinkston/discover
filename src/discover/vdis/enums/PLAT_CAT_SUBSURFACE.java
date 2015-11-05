@@ -3,7 +3,7 @@ package discover.vdis.enums;
 /**
  * This file is auto-generated (see vdis.EnumGenerator)
  */
-public enum PLAT_CAT_SUBSURFACE {
+public enum PLAT_CAT_SUBSURFACE implements VdisEnum {
 
     SSBN(1, "SSBN (Nuclear Ballistic Missile)"),
     SSGN(2, "SSGN (Nuclear Guided Missile)"),
@@ -22,11 +22,13 @@ public enum PLAT_CAT_SUBSURFACE {
         this.description = description;
     }
 
+    @Override
     public int getValue() {
 
         return value;
     }
 
+    @Override
     public String getDescription() {
 
         return description;

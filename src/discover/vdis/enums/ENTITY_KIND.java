@@ -1,6 +1,6 @@
 package discover.vdis.enums;
 
-public enum ENTITY_KIND {
+public enum ENTITY_KIND implements VdisEnum {
 
     PLATFORMS(1, "Platforms"),
     MUNITIONS(2, "Munitions"),
@@ -21,11 +21,13 @@ public enum ENTITY_KIND {
         this.description = description;
     }
 
+    @Override
     public int getValue() {
 
         return value;
     }
 
+    @Override
     public String getDescription() {
 
         return description;

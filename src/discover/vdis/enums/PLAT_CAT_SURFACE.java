@@ -3,7 +3,7 @@ package discover.vdis.enums;
 /**
  * This file is auto-generated (see vdis.EnumGenerator)
  */
-public enum PLAT_CAT_SURFACE {
+public enum PLAT_CAT_SURFACE implements VdisEnum {
 
     CAR(1, "Carrier"),
     COM(2, "Command Ship/Cruiser"),
@@ -47,11 +47,13 @@ public enum PLAT_CAT_SURFACE {
         this.description = description;
     }
 
+    @Override
     public int getValue() {
 
         return value;
     }
 
+    @Override
     public String getDescription() {
 
         return description;

@@ -3,7 +3,7 @@ package discover.vdis.enums;
 /**
  * This file is auto-generated (see vdis.EnumGenerator)
  */
-public enum MUNITION_CAT {
+public enum MUNITION_CAT implements VdisEnum {
 
     GUID(1, "Guided"),
     BALL(2, "Ballistic"),
@@ -18,11 +18,13 @@ public enum MUNITION_CAT {
         this.description = description;
     }
 
+    @Override
     public int getValue() {
 
         return value;
     }
 
+    @Override
     public String getDescription() {
 
         return description;

@@ -3,7 +3,7 @@ package discover.vdis.enums;
 /**
  * This file is auto-generated (see vdis.EnumGenerator)
  */
-public enum PLAT_CAT_SPACE {
+public enum PLAT_CAT_SPACE implements VdisEnum {
 
     MAN(1, "Manned"),
     UNMAN(2, "Unmanned"),
@@ -18,11 +18,13 @@ public enum PLAT_CAT_SPACE {
         this.description = description;
     }
 
+    @Override
     public int getValue() {
 
         return value;
     }
 
+    @Override
     public String getDescription() {
 
         return description;

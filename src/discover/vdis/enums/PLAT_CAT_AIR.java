@@ -3,7 +3,7 @@ package discover.vdis.enums;
 /**
  * This file is auto-generated (see vdis.EnumGenerator)
  */
-public enum PLAT_CAT_AIR {
+public enum PLAT_CAT_AIR implements VdisEnum {
 
     FAD(1, "Fighter/Air Defense"),
     ATK(2, "Attack/Strike"),
@@ -32,11 +32,13 @@ public enum PLAT_CAT_AIR {
         this.description = description;
     }
 
+    @Override
     public int getValue() {
 
         return value;
     }
 
+    @Override
     public String getDescription() {
 
         return description;
