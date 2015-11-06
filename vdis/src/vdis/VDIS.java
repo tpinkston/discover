@@ -10,8 +10,10 @@ import org.apache.poi.xssf.eventusermodel.XSSFReader.SheetIterator;
 import org.apache.poi.xssf.model.StylesTable;
 
 import vdis.parsers.AbstractSpreadsheetParser;
+import vdis.parsers.EmitterNamesParser;
 import vdis.parsers.EntityTypesParser;
 import vdis.parsers.ObjectTypesParser;
+import vdis.parsers.OtherEnumsParser;
 
 /**
  * @author Tony Pinkston
@@ -22,8 +24,10 @@ public class VDIS {
 
         try {
 
+            parse(new EmitterNamesParser());
             parse(new EntityTypesParser());
             parse(new ObjectTypesParser());
+            parse(new OtherEnumsParser());
         }
         catch(Exception exception) {
 
@@ -37,7 +41,9 @@ public class VDIS {
 
         String filename = handler.getFileName();
 
+        System.out.println("------------------------------------------------------");
         System.out.println("Parsing spreadsheet: " + filename);
+        System.out.println("------------------------------------------------------");
 
         OPCPackage opc = OPCPackage.open(filename, PackageAccess.READ);
         ReadOnlySharedStringsTable strings = new ReadOnlySharedStringsTable(opc);

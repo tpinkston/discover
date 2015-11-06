@@ -81,6 +81,7 @@ public class EnumGenerator {
             name = name.replace(' ', '_');
             name = name.replace('-', '_');
             name = name.replace('/', '_');
+            name = name.replaceAll("#", "");
             name = name.replaceAll(",", "");
             name = name.replaceAll("\\(", "");
             name = name.replaceAll("\\)", "");
