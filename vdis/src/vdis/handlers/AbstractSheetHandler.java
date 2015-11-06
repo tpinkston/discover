@@ -61,7 +61,7 @@ public abstract class AbstractSheetHandler implements SheetContentsHandler {
         return row;
     }
 
-    public void handle(
+    public final void handle(
             StylesTable styles,
             ReadOnlySharedStringsTable strings,
             InputStream stream) throws Exception {

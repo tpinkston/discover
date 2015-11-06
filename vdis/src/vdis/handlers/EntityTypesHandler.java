@@ -11,8 +11,6 @@ import java.util.Map;
 import org.apache.poi.xssf.usermodel.XSSFComment;
 
 /**
- * Handler for sheet "Entity Types" in Entity_Types.xlsx
- *
  * @author Tony Pinkston
  *
  */
@@ -131,6 +129,7 @@ public class EntityTypesHandler extends AbstractSheetHandler {
     protected void parseCompleted() throws Exception {
 
         Map<Integer, PrintWriter> writers = new HashMap<>();
+        Map<Integer, Integer> counts = new HashMap<>();
 
         for(Integer kind : files.keySet()) {
 
@@ -141,6 +140,7 @@ public class EntityTypesHandler extends AbstractSheetHandler {
             writer.println("<types>");
 
             writers.put(kind, writer);
+            counts.put(kind, Integer.valueOf(0));
         }
 
         for(EntityType type : types) {
@@ -157,6 +157,8 @@ public class EntityTypesHandler extends AbstractSheetHandler {
             writer.print(type.extension);
             writer.print("\" description=\"");
             writer.println(type.description + "\"/>");
+
+            counts.put(type.kind, (counts.get(type.kind).intValue() + 1));
         }
 
         for(Integer kind : writers.keySet()) {
@@ -166,7 +168,9 @@ public class EntityTypesHandler extends AbstractSheetHandler {
             writer.println("</types>");
             writer.close();
 
-            System.out.println("---- File written: " + files.get(kind));
+            System.out.println(
+                "---- File written: " + files.get(kind) +
+                ", types: " + counts.get(kind));
         }
     }
 }

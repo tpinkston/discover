@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<types>
+  <type type="point" value="0.5.0.0" description="Tactical Smoke"/>
+  <type type="point" value="0.5.1.0" description="Tactical Smoke Ground Burst"/>
+  <type type="point" value="0.5.1.1" description="Tactical Smoke Ground Burst Artillery"/>
+  <type type="point" value="0.5.2.0" description="Tactical Smoke Air Burst"/>
+  <type type="point" value="0.5.2.1" description="Tactical Smoke Air Burst Grenade"/>
+  <type type="point" value="0.5.3.0" description="Tactical Smoke Canister"/>
+  <type type="point" value="0.5.3.1" description="M83, White"/>
+  <type type="point" value="0.5.3.2" description="M18, Green"/>
+  <type type="point" value="0.5.3.3" description="M18, Violet"/>
+  <type type="point" value="0.5.3.4" description="M18, Yellow"/>
+  <type type="point" value="0.5.3.5" description="M18, Red"/>
+  <type type="point" value="1.1.0.0" description="Obstacle"/>
+  <type type="point" value="1.1.1.0" description="Abatis"/>
+  <type type="point" value="1.1.1.1" description="Abatis 8 Tree"/>
+  <type type="point" value="1.1.1.2" description="Abatis 14 Tree"/>
+  <type type="point" value="1.1.2.0" description="Log Crib"/>
+  <type type="point" value="1.1.2.1" description="Log Crib Rectangular"/>
+  <type type="point" value="1.1.2.2" description="Log Crib Triangular"/>
+  <type type="point" value="1.1.3.0" description="Crater"/>
+  <type type="point" value="1.1.3.1" description="Crater Small"/>
+  <type type="point" value="1.1.3.2" description="Crater Medium"/>
+  <type type="point" value="1.1.3.3" description="Crater Large"/>
+  <type type="point" value="1.1.4.0" description="Barrier"/>
+  <type type="point" value="1.1.4.1" description="Dragons Teeth"/>
+  <type type="point" value="1.1.4.2" description="Barrier, HESCO Basket, Small"/>
+  <type type="point" value="1.1.4.3" description="Barrier, HESCO Basket, Medium"/>
+  <type type="point" value="1.1.4.4" description="Barrier, HESCO Basket, Large"/>
+  <type type="point" value="1.1.4.5" description="Barrier, HESCO Basket, Double-Stacked"/>
+  <type type="point" value="1.1.4.6" description="Barrier, Construction"/>
+  <type type="point" value="1.1.4.7" description="Barrier, Jersey, Plastic"/>
+  <type type="point" value="1.1.4.8" description="Barrier, Fence, Chain, 6-foot"/>
+  <type type="point" value="1.1.4.9" description="Barrier, Fence, Wood, 6-foot"/>
+  <type type="point" value="1.1.4.10" description="Barrier, Texas"/>
+  <type type="point" value="1.1.5.0" description="Rock Drop"/>
+  <type type="point" value="1.1.5.1" description="Rock Drop Covered"/>
+  <type type="point" value="1.1.5.2" description="Rock Drop Uncovered"/>
+  <type type="point" value="1.1.9.0" description="Pot Hole"/>
+  <type type="point" value="1.2.0.0" description="Prepared Position"/>
+  <type type="point" value="1.2.1.0" description="Vehicle Defilade"/>
+  <type type="point" value="1.2.1.1" description="Armored Vehicle Defilade"/>
+  <type type="point" value="1.2.1.2" description="Fighting Vehicle Defilade"/>
+  <type type="point" value="1.2.1.3" description="Mortar Carrier Defilade"/>
+  <type type="point" value="1.2.1.4" description="Tank Defilade"/>
+  <type type="point" value="1.2.2.0" description="Infantry Fighting Position"/>
+  <type type="point" value="1.2.2.1" description="Covered Machine Gun Bunker"/>
+  <type type="point" value="1.2.2.2" description="Overhead Covered Infantry Position"/>
+  <type type="point" value="1.2.2.3" description="Non Covered Infantry Position"/>
+  <type type="point" value="1.2.2.4" description="Non Covered Machine Gun Bunker"/>
+  <type type="point" value="1.2.2.5" description="Hasty Fighting Position"/>
+  <type type="point" value="1.3.0.0" description="Cultural Feature"/>
+  <type type="point" value="1.3.1.0" description="Building"/>
+  <type type="point" value="1.3.1.1" description="Church"/>
+  <type type="point" value="1.3.1.2" description="Apartment Building"/>
+  <type type="point" value="1.3.1.3" description="Government Building"/>
+  <type type="point" value="1.3.1.4" description="Industrial Building"/>
+  <type type="point" value="1.3.1.5" description="Hangar"/>
+  <type type="point" value="1.3.1.6" description="Microwave Tower"/>
+  <type type="point" value="1.3.1.7" description="Power Pylon"/>
+  <type type="point" value="1.3.1.8" description="Radio TV Tower"/>
+  <type type="point" value="1.3.1.9" description="School"/>
+  <type type="point" value="1.3.1.10" description="Transformer Yard"/>
+  <type type="point" value="1.3.1.11" description="Insurgent Building"/>
+  <type type="point" value="1.3.1.12" description="Radio Tower, 100ft"/>
+  <type type="point" value="1.3.1.13" description="Radio Tower, 500ft"/>
+  <type type="point" value="1.3.1.14" description="Radio Tower, 1000ft"/>
+  <type type="point" value="1.3.1.15" description="Porta Potty"/>
+  <type type="point" value="1.3.1.16" description="FOB, Trailer Office"/>
+  <type type="point" value="1.3.1.17" description="FOB, Guard Tower"/>
+  <type type="point" value="1.3.1.18" description="Guard House"/>
+  <type type="point" value="1.3.1.200" description="Destructible Building"/>
+  <type type="point" value="1.3.2.0" description="Building Rubble"/>
+  <type type="point" value="1.3.3.0" description="Disturbed Earth"/>
+  <type type="point" value="1.3.4.0" description="Disturbed Road"/>
+  <type type="point" value="1.3.4.1" description="Disturbed Road, Gravel"/>
+  <type type="point" value="1.3.4.2" description="Disturbed Road, Asphalt"/>
+  <type type="point" value="1.3.4.3" description="Disturbed Road, Concrete"/>
+  <type type="point" value="1.3.5.0" description="Tent"/>
+  <type type="point" value="1.3.5.1" description="Tent, Small"/>
+  <type type="point" value="1.3.5.2" description="Tent, Medium"/>
+  <type type="point" value="1.3.5.3" description="Tent, Large"/>
+  <type type="point" value="1.3.5.4" description="Tent, Modular General Purpose Tent System (MGPTS)"/>
+  <type type="point" value="1.3.5.5" description="Tent, Arctic"/>
+  <type type="point" value="1.3.5.6" description="Tent, TEMPER"/>
+  <type type="point" value="1.3.5.7" description="Tent, Expandable Frame"/>
+  <type type="point" value="1.3.5.8" description="Tent, Fritsche"/>
+  <type type="point" value="1.3.5.9" description="Tent, Bedouin"/>
+  <type type="point" value="1.3.5.10" description="Tent, Chemically and Biological Protected Shelter (CBPS)"/>
+  <type type="point" value="1.3.5.11" description="Tent, Kuchi"/>
+  <type type="point" value="1.3.6.0" description="Maintenance Structure"/>
+  <type type="point" value="1.3.6.1" description="Lightweight Maintenance Enclosure (LME), Bradley"/>
+  <type type="point" value="1.3.6.2" description="Lightweight Maintenance Enclosure (LME), M1"/>
+  <type type="point" value="1.3.6.3" description="Large Area Maintenance Shelter (LAMS) Vehicle Maintenance (VM)"/>
+  <type type="point" value="1.3.6.4" description="Large Area Maintenance Shelter (LAMS) Aviation Maintenance (AM)"/>
+  <type type="point" value="1.3.7.0" description="MOUT Building"/>
+  <type type="point" value="1.3.7.1" description="MOUT Building, House"/>
+  <type type="point" value="1.3.7.2" description="MOUT Building, Hospital"/>
+  <type type="point" value="1.3.7.3" description="MOUT Building, Gas Station"/>
+  <type type="point" value="1.3.7.4" description="MOUT Building, Store"/>
+  <type type="point" value="1.3.7.5" description="MOUT Building, Office Building"/>
+  <type type="point" value="1.3.7.6" description="MOUT Building, Warehouse"/>
+  <type type="point" value="1.3.7.7" description="MOUT Building, Control Tower"/>
+  <type type="point" value="1.3.7.8" description="MOUT Building, Water Tower"/>
+  <type type="point" value="1.3.7.9" description="MOUT Building, Police Station"/>
+  <type type="point" value="1.3.7.10" description="MOUT Building, Fire Station"/>
+  <type type="point" value="1.3.7.11" description="MOUT Building, Power Station"/>
+  <type type="point" value="1.3.7.12" description="MOUT Building, Apartment"/>
+  <type type="point" value="1.3.7.13" description="MOUT Building, School"/>
+  <type type="point" value="1.3.7.14" description="MOUT Building, Church"/>
+  <type type="point" value="1.3.7.15" description="MOUT Building, Farm House"/>
+  <type type="point" value="1.3.7.16" description="MOUT Building, Mudbrick House"/>
+  <type type="point" value="1.3.7.17" description="MOUT Building, Mudbrick Store"/>
+  <type type="point" value="1.3.8.0" description="Container-Based Building"/>
+  <type type="point" value="1.3.8.1" description="Container-Based Building, Store, Single"/>
+  <type type="point" value="1.3.8.2" description="Container-Based Building, House, Single"/>
+  <type type="point" value="1.3.8.3" description="Container-Based Building, House, Single, Railing"/>
+  <type type="point" value="1.3.8.4" description="Container-Based Building, House, Double"/>
+  <type type="point" value="1.3.8.5" description="Container-Based Building, Mosque, Single"/>
+  <type type="point" value="1.3.8.6" description="Container-Based Building, Bridge, Single"/>
+  <type type="point" value="1.3.8.7" description="Container-Based Building, FOB"/>
+  <type type="point" value="1.3.10.0" description="Tree, Deciduous"/>
+  <type type="point" value="1.3.10.1" description="Tree, Deciduous, Small"/>
+  <type type="point" value="1.3.10.2" description="Tree, Deciduous, Medium"/>
+  <type type="point" value="1.3.10.3" description="Tree, Deciduous, Large"/>
+  <type type="point" value="1.3.11.0" description="Tree, Evergreen"/>
+  <type type="point" value="1.3.11.1" description="Tree, Evergreen, Small"/>
+  <type type="point" value="1.3.11.2" description="Tree, Evergreen, Medium"/>
+  <type type="point" value="1.3.11.3" description="Tree, Evergreen, Large"/>
+  <type type="point" value="1.3.12.0" description="Pump"/>
+  <type type="point" value="1.3.12.1" description="Pump, Gas"/>
+  <type type="point" value="1.3.14.0" description="Utility Pole"/>
+  <type type="point" value="1.4.0.0" description="Passageway"/>
+  <type type="point" value="1.4.1.0" description="Stationary Bridge"/>
+  <type type="point" value="1.4.1.1" description="Stationary Bridge 2 Lane"/>
+  <type type="point" value="1.4.1.2" description="Stationary Bridge 4 Lane"/>
+  <type type="point" value="1.4.1.200" description="Destructible Bridge"/>
+  <type type="point" value="1.4.1.201" description="Destructible Bridge Span"/>
+  <type type="point" value="1.4.2.0" description="Launched Bridge"/>
+  <type type="point" value="1.4.2.1" description="AVLB M60A1"/>
+  <type type="point" value="1.4.2.2" description="AVLB MTU20"/>
+  <type type="point" value="1.4.2.3" description="Joint Assault Bridge (JAB)"/>
+  <type type="point" value="1.4.3.0" description="Ribbon Bridge"/>
+  <type type="point" value="1.4.3.1" description="Ribbon Bridge 2 Lane"/>
+  <type type="point" value="1.4.3.2" description="Ribbon Bridge 4 Lane"/>
+  <type type="point" value="1.4.4.0" description="Pier"/>
+  <type type="point" value="1.6.2.0" description="NBC Hazard Marker"/>
+  <type type="point" value="1.8.0.0" description="Environmental Object"/>
+  <type type="point" value="1.8.1.0" description="Flood"/>
+  <type type="point" value="1.8.1.1" description="Flood, Small"/>
+  <type type="point" value="1.8.1.2" description="Flood, Medium"/>
+  <type type="point" value="1.8.1.3" description="Flood, Large"/>
+  <type type="linear" value="0.5.0.0" description="Tactical Smoke"/>
+  <type type="linear" value="0.5.1.0" description="Exhaust Smoke"/>
+  <type type="linear" value="1.1.0.0" description="Obstacle"/>
+  <type type="linear" value="1.1.1.0" description="Tank Ditch"/>
+  <type type="linear" value="1.1.2.0" description="Concertina Wire"/>
+  <type type="linear" value="1.1.2.1" description="Concertina Wire 2 Roll"/>
+  <type type="linear" value="1.1.2.2" description="Concertina Wire 3 Roll"/>
+  <type type="linear" value="1.1.3.0" description="Concrete Barrier"/>
+  <type type="linear" value="1.1.4.0" description="Speed Bump"/>
+  <type type="linear" value="1.1.5.0" description="Rut"/>
+  <type type="linear" value="1.3.0.0" description="Cultural Feature"/>
+  <type type="linear" value="1.3.1.0" description="Wire"/>
+  <type type="linear" value="1.3.1.1" description="Wire, Crush"/>
+  <type type="linear" value="1.3.2.0" description="Tracks, Tire"/>
+  <type type="linear" value="1.6.0.0" description="Obstacle Marker"/>
+  <type type="linear" value="1.6.1.0" description="Minefield Lane Marker"/>
+  <type type="linear" value="1.7.0.0" description="Obstacle Breach"/>
+  <type type="linear" value="1.7.1.0" description="Breach"/>
+  <type type="areal" value="0.1.0.0" description="Obstacle"/>
+  <type type="areal" value="0.1.1.0" description="Minefield"/>
+  <type type="areal" value="0.1.1.1" description="Minefield Hasty"/>
+  <type type="areal" value="0.1.1.2" description="Minefield Prepared"/>
+  <type type="areal" value="0.1.1.3" description="Minefield Scattered"/>
+  <type type="areal" value="0.1.1.4" description="Minefield Solitary"/>
+</types>

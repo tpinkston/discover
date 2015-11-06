@@ -11,6 +11,7 @@ import org.apache.poi.xssf.model.StylesTable;
 
 import vdis.parsers.AbstractSpreadsheetParser;
 import vdis.parsers.EntityTypesParser;
+import vdis.parsers.ObjectTypesParser;
 
 /**
  * @author Tony Pinkston
@@ -22,6 +23,7 @@ public class VDIS {
         try {
 
             parse(new EntityTypesParser());
+            parse(new ObjectTypesParser());
         }
         catch(Exception exception) {
 
@@ -47,8 +49,6 @@ public class VDIS {
 
             InputStream stream = iterator.next();
             String name = iterator.getSheetName();
-
-            System.out.println("-- " + name);
 
             handler.parseSheet(name, styles, strings, stream);
 
