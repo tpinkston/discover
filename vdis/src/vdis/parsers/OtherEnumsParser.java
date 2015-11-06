@@ -1,6 +1,7 @@
 package vdis.parsers;
 
 import vdis.handlers.GenericEnumerationHandler;
+import vdis.handlers.JammingTechniqueHandler;
 
 /**
  * @author Tony Pinkston
@@ -9,6 +10,8 @@ import vdis.handlers.GenericEnumerationHandler;
 public class OtherEnumsParser extends AbstractSpreadsheetParser {
 
     public OtherEnumsParser() {
+
+        handlers.put("JAMMING_TECHNIQUE", new JammingTechniqueHandler());
 
         addGenericHandler("ACK_ACKNOWLEDGE_FLAG");
         addGenericHandler("ACK_RESPONSE_FLAG");
@@ -164,7 +167,6 @@ public class OtherEnumsParser extends AbstractSpreadsheetParser {
         addGenericHandler("FUEL_MEAS_UNITS");
         addGenericHandler("HOOK_TYPE");
         addGenericHandler("DATUM_IDS");
-        addGenericHandler("JAMMING_TECHNIQUE");
         addGenericHandler("COLORS");
         addGenericHandler("ENTITY_MARKING");
         addGenericHandler("RADAR_TRACK");

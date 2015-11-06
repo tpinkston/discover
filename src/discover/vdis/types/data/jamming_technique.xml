@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<types>
+  <type type="JAM_TECH_OTHER" value="0.0.0.0" description="Other"/>
+  <type type="JAM_TECH_NOISE" value="1.0.0.0" description="Noise"/>
+  <type type="JAM_TECH_DECEPTION" value="2.0.0.0" description="Deception"/>
+</types>
