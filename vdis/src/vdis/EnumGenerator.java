@@ -8,6 +8,7 @@ import java.util.List;
 
 public class EnumGenerator {
 
+    public static final String ENUMS_PACKAGE = "discover.vdis.enums";
     public static final String ENUMS_PATH;
 
     static {
@@ -62,7 +63,7 @@ public class EnumGenerator {
         FileWriter file = new FileWriter(new File(filename));
         PrintWriter writer = new PrintWriter(file);
 
-        writer.println("package discover.vdis.enums;");
+        writer.println("package " + ENUMS_PACKAGE + ";");
         writer.println();
         writer.println("import discover.vdis.EnumInterface;");
         writer.println();
@@ -108,6 +109,12 @@ public class EnumGenerator {
         writer.println("    }");
         writer.println();
         writer.println("    @Override");
+        writer.println("    public String getName() {");
+        writer.println();
+        writer.println("        return name();");
+        writer.println("    }");
+        writer.println();
+        writer.println("    @Override");
         writer.println("    public String getDescription() {");
         writer.println("");
         writer.println("        return description;");
@@ -117,6 +124,8 @@ public class EnumGenerator {
         writer.close();
 
         System.out.println("---- File written: " + filename + ", enums: " + elements.size());
+
+        VDIS.addEnumInterface(ENUMS_PACKAGE + "." + name);
     }
 
     private boolean findName(String name) {
