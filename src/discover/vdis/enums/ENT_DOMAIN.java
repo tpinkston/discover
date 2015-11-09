@@ -1,7 +1,13 @@
 package discover.vdis.enums;
 
 import discover.vdis.EnumInterface;
+import discover.vdis.Enumerations;
 
+/**
+ * Not auto-generated, updated manually.
+ *
+ * @author tpinkston
+ */
 public enum ENT_DOMAIN implements EnumInterface {
 
     OTHER(0, "Other"),
@@ -27,9 +33,28 @@ public enum ENT_DOMAIN implements EnumInterface {
     }
 
     @Override
+    public String getName() {
+
+        return name();
+    }
+
+    @Override
     public String getDescription() {
 
         return description;
+    }
+
+    public static EnumInterface getValue(int value) {
+
+        for(EnumInterface element : values()) {
+
+            if (element.getValue() == value) {
+
+                return element;
+            }
+        }
+
+        return Enumerations.getUnknownValue(value, FORCE_ID.class);
     }
 }
 

@@ -19,10 +19,10 @@ public class EntityTypesParser extends AbstractSpreadsheetParser {
         handlers.put("Country LUT", new GenericEnumerationHandler("COUNTRY"));
         handlers.put("Platform Cat LUT", new PlatformCategoryHandler());
         handlers.put("Lifeform Cat LUT", new LifeformCategoryHandler());
-        handlers.put("Mun Cat LUT", new GenericEnumerationHandler("MUN_CAT"));
+        handlers.put("MUN Cat LUT", new GenericEnumerationHandler("MUN_CAT"));
         handlers.put("ENV Cat LUT", new EnvironmentCategoryHandler());
         handlers.put("CF Cat LUT", new CulturalFeatureCategoryHandler());
-        handlers.put("Radio Cat LUT", new GenericEnumerationHandler("RAD_CAT"));
+        handlers.put("RADIO Cat LUT", new GenericEnumerationHandler("RAD_CAT"));
         handlers.put("EXP Cat LUT", new GenericEnumerationHandler("EXP_CAT"));
         handlers.put("SE Cat LUT", new GenericEnumerationHandler("SE_CAT"));
     }

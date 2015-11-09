@@ -66,6 +66,7 @@ public class EnumGenerator {
         writer.println("package " + ENUMS_PACKAGE + ";");
         writer.println();
         writer.println("import discover.vdis.EnumInterface;");
+        writer.println("import discover.vdis.Enumerations;");
         writer.println();
         writer.println("/**");
         writer.println(" * This file is auto-generated (see " + getClass().getName() + ")");
@@ -118,6 +119,19 @@ public class EnumGenerator {
         writer.println("    public String getDescription() {");
         writer.println("");
         writer.println("        return description;");
+        writer.println("    }");
+        writer.println();
+        writer.println("    public static EnumInterface getValue(int value) {");
+        writer.println();
+        writer.println("        for(EnumInterface element : values()) {");
+        writer.println();
+        writer.println("            if (element.getValue() == value) {");
+        writer.println();
+        writer.println("                return element;");
+        writer.println("            }");
+        writer.println("        }");
+        writer.println();
+        writer.println("        return Enumerations.getUnknownValue(value, " + name + ".class);");
         writer.println("    }");
         writer.println("}");
         writer.println();

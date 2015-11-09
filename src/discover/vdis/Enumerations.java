@@ -3,13 +3,19 @@ package discover.vdis;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import discover.common.Hexadecimal;
+import discover.vdis.enums.APP_CTRL_APPLICATION_TYPE;
+import discover.vdis.enums.APP_CTRL_CONTROL_TYPE;
 import discover.vdis.enums.ENT_DOMAIN;
 import discover.vdis.enums.ENT_KIND;
 import discover.vdis.enums.ON_OFF;
@@ -27,7 +33,9 @@ public class Enumerations {
 
     private static final Map<String, Class<? extends EnumInterface>> classes = new HashMap<>();
 
-    private static final Map<String, EnumInterface[]> cache = new HashMap<>();
+    private static final Map<Class<? extends EnumInterface>, List<EnumInterface>> known = new HashMap<>();
+
+    private static final Map<Class<? extends EnumInterface>, List<EnumInterface>> unknown = new HashMap<>();
 
     private static boolean loaded = false;
 
@@ -43,7 +51,7 @@ public class Enumerations {
         return classes.get(name);
     }
 
-    public static EnumInterface valueOf(
+    public static EnumInterface getKnownValue(
             int value,
             Class<? extends EnumInterface> c) {
 
@@ -55,15 +63,73 @@ public class Enumerations {
         }
         else {
 
-            EnumInterface values[] = getCachedValues(c);
+            List<EnumInterface> values = getKnownValues(c);
 
-            for(int i = 0; (values != null) && (i < values.length); ++i) {
+            if (values != null) {
 
-                if (values[i].getValue() == value) {
+                for(EnumInterface element : values) {
 
-                    return values[i];
+                    if (element.getValue() == value) {
+
+                        return element;
+                    }
                 }
             }
+        }
+
+        return null;
+    }
+
+    public static EnumInterface getUnknownValue(
+        final int value,
+        Class<? extends EnumInterface> c) {
+
+        load();
+
+        if (!classes.containsKey(c.getSimpleName())) {
+
+            logger.warn("Not an enum class: " + c.getName());
+        }
+        else {
+
+            List<EnumInterface> values = getUnknownValues(c);
+
+            for(EnumInterface element : values) {
+
+                if (element.getValue() == value) {
+
+                    return element;
+                }
+            }
+
+            final String name = (c.getSimpleName() + "_" + value);
+
+            // Generate an "unknown" object.
+            //
+            EnumInterface element = new EnumInterface() {
+
+                @Override
+                public int getValue() {
+
+                    return value;
+                }
+
+                @Override
+                public String getName() {
+
+                    return name;
+                }
+
+                @Override
+                public String getDescription() {
+
+                    return name;
+                }
+            };
+
+            values.add(element);
+
+            return element;
         }
 
         return null;
@@ -73,21 +139,14 @@ public class Enumerations {
             int value,
             Class<? extends EnumInterface> c) {
 
-        EnumInterface enumeration = valueOf(value, c);
+        EnumInterface enumeration = getKnownValue(value, c);
 
-        String description = null;
+        if (enumeration == null) {
 
-        if (enumeration != null) {
-
-            description = enumeration.getDescription();
-        }
-        else {
-
-            description = c.getSimpleName();
-            description += ("_" + Integer.toString(value));
+            enumeration = getUnknownValue(value, c);
         }
 
-        return description;
+        return enumeration.getDescription();
     }
 
     @SuppressWarnings("unchecked")
@@ -101,11 +160,13 @@ public class Enumerations {
 
             // These are not auto-generated and probably aren't in the index:
             //
-            classes.put(ENT_DOMAIN.class.getSimpleName(), ENT_DOMAIN.class);
-            classes.put(ENT_KIND.class.getSimpleName(), ENT_KIND.class);
-            classes.put(ON_OFF.class.getSimpleName(), ON_OFF.class);
-            classes.put(PRESENCE.class.getSimpleName(), PRESENCE.class);
-            classes.put(YES_NO.class.getSimpleName(), YES_NO.class);
+            addClass(APP_CTRL_APPLICATION_TYPE.class);
+            addClass(APP_CTRL_CONTROL_TYPE.class);
+            addClass(ENT_DOMAIN.class);
+            addClass(ENT_KIND.class);
+            addClass(ON_OFF.class);
+            addClass(PRESENCE.class);
+            addClass(YES_NO.class);
 
             // Index file is a text file with class names for all enum types
             // that implement EnumInterface, most are auto-generated.
@@ -125,7 +186,7 @@ public class Enumerations {
 
                 c = (Class<? extends EnumInterface>)Class.forName(string);
 
-                classes.put(c.getSimpleName(), c);
+                addClass(c);
 
                 string = reader.readLine();
                 ++total;
@@ -172,26 +233,48 @@ public class Enumerations {
         load();
     }
 
-    private static EnumInterface[] getCachedValues(
+    private static List<EnumInterface> getKnownValues(
             Class<? extends EnumInterface> c) {
 
-        EnumInterface values[] = cache.get(c);
+        List<EnumInterface> values = known.get(c);
 
         if (values == null) {
 
-            values = c.getEnumConstants();
+            EnumInterface array[] = c.getEnumConstants();
 
-            if (values != null) {
+            if (array == null) {
 
-                cache.put(c.getSimpleName(), values);
+                logger.warn("No enum constants for " + c.getName());
             }
             else {
 
-                logger.warn("No enum constants for " + c.getName());
+                values = Collections.unmodifiableList(Arrays.asList(array));
+
+                known.put(c, values);
             }
         }
 
         return values;
+    }
+
+    private static List<EnumInterface> getUnknownValues(
+            Class<? extends EnumInterface> c) {
+
+        List<EnumInterface> values = unknown.get(c);
+
+        if (values == null) {
+
+            values = new ArrayList<>();
+
+            unknown.put(c, values);
+        }
+
+        return values;
+    }
+
+    private static void addClass(Class<? extends EnumInterface> type) {
+
+        classes.put(type.getSimpleName(), type);
     }
 
     private static void printEnum(String name) {

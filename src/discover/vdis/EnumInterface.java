@@ -8,7 +8,12 @@ public interface EnumInterface {
     int getValue();
 
     /**
-     * @return One-line enumeration description.
+     * @return Name for enumeration value.
+     */
+    String getName();
+
+    /**
+     * @return One-line description for enumeration value.
      */
     String getDescription();
 }

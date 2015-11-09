@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 import discover.gui.frames.DiscoverFrame;
 import discover.headless.Headless;
 import discover.system.Network;
-import discover.vdis.enums.EnumPrinter;
+import discover.vdis.Enumerations;
 import discover.vdis.marking.army.ArmyTracking;
 import discover.vdis.types.EntityTypes;
 import discover.vdis.types.ObjectTypes;
@@ -64,7 +64,7 @@ public class Discover {
 
         if (enumeration != null) {
 
-            EnumPrinter.print(enumeration);
+            Enumerations.print(enumeration);
         }
         else {
 

@@ -95,6 +95,7 @@ discover.vdis.enums.LF_SEC_COND_FACIAL
 discover.vdis.enums.MAJOR_MODULATION
 discover.vdis.enums.MESSAGE_FORMAT_ENUM
 discover.vdis.enums.MUNITION_STATUS
+discover.vdis.enums.MUN_CAT
 discover.vdis.enums.NATURE
 discover.vdis.enums.OBJECT_KIND
 discover.vdis.enums.OFFSET_TYPE
@@ -128,6 +129,7 @@ discover.vdis.enums.PULSE
 discover.vdis.enums.RADAR_TRACK
 discover.vdis.enums.RADIO_SYSTEM
 discover.vdis.enums.RADIO_TYPE_CAT
+discover.vdis.enums.RAD_CAT
 discover.vdis.enums.RECEIVER
 discover.vdis.enums.RECORD_TYPE
 discover.vdis.enums.REFERENCE_SYSTEM
