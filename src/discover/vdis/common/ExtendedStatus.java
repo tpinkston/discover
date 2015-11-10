@@ -5,7 +5,8 @@ import java.util.List;
 
 import discover.vdis.bits.Abstract8Bits;
 import discover.vdis.bits.Bits;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.DISGUISE_STATUS;
+import discover.vdis.enums.PRESENT_DOMAIN;
 
 /**
  * @author Tony Pinkston
@@ -18,8 +19,8 @@ public class ExtendedStatus extends Abstract8Bits {
 
         values = new ArrayList<Bits>();
 
-        values.add(Bits.get4("PresentDomain", 3, false, getHandle(VDIS.PRESENT_DOMAIN)));
-        values.add(Bits.get3("Disguise", 6, false, getHandle(VDIS.DISGUISE_STATUS)));
+        values.add(Bits.get4("PresentDomain", 3, false, PRESENT_DOMAIN.class));
+        values.add(Bits.get3("Disguise", 6, false, DISGUISE_STATUS.class));
         values.add(Bits.getYesNo("Invincible", 7));
     }
 

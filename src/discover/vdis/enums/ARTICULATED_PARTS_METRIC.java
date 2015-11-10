@@ -8,21 +8,30 @@ import discover.vdis.Enumerations;
  *
  * @author tpinkston
  */
-public enum APP_CTRL_CONTROL_TYPE implements EnumInterface {
+public enum ARTICULATED_PARTS_METRIC implements EnumInterface {
 
-    OTHER(0, "Other"),
-    SHUTDOWN(1, "Shutdown"),
-    DATA_QUERY(2, "Data Query"),
-    DATA(3, "Data"),
-    SET_DATA(4, "Set Data"),
-    ADD_DATA(5, "Add Data"),
-    REMOVE_DATA(6, "Remove Data"),
-    STATUS(7, "Status");
+    EMPTY(0, "Empty"),
+    POSITION(1, "Position"),
+    POSITION_RATE(2, "Position Rate"),
+    EXTENSION(3, "Extension"),
+    EXTENSION_RATE(4, "Extension Rate"),
+    X(5, "X"),
+    X_RAT(6, ",X Rate"),
+    Y(7, "Y"),
+    Y_RATE(8, "Y Rate"),
+    Z(9, "Z"),
+    Z_RATE(10, "Z Rate"),
+    AZIMUTH(11, "Azimuth"),
+    AZIMUTH_RATE(12, "Azimuth Rate"),
+    ELEVATION(13, "Elevation"),
+    ELEVATION_RATE(14, "Elevation Rate"),
+    ROTATION(15, "Rotation"),
+    ROTATION_RATE(16, "Rotation Rate");
 
     private final int value;
     private final String description;
 
-    private APP_CTRL_CONTROL_TYPE(int value, String description) {
+    private ARTICULATED_PARTS_METRIC(int value, String description) {
 
         this.value = value;
         this.description = description;
@@ -56,7 +65,7 @@ public enum APP_CTRL_CONTROL_TYPE implements EnumInterface {
             }
         }
 
-        return Enumerations.getUnknownValue(value, FORCE_ID.class);
+        return Enumerations.getUnknownValue(value, ARTICULATED_PARTS_METRIC.class);
     }
 }
 

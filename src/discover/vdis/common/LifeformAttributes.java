@@ -5,22 +5,22 @@ import java.util.List;
 
 import discover.vdis.bits.Abstract16Bits;
 import discover.vdis.bits.Bits;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.LF_AGE_GROUP;
+import discover.vdis.enums.LF_ETHNICITY;
+import discover.vdis.enums.LF_GENDER;
 
 /**
  * @author Tony Pinkston
  */
 public class LifeformAttributes extends Abstract16Bits {
 
-    private static final List<Bits> values;
+    private static final List<Bits> values = new ArrayList<Bits>();
 
     static {
 
-        values = new ArrayList<Bits>();
-
-        values.add(Bits.get1("Gender", 0, true, getHandle(VDIS.SEX)));
-        values.add(Bits.get4("Age Group", 4, false, getHandle(VDIS.HUMAN_AGE_GROUP)));
-        values.add(Bits.get4("Ethnicity", 8, false, getHandle(VDIS.ETHNICITY)));
+        values.add(Bits.get1("Gender", 0, true, LF_GENDER.class));
+        values.add(Bits.get4("Age Group", 4, false, LF_AGE_GROUP.class));
+        values.add(Bits.get4("Ethnicity", 8, false, LF_ETHNICITY.class));
     }
 
     @Override

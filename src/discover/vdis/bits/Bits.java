@@ -1,7 +1,9 @@
 package discover.vdis.bits;
 
-import discover.vdis.enums.VDIS;
-import discover.vdis.enums.VDIS.Handle;
+import discover.vdis.EnumInterface;
+import discover.vdis.enums.ON_OFF;
+import discover.vdis.enums.PRESENCE;
+import discover.vdis.enums.YES_NO;
 
 /**
  * @author Tony Pinkston
@@ -20,77 +22,71 @@ public class Bits {
     /** Determine whether default (0) values are visible. */
     public final boolean zeroVisible;
 
-    /** Enumeration handle if applicable to value of bit(s). */
-    public final Handle handle;
+    /** Enumeration class if applicable to value of bit(s). */
+    public final Class<? extends EnumInterface> enumeration;
 
     private Bits(
-        String label,
-        int bit,
-        int count,
-        boolean zeroVisible,
-        Handle handle) {
+            String label,
+            int bit,
+            int count,
+            boolean zeroVisible,
+            Class<? extends EnumInterface> enumeration) {
 
         this.label = label;
         this.bit = bit;
         this.count = count;
         this.zeroVisible = zeroVisible;
-        this.handle = handle;
+        this.enumeration = enumeration;
     }
 
-    public static Bits getOnOff(
-        String label,
-        int bit) {
+    public static Bits getOnOff(String label, int bit) {
 
-        return new Bits(label, bit, 1, false, VDIS.getHandle(VDIS.ONOFF));
+        return new Bits(label, bit, 1, false, ON_OFF.class);
     }
 
-    public static Bits getYesNo(
-        String label,
-        int bit) {
+    public static Bits getYesNo(String label, int bit) {
 
-        return new Bits(label, bit, 1, false, VDIS.getHandle(VDIS.YESNO));
+        return new Bits(label, bit, 1, false, YES_NO.class);
     }
 
-    public static Bits getGenericPresence(
-        String label,
-        int bit) {
+    public static Bits getGenericPresence(String label, int bit) {
 
-        return new Bits(label, bit, 1, false, VDIS.getHandle(VDIS.GENERIC_PRESENCE));
+        return new Bits(label, bit, 1, false, PRESENCE.class);
     }
 
     public static Bits get1(
         String label,
         int bit,
         boolean zeroVisible,
-        Handle handle) {
+        Class<? extends EnumInterface> enumeration) {
 
-        return new Bits(label, bit, 1, zeroVisible, handle);
+        return new Bits(label, bit, 1, zeroVisible, enumeration);
     }
 
     public static Bits get2(
         String label,
         int bit,
         boolean zeroVisible,
-        Handle handle) {
+        Class<? extends EnumInterface> enumeration) {
 
-        return new Bits(label, bit, 2, zeroVisible, handle);
+        return new Bits(label, bit, 2, zeroVisible, enumeration);
     }
 
     public static Bits get3(
         String label,
         int bit,
         boolean zeroVisible,
-        Handle handle) {
+        Class<? extends EnumInterface> enumeration) {
 
-        return new Bits(label, bit, 3, zeroVisible, handle);
+        return new Bits(label, bit, 3, zeroVisible, enumeration);
     }
 
     public static Bits get4(
         String label,
         int bit,
         boolean zeroVisible,
-        Handle handle) {
+        Class<? extends EnumInterface> enumeration) {
 
-        return new Bits(label, bit, 4, zeroVisible, handle);
+        return new Bits(label, bit, 4, zeroVisible, enumeration);
     }
 }

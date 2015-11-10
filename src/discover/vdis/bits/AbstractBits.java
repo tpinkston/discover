@@ -11,6 +11,7 @@ import discover.common.Readable;
 import discover.common.Writable;
 import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.Bufferable;
+import discover.vdis.Enumerations;
 import discover.vdis.enums.VDIS;
 import discover.vdis.enums.VDIS.Handle;
 
@@ -102,9 +103,9 @@ public abstract class AbstractBits implements Bufferable, Cloneable, Readable, W
 
         for(Bits bits : getValues()) {
 
-            int value = getValue(bits);
+            final int value = getValue(bits);
 
-            if (bits.handle == null) {
+            if (bits.enumeration == null) {
 
                 buffer.addAttribute(
                     bits.label,
@@ -112,9 +113,11 @@ public abstract class AbstractBits implements Bufferable, Cloneable, Readable, W
             }
             else if ((value != 0) || bits.zeroVisible) {
 
-                buffer.addAttribute(
-                    bits.label,
-                    bits.handle.getDescription(value));
+                String description = Enumerations.getDescription(
+                    value,
+                    bits.enumeration);
+
+                buffer.addAttribute(bits.label, description);
             }
         }
     }

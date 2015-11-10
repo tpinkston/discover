@@ -5,7 +5,7 @@ import java.util.List;
 
 import discover.vdis.bits.Abstract16Bits;
 import discover.vdis.bits.Bits;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.IED_PRESENCE;
 
 /**
  * @author Tony Pinkston
@@ -19,7 +19,7 @@ public class ExtendedEquipmentCulturalFeature extends Abstract16Bits {
         values = new ArrayList<Bits>();
 
         values.add(Bits.getYesNo("Sling Loaded", 5));
-        values.add(Bits.get2("IED", 10, false, getHandle(VDIS.IED_PRESENCE)));
+        values.add(Bits.get2("IED", 10, false, IED_PRESENCE.class));
     }
 
     @Override

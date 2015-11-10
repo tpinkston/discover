@@ -5,7 +5,8 @@ import java.util.List;
 
 import discover.vdis.bits.Abstract8Bits;
 import discover.vdis.bits.Bits;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.PL_COND_MTL;
+import discover.vdis.enums.SEVERITY;
 
 /**
  * @author Tony Pinkston
@@ -18,10 +19,10 @@ public final class ConditionMaterial extends Abstract8Bits {
 
         values = new ArrayList<Bits>();
 
-        values.add(Bits.get2("Rust", 7, false, getHandle(VDIS.SEVERITY)));
-        values.add(Bits.get2("Material", 5, false, getHandle(VDIS.PL_COND_MTL)));
-        values.add(Bits.get2("Damage", 3, false, getHandle(VDIS.SEVERITY)));
-        values.add(Bits.get2("Cleanliness", 1, false, getHandle(VDIS.SEVERITY)));
+        values.add(Bits.get2("Rust", 7, false, SEVERITY.class));
+        values.add(Bits.get2("Material", 5, false, PL_COND_MTL.class));
+        values.add(Bits.get2("Damage", 3, false, SEVERITY.class));
+        values.add(Bits.get2("Cleanliness", 1, false, SEVERITY.class));
     }
 
     @Override

@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import discover.vdis.bits.Bits;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.LAND_SMOKE;
+import discover.vdis.enums.SEVERITY;
 
 /**
  * @author Tony Pinkston
@@ -20,8 +21,8 @@ public class PlatformLandAppearance extends AbstractAppearance {
         values.add(Bits.getYesNo("Camouflaged", 0));
         values.add(Bits.getYesNo("Mobility Damage", 1));
         values.add(Bits.getYesNo("Firepower Damage", 2));
-        values.add(Bits.get2("Damage", 4, false, getHandle(VDIS.SEVERITY)));
-        values.add(Bits.get2("Smoke", 6, false, getHandle(VDIS.LAND_SMOKE)));
+        values.add(Bits.get2("Damage", 4, false, SEVERITY.class));
+        values.add(Bits.get2("Smoke", 6, false, LAND_SMOKE.class));
         values.add(Bits.getOnOff("Head Lights", 12));
         values.add(Bits.getOnOff("Tail Lights", 13));
         values.add(Bits.getOnOff("Brake Lights", 14));

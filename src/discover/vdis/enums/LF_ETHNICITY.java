@@ -8,21 +8,23 @@ import discover.vdis.Enumerations;
  *
  * @author tpinkston
  */
-public enum APP_CTRL_CONTROL_TYPE implements EnumInterface {
+public enum LF_ETHNICITY implements EnumInterface {
 
-    OTHER(0, "Other"),
-    SHUTDOWN(1, "Shutdown"),
-    DATA_QUERY(2, "Data Query"),
-    DATA(3, "Data"),
-    SET_DATA(4, "Set Data"),
-    ADD_DATA(5, "Add Data"),
-    REMOVE_DATA(6, "Remove Data"),
-    STATUS(7, "Status");
+    NOT_SPECIFIED(0, "Not Specified"),
+    ASIAN(1, "Asian"),
+    PACIFIC_ISLANDER(2, "Pacific Islander"),
+    BLACK(3, "Black"),
+    EAST_ASIAN(4, "East Asian"),
+    HISPANIC(5, "Hispanic"),
+    WHITE(6, "White"),
+    ARAB(7, "Arab"),
+    HOMOGENOUS_CTRY(8, "Homogenous Country Code"),
+    INDIGENOUS_CTRY(9, "Indigenous Country Code");
 
     private final int value;
     private final String description;
 
-    private APP_CTRL_CONTROL_TYPE(int value, String description) {
+    private LF_ETHNICITY(int value, String description) {
 
         this.value = value;
         this.description = description;
@@ -56,7 +58,7 @@ public enum APP_CTRL_CONTROL_TYPE implements EnumInterface {
             }
         }
 
-        return Enumerations.getUnknownValue(value, FORCE_ID.class);
+        return Enumerations.getUnknownValue(value, LF_ETHNICITY.class);
     }
 }
 

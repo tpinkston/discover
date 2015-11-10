@@ -78,7 +78,7 @@
 
   <target name="copyfiles">
     <copy verbose="${verbose}" todir="${discover.classes}">
-      <fileset dir="${discover.source}" includes="**/*.xml **/*.png **/*.gif **/*.CSV"/>
+      <fileset dir="${discover.source}" includes="**/*.xml **/*.png **/*.gif **/*.CSV **/*.txt"/>
     </copy>
   </target>
 

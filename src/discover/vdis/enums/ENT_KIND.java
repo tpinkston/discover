@@ -10,6 +10,7 @@ import discover.vdis.Enumerations;
  */
 public enum ENT_KIND implements EnumInterface {
 
+    OTHER(0, "Other"),
     PLATFORMS(1, "Platforms"),
     MUNITIONS(2, "Munitions"),
     LIFEFORMS(3, "Life Forms"),

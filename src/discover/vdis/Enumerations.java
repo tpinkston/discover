@@ -14,12 +14,29 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import discover.common.Hexadecimal;
+import discover.vdis.enums.AIR_SMOKE;
 import discover.vdis.enums.APP_CTRL_APPLICATION_TYPE;
 import discover.vdis.enums.APP_CTRL_CONTROL_TYPE;
+import discover.vdis.enums.ARTICULATED_PARTS_METRIC;
 import discover.vdis.enums.ENT_DOMAIN;
 import discover.vdis.enums.ENT_KIND;
+import discover.vdis.enums.HOIST_STATUS;
+import discover.vdis.enums.IED_PRESENCE;
+import discover.vdis.enums.LAND_SMOKE;
+import discover.vdis.enums.LF_AGE_GROUP;
+import discover.vdis.enums.LF_CAMOUFLAGE_TYPE;
+import discover.vdis.enums.LF_CLOTH_TYPE;
+import discover.vdis.enums.LF_COMPLIANCE;
+import discover.vdis.enums.LF_EQ_LASER;
+import discover.vdis.enums.LF_ETHNICITY;
+import discover.vdis.enums.LF_GENDER;
+import discover.vdis.enums.LF_HEALTH;
+import discover.vdis.enums.LF_POSTURE;
+import discover.vdis.enums.LF_WEAPON_STATE;
 import discover.vdis.enums.ON_OFF;
 import discover.vdis.enums.PRESENCE;
+import discover.vdis.enums.SEVERITY;
+import discover.vdis.enums.SLING_DAMAGE;
 import discover.vdis.enums.YES_NO;
 
 /**
@@ -158,14 +175,31 @@ public class Enumerations {
 
             final long start = System.currentTimeMillis();
 
-            // These are not auto-generated and probably aren't in the index:
+            // These are not auto-generated (not in the index):
             //
+            addClass(AIR_SMOKE.class);
             addClass(APP_CTRL_APPLICATION_TYPE.class);
             addClass(APP_CTRL_CONTROL_TYPE.class);
+            addClass(ARTICULATED_PARTS_METRIC.class);
             addClass(ENT_DOMAIN.class);
             addClass(ENT_KIND.class);
+            addClass(HOIST_STATUS.class);
+            addClass(IED_PRESENCE.class);
+            addClass(LAND_SMOKE.class);
+            addClass(LF_AGE_GROUP.class);
+            addClass(LF_CAMOUFLAGE_TYPE.class);
+            addClass(LF_CLOTH_TYPE.class);
+            addClass(LF_COMPLIANCE.class);
+            addClass(LF_EQ_LASER.class);
+            addClass(LF_ETHNICITY.class);
+            addClass(LF_GENDER.class);
+            addClass(LF_HEALTH.class);
+            addClass(LF_POSTURE.class);
+            addClass(LF_WEAPON_STATE.class);
             addClass(ON_OFF.class);
             addClass(PRESENCE.class);
+            addClass(SEVERITY.class);
+            addClass(SLING_DAMAGE.class);
             addClass(YES_NO.class);
 
             // Index file is a text file with class names for all enum types

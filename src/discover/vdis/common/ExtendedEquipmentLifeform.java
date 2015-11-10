@@ -5,7 +5,9 @@ import java.util.List;
 
 import discover.vdis.bits.Abstract32Bits;
 import discover.vdis.bits.Bits;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.IED_PRESENCE;
+import discover.vdis.enums.LF_EQ_CHUTE;
+import discover.vdis.enums.LF_EQ_LASER;
 
 /**
  * @author Tony Pinkston
@@ -19,13 +21,13 @@ public class ExtendedEquipmentLifeform extends Abstract32Bits {
         values = new ArrayList<Bits>();
 
         values.add(Bits.getGenericPresence("Binoculars", 0));
-        values.add(Bits.get2("Parachute", 2, false, getHandle(VDIS.LF_EQ_CHUTE)));
+        values.add(Bits.get2("Parachute", 2, false, LF_EQ_CHUTE.class));
         values.add(Bits.getGenericPresence("Rebreather", 3));
         values.add(Bits.getGenericPresence("SCUBA Gear", 4));
         values.add(Bits.getGenericPresence("Night Vision Goggles", 5));
-        values.add(Bits.get2("Laser", 7, false, getHandle(VDIS.LF_EQ_LASER)));
+        values.add(Bits.get2("Laser", 7, false, LF_EQ_LASER.class));
         values.add(Bits.getGenericPresence("Radio", 8));
-        values.add(Bits.get2("IED", 10, false, getHandle(VDIS.IED_PRESENCE)));
+        values.add(Bits.get2("IED", 10, false, IED_PRESENCE.class));
     }
 
     @Override

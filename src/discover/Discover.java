@@ -61,6 +61,7 @@ public class Discover {
         ArmyTracking.load();
         EntityTypes.load();
         ObjectTypes.load();
+        Enumerations.load();
 
         if (enumeration != null) {
 

@@ -8,21 +8,29 @@ import discover.vdis.Enumerations;
  *
  * @author tpinkston
  */
-public enum APP_CTRL_CONTROL_TYPE implements EnumInterface {
+public enum LF_POSTURE implements EnumInterface {
 
     OTHER(0, "Other"),
-    SHUTDOWN(1, "Shutdown"),
-    DATA_QUERY(2, "Data Query"),
-    DATA(3, "Data"),
-    SET_DATA(4, "Set Data"),
-    ADD_DATA(5, "Add Data"),
-    REMOVE_DATA(6, "Remove Data"),
-    STATUS(7, "Status");
+    UPRIGHT_STANDING_STILL(1, "Upright Standing Still"),
+    UPRIGHT_WALKING(2, "Upright Walking"),
+    UPRIGHT_RUNNING(3, "Upright Running"),
+    KNEELING(4, "Kneeling"),
+    PRONE(5, "Prone"),
+    CRAWLING(6, "Crawling"),
+    SWIMMING(7, "Swimming"),
+    PARACHUTING(8, "Parachuting"),
+    JUMPING(9, "Jumping"),
+    SITTING(10, "Sitting"),
+    SQUATTING(11, "Squatting"),
+    CROUCHING(12, "Crouching"),
+    WADING(13, "Wading"),
+    SURRENDER(14, "Surrender"),
+    DETAINED(15, "Detained");
 
     private final int value;
     private final String description;
 
-    private APP_CTRL_CONTROL_TYPE(int value, String description) {
+    private LF_POSTURE(int value, String description) {
 
         this.value = value;
         this.description = description;
@@ -56,7 +64,7 @@ public enum APP_CTRL_CONTROL_TYPE implements EnumInterface {
             }
         }
 
-        return Enumerations.getUnknownValue(value, FORCE_ID.class);
+        return Enumerations.getUnknownValue(value, LF_POSTURE.class);
     }
 }
 

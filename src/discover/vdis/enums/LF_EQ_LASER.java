@@ -8,21 +8,17 @@ import discover.vdis.Enumerations;
  *
  * @author tpinkston
  */
-public enum APP_CTRL_CONTROL_TYPE implements EnumInterface {
+public enum LF_EQ_LASER implements EnumInterface {
 
-    OTHER(0, "Other"),
-    SHUTDOWN(1, "Shutdown"),
-    DATA_QUERY(2, "Data Query"),
-    DATA(3, "Data"),
-    SET_DATA(4, "Set Data"),
-    ADD_DATA(5, "Add Data"),
-    REMOVE_DATA(6, "Remove Data"),
-    STATUS(7, "Status");
+    NONE(0, "None"),
+    LASER_POINTER(1, "Laser Pointer"),
+    LASER_DESIGNATOR(2, "Laser Designator"),
+    LASER_RANGE_FINDER(3, "Laser Range Finder");
 
     private final int value;
     private final String description;
 
-    private APP_CTRL_CONTROL_TYPE(int value, String description) {
+    private LF_EQ_LASER(int value, String description) {
 
         this.value = value;
         this.description = description;
@@ -56,7 +52,7 @@ public enum APP_CTRL_CONTROL_TYPE implements EnumInterface {
             }
         }
 
-        return Enumerations.getUnknownValue(value, FORCE_ID.class);
+        return Enumerations.getUnknownValue(value, LF_EQ_LASER.class);
     }
 }
 

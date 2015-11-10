@@ -8,7 +8,7 @@ import java.util.List;
 import discover.common.buffer.AbstractBuffer;
 import discover.vdis.bits.Abstract8Bits;
 import discover.vdis.bits.Bits;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.OBJECT_DAMAGE;
 
 /**
  * 16-bit record for the general appearance of an environment object (point,
@@ -27,7 +27,7 @@ public class GenericObjectAppearance extends Abstract8Bits {
 
         values = new ArrayList<Bits>();
 
-        values.add(Bits.get2("Damage", 1, true, getHandle(VDIS.OBJECT_DAMAGE)));
+        values.add(Bits.get2("Damage", 1, true, OBJECT_DAMAGE.class));
         values.add(Bits.getYesNo("Predistributed", 2));
         values.add(Bits.getYesNo("Activated", 3));
         values.add(Bits.getYesNo("Smoking", 4));
