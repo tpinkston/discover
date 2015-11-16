@@ -7,7 +7,8 @@ import java.text.NumberFormat;
 
 import discover.common.buffer.AbstractBuffer;
 import discover.vdis.common.Location12;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.OFFSET_TYPE;
+import discover.vdis.enums.VP_RECORD_TYPE;
 
 /**
  * @author Tony Pinkston
@@ -54,12 +55,10 @@ public class EntityOffsetVPR extends AbstractVPRecord {
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
-        String title = VDIS.getDescription(VDIS.VP_RECORD_TYPE, getRecordType());
+        String title = VP_RECORD_TYPE.getValue(getRecordType()).getDescription();
 
         buffer.addTitle(title.toUpperCase());
-        buffer.addAttribute(
-            "Type",
-            VDIS.getDescription(VDIS.OFFSET_TYPE, type));
+        buffer.addAttribute("Type", type, OFFSET_TYPE.class);
         buffer.addAttribute("Offset", toString());
     }
 

@@ -10,7 +10,7 @@ import discover.common.Writable;
 import discover.common.buffer.AbstractBuffer;
 import discover.vdis.common.EntityId;
 import discover.vdis.datum.DatumSpecificationRecord;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.ACTREQ_ACTION_IDS;
 
 /**
  * @author Tony Pinkston
@@ -63,7 +63,7 @@ public class ActionRequest extends AbstractPDU implements Writable {
         buffer.addAttribute("Originator", originator.toString());
         buffer.addAttribute("Recipient", recipient.toString());
         buffer.addAttribute("Request Id", requestId);
-        buffer.addAttribute("Action Id", actionId, VDIS.ACTREQ_ACTION_IDS);
+        buffer.addAttribute("Action Id", actionId, ACTREQ_ACTION_IDS.class);
         buffer.addBreak();
         buffer.addBuffer(specification);
     }

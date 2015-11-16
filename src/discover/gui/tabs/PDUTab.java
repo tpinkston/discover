@@ -43,8 +43,7 @@ import discover.gui.frames.DiscoverFrame;
 import discover.gui.panels.TextPanel;
 import discover.vdis.PDU;
 import discover.vdis.common.EntityId;
-import discover.vdis.enums.VDIS;
-import discover.vdis.enums.VDIS.Handle;
+import discover.vdis.enums.PDU_TYPE;
 
 /**
  * @author Tony Pinkston
@@ -59,8 +58,6 @@ public abstract class PDUTab
     private static final Column COLUMNS[] = Column.values();
     private static final String HTML = "text/html";
     private static final String PLAIN = "text/plain";
-
-    protected static Handle PDU_TYPE = null;
 
     // TODO: Make private:
     protected final JTable table = new JTable();
@@ -84,11 +81,6 @@ public abstract class PDUTab
     protected PDUTab(String name, TabType type) {
 
         super(name, type);
-
-        if (PDU_TYPE == null) {
-
-            PDU_TYPE = VDIS.getHandle(VDIS.PDU_TYPE);
-        }
 
         tools.setFloatable(false);
 
@@ -626,7 +618,7 @@ public abstract class PDUTab
                 return false;
             }
 
-            if (pdu.getType() == VDIS.PDU_TYPE_ENTITY_STATE) {
+            if (pdu.getTypeEnum() == PDU_TYPE.PDU_TYPE_ENTITY_STATE) {
 
                 if (this.exclude(site, pdu.getSiteId()) ||
                     this.exclude(application, pdu.getApplicationId()) ||
@@ -776,7 +768,7 @@ public abstract class PDUTab
 
                 PDU pdu = selections.get(0);
 
-                if (pdu.getType() == VDIS.PDU_TYPE_ENTITY_STATE) {
+                if (pdu.getTypeEnum() == PDU_TYPE.PDU_TYPE_ENTITY_STATE) {
 
                     // Decode to ensure that EntityState object gets created.
                     pdu.decode(false);

@@ -8,7 +8,9 @@ import discover.common.Readable;
 import discover.common.Writable;
 import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.Bufferable;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.PDU_FAMILY;
+import discover.vdis.enums.PDU_TYPE;
+import discover.vdis.enums.PROTOCOL_VERSION;
 
 /**
  * @author Tony Pinkston
@@ -17,9 +19,9 @@ public class PDUHeader implements Bufferable, Readable, Writable {
 
     public static final int LENGTH = 12;
 
-    private int type = 0;
-    private int family = 0;
-    private int protocol = 0;
+    private int type = 0; // TODO: use PDU_TYPE
+    private int family = 0; // TODO: use PDU_FAMILY
+    private int protocol = 0; // TODO: use PDU_PROTOCOL_FAMILY
     private int exercise = -1;
     private int length = -1;
     private int padding = 0;
@@ -112,10 +114,10 @@ public class PDUHeader implements Bufferable, Readable, Writable {
     public void toBuffer(AbstractBuffer buffer) {
 
         buffer.addTitle("HEADER");
-        buffer.addAttribute("Protocol", protocol, VDIS.PROTOCOL_VERSION);
+        buffer.addAttribute("Protocol", protocol, PROTOCOL_VERSION.class);
         buffer.addAttribute("Exercise", exercise);
-        buffer.addAttribute("Type", type, VDIS.PDU_TYPE);
-        buffer.addAttribute("Family", family, VDIS.PDU_FAMILY);
+        buffer.addAttribute("Type", type, PDU_TYPE.class);
+        buffer.addAttribute("Family", family, PDU_FAMILY.class);
         buffer.addAttribute("Length", length);
         buffer.addAttribute("Timestamp", timestamp.toString());
         buffer.addBuffer(status);

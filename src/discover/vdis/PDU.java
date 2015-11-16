@@ -18,7 +18,8 @@ import discover.common.buffer.Bufferable;
 import discover.common.buffer.HypertextBuffer;
 import discover.vdis.common.EntityId;
 import discover.vdis.common.Timestamp;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.PDU_FAMILY;
+import discover.vdis.enums.PDU_TYPE;
 import discover.vdis.marking.EntityMarking;
 import discover.vdis.pdu.AbstractPDU;
 import discover.vdis.pdu.Acknowledge;
@@ -61,6 +62,8 @@ public class PDU implements Bufferable {
     private long time = 0;
     private byte data[] = null;
     private AbstractPDU pdu = null;
+    private PDU_TYPE pduType = null;
+    private PDU_FAMILY pduFamily = null;
 
     public PDU() {
 
@@ -100,7 +103,7 @@ public class PDU implements Bufferable {
 
         if ((title == null) || title.isEmpty()) {
 
-            return VDIS.getDescription(VDIS.PDU_TYPE, getType());
+            return getTypeEnum().getDescription();
         }
 
         return title;
@@ -168,9 +171,35 @@ public class PDU implements Bufferable {
         return ByteArray.get8bits(data, 2);
     }
 
+    public PDU_TYPE getTypeEnum() {
+
+        if (pduType == null) {
+
+            EnumInterface element = PDU_TYPE.getValue(getType());
+
+            if (element instanceof PDU_TYPE) {
+
+                pduType = (PDU_TYPE)element;
+            }
+            else {
+
+                pduType = PDU_TYPE.PDU_TYPE_OTHER;
+                logger.warn("Invalid PDU_TYPE: ", getType());
+            }
+        }
+
+        return pduType;
+    }
+
     public void setType(byte type) {
 
         ByteArray.set8Bits(data, 2, type);
+    }
+
+    public void setTypeEnum(PDU_TYPE type) {
+
+        pduType = type;
+        setType((byte)type.getValue());
     }
 
     public int getFamily() {
@@ -178,9 +207,35 @@ public class PDU implements Bufferable {
         return ByteArray.get8bits(data, 3);
     }
 
+    public PDU_FAMILY getFamilyEnum() {
+
+        if (pduFamily == null) {
+
+            EnumInterface element = PDU_FAMILY.getValue(getFamily());
+
+            if (element instanceof PDU_FAMILY) {
+
+                pduFamily = (PDU_FAMILY)element;
+            }
+            else {
+
+                pduFamily = PDU_FAMILY.PDU_FAMILY_OTHER;
+                logger.warn("Invalid PDU_FAMILY: ", getFamily());
+            }
+        }
+
+        return pduFamily;
+    }
+
     public void setFamily(byte family) {
 
         ByteArray.set8Bits(data, 3, family);
+    }
+
+    public void setFamilyEnum(PDU_FAMILY family) {
+
+        pduFamily = family;
+        setFamily((byte)family.getValue());
     }
 
     public int getLength() {
@@ -227,28 +282,28 @@ public class PDU implements Bufferable {
 
             return false;
         }
-        else switch(getType()) {
+        else switch(getTypeEnum()) {
 
-            case VDIS.PDU_TYPE_ACKNOWLEDGE:
-            case VDIS.PDU_TYPE_ACTION_REQUEST:
-            case VDIS.PDU_TYPE_ACTION_RESPONSE:
-            case VDIS.PDU_TYPE_APPLICATION_CTRL:
-            case VDIS.PDU_TYPE_CREATE_ENTITY:
-            case VDIS.PDU_TYPE_DESIGNATOR:
-            case VDIS.PDU_TYPE_DETONATION:
-            case VDIS.PDU_TYPE_FIRE:
-            case VDIS.PDU_TYPE_EM_EMISSION:
-            case VDIS.PDU_TYPE_IFF:
-            case VDIS.PDU_TYPE_ENTITY_STATE:
-            case VDIS.PDU_TYPE_TRANSMITTER:
-            case VDIS.PDU_TYPE_RECEIVER:
-            case VDIS.PDU_TYPE_SIGNAL:
-            case VDIS.PDU_TYPE_DATA:
-            case VDIS.PDU_TYPE_DATA_QUERY:
-            case VDIS.PDU_TYPE_SET_DATA:
-            case VDIS.PDU_TYPE_START_RESUME:
-            case VDIS.PDU_TYPE_STOP_FREEZE:
-            case VDIS.PDU_TYPE_POINT_OBJECT_STATE:
+            case PDU_TYPE_ACKNOWLEDGE:
+            case PDU_TYPE_ACTION_REQUEST:
+            case PDU_TYPE_ACTION_RESPONSE:
+            case PDU_TYPE_APPLICATION_CTRL:
+            case PDU_TYPE_CREATE_ENTITY:
+            case PDU_TYPE_DESIGNATOR:
+            case PDU_TYPE_DETONATION:
+            case PDU_TYPE_FIRE:
+            case PDU_TYPE_EM_EMISSION:
+            case PDU_TYPE_IFF:
+            case PDU_TYPE_ENTITY_STATE:
+            case PDU_TYPE_TRANSMITTER:
+            case PDU_TYPE_RECEIVER:
+            case PDU_TYPE_SIGNAL:
+            case PDU_TYPE_DATA:
+            case PDU_TYPE_DATA_QUERY:
+            case PDU_TYPE_SET_DATA:
+            case PDU_TYPE_START_RESUME:
+            case PDU_TYPE_STOP_FREEZE:
+            case PDU_TYPE_POINT_OBJECT_STATE:
                 return true;
             default:
                 return false;
@@ -311,15 +366,14 @@ public class PDU implements Bufferable {
 
     public boolean hasRecipient() {
 
-        if ((getType() == VDIS.PDU_TYPE_FIRE) ||
-            (getType() == VDIS.PDU_TYPE_DETONATION) ||
-            (getType() == VDIS.PDU_TYPE_APPEARANCE)) {
+        switch(getTypeEnum()) {
 
-            return true;
-        }
-        else {
-
-            return hasRequestId();
+            case PDU_TYPE_FIRE:
+            case PDU_TYPE_DETONATION:
+            case PDU_TYPE_APPEARANCE:
+                return true;
+            default:
+                return hasRequestId();
         }
     }
 
@@ -389,12 +443,12 @@ public class PDU implements Bufferable {
 
     public boolean hasEntityType() {
 
-        switch(getType()) {
+        switch(getTypeEnum()) {
 
-            case VDIS.PDU_TYPE_DETONATION:
-            case VDIS.PDU_TYPE_FIRE:
-            case VDIS.PDU_TYPE_ENTITY_STATE:
-            case VDIS.PDU_TYPE_TRANSMITTER:
+            case PDU_TYPE_DETONATION:
+            case PDU_TYPE_FIRE:
+            case PDU_TYPE_ENTITY_STATE:
+            case PDU_TYPE_TRANSMITTER:
                 return true;
             default:
                 return false;
@@ -403,14 +457,14 @@ public class PDU implements Bufferable {
 
     public long getEntityType() {
 
-        switch(getType()) {
+        switch(getTypeEnum()) {
 
-            case VDIS.PDU_TYPE_DETONATION:
+            case PDU_TYPE_DETONATION:
                 return ByteArray.get64bits(data, 72);
-            case VDIS.PDU_TYPE_FIRE:
+            case PDU_TYPE_FIRE:
                 return ByteArray.get64bits(data, 64);
-            case VDIS.PDU_TYPE_ENTITY_STATE:
-            case VDIS.PDU_TYPE_TRANSMITTER:
+            case PDU_TYPE_ENTITY_STATE:
+            case PDU_TYPE_TRANSMITTER:
                 return ByteArray.get64bits(data, 20);
             default:
                 return 0x0;
@@ -419,14 +473,14 @@ public class PDU implements Bufferable {
 
     public int getEntityKind() {
 
-        switch(getType()) {
+        switch(getTypeEnum()) {
 
-            case VDIS.PDU_TYPE_DETONATION:
+            case PDU_TYPE_DETONATION:
                 return ByteArray.get8bits(data, 72);
-            case VDIS.PDU_TYPE_FIRE:
+            case PDU_TYPE_FIRE:
                 return ByteArray.get8bits(data, 64);
-            case VDIS.PDU_TYPE_ENTITY_STATE:
-            case VDIS.PDU_TYPE_TRANSMITTER:
+            case PDU_TYPE_ENTITY_STATE:
+            case PDU_TYPE_TRANSMITTER:
                 return ByteArray.get8bits(data, 20);
             default:
                 return 0x0;
@@ -435,14 +489,14 @@ public class PDU implements Bufferable {
 
     public int getEntityDomain() {
 
-        switch(getType()) {
+        switch(getTypeEnum()) {
 
-            case VDIS.PDU_TYPE_DETONATION:
+            case PDU_TYPE_DETONATION:
                 return ByteArray.get8bits(data, 73);
-            case VDIS.PDU_TYPE_FIRE:
+            case PDU_TYPE_FIRE:
                 return ByteArray.get8bits(data, 65);
-            case VDIS.PDU_TYPE_ENTITY_STATE:
-            case VDIS.PDU_TYPE_TRANSMITTER:
+            case PDU_TYPE_ENTITY_STATE:
+            case PDU_TYPE_TRANSMITTER:
                 return ByteArray.get8bits(data, 21);
             default:
                 return 0x0;
@@ -451,7 +505,7 @@ public class PDU implements Bufferable {
 
     public boolean hasMarking() {
 
-        return (getType() == VDIS.PDU_TYPE_ENTITY_STATE);
+        return (getTypeEnum() == PDU_TYPE.PDU_TYPE_ENTITY_STATE);
     }
 
     public String getMarking() {
@@ -472,18 +526,18 @@ public class PDU implements Bufferable {
 
     public boolean hasRequestId() {
 
-        switch(getType()) {
+        switch(getTypeEnum()) {
 
-            case VDIS.PDU_TYPE_ACKNOWLEDGE:
-            case VDIS.PDU_TYPE_ACTION_REQUEST:
-            case VDIS.PDU_TYPE_ACTION_RESPONSE:
-            case VDIS.PDU_TYPE_CREATE_ENTITY:
-            case VDIS.PDU_TYPE_DATA:
-            case VDIS.PDU_TYPE_DATA_QUERY:
-            case VDIS.PDU_TYPE_SET_DATA:
-            case VDIS.PDU_TYPE_START_RESUME:
-            case VDIS.PDU_TYPE_STOP_FREEZE:
-            case VDIS.PDU_TYPE_APPLICATION_CTRL:
+            case PDU_TYPE_ACKNOWLEDGE:
+            case PDU_TYPE_ACTION_REQUEST:
+            case PDU_TYPE_ACTION_RESPONSE:
+            case PDU_TYPE_CREATE_ENTITY:
+            case PDU_TYPE_DATA:
+            case PDU_TYPE_DATA_QUERY:
+            case PDU_TYPE_SET_DATA:
+            case PDU_TYPE_START_RESUME:
+            case PDU_TYPE_STOP_FREEZE:
+            case PDU_TYPE_APPLICATION_CTRL:
                 return true;
             default:
                 return false;
@@ -492,22 +546,22 @@ public class PDU implements Bufferable {
 
     public int getRequestId() {
 
-        switch(getType()) {
+        switch(getTypeEnum()) {
 
-            case VDIS.PDU_TYPE_ACTION_REQUEST:
-            case VDIS.PDU_TYPE_ACTION_RESPONSE:
-            case VDIS.PDU_TYPE_CREATE_ENTITY:
-            case VDIS.PDU_TYPE_DATA:
-            case VDIS.PDU_TYPE_DATA_QUERY:
-            case VDIS.PDU_TYPE_SET_DATA:
+            case PDU_TYPE_ACTION_REQUEST:
+            case PDU_TYPE_ACTION_RESPONSE:
+            case PDU_TYPE_CREATE_ENTITY:
+            case PDU_TYPE_DATA:
+            case PDU_TYPE_DATA_QUERY:
+            case PDU_TYPE_SET_DATA:
                 return ByteArray.get32bits(data, 24);
-            case VDIS.PDU_TYPE_ACKNOWLEDGE:
+            case PDU_TYPE_ACKNOWLEDGE:
                 return ByteArray.get32bits(data, 28);
-            case VDIS.PDU_TYPE_STOP_FREEZE:
+            case PDU_TYPE_STOP_FREEZE:
                 return ByteArray.get32bits(data, 36);
-            case VDIS.PDU_TYPE_START_RESUME:
+            case PDU_TYPE_START_RESUME:
                 return ByteArray.get32bits(data, 40);
-            case VDIS.PDU_TYPE_APPLICATION_CTRL:
+            case PDU_TYPE_APPLICATION_CTRL:
                 return ByteArray.get32bits(data, 32);
             default:
                 return 0;
@@ -518,7 +572,7 @@ public class PDU implements Bufferable {
 
         StringBuilder builder = new StringBuilder();
 
-        builder.append(VDIS.getDescription(VDIS.PDU_TYPE, getType()));
+        builder.append(getTypeEnum().getDescription());
 
         if (hasRequestId()) {
 
@@ -766,210 +820,211 @@ public class PDU implements Bufferable {
         return pdu;
     }
 
+    @SuppressWarnings("incomplete-switch")
     private static boolean isValid(PDU pdu) {
 
         boolean valid = false;
 
         // Perform some heuristic checking on the PDU to make sure it's valid.
 
-        int pduType = pdu.getType();
-        int protocolFamily = pdu.getFamily();
+        PDU_TYPE pduType = pdu.getTypeEnum();
+        PDU_FAMILY protocolFamily = pdu.getFamilyEnum();
 
         switch(protocolFamily) {
 
-            case 1:  // Entity Information/Interaction
+            case PDU_FAMILY_ENTITY_INFORMATION_INTERACTION:
 
                 switch(pduType) {
 
-                    case VDIS.PDU_TYPE_ENTITY_STATE:
-                    case VDIS.PDU_TYPE_COLLISION:
-                    case VDIS.PDU_TYPE_COLLISION_ELASTIC:
-                    case VDIS.PDU_TYPE_ENTITY_STATE_UPDATE:
-                    case VDIS.PDU_TYPE_ATTRIBUTE:
+                    case PDU_TYPE_ENTITY_STATE:
+                    case PDU_TYPE_COLLISION:
+                    case PDU_TYPE_COLLISION_ELASTIC:
+                    case PDU_TYPE_ENTITY_STATE_UPDATE:
+                    case PDU_TYPE_ATTRIBUTE:
                         valid = true;
 
                     break;
                 }
                 break;
 
-            case 2:  // Warfare
+            case PDU_FAMILY_WARFARE:
 
                 switch(pduType) {
 
-                    case VDIS.PDU_TYPE_FIRE:
-                    case VDIS.PDU_TYPE_DETONATION:
-                    case VDIS.PDU_TYPE_DE_FIRE:
-                    case VDIS.PDU_TYPE_ENTITY_DAMAGE_STATUS:
+                    case PDU_TYPE_FIRE:
+                    case PDU_TYPE_DETONATION:
+                    case PDU_TYPE_DE_FIRE:
+                    case PDU_TYPE_ENTITY_DAMAGE_STATUS:
                         valid = true;
 
                     break;
                 }
                 break;
 
-            case 3:  // Logistics
+            case PDU_FAMILY_LOGISTICS:
 
                 switch(pduType) {
 
-                    case VDIS.PDU_TYPE_SERVICE_REQ:
-                    case VDIS.PDU_TYPE_RESUPPLY_OFFER:
-                    case VDIS.PDU_TYPE_RESUPPLY_RECEIVED:
-                    case VDIS.PDU_TYPE_RESUPPLY_CANCEL:
-                    case VDIS.PDU_TYPE_REPAIR_COMPLETE:
-                    case VDIS.PDU_TYPE_REPAIR_RESPONSE:
+                    case PDU_TYPE_SERVICE_REQ:
+                    case PDU_TYPE_RESUPPLY_OFFER:
+                    case PDU_TYPE_RESUPPLY_RECEIVED:
+                    case PDU_TYPE_RESUPPLY_CANCEL:
+                    case PDU_TYPE_REPAIR_COMPLETE:
+                    case PDU_TYPE_REPAIR_RESPONSE:
                         valid = true;
 
                     break;
                 }
                 break;
 
-            case 5:  // Simulation Management
+            case PDU_FAMILY_SIMULATION_MANAGEMENT:
 
                 switch(pduType) {
 
-                    case VDIS.PDU_TYPE_CREATE_ENTITY:
-                    case VDIS.PDU_TYPE_REMOVE_ENTITY:
-                    case VDIS.PDU_TYPE_START_RESUME:
-                    case VDIS.PDU_TYPE_STOP_FREEZE:
-                    case VDIS.PDU_TYPE_ACKNOWLEDGE:
-                    case VDIS.PDU_TYPE_ACTION_REQUEST:
-                    case VDIS.PDU_TYPE_ACTION_RESPONSE:
-                    case VDIS.PDU_TYPE_DATA_QUERY:
-                    case VDIS.PDU_TYPE_SET_DATA:
-                    case VDIS.PDU_TYPE_DATA:
-                    case VDIS.PDU_TYPE_EVENT_REPORT:
-                    case VDIS.PDU_TYPE_COMMENT:
+                    case PDU_TYPE_CREATE_ENTITY:
+                    case PDU_TYPE_REMOVE_ENTITY:
+                    case PDU_TYPE_START_RESUME:
+                    case PDU_TYPE_STOP_FREEZE:
+                    case PDU_TYPE_ACKNOWLEDGE:
+                    case PDU_TYPE_ACTION_REQUEST:
+                    case PDU_TYPE_ACTION_RESPONSE:
+                    case PDU_TYPE_DATA_QUERY:
+                    case PDU_TYPE_SET_DATA:
+                    case PDU_TYPE_DATA:
+                    case PDU_TYPE_EVENT_REPORT:
+                    case PDU_TYPE_COMMENT:
                         valid = true;
 
                     break;
                 }
                 break;
 
-            case 6:  // Distributed Emission Regeneration
+            case PDU_FAMILY_DISTRIBUTED_EMISSION_REGENERATION:
 
                 switch(pduType) {
 
-                    case VDIS.PDU_TYPE_EM_EMISSION:
-                    case VDIS.PDU_TYPE_DESIGNATOR:
-                    case VDIS.PDU_TYPE_UNDERWATER_ACOUSTIC:
-                    case VDIS.PDU_TYPE_IFF:
-                    case VDIS.PDU_TYPE_SEES:
+                    case PDU_TYPE_EM_EMISSION:
+                    case PDU_TYPE_DESIGNATOR:
+                    case PDU_TYPE_UNDERWATER_ACOUSTIC:
+                    case PDU_TYPE_IFF:
+                    case PDU_TYPE_SEES:
                         valid = true;
 
                     break;
                 }
                 break;
 
-            case 4:  // Radio Communications
+            case PDU_FAMILY_RADIO_COMMUNICATION:
 
                 switch(pduType) {
 
-                    case VDIS.PDU_TYPE_TRANSMITTER:
-                    case VDIS.PDU_TYPE_SIGNAL:
-                    case VDIS.PDU_TYPE_RECEIVER:
-                    case VDIS.PDU_TYPE_INTERCOM_SIGNAL:
-                    case VDIS.PDU_TYPE_INTERCOM_CONTROL:
+                    case PDU_TYPE_TRANSMITTER:
+                    case PDU_TYPE_SIGNAL:
+                    case PDU_TYPE_RECEIVER:
+                    case PDU_TYPE_INTERCOM_SIGNAL:
+                    case PDU_TYPE_INTERCOM_CONTROL:
                         valid = true;
 
                     break;
                 }
                 break;
 
-            case 7:  // Entity Management
+            case PDU_FAMILY_ENTITY_MANAGEMENT:
 
                 switch(pduType) {
 
-                    case VDIS.PDU_TYPE_AGGREGATE_STATE:
-                    case VDIS.PDU_TYPE_ISGROUPOF:
-                    case VDIS.PDU_TYPE_TRANSFER_OWNERSHIP:
-                    case VDIS.PDU_TYPE_ISPARTOF:
+                    case PDU_TYPE_AGGREGATE_STATE:
+                    case PDU_TYPE_ISGROUPOF:
+                    case PDU_TYPE_TRANSFER_OWNERSHIP:
+                    case PDU_TYPE_ISPARTOF:
                         valid = true;
 
                     break;
                 }
                 break;
 
-            case 8:  // Minefield
+            case PDU_FAMILY_MINEFIELD:
 
                 switch(pduType) {
 
-                    case VDIS.PDU_TYPE_MINEFIELD_STATE:
-                    case VDIS.PDU_TYPE_MINEFIELD_QUERY:
-                    case VDIS.PDU_TYPE_MINEFIELD_DATA:
-                    case VDIS.PDU_TYPE_MINEFIELD_RESPONSE_NAK:
+                    case PDU_TYPE_MINEFIELD_STATE:
+                    case PDU_TYPE_MINEFIELD_QUERY:
+                    case PDU_TYPE_MINEFIELD_DATA:
+                    case PDU_TYPE_MINEFIELD_RESPONSE_NAK:
                         valid = true;
 
                     break;
                 }
                 break;
 
-            case 9:  // Synthetic Environment
+            case PDU_FAMILY_SYNTHETIC_ENVIRONMENT:
 
                 switch(pduType) {
 
-                    case VDIS.PDU_TYPE_ENVIRONMENTAL_PROCESS:
-                    case VDIS.PDU_TYPE_GRIDDED_DATA:
-                    case VDIS.PDU_TYPE_POINT_OBJECT_STATE:
-                    case VDIS.PDU_TYPE_LINEAR_OBJECT_STATE:
-                    case VDIS.PDU_TYPE_AREAL_OBJECT_STATE:
+                    case PDU_TYPE_ENVIRONMENTAL_PROCESS:
+                    case PDU_TYPE_GRIDDED_DATA:
+                    case PDU_TYPE_POINT_OBJECT_STATE:
+                    case PDU_TYPE_LINEAR_OBJECT_STATE:
+                    case PDU_TYPE_AREAL_OBJECT_STATE:
                         valid = true;
 
                     break;
                 }
                 break;
 
-            case 10:  // Simulation Management with Reliability
+            case PDU_FAMILY_SIMULATION_MANAGEMENT_WITH_RELIABILITY:
 
                 switch(pduType) {
 
-                    case VDIS.PDU_TYPE_CREATE_ENTITY_R:
-                    case VDIS.PDU_TYPE_REMOVE_ENTITY_R:
-                    case VDIS.PDU_TYPE_START_RESUME_R:
-                    case VDIS.PDU_TYPE_STOP_FREEZE_R:
-                    case VDIS.PDU_TYPE_ACKNOWLEDGE_R:
-                    case VDIS.PDU_TYPE_ACTION_REQUEST_R:
-                    case VDIS.PDU_TYPE_ACTION_RESPONSE_R:
-                    case VDIS.PDU_TYPE_DATA_QUERY_R:
-                    case VDIS.PDU_TYPE_SET_DATA_R:
-                    case VDIS.PDU_TYPE_DATA_R:
-                    case VDIS.PDU_TYPE_EVENT_REPORT_R:
-                    case VDIS.PDU_TYPE_COMMENT_R:
-                    case VDIS.PDU_TYPE_RECORD_QUERY_R:
-                    case VDIS.PDU_TYPE_SET_RECORD_R:
-                    case VDIS.PDU_TYPE_RECORD_R:
+                    case PDU_TYPE_CREATE_ENTITY_R:
+                    case PDU_TYPE_REMOVE_ENTITY_R:
+                    case PDU_TYPE_START_RESUME_R:
+                    case PDU_TYPE_STOP_FREEZE_R:
+                    case PDU_TYPE_ACKNOWLEDGE_R:
+                    case PDU_TYPE_ACTION_REQUEST_R:
+                    case PDU_TYPE_ACTION_RESPONSE_R:
+                    case PDU_TYPE_DATA_QUERY_R:
+                    case PDU_TYPE_SET_DATA_R:
+                    case PDU_TYPE_DATA_R:
+                    case PDU_TYPE_EVENT_REPORT_R:
+                    case PDU_TYPE_COMMENT_R:
+                    case PDU_TYPE_RECORD_QUERY_R:
+                    case PDU_TYPE_SET_RECORD_R:
+                    case PDU_TYPE_RECORD_R:
                         valid = true;
 
                     break;
                 }
                 break;
 
-            case 13:  // Information Operations
+            case PDU_FAMILY_INFO_OPS:
 
                 switch(pduType) {
 
-                    case VDIS.PDU_TYPE_INFO_OPS_ACTION:
-                    case VDIS.PDU_TYPE_INFO_OPS_REPORT:
+                    case PDU_TYPE_INFO_OPS_ACTION:
+                    case PDU_TYPE_INFO_OPS_REPORT:
                         valid = true;
 
                     break;
                 }
                 break;
 
-            case 11:  // Live Entity (LE)
+            case PDU_FAMILY_LIVE_ENTITY:
 
                 switch(pduType) {
 
-                    case VDIS.PDU_TYPE_TSPI:
-                    case VDIS.PDU_TYPE_APPEARANCE:
-                    case VDIS.PDU_TYPE_ARTICULATED_PARTS:
-                    case VDIS.PDU_TYPE_LE_FIRE:
-                    case VDIS.PDU_TYPE_LE_DETONATION:
+                    case PDU_TYPE_TSPI:
+                    case PDU_TYPE_APPEARANCE:
+                    case PDU_TYPE_ARTICULATED_PARTS:
+                    case PDU_TYPE_LE_FIRE:
+                    case PDU_TYPE_LE_DETONATION:
                         valid = true;
 
                     break;
                 }
                 break;
 
-            case 12:  // Non-Real-Time Protocol
+            case PDU_FAMILY_NON_REAL_TIME:
 
                 switch(pduType) {
 

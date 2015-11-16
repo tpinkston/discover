@@ -12,8 +12,7 @@ import java.util.TreeMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import discover.vdis.enums.VDISNames;
-import discover.vdis.types.ObjectType.Geometry;
+import discover.vdis.enums.OBJECT_GEOMETRY;
 
 /**
  * @author Tony Pinkston
@@ -25,24 +24,24 @@ public class ObjectTypes {
     private static final Logger logger = LoggerFactory.getLogger(ObjectTypes.class);
 
     /** Maps 32-bit entity type value to ObjectType object. */
-    private static final TreeMap<Geometry, TreeMap<Integer, ObjectType>> mapping;
+    private static final TreeMap<Integer, TreeMap<Integer, ObjectType>> mapping;
 
     /** Maps 32-bit entity type value to ObjectType object. */
-    private static final TreeMap<Geometry, TreeMap<Integer, ObjectType>> unknowns;
+    private static final TreeMap<Integer, TreeMap<Integer, ObjectType>> unknowns;
 
     /** List of all ObjectType objects read from data file. */
     private static final ArrayList<ObjectType> listing;
 
     static {
 
-        mapping = new TreeMap<Geometry, TreeMap<Integer, ObjectType>>();
-        unknowns = new TreeMap<Geometry, TreeMap<Integer, ObjectType>>();
+        mapping = new TreeMap<Integer, TreeMap<Integer, ObjectType>>();
+        unknowns = new TreeMap<Integer, TreeMap<Integer, ObjectType>>();
         listing = new ArrayList<ObjectType>();
 
-        unknowns.put(Geometry.AREAL, new TreeMap<Integer, ObjectType>());
-        unknowns.put(Geometry.LINEAR, new TreeMap<Integer, ObjectType>());
-        unknowns.put(Geometry.POINT, new TreeMap<Integer, ObjectType>());
-        unknowns.put(Geometry.UNKNOWN, new TreeMap<Integer, ObjectType>());
+        unknowns.put(OBJECT_GEOMETRY.AREAL.getValue(), new TreeMap<Integer, ObjectType>());
+        unknowns.put(OBJECT_GEOMETRY.LINEAR.getValue(), new TreeMap<Integer, ObjectType>());
+        unknowns.put(OBJECT_GEOMETRY.POINT.getValue(), new TreeMap<Integer, ObjectType>());
+        unknowns.put(OBJECT_GEOMETRY.UNKNOWN.getValue(), new TreeMap<Integer, ObjectType>());
     }
 
     /**
@@ -59,7 +58,7 @@ public class ObjectTypes {
      *
      * @return {@link ObjectType}
      */
-    public static ObjectType getObjectType(Geometry geometry, int value) {
+    public static ObjectType getObjectType(int geometry, int value) {
 
         TreeMap<Integer, ObjectType> submapping = mapping.get(geometry);
         ObjectType type = submapping.get(value);
@@ -155,7 +154,7 @@ public class ObjectTypes {
                         values[2],
                         values[3]);
 
-                    Geometry geometry = getGeometry(tokens[0]);
+                    int geometry = Integer.parseInt(tokens[0]);
 
                     ObjectType type = new ObjectType(
                         values[0],
@@ -192,16 +191,17 @@ public class ObjectTypes {
 
                     if (line > 1) {
 
-                        logger.error("Caught exception!", exception);                    }
+                        logger.error("Caught exception!", exception);
+                    }
                 }
 
                 string = reader.readLine();
                 ++line;
             }
 
-            listing.addAll(mapping.get(Geometry.POINT).values());
-            listing.addAll(mapping.get(Geometry.LINEAR).values());
-            listing.addAll(mapping.get(Geometry.AREAL).values());
+            listing.addAll(mapping.get(OBJECT_GEOMETRY.POINT.getValue()).values());
+            listing.addAll(mapping.get(OBJECT_GEOMETRY.LINEAR.getValue()).values());
+            listing.addAll(mapping.get(OBJECT_GEOMETRY.AREAL.getValue()).values());
 
             reader.close();
         }
@@ -252,22 +252,6 @@ public class ObjectTypes {
         builder.append(subcategory);
 
         return builder.toString();
-    }
-
-    private static ObjectType.Geometry getGeometry(String name) {
-
-        ObjectType.Geometry values[] = ObjectType.Geometry.values();
-        String names[] = VDISNames.OBJECT_GEOMETRY;
-
-        for(int i = 0; i < names.length; ++i) {
-
-            if (name.equalsIgnoreCase(names[i])) {
-
-                return values[i];
-            }
-        }
-
-        return values[0];
     }
 
     private static BufferedReader getReader() {

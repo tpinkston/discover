@@ -34,6 +34,7 @@ import discover.vdis.enums.LF_HEALTH;
 import discover.vdis.enums.LF_POSTURE;
 import discover.vdis.enums.LF_WEAPON_STATE;
 import discover.vdis.enums.ON_OFF;
+import discover.vdis.enums.PDU_STATUS_IAI;
 import discover.vdis.enums.PRESENCE;
 import discover.vdis.enums.SEVERITY;
 import discover.vdis.enums.SLING_DAMAGE;
@@ -197,6 +198,7 @@ public class Enumerations {
             addClass(LF_POSTURE.class);
             addClass(LF_WEAPON_STATE.class);
             addClass(ON_OFF.class);
+            addClass(PDU_STATUS_IAI.class);
             addClass(PRESENCE.class);
             addClass(SEVERITY.class);
             addClass(SLING_DAMAGE.class);

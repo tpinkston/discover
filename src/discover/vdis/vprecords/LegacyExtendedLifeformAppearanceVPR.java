@@ -8,7 +8,9 @@ import discover.common.buffer.AbstractBuffer;
 import discover.vdis.common.ExtendedEquipmentLifeform;
 import discover.vdis.common.ExtendedStatus;
 import discover.vdis.common.LifeformAttributes;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.COLORS;
+import discover.vdis.enums.LF_CLOTH_SCHEME;
+import discover.vdis.enums.VP_RECORD_TYPE;
 
 /**
  * @author Tony Pinkston
@@ -65,19 +67,13 @@ public class LegacyExtendedLifeformAppearanceVPR extends ExtendedAppearanceVPR {
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
-        String title = VDIS.getDescription(VDIS.VP_RECORD_TYPE, getRecordType());
+        String title = VP_RECORD_TYPE.getValue(getRecordType()).getDescription();
 
         buffer.addTitle(title.toUpperCase());
 
-        buffer.addAttribute(
-            "Clothing",
-            VDIS.getDescription(VDIS.LF_CLOTH_SCHEME, clothing));
-        buffer.addAttribute(
-            "Primary Color",
-            VDIS.getDescription(VDIS.COLORS, primaryColor));
-        buffer.addAttribute(
-            "Secondary Color",
-            VDIS.getDescription(VDIS.COLORS, secondaryColor));
+        buffer.addAttribute("Clothing", clothing, LF_CLOTH_SCHEME.class);
+        buffer.addAttribute("Primary Color", primaryColor, COLORS.class);
+        buffer.addAttribute("Secondary Color", secondaryColor, COLORS.class);
 
         buffer.addTitle("EQUIPMENT");
         buffer.addBuffer(equipment);

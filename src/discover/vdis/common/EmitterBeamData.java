@@ -8,7 +8,8 @@ import java.util.List;
 import discover.common.Readable;
 import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.Bufferable;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.BEAM_FUNCTION;
+import discover.vdis.enums.YES_NO;
 
 /**
  * @author Tony Pinkston
@@ -47,13 +48,13 @@ public class EmitterBeamData implements Bufferable, Readable {
         buffer.addAttribute(
             "Function",
             function,
-            VDIS.BEAM_FUNCTION);
+            BEAM_FUNCTION.class);
         buffer.addAttribute("Parameter Index", beamParameterIndex);
         buffer.addAttribute("Status", (int)beamStatus);
         buffer.addAttribute(
             "High Density",
             highDensityTrackJam,
-            VDIS.YESNO);
+            YES_NO.class);
         buffer.addAttribute("Targets", targetCount);
         buffer.addAttribute("Jamming Technique", jammingTechnique);
         buffer.addAttribute("Data Length", dataLength);

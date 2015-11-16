@@ -6,7 +6,8 @@ import java.io.IOException;
 import discover.common.Common;
 import discover.common.buffer.AbstractBuffer;
 import discover.vdis.common.EntityId;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.ACK_ACKNOWLEDGE_FLAG;
+import discover.vdis.enums.ACK_RESPONSE_FLAG;
 
 /**
  * @author Tony Pinkston
@@ -48,11 +49,11 @@ public class Acknowledge extends AbstractPDU {
         buffer.addAttribute(
             "Acknowledge Flag",
             acknowledge,
-            VDIS.ACK_ACKNOWLEDGE_FLAG);
+            ACK_ACKNOWLEDGE_FLAG.class);
         buffer.addAttribute(
             "Response Flag",
             response,
-            VDIS.ACK_RESPONSE_FLAG);
+            ACK_RESPONSE_FLAG.class);
         buffer.addAttribute("Request Id", requestId);
         buffer.addBreak();
     }

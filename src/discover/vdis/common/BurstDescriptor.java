@@ -6,7 +6,8 @@ import java.io.IOException;
 import discover.common.Readable;
 import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.Bufferable;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.FUSE_BURST_DESC;
+import discover.vdis.enums.WARHEAD_BURST_DESC;
 import discover.vdis.types.EntityType;
 import discover.vdis.types.EntityTypes;
 
@@ -39,11 +40,11 @@ public class BurstDescriptor implements Bufferable, Readable {
         buffer.addAttribute(
             "Warhead",
             warhead,
-            VDIS.WARHEAD_BURST_DESC);
+            WARHEAD_BURST_DESC.class);
         buffer.addAttribute(
             "Fuse",
             fuse,
-            VDIS.FUSE_BURST_DESC);
+            FUSE_BURST_DESC.class);
         buffer.addAttribute("Quantity", quantity);
         buffer.addAttribute("Rate", rate);
         buffer.addBreak();

@@ -10,7 +10,7 @@ import discover.common.Readable;
 import discover.common.Writable;
 import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.Bufferable;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.DEAD_RECKONING;
 
 /**
  * @author Tony Pinkston
@@ -86,7 +86,7 @@ public class DeadReckoning implements Bufferable, Readable, Writable {
         buffer.addAttribute(
             "Algorithm",
             algorithm,
-            VDIS.DEAD_RECKONING);
+            DEAD_RECKONING.class);
         buffer.addAttribute("Linear Acceleration", toString(acceleration));
         buffer.addAttribute("Angular Velocity", toString(velocity));
     }

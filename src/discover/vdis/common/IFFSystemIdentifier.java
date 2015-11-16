@@ -6,7 +6,9 @@ import java.io.IOException;
 import discover.common.Readable;
 import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.Bufferable;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.IFF_SYSTEM_MODE;
+import discover.vdis.enums.IFF_SYSTEM_NAME;
+import discover.vdis.enums.IFF_SYSTEM_TYPE;
 
 /**
  * @author Tony Pinkston
@@ -34,9 +36,9 @@ public class IFFSystemIdentifier implements Bufferable, Readable {
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
-        buffer.addAttribute("Type", type, VDIS.IFF_SYSTEM_TYPE);
-        buffer.addAttribute("Name", name, VDIS.IFF_SYSTEM_NAME);
-        buffer.addAttribute("Mode", mode, VDIS.IFF_SYSTEM_MODE);
+        buffer.addAttribute("Type", type, IFF_SYSTEM_TYPE.class);
+        buffer.addAttribute("Name", name, IFF_SYSTEM_NAME.class);
+        buffer.addAttribute("Mode", mode, IFF_SYSTEM_MODE.class);
         buffer.addTitle("CHANGE/OPTIONS");
         buffer.addBuffer(options);
     }

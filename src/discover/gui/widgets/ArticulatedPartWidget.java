@@ -8,7 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import discover.gui.Utilities;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.ARTICULATED_PARTS;
+import discover.vdis.enums.ARTICULATED_PARTS_METRIC;
 import discover.vdis.vprecords.AbstractVPRecord;
 import discover.vdis.vprecords.ArticulatedPartVPR;
 
@@ -59,10 +60,10 @@ public class ArticulatedPartWidget extends AbstractVariableRecordWidget {
 
         record.setType(Utilities.getComboboxValue(
             type,
-            VDIS.ARTICULATED_PARTS));
+            ARTICULATED_PARTS.class));
         record.setMetric(Utilities.getComboboxValue(
             metric,
-            VDIS.ARTICULATED_PARTS_METRIC));
+            ARTICULATED_PARTS_METRIC.class));
 
         record.setChange(Utilities.getIntegerValue(change));
         record.setAttachmentId(Utilities.getIntegerValue(attachment));
@@ -80,11 +81,11 @@ public class ArticulatedPartWidget extends AbstractVariableRecordWidget {
 
             Utilities.setComboBoxValue(
                 type,
-                VDIS.ARTICULATED_PARTS,
+                ARTICULATED_PARTS.class,
                 part.getType());
             Utilities.setComboBoxValue(
                 metric,
-                VDIS.ARTICULATED_PARTS_METRIC,
+                ARTICULATED_PARTS_METRIC.class,
                 part.getMetric());
 
             change.setValue(part.getChange());
@@ -100,11 +101,11 @@ public class ArticulatedPartWidget extends AbstractVariableRecordWidget {
 
         Utilities.configureComboBox(
             type,
-            VDIS.ARTICULATED_PARTS,
+            ARTICULATED_PARTS.class,
             false);
         Utilities.configureComboBox(
             metric,
-            VDIS.ARTICULATED_PARTS_METRIC,
+            ARTICULATED_PARTS_METRIC.class,
             false);
 
         change.setValue(0);

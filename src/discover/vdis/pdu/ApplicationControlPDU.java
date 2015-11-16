@@ -12,7 +12,8 @@ import discover.common.buffer.AbstractBuffer;
 import discover.vdis.common.EntityId;
 import discover.vdis.datum.AbstractDatumRecord;
 import discover.vdis.datum.DatumRecordFactory;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.APP_CTRL_APPLICATION_TYPE;
+import discover.vdis.enums.APP_CTRL_CONTROL_TYPE;
 
 /**
  * @author Tony Pinkston
@@ -145,15 +146,15 @@ public class ApplicationControlPDU extends AbstractPDU implements Writable {
         buffer.addAttribute(
             "Control Type",
             controlType,
-            VDIS.APP_CTRL_CONTROL_TYPE);
+            APP_CTRL_CONTROL_TYPE.class);
         buffer.addAttribute(
             "Originating Application Type",
             originatorType,
-            VDIS.APP_CTRL_APPLICATION_TYPE);
+            APP_CTRL_APPLICATION_TYPE.class);
         buffer.addAttribute(
             "Recipient Application Type",
             recpientType,
-            VDIS.APP_CTRL_APPLICATION_TYPE);
+            APP_CTRL_APPLICATION_TYPE.class);
 
         buffer.addBreak();
         buffer.addTitle("VARIABLE DATUM RECORDS (" + records.size() + ")");

@@ -2,33 +2,21 @@ package discover.vdis.types;
 
 import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.Bufferable;
-import discover.vdis.enums.VDIS;
-import discover.vdis.enums.VDISNames;
+import discover.vdis.enums.ENT_DOMAIN;
+import discover.vdis.enums.OBJECT_GEOMETRY;
+import discover.vdis.enums.OBJECT_KIND;
 
 /**
  * @author Tony Pinkston
  */
 public class ObjectType implements Comparable<ObjectType>, Bufferable {
 
-    /**
-     * Must match the OBJECT_GEOMETRY enumeration
-     *
-     * @see VDISNames.OBJECT_GEOMETRY
-     */
-    public static enum Geometry {
-
-        UNKNOWN,
-        POINT,
-        LINEAR,
-        AREAL
-    }
-
     public final int domain;
     public final int kind;
     public final int category;
     public final int subcategory;
     public final int value;
-    public final Geometry geometry;
+    public final int geometry;
     public final String name;
     public final String description;
     public final String tuple;
@@ -39,7 +27,7 @@ public class ObjectType implements Comparable<ObjectType>, Bufferable {
         int category,
         int subcategory,
         int value,
-        Geometry geometry,
+        int geometry,
         String name,
         String description,
         String tuple) {
@@ -98,7 +86,7 @@ public class ObjectType implements Comparable<ObjectType>, Bufferable {
      */
     public String getDomain() {
 
-        return VDIS.getHandle(VDIS.DOMAIN).getDescription(domain);
+        return ENT_DOMAIN.getValue(domain).getDescription();
     }
 
     /**
@@ -106,7 +94,7 @@ public class ObjectType implements Comparable<ObjectType>, Bufferable {
      */
     public String getKind() {
 
-        return VDIS.getHandle(VDIS.OBJECT_KIND).getDescription(kind);
+        return OBJECT_KIND.getValue(kind).getDescription();
     }
 
     /**
@@ -114,7 +102,7 @@ public class ObjectType implements Comparable<ObjectType>, Bufferable {
      */
     public String getGeometry() {
 
-        return VDIS.getHandle(VDIS.OBJECT_GEOMETRY).getDescription(geometry.ordinal());
+        return OBJECT_GEOMETRY.getValue(geometry).getDescription();
     }
 
     @Override

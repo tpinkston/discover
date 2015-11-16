@@ -11,7 +11,11 @@ import discover.common.buffer.HypertextBuffer;
 import discover.vdis.common.BurstDescriptor;
 import discover.vdis.common.EmitterSystemData;
 import discover.vdis.common.EntityId;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.ANTENNA_PATTERN_TYPE;
+import discover.vdis.enums.FORCE_ID;
+import discover.vdis.enums.INPUT_SOURCE;
+import discover.vdis.enums.PDU_TYPE;
+import discover.vdis.enums.TRANSMIT_STATE;
 import discover.vdis.pdu.ActionRequest;
 import discover.vdis.pdu.ActionResponse;
 import discover.vdis.pdu.Detonation;
@@ -172,40 +176,24 @@ public class Entity {
 
     public String getForce() {
 
-        if (state == null) {
+        if (getState() == null) {
 
             return UNKNOWN;
         }
         else {
 
-            return VDIS.getDescription(
-                VDIS.FORCE_ID,
-                getState().getForceId());
+            return FORCE_ID.getValue(getState().getForceId()).getDescription();
         }
     }
 
     public String getSource() {
 
-        if (state == null) {
-
-            return UNKNOWN;
-        }
-        else {
-
-            return state.getSource();
-        }
+        return (state == null) ? UNKNOWN : state.getSource();
     }
 
     public Integer getPort() {
 
-        if (state == null) {
-
-            return 0;
-        }
-        else {
-
-            return state.getPort();
-        }
+        return (state == null) ? 0 : state.getPort();
     }
 
     public long getTime() {
@@ -227,7 +215,7 @@ public class Entity {
 
         pdu.decode(false);
 
-        if (pdu.getType() == VDIS.PDU_TYPE_ENTITY_STATE) {
+        if (pdu.getTypeEnum() == PDU_TYPE.PDU_TYPE_ENTITY_STATE) {
 
             if (state == null) {
 
@@ -244,7 +232,7 @@ public class Entity {
             getState().getAssociations(associations);
             getState().getArticulations(articulations);
         }
-        else if (pdu.getType() == VDIS.PDU_TYPE_TRANSMITTER) {
+        else if (pdu.getTypeEnum() == PDU_TYPE.PDU_TYPE_TRANSMITTER) {
 
             Transmitter transmitter = (Transmitter)pdu.getPDU();
 
@@ -268,7 +256,7 @@ public class Entity {
                 }
             }
         }
-        else if (pdu.getType() == VDIS.PDU_TYPE_ACTION_REQUEST) {
+        else if (pdu.getTypeEnum() == PDU_TYPE.PDU_TYPE_ACTION_REQUEST) {
 
             if (state != null) {
 
@@ -286,7 +274,7 @@ public class Entity {
                 }
             }
         }
-        else if (pdu.getType() == VDIS.PDU_TYPE_ACTION_RESPONSE) {
+        else if (pdu.getTypeEnum() == PDU_TYPE.PDU_TYPE_ACTION_RESPONSE) {
 
             if (state != null) {
 
@@ -302,7 +290,7 @@ public class Entity {
                 }
             }
         }
-        else if (pdu.getType() == VDIS.PDU_TYPE_FIRE) {
+        else if (pdu.getTypeEnum() == PDU_TYPE.PDU_TYPE_FIRE) {
 
             if (state != null) {
 
@@ -318,7 +306,7 @@ public class Entity {
                 }
             }
         }
-        else if (pdu.getType() == VDIS.PDU_TYPE_DETONATION) {
+        else if (pdu.getTypeEnum() == PDU_TYPE.PDU_TYPE_DETONATION) {
 
             if (state != null) {
 
@@ -348,7 +336,7 @@ public class Entity {
                 }
             }
         }
-        else if (pdu.getType() == VDIS.PDU_TYPE_EM_EMISSION) {
+        else if (pdu.getTypeEnum() == PDU_TYPE.PDU_TYPE_EM_EMISSION) {
 
             ElectromagneticEmission emission = (ElectromagneticEmission)pdu.getPDU();
 
@@ -550,15 +538,9 @@ public class Entity {
 
                 data[i][0] = Integer.toString(transmitter.getRadioId());
                 data[i][1] = transmitter.getRadioType().description;
-                data[i][2] = VDIS.getDescription(
-                    VDIS.TRANSMIT_STATE,
-                    transmitter.getTransmitState());
-                data[i][3] = VDIS.getDescription(
-                    VDIS.INPUT_SOURCE,
-                    transmitter.getInputSource());
-                data[i][4] = VDIS.getDescription(
-                    VDIS.ANTENNA_PATTERN_TYPE,
-                    transmitter.getAntennaPattern());
+                data[i][2] = TRANSMIT_STATE.getValue(transmitter.getTransmitState()).getDescription();
+                data[i][3] = INPUT_SOURCE.getValue(transmitter.getInputSource()).getDescription();
+                data[i][4] = ANTENNA_PATTERN_TYPE.getValue(transmitter.getAntennaPattern()).getDescription();
 
                 ++i;
             }

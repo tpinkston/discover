@@ -7,7 +7,7 @@ import discover.common.Common;
 import discover.common.buffer.AbstractBuffer;
 import discover.vdis.common.EntityId;
 import discover.vdis.datum.DatumSpecificationRecord;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.ACTRES_REQ_STATUS;
 
 /**
  * @author Tony Pinkston
@@ -51,7 +51,7 @@ public class ActionResponse extends AbstractPDU {
         buffer.addAttribute("Originator", originator.toString());
         buffer.addAttribute("Recipient", recipient.toString());
         buffer.addAttribute("Request Id", Long.toString(requestId));
-        buffer.addAttribute("Status", status, VDIS.ACTRES_REQ_STATUS);
+        buffer.addAttribute("Status", status, ACTRES_REQ_STATUS.class);
         buffer.addBreak();
         buffer.addBuffer(specification);
     }

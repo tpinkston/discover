@@ -10,17 +10,15 @@ import discover.vdis.common.EntityId;
 import discover.vdis.common.Location24;
 import discover.vdis.common.ObjectId;
 import discover.vdis.common.Orientation;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.FORCE_ID;
+import discover.vdis.enums.OBJECT_GEOMETRY;
 import discover.vdis.types.ObjectType;
-import discover.vdis.types.ObjectType.Geometry;
 import discover.vdis.types.ObjectTypes;
 
 /**
  * @author Tony Pinkston
  */
 public class PointObjectState extends AbstractPDU {
-
-    private static final Geometry POINT = Geometry.POINT;
 
     private ObjectId objectId = new ObjectId();
     private ObjectId referencedObjectId = new ObjectId();
@@ -64,9 +62,7 @@ public class PointObjectState extends AbstractPDU {
         buffer.addTitle("IDENTIFICATION");
         buffer.addAttribute("Object", objectId.toString());
         buffer.addAttribute("Referenced Object", referencedObjectId.toString());
-        buffer.addAttribute(
-            "Force",
-            VDIS.getDescription(VDIS.FORCE_ID, force));
+        buffer.addAttribute("Force", force, FORCE_ID.class);
         buffer.addAttribute("Requestor", requestor.toString());
         buffer.addAttribute("Receiver", receiver.toString());
         buffer.addAttribute("Update Number", update);
@@ -101,7 +97,9 @@ public class PointObjectState extends AbstractPDU {
         update = stream.readUnsignedShort();
         force = stream.readUnsignedByte();
         modifications = stream.readUnsignedByte();
-        objectType = ObjectTypes.getObjectType(POINT, stream.readInt());
+        objectType = ObjectTypes.getObjectType(
+            OBJECT_GEOMETRY.POINT.getValue(),
+            stream.readInt());
         location.read(stream);
         orientation.read(stream);
         generic.read(stream);

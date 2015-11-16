@@ -6,23 +6,19 @@ import discover.vdis.Enumerations;
 /**
  * Not auto-generated, updated manually.
  *
- * TODO: Refactor to name 'DOMAIN'
- *
  * @author tpinkston
  */
-public enum ENT_DOMAIN implements EnumInterface {
+public enum OBJECT_GEOMETRY implements EnumInterface {
 
-    OTHER(0, "Other"),
-    LAND(1, "Land"),
-    AIR(2, "Air"),
-    SURFACE(3, "Surface"),
-    SUBSURFACE(4, "Subsurface"),
-    SPACE(5, "Space");
+    UNKNOWN(0, "Unknown"),
+    POINT(1, "Point"),
+    LINEAR(1, "Linear"),
+    AREAL(1, "Areal");
 
     private final int value;
     private final String description;
 
-    private ENT_DOMAIN(int value, String description) {
+    private OBJECT_GEOMETRY(int value, String description) {
 
         this.value = value;
         this.description = description;
@@ -56,7 +52,7 @@ public enum ENT_DOMAIN implements EnumInterface {
             }
         }
 
-        return Enumerations.getUnknownValue(value, FORCE_ID.class);
+        return Enumerations.getUnknownValue(value, OBJECT_GEOMETRY.class);
     }
 }
 

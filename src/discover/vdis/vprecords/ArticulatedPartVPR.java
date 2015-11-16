@@ -6,7 +6,9 @@ import java.io.IOException;
 import java.text.NumberFormat;
 
 import discover.common.buffer.AbstractBuffer;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.ARTICULATED_PARTS;
+import discover.vdis.enums.ARTICULATED_PARTS_METRIC;
+import discover.vdis.enums.VP_RECORD_TYPE;
 
 /**
  * @author Tony Pinkston
@@ -75,17 +77,17 @@ public class ArticulatedPartVPR extends AbstractVPRecord {
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
-        String title = VDIS.getDescription(VDIS.VP_RECORD_TYPE, getRecordType());
-        String type = null;
+        String title = VP_RECORD_TYPE.getValue(getRecordType()).getDescription();
+        String typeString = null;
 
         buffer.addTitle(title.toUpperCase());
 
-        type = VDIS.getDescription(VDIS.ARTICULATED_PARTS, this.type);
-        type += " (";
-        type += VDIS.getDescription(VDIS.ARTICULATED_PARTS_METRIC, metric);
-        type += ")";
+        typeString = ARTICULATED_PARTS.getValue(type).getDescription();
+        typeString += " (";
+        typeString += ARTICULATED_PARTS_METRIC.getValue(metric).getDescription();
+        typeString += ")";
 
-        buffer.addAttribute("Type", type);
+        buffer.addAttribute("Type", typeString);
         buffer.addLabel("Change");
         buffer.addItalic(Long.toString(change));
         buffer.addLabel(", Attachment");

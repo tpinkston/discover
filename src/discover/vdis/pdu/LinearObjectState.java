@@ -6,20 +6,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import discover.common.buffer.AbstractBuffer;
+import discover.vdis.EnumInterface;
 import discover.vdis.common.EntityId;
 import discover.vdis.common.LinearSegment;
 import discover.vdis.common.ObjectId;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.FORCE_ID;
+import discover.vdis.enums.OBJECT_GEOMETRY;
 import discover.vdis.types.ObjectType;
-import discover.vdis.types.ObjectType.Geometry;
 import discover.vdis.types.ObjectTypes;
 
 /**
  * @author Tony Pinkston
  */
 public class LinearObjectState extends AbstractPDU {
-
-    private static final Geometry LINEAR = Geometry.LINEAR;
 
     private ObjectId objectId = new ObjectId();
     private ObjectId referencedObjectId = new ObjectId();
@@ -55,13 +54,12 @@ public class LinearObjectState extends AbstractPDU {
         super.toBuffer(buffer);
 
         String count = (this.count + " (" + segments.size() + ")");
+        EnumInterface forceEnum = FORCE_ID.getValue(force);
 
         buffer.addTitle("IDENTIFICATION");
         buffer.addAttribute("Object", objectId.toString());
         buffer.addAttribute("Referenced Object", referencedObjectId.toString());
-        buffer.addAttribute(
-            "Force",
-            VDIS.getDescription(VDIS.FORCE_ID, force));
+        buffer.addAttribute("Force", forceEnum.getDescription());
         buffer.addAttribute("Requestor", requestor.toString());
         buffer.addAttribute("Receiver", receiver.toString());
         buffer.addAttribute("Update Number", update);
@@ -92,7 +90,9 @@ public class LinearObjectState extends AbstractPDU {
         count = stream.readUnsignedByte();
         requestor.readPartial(stream);
         receiver.readPartial(stream);
-        objectType = ObjectTypes.getObjectType(LINEAR, stream.readInt());
+        objectType = ObjectTypes.getObjectType(
+            OBJECT_GEOMETRY.LINEAR.getValue(),
+            stream.readInt());
 
         for(int i = 0; i < count; ++i) {
 

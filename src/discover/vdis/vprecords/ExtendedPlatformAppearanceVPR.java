@@ -16,7 +16,11 @@ import discover.vdis.common.ExtendedLightsDefault;
 import discover.vdis.common.ExtendedLightsLand;
 import discover.vdis.common.ExtendedStatus;
 import discover.vdis.common.ThermalIndicators;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.COLORS;
+import discover.vdis.enums.ENT_DOMAIN;
+import discover.vdis.enums.PL_DECAL_SCHEME;
+import discover.vdis.enums.PL_PAINT_SCHEME;
+import discover.vdis.enums.VP_RECORD_TYPE;
 
 /**
  * @author Tony Pinkston
@@ -111,32 +115,24 @@ public class ExtendedPlatformAppearanceVPR extends ExtendedAppearanceVPR {
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
-        String title = VDIS.getDescription(VDIS.VP_RECORD_TYPE, getRecordType());
+        String title = VP_RECORD_TYPE.getValue(getRecordType()).getDescription();
 
-        String domain = VDIS.getDescription(VDIS.DOMAIN, getDomain());
+        String domain = ENT_DOMAIN.getValue(getDomain()).getDescription();
 
         domain = domain.toUpperCase();
 
         buffer.addTitle(title.toUpperCase());
 
-        buffer.addAttribute(
-            "Paint",
-            VDIS.getDescription(VDIS.PL_PAINT_SCHEME, paintScheme));
-        buffer.addAttribute(
-            "Decal",
-            VDIS.getDescription(VDIS.PL_DECAL_SCHEME, decalScheme));
+        buffer.addAttribute("Paint", paintScheme, PL_PAINT_SCHEME.class);
+        buffer.addAttribute("Decal", decalScheme, PL_DECAL_SCHEME.class);
 
         buffer.addTitle("PRIMARY APPEARANCE");
-        buffer.addAttribute(
-            "Color",
-            VDIS.getDescription(VDIS.COLORS, primaryColor));
+        buffer.addAttribute("Color", primaryColor, COLORS.class);
         buffer.addText("Condition ");
         buffer.addBuffer(primaryCondition);
 
         buffer.addTitle("SECONDARY APPEARANCE");
-        buffer.addAttribute(
-            "Color",
-            VDIS.getDescription(VDIS.COLORS, secondaryColor));
+        buffer.addAttribute("Color", secondaryColor, COLORS.class);
         buffer.addText("Condition ");
         buffer.addBuffer(secondaryCondition);
 

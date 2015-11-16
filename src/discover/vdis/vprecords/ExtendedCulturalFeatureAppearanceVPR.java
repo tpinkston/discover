@@ -8,7 +8,7 @@ import discover.common.buffer.AbstractBuffer;
 import discover.vdis.bits.Abstract16Bits;
 import discover.vdis.common.ExtendedEquipmentCulturalFeature;
 import discover.vdis.common.ExtendedStatus;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.VP_RECORD_TYPE;
 
 /**
  * @author Tony Pinkston
@@ -45,7 +45,7 @@ public class ExtendedCulturalFeatureAppearanceVPR extends ExtendedAppearanceVPR 
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
-        String title = VDIS.getDescription(VDIS.VP_RECORD_TYPE, getRecordType());
+        String title = VP_RECORD_TYPE.getValue(getRecordType()).getDescription();
 
         buffer.addTitle(title.toUpperCase());
         buffer.addTitle("STATUS");

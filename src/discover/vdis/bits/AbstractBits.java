@@ -12,8 +12,6 @@ import discover.common.Writable;
 import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.Bufferable;
 import discover.vdis.Enumerations;
-import discover.vdis.enums.VDIS;
-import discover.vdis.enums.VDIS.Handle;
 
 /**
  * @author Tony Pinkston
@@ -120,10 +118,5 @@ public abstract class AbstractBits implements Bufferable, Cloneable, Readable, W
                 buffer.addAttribute(bits.label, description);
             }
         }
-    }
-
-    protected static Handle getHandle(int type) {
-
-        return VDIS.getHandle(type);
     }
 }

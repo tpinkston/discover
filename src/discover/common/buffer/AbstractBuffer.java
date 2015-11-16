@@ -2,7 +2,8 @@ package discover.common.buffer;
 
 import java.text.NumberFormat;
 
-import discover.vdis.enums.VDIS;
+import discover.vdis.EnumInterface;
+import discover.vdis.Enumerations;
 
 /**
  * @author Tony Pinkston
@@ -232,9 +233,12 @@ public abstract class AbstractBuffer {
         }
     }
 
-    public void addAttribute(String name, int value, int type) {
+    public void addAttribute(
+            String name,
+            int value,
+            Class<? extends EnumInterface> type) {
 
-        String text = VDIS.getDescription(type, value);
+        String text = Enumerations.getDescription(value, type);
 
         text.concat(" [0x");
         text.concat(Integer.toHexString(value).toUpperCase());
@@ -251,9 +255,12 @@ public abstract class AbstractBuffer {
         listItemFinished();
     }
 
-    public void addListAttribute(String name, int value, int type) {
+    public void addListAttribute(
+            String name,
+            int value,
+            Class<? extends EnumInterface> type) {
 
-        String text = VDIS.getDescription(type, value);
+        String text = Enumerations.getDescription(value, type);
 
         text.concat(" [0x");
         text.concat(Integer.toHexString(value).toUpperCase());

@@ -35,9 +35,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import discover.gui.frames.DiscoverFrame;
+import discover.vdis.EnumInterface;
 import discover.vdis.common.EntityId;
-import discover.vdis.enums.VDIS;
-import discover.vdis.enums.VDIS.Handle;
 import discover.vdis.types.EntityType;
 import discover.vdis.types.ObjectType;
 
@@ -112,22 +111,23 @@ public class Utilities {
      */
     public static void configureComboBox(
         JComboBox<String> box,
-        int type,
+        Class<? extends EnumInterface> type,
         boolean includeEmpty) {
 
-        String descriptions[] = VDIS.getEnumDescriptions(type);
-
-        box.removeAllItems();
-
-        if (includeEmpty) {
-
-            box.addItem(EMPTY_ENUM);
-        }
-
-        for(String description : descriptions) {
-
-            box.addItem(description);
-        }
+// TODO configureComboBox
+//        String descriptions[] = VDIS.getEnumDescriptions(type);
+//
+//        box.removeAllItems();
+//
+//        if (includeEmpty) {
+//
+//            box.addItem(EMPTY_ENUM);
+//        }
+//
+//        for(String description : descriptions) {
+//
+//            box.addItem(description);
+//        }
     }
 
     /**
@@ -139,20 +139,21 @@ public class Utilities {
      */
     public static void setComboBoxValue(
         JComboBox<String> box,
-        int type,
+        Class<? extends EnumInterface> type,
         Integer value) {
 
-        if ((value == null) || (value.intValue() < 0)) {
-
-            // Assume item at zero index is EMPTY_ENUM
-            box.setSelectedIndex(0);
-        }
-        else {
-
-            String description = VDIS.getDescription(type, value.intValue());
-
-            box.setSelectedItem(description);
-        }
+// TODO setComboBoxValue
+//        if ((value == null) || (value.intValue() < 0)) {
+//
+//            // Assume item at zero index is EMPTY_ENUM
+//            box.setSelectedIndex(0);
+//        }
+//        else {
+//
+//            String description = VDIS.getDescription(type, value.intValue());
+//
+//            box.setSelectedItem(description);
+//        }
     }
 
     /**
@@ -162,21 +163,24 @@ public class Utilities {
      * @param type - Enumeration type.
      * @return
      */
-    public static Integer getComboboxValue(JComboBox<String> box, int type) {
+    public static Integer getComboboxValue(
+            JComboBox<String> box,
+            Class<? extends EnumInterface> type) {
 
-        Handle handle = VDIS.getHandle(type);
-        String description = (String)box.getSelectedItem();
-
-        if (description != null) {
-
-            for(int i = 0; i < handle.descriptions.length; ++i) {
-
-                if (description.equals(handle.descriptions[i])) {
-
-                    return Integer.valueOf(handle.values[i]);
-                }
-            }
-        }
+// TODO getComboboxValue
+//        Handle handle = VDIS.getHandle(type);
+//        String description = (String)box.getSelectedItem();
+//
+//        if (description != null) {
+//
+//            for(int i = 0; i < handle.descriptions.length; ++i) {
+//
+//                if (description.equals(handle.descriptions[i])) {
+//
+//                    return Integer.valueOf(handle.values[i]);
+//                }
+//            }
+//        }
 
         return null;
     }

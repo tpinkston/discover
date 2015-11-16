@@ -8,7 +8,8 @@ import java.util.List;
 import discover.common.Readable;
 import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.Bufferable;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.EMITTER_FUNCTION;
+import discover.vdis.enums.EMITTER_NAME;
 
 /**
  * @author Tony Pinkston
@@ -41,9 +42,9 @@ public class EmitterSystemData implements Bufferable, Readable {
     public void toBuffer(AbstractBuffer buffer) {
 
         buffer.addTitle("EMITTER SYSTEM");
-        buffer.addAttribute("Name", name, VDIS.EMITTER_NAME);
+        buffer.addAttribute("Name", name, EMITTER_NAME.class);
         buffer.addAttribute("Number", number);
-        buffer.addAttribute("Function", function, VDIS.EMITTER_FUNCTION);
+        buffer.addAttribute("Function", function, EMITTER_FUNCTION.class);
         buffer.addAttribute("Location", location.toString());
         buffer.addAttribute("Data Length", dataLength);
         buffer.addAttribute("Beam Count", beamCount);

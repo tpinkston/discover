@@ -4,25 +4,18 @@ import discover.vdis.EnumInterface;
 import discover.vdis.Enumerations;
 
 /**
- * Not auto-generated, updated manually.
- *
- * TODO: Refactor to name 'DOMAIN'
- *
- * @author tpinkston
+ * This file is auto-generated (see vdis.EnumGenerator)
  */
-public enum ENT_DOMAIN implements EnumInterface {
+public enum PDU_STATUS_IAI implements EnumInterface {
 
-    OTHER(0, "Other"),
-    LAND(1, "Land"),
-    AIR(2, "Air"),
-    SURFACE(3, "Surface"),
-    SUBSURFACE(4, "Subsurface"),
-    SPACE(5, "Space");
+    PDU_STATUS_IAI_NO_STATEMENT(0, "No Statement"),
+    PDU_STATUS_IAI_NOT_ATTACHED(1, "Not Attached"),
+    PDU_STATUS_IAI_ATTACHED(2, "Attached");
 
     private final int value;
     private final String description;
 
-    private ENT_DOMAIN(int value, String description) {
+    private PDU_STATUS_IAI(int value, String description) {
 
         this.value = value;
         this.description = description;
@@ -56,7 +49,7 @@ public enum ENT_DOMAIN implements EnumInterface {
             }
         }
 
-        return Enumerations.getUnknownValue(value, FORCE_ID.class);
+        return Enumerations.getUnknownValue(value, PDU_STATUS_IAI.class);
     }
 }
 

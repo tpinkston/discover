@@ -6,7 +6,9 @@ import java.io.IOException;
 import java.text.NumberFormat;
 
 import discover.common.buffer.AbstractBuffer;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.DEAD_RECKONING;
+import discover.vdis.enums.DR_TYPE;
+import discover.vdis.enums.VP_RECORD_TYPE;
 
 /**
  * @author Tony Pinkston
@@ -76,20 +78,15 @@ public class DeadReckoningVPR extends AbstractVPRecord {
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
-        String title = VDIS.getDescription(VDIS.VP_RECORD_TYPE, getRecordType());
+        String title = VP_RECORD_TYPE.getValue(getRecordType()).getDescription();
 
         String value = "(" + formatter.format(parameter[0]) +
                        ", " + formatter.format(parameter[1]) +
                        ", " + formatter.format(parameter[2]) + ")";
 
         buffer.addTitle(title.toUpperCase());
-
-        buffer.addAttribute(
-            "Type",
-            VDIS.getDescription(VDIS.DR_TYPE, type));
-        buffer.addAttribute(
-            "Algorithm",
-            VDIS.getDescription(VDIS.DEAD_RECKONING, algorithm));
+        buffer.addAttribute("Type", type, DR_TYPE.class);
+        buffer.addAttribute("Algorithm", algorithm, DEAD_RECKONING.class);
 
         buffer.addLabel("Parameter");
         buffer.addItalic(value);

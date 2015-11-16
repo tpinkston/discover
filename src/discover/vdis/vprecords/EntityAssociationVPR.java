@@ -6,7 +6,12 @@ import java.io.IOException;
 
 import discover.common.buffer.AbstractBuffer;
 import discover.vdis.common.EntityId;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.ENT_ASSOC_STATUS;
+import discover.vdis.enums.GRP_MEM_TYPE;
+import discover.vdis.enums.PHYS_ASSOC_TYPE;
+import discover.vdis.enums.PHYS_CONN_TYPE;
+import discover.vdis.enums.STATION_NAME;
+import discover.vdis.enums.VP_RECORD_TYPE;
 
 /**
  * @author Tony Pinkston
@@ -44,62 +49,67 @@ public class EntityAssociationVPR extends AbstractVPRecord {
     public int getChange() { return change; }
     public int getGroup() { return group; }
 
-    public void setStatus(int status) {
+    public void setStatus(int value) {
 
-        this.status = status;
+        status = value;
     }
 
-    public void setType(int type) {
+    public void setType(int value) {
 
-        this.type = type;
+        type = value;
     }
 
-    public void setConnection(int connection) {
+    public void setConnection(int value) {
 
-        this.connection = connection;
+        connection = value;
     }
 
-    public void setStation(int station) {
+    public void setStation(int value) {
 
-        this.station = station;
+        station = value;
     }
 
-    public void setMembership(int membership) {
+    public void setMembership(int value) {
 
-        this.membership = membership;
+        membership = value;
     }
 
-    public void setChange(int change) {
+    public void setChange(int value) {
 
-        this.change = change;
+        change = value;
     }
 
-    public void setGroup(int group) {
+    public void setGroup(int value) {
 
-        this.group = group;
+        group = value;
     }
 
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
-        String title = VDIS.getDescription(VDIS.VP_RECORD_TYPE, getRecordType());
+        String title = VP_RECORD_TYPE.getValue(getRecordType()).getDescription();
 
         buffer.addTitle(title.toUpperCase());
         buffer.addAttribute(
             "Type",
-            VDIS.getDescription(VDIS.PHYS_ASSOC_TYPE, type));
+            type,
+            PHYS_ASSOC_TYPE.class);
         buffer.addAttribute(
             "Status",
-            VDIS.getDescription(VDIS.ENT_ASSOC_STATUS, status));
+            status,
+            ENT_ASSOC_STATUS.class);
         buffer.addAttribute(
             "Connection",
-            VDIS.getDescription(VDIS.PHYS_CONN_TYPE, connection));
+            connection,
+            PHYS_CONN_TYPE.class);
         buffer.addAttribute(
             "Station",
-            VDIS.getDescription(VDIS.STATION_NAME, station));
+            station,
+            STATION_NAME.class);
         buffer.addAttribute(
             "Membership",
-            VDIS.getDescription(VDIS.GRP_MEM_TYPE, membership));
+            membership,
+            GRP_MEM_TYPE.class);
 
         buffer.addAttribute("Entity", entity.toString());
         buffer.addAttribute("Change", change);

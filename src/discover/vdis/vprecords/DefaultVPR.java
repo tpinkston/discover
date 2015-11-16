@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import discover.common.Binary;
 import discover.common.buffer.AbstractBuffer;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.VP_RECORD_TYPE;
 
 /**
  * @author Tony Pinkston
@@ -41,7 +41,7 @@ public class DefaultVPR extends AbstractVPRecord {
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
-        String title = VDIS.getDescription(VDIS.VP_RECORD_TYPE, getRecordType());
+        String title = VP_RECORD_TYPE.getValue(getRecordType()).getDescription();
 
         buffer.addTitle(title.toUpperCase());
 
