@@ -6,11 +6,9 @@ import discover.vdis.Enumerations;
 /**
  * Not auto-generated, updated manually.
  *
- * TODO: Refactor to name 'DOMAIN'
- *
  * @author Tony Pinkston
  */
-public enum ENT_DOMAIN implements EnumInterface {
+public enum DOMAIN implements EnumInterface {
 
     OTHER(0, "Other"),
     LAND(1, "Land"),
@@ -22,7 +20,7 @@ public enum ENT_DOMAIN implements EnumInterface {
     private final int value;
     private final String description;
 
-    private ENT_DOMAIN(int value, String description) {
+    private DOMAIN(int value, String description) {
 
         this.value = value;
         this.description = description;

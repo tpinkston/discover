@@ -8,7 +8,7 @@ import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.Bufferable;
 import discover.vdis.Enumerations;
 import discover.vdis.enums.COUNTRY;
-import discover.vdis.enums.ENT_DOMAIN;
+import discover.vdis.enums.DOMAIN;
 import discover.vdis.enums.ENT_KIND;
 
 /**
@@ -67,7 +67,7 @@ public class EntityType implements Comparable<EntityType>, Bufferable, Writable 
      */
     public String getDomain() {
 
-        return Enumerations.getDescription(septuple.domain, ENT_DOMAIN.class);
+        return Enumerations.getDescription(septuple.domain, DOMAIN.class);
     }
 
     /**

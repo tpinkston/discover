@@ -22,7 +22,7 @@ import discover.gui.frames.DiscoverFrame;
 import discover.gui.tabs.PDUTab.TableFilter;
 import discover.gui.tabs.PDUTab.TableModel;
 import discover.vdis.PDU;
-import discover.vdis.enums.ENT_DOMAIN;
+import discover.vdis.enums.DOMAIN;
 import discover.vdis.enums.ENT_KIND;
 import discover.vdis.enums.PDU_FAMILY;
 import discover.vdis.enums.PDU_TYPE;
@@ -142,7 +142,7 @@ public class FilterDialog implements ActionListener {
 
             Utilities.setComboBoxValue(
                 domain,
-                ENT_DOMAIN.class,
+                DOMAIN.class,
                 pdu.getEntityDomain());
             Utilities.setComboBoxValue(
                 kind,
@@ -375,7 +375,7 @@ public class FilterDialog implements ActionListener {
             filter.family);
         Utilities.setComboBoxValue(
             domain,
-            ENT_DOMAIN.class,
+            DOMAIN.class,
             filter.domain);
         Utilities.setComboBoxValue(
             kind,
@@ -422,7 +422,7 @@ public class FilterDialog implements ActionListener {
             PDU_FAMILY.class);
         filter.domain = Utilities.getComboboxValue(
             domain,
-            ENT_DOMAIN.class);
+            DOMAIN.class);
         filter.kind = Utilities.getComboboxValue(
             kind,
             ENT_KIND.class);
@@ -461,7 +461,7 @@ public class FilterDialog implements ActionListener {
             true);
         Utilities.configureComboBox(
             domain,
-            ENT_DOMAIN.class,
+            DOMAIN.class,
             true);
         Utilities.configureComboBox(
             kind,

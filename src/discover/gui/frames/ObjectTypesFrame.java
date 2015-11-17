@@ -26,7 +26,7 @@ import javax.swing.table.TableRowSorter;
 import discover.common.buffer.HypertextBuffer;
 import discover.gui.Utilities;
 import discover.gui.panels.TextPanel;
-import discover.vdis.enums.ENT_DOMAIN;
+import discover.vdis.enums.DOMAIN;
 import discover.vdis.enums.OBJECT_GEOMETRY;
 import discover.vdis.enums.OBJECT_KIND;
 import discover.vdis.types.ObjectType;
@@ -84,7 +84,7 @@ public class ObjectTypesFrame implements ActionListener, ListSelectionListener {
 
         Utilities.configureComboBox(geometries, OBJECT_GEOMETRY.class, true);
         Utilities.configureComboBox(kinds, OBJECT_KIND.class, true);
-        Utilities.configureComboBox(domains, ENT_DOMAIN.class, true);
+        Utilities.configureComboBox(domains, DOMAIN.class, true);
 
         domains.addActionListener(this);
         kinds.addActionListener(this);

@@ -2,7 +2,7 @@ package discover.vdis.types;
 
 import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.Bufferable;
-import discover.vdis.enums.ENT_DOMAIN;
+import discover.vdis.enums.DOMAIN;
 import discover.vdis.enums.OBJECT_GEOMETRY;
 import discover.vdis.enums.OBJECT_KIND;
 
@@ -86,7 +86,7 @@ public class ObjectType implements Comparable<ObjectType>, Bufferable {
      */
     public String getDomain() {
 
-        return ENT_DOMAIN.getValue(domain).getDescription();
+        return DOMAIN.getValue(domain).getDescription();
     }
 
     /**

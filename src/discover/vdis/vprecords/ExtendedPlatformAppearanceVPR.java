@@ -17,7 +17,7 @@ import discover.vdis.common.ExtendedLightsLand;
 import discover.vdis.common.ExtendedStatus;
 import discover.vdis.common.ThermalIndicators;
 import discover.vdis.enums.COLORS;
-import discover.vdis.enums.ENT_DOMAIN;
+import discover.vdis.enums.DOMAIN;
 import discover.vdis.enums.PL_DECAL_SCHEME;
 import discover.vdis.enums.PL_PAINT_SCHEME;
 import discover.vdis.enums.VP_RECORD_TYPE;
@@ -117,7 +117,7 @@ public class ExtendedPlatformAppearanceVPR extends ExtendedAppearanceVPR {
 
         String title = VP_RECORD_TYPE.getValue(getRecordType()).getDescription();
 
-        String domain = ENT_DOMAIN.getValue(getDomain()).getDescription();
+        String domain = DOMAIN.getValue(getDomain()).getDescription();
 
         domain = domain.toUpperCase();
 
