@@ -5,11 +5,24 @@ import java.io.IOException;
 
 import discover.common.Hexadecimal;
 import discover.common.buffer.AbstractBuffer;
+import discover.vdis.EnumInterface;
+import discover.vdis.Enumerations;
 import discover.vdis.common.EntityId;
 import discover.vdis.common.Location12;
 import discover.vdis.common.Location24;
 import discover.vdis.common.SpreadSpectrum;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.AMPLITUDE;
+import discover.vdis.enums.AMPLITUDE_AND_ANGLE;
+import discover.vdis.enums.ANGLE;
+import discover.vdis.enums.ANTENNA_PATTERN_TYPE;
+import discover.vdis.enums.COMBINATION;
+import discover.vdis.enums.CRYPTO_SYS;
+import discover.vdis.enums.INPUT_SOURCE;
+import discover.vdis.enums.MAJOR_MODULATION;
+import discover.vdis.enums.PULSE;
+import discover.vdis.enums.RADIO_SYSTEM;
+import discover.vdis.enums.TRANSMIT_STATE;
+import discover.vdis.enums.UNMODULATED;
 import discover.vdis.types.EntityType;
 import discover.vdis.types.EntityTypes;
 
@@ -119,26 +132,16 @@ public class Transmitter extends AbstractPDU {
         buffer.addBreak();
 
         buffer.addTitle("STATUS");
-        buffer.addAttribute(
-            "Transmit State",
-            VDIS.getDescription(VDIS.TRANSMIT_STATE, transmitState));
-        buffer.addAttribute(
-            "Input Source",
-            VDIS.getDescription(VDIS.INPUT_SOURCE, inputSource));
+        buffer.addAttribute("Transmit State", transmitState, TRANSMIT_STATE.class);
+        buffer.addAttribute("Input Source", inputSource, INPUT_SOURCE.class);
         buffer.addBreak();
 
         buffer.addTitle("SPECIFICATION");
-        buffer.addAttribute(
-            "Radio System",
-            VDIS.getDescription(VDIS.RADIO_SYSTEM, radioSystem));
+        buffer.addAttribute("Radio System", radioSystem, RADIO_SYSTEM.class);
         buffer.addAttribute("Frequency (Hz)", frequency);
         buffer.addAttribute("Bandwidth", bandwidth);
         buffer.addAttribute("Power (dBm)", power);
-        buffer.addAttribute(
-            "Antenna Pattern",
-            VDIS.getDescription(
-                VDIS.ANTENNA_PATTERN_TYPE,
-                antennaPattern));
+        buffer.addAttribute("Antenna Pattern", antennaPattern, ANTENNA_PATTERN_TYPE.class);
         buffer.addLabel("Antenna Pattern Parameters");
 
         if (antennaPatterns == null) {
@@ -162,35 +165,35 @@ public class Transmitter extends AbstractPDU {
         buffer.addTitle("MODULATION");
         buffer.addAttribute(
             "Modulation",
-            VDIS.getDescription(VDIS.MAJOR_MODULATION, majorModulation));
+            MAJOR_MODULATION.getValue(majorModulation).getDescription());
 
-        int detailType = VDIS.AMPLITUDE;
+        Class<? extends EnumInterface> detailType = AMPLITUDE.class;
 
         switch(majorModulation) {
 
             case 1: // MAJ_MOD_AMPLITUDE
-                detailType = VDIS.AMPLITUDE;
+                detailType = AMPLITUDE.class;
                 break;
             case 2: // MAJ_MOD_AMPLITUDE_AND_ANGLE
-                detailType = VDIS.AMPLITUDE_AND_ANGLE;
+                detailType = AMPLITUDE_AND_ANGLE.class;
                 break;
             case 3: // MAJ_MOD_ANGLE
-                detailType = VDIS.ANGLE;
+                detailType = ANGLE.class;
                 break;
             case 4: // MAJ_MOD_COMBINATION
-                detailType = VDIS.COMBINATION;
+                detailType = COMBINATION.class;
                 break;
             case 5: // MAJ_MOD_PULSE
-                detailType = VDIS.PULSE;
+                detailType = PULSE.class;
                 break;
             case 6: // MAJ_MOD_UNMODULATED
-                detailType = VDIS.UNMODULATED;
+                detailType = UNMODULATED.class;
                 break;
         }
 
         buffer.addAttribute(
             "Detail",
-            VDIS.getDescription(detailType, modulationDetail));
+            Enumerations.getDescription(modulationDetail, detailType));
 
         buffer.addLabel("Parameters");
 
@@ -217,9 +220,7 @@ public class Transmitter extends AbstractPDU {
         buffer.addBreak();
 
         buffer.addTitle("CRYPTO");
-        buffer.addAttribute(
-            "System",
-            VDIS.getDescription(VDIS.CRYPTO_SYS, cryptoSystem));
+        buffer.addAttribute("System", cryptoSystem, CRYPTO_SYS.class);
         buffer.addAttribute("Key", cryptoKey);
         buffer.addBreak();
     }

@@ -19,7 +19,9 @@ import discover.vdis.common.ExtendedLightsAir;
 import discover.vdis.common.ExtendedLightsLand;
 import discover.vdis.common.ExtendedStatus;
 import discover.vdis.common.ThermalIndicators;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.COLORS;
+import discover.vdis.enums.PL_DECAL_SCHEME;
+import discover.vdis.enums.PL_PAINT_SCHEME;
 import discover.vdis.vprecords.AbstractVPRecord;
 import discover.vdis.vprecords.ExtendedPlatformAppearanceVPR;
 
@@ -67,19 +69,19 @@ public class ExtendedPlatformAppearanceWidget extends AbstractVariableRecordWidg
 
         Utilities.configureComboBox(
             paint,
-            VDIS.PL_PAINT_SCHEME,
+            PL_PAINT_SCHEME.class,
             false);
         Utilities.configureComboBox(
             decal,
-            VDIS.PL_DECAL_SCHEME,
+            PL_DECAL_SCHEME.class,
             false);
         Utilities.configureComboBox(
             primaryColor,
-            VDIS.COLORS,
+            COLORS.class,
             false);
         Utilities.configureComboBox(
             secondaryColor,
-            VDIS.COLORS,
+            COLORS.class,
             false);
 
         fill();
@@ -124,16 +126,16 @@ public class ExtendedPlatformAppearanceWidget extends AbstractVariableRecordWidg
 
         record.setPaintScheme(Utilities.getComboboxValue(
             paint,
-            VDIS.PL_PAINT_SCHEME));
+            PL_PAINT_SCHEME.class));
         record.setDecalScheme(Utilities.getComboboxValue(
             decal,
-            VDIS.PL_DECAL_SCHEME));
+            PL_DECAL_SCHEME.class));
         record.setPrimaryColor(Utilities.getComboboxValue(
             primaryColor,
-            VDIS.COLORS));
+            COLORS.class));
         record.setSecondaryColor(Utilities.getComboboxValue(
             secondaryColor,
-            VDIS.COLORS));
+            COLORS.class));
 
         equipment.applyValue(record.getEquipment());
         lights.applyValue(record.getLights());
@@ -165,19 +167,19 @@ public class ExtendedPlatformAppearanceWidget extends AbstractVariableRecordWidg
 
             Utilities.setComboBoxValue(
                 paint,
-                VDIS.PL_PAINT_SCHEME,
+                PL_PAINT_SCHEME.class,
                 appearance.getPaintScheme());
             Utilities.setComboBoxValue(
                 decal,
-                VDIS.PL_DECAL_SCHEME,
+                PL_DECAL_SCHEME.class,
                 appearance.getDecalScheme());
             Utilities.setComboBoxValue(
                 primaryColor,
-                VDIS.COLORS,
+                COLORS.class,
                 appearance.getPrimaryColor());
             Utilities.setComboBoxValue(
                 secondaryColor,
-                VDIS.COLORS,
+                COLORS.class,
                 appearance.getSecondaryColor());
 
             equipment.setValue(appearance.getEquipment());

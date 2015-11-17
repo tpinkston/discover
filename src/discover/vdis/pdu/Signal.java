@@ -7,7 +7,9 @@ import discover.common.Binary;
 import discover.common.Hexadecimal;
 import discover.common.buffer.AbstractBuffer;
 import discover.vdis.common.EntityId;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.ENCODING_CLASS;
+import discover.vdis.enums.ENCODING_TYPE;
+import discover.vdis.enums.TDL_TYPE;
 
 /**
  * @author Tony Pinkston
@@ -55,15 +57,9 @@ public class Signal extends AbstractPDU {
         buffer.addBreak();
 
         buffer.addTitle("ENCODING");
-        buffer.addAttribute(
-            "Encoding Class",
-            VDIS.getDescription(VDIS.ENCODING_CLASS, encodingClass));
-        buffer.addAttribute(
-            "Encoding Type",
-            VDIS.getDescription(VDIS.ENCODING_TYPE, encodingType));
-        buffer.addAttribute(
-            "TDL Type",
-            VDIS.getDescription(VDIS.TDL_TYPE, tdlType));
+        buffer.addAttribute("Encoding Class", encodingClass, ENCODING_CLASS.class);
+        buffer.addAttribute("Encoding Type", encodingType, ENCODING_TYPE.class);
+        buffer.addAttribute("TDL Type", tdlType, TDL_TYPE.class);
         buffer.addAttribute("TDL Message Count", tdlMessages);
         buffer.addAttribute("Sample Rate", sampleRate);
         buffer.addAttribute("Samples", samples);

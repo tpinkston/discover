@@ -7,7 +7,10 @@ import discover.common.buffer.AbstractBuffer;
 import discover.vdis.common.EntityId;
 import discover.vdis.common.Location12;
 import discover.vdis.common.Location24;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.DEAD_RECKONING;
+import discover.vdis.enums.DESIG_SPOT_TYPE;
+import discover.vdis.enums.DESIG_SYSTEM_NAME;
+import discover.vdis.enums.LASER_FUNCTION;
 
 /**
  * @author Tony Pinkston
@@ -75,8 +78,8 @@ public class Designator extends AbstractPDU {
         buffer.addTitle("IDENTIFICATION");
         buffer.addAttribute("Designating Entity", entity.toString());
         buffer.addAttribute("Designated Entity", object.toString());
-        buffer.addAttribute("Spot Type", spotType, VDIS.DESIG_SPOT_TYPE);
-        buffer.addAttribute("System Name", systemName, VDIS.DESIG_SYSTEM_NAME);
+        buffer.addAttribute("Spot Type", spotType, DESIG_SPOT_TYPE.class);
+        buffer.addAttribute("System Name", systemName, DESIG_SYSTEM_NAME.class);
         buffer.addAttribute("System Number", designatorSystemNumber);
         buffer.addBreak();
 
@@ -85,8 +88,8 @@ public class Designator extends AbstractPDU {
         buffer.addAttribute("Power", designatorPower);
         buffer.addAttribute("Wave Length", designatorWavelength);
         buffer.addAttribute("Flash Rate", flashRate);
-        buffer.addAttribute("Laser Function", function, VDIS.LASER_FUNCTION);
-        buffer.addAttribute("Dead Reckoning Algorithm", algorithm, VDIS.DEAD_RECKONING);
+        buffer.addAttribute("Laser Function", function, LASER_FUNCTION.class);
+        buffer.addAttribute("Dead Reckoning Algorithm", algorithm, DEAD_RECKONING.class);
         buffer.addBreak();
 
         buffer.addTitle("SPATIAL");

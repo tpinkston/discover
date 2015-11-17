@@ -4,7 +4,7 @@ import java.io.DataInputStream;
 import java.io.IOException;
 
 import discover.common.buffer.AbstractBuffer;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.FORCE_ID;
 
 /**
  * @author Tony Pinkston
@@ -24,7 +24,7 @@ public class ForceIdentification extends AbstractDatumRecord {
 
         buffer.addAttribute("Datum Id", getDatumId());
         buffer.addAttribute("Datum Length (bytes)", getValueSizeInBytes());
-        buffer.addAttribute("Force Id", forceId, VDIS.FORCE_ID);
+        buffer.addAttribute("Force Id", forceId, FORCE_ID.class);
         buffer.addAttribute("Name", name);
     }
 

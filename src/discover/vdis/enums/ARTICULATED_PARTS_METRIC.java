@@ -6,7 +6,7 @@ import discover.vdis.Enumerations;
 /**
  * Not auto-generated, updated manually.
  *
- * @author tpinkston
+ * @author Tony Pinkston
  */
 public enum ARTICULATED_PARTS_METRIC implements EnumInterface {
 

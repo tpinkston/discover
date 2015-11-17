@@ -22,7 +22,11 @@ import discover.gui.frames.DiscoverFrame;
 import discover.gui.tabs.PDUTab.TableFilter;
 import discover.gui.tabs.PDUTab.TableModel;
 import discover.vdis.PDU;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.ENT_DOMAIN;
+import discover.vdis.enums.ENT_KIND;
+import discover.vdis.enums.PDU_FAMILY;
+import discover.vdis.enums.PDU_TYPE;
+import discover.vdis.enums.PROTOCOL_VERSION;
 
 /**
  * @author Tony Pinkston
@@ -66,8 +70,8 @@ public class FilterDialog implements ActionListener {
     private final JFormattedTextField site = Utilities.getIntegerField(null);
     private final JFormattedTextField application = Utilities.getIntegerField(null);
     private final JFormattedTextField entity = Utilities.getIntegerField(null);
-    private final List<Integer> typesIncluded = new ArrayList<Integer>();
-    private final List<Integer> typesExcluded = new ArrayList<Integer>();
+    private final List<Integer> typesIncluded = new ArrayList<Integer>(); // TODO: List<PDU_TYPE>
+    private final List<Integer> typesExcluded = new ArrayList<Integer>(); // TODO: List<PDU_TYPE>
     private final TableModel model;
     private final TableFilter filter;
 
@@ -96,7 +100,7 @@ public class FilterDialog implements ActionListener {
         TableModel model,
         TableFilter filter) {
 
-        int type = pdu.getType();
+        PDU_TYPE type = pdu.getTypeEnum();
 
         dialog.setTitle("Filter: " + title);
         this.model = model;
@@ -106,16 +110,16 @@ public class FilterDialog implements ActionListener {
 
         port.setValue(pdu.getPort());
         exercise.setValue(pdu.getExercise());
-        typesIncluded.add(type);
+        typesIncluded.add(type.getValue());
         included.setText("1");
 
         Utilities.setComboBoxValue(
             protocol,
-            VDIS.PROTOCOL_VERSION,
+            PROTOCOL_VERSION.class,
             pdu.getProtocol());
         Utilities.setComboBoxValue(
             family,
-            VDIS.PDU_FAMILY,
+            PDU_FAMILY.class,
             pdu.getFamily());
 
         if (pdu.hasInitiator()) {
@@ -130,7 +134,7 @@ public class FilterDialog implements ActionListener {
             request.setValue(pdu.getRequestId());
         }
 
-        if (type == VDIS.PDU_TYPE_ENTITY_STATE) {
+        if (type == PDU_TYPE.PDU_TYPE_ENTITY_STATE) {
 
             setEntityParametersEditable(true);
 
@@ -138,11 +142,11 @@ public class FilterDialog implements ActionListener {
 
             Utilities.setComboBoxValue(
                 domain,
-                VDIS.DOMAIN,
+                ENT_DOMAIN.class,
                 pdu.getEntityDomain());
             Utilities.setComboBoxValue(
                 kind,
-                VDIS.ENT_KIND,
+                ENT_KIND.class,
                 pdu.getEntityKind());
         }
         else {
@@ -252,7 +256,7 @@ public class FilterDialog implements ActionListener {
 
             setEntityParametersEditable(false);
         }
-        else if (typesIncluded.contains(VDIS.PDU_TYPE_ENTITY_STATE)) {
+        else if (typesIncluded.contains(PDU_TYPE.PDU_TYPE_ENTITY_STATE.getValue())) {
 
             setEntityParametersEditable(true);
         }
@@ -363,22 +367,22 @@ public class FilterDialog implements ActionListener {
 
         Utilities.setComboBoxValue(
             protocol,
-            VDIS.PROTOCOL_VERSION,
+            PROTOCOL_VERSION.class,
             filter.protocol);
         Utilities.setComboBoxValue(
             family,
-            VDIS.PDU_FAMILY,
+            PDU_FAMILY.class,
             filter.family);
         Utilities.setComboBoxValue(
             domain,
-            VDIS.DOMAIN,
+            ENT_DOMAIN.class,
             filter.domain);
         Utilities.setComboBoxValue(
             kind,
-            VDIS.ENT_KIND,
+            ENT_KIND.class,
             filter.kind);
 
-        if (!filter.includedTypes.contains(VDIS.PDU_TYPE_ENTITY_STATE)) {
+        if (!filter.includedTypes.contains(PDU_TYPE.PDU_TYPE_ENTITY_STATE.getValue())) {
 
             setEntityParametersEditable(false);
         }
@@ -412,16 +416,16 @@ public class FilterDialog implements ActionListener {
 
         filter.protocol = Utilities.getComboboxValue(
             protocol,
-            VDIS.PROTOCOL_VERSION);
+            PROTOCOL_VERSION.class);
         filter.family = Utilities.getComboboxValue(
             family,
-            VDIS.PDU_FAMILY);
+            PDU_FAMILY.class);
         filter.domain = Utilities.getComboboxValue(
             domain,
-            VDIS.DOMAIN);
+            ENT_DOMAIN.class);
         filter.kind = Utilities.getComboboxValue(
             kind,
-            VDIS.ENT_KIND);
+            ENT_KIND.class);
 
         filter.includedTypes.clear();
         filter.includedTypes.addAll(typesIncluded);
@@ -449,19 +453,19 @@ public class FilterDialog implements ActionListener {
 
         Utilities.configureComboBox(
             protocol,
-            VDIS.PROTOCOL_VERSION,
+            PROTOCOL_VERSION.class,
             true);
         Utilities.configureComboBox(
             family,
-            VDIS.PDU_FAMILY,
+            PDU_FAMILY.class,
             true);
         Utilities.configureComboBox(
             domain,
-            VDIS.DOMAIN,
+            ENT_DOMAIN.class,
             true);
         Utilities.configureComboBox(
             kind,
-            VDIS.ENT_KIND,
+            ENT_KIND.class,
             true);
 
         clear.setActionCommand(CLEAR);

@@ -6,7 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import discover.gui.Utilities;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.OFFSET_TYPE;
 import discover.vdis.vprecords.AbstractVPRecord;
 import discover.vdis.vprecords.EntityAssociationVPR;
 import discover.vdis.vprecords.EntityOffsetVPR;
@@ -25,10 +25,7 @@ public class EntityOffsetRecordWidget extends AbstractVariableRecordWidget {
 
         super("Entity Offset");
 
-        Utilities.configureComboBox(
-            type,
-            VDIS.OFFSET_TYPE,
-            false);
+        Utilities.configureComboBox(type, OFFSET_TYPE.class, false);
 
         fill();
     }
@@ -40,9 +37,7 @@ public class EntityOffsetRecordWidget extends AbstractVariableRecordWidget {
 
         record = new EntityOffsetVPR();
 
-        record.setType(Utilities.getComboboxValue(
-            type,
-            VDIS.OFFSET_TYPE));
+        record.setType(Utilities.getComboboxValue(type, OFFSET_TYPE.class));
 
         offset.getValue(record.getOffset());
 
@@ -56,10 +51,7 @@ public class EntityOffsetRecordWidget extends AbstractVariableRecordWidget {
 
             EntityOffsetVPR offset = (EntityOffsetVPR)record;
 
-            Utilities.setComboBoxValue(
-                type,
-                VDIS.OFFSET_TYPE,
-                offset.getType());
+            Utilities.setComboBoxValue(type, OFFSET_TYPE.class, offset.getType());
 
             this.offset.setValue(offset.getOffset());
         }

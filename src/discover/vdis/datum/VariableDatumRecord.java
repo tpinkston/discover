@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import discover.common.Hexadecimal;
 import discover.common.buffer.AbstractBuffer;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.DATUM_IDS;
 
 /**
  * @author Tony Pinkston
@@ -22,7 +22,7 @@ public class VariableDatumRecord extends AbstractDatumRecord {
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
-        buffer.addAttribute("Datum Id", getDatumId(), VDIS.DATUM_IDS);
+        buffer.addAttribute("Datum Id", getDatumId(), DATUM_IDS.class);
         buffer.addAttribute("Datum Length (bytes)", getValueSizeInBytes());
         buffer.addLabel("Datum Value");
 

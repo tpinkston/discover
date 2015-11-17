@@ -44,7 +44,6 @@ import discover.gui.Utilities;
 import discover.vdis.Entity;
 import discover.vdis.PDU;
 import discover.vdis.common.EntityId;
-import discover.vdis.enums.VDIS;
 import discover.vdis.types.EntityType;
 
 /**
@@ -730,31 +729,32 @@ public class EntityTrackerFrame
         }
 
         @Override
+        @SuppressWarnings("incomplete-switch")
         public void run() {
 
             for(PDU pdu : list) {
 
-                switch(pdu.getType()) {
+                switch(pdu.getTypeEnum()) {
 
-                    case VDIS.PDU_TYPE_ENTITY_STATE:
+                    case PDU_TYPE_ENTITY_STATE:
                         processEntityState(pdu);
                         break;
-                    case VDIS.PDU_TYPE_ACTION_REQUEST:
+                    case PDU_TYPE_ACTION_REQUEST:
                         processActionRequest(pdu);
                         break;
-                    case VDIS.PDU_TYPE_ACTION_RESPONSE:
+                    case PDU_TYPE_ACTION_RESPONSE:
                         processActionResponse(pdu);
                         break;
-                    case VDIS.PDU_TYPE_TRANSMITTER:
+                    case PDU_TYPE_TRANSMITTER:
                         processTransmitter(pdu);
                         break;
-                    case VDIS.PDU_TYPE_FIRE:
+                    case PDU_TYPE_FIRE:
                         processFire(pdu);
                         break;
-                    case VDIS.PDU_TYPE_DETONATION:
+                    case PDU_TYPE_DETONATION:
                         processDetonation(pdu);
                         break;
-                    case VDIS.PDU_TYPE_EM_EMISSION:
+                    case PDU_TYPE_EM_EMISSION:
                         processEmission(pdu);
                         break;
                 }

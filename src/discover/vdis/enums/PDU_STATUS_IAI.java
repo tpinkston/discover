@@ -4,7 +4,9 @@ import discover.vdis.EnumInterface;
 import discover.vdis.Enumerations;
 
 /**
- * This file is auto-generated (see vdis.EnumGenerator)
+ * Not auto-generated, updated manually.
+ *
+ * @author Tony Pinkston
  */
 public enum PDU_STATUS_IAI implements EnumInterface {
 

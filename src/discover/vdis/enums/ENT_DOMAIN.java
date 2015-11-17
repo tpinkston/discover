@@ -8,7 +8,7 @@ import discover.vdis.Enumerations;
  *
  * TODO: Refactor to name 'DOMAIN'
  *
- * @author tpinkston
+ * @author Tony Pinkston
  */
 public enum ENT_DOMAIN implements EnumInterface {
 

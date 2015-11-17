@@ -6,7 +6,7 @@ import discover.vdis.Enumerations;
 /**
  * Not auto-generated, updated manually.
  *
- * @author tpinkston
+ * @author Tony Pinkston
  */
 public enum AIR_SMOKE implements EnumInterface {
 

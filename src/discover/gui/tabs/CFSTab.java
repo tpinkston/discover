@@ -36,7 +36,7 @@ import discover.vdis.common.PDUHeader;
 import discover.vdis.datum.AbstractDatumRecord;
 import discover.vdis.datum.CommandFromSimulator;
 import discover.vdis.datum.DatumSpecificationRecord;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.PDU_TYPE;
 import discover.vdis.pdu.ActionRequest;
 import discover.vdis.pdu.ActionResponse;
 import discover.vdis.pdu.EntityState;
@@ -153,7 +153,7 @@ public class CFSTab
 
         for(final PDU pdu : list) {
 
-            if (pdu.getType() == VDIS.PDU_TYPE_ENTITY_STATE) {
+            if (pdu.getTypeEnum() == PDU_TYPE.PDU_TYPE_ENTITY_STATE) {
 
                 pdu.getEntityId(entityId);
 
@@ -166,7 +166,7 @@ public class CFSTab
                     }
                 }
             }
-            else if (pdu.getType() == VDIS.PDU_TYPE_ACTION_RESPONSE) {
+            else if (pdu.getTypeEnum() == PDU_TYPE.PDU_TYPE_ACTION_RESPONSE) {
 
                 if (pdu.getPort() == data.safPort) {
 
@@ -337,7 +337,7 @@ public class CFSTab
 
             header.setProtocol(data.protocol);
             header.setExercise(data.safExercise);
-            header.setType(VDIS.PDU_TYPE_ACTION_REQUEST);
+            header.setType(PDU_TYPE.PDU_TYPE_ACTION_REQUEST.getValue());
             header.setFamily(5); // PDU_FAMILY_SIMULATION_MANAGEMENT
             header.setTimestamp(entityState.getHeader().getTimestamp());
             header.setLength(BASE_LENGTH + getTotalMarkingLength());
@@ -407,9 +407,7 @@ public class CFSTab
 
                         setStatus(
                             "Action Response Status: " +
-                            VDIS.getDescription(
-                                VDIS.ACTRES_REQ_STATUS,
-                                response.getStatus()));
+                            response.getStatusEnum().getDescription());
 
                         // ACTRES_REQ_COMPLETE?
                         if (response.getStatus() == 4) {

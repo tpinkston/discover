@@ -15,7 +15,7 @@ import javax.swing.table.TableColumn;
 
 import discover.gui.Utilities;
 import discover.gui.frames.DiscoverFrame;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.PDU_TYPE;
 
 /**
  * @author Tony Pinkston
@@ -63,9 +63,7 @@ public class PDUTypeDialog implements ActionListener {
         close.setActionCommand(CLOSE);
         close.addActionListener(this);
 
-        int values[] = VDIS.getEnumValues(VDIS.PDU_TYPE);
-
-        for(int type : values) {
+        for(PDU_TYPE type : PDU_TYPE.values()) {
 
             TableRow row = new TableRow(type);
 
@@ -134,7 +132,7 @@ public class PDUTypeDialog implements ActionListener {
 
             if (row.selected) {
 
-                list.add(row.type);
+                list.add(row.type.getValue());
             }
         }
     }
@@ -157,14 +155,12 @@ public class PDUTypeDialog implements ActionListener {
 
     class TableRow {
 
-        public final int type;
-        public final String description;
+        public final PDU_TYPE type;
         public Boolean selected;
 
-        public TableRow(int type) {
+        public TableRow(PDU_TYPE type) {
 
             this.type = type;
-            description = VDIS.getDescription(VDIS.PDU_TYPE, type);
         }
     }
 
@@ -223,7 +219,7 @@ public class PDUTypeDialog implements ActionListener {
 
             if (column == 0) {
 
-               return tableRow.description;
+               return tableRow.type.getDescription();
             }
             else {
 

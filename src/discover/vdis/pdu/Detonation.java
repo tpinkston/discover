@@ -9,7 +9,7 @@ import discover.vdis.common.EntityId;
 import discover.vdis.common.Location12;
 import discover.vdis.common.Location24;
 import discover.vdis.common.Velocity;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.DETONATION_RESULT;
 
 /**
  * @author Tony Pinkston
@@ -78,10 +78,7 @@ public class Detonation extends AbstractPDU {
         buffer.addBreak();
 
         buffer.addBuffer(burst);
-        buffer.addAttribute(
-            "Result",
-            result,
-            VDIS.DETONATION_RESULT);
+        buffer.addAttribute("Result", result, DETONATION_RESULT.class);
     }
 
     @Override

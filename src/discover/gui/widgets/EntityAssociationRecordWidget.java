@@ -7,7 +7,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import discover.gui.Utilities;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.ENT_ASSOC_STATUS;
+import discover.vdis.enums.GRP_MEM_TYPE;
+import discover.vdis.enums.PHYS_ASSOC_TYPE;
+import discover.vdis.enums.PHYS_CONN_TYPE;
+import discover.vdis.enums.STATION_NAME;
 import discover.vdis.vprecords.AbstractVPRecord;
 import discover.vdis.vprecords.EntityAssociationVPR;
 
@@ -33,23 +37,23 @@ public class EntityAssociationRecordWidget extends AbstractVariableRecordWidget 
 
         Utilities.configureComboBox(
             type,
-            VDIS.PHYS_ASSOC_TYPE,
+            PHYS_ASSOC_TYPE.class,
             false);
         Utilities.configureComboBox(
             status,
-            VDIS.ENT_ASSOC_STATUS,
+            ENT_ASSOC_STATUS.class,
             false);
         Utilities.configureComboBox(
             connection,
-            VDIS.PHYS_CONN_TYPE,
+            PHYS_CONN_TYPE.class,
             false);
         Utilities.configureComboBox(
             station,
-            VDIS.STATION_NAME,
+            STATION_NAME.class,
             false);
         Utilities.configureComboBox(
             membership,
-            VDIS.GRP_MEM_TYPE,
+            GRP_MEM_TYPE.class,
             false);
 
         fill();
@@ -70,19 +74,19 @@ public class EntityAssociationRecordWidget extends AbstractVariableRecordWidget 
 
         record.setType(Utilities.getComboboxValue(
             type,
-            VDIS.PHYS_ASSOC_TYPE));
+            PHYS_ASSOC_TYPE.class));
         record.setStatus(Utilities.getComboboxValue(
             status,
-            VDIS.ENT_ASSOC_STATUS));
+            ENT_ASSOC_STATUS.class));
         record.setConnection(Utilities.getComboboxValue(
             connection,
-            VDIS.PHYS_CONN_TYPE));
+            PHYS_CONN_TYPE.class));
         record.setStation(Utilities.getComboboxValue(
             station,
-            VDIS.STATION_NAME));
+            STATION_NAME.class));
         record.setMembership(Utilities.getComboboxValue(
             membership,
-            VDIS.GRP_MEM_TYPE));
+            GRP_MEM_TYPE.class));
 
         record.setChange(Utilities.getIntegerValue(change));
         record.setGroup(Utilities.getIntegerValue(group));
@@ -101,23 +105,23 @@ public class EntityAssociationRecordWidget extends AbstractVariableRecordWidget 
 
             Utilities.setComboBoxValue(
                 type,
-                VDIS.PHYS_ASSOC_TYPE,
+                PHYS_ASSOC_TYPE.class,
                 association.getType());
             Utilities.setComboBoxValue(
                 status,
-                VDIS.ENT_ASSOC_STATUS,
+                ENT_ASSOC_STATUS.class,
                 association.getStatus());
             Utilities.setComboBoxValue(
                 connection,
-                VDIS.PHYS_CONN_TYPE,
+                PHYS_CONN_TYPE.class,
                 association.getConnection());
             Utilities.setComboBoxValue(
                 station,
-                VDIS.STATION_NAME,
+                STATION_NAME.class,
                 association.getStation());
             Utilities.setComboBoxValue(
                 membership,
-                VDIS.GRP_MEM_TYPE,
+                GRP_MEM_TYPE.class,
                 association.getMembership());
 
             change.setValue(association.getChange());

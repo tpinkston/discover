@@ -38,9 +38,10 @@ import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.Bufferable;
 import discover.common.buffer.HypertextBuffer;
 import discover.gui.Utilities;
+import discover.vdis.Enumerations;
 import discover.vdis.PDU;
 import discover.vdis.common.EntityId;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.PDU_TYPE;
 
 /**
  * @author Tony Pinkston
@@ -499,6 +500,7 @@ public class SiteMapFrame
      */
     abstract class TreeNode extends DefaultMutableTreeNode implements Bufferable {
 
+        // TODO: Use PDU_TYPE as key...
         private final Map<Integer, Integer> published;
         private final int number;
 
@@ -695,7 +697,7 @@ public class SiteMapFrame
                 total += count;
 
                 buffer.addAttribute(
-                    VDIS.getDescription(VDIS.PDU_TYPE, type),
+                    Enumerations.getDescription(type, PDU_TYPE.class),
                     count);
             }
 

@@ -8,17 +8,19 @@ import discover.vdis.Enumerations;
  *
  * @author Tony Pinkston
  */
-public enum LAND_SMOKE implements EnumInterface {
+public enum FROZEN_BEHAVIOR implements EnumInterface {
 
-    NONE(0, "No Damage"),
-    RISING(1, "Rising Smoke"),
-    ENGINE(2, "Emitting Engine Smoke"),
-    ENGINE_RISING(3, "Emitting Engine Smoke and Rising Smoke");
+    RUN_INTERNAL_SIMULATION_CLOCK(0, "Run Internal Simulation Clock"),
+    TRANSMIT_PDUS(1, "Transmit PDUs"),
+    UPDATE_MODELS_OF_OTHER_ENTITIES(2, "Update Models of Other Entities"),
+    CONTINUE_TRANSMIT_PDUS(3, "Continue Transmit PDU"),
+    CEASE_MODELS_OF_OTHER_ENTITIES(4, "Cease Update Models of Other Entities"),
+    CONTINUE_MODELS_OF_OTHER_ENTITIES(5, "Continue Update Models of Other Entities");
 
     private final int value;
     private final String description;
 
-    private LAND_SMOKE(int value, String description) {
+    private FROZEN_BEHAVIOR(int value, String description) {
 
         this.value = value;
         this.description = description;
@@ -52,7 +54,7 @@ public enum LAND_SMOKE implements EnumInterface {
             }
         }
 
-        return Enumerations.getUnknownValue(value, LAND_SMOKE.class);
+        return Enumerations.getUnknownValue(value, FROZEN_BEHAVIOR.class);
     }
 }
 

@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import discover.common.buffer.AbstractBuffer;
 import discover.vdis.common.EntityId;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.RECEIVER;
 
 /**
  * @author Tony Pinkston
@@ -45,9 +45,7 @@ public class Receiver extends AbstractPDU {
         buffer.addBreak();
 
         buffer.addTitle("RECEIVER");
-        buffer.addAttribute(
-            "State",
-            VDIS.getDescription(VDIS.RECEIVER, receiverState));
+        buffer.addAttribute("State", receiverState, RECEIVER.class);
         buffer.addAttribute("Power (dBm)", power);
         buffer.addBreak();
 

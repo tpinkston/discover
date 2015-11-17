@@ -8,7 +8,8 @@ import java.util.List;
 
 import discover.common.buffer.AbstractBuffer;
 import discover.vdis.common.EntityId;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.DATUM_IDS;
+import discover.vdis.enums.HOOK_TYPE;
 
 /**
  * @author Tony Pinkston
@@ -40,11 +41,11 @@ public class SlingLoadCapability extends AbstractDatumRecord {
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
-        buffer.addAttribute("Datum Id", getDatumId(), VDIS.DATUM_IDS);
+        buffer.addAttribute("Datum Id", getDatumId(), DATUM_IDS.class);
         buffer.addAttribute("Datum Length (bytes)", Integer.toString(getValueSizeInBytes()));
         buffer.addAttribute("Payload", payload.toString());
         buffer.addAttribute("Carrier", carrier.toString());
-        buffer.addAttribute("Hook Type", hookType, VDIS.HOOK_TYPE);
+        buffer.addAttribute("Hook Type", hookType, HOOK_TYPE.class);
         buffer.addAttribute("Drag Coefficient", dragCoeffficient);
         buffer.addAttribute("Current Mass (kg)", currentMass);
         buffer.addLabel("Lines Needed");

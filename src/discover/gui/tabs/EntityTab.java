@@ -48,7 +48,8 @@ import discover.vdis.appearance.DefaultAppearance;
 import discover.vdis.common.EntityCapabilities;
 import discover.vdis.common.PDUHeader;
 import discover.vdis.common.Timestamp;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.FORCE_ID;
+import discover.vdis.enums.PROTOCOL_VERSION;
 import discover.vdis.pdu.EntityState;
 import discover.vdis.types.EntityType;
 
@@ -396,7 +397,7 @@ public class EntityTab extends Tab implements ActionListener {
 
         state.setForceId(Utilities.getComboboxValue(
             force,
-            VDIS.FORCE_ID));
+            FORCE_ID.class));
 
         state.setEntityType(primary.getValue());
         state.setAlternateType(alternative.getValue());
@@ -413,7 +414,7 @@ public class EntityTab extends Tab implements ActionListener {
         header.setExercise(Utilities.getIntegerValue(exercise));
         header.setProtocol(Utilities.getComboboxValue(
             protocol,
-            VDIS.PROTOCOL_VERSION));
+            PROTOCOL_VERSION.class));
 
         // Must be done AFTER records have been set...
         header.setLength(state.calculateLength());
@@ -527,11 +528,11 @@ public class EntityTab extends Tab implements ActionListener {
 
         Utilities.setComboBoxValue(
             protocol,
-            VDIS.PROTOCOL_VERSION,
+            PROTOCOL_VERSION.class,
             Integer.valueOf(state.getHeader().getProtocol()));
         Utilities.setComboBoxValue(
             force,
-            VDIS.FORCE_ID,
+            FORCE_ID.class,
             Integer.valueOf(state.getForceId()));
     }
 
@@ -568,16 +569,16 @@ public class EntityTab extends Tab implements ActionListener {
 
         Utilities.configureComboBox(
             protocol,
-            VDIS.PROTOCOL_VERSION,
+            PROTOCOL_VERSION.class,
             false);
         Utilities.setComboBoxValue(
             protocol,
-            VDIS.PROTOCOL_VERSION,
+            PROTOCOL_VERSION.class,
             7); // PTCL_VER_IEEE_1278_1_200X_DRAFT (V-DIS)
 
         Utilities.configureComboBox(
             force,
-            VDIS.FORCE_ID,
+            FORCE_ID.class,
             false);
     }
 

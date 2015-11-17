@@ -26,7 +26,9 @@ import javax.swing.table.TableRowSorter;
 import discover.common.buffer.HypertextBuffer;
 import discover.gui.Utilities;
 import discover.gui.panels.TextPanel;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.COUNTRY;
+import discover.vdis.enums.ENT_DOMAIN;
+import discover.vdis.enums.ENT_KIND;
 import discover.vdis.types.EntityType;
 import discover.vdis.types.EntityTypes;
 
@@ -77,9 +79,9 @@ public class EntityTypesFrame
 
         types = EntityTypes.getValues();
 
-        Utilities.configureComboBox(countries, VDIS.ENT_CNTRY, true);
-        Utilities.configureComboBox(kinds, VDIS.ENT_KIND, true);
-        Utilities.configureComboBox(domains, VDIS.DOMAIN, true);
+        Utilities.configureComboBox(countries, COUNTRY.class, true);
+        Utilities.configureComboBox(kinds, ENT_KIND.class, true);
+        Utilities.configureComboBox(domains, ENT_DOMAIN.class, true);
 
         domains.addActionListener(this);
         kinds.addActionListener(this);

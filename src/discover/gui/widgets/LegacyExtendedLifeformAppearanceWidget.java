@@ -9,7 +9,8 @@ import discover.gui.Utilities;
 import discover.vdis.common.ExtendedEquipmentLifeform;
 import discover.vdis.common.ExtendedStatus;
 import discover.vdis.common.LifeformAttributes;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.COLORS;
+import discover.vdis.enums.LF_CLOTH_SCHEME;
 import discover.vdis.vprecords.AbstractVPRecord;
 import discover.vdis.vprecords.LegacyExtendedLifeformAppearanceVPR;
 
@@ -34,18 +35,9 @@ public class LegacyExtendedLifeformAppearanceWidget extends AbstractVariableReco
         equipment = new BitRecordWidget(new ExtendedEquipmentLifeform());
         attributes = new BitRecordWidget(new LifeformAttributes());
 
-        Utilities.configureComboBox(
-            clothing,
-            VDIS.LF_CLOTH_SCHEME,
-            false);
-        Utilities.configureComboBox(
-            primaryColor,
-            VDIS.COLORS,
-            false);
-        Utilities.configureComboBox(
-            secondaryColor,
-            VDIS.COLORS,
-            false);
+        Utilities.configureComboBox(clothing, LF_CLOTH_SCHEME.class, false);
+        Utilities.configureComboBox(primaryColor, COLORS.class, false);
+        Utilities.configureComboBox(secondaryColor, COLORS.class, false);
 
         fill();
     }
@@ -59,13 +51,13 @@ public class LegacyExtendedLifeformAppearanceWidget extends AbstractVariableReco
 
         record.setClothing(Utilities.getComboboxValue(
             clothing,
-            VDIS.LF_CLOTH_SCHEME));
+            LF_CLOTH_SCHEME.class));
         record.setPrimaryColor(Utilities.getComboboxValue(
             primaryColor,
-            VDIS.COLORS));
+            COLORS.class));
         record.setSecondaryColor(Utilities.getComboboxValue(
             secondaryColor,
-            VDIS.COLORS));
+            COLORS.class));
 
         status.applyValue(record.getStatus());
         equipment.applyValue(record.getEquipment());
@@ -85,15 +77,15 @@ public class LegacyExtendedLifeformAppearanceWidget extends AbstractVariableReco
 
             Utilities.setComboBoxValue(
                 clothing,
-                VDIS.LF_CLOTH_SCHEME,
+                LF_CLOTH_SCHEME.class,
                 appearance.getClothing());
             Utilities.setComboBoxValue(
                 primaryColor,
-                VDIS.COLORS,
+                COLORS.class,
                 appearance.getPrimaryColor());
             Utilities.setComboBoxValue(
                 secondaryColor,
-                VDIS.COLORS,
+                COLORS.class,
                 appearance.getSecondaryColor());
 
             equipment.setValue(appearance.getEquipment());

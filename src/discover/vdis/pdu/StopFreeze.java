@@ -7,7 +7,8 @@ import discover.common.Common;
 import discover.common.buffer.AbstractBuffer;
 import discover.vdis.common.ClockTime;
 import discover.vdis.common.EntityId;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.FROZEN_BEHAVIOR;
+import discover.vdis.enums.SF_REASON_CODES;
 
 /**
  * @author Tony Pinkston
@@ -44,12 +45,8 @@ public class StopFreeze extends AbstractPDU {
         buffer.addTitle("IDENTIFICATION");
         buffer.addAttribute("Originator", originator.toString());
         buffer.addAttribute("Recipient", recipient.toString());
-        buffer.addAttribute(
-            "Reason",
-            VDIS.getDescription(VDIS.SF_REASON_CODES, reason));
-        buffer.addAttribute(
-            "Frozen Behavior",
-            VDIS.getDescription(VDIS.FROZEN_BEHAVIOR, behavior));
+        buffer.addAttribute("Reason", reason, SF_REASON_CODES.class);
+        buffer.addAttribute("Frozen Behavior", behavior, FROZEN_BEHAVIOR.class);
         buffer.addAttribute("Request Id", requestId);
         buffer.addBreak();
 

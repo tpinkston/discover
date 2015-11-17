@@ -10,7 +10,7 @@ import discover.common.Readable;
 import discover.common.Writable;
 import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.Bufferable;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.DATUM_IDS;
 
 /**
  * @author Tony Pinkston
@@ -59,7 +59,7 @@ public class FixedDatumRecord implements Bufferable, Readable, Writable {
         value.append(Hexadecimal.toString32(datumValue));
         value.append(")");
 
-        buffer.addAttribute("Datum Id", datumId, VDIS.DATUM_IDS);
+        buffer.addAttribute("Datum Id", datumId, DATUM_IDS.class);
         buffer.addAttribute("Datum Value", value.toString());
     }
 

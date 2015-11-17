@@ -6,7 +6,7 @@ import discover.vdis.Enumerations;
 /**
  * Not auto-generated, updated manually.
  *
- * @author tpinkston
+ * @author Tony Pinkston
  */
 public enum LF_CAMOUFLAGE_TYPE implements EnumInterface {
 

@@ -7,7 +7,7 @@ import discover.common.Common;
 import discover.common.buffer.AbstractBuffer;
 import discover.vdis.common.EntityId;
 import discover.vdis.common.Timestamp;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.DATUM_IDS;
 
 /**
  * @author Tony Pinkston
@@ -59,7 +59,7 @@ public class DataQuery extends AbstractPDU {
             buffer.addAttribute(
                 Integer.toString(i + 1),
                 fixed[i],
-                VDIS.DATUM_IDS);
+                DATUM_IDS.class);
         }
 
         buffer.addBreak();
@@ -75,7 +75,7 @@ public class DataQuery extends AbstractPDU {
             buffer.addAttribute(
                 Integer.toString(i + 1),
                 variable[i],
-                VDIS.DATUM_IDS);
+                DATUM_IDS.class);
         }
     }
 

@@ -18,7 +18,7 @@ import discover.vdis.common.Location24;
 import discover.vdis.common.Orientation;
 import discover.vdis.common.PDUHeader;
 import discover.vdis.common.Velocity;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.FORCE_ID;
 import discover.vdis.marking.EntityMarking;
 import discover.vdis.types.EntityType;
 import discover.vdis.types.EntityTypes;
@@ -223,7 +223,7 @@ public class EntityState extends AbstractPDU implements Writable {
 
         buffer.addTitle("IDENTIFICATION");
         buffer.addAttribute("Entity", entityId.toString());
-        buffer.addAttribute("Force", forceId, VDIS.FORCE_ID);
+        buffer.addAttribute("Force", forceId, FORCE_ID.class);
         buffer.addTitle("MARKING");
         buffer.addBuffer(marking);
         buffer.addBreak();

@@ -20,6 +20,7 @@ import discover.vdis.enums.APP_CTRL_CONTROL_TYPE;
 import discover.vdis.enums.ARTICULATED_PARTS_METRIC;
 import discover.vdis.enums.ENT_DOMAIN;
 import discover.vdis.enums.ENT_KIND;
+import discover.vdis.enums.FROZEN_BEHAVIOR;
 import discover.vdis.enums.HOIST_STATUS;
 import discover.vdis.enums.IED_PRESENCE;
 import discover.vdis.enums.LAND_SMOKE;
@@ -184,6 +185,7 @@ public class Enumerations {
             addClass(ARTICULATED_PARTS_METRIC.class);
             addClass(ENT_DOMAIN.class);
             addClass(ENT_KIND.class);
+            addClass(FROZEN_BEHAVIOR.class);
             addClass(HOIST_STATUS.class);
             addClass(IED_PRESENCE.class);
             addClass(LAND_SMOKE.class);

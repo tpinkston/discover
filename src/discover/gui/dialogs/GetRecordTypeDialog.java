@@ -15,24 +15,14 @@ import javax.swing.JRadioButton;
 
 import discover.gui.Utilities;
 import discover.gui.frames.DiscoverFrame;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.VP_RECORD_TYPE;
 
 /**
  * @author Tony Pinkston
  */
 public class GetRecordTypeDialog implements ActionListener {
 
-    private static final int TYPES[] = {
-
-        0,  // VP_RECORD_TYPE_ARTICULATED_PART
-        4,  // VP_RECORD_TYPE_ENTITY_ASSOC
-        20, // VP_RECORD_TYPE_EXT_PLATFORM_APP
-        25, // VP_RECORD_TYPE_ENTITY_OFFSET
-        26, // VP_RECORD_TYPE_DEAD_RECKONING
-        30, // VP_RECORD_TYPE_LEGACY_EXT_LIFEFORM_APP
-        31, // VP_RECORD_TYPE_EXT_CULT_FEAT_APP
-        32  // VP_RECORD_TYPE_EXT_SUPPLY_APP
-    };
+    private static final VP_RECORD_TYPE TYPES[] = VP_RECORD_TYPE.values();
 
     @SuppressWarnings("serial")
     private final JDialog dialog = new JDialog(
@@ -86,7 +76,7 @@ public class GetRecordTypeDialog implements ActionListener {
 
                 if (buttons.get(i).isSelected()) {
 
-                    type = TYPES[i];
+                    type = TYPES[i].getValue();
                 }
             }
         }
@@ -110,12 +100,11 @@ public class GetRecordTypeDialog implements ActionListener {
 
         int count = 0;
 
-        for(int type : TYPES) {
+        for(VP_RECORD_TYPE type : TYPES) {
 
-            String name = VDIS.getDescription(VDIS.VP_RECORD_TYPE, type);
-            JRadioButton button = new JRadioButton(name);
+            JRadioButton button = new JRadioButton(type.getDescription());
 
-            if (type == 0) {
+            if (type.getValue() == 0) {
 
                 button.setSelected(true);
             }

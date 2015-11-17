@@ -6,7 +6,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import discover.gui.Utilities;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.DEAD_RECKONING;
+import discover.vdis.enums.DR_TYPE;
 import discover.vdis.vprecords.AbstractVPRecord;
 import discover.vdis.vprecords.DeadReckoningVPR;
 
@@ -25,14 +26,8 @@ public class DeadReckoningRecordWidget extends AbstractVariableRecordWidget {
 
         super("Dead Reckoning");
 
-        Utilities.configureComboBox(
-            type,
-            VDIS.DR_TYPE,
-            false);
-        Utilities.configureComboBox(
-            algorithm,
-            VDIS.DEAD_RECKONING,
-            false);
+        Utilities.configureComboBox(type, DR_TYPE.class, false);
+        Utilities.configureComboBox(algorithm, DEAD_RECKONING.class, false);
 
         fill();
     }
@@ -46,10 +41,10 @@ public class DeadReckoningRecordWidget extends AbstractVariableRecordWidget {
 
         record.setType(Utilities.getComboboxValue(
             type,
-            VDIS.DR_TYPE));
+            DR_TYPE.class));
         record.setAlgorithm(Utilities.getComboboxValue(
             algorithm,
-            VDIS.DEAD_RECKONING));
+            DEAD_RECKONING.class));
 
         parameter.getValue(record.getParameter());
 
@@ -65,11 +60,11 @@ public class DeadReckoningRecordWidget extends AbstractVariableRecordWidget {
 
             Utilities.setComboBoxValue(
                 type,
-                VDIS.DR_TYPE,
+                DR_TYPE.class,
                 dead.getType());
             Utilities.setComboBoxValue(
                 algorithm,
-                VDIS.DEAD_RECKONING,
+                DEAD_RECKONING.class,
                 dead.getAlgorithm());
 
             parameter.setValue(dead.getParameter());

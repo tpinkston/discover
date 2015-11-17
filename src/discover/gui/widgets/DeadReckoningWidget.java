@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 
 import discover.gui.Utilities;
 import discover.vdis.common.DeadReckoning;
-import discover.vdis.enums.VDIS;
+import discover.vdis.enums.DEAD_RECKONING;
 
 /**
  * @author Tony Pinkston
@@ -37,7 +37,7 @@ public class DeadReckoningWidget extends ToggleWidget {
 
         record.setAlgorithm(Utilities.getComboboxValue(
             algorithm,
-            VDIS.DEAD_RECKONING));
+            DEAD_RECKONING.class));
 
         acceleration.getValue(record.getAcceleration());
         velocity.getValue(record.getVelocity());
@@ -48,7 +48,7 @@ public class DeadReckoningWidget extends ToggleWidget {
 
         Utilities.setComboBoxValue(
             algorithm,
-            VDIS.DEAD_RECKONING,
+            DEAD_RECKONING.class,
             record.getAlgorithm());
 
         acceleration.setValue(record.getAcceleration());
@@ -60,14 +60,8 @@ public class DeadReckoningWidget extends ToggleWidget {
 
         super.fill();
 
-        Utilities.configureComboBox(
-            algorithm,
-            VDIS.DEAD_RECKONING,
-            false);
-        Utilities.setComboBoxValue(
-            algorithm,
-            VDIS.DEAD_RECKONING,
-            1);
+        Utilities.configureComboBox(algorithm, DEAD_RECKONING.class, false);
+        Utilities.setComboBoxValue(algorithm, DEAD_RECKONING.class, 1);
 
         Utilities.addComponent(
             panel,
