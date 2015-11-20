@@ -91,7 +91,7 @@ public abstract class Value implements Comparable<Value> {
     }
 
     /**
-     * @return Array of all values for specified type or empty list if
+     * @return Array of all values for specified type (E) or empty list if
      * type not found.
      */
     @SuppressWarnings("unchecked")
@@ -108,7 +108,7 @@ public abstract class Value implements Comparable<Value> {
     }
 
     /**
-     * @return Array of known or unknown values for specified type or
+     * @return Array of known or unknown values for specified type (E) or
      * empty list if type not found.
      */
     @SuppressWarnings("unchecked")
@@ -126,6 +126,11 @@ public abstract class Value implements Comparable<Value> {
         return Collections.emptyList();
     }
 
+    /**
+     * @return Value object of specified type (E) with specified numeric value.
+     * If the value is not known then an <i>unknown</i> value gets created.
+     * Return null only when exception occurs constructing an <i>unknown</i>.
+     */
     @SuppressWarnings("unchecked")
     public static <E extends Value> E get(int value, Class<E> type) {
 
@@ -165,9 +170,7 @@ public abstract class Value implements Comparable<Value> {
     }
 
     @SuppressWarnings("unchecked")
-    protected static <E extends Value> void cache(
-            E element,
-            Class<E> type) {
+    protected static <E extends Value> void cache(E element, Class<E> type) {
 
         // Cache all instances that get constructed.
         //

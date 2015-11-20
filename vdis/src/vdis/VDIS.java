@@ -1,11 +1,7 @@
 package vdis;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.io.InputStream;
-import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.apache.poi.openxml4j.opc.OPCPackage;
@@ -44,8 +40,6 @@ public class VDIS {
             parse(new EntityTypesParser());
             parse(new ObjectTypesParser());
             parse(new OtherEnumsParser());
-
-            writeIndex();
         }
         catch(Exception exception) {
 
@@ -78,23 +72,5 @@ public class VDIS {
 
             stream.close();
         }
-    }
-
-    private static void writeIndex() throws Exception {
-
-        String filename = (EnumGenerator.ENUMS_PATH + "/index.txt");
-        FileWriter file = new FileWriter(new File(filename));
-        PrintWriter writer = new PrintWriter(file);
-
-        Collections.sort(interfaces);
-
-        for(int i = 0; i < interfaces.size(); ++i) {
-
-            writer.println(interfaces.get(i));
-        }
-
-        writer.close();
-
-        System.out.println("---- File written: " + filename + ", interfaces: " + interfaces.size());
     }
 }
