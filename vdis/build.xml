@@ -24,7 +24,7 @@
            destdir="${vdis.classes}"
            verbose="${verbose}"
            classpathref="vdis.classpath.id"
-           debug="${debug}"
+           debug="true"
            listfiles="${listfiles}"
            includeantruntime="false">
       <compilerarg value="-Xlint"/>
@@ -32,6 +32,9 @@
   </target>
 
   <target name="build" depends="compile">
+    <copy verbose="${verbose}" todir="${vdis.classes}">
+      <fileset dir="${vdis.source}" includes="**/*.xml"/>
+    </copy>
   </target>
 
   <target name="run" depends="build">

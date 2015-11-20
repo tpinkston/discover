@@ -42,7 +42,7 @@
            destdir="${discover.classes}"
            verbose="${verbose}"
            classpathref="discover.classpath.id"
-           debug="${debug}"
+           debug="true"
            listfiles="${listfiles}"
            includeantruntime="false">
       <compilerarg value="-Xlint"/>

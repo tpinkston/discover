@@ -40,6 +40,20 @@ public class EnumGenerator {
         this.name = name;
     }
 
+    public void addElement(String name, String description, int value) {
+
+        Element element = new Element();
+
+        element.name = name;
+        element.description = description;
+        element.value = value;
+
+        if (element.isValid()) {
+
+            addElement(element);
+        }
+    }
+
     public void addElement(Element element) {
 
         if (findName(element.name)) {
