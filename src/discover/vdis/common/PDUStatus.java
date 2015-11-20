@@ -7,7 +7,6 @@ import discover.common.Binary;
 import discover.common.Readable;
 import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.Bufferable;
-import discover.vdis.EnumInterface;
 import discover.vdis.enums.PDU_STATUS_CEI;
 import discover.vdis.enums.PDU_STATUS_DMI;
 import discover.vdis.enums.PDU_STATUS_DTI;
@@ -25,14 +24,14 @@ public class PDUStatus implements Bufferable, Readable {
 
     private byte value = 0x00;
 
-    private EnumInterface tei = null;
-    private EnumInterface lvci = null;
-    private EnumInterface fti = null;
-    private EnumInterface dti = null;
-    private EnumInterface cei = null;
-    private EnumInterface rai = null;
-    private EnumInterface dmi = null;
-    private EnumInterface iai = null;
+    private PDU_STATUS_TEI tei = null;
+    private PDU_STATUS_LVCI lvci = null;
+    private PDU_STATUS_FTI fti = null;
+    private PDU_STATUS_DTI dti = null;
+    private PDU_STATUS_CEI cei = null;
+    private PDU_STATUS_RAI rai = null;
+    private PDU_STATUS_DMI dmi = null;
+    private PDU_STATUS_IAI iai = null;
 
     public byte getValue() { return value; }
 
@@ -41,9 +40,9 @@ public class PDUStatus implements Bufferable, Readable {
      * which this status is attached (some enumerations apply only to
      * specific PDUs).
      *
-     * @param type - Integer value (see {@link PDU_TYPE}).
+     * @param type - {@link PDU_TYPE}
      */
-    public void setEnumValues(int type) {
+    public void setEnumValues(PDU_TYPE type) {
 
         tei = null;
         lvci = null;
@@ -55,44 +54,44 @@ public class PDUStatus implements Bufferable, Readable {
         iai = null;
 
         // All PDU types have the CEI value:
-        cei = PDU_STATUS_CEI.getValue(Binary.get1Bit(3, value));
+        cei = PDU_STATUS_CEI.get(Binary.get1Bit(3, value));
 
         // All other PDU types have selective values:
-        if (type == PDU_TYPE.PDU_TYPE_ENTITY_STATE.getValue()) {
+        if (type == PDU_TYPE.ENTITY_STATE) {
 
-            dmi = PDU_STATUS_DMI.getValue(Binary.get1Bit(4, value));
-            tei = PDU_STATUS_TEI.getValue(Binary.get1Bit(0, value));
-            lvci = PDU_STATUS_LVCI.getValue(Binary.get2Bits(2, value));
+            dmi = PDU_STATUS_DMI.get(Binary.get1Bit(4, value));
+            tei = PDU_STATUS_TEI.get(Binary.get1Bit(0, value));
+            lvci = PDU_STATUS_LVCI.get(Binary.get2Bits(2, value));
         }
-        else if (type == PDU_TYPE.PDU_TYPE_FIRE.getValue()) {
+        else if (type == PDU_TYPE.FIRE) {
 
-            fti = PDU_STATUS_FTI.getValue(Binary.get1Bit(4, value));
-            lvci = PDU_STATUS_LVCI.getValue(Binary.get2Bits(2, value));
+            fti = PDU_STATUS_FTI.get(Binary.get1Bit(4, value));
+            lvci = PDU_STATUS_LVCI.get(Binary.get2Bits(2, value));
         }
-        else if (type == PDU_TYPE.PDU_TYPE_DETONATION.getValue()) {
+        else if (type == PDU_TYPE.DETONATION) {
 
-            dti = PDU_STATUS_DTI.getValue(Binary.get2Bits(5, value));
-            lvci = PDU_STATUS_LVCI.getValue(Binary.get2Bits(2, value));
+            dti = PDU_STATUS_DTI.get(Binary.get2Bits(5, value));
+            lvci = PDU_STATUS_LVCI.get(Binary.get2Bits(2, value));
         }
-        else if ((type == PDU_TYPE.PDU_TYPE_EM_EMISSION.getValue()) ||
-                 (type == PDU_TYPE.PDU_TYPE_DESIGNATOR.getValue()) ||
-                 (type == PDU_TYPE.PDU_TYPE_IFF.getValue())) {
+        else if ((type == PDU_TYPE.EM_EMISSION) ||
+                 (type == PDU_TYPE.DESIGNATOR) ||
+                 (type == PDU_TYPE.IFF)) {
 
-            tei = PDU_STATUS_TEI.getValue(Binary.get1Bit(0, value));
-            lvci = PDU_STATUS_LVCI.getValue(Binary.get2Bits(2, value));
+            tei = PDU_STATUS_TEI.get(Binary.get1Bit(0, value));
+            lvci = PDU_STATUS_LVCI.get(Binary.get2Bits(2, value));
         }
-        else if ((type == PDU_TYPE.PDU_TYPE_TRANSMITTER.getValue()) ||
-                 (type == PDU_TYPE.PDU_TYPE_SIGNAL.getValue()) ||
-                 (type == PDU_TYPE.PDU_TYPE_RECEIVER.getValue())) {
+        else if ((type == PDU_TYPE.TRANSMITTER) ||
+                 (type == PDU_TYPE.SIGNAL) ||
+                 (type == PDU_TYPE.RECEIVER)) {
 
-            rai = PDU_STATUS_RAI.getValue(Binary.get2Bits(5, value));
-            tei = PDU_STATUS_TEI.getValue(Binary.get1Bit(0, value));
-            lvci = PDU_STATUS_LVCI.getValue(Binary.get2Bits(2, value));
+            rai = PDU_STATUS_RAI.get(Binary.get2Bits(5, value));
+            tei = PDU_STATUS_TEI.get(Binary.get1Bit(0, value));
+            lvci = PDU_STATUS_LVCI.get(Binary.get2Bits(2, value));
         }
-        else if ((type == PDU_TYPE.PDU_TYPE_INTERCOM_SIGNAL.getValue()) ||
-                 (type == PDU_TYPE.PDU_TYPE_INTERCOM_CONTROL.getValue())) {
+        else if ((type == PDU_TYPE.INTERCOM_SIGNAL) ||
+                 (type == PDU_TYPE.INTERCOM_CONTROL)) {
 
-            iai = PDU_STATUS_IAI.getValue(Binary.get2Bits(5, value));
+            iai = PDU_STATUS_IAI.get(Binary.get2Bits(5, value));
         }
     }
 
@@ -107,44 +106,44 @@ public class PDUStatus implements Bufferable, Readable {
 
         buffer.addAttribute("Status Bits", Binary.toString8(value));
 
-        if ((cei != null) && (cei != PDU_STATUS_CEI.PDU_STATUS_CEI_NOT_COUPLED)) {
+        if ((cei != null) && (cei != PDU_STATUS_CEI.NOT_COUPLED)) {
 
-            buffer.addAttribute("Coupled Extension", cei.getDescription());
+            buffer.addAttribute("Coupled Extension", cei.description);
         }
 
-        if ((dmi != null) && (dmi != PDU_STATUS_DMI.PDU_STATUS_DMI_GUISE_MODE)) {
+        if ((dmi != null) && (dmi != PDU_STATUS_DMI.GUISE_MODE)) {
 
-            buffer.addAttribute("Disguise Mode", dmi.getDescription());
+            buffer.addAttribute("Disguise Mode", dmi.description);
         }
 
         if (dti != null) {
 
-            buffer.addAttribute("Detonation Type", dti.getDescription());
+            buffer.addAttribute("Detonation Type", dti.description);
         }
 
         if (fti != null) {
 
-            buffer.addAttribute("Fire Type", fti.getDescription());
+            buffer.addAttribute("Fire Type", fti.description);
         }
 
-        if ((tei != null) && (tei != PDU_STATUS_TEI.PDU_STATUS_TEI_NO_DIFF)) {
+        if ((tei != null) && (tei != PDU_STATUS_TEI.NO_DIFF)) {
 
-            buffer.addAttribute("Transferred Entity", tei.getDescription());
+            buffer.addAttribute("Transferred Entity", tei.description);
         }
 
-        if ((lvci != null) && (lvci != PDU_STATUS_LVCI.PDU_STATUS_LVCI_NO_STATEMENT)) {
+        if ((lvci != null) && (lvci != PDU_STATUS_LVCI.NO_STATEMENT)) {
 
-            buffer.addAttribute("Simulation Type", lvci.getDescription());
+            buffer.addAttribute("Simulation Type", lvci.description);
         }
 
-        if ((rai != null) && (rai != PDU_STATUS_RAI.PDU_STATUS_RAI_NO_STATEMENT)) {
+        if ((rai != null) && (rai != PDU_STATUS_RAI.NO_STATEMENT)) {
 
-            buffer.addAttribute("Radio Attached", rai.getDescription());
+            buffer.addAttribute("Radio Attached", rai.description);
         }
 
-        if ((iai != null) && (iai != PDU_STATUS_IAI.PDU_STATUS_IAI_NO_STATEMENT)) {
+        if ((iai != null) && (iai != PDU_STATUS_IAI.NO_STATEMENT)) {
 
-            buffer.addAttribute("Intercom Attached", iai.getDescription());
+            buffer.addAttribute("Intercom Attached", iai.description);
         }
     }
 }

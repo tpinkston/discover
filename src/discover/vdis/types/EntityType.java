@@ -6,10 +6,10 @@ import java.io.IOException;
 import discover.common.Writable;
 import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.Bufferable;
-import discover.vdis.Enumerations;
 import discover.vdis.enums.COUNTRY;
 import discover.vdis.enums.DOMAIN;
 import discover.vdis.enums.ENT_KIND;
+import discover.vdis.enums.Value;
 
 /**
  * @author Tony Pinkston
@@ -59,7 +59,7 @@ public class EntityType implements Comparable<EntityType>, Bufferable, Writable 
      */
     public String getKind() {
 
-        return Enumerations.getDescription(septuple.kind, ENT_KIND.class);
+        return Value.get(septuple.kind, ENT_KIND.class).description;
     }
 
     /**
@@ -67,7 +67,7 @@ public class EntityType implements Comparable<EntityType>, Bufferable, Writable 
      */
     public String getDomain() {
 
-        return Enumerations.getDescription(septuple.domain, DOMAIN.class);
+        return Value.get(septuple.domain, DOMAIN.class).description;
     }
 
     /**
@@ -75,7 +75,7 @@ public class EntityType implements Comparable<EntityType>, Bufferable, Writable 
      */
     public String getCountry() {
 
-        return Enumerations.getDescription(septuple.country, COUNTRY.class);
+        return Value.get(septuple.country, COUNTRY.class).description;
     }
 
     @Override

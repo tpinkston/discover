@@ -35,8 +35,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import discover.gui.frames.DiscoverFrame;
-import discover.vdis.EnumInterface;
 import discover.vdis.common.EntityId;
+import discover.vdis.enums.Value;
 import discover.vdis.types.EntityType;
 import discover.vdis.types.ObjectType;
 
@@ -111,7 +111,7 @@ public class Utilities {
      */
     public static void configureComboBox(
         JComboBox<String> box,
-        Class<? extends EnumInterface> type,
+        Class<? extends Value> type,
         boolean includeEmpty) {
 
 // TODO configureComboBox
@@ -139,7 +139,7 @@ public class Utilities {
      */
     public static void setComboBoxValue(
         JComboBox<String> box,
-        Class<? extends EnumInterface> type,
+        Class<? extends Value> type,
         Integer value) {
 
 // TODO setComboBoxValue
@@ -165,7 +165,7 @@ public class Utilities {
      */
     public static Integer getComboboxValue(
             JComboBox<String> box,
-            Class<? extends EnumInterface> type) {
+            Class<? extends Value> type) {
 
 // TODO getComboboxValue
 //        Handle handle = VDIS.getHandle(type);

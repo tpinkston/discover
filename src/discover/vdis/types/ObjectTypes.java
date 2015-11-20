@@ -24,24 +24,24 @@ public class ObjectTypes {
     private static final Logger logger = LoggerFactory.getLogger(ObjectTypes.class);
 
     /** Maps 32-bit entity type value to ObjectType object. */
-    private static final TreeMap<Integer, TreeMap<Integer, ObjectType>> mapping;
+    private static final TreeMap<OBJECT_GEOMETRY, TreeMap<Integer, ObjectType>> mapping;
 
     /** Maps 32-bit entity type value to ObjectType object. */
-    private static final TreeMap<Integer, TreeMap<Integer, ObjectType>> unknowns;
+    private static final TreeMap<OBJECT_GEOMETRY, TreeMap<Integer, ObjectType>> unknowns;
 
     /** List of all ObjectType objects read from data file. */
     private static final ArrayList<ObjectType> listing;
 
     static {
 
-        mapping = new TreeMap<Integer, TreeMap<Integer, ObjectType>>();
-        unknowns = new TreeMap<Integer, TreeMap<Integer, ObjectType>>();
+        mapping = new TreeMap<OBJECT_GEOMETRY, TreeMap<Integer, ObjectType>>();
+        unknowns = new TreeMap<OBJECT_GEOMETRY, TreeMap<Integer, ObjectType>>();
         listing = new ArrayList<ObjectType>();
 
-        unknowns.put(OBJECT_GEOMETRY.AREAL.getValue(), new TreeMap<Integer, ObjectType>());
-        unknowns.put(OBJECT_GEOMETRY.LINEAR.getValue(), new TreeMap<Integer, ObjectType>());
-        unknowns.put(OBJECT_GEOMETRY.POINT.getValue(), new TreeMap<Integer, ObjectType>());
-        unknowns.put(OBJECT_GEOMETRY.UNKNOWN.getValue(), new TreeMap<Integer, ObjectType>());
+        unknowns.put(OBJECT_GEOMETRY.AREAL, new TreeMap<Integer, ObjectType>());
+        unknowns.put(OBJECT_GEOMETRY.LINEAR, new TreeMap<Integer, ObjectType>());
+        unknowns.put(OBJECT_GEOMETRY.POINT, new TreeMap<Integer, ObjectType>());
+        unknowns.put(OBJECT_GEOMETRY.UNKNOWN, new TreeMap<Integer, ObjectType>());
     }
 
     /**
@@ -154,7 +154,7 @@ public class ObjectTypes {
                         values[2],
                         values[3]);
 
-                    int geometry = Integer.parseInt(tokens[0]);
+                    OBJECT_GEOMETRY geometry = OBJECT_GEOMETRY.get(Integer.parseInt(tokens[0]));
 
                     ObjectType type = new ObjectType(
                         values[0],
@@ -162,7 +162,7 @@ public class ObjectTypes {
                         values[2],
                         values[3],
                         value,
-                        geometry,
+                        geometry.value,
                         tokens[5],
                         tokens[6],
                         tuple);
@@ -199,9 +199,9 @@ public class ObjectTypes {
                 ++line;
             }
 
-            listing.addAll(mapping.get(OBJECT_GEOMETRY.POINT.getValue()).values());
-            listing.addAll(mapping.get(OBJECT_GEOMETRY.LINEAR.getValue()).values());
-            listing.addAll(mapping.get(OBJECT_GEOMETRY.AREAL.getValue()).values());
+            listing.addAll(mapping.get(OBJECT_GEOMETRY.POINT).values());
+            listing.addAll(mapping.get(OBJECT_GEOMETRY.LINEAR).values());
+            listing.addAll(mapping.get(OBJECT_GEOMETRY.AREAL).values());
 
             reader.close();
         }

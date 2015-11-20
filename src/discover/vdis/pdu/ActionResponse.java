@@ -5,7 +5,6 @@ import java.io.IOException;
 
 import discover.common.Common;
 import discover.common.buffer.AbstractBuffer;
-import discover.vdis.EnumInterface;
 import discover.vdis.common.EntityId;
 import discover.vdis.datum.DatumSpecificationRecord;
 import discover.vdis.enums.ACTRES_REQ_STATUS;
@@ -27,9 +26,9 @@ public class ActionResponse extends AbstractPDU {
 
     public int getStatus() { return status; }
 
-    public EnumInterface getStatusEnum() {
+    public ACTRES_REQ_STATUS getStatusEnum() {
 
-        return ACTRES_REQ_STATUS.getValue(getStatus());
+        return ACTRES_REQ_STATUS.get(getStatus());
     }
 
     public EntityId getOriginator() { return originator; }

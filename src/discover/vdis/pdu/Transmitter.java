@@ -5,8 +5,6 @@ import java.io.IOException;
 
 import discover.common.Hexadecimal;
 import discover.common.buffer.AbstractBuffer;
-import discover.vdis.EnumInterface;
-import discover.vdis.Enumerations;
 import discover.vdis.common.EntityId;
 import discover.vdis.common.Location12;
 import discover.vdis.common.Location24;
@@ -23,6 +21,7 @@ import discover.vdis.enums.PULSE;
 import discover.vdis.enums.RADIO_SYSTEM;
 import discover.vdis.enums.TRANSMIT_STATE;
 import discover.vdis.enums.UNMODULATED;
+import discover.vdis.enums.Value;
 import discover.vdis.types.EntityType;
 import discover.vdis.types.EntityTypes;
 
@@ -165,9 +164,9 @@ public class Transmitter extends AbstractPDU {
         buffer.addTitle("MODULATION");
         buffer.addAttribute(
             "Modulation",
-            MAJOR_MODULATION.getValue(majorModulation).getDescription());
+            MAJOR_MODULATION.get(majorModulation).description);
 
-        Class<? extends EnumInterface> detailType = AMPLITUDE.class;
+        Class<? extends Value> detailType = AMPLITUDE.class;
 
         switch(majorModulation) {
 
@@ -193,7 +192,7 @@ public class Transmitter extends AbstractPDU {
 
         buffer.addAttribute(
             "Detail",
-            Enumerations.getDescription(modulationDetail, detailType));
+            Value.get(modulationDetail, detailType).description);
 
         buffer.addLabel("Parameters");
 

@@ -86,7 +86,7 @@ public class ObjectType implements Comparable<ObjectType>, Bufferable {
      */
     public String getDomain() {
 
-        return DOMAIN.getValue(domain).getDescription();
+        return DOMAIN.get(domain).description;
     }
 
     /**
@@ -94,7 +94,7 @@ public class ObjectType implements Comparable<ObjectType>, Bufferable {
      */
     public String getKind() {
 
-        return OBJECT_KIND.getValue(kind).getDescription();
+        return OBJECT_KIND.get(kind).description;
     }
 
     /**
@@ -102,7 +102,7 @@ public class ObjectType implements Comparable<ObjectType>, Bufferable {
      */
     public String getGeometry() {
 
-        return OBJECT_GEOMETRY.getValue(geometry).getDescription();
+        return OBJECT_GEOMETRY.get(geometry).description;
     }
 
     @Override

@@ -1,8 +1,8 @@
 package discover.vdis.bits;
 
-import discover.vdis.EnumInterface;
 import discover.vdis.enums.ON_OFF;
 import discover.vdis.enums.PRESENCE;
+import discover.vdis.enums.Value;
 import discover.vdis.enums.YES_NO;
 
 /**
@@ -23,14 +23,14 @@ public class Bits {
     public final boolean zeroVisible;
 
     /** Enumeration class if applicable to value of bit(s). */
-    public final Class<? extends EnumInterface> enumeration;
+    public final Class<? extends Value> enumeration;
 
     private Bits(
             String label,
             int bit,
             int count,
             boolean zeroVisible,
-            Class<? extends EnumInterface> enumeration) {
+            Class<? extends Value> enumeration) {
 
         this.label = label;
         this.bit = bit;
@@ -58,7 +58,7 @@ public class Bits {
         String label,
         int bit,
         boolean zeroVisible,
-        Class<? extends EnumInterface> enumeration) {
+        Class<? extends Value> enumeration) {
 
         return new Bits(label, bit, 1, zeroVisible, enumeration);
     }
@@ -67,7 +67,7 @@ public class Bits {
         String label,
         int bit,
         boolean zeroVisible,
-        Class<? extends EnumInterface> enumeration) {
+        Class<? extends Value> enumeration) {
 
         return new Bits(label, bit, 2, zeroVisible, enumeration);
     }
@@ -76,7 +76,7 @@ public class Bits {
         String label,
         int bit,
         boolean zeroVisible,
-        Class<? extends EnumInterface> enumeration) {
+        Class<? extends Value> enumeration) {
 
         return new Bits(label, bit, 3, zeroVisible, enumeration);
     }
@@ -85,7 +85,7 @@ public class Bits {
         String label,
         int bit,
         boolean zeroVisible,
-        Class<? extends EnumInterface> enumeration) {
+        Class<? extends Value> enumeration) {
 
         return new Bits(label, bit, 4, zeroVisible, enumeration);
     }

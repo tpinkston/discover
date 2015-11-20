@@ -189,6 +189,17 @@
     <element name="OFF" value="0" description="Off"/>
     <element name="ON" value="1" description="ON"/>
   </type>
+  <type name="OBJECT_DAMAGE">
+    <element name="NO_DAMAGE" value="0" description="No Damage"/>
+    <element name="DAMAGED" value="1" description="Damaged"/>
+    <element name="DESTROYED" value="2" description="Destroyed"/>
+  </type>
+  <type name="OBJECT_GEOMETRY">
+    <element name="UNKNOWN" value="0" description="Unknown"/>
+    <element name="POINT" value="1" description="Point"/>
+    <element name="LINEAR" value="2" description="Linear"/>
+    <element name="AREAL" value="3" description="Areal"/>
+  </type>
   <type name="PDU_STATUS_IAI">
     <element name="NO_STATEMENT" value="0" description="No Statement"/>
     <element name="NOT_ATTACHED" value="1" description="Not Attached"/>

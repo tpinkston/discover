@@ -103,7 +103,7 @@ public class PDU implements Bufferable {
 
         if ((title == null) || title.isEmpty()) {
 
-            return getTypeEnum().getDescription();
+            return getTypeEnum().description;
         }
 
         return title;
@@ -175,17 +175,7 @@ public class PDU implements Bufferable {
 
         if (pduType == null) {
 
-            EnumInterface element = PDU_TYPE.getValue(getType());
-
-            if (element instanceof PDU_TYPE) {
-
-                pduType = (PDU_TYPE)element;
-            }
-            else {
-
-                pduType = PDU_TYPE.PDU_TYPE_OTHER;
-                logger.warn("Invalid PDU_TYPE: ", getType());
-            }
+            pduType = PDU_TYPE.get(getType());
         }
 
         return pduType;
@@ -199,7 +189,7 @@ public class PDU implements Bufferable {
     public void setTypeEnum(PDU_TYPE type) {
 
         pduType = type;
-        setType((byte)type.getValue());
+        setType((byte)type.value);
     }
 
     public int getFamily() {
@@ -211,17 +201,7 @@ public class PDU implements Bufferable {
 
         if (pduFamily == null) {
 
-            EnumInterface element = PDU_FAMILY.getValue(getFamily());
-
-            if (element instanceof PDU_FAMILY) {
-
-                pduFamily = (PDU_FAMILY)element;
-            }
-            else {
-
-                pduFamily = PDU_FAMILY.PDU_FAMILY_OTHER;
-                logger.warn("Invalid PDU_FAMILY: ", getFamily());
-            }
+            pduFamily = PDU_FAMILY.get(getFamily());
         }
 
         return pduFamily;
@@ -235,7 +215,7 @@ public class PDU implements Bufferable {
     public void setFamilyEnum(PDU_FAMILY family) {
 
         pduFamily = family;
-        setFamily((byte)family.getValue());
+        setFamily((byte)family.value);
     }
 
     public int getLength() {
@@ -282,32 +262,32 @@ public class PDU implements Bufferable {
 
             return false;
         }
-        else switch(getTypeEnum()) {
 
-            case PDU_TYPE_ACKNOWLEDGE:
-            case PDU_TYPE_ACTION_REQUEST:
-            case PDU_TYPE_ACTION_RESPONSE:
-            case PDU_TYPE_APPLICATION_CTRL:
-            case PDU_TYPE_CREATE_ENTITY:
-            case PDU_TYPE_DESIGNATOR:
-            case PDU_TYPE_DETONATION:
-            case PDU_TYPE_FIRE:
-            case PDU_TYPE_EM_EMISSION:
-            case PDU_TYPE_IFF:
-            case PDU_TYPE_ENTITY_STATE:
-            case PDU_TYPE_TRANSMITTER:
-            case PDU_TYPE_RECEIVER:
-            case PDU_TYPE_SIGNAL:
-            case PDU_TYPE_DATA:
-            case PDU_TYPE_DATA_QUERY:
-            case PDU_TYPE_SET_DATA:
-            case PDU_TYPE_START_RESUME:
-            case PDU_TYPE_STOP_FREEZE:
-            case PDU_TYPE_POINT_OBJECT_STATE:
-                return true;
-            default:
-                return false;
+        if ((getTypeEnum() == PDU_TYPE.ACKNOWLEDGE) ||
+            (getTypeEnum() == PDU_TYPE.ACTION_REQUEST) ||
+            (getTypeEnum() == PDU_TYPE.ACTION_RESPONSE) ||
+            (getTypeEnum() == PDU_TYPE.APPLICATION_CTRL) ||
+            (getTypeEnum() == PDU_TYPE.CREATE_ENTITY) ||
+            (getTypeEnum() == PDU_TYPE.DESIGNATOR) ||
+            (getTypeEnum() == PDU_TYPE.DETONATION) ||
+            (getTypeEnum() == PDU_TYPE.FIRE) ||
+            (getTypeEnum() == PDU_TYPE.EM_EMISSION) ||
+            (getTypeEnum() == PDU_TYPE.IFF) ||
+            (getTypeEnum() == PDU_TYPE.ENTITY_STATE) ||
+            (getTypeEnum() == PDU_TYPE.TRANSMITTER) ||
+            (getTypeEnum() == PDU_TYPE.RECEIVER) ||
+            (getTypeEnum() == PDU_TYPE.SIGNAL) ||
+            (getTypeEnum() == PDU_TYPE.DATA) ||
+            (getTypeEnum() == PDU_TYPE.DATA_QUERY) ||
+            (getTypeEnum() == PDU_TYPE.SET_DATA) ||
+            (getTypeEnum() == PDU_TYPE.START_RESUME) ||
+            (getTypeEnum() == PDU_TYPE.STOP_FREEZE) ||
+            (getTypeEnum() == PDU_TYPE.POINT_OBJECT_STATE)) {
+
+            return true;
         }
+
+        return false;
     }
 
     public EntityId getId() {
@@ -366,15 +346,14 @@ public class PDU implements Bufferable {
 
     public boolean hasRecipient() {
 
-        switch(getTypeEnum()) {
+        if ((getTypeEnum() == PDU_TYPE.FIRE) ||
+            (getTypeEnum() == PDU_TYPE.DETONATION) ||
+            (getTypeEnum() == PDU_TYPE.APPEARANCE)) {
 
-            case PDU_TYPE_FIRE:
-            case PDU_TYPE_DETONATION:
-            case PDU_TYPE_APPEARANCE:
-                return true;
-            default:
-                return hasRequestId();
+            return true;
         }
+
+        return hasRequestId();
     }
 
     public EntityId getRecipient() {
@@ -443,69 +422,77 @@ public class PDU implements Bufferable {
 
     public boolean hasEntityType() {
 
-        switch(getTypeEnum()) {
+        if ((getTypeEnum() == PDU_TYPE.FIRE) ||
+            (getTypeEnum() == PDU_TYPE.DETONATION) ||
+            (getTypeEnum() == PDU_TYPE.ENTITY_STATE) ||
+            (getTypeEnum() == PDU_TYPE.TRANSMITTER)) {
 
-            case PDU_TYPE_DETONATION:
-            case PDU_TYPE_FIRE:
-            case PDU_TYPE_ENTITY_STATE:
-            case PDU_TYPE_TRANSMITTER:
-                return true;
-            default:
-                return false;
+            return true;
         }
+
+        return false;
     }
 
     public long getEntityType() {
 
-        switch(getTypeEnum()) {
+        if ((getTypeEnum() == PDU_TYPE.ENTITY_STATE) ||
+            (getTypeEnum() == PDU_TYPE.TRANSMITTER)) {
 
-            case PDU_TYPE_DETONATION:
-                return ByteArray.get64bits(data, 72);
-            case PDU_TYPE_FIRE:
-                return ByteArray.get64bits(data, 64);
-            case PDU_TYPE_ENTITY_STATE:
-            case PDU_TYPE_TRANSMITTER:
-                return ByteArray.get64bits(data, 20);
-            default:
-                return 0x0;
+            return ByteArray.get64bits(data, 20);
         }
+        else if (getTypeEnum() == PDU_TYPE.FIRE) {
+
+            return ByteArray.get64bits(data, 64);
+        }
+        else if (getTypeEnum() == PDU_TYPE.DETONATION) {
+
+            return ByteArray.get64bits(data, 72);
+        }
+
+        return 0x0;
     }
 
     public int getEntityKind() {
 
-        switch(getTypeEnum()) {
+        if ((getTypeEnum() == PDU_TYPE.ENTITY_STATE) ||
+            (getTypeEnum() == PDU_TYPE.TRANSMITTER)) {
 
-            case PDU_TYPE_DETONATION:
-                return ByteArray.get8bits(data, 72);
-            case PDU_TYPE_FIRE:
-                return ByteArray.get8bits(data, 64);
-            case PDU_TYPE_ENTITY_STATE:
-            case PDU_TYPE_TRANSMITTER:
-                return ByteArray.get8bits(data, 20);
-            default:
-                return 0x0;
+            return ByteArray.get8bits(data, 20);
         }
+        else if (getTypeEnum() == PDU_TYPE.FIRE) {
+
+            return ByteArray.get8bits(data, 64);
+        }
+        else if (getTypeEnum() == PDU_TYPE.DETONATION) {
+
+            return ByteArray.get8bits(data, 72);
+        }
+
+        return 0x0;
     }
 
     public int getEntityDomain() {
 
-        switch(getTypeEnum()) {
+        if ((getTypeEnum() == PDU_TYPE.ENTITY_STATE) ||
+            (getTypeEnum() == PDU_TYPE.TRANSMITTER)) {
 
-            case PDU_TYPE_DETONATION:
-                return ByteArray.get8bits(data, 73);
-            case PDU_TYPE_FIRE:
-                return ByteArray.get8bits(data, 65);
-            case PDU_TYPE_ENTITY_STATE:
-            case PDU_TYPE_TRANSMITTER:
-                return ByteArray.get8bits(data, 21);
-            default:
-                return 0x0;
+            return ByteArray.get8bits(data, 21);
         }
+        else if (getTypeEnum() == PDU_TYPE.FIRE) {
+
+            return ByteArray.get8bits(data, 65);
+        }
+        else if (getTypeEnum() == PDU_TYPE.DETONATION) {
+
+            return ByteArray.get8bits(data, 73);
+        }
+
+        return 0x0;
     }
 
     public boolean hasMarking() {
 
-        return (getTypeEnum() == PDU_TYPE.PDU_TYPE_ENTITY_STATE);
+        return (getTypeEnum() == PDU_TYPE.ENTITY_STATE);
     }
 
     public String getMarking() {
@@ -526,53 +513,59 @@ public class PDU implements Bufferable {
 
     public boolean hasRequestId() {
 
-        switch(getTypeEnum()) {
+        if ((getTypeEnum() == PDU_TYPE.ACKNOWLEDGE) ||
+            (getTypeEnum() == PDU_TYPE.ACTION_REQUEST) ||
+            (getTypeEnum() == PDU_TYPE.ACTION_RESPONSE) ||
+            (getTypeEnum() == PDU_TYPE.APPLICATION_CTRL) ||
+            (getTypeEnum() == PDU_TYPE.CREATE_ENTITY) ||
+            (getTypeEnum() == PDU_TYPE.DATA) ||
+            (getTypeEnum() == PDU_TYPE.DATA_QUERY) ||
+            (getTypeEnum() == PDU_TYPE.SET_DATA) ||
+            (getTypeEnum() == PDU_TYPE.START_RESUME) ||
+            (getTypeEnum() == PDU_TYPE.STOP_FREEZE)) {
 
-            case PDU_TYPE_ACKNOWLEDGE:
-            case PDU_TYPE_ACTION_REQUEST:
-            case PDU_TYPE_ACTION_RESPONSE:
-            case PDU_TYPE_CREATE_ENTITY:
-            case PDU_TYPE_DATA:
-            case PDU_TYPE_DATA_QUERY:
-            case PDU_TYPE_SET_DATA:
-            case PDU_TYPE_START_RESUME:
-            case PDU_TYPE_STOP_FREEZE:
-            case PDU_TYPE_APPLICATION_CTRL:
-                return true;
-            default:
-                return false;
+            return true;
         }
+
+        return false;
     }
 
     public int getRequestId() {
 
-        switch(getTypeEnum()) {
+        if ((getTypeEnum() == PDU_TYPE.ACTION_REQUEST) ||
+            (getTypeEnum() == PDU_TYPE.ACTION_RESPONSE) ||
+            (getTypeEnum() == PDU_TYPE.CREATE_ENTITY) ||
+            (getTypeEnum() == PDU_TYPE.DATA) ||
+            (getTypeEnum() == PDU_TYPE.DATA_QUERY) ||
+            (getTypeEnum() == PDU_TYPE.SET_DATA)) {
 
-            case PDU_TYPE_ACTION_REQUEST:
-            case PDU_TYPE_ACTION_RESPONSE:
-            case PDU_TYPE_CREATE_ENTITY:
-            case PDU_TYPE_DATA:
-            case PDU_TYPE_DATA_QUERY:
-            case PDU_TYPE_SET_DATA:
-                return ByteArray.get32bits(data, 24);
-            case PDU_TYPE_ACKNOWLEDGE:
-                return ByteArray.get32bits(data, 28);
-            case PDU_TYPE_STOP_FREEZE:
-                return ByteArray.get32bits(data, 36);
-            case PDU_TYPE_START_RESUME:
-                return ByteArray.get32bits(data, 40);
-            case PDU_TYPE_APPLICATION_CTRL:
-                return ByteArray.get32bits(data, 32);
-            default:
-                return 0;
+            return ByteArray.get32bits(data, 24);
         }
+        else if (getTypeEnum() == PDU_TYPE.ACKNOWLEDGE) {
+
+            return ByteArray.get32bits(data, 28);
+        }
+        else if (getTypeEnum() == PDU_TYPE.START_RESUME) {
+
+            return ByteArray.get32bits(data, 40);
+        }
+        else if (getTypeEnum() == PDU_TYPE.STOP_FREEZE) {
+
+            return ByteArray.get32bits(data, 36);
+        }
+        else if (getTypeEnum() == PDU_TYPE.APPLICATION_CTRL) {
+
+            return ByteArray.get32bits(data, 32);
+        }
+
+        return 0;
     }
 
     public void setTitle() {
 
         StringBuilder builder = new StringBuilder();
 
-        builder.append(getTypeEnum().getDescription());
+        builder.append(getTypeEnum().description);
 
         if (hasRequestId()) {
 
@@ -820,218 +813,163 @@ public class PDU implements Bufferable {
         return pdu;
     }
 
-    @SuppressWarnings("incomplete-switch")
     private static boolean isValid(PDU pdu) {
 
         boolean valid = false;
 
         // Perform some heuristic checking on the PDU to make sure it's valid.
 
-        PDU_TYPE pduType = pdu.getTypeEnum();
-        PDU_FAMILY protocolFamily = pdu.getFamilyEnum();
+        PDU_TYPE type = pdu.getTypeEnum();
+        PDU_FAMILY family = pdu.getFamilyEnum();
 
-        switch(protocolFamily) {
 
-            case PDU_FAMILY_ENTITY_INFORMATION_INTERACTION:
+        if (family == PDU_FAMILY.ENTITY_INFORMATION_INTERACTION) {
 
-                switch(pduType) {
+            if ((type == PDU_TYPE.ENTITY_STATE) ||
+                (type == PDU_TYPE.COLLISION) ||
+                (type == PDU_TYPE.COLLISION_ELASTIC) ||
+                (type == PDU_TYPE.ENTITY_STATE_UPDATE) ||
+                (type == PDU_TYPE.ATTRIBUTE)) {
 
-                    case PDU_TYPE_ENTITY_STATE:
-                    case PDU_TYPE_COLLISION:
-                    case PDU_TYPE_COLLISION_ELASTIC:
-                    case PDU_TYPE_ENTITY_STATE_UPDATE:
-                    case PDU_TYPE_ATTRIBUTE:
-                        valid = true;
+                valid = true;
+            }
+        }
+        else if (family == PDU_FAMILY.WARFARE) {
 
-                    break;
-                }
-                break;
+            if ((type == PDU_TYPE.FIRE) ||
+                (type == PDU_TYPE.DETONATION) ||
+                (type == PDU_TYPE.DE_FIRE) ||
+                (type == PDU_TYPE.ENTITY_DAMAGE_STATUS)) {
 
-            case PDU_FAMILY_WARFARE:
+                valid = true;
+            }
+        }
+        else if (family == PDU_FAMILY.LOGISTICS) {
 
-                switch(pduType) {
+            if ((type == PDU_TYPE.SERVICE_REQ) ||
+                (type == PDU_TYPE.RESUPPLY_OFFER) ||
+                (type == PDU_TYPE.RESUPPLY_RECEIVED) ||
+                (type == PDU_TYPE.RESUPPLY_CANCEL) ||
+                (type == PDU_TYPE.REPAIR_COMPLETE) ||
+                (type == PDU_TYPE.REPAIR_RESPONSE)) {
 
-                    case PDU_TYPE_FIRE:
-                    case PDU_TYPE_DETONATION:
-                    case PDU_TYPE_DE_FIRE:
-                    case PDU_TYPE_ENTITY_DAMAGE_STATUS:
-                        valid = true;
+                valid = true;
+            }
+        }
+        else if (family == PDU_FAMILY.SIMULATION_MANAGEMENT) {
 
-                    break;
-                }
-                break;
+            if ((type == PDU_TYPE.CREATE_ENTITY) ||
+                (type == PDU_TYPE.REMOVE_ENTITY) ||
+                (type == PDU_TYPE.START_RESUME) ||
+                (type == PDU_TYPE.STOP_FREEZE) ||
+                (type == PDU_TYPE.ACKNOWLEDGE) ||
+                (type == PDU_TYPE.ACTION_REQUEST) ||
+                (type == PDU_TYPE.ACTION_RESPONSE) ||
+                (type == PDU_TYPE.DATA_QUERY) ||
+                (type == PDU_TYPE.SET_DATA) ||
+                (type == PDU_TYPE.DATA) ||
+                (type == PDU_TYPE.EVENT_REPORT) ||
+                (type == PDU_TYPE.COMMENT)) {
 
-            case PDU_FAMILY_LOGISTICS:
+                valid = true;
+            }
+        }
+        else if (family == PDU_FAMILY.DISTRIBUTED_EMISSION_REGENERATION) {
 
-                switch(pduType) {
+            if ((type == PDU_TYPE.EM_EMISSION) ||
+                (type == PDU_TYPE.DESIGNATOR) ||
+                (type == PDU_TYPE.UNDERWATER_ACOUSTIC) ||
+                (type == PDU_TYPE.IFF) ||
+                (type == PDU_TYPE.SEES)) {
 
-                    case PDU_TYPE_SERVICE_REQ:
-                    case PDU_TYPE_RESUPPLY_OFFER:
-                    case PDU_TYPE_RESUPPLY_RECEIVED:
-                    case PDU_TYPE_RESUPPLY_CANCEL:
-                    case PDU_TYPE_REPAIR_COMPLETE:
-                    case PDU_TYPE_REPAIR_RESPONSE:
-                        valid = true;
+                valid = true;
+            }
+        }
+        else if (family == PDU_FAMILY.RADIO_COMMUNICATION) {
 
-                    break;
-                }
-                break;
+            if ((type == PDU_TYPE.TRANSMITTER) ||
+                (type == PDU_TYPE.SIGNAL) ||
+                (type == PDU_TYPE.RECEIVER) ||
+                (type == PDU_TYPE.INTERCOM_SIGNAL) ||
+                (type == PDU_TYPE.INTERCOM_CONTROL)) {
 
-            case PDU_FAMILY_SIMULATION_MANAGEMENT:
+                valid = true;
+            }
+        }
+        else if (family == PDU_FAMILY.ENTITY_MANAGEMENT) {
 
-                switch(pduType) {
+            if ((type == PDU_TYPE.AGGREGATE_STATE) ||
+                (type == PDU_TYPE.ISGROUPOF) ||
+                (type == PDU_TYPE.TRANSFER_OWNERSHIP) ||
+                (type == PDU_TYPE.ISPARTOF)) {
 
-                    case PDU_TYPE_CREATE_ENTITY:
-                    case PDU_TYPE_REMOVE_ENTITY:
-                    case PDU_TYPE_START_RESUME:
-                    case PDU_TYPE_STOP_FREEZE:
-                    case PDU_TYPE_ACKNOWLEDGE:
-                    case PDU_TYPE_ACTION_REQUEST:
-                    case PDU_TYPE_ACTION_RESPONSE:
-                    case PDU_TYPE_DATA_QUERY:
-                    case PDU_TYPE_SET_DATA:
-                    case PDU_TYPE_DATA:
-                    case PDU_TYPE_EVENT_REPORT:
-                    case PDU_TYPE_COMMENT:
-                        valid = true;
+                valid = true;
+            }
+        }
+        else if (family == PDU_FAMILY.MINEFIELD) {
 
-                    break;
-                }
-                break;
+            if ((type == PDU_TYPE.MINEFIELD_STATE) ||
+                (type == PDU_TYPE.MINEFIELD_QUERY) ||
+                (type == PDU_TYPE.MINEFIELD_DATA) ||
+                (type == PDU_TYPE.MINEFIELD_RESPONSE_NAK)) {
 
-            case PDU_FAMILY_DISTRIBUTED_EMISSION_REGENERATION:
+                valid = true;
+            }
+        }
+        else if (family == PDU_FAMILY.SYNTHETIC_ENVIRONMENT) {
 
-                switch(pduType) {
+            if ((type == PDU_TYPE.ENVIRONMENTAL_PROCESS) ||
+                (type == PDU_TYPE.GRIDDED_DATA) ||
+                (type == PDU_TYPE.POINT_OBJECT_STATE) ||
+                (type == PDU_TYPE.LINEAR_OBJECT_STATE) ||
+                (type == PDU_TYPE.AREAL_OBJECT_STATE)) {
 
-                    case PDU_TYPE_EM_EMISSION:
-                    case PDU_TYPE_DESIGNATOR:
-                    case PDU_TYPE_UNDERWATER_ACOUSTIC:
-                    case PDU_TYPE_IFF:
-                    case PDU_TYPE_SEES:
-                        valid = true;
+                valid = true;
+            }
+        }
+        else if (family == PDU_FAMILY.SIMULATION_MANAGEMENT_WITH_RELIABILITY) {
 
-                    break;
-                }
-                break;
+            if ((type == PDU_TYPE.CREATE_ENTITY_R) ||
+                (type == PDU_TYPE.REMOVE_ENTITY_R) ||
+                (type == PDU_TYPE.START_RESUME_R) ||
+                (type == PDU_TYPE.STOP_FREEZE_R) ||
+                (type == PDU_TYPE.ACKNOWLEDGE_R) ||
+                (type == PDU_TYPE.ACTION_REQUEST_R) ||
+                (type == PDU_TYPE.ACTION_RESPONSE_R) ||
+                (type == PDU_TYPE.DATA_QUERY_R) ||
+                (type == PDU_TYPE.SET_DATA_R) ||
+                (type == PDU_TYPE.DATA_R) ||
+                (type == PDU_TYPE.EVENT_REPORT_R) ||
+                (type == PDU_TYPE.COMMENT_R) ||
+                (type == PDU_TYPE.RECORD_QUERY_R) ||
+                (type == PDU_TYPE.SET_RECORD_R) ||
+                (type == PDU_TYPE.RECORD_R)) {
 
-            case PDU_FAMILY_RADIO_COMMUNICATION:
+                valid = true;
+            }
+        }
+        else if (family == PDU_FAMILY.INFO_OPS) {
 
-                switch(pduType) {
+            if ((type == PDU_TYPE.INFO_OPS_ACTION) ||
+                (type == PDU_TYPE.INFO_OPS_REPORT)) {
 
-                    case PDU_TYPE_TRANSMITTER:
-                    case PDU_TYPE_SIGNAL:
-                    case PDU_TYPE_RECEIVER:
-                    case PDU_TYPE_INTERCOM_SIGNAL:
-                    case PDU_TYPE_INTERCOM_CONTROL:
-                        valid = true;
+                valid = true;
+            }
+        }
+        else if (family == PDU_FAMILY.LIVE_ENTITY) {
 
-                    break;
-                }
-                break;
+            if ((type == PDU_TYPE.TSPI) ||
+                (type == PDU_TYPE.APPEARANCE) ||
+                (type == PDU_TYPE.ARTICULATED_PARTS) ||
+                (type == PDU_TYPE.LE_FIRE) ||
+                (type == PDU_TYPE.LE_DETONATION)) {
 
-            case PDU_FAMILY_ENTITY_MANAGEMENT:
+                valid = true;
+            }
+        }
+        else if (family == PDU_FAMILY.NON_REAL_TIME) {
 
-                switch(pduType) {
-
-                    case PDU_TYPE_AGGREGATE_STATE:
-                    case PDU_TYPE_ISGROUPOF:
-                    case PDU_TYPE_TRANSFER_OWNERSHIP:
-                    case PDU_TYPE_ISPARTOF:
-                        valid = true;
-
-                    break;
-                }
-                break;
-
-            case PDU_FAMILY_MINEFIELD:
-
-                switch(pduType) {
-
-                    case PDU_TYPE_MINEFIELD_STATE:
-                    case PDU_TYPE_MINEFIELD_QUERY:
-                    case PDU_TYPE_MINEFIELD_DATA:
-                    case PDU_TYPE_MINEFIELD_RESPONSE_NAK:
-                        valid = true;
-
-                    break;
-                }
-                break;
-
-            case PDU_FAMILY_SYNTHETIC_ENVIRONMENT:
-
-                switch(pduType) {
-
-                    case PDU_TYPE_ENVIRONMENTAL_PROCESS:
-                    case PDU_TYPE_GRIDDED_DATA:
-                    case PDU_TYPE_POINT_OBJECT_STATE:
-                    case PDU_TYPE_LINEAR_OBJECT_STATE:
-                    case PDU_TYPE_AREAL_OBJECT_STATE:
-                        valid = true;
-
-                    break;
-                }
-                break;
-
-            case PDU_FAMILY_SIMULATION_MANAGEMENT_WITH_RELIABILITY:
-
-                switch(pduType) {
-
-                    case PDU_TYPE_CREATE_ENTITY_R:
-                    case PDU_TYPE_REMOVE_ENTITY_R:
-                    case PDU_TYPE_START_RESUME_R:
-                    case PDU_TYPE_STOP_FREEZE_R:
-                    case PDU_TYPE_ACKNOWLEDGE_R:
-                    case PDU_TYPE_ACTION_REQUEST_R:
-                    case PDU_TYPE_ACTION_RESPONSE_R:
-                    case PDU_TYPE_DATA_QUERY_R:
-                    case PDU_TYPE_SET_DATA_R:
-                    case PDU_TYPE_DATA_R:
-                    case PDU_TYPE_EVENT_REPORT_R:
-                    case PDU_TYPE_COMMENT_R:
-                    case PDU_TYPE_RECORD_QUERY_R:
-                    case PDU_TYPE_SET_RECORD_R:
-                    case PDU_TYPE_RECORD_R:
-                        valid = true;
-
-                    break;
-                }
-                break;
-
-            case PDU_FAMILY_INFO_OPS:
-
-                switch(pduType) {
-
-                    case PDU_TYPE_INFO_OPS_ACTION:
-                    case PDU_TYPE_INFO_OPS_REPORT:
-                        valid = true;
-
-                    break;
-                }
-                break;
-
-            case PDU_FAMILY_LIVE_ENTITY:
-
-                switch(pduType) {
-
-                    case PDU_TYPE_TSPI:
-                    case PDU_TYPE_APPEARANCE:
-                    case PDU_TYPE_ARTICULATED_PARTS:
-                    case PDU_TYPE_LE_FIRE:
-                    case PDU_TYPE_LE_DETONATION:
-                        valid = true;
-
-                    break;
-                }
-                break;
-
-            case PDU_FAMILY_NON_REAL_TIME:
-
-                switch(pduType) {
-
-                    default:
-                    break;
-                }
-                break;
+            // Do nothing...
         }
 
         return valid;
@@ -1072,9 +1010,8 @@ public class PDU implements Bufferable {
                 return false;
         }
 
-        if (type == 1) {
+        if (type == PDU_TYPE.ENTITY_STATE.value) {
 
-            // PDU_TYPE_ENTITY_STATE
             switch(index) {
                 case 19: // VPRecord count
                     return false;

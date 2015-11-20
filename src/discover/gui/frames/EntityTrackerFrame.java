@@ -44,6 +44,7 @@ import discover.gui.Utilities;
 import discover.vdis.Entity;
 import discover.vdis.PDU;
 import discover.vdis.common.EntityId;
+import discover.vdis.enums.PDU_TYPE;
 import discover.vdis.types.EntityType;
 
 /**
@@ -729,34 +730,33 @@ public class EntityTrackerFrame
         }
 
         @Override
-        @SuppressWarnings("incomplete-switch")
         public void run() {
 
             for(PDU pdu : list) {
 
-                switch(pdu.getTypeEnum()) {
+                PDU_TYPE type = pdu.getTypeEnum();
 
-                    case PDU_TYPE_ENTITY_STATE:
-                        processEntityState(pdu);
-                        break;
-                    case PDU_TYPE_ACTION_REQUEST:
-                        processActionRequest(pdu);
-                        break;
-                    case PDU_TYPE_ACTION_RESPONSE:
-                        processActionResponse(pdu);
-                        break;
-                    case PDU_TYPE_TRANSMITTER:
-                        processTransmitter(pdu);
-                        break;
-                    case PDU_TYPE_FIRE:
-                        processFire(pdu);
-                        break;
-                    case PDU_TYPE_DETONATION:
-                        processDetonation(pdu);
-                        break;
-                    case PDU_TYPE_EM_EMISSION:
-                        processEmission(pdu);
-                        break;
+
+                if (type == PDU_TYPE.ENTITY_STATE) {
+                    processEntityState(pdu);
+                }
+                else if (type == PDU_TYPE.ACTION_REQUEST) {
+                    processActionRequest(pdu);
+                }
+                else if (type == PDU_TYPE.ACTION_RESPONSE) {
+                    processActionResponse(pdu);
+                }
+                else if (type == PDU_TYPE.TRANSMITTER) {
+                    processTransmitter(pdu);
+                }
+                else if (type == PDU_TYPE.FIRE) {
+                    processFire(pdu);
+                }
+                else if (type == PDU_TYPE.DETONATION) {
+                    processDetonation(pdu);
+                }
+                else if (type == PDU_TYPE.EM_EMISSION) {
+                    processEmission(pdu);
                 }
             }
         }

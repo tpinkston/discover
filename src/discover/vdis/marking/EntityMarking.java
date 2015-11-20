@@ -11,8 +11,8 @@ import discover.common.Readable;
 import discover.common.Writable;
 import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.Bufferable;
-import discover.vdis.Enumerations;
 import discover.vdis.enums.ENTITY_MARKING;
+import discover.vdis.enums.Value;
 import discover.vdis.marking.army.ArmyBattalion;
 import discover.vdis.marking.army.ArmyBrigade;
 import discover.vdis.marking.army.ArmyCompany;
@@ -111,11 +111,9 @@ public class EntityMarking implements Bufferable, Readable, Writable {
     @Override
     public String toString() {
 
-        String description = Enumerations.getDescription(
-            characterSet,
-            ENTITY_MARKING.class);
+        String text = Value.get(characterSet, ENTITY_MARKING.class).description;
 
-        return (marking + " (" + description + ")");
+        return (marking + " (" + text + ")");
     }
 
     @Override

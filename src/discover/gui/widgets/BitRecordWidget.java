@@ -15,7 +15,6 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableColumn;
 
 import discover.gui.Utilities;
-import discover.vdis.Enumerations;
 import discover.vdis.appearance.DefaultAppearance;
 import discover.vdis.appearance.LifeformAppearance;
 import discover.vdis.appearance.PlatformAirAppearance;
@@ -39,6 +38,7 @@ import discover.vdis.common.ExtendedLightsLand;
 import discover.vdis.common.ExtendedStatus;
 import discover.vdis.common.LifeformAttributes;
 import discover.vdis.common.ThermalIndicators;
+import discover.vdis.enums.Value;
 
 /**
  * @author Tony Pinkston
@@ -338,9 +338,7 @@ public class BitRecordWidget extends ToggleWidget {
 
             if ((column == 1) && (bits.enumeration != null)) {
 
-                return Enumerations.getDescription(
-                    value.getValue(bits),
-                    bits.enumeration);
+                return Value.get(value.getValue(bits), bits.enumeration).description;
             }
             else switch(column) {
 

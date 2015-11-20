@@ -38,10 +38,10 @@ import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.Bufferable;
 import discover.common.buffer.HypertextBuffer;
 import discover.gui.Utilities;
-import discover.vdis.Enumerations;
 import discover.vdis.PDU;
 import discover.vdis.common.EntityId;
 import discover.vdis.enums.PDU_TYPE;
+import discover.vdis.enums.Value;
 
 /**
  * @author Tony Pinkston
@@ -697,7 +697,7 @@ public class SiteMapFrame
                 total += count;
 
                 buffer.addAttribute(
-                    Enumerations.getDescription(type, PDU_TYPE.class),
+                    Value.get(type, PDU_TYPE.class).description,
                     count);
             }
 

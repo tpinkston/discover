@@ -110,7 +110,7 @@ public class FilterDialog implements ActionListener {
 
         port.setValue(pdu.getPort());
         exercise.setValue(pdu.getExercise());
-        typesIncluded.add(type.getValue());
+        typesIncluded.add(type.value);
         included.setText("1");
 
         Utilities.setComboBoxValue(
@@ -134,7 +134,7 @@ public class FilterDialog implements ActionListener {
             request.setValue(pdu.getRequestId());
         }
 
-        if (type == PDU_TYPE.PDU_TYPE_ENTITY_STATE) {
+        if (type == PDU_TYPE.ENTITY_STATE) {
 
             setEntityParametersEditable(true);
 
@@ -256,7 +256,7 @@ public class FilterDialog implements ActionListener {
 
             setEntityParametersEditable(false);
         }
-        else if (typesIncluded.contains(PDU_TYPE.PDU_TYPE_ENTITY_STATE.getValue())) {
+        else if (typesIncluded.contains(PDU_TYPE.ENTITY_STATE.value)) {
 
             setEntityParametersEditable(true);
         }
@@ -382,7 +382,7 @@ public class FilterDialog implements ActionListener {
             ENT_KIND.class,
             filter.kind);
 
-        if (!filter.includedTypes.contains(PDU_TYPE.PDU_TYPE_ENTITY_STATE.getValue())) {
+        if (!filter.includedTypes.contains(PDU_TYPE.ENTITY_STATE.value)) {
 
             setEntityParametersEditable(false);
         }
