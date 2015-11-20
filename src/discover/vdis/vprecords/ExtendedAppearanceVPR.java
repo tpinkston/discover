@@ -13,7 +13,7 @@ public abstract class ExtendedAppearanceVPR extends AbstractVPRecord {
     }
 
     /**
-     * @param type - {@link AbstractEnum} for "VP_RECORD_TYPE"
+     * @param type - Value for "VP_RECORD_TYPE"
      *
      * @return Appropriate appearance object for the given record type.
      */
