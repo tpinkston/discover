@@ -182,7 +182,7 @@ public class Entity {
         }
         else {
 
-            return FORCE_ID.getValue(getState().getForceId()).getDescription();
+            return FORCE_ID.get(getState().getForceId()).description;
         }
     }
 
@@ -215,7 +215,7 @@ public class Entity {
 
         pdu.decode(false);
 
-        if (pdu.getTypeEnum() == PDU_TYPE.PDU_TYPE_ENTITY_STATE) {
+        if (pdu.getTypeEnum() == PDU_TYPE.ENTITY_STATE) {
 
             if (state == null) {
 
@@ -232,7 +232,7 @@ public class Entity {
             getState().getAssociations(associations);
             getState().getArticulations(articulations);
         }
-        else if (pdu.getTypeEnum() == PDU_TYPE.PDU_TYPE_TRANSMITTER) {
+        else if (pdu.getTypeEnum() == PDU_TYPE.TRANSMITTER) {
 
             Transmitter transmitter = (Transmitter)pdu.getPDU();
 
@@ -256,7 +256,7 @@ public class Entity {
                 }
             }
         }
-        else if (pdu.getTypeEnum() == PDU_TYPE.PDU_TYPE_ACTION_REQUEST) {
+        else if (pdu.getTypeEnum() == PDU_TYPE.ACTION_REQUEST) {
 
             if (state != null) {
 
@@ -274,7 +274,7 @@ public class Entity {
                 }
             }
         }
-        else if (pdu.getTypeEnum() == PDU_TYPE.PDU_TYPE_ACTION_RESPONSE) {
+        else if (pdu.getTypeEnum() == PDU_TYPE.ACTION_RESPONSE) {
 
             if (state != null) {
 
@@ -290,7 +290,7 @@ public class Entity {
                 }
             }
         }
-        else if (pdu.getTypeEnum() == PDU_TYPE.PDU_TYPE_FIRE) {
+        else if (pdu.getTypeEnum() == PDU_TYPE.FIRE) {
 
             if (state != null) {
 
@@ -306,7 +306,7 @@ public class Entity {
                 }
             }
         }
-        else if (pdu.getTypeEnum() == PDU_TYPE.PDU_TYPE_DETONATION) {
+        else if (pdu.getTypeEnum() == PDU_TYPE.DETONATION) {
 
             if (state != null) {
 
@@ -336,7 +336,7 @@ public class Entity {
                 }
             }
         }
-        else if (pdu.getTypeEnum() == PDU_TYPE.PDU_TYPE_EM_EMISSION) {
+        else if (pdu.getTypeEnum() == PDU_TYPE.EM_EMISSION) {
 
             ElectromagneticEmission emission = (ElectromagneticEmission)pdu.getPDU();
 
@@ -538,9 +538,9 @@ public class Entity {
 
                 data[i][0] = Integer.toString(transmitter.getRadioId());
                 data[i][1] = transmitter.getRadioType().description;
-                data[i][2] = TRANSMIT_STATE.getValue(transmitter.getTransmitState()).getDescription();
-                data[i][3] = INPUT_SOURCE.getValue(transmitter.getInputSource()).getDescription();
-                data[i][4] = ANTENNA_PATTERN_TYPE.getValue(transmitter.getAntennaPattern()).getDescription();
+                data[i][2] = TRANSMIT_STATE.get(transmitter.getTransmitState()).description;
+                data[i][3] = INPUT_SOURCE.get(transmitter.getInputSource()).description;
+                data[i][4] = ANTENNA_PATTERN_TYPE.get(transmitter.getAntennaPattern()).description;
 
                 ++i;
             }

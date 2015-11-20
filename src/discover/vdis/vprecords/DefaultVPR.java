@@ -41,7 +41,7 @@ public class DefaultVPR extends AbstractVPRecord {
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
-        String title = VP_RECORD_TYPE.getValue(getRecordType()).getDescription();
+        String title = VP_RECORD_TYPE.get(getRecordType()).description;
 
         buffer.addTitle(title.toUpperCase());
 

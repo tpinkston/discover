@@ -124,6 +124,11 @@ public class PDUTypeDialog implements ActionListener {
         dialog.setVisible(true);
     }
 
+    /**
+     * TODO: Change list to List<PDU_TYPE>
+     *
+     * @param list
+     */
     public void apply(List<Integer> list) {
 
         list.clear();
@@ -132,7 +137,7 @@ public class PDUTypeDialog implements ActionListener {
 
             if (row.selected) {
 
-                list.add(row.type.getValue());
+                list.add(row.type.value);
             }
         }
     }
@@ -219,7 +224,7 @@ public class PDUTypeDialog implements ActionListener {
 
             if (column == 0) {
 
-               return tableRow.type.getDescription();
+               return tableRow.type.description;
             }
             else {
 

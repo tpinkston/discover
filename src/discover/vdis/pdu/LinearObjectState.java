@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import discover.common.buffer.AbstractBuffer;
-import discover.vdis.EnumInterface;
 import discover.vdis.common.EntityId;
 import discover.vdis.common.LinearSegment;
 import discover.vdis.common.ObjectId;
@@ -54,12 +53,12 @@ public class LinearObjectState extends AbstractPDU {
         super.toBuffer(buffer);
 
         String count = (this.count + " (" + segments.size() + ")");
-        EnumInterface forceEnum = FORCE_ID.getValue(force);
+        FORCE_ID forceEnum = FORCE_ID.get(force);
 
         buffer.addTitle("IDENTIFICATION");
         buffer.addAttribute("Object", objectId.toString());
         buffer.addAttribute("Referenced Object", referencedObjectId.toString());
-        buffer.addAttribute("Force", forceEnum.getDescription());
+        buffer.addAttribute("Force", forceEnum.description);
         buffer.addAttribute("Requestor", requestor.toString());
         buffer.addAttribute("Receiver", receiver.toString());
         buffer.addAttribute("Update Number", update);
@@ -91,7 +90,7 @@ public class LinearObjectState extends AbstractPDU {
         requestor.readPartial(stream);
         receiver.readPartial(stream);
         objectType = ObjectTypes.getObjectType(
-            OBJECT_GEOMETRY.LINEAR.getValue(),
+            OBJECT_GEOMETRY.LINEAR.value,
             stream.readInt());
 
         for(int i = 0; i < count; ++i) {

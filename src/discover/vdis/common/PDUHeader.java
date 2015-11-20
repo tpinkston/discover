@@ -91,7 +91,8 @@ public class PDUHeader implements Bufferable, Readable, Writable {
         length = stream.readUnsignedShort();
         status.read(stream);
         padding = stream.readUnsignedByte();
-        status.setEnumValues(type);
+
+        status.setEnumValues(PDU_TYPE.get(type));
     }
 
     /**

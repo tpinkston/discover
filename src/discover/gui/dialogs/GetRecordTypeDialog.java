@@ -22,7 +22,7 @@ import discover.vdis.enums.VP_RECORD_TYPE;
  */
 public class GetRecordTypeDialog implements ActionListener {
 
-    private static final VP_RECORD_TYPE TYPES[] = VP_RECORD_TYPE.values();
+    private static final List<VP_RECORD_TYPE> PDU_TYPES = VP_RECORD_TYPE.values(true);
 
     @SuppressWarnings("serial")
     private final JDialog dialog = new JDialog(
@@ -76,7 +76,7 @@ public class GetRecordTypeDialog implements ActionListener {
 
                 if (buttons.get(i).isSelected()) {
 
-                    type = TYPES[i].getValue();
+                    type = PDU_TYPES.get(i).value;
                 }
             }
         }
@@ -100,11 +100,11 @@ public class GetRecordTypeDialog implements ActionListener {
 
         int count = 0;
 
-        for(VP_RECORD_TYPE type : TYPES) {
+        for(VP_RECORD_TYPE type : PDU_TYPES) {
 
-            JRadioButton button = new JRadioButton(type.getDescription());
+            JRadioButton button = new JRadioButton(type.description);
 
-            if (type.getValue() == 0) {
+            if (type.value == 0) {
 
                 button.setSelected(true);
             }
@@ -129,7 +129,7 @@ public class GetRecordTypeDialog implements ActionListener {
             dialog.getContentPane(),
             getButtonPanel(),
             Utilities.HORIZONTAL,
-            0, (TYPES.length + 1),
+            0, (PDU_TYPES.size() + 1),
             1, 1,
             1.0, 0.0,
             Utilities.getInsets(10, 5, 2, 5));

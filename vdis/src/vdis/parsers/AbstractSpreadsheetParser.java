@@ -16,7 +16,7 @@ import vdis.handlers.AbstractSheetHandler;
  */
 public abstract class AbstractSpreadsheetParser {
 
-    protected final Map<String , AbstractSheetHandler> handlers = new HashMap<>();
+    protected final Map<String, AbstractSheetHandler> handlers = new HashMap<>();
 
     public abstract String getFileName();
 

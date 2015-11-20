@@ -77,14 +77,14 @@ public class ArticulatedPartVPR extends AbstractVPRecord {
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
-        String title = VP_RECORD_TYPE.getValue(getRecordType()).getDescription();
+        String title = VP_RECORD_TYPE.get(getRecordType()).description;
         String typeString = null;
 
         buffer.addTitle(title.toUpperCase());
 
-        typeString = ARTICULATED_PARTS.getValue(type).getDescription();
+        typeString = ARTICULATED_PARTS.get(type).description;
         typeString += " (";
-        typeString += ARTICULATED_PARTS_METRIC.getValue(metric).getDescription();
+        typeString += ARTICULATED_PARTS_METRIC.get(metric).description;
         typeString += ")";
 
         buffer.addAttribute("Type", typeString);

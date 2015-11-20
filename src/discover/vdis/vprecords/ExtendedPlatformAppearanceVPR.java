@@ -115,9 +115,9 @@ public class ExtendedPlatformAppearanceVPR extends ExtendedAppearanceVPR {
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
-        String title = VP_RECORD_TYPE.getValue(getRecordType()).getDescription();
+        String title = VP_RECORD_TYPE.get(getRecordType()).description;
 
-        String domain = DOMAIN.getValue(getDomain()).getDescription();
+        String domain = DOMAIN.get(getDomain()).description;
 
         domain = domain.toUpperCase();
 

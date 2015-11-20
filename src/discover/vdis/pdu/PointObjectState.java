@@ -98,7 +98,7 @@ public class PointObjectState extends AbstractPDU {
         force = stream.readUnsignedByte();
         modifications = stream.readUnsignedByte();
         objectType = ObjectTypes.getObjectType(
-            OBJECT_GEOMETRY.POINT.getValue(),
+            OBJECT_GEOMETRY.POINT.value,
             stream.readInt());
         location.read(stream);
         orientation.read(stream);

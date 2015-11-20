@@ -618,7 +618,7 @@ public abstract class PDUTab
                 return false;
             }
 
-            if (pdu.getTypeEnum() == PDU_TYPE.PDU_TYPE_ENTITY_STATE) {
+            if (pdu.getTypeEnum() == PDU_TYPE.ENTITY_STATE) {
 
                 if (this.exclude(site, pdu.getSiteId()) ||
                     this.exclude(application, pdu.getApplicationId()) ||
@@ -768,7 +768,7 @@ public abstract class PDUTab
 
                 PDU pdu = selections.get(0);
 
-                if (pdu.getTypeEnum() == PDU_TYPE.PDU_TYPE_ENTITY_STATE) {
+                if (pdu.getTypeEnum() == PDU_TYPE.ENTITY_STATE) {
 
                     // Decode to ensure that EntityState object gets created.
                     pdu.decode(false);

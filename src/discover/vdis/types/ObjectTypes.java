@@ -53,7 +53,7 @@ public class ObjectTypes {
     }
 
     /**
-     * @param geometry - Point, linear, areal...
+     * @param geometry - Point, linear, areal... TODO: change to OBJECT_GEOMETRY
      * @param value - 32-bit entity type value
      *
      * @return {@link ObjectType}

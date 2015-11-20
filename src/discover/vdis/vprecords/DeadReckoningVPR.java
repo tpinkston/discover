@@ -78,7 +78,7 @@ public class DeadReckoningVPR extends AbstractVPRecord {
     @Override
     public void toBuffer(AbstractBuffer buffer) {
 
-        String title = VP_RECORD_TYPE.getValue(getRecordType()).getDescription();
+        String title = VP_RECORD_TYPE.get(getRecordType()).description;
 
         String value = "(" + formatter.format(parameter[0]) +
                        ", " + formatter.format(parameter[1]) +

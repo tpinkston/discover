@@ -153,7 +153,7 @@ public class CFSTab
 
         for(final PDU pdu : list) {
 
-            if (pdu.getTypeEnum() == PDU_TYPE.PDU_TYPE_ENTITY_STATE) {
+            if (pdu.getTypeEnum() == PDU_TYPE.ENTITY_STATE) {
 
                 pdu.getEntityId(entityId);
 
@@ -166,7 +166,7 @@ public class CFSTab
                     }
                 }
             }
-            else if (pdu.getTypeEnum() == PDU_TYPE.PDU_TYPE_ACTION_RESPONSE) {
+            else if (pdu.getTypeEnum() == PDU_TYPE.ACTION_RESPONSE) {
 
                 if (pdu.getPort() == data.safPort) {
 
@@ -337,7 +337,7 @@ public class CFSTab
 
             header.setProtocol(data.protocol);
             header.setExercise(data.safExercise);
-            header.setType(PDU_TYPE.PDU_TYPE_ACTION_REQUEST.getValue());
+            header.setType(PDU_TYPE.ACTION_REQUEST.value);
             header.setFamily(5); // PDU_FAMILY_SIMULATION_MANAGEMENT
             header.setTimestamp(entityState.getHeader().getTimestamp());
             header.setLength(BASE_LENGTH + getTotalMarkingLength());
@@ -407,7 +407,7 @@ public class CFSTab
 
                         setStatus(
                             "Action Response Status: " +
-                            response.getStatusEnum().getDescription());
+                            response.getStatusEnum().description);
 
                         // ACTRES_REQ_COMPLETE?
                         if (response.getStatus() == 4) {
