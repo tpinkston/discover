@@ -92,6 +92,11 @@ public class EnumGenerator {
                 element.name = element.name.substring(name.length() + 1);
             }
 
+            if (element.name.matches("^\\d.+")) {
+
+                element.name = ("VALUE_" + element.name);
+            }
+
             writer.print("       " + element.name + " = new " + name + "(");
             writer.print(element.value);
             writer.print(", \"" + element.name + "\"");

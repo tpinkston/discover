@@ -8,11 +8,11 @@ import java.util.List;
 public final class ENCODING_TYPE extends Value {
 
     public static final ENCODING_TYPE
-       8_BIT_MU_LAW = new ENCODING_TYPE(1, "8_BIT_MU_LAW", "8-Bit Mu-Law", true),
+       VALUE_8_BIT_MU_LAW = new ENCODING_TYPE(1, "VALUE_8_BIT_MU_LAW", "8-Bit Mu-Law", true),
        CVSD_PER_MIL_STD_188_113 = new ENCODING_TYPE(2, "CVSD_PER_MIL_STD_188_113", "CVSD Per MIL-STD-188-113", true),
        ADPCM_PER_CCITT_G_721 = new ENCODING_TYPE(3, "ADPCM_PER_CCITT_G_721", "ADPCM Per CCITT G.721", true),
-       16_BIT_LINEAR_PCM = new ENCODING_TYPE(4, "16_BIT_LINEAR_PCM", "16-Bit Linear PCM", true),
-       8_BIT_LINEAR_PCM = new ENCODING_TYPE(5, "8_BIT_LINEAR_PCM", "8-Bit Linear PCM", true),
+       VALUE_16_BIT_LINEAR_PCM = new ENCODING_TYPE(4, "VALUE_16_BIT_LINEAR_PCM", "16-Bit Linear PCM", true),
+       VALUE_8_BIT_LINEAR_PCM = new ENCODING_TYPE(5, "VALUE_8_BIT_LINEAR_PCM", "8-Bit Linear PCM", true),
        VQ_VECTOR_QUANTIZATION = new ENCODING_TYPE(6, "VQ_VECTOR_QUANTIZATION", "VQ (Vector Quantization)", true);
 
     private ENCODING_TYPE(int value, String name, String description, boolean known) {

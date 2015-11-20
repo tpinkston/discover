@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Contains enumeration types not in the VDIS specs. -->
+<types>
+  <type name="AIR_SMOKE">
+    <element name="NONE" value="0" description="No Damage"/>
+    <element name="TRAILING" value="1" description="Trailing Smoke"/>
+    <element name="ENGINE" value="2" description="Emitting Engine Smoke"/>
+    <element name="ENGINE_TRAILING" value="3" description="Emitting Engine Smoke and Trailing Smoke"/>
+  </type>
+  <type name="APP_CTRL_APPLICATION_TYPE">
+    <element name="OTHER" value="0" description="Other"/>
+    <element name="RESOURCE_MANAGER" value="1" description="Resource Manager"/>
+    <element name="SIMULATION_MANAGER" value="2" description="Simulation Manager"/>
+    <element name="GATEWAY" value="3" description="Gateway"/>
+    <element name="STEALTH" value="4" description="Stealth"/>
+    <element name="TACTICAL_INTEGERNET_INTERFACE" value="5" description="Tactical Integernet Interface"/>
+  </type>
+  <type name="APP_CTRL_CONTROL_TYPE">
+    <element name="OTHER" value="0" description="Other"/>
+    <element name="SHUTDOWN" value="1" description="Shutdown"/>
+    <element name="DATA_QUERY" value="2" description="Data Query"/>
+    <element name="DATA" value="3" description="Data"/>
+    <element name="SET_DATA" value="4" description="Set Data"/>
+    <element name="ADD_DATA" value="5" description="Add Data"/>
+    <element name="REMOVE_DATA" value="6" description="Remove Data"/>
+    <element name="STATUS" value="7" description="Status"/>
+  </type>
+  <type name="ARTICULATED_PARTS_METRIC">
+    <element name="EMPTY" value="0" description="Empty"/>
+    <element name="POSITION" value="1" description="Position"/>
+    <element name="POSITION_RATE" value="2" description="Position Rate"/>
+    <element name="EXTENSION" value="3" description="Extension"/>
+    <element name="EXTENSION_RATE" value="4" description="Extension Rate"/>
+    <element name="X" value="5" description="X"/>
+    <element name="X_RAT" value="6" description=",X Rate"/>
+    <element name="Y" value="7" description="Y"/>
+    <element name="Y_RATE" value="8" description="Y Rate"/>
+    <element name="Z" value="9" description="Z"/>
+    <element name="Z_RATE" value="10" description="Z Rate"/>
+    <element name="AZIMUTH" value="11" description="Azimuth"/>
+    <element name="AZIMUTH_RATE" value="12" description="Azimuth Rate"/>
+    <element name="ELEVATION" value="13" description="Elevation"/>
+    <element name="ELEVATION_RATE" value="14" description="Elevation Rate"/>
+    <element name="ROTATION" value="15" description="Rotation"/>
+    <element name="ROTATION_RATE" value="16" description="Rotation Rate"/>
+  </type>
+  <type name="DOMAIN">
+    <element name="OTHER" value="0" description="Other"/>
+    <element name="LAND" value="1" description="Land"/>
+    <element name="AIR" value="2" description="Air"/>
+    <element name="SURFACE" value="3" description="Surface"/>
+    <element name="SUBSURFACE" value="4" description="Subsurface"/>
+    <element name="SPACE" value="5" description="Space"/>
+  </type>
+  <type name="ENT_KIND">
+    <element name="OTHER" value="0" description="Other"/>
+    <element name="PLATFORMS" value="1" description="Platforms"/>
+    <element name="MUNITIONS" value="2" description="Munitions"/>
+    <element name="LIFEFORMS" value="3" description="Life Forms"/>
+    <element name="ENVIRONMENTALS" value="4" description="Environmentals"/>
+    <element name="CULTURAL_FEATURES" value="5" description="Cultural Features"/>
+    <element name="SUPPLIES" value="6" description="Supplies"/>
+    <element name="RADIOS" value="7" description="Radios"/>
+    <element name="EXPENDABLES" value="8" description="Expendables"/>
+    <element name="SENSOR_EMITTERS" value="9" description="Sensor Emitters"/>
+  </type>
+  <type name="FROZEN_BEHAVIOR">
+    <element name="RUN_INTERNAL_SIMULATION_CLOCK" value="0" description="Run Internal Simulation Clock"/>
+    <element name="TRANSMIT_PDUS" value="1" description="Transmit PDUs"/>
+    <element name="UPDATE_MODELS_OF_OTHER_ENTITIES" value="2" description="Update Models of Other Entities"/>
+    <element name="CONTINUE_TRANSMIT_PDUS" value="3" description="Continue Transmit PDU"/>
+    <element name="CEASE_MODELS_OF_OTHER_ENTITIES" value="4" description="Cease Update Models of Other Entities"/>
+    <element name="CONTINUE_MODELS_OF_OTHER_ENTITIES" value="5" description="Continue Update Models of Other Entities"/>
+  </type>
+  <type name="HOIST_STATUS">
+    <element name="NOT_PRESENT" value="0" description="Not Present"/>
+    <element name="UNAVAILABLE" value="1" description="Unavailable"/>
+    <element name="AVAILABLE" value="2" description="Available"/>
+  </type>
+  <type name="IED_PRESENCE">
+    <element name="NONE" value="0" description="None"/>
+    <element name="VISIBLE" value="1" description="Visible"/>
+    <element name="PARTIALLY_HIDDEN" value="2" description="Partially Hidden"/>
+    <element name="COMPLETELY_HIDDEN" value="3" description="Completely Hidden"/>
+  </type>
+  <type name="LAND_SMOKE">
+    <element name="NONE" value="0" description="No Damage"/>
+    <element name="RISING" value="1" description="Rising Smoke"/>
+    <element name="ENGINE" value="2" description="Emitting Engine Smoke"/>
+    <element name="ENGINE_RISING" value="3" description="Emitting Engine Smoke and Rising Smoke"/>
+  </type>
+  <type name="LF_AGE_GROUP">
+    <element name="NOT_SPECIFIED" value="0" description="Not Specified"/>
+    <element name="NEWBORN" value="1" description="Newborn " value="0-3 months)"/>
+    <element name="INFANT" value="2" description="Infant " value="3 months-1 year)"/>
+    <element name="TODDLER" value="3" description="Toddler " value="1-3 years)"/>
+    <element name="SMALL_CHILD" value="4" description="Small Child " value="3-6 years)"/>
+    <element name="CHILD" value="5" description="Child " value="6-10 years)"/>
+    <element name="ADOLESCENT" value="6" description="Adolescent " value="10-12 years)"/>
+    <element name="TEENAGER" value="7" description="Teenager " value="13-16 years)"/>
+    <element name="EARLY_ADULTHOOD" value="8" description="Early Adulthood " value="17-25 years)"/>
+    <element name="MIDDLE_ADULTHOOD" value="9" description="Middle Adulthood " value="26-40 years)"/>
+    <element name="LATE_ADULTHOOD" value="10" description="Late Adulthood " value="41-55 years)"/>
+    <element name="SENIOR" value="11" description="Senior " value="55-70 years)"/>
+    <element name="ELDERLY" value="12" description="Elderly " value="71+ years)"/>
+    <element name="CENTURION" value="13" description="Centurion " value="100+ years)"/>
+  </type>
+  <type name="LF_CAMOUFLAGE_TYPE">
+    <element name="DESERT" value="0" description="Desert Camouflage"/>
+    <element name="WINTER" value="1" description="Winter Camouflage"/>
+    <element name="FOREST" value="2" description="Forest Camouflage"/>
+    <element name="NONE" value="3" description="No Camouflage"/>
+  </type>
+  <type name="LF_CLOTH_TYPE">
+    <element name="UNIFORM_COLOR" value="0" description="Uniform Color"/>
+    <element name="CAMOUFLAGE" value="1" description="Camouflage"/>
+  </type>
+  <type name="LF_COMPLIANCE">
+    <element name="OTHER" value="0" description="Other"/>
+    <element name="DETAINED" value="1" description="Detained"/>
+    <element name="SURRENDER" value="2" description="Surrender"/>
+    <element name="USING_FISTS" value="3" description="Using Fists"/>
+    <element name="VERBAL_ABUSE_LEVEL_1" value="4" description="Verbal Abuse Level 1"/>
+    <element name="VERBAL_ABUSE_LEVEL_2" value="5" description="Verbal Abuse Level 2"/>
+    <element name="VERBAL_ABUSE_LEVEL_3" value="6" description="Verbal Abuse Level 3"/>
+    <element name="PASSIVE_RESISTANCE_LEVEL_1" value="7" description="Passive Resistance Level 1"/>
+    <element name="PASSIVE_RESISTANCE_LEVEL_2" value="8" description="Passive Resistance Level 2"/>
+    <element name="PASSIVE_RESISTANCE_LEVEL_3" value="9" description="Passive Resistance Level 3"/>
+    <element name="USING_NON_LETHAL_WEAPON_1" value="10" description="Using Non-lethal Weapon 1"/>
+    <element name="USING_NON_LETHAL_WEAPON_2" value="11" description="Using Non-lethal Weapon 2"/>
+    <element name="USING_NON_LETHAL_WEAPON_3" value="12" description="Using Non-lethal Weapon 3"/>
+    <element name="USING_NON_LETHAL_WEAPON_4" value="13" description="Using Non-lethal Weapon 4"/>
+    <element name="USING_NON_LETHAL_WEAPON_5" value="14" description="Using Non-lethal Weapon 5"/>
+    <element name="USING_NON_LETHAL_WEAPON_6" value="15" description="Using Non-lethal Weapon 6"/>
+  </type>
+  <type name="LF_EQ_LASER">
+    <element name="NONE" value="0" description="None"/>
+    <element name="LASER_POINTER" value="1" description="Laser Pointer"/>
+    <element name="LASER_DESIGNATOR" value="2" description="Laser Designator"/>
+    <element name="LASER_RANGE_FINDER" value="3" description="Laser Range Finder"/>
+  </type>
+  <type name="LF_ETHNICITY">
+    <element name="NOT_SPECIFIED" value="0" description="Not Specified"/>
+    <element name="ASIAN" value="1" description="Asian"/>
+    <element name="PACIFIC_ISLANDER" value="2" description="Pacific Islander"/>
+    <element name="BLACK" value="3" description="Black"/>
+    <element name="EAST_ASIAN" value="4" description="East Asian"/>
+    <element name="HISPANIC" value="5" description="Hispanic"/>
+    <element name="WHITE" value="6" description="White"/>
+    <element name="ARAB" value="7" description="Arab"/>
+    <element name="HOMOGENOUS_CTRY" value="8" description="Homogenous Country Code"/>
+    <element name="INDIGENOUS_CTRY" value="9" description="Indigenous Country Code"/>
+  </type>
+  <type name="LF_GENDER">
+    <element name="MALE" value="0" description="Male"/>
+    <element name="FEMALE" value="1" description="Female"/>
+  </type>
+  <type name="LF_HEALTH">
+    <element name="NO_INJURY" value="0" description="No Injury"/>
+    <element name="SLIGHT_INJURY" value="1" description="Slight Injury"/>
+    <element name="MODERATE_INJURY" value="2" description="Moderate Injury"/>
+    <element name="FATAL_INJURY" value="3" description="Fatal Injury"/>
+  </type>
+  <type name="LF_POSTURE">
+    <element name="OTHER" value="0" description="Other"/>
+    <element name="UPRIGHT_STANDING_STILL" value="1" description="Upright Standing Still"/>
+    <element name="UPRIGHT_WALKING" value="2" description="Upright Walking"/>
+    <element name="UPRIGHT_RUNNING" value="3" description="Upright Running"/>
+    <element name="KNEELING" value="4" description="Kneeling"/>
+    <element name="PRONE" value="5" description="Prone"/>
+    <element name="CRAWLING" value="6" description="Crawling"/>
+    <element name="SWIMMING" value="7" description="Swimming"/>
+    <element name="PARACHUTING" value="8" description="Parachuting"/>
+    <element name="JUMPING" value="9" description="Jumping"/>
+    <element name="SITTING" value="10" description="Sitting"/>
+    <element name="SQUATTING" value="11" description="Squatting"/>
+    <element name="CROUCHING" value="12" description="Crouching"/>
+    <element name="WADING" value="13" description="Wading"/>
+    <element name="SURRENDER" value="14" description="Surrender"/>
+    <element name="DETAINED" value="15" description="Detained"/>
+  </type>
+  <type name="LF_WEAPON_STATE">
+    <element name="NONE" value="0" description="None"/>
+    <element name="STOWED" value="1" description="Stowed"/>
+    <element name="DEPLOYED" value="2" description="Deployed"/>
+    <element name="FIRING_POSITION" value="3" description="Firing Position"/>
+  </type>
+  <type name="ON_OFF">
+    <element name="OFF" value="0" description="Off"/>
+    <element name="ON" value="1" description="ON"/>
+  </type>
+  <type name="PDU_STATUS_IAI">
+    <element name="NO_STATEMENT" value="0" description="No Statement"/>
+    <element name="NOT_ATTACHED" value="1" description="Not Attached"/>
+    <element name="ATTACHED" value="2" description="Attached"/>
+  </type>
+  <type name="PRESENCE">
+    <element name="NOT_PRESENT" value="0" description="Not Present"/>
+    <element name="PRESENT" value="1" description="Present"/>
+  </type>
+  <type name="SEVERITY">
+    <element name="NONE" value="0" description="None"/>
+    <element name="SLIGHT" value="1" description="Slight"/>
+    <element name="MODERATE" value="2" description="Moderate"/>
+    <element name="HEAVY" value="3" description="Heavy"/>
+  </type>
+  <type name="SLING_DAMAGE">
+    <element name="NONE" value="0" description="None"/>
+    <element name="SLING_DAMAGED" value="1" description="Sling Damaged"/>
+    <element name="LINE_DAMAGED" value="2" description="Line Damaged"/>
+    <element name="SLING_OR_LINE_DAMAGED" value="3" description="Sling or Line Destroyed"/>
+  </type>
+  <type name="YES_NO">
+    <element name="NO" value="0" description="No"/>
+    <element name="YES" value="1" description="Yes"/>
+  </type>
+<types>
