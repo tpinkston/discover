@@ -698,7 +698,7 @@
   <type name="US_MUN_AARM_BALL_12_7_MM_50_CAL_M8_API" value="2.2.225.2.1.2.0" description="M8 API"/>
   <type name="US_MUN_AARM_BALL_12_7_MM_50_CAL_M17" value="2.2.225.2.1.3.0" description="M17"/>
   <type name="US_MUN_AARM_BALL_12_7_MM_50_CAL_M20_API_T" value="2.2.225.2.1.4.0" description="M20 API-T"/>
-  <type name="US_MUN_AARM_BALL_12_7_MM_50_CAL_A534_4_BALL_AND_1_TRACER_MIX" value="2.2.225.2.1.5.0" description="A534 (4 ball & 1 tracer mix)"/>
+  <type name="US_MUN_AARM_BALL_12_7_MM_50_CAL_A534_4_BALL_AND_1_TRACER_MIX" value="2.2.225.2.1.5.0" description="A534 (4 ball and 1 tracer mix)"/>
   <type name="US_MUN_AARM_BALL_12_7_MM_M903_SLAP" value="2.2.225.2.1.6.0" description="M903 SLAP"/>
   <type name="US_MUN_AARM_BALL_12_7_MM_M962_SLAP_T" value="2.2.225.2.1.6.1" description="M962 SLAP-T"/>
   <type name="US_MUN_AARM_BALL_20_MM" value="2.2.225.2.2.0.0" description="20 mm"/>
@@ -1513,7 +1513,7 @@
   <type name="US_MUN_APER_FIX_M741_SCAT_AT_MINE" value="2.8.225.3.6.0.0" description="M741 scatterable AT mine"/>
   <type name="US_MUN_APER_FIX_M718_SCAT_AT_MINE" value="2.8.225.3.7.0.0" description="M718 scatterable AT mine"/>
   <type name="US_MUN_APER_FIX_M75_SCAT_AT_MINE" value="2.8.225.3.8.0.0" description="M75 scatterable AT mine"/>
-  <type name="US_MUN_APER_FIX_NONMETALLIC_TOE_POPPER_MINE" value="2.8.225.3.9.0.0" description="Nonmetallic "Toe Popper" mine"/>
+  <type name="US_MUN_APER_FIX_NONMETALLIC_TOE_POPPER_MINE" value="2.8.225.3.9.0.0" description="Nonmetallic 'Toe Popper' mine"/>
   <type name="US_MUN_APER_FIX_NONMETALLIC_TOE_POPPER_MINE_M14" value="2.8.225.3.9.1.0" description="M14"/>
   <type name="US_MUN_APER_FIX_M731_SCAT_MINE" value="2.8.225.3.10.0.0" description="M731 scatterable mine"/>
   <type name="US_MUN_APER_FIX_M692_SCAT_MINE" value="2.8.225.3.11.0.0" description="M692 scatterable mine"/>
@@ -2246,8 +2246,8 @@
   <type name="US_MUN_BATS_BALL_107_MM_M630_TACT_CS_BOMB" value="2.9.225.2.18.7.0" description="M630 tactical CS bomb"/>
   <type name="US_MUN_BATS_BALL_107_MM_M329_B1_HE" value="2.9.225.2.18.8.0" description="M329 B1 HE bomb"/>
   <type name="US_MUN_BATS_BALL_7_62_MM" value="2.9.225.2.19.0.0" description="7.62 mm"/>
-  <type name="US_MUN_BATS_BALL_7_62_MM_DELETED" value="2.9.225.2.19.1.0" description="A131 (4 Ball & 1 Tracer Mix)"/>
-  <type name="US_MUN_BATS_BALL_7_62_MM_DELETED" value="2.9.225.2.19.2.0" description="M62 (4 Ball & 1 Tracer)"/>
+  <type name="US_MUN_BATS_BALL_7_62_MM_DELETED" value="2.9.225.2.19.1.0" description="A131 (4 Ball and 1 Tracer Mix)"/>
+  <type name="US_MUN_BATS_BALL_7_62_MM_DELETED" value="2.9.225.2.19.2.0" description="M62 (4 Ball and 1 Tracer)"/>
   <type name="US_MUN_BATS_BALL_7_62_MM_DELETED" value="2.9.225.2.19.3.0" description="M80"/>
   <type name="US_MUN_BATS_BALL_7_62_MM_DELETED" value="2.9.225.2.19.4.0" description="A131"/>
   <type name="US_MUN_BATS_BALL_12_7_MM" value="2.9.225.2.20.0.0" description="12.7 mm"/>
@@ -2405,7 +2405,7 @@
   <type name="US_MUN_BATS_BALL_5_56_MM" value="2.9.225.2.81.0.0" description="5.56 MM"/>
   <type name="US_MUN_BATS_BALL_5_56_MM_M855" value="2.9.225.2.81.1.0" description="M855 Ball"/>
   <type name="US_MUN_BATS_BALL_5_56_MM_M856_TRACER" value="2.9.225.2.81.2.0" description="M856 Tracer"/>
-  <type name="US_MUN_BATS_BALL_5_56_MM_A064_4_BALL_AND_1_TRACER_MIX" value="2.9.225.2.81.3.0" description="A064 (4 ball & 1 tracer mix)"/>
+  <type name="US_MUN_BATS_BALL_5_56_MM_A064_4_BALL_AND_1_TRACER_MIX" value="2.9.225.2.81.3.0" description="A064 (4 ball and 1 tracer mix)"/>
   <type name="US_MUN_BATS_BALL_M87_MINE_CANISTER" value="2.9.225.2.82.0.0" description="M87 mine canister"/>
   <type name="US_MUN_BATS_BALL_BLU_82_B" value="2.9.225.2.83.0.0" description="BLU-82/B"/>
   <type name="US_MUN_BATS_BALL_40MM_BOFORS_MUNITIONS" value="2.9.225.2.84.0.0" description="40mm Bofors"/>

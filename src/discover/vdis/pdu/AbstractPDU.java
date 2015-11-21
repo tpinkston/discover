@@ -11,6 +11,7 @@ import discover.common.Readable;
 import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.Bufferable;
 import discover.vdis.common.PDUHeader;
+import discover.vdis.enums.PDU_TYPE;
 
 /**
  * @author Tony Pinkston
@@ -63,7 +64,7 @@ public abstract class AbstractPDU implements Bufferable, Readable {
      *
      * @return True if byte is editable.
      */
-    public static boolean isByteEditable(int type, int index) {
+    public static boolean isByteEditable(PDU_TYPE type, int index) {
 
         // PDU header checks
         switch(index) {
@@ -76,9 +77,8 @@ public abstract class AbstractPDU implements Bufferable, Readable {
                 return false;
         }
 
-        if (type == 1) {
+        if (type == PDU_TYPE.ENTITY_STATE) {
 
-            // PDU_TYPE_ENTITY_STATE
             switch(index) {
                 case 19: // VPRecord count
                     return false;

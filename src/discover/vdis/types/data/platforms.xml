@@ -594,7 +594,7 @@
   <type name="GER_PLAT_LAND_AUV_DELETED" value="1.1.78.3.5.0.0" description="(deprecated)"/>
   <type name="GER_PLAT_LAND_AUV_M113_ARMORED_MOTOR_AMB" value="1.1.78.3.6.0.0" description="M113 armored motor-ambulance"/>
   <type name="GER_PLAT_LAND_AUV_M113_ARMORED_ARTY_OBSERVER" value="1.1.78.3.7.0.0" description="M113 armored artillery observer"/>
-  <type name="GER_PLAT_LAND_AUV_TRANSPORTPANZER_1_FUCHS" value="1.1.78.3.8.0.0" description="Transportpanzer 1 "Fuchs""/>
+  <type name="GER_PLAT_LAND_AUV_TRANSPORTPANZER_1_FUCHS" value="1.1.78.3.8.0.0" description="Transportpanzer 1 'Fuchs'"/>
   <type name="GER_PLAT_LAND_AUV_BUFFEL_ARV" value="1.1.78.3.9.0.0" description="Buffel ARV"/>
   <type name="GER_PLAT_LAND_SPA" value="1.1.78.4.0.0.0" description="Self-propelled Artillery"/>
   <type name="GER_PLAT_LAND_SPA_PANZERHAUBITZE_2000" value="1.1.78.4.1.0.0" description="Panzerhaubitze 2000"/>
@@ -886,7 +886,7 @@
   <type name="SWE_PLAT_LAND_LTUV_BVS_10" value="1.1.205.9.4.0.0" description="All Terrain Vehicle (Protected) / ATV(P) / Viking / BvS 10"/>
   <type name="SWE_PLAT_LAND_LTUV_BVS_10_CV" value="1.1.205.9.4.1.0" description="BV-S10 Command (CV)"/>
   <type name="SWE_PLAT_LAND_LTUV_BVS_10_TCV" value="1.1.205.9.4.2.0" description="BV-S10 Troop Carrying (TCV)"/>
-  <type name="SWE_PLAT_LAND_LTUV_BVS_10_RRV" value="1.1.205.9.4.3.0" description="BV-S10 Repair & Recovery (RRV)"/>
+  <type name="SWE_PLAT_LAND_LTUV_BVS_10_RRV" value="1.1.205.9.4.3.0" description="BV-S10 Repair and Recovery (RRV)"/>
   <type name="SWE_PLAT_LAND_CIV" value="1.1.205.27.0.0.0" description="Civilian Vehicle"/>
   <type name="SWE_PLAT_LAND_CIV_TRUCK" value="1.1.205.27.1.0.0" description="Truck"/>
   <type name="SWE_PLAT_LAND_CIV_BUS_LEGACY" value="1.1.205.27.2.0.0" description="Bus"/>
@@ -1157,7 +1157,7 @@
   <type name="CIS_PLAT_LAND_AFV_BTR_80" value="1.1.222.2.13.0.0" description="BTR-80"/>
   <type name="CIS_PLAT_LAND_AFV_BTR_80_BTR_80" value="1.1.222.2.13.1.0" description="BTR-80"/>
   <type name="CIS_PLAT_LAND_AFV_BTR_80_M1981_1_COM" value="1.1.222.2.13.2.0" description="BTR-80 M1981/1 command"/>
-  <type name="CIS_PLAT_LAND_AFV_BTR_80_RKHM_4_CHEM_AND_RECON" value="1.1.222.2.13.3.0" description="BTR-80 RKhM-4 chemical & reconnaissance"/>
+  <type name="CIS_PLAT_LAND_AFV_BTR_80_RKHM_4_CHEM_AND_RECON" value="1.1.222.2.13.3.0" description="BTR-80 RKhM-4 chemical and reconnaissance"/>
   <type name="CIS_PLAT_LAND_AFV_BTR_80_UNSH" value="1.1.222.2.13.4.0" description="BTR-80 UNSh"/>
   <type name="CIS_PLAT_LAND_AFV_BTR_80_BMM_1_AMB" value="1.1.222.2.13.5.0" description="BMM-1 Ambulance"/>
   <type name="CIS_PLAT_LAND_AFV_BTR_80_BMM_2_BN_AID_STATION" value="1.1.222.2.13.6.0" description="BMM-2 Bn Aid Station"/>
@@ -1441,7 +1441,7 @@
   <type name="CIS_PLAT_LAND_MORT_DELETED" value="1.1.222.10.6.0.0" description="(deprecated)"/>
   <type name="CIS_PLAT_LAND_MORT_M_36_82_MM" value="1.1.222.10.7.0.0" description="M-36 82-mm"/>
   <type name="CIS_PLAT_LAND_MORT_M_37_82_MM" value="1.1.222.10.8.0.0" description="M-37 82-mm"/>
-  <type name="CIS_PLAT_LAND_MORT_M_37_82_MM_NEW" value="1.1.222.10.9.0.0" description="M-37 82-mm "new""/>
+  <type name="CIS_PLAT_LAND_MORT_M_37_82_MM_NEW" value="1.1.222.10.9.0.0" description="M-37 82-mm 'new'"/>
   <type name="CIS_PLAT_LAND_MORT_M_41_82_MM" value="1.1.222.10.10.0.0" description="M-41 82-mm"/>
   <type name="CIS_PLAT_LAND_MORT_AM_2B9_VASILEK_82_MM_AUTOMATIC" value="1.1.222.10.11.0.0" description="2B9 Vasilek (Cornflower)"/>
   <type name="CIS_PLAT_LAND_MORT_M_38_107_MM" value="1.1.222.10.12.0.0" description="M-38 107-mm"/>
@@ -1602,7 +1602,7 @@
   <type name="CIS_PLAT_LAND_ADUE_SP_VSHORAD_SA_13_GOPHER" value="1.1.222.28.12.3.0" description="SA-13 Gopher SAM System"/>
   <type name="CIS_PLAT_LAND_ADUE_SP_VSHORAD_GOPHER_SA_13_TELAR_W_FLAT_BOX_B" value="1.1.222.28.12.3.1" description="SA-13 TELAR w/Flat Box B"/>
   <type name="CIS_PLAT_LAND_ADUE_SP_VSHORAD_SA_13_GOPHER_SA_13_TELAR_W_O_FLAT_BOX" value="1.1.222.28.12.3.2" description="SA-13 TELAR w/o Flat Box"/>
-  <type name="CIS_PLAT_LAND_ADUE_SP_VSHORAD_2S6_TUNGUSKA_QUAD_30MM_SA_19_AD_SYS" value="1.1.222.28.12.4.0" description="2S6 "Tunguska" Quad 30mm/SA-19 AD System"/>
+  <type name="CIS_PLAT_LAND_ADUE_SP_VSHORAD_2S6_TUNGUSKA_QUAD_30MM_SA_19_AD_SYS" value="1.1.222.28.12.4.0" description="2S6 'Tunguska' Quad 30mm/SA-19 AD System"/>
   <type name="CIS_PLAT_LAND_ADUE_SP_VSHORAD_ZSU_57_2_TWIN_57MM_AA_GUN_SYS" value="1.1.222.28.12.5.0" description="ZSU-57/2 twin-57mm AA Gun System"/>
   <type name="CIS_PLAT_LAND_ADUE_SP_VSHORAD_BTR_40A_W_ZPTU_2_TWIN_14_5MM_AA_MOUNT" value="1.1.222.28.12.6.0" description="BTR-40A w/ZPTU-2 twin-14.5mm AA mount"/>
   <type name="CIS_PLAT_LAND_ADUE_SP_VSHORAD_BTR_152A_W_ZPTU_2_TWIN_14_5MM_AA_MOUNT" value="1.1.222.28.12.7.0" description="BTR-152A w/ZPTU-2 twin-14.5mm AA mount"/>
@@ -2011,7 +2011,7 @@
   <type name="US_PLAT_LAND_AFV_MORTAR_CARR_M1064_120_MM" value="1.1.225.2.9.4.0" description="M1064 120-mm"/>
   <type name="US_PLAT_LAND_AFV_MORTAR_CARR_M1064A2" value="1.1.225.2.9.5.0" description="M1064A2"/>
   <type name="US_PLAT_LAND_AFV_MORTAR_CARR_M1064A3" value="1.1.225.2.9.6.0" description="M1064A3"/>
-  <type name="US_PLAT_LAND_AFV_M901" value="1.1.225.2.10.0.0" description="Electronics & Space Corp M901 ITV"/>
+  <type name="US_PLAT_LAND_AFV_M901" value="1.1.225.2.10.0.0" description="Electronics and Space Corp M901 ITV"/>
   <type name="US_PLAT_LAND_AFV_M901_ITV" value="1.1.225.2.10.1.0" description="M901"/>
   <type name="US_PLAT_LAND_AFV_M901A1_ITV" value="1.1.225.2.10.2.0" description="M901A1"/>
   <type name="US_PLAT_LAND_AFV_M901A3_ITV" value="1.1.225.2.10.3.0" description="M901A3"/>
@@ -2077,7 +2077,7 @@
   <type name="US_PLAT_LAND_AFV_FCS_ARMED_ROBOTIC_VEH_ASSAULT" value="1.1.225.2.34.0.0" description="FCS Armed Robotic Vehicle - Assault"/>
   <type name="US_PLAT_LAND_AFV_FCS_ARMED_ROBOTIC_VEH_LT" value="1.1.225.2.35.0.0" description="FCS Armed Robotic Vehicle - Light"/>
   <type name="US_PLAT_LAND_AFV_FCS_RECON_AND_SURV_VEH" value="1.1.225.2.36.0.0" description="FCS Recon and Surveillance Vehicle"/>
-  <type name="US_PLAT_LAND_AFV_FCS_C2_VEH" value="1.1.225.2.37.0.0" description="FCS Command & Control Vehicle"/>
+  <type name="US_PLAT_LAND_AFV_FCS_C2_VEH" value="1.1.225.2.37.0.0" description="FCS Command and Control Vehicle"/>
   <type name="US_PLAT_LAND_AFV_FCS_MEDICAL_VEH_EVACUATION" value="1.1.225.2.38.0.0" description="FCS Medical Vehicle - Evacuation"/>
   <type name="US_PLAT_LAND_AFV_M1200_ARMORED_KNIGHT" value="1.1.225.2.40.0.0" description="M1200 Armored Knight"/>
   <type name="US_PLAT_LAND_AFV_LAV_25_8X8" value="1.1.225.2.41.0.0" description="LAV-25 8x8"/>
@@ -2182,7 +2182,7 @@
   <type name="US_PLAT_LAND_SPA_DELETED" value="1.1.225.4.18.0.0" description="Loral Aeronutronic M48 Chaparral"/>
   <type name="US_PLAT_LAND_SPA_DELETED" value="1.1.225.4.19.0.0" description="Block VII Low-Altitude SAM System"/>
   <type name="US_PLAT_LAND_SPA_DELETED" value="1.1.225.4.20.0.0" description="Loral Aeronutronic SAM System"/>
-  <type name="US_PLAT_LAND_SPA_ELECTRONIC_AND_SPACE_CORP_GLH_H" value="1.1.225.4.21.0.0" description="Electronic & Space Corp Ground-Launched Hellfire: Heavy (GLH:H)"/>
+  <type name="US_PLAT_LAND_SPA_ELECTRONIC_AND_SPACE_CORP_GLH_H" value="1.1.225.4.21.0.0" description="Electronic and Space Corp Ground-Launched Hellfire: Heavy (GLH:H)"/>
   <type name="US_PLAT_LAND_SPA_LOSAT" value="1.1.225.4.22.0.0" description="Line-of-Sight Anti-Tank (LOSAT)"/>
   <type name="US_PLAT_LAND_SPA_RGM_84_HARPOON_LNCHR" value="1.1.225.4.23.0.0" description="RGM-84 Harpoon Launcher"/>
   <type name="US_PLAT_LAND_SPA_HIMARS" value="1.1.225.4.24.0.0" description="HIMARS"/>
@@ -2263,7 +2263,7 @@
   <type name="US_PLAT_LAND_SWUV_M42_CARGO_TRUCK" value="1.1.225.6.11.2.0" description="M42"/>
   <type name="US_PLAT_LAND_SWUV_M43_CARGO_TRUCK" value="1.1.225.6.11.3.0" description="M43"/>
   <type name="US_PLAT_LAND_SWUV_M201_CARGO_TRUCK" value="1.1.225.6.11.4.0" description="M201"/>
-  <type name="US_PLAT_LAND_SWUV_STEWART_AND_STEVENSON_SERVICES_INC_SS_200_6X6_MULTI_PURPOSE_LT_VEH" value="1.1.225.6.12.0.0" description="Stewart & Stevenson Services Inc. SS-200 6x6 multi-purpose light vehicle"/>
+  <type name="US_PLAT_LAND_SWUV_STEWART_AND_STEVENSON_SERVICES_INC_SS_200_6X6_MULTI_PURPOSE_LT_VEH" value="1.1.225.6.12.0.0" description="Stewart and Stevenson Services Inc. SS-200 6x6 multi-purpose light vehicle"/>
   <type name="US_PLAT_LAND_SWUV_CUCV" value="1.1.225.6.13.0.0" description="Commercial Utility Cargo Vehicle (CUCV)"/>
   <type name="US_PLAT_LAND_SWUV_M1008_TRUCK_CARGO_TACT_1_1_4_TON_4X4" value="1.1.225.6.14.0.0" description="M1008, truck, cargo, tactical 1-1/4 ton, 4x4"/>
   <type name="US_PLAT_LAND_SWUV_M1009_TRUCK_UTILITY_TACT_3_4_TON_4X4" value="1.1.225.6.15.0.0" description="M1009, truck, utility, tactical 3/4 ton, 4x4"/>
@@ -2356,8 +2356,8 @@
   <type name="US_PLAT_LAND_LWUV_LTV_HUMMER_CAB_CARGO_TRUCK" value="1.1.225.7.9.0.0" description="LTV Hummer cab-over 4x4 2268-kg cargo truck"/>
   <type name="US_PLAT_LAND_LWUV_FREIGHTLINER_ATTV" value="1.1.225.7.10.0.0" description="Freightliner All-Terrain Tow Vehicle (ATTV)"/>
   <type name="US_PLAT_LAND_LWUV_FREIGHTLINER_ATTV_KAMAZ_4310_W_GENERATOR_SET" value="1.1.225.7.10.1.0" description="Kamaz-4310 with generator set"/>
-  <type name="US_PLAT_LAND_LWUV_SS_ATV" value="1.1.225.7.11.0.0" description="Stewart & Stevenson SS-300 8x8 2268-kg All-Terrain Vehicle"/>
-  <type name="US_PLAT_LAND_LWUV_SS_FMTV" value="1.1.225.7.12.0.0" description="Stewart & Stevenson Family of Medium Tactical Vehicles (FMTV)"/>
+  <type name="US_PLAT_LAND_LWUV_SS_ATV" value="1.1.225.7.11.0.0" description="Stewart and Stevenson SS-300 8x8 2268-kg All-Terrain Vehicle"/>
+  <type name="US_PLAT_LAND_LWUV_SS_FMTV" value="1.1.225.7.12.0.0" description="Stewart and Stevenson Family of Medium Tactical Vehicles (FMTV)"/>
   <type name="US_PLAT_LAND_LWUV_SS_FMTV_M1078_TRUCK_CARGO_LMTV_W_EQUIP" value="1.1.225.7.12.1.0" description="M1078 Truck, Cargo; LMTV w/ Equip"/>
   <type name="US_PLAT_LAND_LWUV_SS_FMTV_M1078_TRUCK_CARGO_LMTV_W_EQUIP_W_WINCH" value="1.1.225.7.12.2.0" description="M1078 Truck, Cargo; LMTV w/ Equip, w/ Winch"/>
   <type name="US_PLAT_LAND_LWUV_SS_FMTV_M1079_TRUCK_VAN_LMTV_W_EQUIP" value="1.1.225.7.12.3.0" description="M1079 Truck, Van; LMTV w/ Equip"/>
@@ -2394,7 +2394,7 @@
   <type name="US_PLAT_LAND_LWUV_M41_CARGO" value="1.1.225.7.14.1.0" description="M41, cargo"/>
   <type name="US_PLAT_LAND_LWUV_M41_DUMP6" value="1.1.225.7.14.2.0" description="M41, dump6"/>
   <type name="US_PLAT_LAND_LWUV_M52_TRAC" value="1.1.225.7.14.3.0" description="M52, tractor"/>
-  <type name="US_PLAT_LAND_LWUV_M54_CARGO" value="1.1.225.7.14.4.0" description="M54, cargo "/>
+  <type name="US_PLAT_LAND_LWUV_M54_CARGO" value="1.1.225.7.14.4.0" description="M54, cargo"/>
   <type name="US_PLAT_LAND_LWUV_M55_CARGO" value="1.1.225.7.14.5.0" description="M55, cargo"/>
   <type name="US_PLAT_LAND_LWUV_M62K_WRECKER_MED" value="1.1.225.7.14.6.0" description="M62k, wrecker, medium"/>
   <type name="US_PLAT_LAND_LWUV_M64_CARGO_VAN" value="1.1.225.7.14.7.0" description="M64, cargo, van"/>
@@ -3024,7 +3024,7 @@
   <type name="FR_PLAT_AIR_FAD_MIRAGE_F1_BJ" value="1.2.71.1.1.6.0" description="F1-BJ"/>
   <type name="FR_PLAT_AIR_FAD_MIRAGE_F1_BK" value="1.2.71.1.1.7.0" description="F1-BK"/>
   <type name="FR_PLAT_AIR_FAD_MIRAGE_F1_BQ" value="1.2.71.1.1.8.0" description="F1-BQ"/>
-  <type name="FR_PLAT_AIR_FAD_MIRAGE_F1_B_AND_E" value="1.2.71.1.1.9.0" description="F1-B & E"/>
+  <type name="FR_PLAT_AIR_FAD_MIRAGE_F1_B_AND_E" value="1.2.71.1.1.9.0" description="F1-B and E"/>
   <type name="FR_PLAT_AIR_FAD_MIRAGE_F1_C" value="1.2.71.1.1.10.0" description="F1-C"/>
   <type name="FR_PLAT_AIR_FAD_MIRAGE_F1_CE" value="1.2.71.1.1.11.0" description="F1-CE"/>
   <type name="FR_PLAT_AIR_FAD_MIRAGE_F1_CG" value="1.2.71.1.1.12.0" description="F1-CG"/>
@@ -3538,8 +3538,8 @@
   <type name="CIS_PLAT_AIR_ATK_SU_25_FROGFOOT" value="1.2.222.2.8.0.0" description="Su-25 Frogfoot"/>
   <type name="CIS_PLAT_AIR_ATK_SU_25_FROGFOOT_SU_25_FROGFOOT_A" value="1.2.222.2.8.1.0" description="Su-25 Frogfoot A"/>
   <type name="CIS_PLAT_AIR_ATK_SU_25_FROGFOOT_SU_25UB_FROGFOOT_B" value="1.2.222.2.8.2.0" description="Su-25UB Frogfoot B"/>
-  <type name="CIS_PLAT_AIR_ATK_SU_25_FROGFOOT_SU_25K_EXPORT_A" value="1.2.222.2.8.3.0" description="Su-25K (export "A")"/>
-  <type name="CIS_PLAT_AIR_ATK_SU_25_FROGFOOT_SU_25UBK_EXPORT_UB" value="1.2.222.2.8.4.0" description="Su-25UBK (export "UB")"/>
+  <type name="CIS_PLAT_AIR_ATK_SU_25_FROGFOOT_SU_25K_EXPORT_A" value="1.2.222.2.8.3.0" description="Su-25K (export 'A')"/>
+  <type name="CIS_PLAT_AIR_ATK_SU_25_FROGFOOT_SU_25UBK_EXPORT_UB" value="1.2.222.2.8.4.0" description="Su-25UBK (export 'UB')"/>
   <type name="CIS_PLAT_AIR_ATK_SU_25_FROGFOOT_SU_25UT_FROGFOOT_B" value="1.2.222.2.8.5.0" description="Su-25UT Frogfoot B"/>
   <type name="CIS_PLAT_AIR_ATK_SU_25_FROGFOOT_SU_25UTG_TAILHOOK" value="1.2.222.2.8.6.0" description="Su-25UTG (tailhook)"/>
   <type name="CIS_PLAT_AIR_ATK_SU_25_FROGFOOT_SU_25T_SU_34_ANTITANK" value="1.2.222.2.8.7.0" description="Su-25T (Su-34) (antitank)"/>
@@ -3580,8 +3580,8 @@
   <type name="CIS_PLAT_AIR_BOMB_TU_22_BLINDER_TU_22_BLINDER_E_EW_RECON" value="1.2.222.3.4.5.0" description="Tu-22 Blinder-E, EW/reconnaissance"/>
   <type name="CIS_PLAT_AIR_BOMB_TU_95_OR_TU_142_BEAR" value="1.2.222.3.5.0.0" description="Tu-95 or Tu-142 Bear"/>
   <type name="CIS_PLAT_AIR_BOMB_TU_95_OR_TU_142_BEAR_TU_95_BEAR_D_SEA_RECON" value="1.2.222.3.5.1.0" description="Tu-95 Bear D, sea reconnaissance"/>
-  <type name="CIS_PLAT_AIR_BOMB_TU_95_OR_TU_142_BEAR_TU_95_BEAR_E_A_CONVERSION" value="1.2.222.3.5.2.0" description="Tu-95 Bear E ("A" conversion)"/>
-  <type name="CIS_PLAT_AIR_BOMB_TU_95_OR_TU_142_BEAR_TU_95_BEAR_G_B_C_ELINT_CONVERSION" value="1.2.222.3.5.3.0" description="Tu-95 Bear G ("B/C" ELINT conversion)"/>
+  <type name="CIS_PLAT_AIR_BOMB_TU_95_OR_TU_142_BEAR_TU_95_BEAR_E_A_CONVERSION" value="1.2.222.3.5.2.0" description="Tu-95 Bear E ('A' conversion)"/>
+  <type name="CIS_PLAT_AIR_BOMB_TU_95_OR_TU_142_BEAR_TU_95_BEAR_G_B_C_ELINT_CONVERSION" value="1.2.222.3.5.3.0" description="Tu-95 Bear G ('B/C' ELINT conversion)"/>
   <type name="CIS_PLAT_AIR_BOMB_TU_95_OR_TU_142_BEAR_TU_95MS_BEAR_H" value="1.2.222.3.5.4.0" description="Tu-95MS Bear H"/>
   <type name="CIS_PLAT_AIR_BOMB_TU_95_OR_TU_142_BEAR_TU_142_BEAR_F_ASW" value="1.2.222.3.5.5.0" description="Tu-142 Bear F, ASW"/>
   <type name="CIS_PLAT_AIR_BOMB_TU_95_OR_TU_142_BEAR_TU_142_BEAR_F_MOD_1" value="1.2.222.3.5.6.0" description="Tu-142 Bear F Mod 1"/>
@@ -3643,7 +3643,7 @@
   <type name="CIS_PLAT_AIR_ASW_A_40_ALBATROSS_A_40" value="1.2.222.5.5.1.0" description="A-40"/>
   <type name="CIS_PLAT_AIR_SURV" value="1.2.222.8.0.0.0" description="Surveillance/C2"/>
   <type name="CIS_PLAT_AIR_SURV_A_50_MAINSTAY" value="1.2.222.8.1.0.0" description="A-50 Mainstay"/>
-  <type name="CIS_PLAT_AIR_SURV_A_50_MAINSTAY_A_50_AEWANDC" value="1.2.222.8.1.1.0" description="A-50 AEW&C"/>
+  <type name="CIS_PLAT_AIR_SURV_A_50_MAINSTAY_A_50_AEWANDC" value="1.2.222.8.1.1.0" description="A-50 AEWandC"/>
   <type name="CIS_PLAT_AIR_SURV_AN_74_MADCAP" value="1.2.222.8.2.0.0" description="An-74 Madcap"/>
   <type name="CIS_PLAT_AIR_SURV_AN_74_MADCAP_AN_74" value="1.2.222.8.2.1.0" description="An-74"/>
   <type name="CIS_PLAT_AIR_SURV_TU_126_MOSS" value="1.2.222.8.3.0.0" description="TU-126 Moss"/>
@@ -3670,20 +3670,20 @@
   <type name="CIS_PLAT_AIR_AH_KA_50N_HOKUM_N" value="1.2.222.20.3.4.0" description="Ka-50N Hokum N"/>
   <type name="CIS_PLAT_AIR_AH_KA_25_HORMONE" value="1.2.222.20.4.0.0" description="Ka-25 Hormone"/>
   <type name="CIS_PLAT_AIR_AH_KA_25_HORMONE_KA_25BSH_HORMONE_A_ASW" value="1.2.222.20.4.1.0" description="Ka-25BSh Hormone A, ASW"/>
-  <type name="CIS_PLAT_AIR_AH_KA_25_HORMONE_KA_25_HORMONE_B_TARGETING_AND_MSL_GUIDANCE" value="1.2.222.20.4.2.0" description="Ka-25 Hormone B (targeting & missile guidance)"/>
-  <type name="CIS_PLAT_AIR_AH_KA_25_HORMONE_KA_25PS_HORMONE_C_TARGETING_AND_MSL_GUIDANCE" value="1.2.222.20.4.3.0" description="Ka-25PS Hormone C (targeting & missile guidance)"/>
+  <type name="CIS_PLAT_AIR_AH_KA_25_HORMONE_KA_25_HORMONE_B_TARGETING_AND_MSL_GUIDANCE" value="1.2.222.20.4.2.0" description="Ka-25 Hormone B (targeting and missile guidance)"/>
+  <type name="CIS_PLAT_AIR_AH_KA_25_HORMONE_KA_25PS_HORMONE_C_TARGETING_AND_MSL_GUIDANCE" value="1.2.222.20.4.3.0" description="Ka-25PS Hormone C (targeting and missile guidance)"/>
   <type name="CIS_PLAT_AIR_AH_KA_25_HORMONE_KA_25PL_HORMONE_A" value="1.2.222.20.4.4.0" description="Ka-25PL Hormone A"/>
   <type name="CIS_PLAT_AIR_AH_KA_25_HORMONE_KA_25TS_HORMONE_B" value="1.2.222.20.4.5.0" description="Ka-25TS Hormone B"/>
   <type name="CIS_PLAT_AIR_UH" value="1.2.222.21.0.0.0" description="Utility helicopter"/>
   <type name="CIS_PLAT_AIR_UH_MI_8_9_17_171_HIP" value="1.2.222.21.1.0.0" description="Mi-8/9/17/171 Hip"/>
   <type name="CIS_PLAT_AIR_UH_MI_8_HIP_C_ASSAULT" value="1.2.222.21.1.1.0" description="Mi-8 Hip C (assault)"/>
   <type name="CIS_PLAT_AIR_UH_MI_8_HIP_D_AIRBORNE_COMMS" value="1.2.222.21.1.2.0" description="Mi-8 Hip D (airborne communications)"/>
-  <type name="CIS_PLAT_AIR_UH_MI_8_HIP_E_C_DEV_12_7" value="1.2.222.21.1.3.0" description="Mi-8 Hip E "C" development, 12.7"/>
-  <type name="CIS_PLAT_AIR_UH_MI_8TBK_9_17_171_MI_17_E_UPRATED" value="1.2.222.21.1.4.0" description="Mi-8TBK (Mi-17) ("E" uprated)"/>
-  <type name="CIS_PLAT_AIR_UH_MI_8_HIP_F_E_EXPORT" value="1.2.222.21.1.5.0" description="Mi-8 Hip F ("E" export)"/>
+  <type name="CIS_PLAT_AIR_UH_MI_8_HIP_E_C_DEV_12_7" value="1.2.222.21.1.3.0" description="Mi-8 Hip E 'C' development, 12.7"/>
+  <type name="CIS_PLAT_AIR_UH_MI_8TBK_9_17_171_MI_17_E_UPRATED" value="1.2.222.21.1.4.0" description="Mi-8TBK (Mi-17) ('E' uprated)"/>
+  <type name="CIS_PLAT_AIR_UH_MI_8_HIP_F_E_EXPORT" value="1.2.222.21.1.5.0" description="Mi-8 Hip F ('E' export)"/>
   <type name="CIS_PLAT_AIR_UH_MI_8_HIP_J_ECM" value="1.2.222.21.1.6.0" description="Mi-8 Hip J (ECM)"/>
   <type name="CIS_PLAT_AIR_UH_MI_8PP_HIP_K_ECM" value="1.2.222.21.1.7.0" description="Mi-8PP Hip K (ECM)"/>
-  <type name="CIS_PLAT_AIR_UH_MI_9_HIP_G_SPECIAL_DUTY_AND_AIRBORNE_COMMS" value="1.2.222.21.1.8.0" description="Mi-9 Hip G (special duty & airborne communications)"/>
+  <type name="CIS_PLAT_AIR_UH_MI_9_HIP_G_SPECIAL_DUTY_AND_AIRBORNE_COMMS" value="1.2.222.21.1.8.0" description="Mi-9 Hip G (special duty and airborne communications)"/>
   <type name="CIS_PLAT_AIR_UH_MI_17_HIP_H_MI_8_UPDATE" value="1.2.222.21.1.9.0" description="Mi-17 Hip H (MI-8 update)"/>
   <type name="CIS_PLAT_AIR_UH_MI_17P_HIP_K_DERIV" value="1.2.222.21.1.10.0" description="Mi-17P (Hip K derivative)"/>
   <type name="CIS_PLAT_AIR_UH_MI_171_HIP_H_HOSPITAL" value="1.2.222.21.1.11.0" description="Mi-171 Hip H (hospital)"/>
@@ -3696,11 +3696,11 @@
   <type name="CIS_PLAT_AIR_UH_MI_26_HALO" value="1.2.222.21.3.0.0" description="Mi-26 Halo"/>
   <type name="CIS_PLAT_AIR_UH_MI_26_HALO_MI_26_HVY_TRANSPORT" value="1.2.222.21.3.1.0" description="Mi-26 heavy transport"/>
   <type name="CIS_PLAT_AIR_UH_MI_26_HALO_MI_26TZ_TANKER" value="1.2.222.21.3.2.0" description="Mi-26TZ tanker"/>
-  <type name="CIS_PLAT_AIR_UH_MI_26_HALO_MI_26_COMMS_AND_SUPPORT" value="1.2.222.21.3.3.0" description="Mi-26 communications & support"/>
+  <type name="CIS_PLAT_AIR_UH_MI_26_HALO_MI_26_COMMS_AND_SUPPORT" value="1.2.222.21.3.3.0" description="Mi-26 communications and support"/>
   <type name="CIS_PLAT_AIR_UH_MI_6_HOOK" value="1.2.222.21.4.0.0" description="Mi-6 Hook"/>
   <type name="CIS_PLAT_AIR_UH_MI_6_HOOK_A_EXPORT" value="1.2.222.21.4.1.0" description="Mi-6 Hook A (export)"/>
   <type name="CIS_PLAT_AIR_UH_MI_6_HOOK_MI_6_HOOK_B_COM_SUPPORT" value="1.2.222.21.4.2.0" description="Mi-6 Hook B (command support)"/>
-  <type name="CIS_PLAT_AIR_UH_MI_6_HOOK_MI_6_HOOK_C_B_DEV_COM_SUPPORT" value="1.2.222.21.4.3.0" description="Mi-6 Hook C ("B" development, command support)"/>
+  <type name="CIS_PLAT_AIR_UH_MI_6_HOOK_MI_6_HOOK_C_B_DEV_COM_SUPPORT" value="1.2.222.21.4.3.0" description="Mi-6 Hook C ('B' development, command support)"/>
   <type name="CIS_PLAT_AIR_UH_MI_2_HOPLITE" value="1.2.222.21.5.0.0" description="Mi-2 Hoplite"/>
   <type name="CIS_PLAT_AIR_UH_MI_2_HOPLITE_POLAND" value="1.2.222.21.5.1.0" description="Mi-2T"/>
   <type name="CIS_PLAT_AIR_UH_MI_4_HOUND" value="1.2.222.21.6.0.0" description="Mi-4 Hound"/>
@@ -3713,7 +3713,7 @@
   <type name="CIS_PLAT_AIR_UH_KA_27_28_29_HELIX_KA_27PL_HELIX_A_ASW" value="1.2.222.21.9.1.0" description="Ka-27PL Helix A (ASW)"/>
   <type name="CIS_PLAT_AIR_UH_KA_27_28_29_HELIX_KA_27PS_HELIX_D_SAR" value="1.2.222.21.9.2.0" description="Ka-27PS Helix D (SAR)"/>
   <type name="CIS_PLAT_AIR_UH_KA_27_28_29_HELIX_KA_28_HELIX_A_EXPORT_KA_27PL" value="1.2.222.21.9.3.0" description="Ka-28 Helix A (export Ka-27PL)"/>
-  <type name="CIS_PLAT_AIR_UH_KA_27_28_29_HELIX_KA_29TB_HELIX_B_EW_AND_ASSAULT" value="1.2.222.21.9.4.0" description="Ka-29TB Helix B (EW & assault)"/>
+  <type name="CIS_PLAT_AIR_UH_KA_27_28_29_HELIX_KA_29TB_HELIX_B_EW_AND_ASSAULT" value="1.2.222.21.9.4.0" description="Ka-29TB Helix B (EW and assault)"/>
   <type name="CIS_PLAT_AIR_UH_MI_34_HERMIT" value="1.2.222.21.10.0.0" description="Mi-34 Hermit"/>
   <type name="CIS_PLAT_AIR_UH_MI_34_HERMIT_MI_34_1_ENGINE" value="1.2.222.21.10.1.0" description="Mi-34 (1 engine)"/>
   <type name="CIS_PLAT_AIR_UH_MI_34_HERMIT_MI_34V_2_ENGINE" value="1.2.222.21.10.2.0" description="Mi-34V (2 engine)"/>
@@ -3755,7 +3755,7 @@
   <type name="UK_PLAT_AIR_ATK_HARRIER_HARRIER_T_MK_4" value="1.2.224.2.2.2.0" description="Harrier T. Mk 4"/>
   <type name="UK_PLAT_AIR_ATK_HARRIER_HARRIER_GR_5" value="1.2.224.2.2.3.0" description="Harrier GR. 5"/>
   <type name="UK_PLAT_AIR_ATK_HARRIER_HARRIER_GR_7" value="1.2.224.2.2.4.0" description="Harrier GR. 7"/>
-  <type name="UK_PLAT_AIR_ATK_HARRIER_VA_1_MATADOR_AV_8S_AND_TAV_8S" value="1.2.224.2.2.5.0" description="VA.1 Matador (AV-8S & TAV-8S)"/>
+  <type name="UK_PLAT_AIR_ATK_HARRIER_VA_1_MATADOR_AV_8S_AND_TAV_8S" value="1.2.224.2.2.5.0" description="VA.1 Matador (AV-8S and TAV-8S)"/>
   <type name="UK_PLAT_AIR_ATK_HARRIER_HARRIER_GR_MK9" value="1.2.224.2.2.6.0" description="Harrier GR. Mk9"/>
   <type name="UK_PLAT_AIR_ATK_BAE_HS_BUCCANEER" value="1.2.224.2.3.0.0" description="BAe HS Buccaneer"/>
   <type name="UK_PLAT_AIR_ATK_TORNADO" value="1.2.224.2.4.0.0" description="Tornado"/>
@@ -4139,7 +4139,7 @@
   <type name="US_PLAT_AIR_CARGO_MD_C_17A" value="1.2.225.4.9.0.0" description="McDonnell-Douglas C-17A"/>
   <type name="US_PLAT_AIR_CARGO_BOEING_747" value="1.2.225.4.10.0.0" description="Boeing 747"/>
   <type name="US_PLAT_AIR_CARGO_BOEING_747_C_25A" value="1.2.225.4.10.1.0" description="C-25A"/>
-  <type name="US_PLAT_AIR_CARGO_BOEING_747_VC_25A_AIR_FORCE_ONE" value="1.2.225.4.10.2.0" description="VC-25A "Air Force One""/>
+  <type name="US_PLAT_AIR_CARGO_BOEING_747_VC_25A_AIR_FORCE_ONE" value="1.2.225.4.10.2.0" description="VC-25A 'Air Force One'"/>
   <type name="US_PLAT_AIR_CARGO_BOEING_747_RWINTL_YAL_1_AIRBORNE_LASER_ABL" value="1.2.225.4.10.3.0" description="Boeing/Rockwell YAL-1 Airborne Laser (ABL)"/>
   <type name="US_PLAT_AIR_CARGO_GULFSTREAM_AEROSPACE" value="1.2.225.4.11.0.0" description="Gulfstream Aerospace Gulfstream III"/>
   <type name="US_PLAT_AIR_CARGO_GULFSTREAM_AEROSPACE_GULFSTREAM_III_C_20" value="1.2.225.4.11.1.0" description="C-20"/>
@@ -4181,7 +4181,7 @@
   <type name="US_PLAT_AIR_ASW_LM_185_285_ORION_EP_3" value="1.2.225.5.1.5.0" description="EP-3"/>
   <type name="US_PLAT_AIR_ASW_LM_185_285_ORION_P_3J" value="1.2.225.5.1.6.0" description="P-3J"/>
   <type name="US_PLAT_AIR_ASW_LM_185_285_ORION_P_3W" value="1.2.225.5.1.7.0" description="P-3W"/>
-  <type name="US_PLAT_AIR_ASW_LM_185_285_ORION_P_3_AEWANDC" value="1.2.225.5.1.8.0" description="P-3 AEW&C"/>
+  <type name="US_PLAT_AIR_ASW_LM_185_285_ORION_P_3_AEWANDC" value="1.2.225.5.1.8.0" description="P-3 AEWandC"/>
   <type name="US_PLAT_AIR_ASW_LM_185_285_ORION_CF_140_AURORA" value="1.2.225.5.1.9.0" description="CF-140 Aurora"/>
   <type name="US_PLAT_AIR_ASW_LM_185_285_ORION_CP_140_ARCTURUS" value="1.2.225.5.1.10.0" description="CP-140 Arcturus"/>
   <type name="US_PLAT_AIR_ASW_LM_185_285_ORION_EP_3E" value="1.2.225.5.1.11.0" description="EP-3E"/>
@@ -4362,7 +4362,7 @@
   <type name="US_PLAT_AIR_UH_SIK_S_76B" value="1.2.225.21.6.0.0" description="Sikorsky-S-76b"/>
   <type name="US_PLAT_AIR_LUH" value="1.2.225.21.7.0.0" description="American Eurocopter UH-72 Lakota (LUH)"/>
   <type name="US_PLAT_AIR_LUH_UH_72A" value="1.2.225.21.7.1.0" description="UH-72A Lakota"/>
-  <type name="US_PLAT_AIR_LUH_UH_72A_SECURITY_SUPPORT" value="1.2.225.21.7.2.0" description="UH-72A Lakota, Security & Support"/>
+  <type name="US_PLAT_AIR_LUH_UH_72A_SECURITY_SUPPORT" value="1.2.225.21.7.2.0" description="UH-72A Lakota, Security and Support"/>
   <type name="US_PLAT_AIR_LUH_UH_72A_MEDEVAC" value="1.2.225.21.7.3.0" description="UH-72A Lakota, MEDEVAC (Red Cross)"/>
   <type name="US_PLAT_AIR_ASUB" value="1.2.225.22.0.0.0" description="Antisubmarine Warfare/patrol helicopter"/>
   <type name="US_PLAT_AIR_ASUB_KAMAN_SEASPRITE" value="1.2.225.22.1.0.0" description="Kaman Seasprite and Super Seasprite"/>
@@ -4640,12 +4640,12 @@
   <type name="OTHER_PLAT_SURF_CIV" value="1.3.0.61.0.0.0" description="Non-Combatant Ship"/>
   <type name="OTHER_PLAT_SURF_CIV_SHIP_CONTAINER_CLASS" value="1.3.0.61.1.0.0" description="Generic Ship Container Class"/>
   <type name="OTHER_PLAT_SURF_CIV_SHIP_TANKER_CLASS" value="1.3.0.61.2.0.0" description="Generic Ship Tanker Class"/>
-  <type name="OTHER_PLAT_SURF_CIV_SHIP_COMMERCIAL_LARGE_GREATER_THAN_30M" value="1.3.0.61.3.0.0" description="Generic Ship Commercial Large (> 30m)"/>
+  <type name="OTHER_PLAT_SURF_CIV_SHIP_COMMERCIAL_LARGE_GREATER_THAN_30M" value="1.3.0.61.3.0.0" description="Generic Ship Commercial Large"/>
   <type name="OTHER_PLAT_SURF_CIV_BOAT_COMMERCIAL_MED_10M_TO_29M" value="1.3.0.61.4.0.0" description="Generic Boat Commercial Medium (10m to 29m)"/>
-  <type name="OTHER_PLAT_SURF_CIV_BOAT_COMMERCIAL_SMALL_LESS_THAN10M" value="1.3.0.61.5.0.0" description="Generic Boat Commercial Small (<10m)"/>
+  <type name="OTHER_PLAT_SURF_CIV_BOAT_COMMERCIAL_SMALL_LESS_THAN10M" value="1.3.0.61.5.0.0" description="Generic Boat Commercial Small"/>
   <type name="OTHER_PLAT_SURF_CIV_SAILBOAT_COMMERCIAL_TWO_MAST" value="1.3.0.61.6.0.0" description="Generic Sailboat Commercial Two-Mast"/>
   <type name="OTHER_PLAT_SURF_CIV_SAILBOAT_COMMERCIAL_ONE_MAST" value="1.3.0.61.7.0.0" description="Generic Sailboat Commercial One-Mast"/>
-  <type name="OTHER_PLAT_SURF_CIV_BOAT_PRIVATE_VERY_SMALL_LESS_THAN_3M" value="1.3.0.61.9.0.0" description="Generic Boat Private Very Small (< 3m)"/>
+  <type name="OTHER_PLAT_SURF_CIV_BOAT_PRIVATE_VERY_SMALL_LESS_THAN_3M" value="1.3.0.61.9.0.0" description="Generic Boat Private Very Small"/>
   <type name="OTHER_PLAT_SURF_CIV_BOAT_PRIVATE_VERY_SMALL_LESS_THAN_3M_OUTBOARD" value="1.3.0.61.9.1.0" description="Generic Boat Private Very Small Outboard"/>
   <type name="OTHER_PLAT_SURF_CIV_BOAT_PRIVATE_VERY_SMALL_LESS_THAN_3M_INBOARD" value="1.3.0.61.9.2.0" description="Generic Boat Private Very Small Inboard"/>
   <type name="OTHER_PLAT_SURF_CIV_BOAT_PRIVATE_SMALL_3M_TO_5M" value="1.3.0.61.10.0.0" description="Generic Boat Private Small (3m to 5m)"/>
@@ -4655,7 +4655,7 @@
   <type name="OTHER_PLAT_SURF_CIV_BOAT_PRIVATE_MED_6M_TO_10M_MOTOR_YACHT" value="1.3.0.61.11.1.0" description="Generic Boat Private Medium Motor Yacht"/>
   <type name="OTHER_PLAT_SURF_CIV_BOAT_PRIVATE_LARGE_11M_TO_15M" value="1.3.0.61.12.0.0" description="Generic Boat Private Large (11m to 15m)"/>
   <type name="OTHER_PLAT_SURF_CIV_BOAT_PRIVATE_LARGE_11M_TO_15M_YACHT" value="1.3.0.61.12.1.0" description="Generic Boat Private Large Yacht"/>
-  <type name="OTHER_PLAT_SURF_CIV_BOAT_PRIVATE_VERY_LARGE_GREATER_THAN_15M" value="1.3.0.61.13.0.0" description="Generic Boat Private Very Large (> 15m)"/>
+  <type name="OTHER_PLAT_SURF_CIV_BOAT_PRIVATE_VERY_LARGE_GREATER_THAN_15M" value="1.3.0.61.13.0.0" description="Generic Boat Private Very Large"/>
   <type name="OTHER_PLAT_SURF_CIV_BOAT_PRIVATE_VERY_LARGE_GREATER_THAN_15M_YACHT" value="1.3.0.61.13.1.0" description="Generic Boat Private Very Large Yacht"/>
   <type name="ALB_PLAT_SURF_CIV" value="1.3.2.61.0.0.0" description="Non-Combatant Ship"/>
   <type name="ALB_PLAT_SURF_CIV_CONTAINER_CLASS" value="1.3.2.61.1.0.0" description="Container Class"/>
@@ -5351,7 +5351,7 @@
   <type name="FR_PLAT_SURF_CHCAR" value="1.3.71.13.0.0.0" description="Cruiser/Helicopter Carrier"/>
   <type name="FR_PLAT_SURF_CHCAR_JEANNE_DARC_CLASS_HELO_CV" value="1.3.71.13.1.0.0" description="Jeanne D'Arc Class (Helo CV)"/>
   <type name="FR_PLAT_SURF_AUX" value="1.3.71.16.0.0.0" description="Auxiliary"/>
-  <type name="FR_PLAT_SURF_AUX_BH2_CLASS_BATIMENTS_HYDROGRAPHIQUES_DE_2E_CLASS_OCEANOGRAPHIC_AND_SURVEY" value="1.3.71.16.1.0.0" description="BH2 class (Batiments Hydrographiques De 2E class) (oceanographic & survey)"/>
+  <type name="FR_PLAT_SURF_AUX_BH2_CLASS_BATIMENTS_HYDROGRAPHIQUES_DE_2E_CLASS_OCEANOGRAPHIC_AND_SURVEY" value="1.3.71.16.1.0.0" description="BH2 class (Batiments Hydrographiques De 2E class) (oceanographic and survey)"/>
   <type name="FR_PLAT_SURF_AUX_BH2_CLASS_BATIMENTS_HYDROGRAPHIQUES_DE_2E_CLASS_OCEANOGRAPHIC_AND_SURVEY_A_791_LAPEROUSE" value="1.3.71.16.1.1.0" description="A 791 Laperouse"/>
   <type name="FR_PLAT_SURF_AUX_BH2_CLASS_BATIMENTS_HYDROGRAPHIQUES_DE_2E_CLASS_OCEANOGRAPHIC_AND_SURVEY_A_792_BORDA" value="1.3.71.16.1.2.0" description="A 792 Borda"/>
   <type name="FR_PLAT_SURF_AUX_BH2_CLASS_BATIMENTS_HYDROGRAPHIQUES_DE_2E_CLASS_OCEANOGRAPHIC_AND_SURVEY_A_793_LAPLACE" value="1.3.71.16.1.3.0" description="A 793 Laplace"/>
@@ -6370,7 +6370,7 @@
   <type name="IT_PLAT_SURF_AUX_ANTONIO_ZARA_CLASS" value="1.3.106.16.30.0.0" description="Antonio Zara Class"/>
   <type name="IT_PLAT_SURF_AUX_ANTONIO_ZARA_CLASS_ANTONIO_ZARA_P_01" value="1.3.106.16.30.1.0" description="Antonio Zara P 01"/>
   <type name="IT_PLAT_SURF_AUX_ANTONIO_ZARA_CLASS_VEZZARI_P_02" value="1.3.106.16.30.2.0" description="Vezzari P 02"/>
-  <type name="IT_PLAT_SURF_AUX_CORRUBIA_AND_BIGLIANI_CLASSES" value="1.3.106.16.31.0.0" description="Corrubia & Bigliani Classes"/>
+  <type name="IT_PLAT_SURF_AUX_CORRUBIA_AND_BIGLIANI_CLASSES" value="1.3.106.16.31.0.0" description="Corrubia and Bigliani Classes"/>
   <type name="IT_PLAT_SURF_AUX_CORRUBIA_AND_BIGLIANI_CLASSES_BIGLIANI_G_80" value="1.3.106.16.31.1.0" description="Bigliani G 80"/>
   <type name="IT_PLAT_SURF_AUX_CORRUBIA_AND_BIGLIANI_CLASSES_CAVAGLIA_G_81" value="1.3.106.16.31.2.0" description="Cavaglia G 81"/>
   <type name="IT_PLAT_SURF_AUX_CORRUBIA_AND_BIGLIANI_CLASSES_CORRUBIA_G_90" value="1.3.106.16.31.3.0" description="Corrubia G 90"/>
@@ -6807,12 +6807,12 @@
   <type name="PORT_PLAT_SURF_CIV" value="1.3.176.61.0.0.0" description="PRT Non-Combatant Ship"/>
   <type name="PORT_PLAT_SURF_CIV_PRT_SHIP_CONTAINER_CLASS" value="1.3.176.61.1.0.0" description="PRT Ship Container Class"/>
   <type name="PORT_PLAT_SURF_CIV_PRT_SHIP_TANKER_CLASS" value="1.3.176.61.2.0.0" description="PRT Ship Tanker Class"/>
-  <type name="PORT_PLAT_SURF_CIV_PRT_SHIP_COMMERCIAL_LARGE_GREATER_THAN_30M" value="1.3.176.61.3.0.0" description="PRT Ship Commercial Large (> 30m)"/>
+  <type name="PORT_PLAT_SURF_CIV_PRT_SHIP_COMMERCIAL_LARGE_GREATER_THAN_30M" value="1.3.176.61.3.0.0" description="PRT Ship Commercial Large"/>
   <type name="PORT_PLAT_SURF_CIV_PRT_BOAT_COMMERCIAL_MED_10M_TO_29M" value="1.3.176.61.4.0.0" description="PRT Boat Commercial Medium (10m to 29m)"/>
-  <type name="PORT_PLAT_SURF_CIV_PRT_BOAT_COMMERCIAL_SMALL_LESS_THAN10M" value="1.3.176.61.5.0.0" description="PRT Boat Commercial Small (<10m)"/>
+  <type name="PORT_PLAT_SURF_CIV_PRT_BOAT_COMMERCIAL_SMALL_LESS_THAN10M" value="1.3.176.61.5.0.0" description="PRT Boat Commercial Small"/>
   <type name="PORT_PLAT_SURF_CIV_PRT_SAILBOAT_COMMERCIAL_TWO_MAST" value="1.3.176.61.6.0.0" description="PRT Sailboat Commercial Two-Mast"/>
   <type name="PORT_PLAT_SURF_CIV_PRT_SAILBOAT_COMMERCIAL_ONE_MAST" value="1.3.176.61.7.0.0" description="PRT Sailboat Commercial One-Mast"/>
-  <type name="PORT_PLAT_SURF_CIV_PRT_BOAT_PRIVATE_VERY_SMALL_LESS_THAN_3M" value="1.3.176.61.9.0.0" description="PRT Boat Private Very Small (< 3m)"/>
+  <type name="PORT_PLAT_SURF_CIV_PRT_BOAT_PRIVATE_VERY_SMALL_LESS_THAN_3M" value="1.3.176.61.9.0.0" description="PRT Boat Private Very Small"/>
   <type name="PORT_PLAT_SURF_CIV_PRT_BOAT_PRIVATE_VERY_SMALL_LESS_THAN_3M_PRT_BOAT_PRIVATE_VERY_SMALL_OUTBOARD" value="1.3.176.61.9.1.0" description="PRT Boat Private Very Small Outboard"/>
   <type name="PORT_PLAT_SURF_CIV_PRT_BOAT_PRIVATE_VERY_SMALL_LESS_THAN_3M_PRT_BOAT_PRIVATE_VERY_SMALL_INBOARD" value="1.3.176.61.9.2.0" description="PRT Boat Private Very Small Inboard"/>
   <type name="PORT_PLAT_SURF_CIV_PRT_BOAT_PRIVATE_SMALL_3M_TO_5M" value="1.3.176.61.10.0.0" description="PRT Boat Private Small (3m to 5m)"/>
@@ -6822,7 +6822,7 @@
   <type name="PORT_PLAT_SURF_CIV_PRT_BOAT_PRIVATE_MED_6M_TO_10M_PRT_BOAT_PRIVATE_MED_MOTOR_YACHT" value="1.3.176.61.11.1.0" description="PRT Boat Private Medium Motor Yacht"/>
   <type name="PORT_PLAT_SURF_CIV_PRT_BOAT_PRIVATE_LARGE_11M_TO_15M" value="1.3.176.61.12.0.0" description="PRT Boat Private Large (11m to 15m)"/>
   <type name="PORT_PLAT_SURF_CIV_PRT_BOAT_PRIVATE_LARGE_11M_TO_15M_PRT_BOAT_PRIVATE_LARGE_YACHT" value="1.3.176.61.12.1.0" description="PRT Boat Private Large Yacht"/>
-  <type name="PORT_PLAT_SURF_CIV_PRT_BOAT_PRIVATE_VERY_LARGE_GREATER_THAN_15M" value="1.3.176.61.13.0.0" description="PRT Boat Private Very Large (> 15m)"/>
+  <type name="PORT_PLAT_SURF_CIV_PRT_BOAT_PRIVATE_VERY_LARGE_GREATER_THAN_15M" value="1.3.176.61.13.0.0" description="PRT Boat Private Very Large"/>
   <type name="PORT_PLAT_SURF_CIV_PRT_BOAT_PRIVATE_VERY_LARGE_GREATER_THAN_15M_PRT_BOAT_PRIVATE_VERY_LARGE_YACHT" value="1.3.176.61.13.1.0" description="PRT Boat Private Very Large Yacht"/>
   <type name="QAT_PLAT_SURF_LPC" value="1.3.178.7.0.0.0" description="Light/Patrol Craft"/>
   <type name="QAT_PLAT_SURF_LPC_DAMSAH_COMBATTANTE_III_M_CLASS_FAST_ATTACK_CRAFT_MSL" value="1.3.178.7.1.0.0" description="Damsah (Combattante III M) Class (fast attack craft-missile)"/>
@@ -7250,10 +7250,10 @@
   <type name="CIS_PLAT_SURF_LPC_POTOK_CLASS_TORPEDO_EXPERIMENTAL_SHIPS_OS_138" value="1.3.222.7.16.2.0" description="OS-138"/>
   <type name="CIS_PLAT_SURF_LPC_POTOK_CLASS_TORPEDO_EXPERIMENTAL_SHIPS_OS_145" value="1.3.222.7.16.3.0" description="OS-145"/>
   <type name="CIS_PLAT_SURF_LPC_POTOK_CLASS_TORPEDO_EXPERIMENTAL_SHIPS_OS_225" value="1.3.222.7.16.4.0" description="OS-225"/>
-  <type name="CIS_PLAT_SURF_LPC_SHELON_CLASS_TORPEDO_OPERATING_PATROL_AND_TARGET_CRAFT" value="1.3.222.7.17.0.0" description="Shelon class (torpedo operating/patrol & target craft)"/>
+  <type name="CIS_PLAT_SURF_LPC_SHELON_CLASS_TORPEDO_OPERATING_PATROL_AND_TARGET_CRAFT" value="1.3.222.7.17.0.0" description="Shelon class (torpedo operating/patrol and target craft)"/>
   <type name="CIS_PLAT_SURF_LPC_SHELON_CLASS_TORPEDO_OPERATING_PATROL_AND_TARGET_CRAFT_YPT_WPN_RECV" value="1.3.222.7.17.1.0" description="YPT Weapon Recovery"/>
   <type name="CIS_PLAT_SURF_LPC_SHELON_CLASS_TORPEDO_OPERATING_PATROL_AND_TARGET_CRAFT_SHELON_II_ENVIRONMENTAL_RESEARCH" value="1.3.222.7.17.2.0" description="Shelon II (Environmental Research)"/>
-  <type name="CIS_PLAT_SURF_LPC_POLUCHAT_I_II_III_CLASSES_TORPEDO_OPERATING_PATROL_AND_TARGET_CRAFT" value="1.3.222.7.18.0.0" description="Poluchat I/II/III classes (torpedo operating/patrol & target craft)"/>
+  <type name="CIS_PLAT_SURF_LPC_POLUCHAT_I_II_III_CLASSES_TORPEDO_OPERATING_PATROL_AND_TARGET_CRAFT" value="1.3.222.7.18.0.0" description="Poluchat I/II/III classes (torpedo operating/patrol and target craft)"/>
   <type name="CIS_PLAT_SURF_LPC_POZHARNY_I_CLASS" value="1.3.222.7.19.0.0" description="Pozharny I class"/>
   <type name="CIS_PLAT_SURF_LPC_IVA_CLASS_FIRE_PATROL_CRAFT" value="1.3.222.7.20.0.0" description="Iva class (fire/patrol craft)"/>
   <type name="CIS_PLAT_SURF_LPC_IVA_CLASS_FIRE_PATROL_CRAFT_PZHK_415" value="1.3.222.7.20.1.0" description="PZHK 415"/>
@@ -7451,7 +7451,7 @@
   <type name="CIS_PLAT_SURF_AUX_TOMBA_CLASS_SUPPORT_SHIPS_254" value="1.3.222.16.12.2.0" description="254"/>
   <type name="CIS_PLAT_SURF_AUX_TOMBA_CLASS_SUPPORT_SHIPS_348" value="1.3.222.16.12.3.0" description="348"/>
   <type name="CIS_PLAT_SURF_AUX_TOMBA_CLASS_SUPPORT_SHIPS_357" value="1.3.222.16.12.4.0" description="357"/>
-  <type name="CIS_PLAT_SURF_AUX_VYTEGRALES_CLASS_SUPPORT_AND_DEPOT" value="1.3.222.16.13.0.0" description="Vytegrales class (support & depot)"/>
+  <type name="CIS_PLAT_SURF_AUX_VYTEGRALES_CLASS_SUPPORT_AND_DEPOT" value="1.3.222.16.13.0.0" description="Vytegrales class (support and depot)"/>
   <type name="CIS_PLAT_SURF_AUX_VYTEGRALES_CLASS_SUPPORT_AND_DEPOT_APSHERON_EX_VAGALES" value="1.3.222.16.13.1.0" description="Apsheron (ex-Vagales)"/>
   <type name="CIS_PLAT_SURF_AUX_VYTEGRALES_CLASS_SUPPORT_AND_DEPOT_BASKUNCHAK_EX_KIRISHI" value="1.3.222.16.13.2.0" description="Baskunchak (ex-Kirishi)"/>
   <type name="CIS_PLAT_SURF_AUX_VYTEGRALES_CLASS_SUPPORT_AND_DEPOT_DAURIYA_EX_VYBORGLES" value="1.3.222.16.13.3.0" description="Dauriya (ex-Vyborgles)"/>
@@ -7809,15 +7809,15 @@
   <type name="CIS_PLAT_SURF_AUX_MIKHAIL_RUDNITSKY_CLASS_ARS_GEORGY_KOZMIN" value="1.3.222.16.68.2.0" description="Georgy Kozmin"/>
   <type name="CIS_PLAT_SURF_AUX_MIKHAIL_RUDNITSKY_CLASS_ARS_GEORGY_TITOV" value="1.3.222.16.68.3.0" description="Georgy Titov"/>
   <type name="CIS_PLAT_SURF_AUX_MIKHAIL_RUDNITSKY_CLASS_ARS_SAYANY" value="1.3.222.16.68.4.0" description="Sayany"/>
-  <type name="CIS_PLAT_SURF_AUX_PAMIR_CLASS_SALVAGE_RESCUE_AND_MOORING" value="1.3.222.16.69.0.0" description="Pamir class (salvage, rescue & mooring)"/>
+  <type name="CIS_PLAT_SURF_AUX_PAMIR_CLASS_SALVAGE_RESCUE_AND_MOORING" value="1.3.222.16.69.0.0" description="Pamir class (salvage, rescue and mooring)"/>
   <type name="CIS_PLAT_SURF_AUX_PAMIR_CLASS_SALVAGE_RESCUE_AND_MOORING_AGATAN" value="1.3.222.16.69.1.0" description="Agatan"/>
   <type name="CIS_PLAT_SURF_AUX_PAMIR_CLASS_SALVAGE_RESCUE_AND_MOORING_ALDAN" value="1.3.222.16.69.2.0" description="Aldan"/>
-  <type name="CIS_PLAT_SURF_AUX_INGUL_CLASS_SALVAGE_RESCUE_AND_MOORING" value="1.3.222.16.70.0.0" description="Ingul class (salvage, rescue & mooring)"/>
+  <type name="CIS_PLAT_SURF_AUX_INGUL_CLASS_SALVAGE_RESCUE_AND_MOORING" value="1.3.222.16.70.0.0" description="Ingul class (salvage, rescue and mooring)"/>
   <type name="CIS_PLAT_SURF_AUX_INGUL_CLASS_SALVAGE_RESCUE_AND_MOORING_PAMIR" value="1.3.222.16.70.1.0" description="Pamir"/>
   <type name="CIS_PLAT_SURF_AUX_INGUL_CLASS_SALVAGE_RESCUE_AND_MOORING_MASHUK" value="1.3.222.16.70.2.0" description="Mashuk"/>
   <type name="CIS_PLAT_SURF_AUX_INGUL_CLASS_SALVAGE_RESCUE_AND_MOORING_ALATAU" value="1.3.222.16.70.3.0" description="Alatau"/>
   <type name="CIS_PLAT_SURF_AUX_INGUL_CLASS_SALVAGE_RESCUE_AND_MOORING_KARAKH" value="1.3.222.16.70.4.0" description="Karakh"/>
-  <type name="CIS_PLAT_SURF_AUX_SLIVA_CLASS_SALVAGE_RESCUE_AND_MOORING" value="1.3.222.16.71.0.0" description="Sliva class (salvage, rescue & mooring)"/>
+  <type name="CIS_PLAT_SURF_AUX_SLIVA_CLASS_SALVAGE_RESCUE_AND_MOORING" value="1.3.222.16.71.0.0" description="Sliva class (salvage, rescue and mooring)"/>
   <type name="CIS_PLAT_SURF_AUX_SLIVA_CLASS_SALVAGE_RESCUE_AND_MOORING_SB_406" value="1.3.222.16.71.1.0" description="SB 406"/>
   <type name="CIS_PLAT_SURF_AUX_SLIVA_CLASS_SALVAGE_RESCUE_AND_MOORING_SB_408" value="1.3.222.16.71.2.0" description="SB 408"/>
   <type name="CIS_PLAT_SURF_AUX_SLIVA_CLASS_SALVAGE_RESCUE_AND_MOORING_SB_921" value="1.3.222.16.71.3.0" description="SB 921"/>
@@ -7845,7 +7845,7 @@
   <type name="CIS_PLAT_SURF_AUX_OREL_CLASS_SALVAGE_TUGS" value="1.3.222.16.74.0.0" description="Orel class (salvage tugs)"/>
   <type name="CIS_PLAT_SURF_AUX_OREL_CLASS_SALVAGE_TUGS_SB_38" value="1.3.222.16.74.1.0" description="SB 38"/>
   <type name="CIS_PLAT_SURF_AUX_OREL_CLASS_SALVAGE_TUGS_SB_43" value="1.3.222.16.74.2.0" description="SB 43"/>
-  <type name="CIS_PLAT_SURF_AUX_KATUN_I_CLASS_SALVAGE_AND_RESCUE_TUGS" value="1.3.222.16.75.0.0" description="Katun I class (salvage & rescue tugs)"/>
+  <type name="CIS_PLAT_SURF_AUX_KATUN_I_CLASS_SALVAGE_AND_RESCUE_TUGS" value="1.3.222.16.75.0.0" description="Katun I class (salvage and rescue tugs)"/>
   <type name="CIS_PLAT_SURF_AUX_KATUN_I_CLASS_SALVAGE_AND_RESCUE_TUGS_PZHS_96" value="1.3.222.16.75.1.0" description="PZHS 96"/>
   <type name="CIS_PLAT_SURF_AUX_KATUN_I_CLASS_SALVAGE_AND_RESCUE_TUGS_98" value="1.3.222.16.75.2.0" description="98"/>
   <type name="CIS_PLAT_SURF_AUX_KATUN_I_CLASS_SALVAGE_AND_RESCUE_TUGS_123" value="1.3.222.16.75.3.0" description="123"/>
@@ -7855,10 +7855,10 @@
   <type name="CIS_PLAT_SURF_AUX_KATUN_I_CLASS_SALVAGE_AND_RESCUE_TUGS_279" value="1.3.222.16.75.7.0" description="279"/>
   <type name="CIS_PLAT_SURF_AUX_KATUN_I_CLASS_SALVAGE_AND_RESCUE_TUGS_282" value="1.3.222.16.75.8.0" description="282"/>
   <type name="CIS_PLAT_SURF_AUX_KATUN_I_CLASS_SALVAGE_AND_RESCUE_TUGS_551" value="1.3.222.16.75.9.0" description="551"/>
-  <type name="CIS_PLAT_SURF_AUX_KATUN_II_SALVAGE_AND_RESCUE_TUGS" value="1.3.222.16.76.0.0" description="Katun II (salvage & rescue tugs)"/>
+  <type name="CIS_PLAT_SURF_AUX_KATUN_II_SALVAGE_AND_RESCUE_TUGS" value="1.3.222.16.76.0.0" description="Katun II (salvage and rescue tugs)"/>
   <type name="CIS_PLAT_SURF_AUX_KATUN_II_SALVAGE_AND_RESCUE_TUGS_PZHS_64" value="1.3.222.16.76.1.0" description="PZHS 64"/>
   <type name="CIS_PLAT_SURF_AUX_KATUN_II_SALVAGE_AND_RESCUE_TUGS_92" value="1.3.222.16.76.2.0" description="92"/>
-  <type name="CIS_PLAT_SURF_AUX_NEPTUN_CLASS_SALVAGE_RESCUE_AND_MOORING" value="1.3.222.16.77.0.0" description="Neptun class (salvage, rescue & mooring)"/>
+  <type name="CIS_PLAT_SURF_AUX_NEPTUN_CLASS_SALVAGE_RESCUE_AND_MOORING" value="1.3.222.16.77.0.0" description="Neptun class (salvage, rescue and mooring)"/>
   <type name="CIS_PLAT_SURF_AUX_NEPTUN_CLASS_SALVAGE_RESCUE_AND_MOORING_KIL_3" value="1.3.222.16.77.1.0" description="KIL 3"/>
   <type name="CIS_PLAT_SURF_AUX_NEPTUN_CLASS_SALVAGE_RESCUE_AND_MOORING_6" value="1.3.222.16.77.2.0" description="6"/>
   <type name="CIS_PLAT_SURF_AUX_NEPTUN_CLASS_SALVAGE_RESCUE_AND_MOORING_7" value="1.3.222.16.77.3.0" description="7"/>
@@ -8576,14 +8576,14 @@
   <type name="UK_PLAT_SURF_AUX_REGENT_CLASS_AFS_H_A_486_REGENT" value="1.3.224.16.12.2.0" description="A 486 Regent"/>
   <type name="UK_PLAT_SURF_AUX_STENA_TYPE_FORWARD_REPAIR_SHIP" value="1.3.224.16.13.0.0" description="Stena type (forward repair ship)"/>
   <type name="UK_PLAT_SURF_AUX_STENA_TYPE_FORWARD_REPAIR_SHIP_A_132_DILIGENCE_EX_STENA_INSPECTOR" value="1.3.224.16.13.1.0" description="A 132 Diligence (ex-Stena Inspector)"/>
-  <type name="UK_PLAT_SURF_AUX_SAL_CLASS_SALVAGE_AND_MOORING" value="1.3.224.16.14.0.0" description="Sal Class (salvage & mooring)"/>
+  <type name="UK_PLAT_SURF_AUX_SAL_CLASS_SALVAGE_AND_MOORING" value="1.3.224.16.14.0.0" description="Sal Class (salvage and mooring)"/>
   <type name="UK_PLAT_SURF_AUX_SAL_CLASS_SALVAGE_AND_MOORING_A_185_SALMOOR" value="1.3.224.16.14.1.0" description="A 185 Salmoor"/>
   <type name="UK_PLAT_SURF_AUX_SAL_CLASS_SALVAGE_AND_MOORING_A_186_SALMASTER" value="1.3.224.16.14.2.0" description="A 186 Salmaster"/>
   <type name="UK_PLAT_SURF_AUX_SAL_CLASS_SALVAGE_AND_MOORING_A_187_SALMAID" value="1.3.224.16.14.3.0" description="A 187 Salmaid"/>
-  <type name="UK_PLAT_SURF_AUX_WILD_DUCK_CLASS_SALVAGE_AND_MOORING" value="1.3.224.16.15.0.0" description="Wild Duck class (salvage & mooring)"/>
+  <type name="UK_PLAT_SURF_AUX_WILD_DUCK_CLASS_SALVAGE_AND_MOORING" value="1.3.224.16.15.0.0" description="Wild Duck class (salvage and mooring)"/>
   <type name="UK_PLAT_SURF_AUX_WILD_DUCK_CLASS_SALVAGE_AND_MOORING_A_164_GOOSANDER" value="1.3.224.16.15.1.0" description="A 164 Goosander"/>
   <type name="UK_PLAT_SURF_AUX_WILD_DUCK_CLASS_SALVAGE_AND_MOORING_A_165_POCHARD" value="1.3.224.16.15.2.0" description="A 165 Pochard"/>
-  <type name="UK_PLAT_SURF_AUX_MOORHEN_CLASS_SALVAGE_AND_MOORING" value="1.3.224.16.16.0.0" description="Moorhen class (salvage & mooring)"/>
+  <type name="UK_PLAT_SURF_AUX_MOORHEN_CLASS_SALVAGE_AND_MOORING" value="1.3.224.16.16.0.0" description="Moorhen class (salvage and mooring)"/>
   <type name="UK_PLAT_SURF_AUX_MOORHEN_CLASS_SALVAGE_AND_MOORING_Y_32_MOORHEN" value="1.3.224.16.16.1.0" description="Y 32 Moorhen"/>
   <type name="UK_PLAT_SURF_AUX_MOORHEN_CLASS_SALVAGE_AND_MOORING_Y_33_MOORFOWL" value="1.3.224.16.16.2.0" description="Y 33 Moorfowl"/>
   <type name="UK_PLAT_SURF_AUX_MOORHEN_CLASS_SALVAGE_AND_MOORING_A_72_CAMERON" value="1.3.224.16.16.3.0" description="A 72 Cameron"/>
@@ -10355,7 +10355,7 @@
   <type name="GER_PLAT_SPA_UNMAN_SCIENCE_SATELLITE_DELETED" value="1.5.78.2.13.1.0" description="(deprecated)"/>
   <type name="GER_PLAT_SPA_UNMAN_SCIENCE_SATELLITE_ULYSSES" value="1.5.78.2.13.2.0" description="Ulysses"/>
   <type name="GER_PLAT_SPA_UNMAN_SCIENCE_SATELLITE_GALILEO" value="1.5.78.2.13.3.0" description="Galileo"/>
-  <type name="GER_PLAT_SPA_UNMAN_SCIENCE_SATELLITE_SOHO_AND_CLUSTER" value="1.5.78.2.13.4.0" description="Soho & Cluster"/>
+  <type name="GER_PLAT_SPA_UNMAN_SCIENCE_SATELLITE_SOHO_AND_CLUSTER" value="1.5.78.2.13.4.0" description="Soho and Cluster"/>
   <type name="GER_PLAT_SPA_UNMAN_SCIENCE_SATELLITE_EURECA" value="1.5.78.2.13.5.0" description="Eureca"/>
   <type name="GER_PLAT_SPA_UNMAN_SCIENCE_SATELLITE_ASTRO_SPAS" value="1.5.78.2.13.6.0" description="Astro-SPAS"/>
   <type name="GER_PLAT_SPA_UNMAN_SCIENCE_SATELLITE_HST" value="1.5.78.2.13.7.0" description="HST"/>

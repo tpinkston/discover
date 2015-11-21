@@ -36,7 +36,9 @@ import discover.vdis.common.PDUHeader;
 import discover.vdis.datum.AbstractDatumRecord;
 import discover.vdis.datum.CommandFromSimulator;
 import discover.vdis.datum.DatumSpecificationRecord;
+import discover.vdis.enums.PDU_FAMILY;
 import discover.vdis.enums.PDU_TYPE;
+import discover.vdis.enums.PROTOCOL_VERSION;
 import discover.vdis.pdu.ActionRequest;
 import discover.vdis.pdu.ActionResponse;
 import discover.vdis.pdu.EntityState;
@@ -194,7 +196,7 @@ public class CFSTab
         data.entityId.setSite(stream.readUnsignedShort());
         data.entityId.setApplication(stream.readUnsignedShort());
         data.entityId.setEntity(stream.readUnsignedShort());
-        data.protocol = stream.readByte();
+        data.protocol = PROTOCOL_VERSION.get(stream.readByte());
         data.marking = stream.readUTF();
         data.requestId = stream.readInt();
         data.cfsPort = stream.readInt();
@@ -213,7 +215,7 @@ public class CFSTab
         stream.writeShort(data.entityId.getSite());
         stream.writeShort(data.entityId.getApplication());
         stream.writeShort(data.entityId.getEntity());
-        stream.writeByte(data.protocol);
+        stream.writeByte(data.protocol.value);
         stream.writeUTF(data.marking);
         stream.writeInt(data.requestId);
         stream.writeInt(data.cfsPort);
@@ -257,7 +259,7 @@ public class CFSTab
             byte buffer[] = Arrays.copyOf(pdu.getData(), pdu.getLength());
 
             // The 1st byte is the protocol.
-            buffer[0] = (byte)data.protocol;
+            buffer[0] = (byte)data.protocol.value;
 
             // The 2nd byte is the exercise.
             buffer[1] = (byte)data.safExercise;
@@ -337,8 +339,8 @@ public class CFSTab
 
             header.setProtocol(data.protocol);
             header.setExercise(data.safExercise);
-            header.setType(PDU_TYPE.ACTION_REQUEST.value);
-            header.setFamily(5); // PDU_FAMILY_SIMULATION_MANAGEMENT
+            header.setType(PDU_TYPE.ACTION_REQUEST);
+            header.setFamily(PDU_FAMILY.SIMULATION_MANAGEMENT);
             header.setTimestamp(entityState.getHeader().getTimestamp());
             header.setLength(BASE_LENGTH + getTotalMarkingLength());
 
@@ -913,7 +915,7 @@ public class CFSTab
 
         public final EntityId entityId = new EntityId(10, 20, 30);
         public String marking = "LDR/1/1/A/1-12CAV/1CD";
-        public int protocol =  7;
+        public PROTOCOL_VERSION protocol = PROTOCOL_VERSION.PTCL_VER_IEEE_1278_1_2012;
         public int requestId = 1000;
         public int cfsPort = 3000;
         public int cfsExercise = 1;

@@ -78,23 +78,27 @@ public abstract class Value implements Comparable<Value> {
         return string;
     }
 
+    /** @see Values#cache(Value, Class) */
     protected <E extends Value> void cache(E element, Class<E> type) {
-    
+
         Values.cache(element, type);
     }
-    
+
+    /** @see Values#values(Class) */
     protected static <E extends Value> List<E> values(Class<E> type) {
 
         return Values.values(type);
     }
 
+    /** @see Values#values(Class, boolean) */
     protected static <E extends Value> List<E> values(Class<E> type, boolean known) {
 
         return Values.values(type, known);
     }
 
+    /** @see Values#get(int, Class) */
     protected static <E extends Value> E get(int value, Class<E> type) {
-        
+
         return Values.get(value, type);
     }
 }

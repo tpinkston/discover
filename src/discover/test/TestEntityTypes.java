@@ -43,7 +43,6 @@ public class TestEntityTypes {
                 System.out.println(type.name);
                 System.out.println(type.septuple.string);
                 System.out.println(type.description);
-                System.out.println(type.alternate);
 
                 stream.close();
             }

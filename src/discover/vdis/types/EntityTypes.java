@@ -1,18 +1,22 @@
 package discover.vdis.types;
 
-import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.TreeMap;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 
 /**
  * @author Tony Pinkston
@@ -21,19 +25,17 @@ public class EntityTypes {
 
     private static final Logger logger = LoggerFactory.getLogger(EntityTypes.class);
 
-    private static final String UNKNOWN = "Unknown Type";
-
     private static final String FILES[] = {
 
-        "data/PLATFORMS.CSV",
-        "data/MUNITIONS.CSV",
-        "data/LIFEFORMS.CSV",
-        "data/ENVIRONMENTALS.CSV",
-        "data/CULTURAL_FEATURES.CSV",
-        "data/SUPPLIES.CSV",
-        "data/RADIOS.CSV",
-        "data/EXPENDABLES.CSV",
-        "data/SENSOR_EMITTERS.CSV"
+        "data/platforms.xml",
+        "data/munitions.xml",
+        "data/lifeforms.xml",
+        "data/environmentals.xml",
+        "data/cultural_features.xml",
+        "data/supplies.xml",
+        "data/radios.xml",
+        "data/expendables.xml",
+        "data/sensor_emitters.xml"
     };
 
     /** Maps 64-bit entity type value to EntityType object. */
@@ -75,44 +77,10 @@ public class EntityTypes {
 
             if (type == null) {
 
-                long bits = value;
-
-                int extension = (int)(bits & 0xFF);
-                bits >>= 8;
-                int specific = (int)(bits & 0xFF);
-                bits >>= 8;
-                int subcategory = (int)(bits & 0xFF);
-                bits >>= 8;
-                int category = (int)(bits & 0xFF);
-                bits >>= 8;
-                int country = (int)(bits & 0xFFFF);
-                bits >>= 16;
-                int domain = (int)(bits & 0xFF);
-                bits >>= 8;
-                int kind = (int)(bits & 0xFF);
-
-                String string = Septuple.toString(
-                    kind,
-                    domain,
-                    country,
-                    category,
-                    subcategory,
-                    specific,
-                    extension);
-
                 type = new EntityType(
-                    kind,
-                    domain,
-                    country,
-                    category,
-                    subcategory,
-                    specific,
-                    extension,
-                    value,
-                    "UNKNOWN",
-                    "Unknown",
-                    null,
-                    string);
+                    ("UNKNOWN_" + value),
+                    ("Unknown Type [" + value + "]"),
+                    value);
 
                 unknowns.put(value, type);
             }
@@ -157,138 +125,57 @@ public class EntityTypes {
 
     private static int load(String filename) {
 
-        BufferedReader reader = getReader(filename);
+        InputStream resource = EntityTypes.class.getResourceAsStream(filename);
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         int count = 0;
 
-        if (reader == null) {
+        try {
 
-            logger.error("File not found: {}", filename);
-        }
-        else try {
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            Document document = builder.parse(new InputSource(resource));
 
-            String string = reader.readLine();
-            int values[] = new int[7];
-            int line = 1;
+            document.getDocumentElement().normalize();
 
-            while(string != null) {
+            NodeList types = document.getElementsByTagName("type");
 
-                if (string.endsWith(",")) {
+            for(int i = 0; i < types.getLength(); ++i) {
 
-                    string = string.concat("0");
+                Element element = (Element)types.item(i);
+
+                String name = element.getAttribute("name");
+                String value = element.getAttribute("value");
+                String description = element.getAttribute("description");
+
+                EntityType type = new EntityType(
+                    name,
+                    description,
+                    value);
+
+                if (!mapping.containsKey(type.getValue())) {
+
+                    mapping.put(type.getValue(), type);
+                    ++count;
+                }
+                else if (mapping.get(value).name.endsWith("_DELETED")) {
+
+                    // Overwrite...
+                    mapping.put(type.getValue(), type);
+                }
+                else {
+
+                    logger.error("Duplicate entity type: {}", value);
                 }
 
-                String tokens[] = string.split(",");
-
-                if ((tokens == null) || (tokens.length != 13)) {
-
-                    logger.warn(
-                        "Parse error:\n" + filename +
-                        ": Expecting 13 tokens on line " + line +
-                        "\n" + Arrays.toString(tokens));
-                }
-                else try {
-
-                    String alternate = null;
-
-                    if (tokens[12].equals("0")) {
-
-                        alternate = UNKNOWN;
-                    }
-                    else {
-
-                        alternate = tokens[12];
-                    }
-
-                    for(int i = 0; i < 7; ++i) {
-
-                        values[i] = Integer.parseInt(tokens[i + 1]);
-                    }
-
-                    long value = Septuple.toLong(
-                        values[0],
-                        values[1],
-                        values[2],
-                        values[3],
-                        values[4],
-                        values[5],
-                        values[6]);
-
-                    String tuple = Septuple.toString(
-                        values[0],
-                        values[1],
-                        values[2],
-                        values[3],
-                        values[4],
-                        values[5],
-                        values[6]);
-
-                    EntityType type = new EntityType(
-                        values[0],
-                        values[1],
-                        values[2],
-                        values[3],
-                        values[4],
-                        values[5],
-                        values[6],
-                        value,
-                        tokens[0],
-                        tokens[8].replaceAll("~", ","),
-                        alternate,
-                        tuple);
-
-                    if (!mapping.containsKey(value)) {
-
-                        mapping.put(value, type);
-                        ++count;
-                    }
-                    else if (mapping.get(value).name.endsWith("_DELETED")) {
-
-                        // Overwrite...
-                        mapping.put(value, type);
-                    }
-                    else {
-
-                        logger.error(
-                            "Duplicate entity type: " + value +
-                            ", " + tuple + ", " + tokens[0]);
-                    }
-                }
-                catch(NumberFormatException exception) {
-
-                    if (line > 1) {
-
-                        logger.warn(
-                            "Parse error " + filename + ":" + line,
-                            exception);
-                    }
-                }
-
-                string = reader.readLine();
-                ++line;
+                ++count;
             }
-
-            reader.close();
         }
         catch(Exception exception) {
 
             logger.error(
-                "Caught exception parsing file " + filename,
+                ("Failed to load entity types file: " + filename),
                 exception);
         }
 
         return count;
-    }
-
-    private static BufferedReader getReader(String file) {
-
-        InputStream stream = EntityTypes.class.getResourceAsStream(file);
-        BufferedReader reader = null;
-
-        if (stream != null) {
-
-            reader = new BufferedReader(new InputStreamReader(stream));
-        }
-
-        return reader;
     }
 }

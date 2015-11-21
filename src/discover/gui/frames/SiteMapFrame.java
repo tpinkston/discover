@@ -204,7 +204,7 @@ public class SiteMapFrame
                 for(PDU pdu : list) {
 
                     EntityId id = pdu.getId();
-                    int type = pdu.getType();
+                    PDU_TYPE type = pdu.getTypeEnum();
 
                     if (id != null) {
 
@@ -499,13 +499,12 @@ public class SiteMapFrame
      */
     abstract class TreeNode extends DefaultMutableTreeNode implements Bufferable {
 
-        // TODO: Use PDU_TYPE as key...
-        private final Map<Integer, Integer> published;
+        private final Map<PDU_TYPE, Integer> published;
         private final int number;
 
         protected TreeNode(int number) {
 
-            published = new TreeMap<Integer, Integer>();
+            published = new TreeMap<>();
             this.number = number;
 
             logger.info("Created node \"" + toString() + "\"");
@@ -628,7 +627,7 @@ public class SiteMapFrame
             return node;
         }
 
-        public final void publishedPDU(int type) {
+        public final void publishedPDU(PDU_TYPE type) {
 
             Integer count = published.get(type);
 
@@ -689,13 +688,13 @@ public class SiteMapFrame
             buffer.addBreak();
             buffer.addTitle("Published PDUs:");
 
-            for(Integer type : published.keySet()) {
+            for(PDU_TYPE type : published.keySet()) {
 
                 int count = published.get(type).intValue();
 
                 total += count;
 
-                buffer.addAttribute(PDU_TYPE.get(type).description, count);
+                buffer.addAttribute(type.description, count);
             }
 
             buffer.addBreak();

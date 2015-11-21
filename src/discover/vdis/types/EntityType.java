@@ -17,40 +17,50 @@ public class EntityType implements Comparable<EntityType>, Bufferable, Writable 
 
     public static final int LENGTH = 8;
 
-    public final Long value;
-    public final Septuple septuple;
     public final String name;
     public final String description;
-    public final String alternate;
+    public final Septuple septuple;
 
-    EntityType(
-        int kind,
-        int domain,
-        int country,
-        int category,
-        int subcategory,
-        int specific,
-        int extension,
-        long value,
-        String name,
-        String description,
-        String alternate,
-        String string) {
+    EntityType(String name, String description, long value) {
 
-        septuple = new Septuple(
-            string,
-            kind,
-            domain,
-            country,
-            category,
-            subcategory,
-            specific,
-            extension);
+        this(name, description, new Septuple(value));
+    }
 
-        this.value = Long.valueOf(value);
+    EntityType(String name, String description, int septuple[]) {
+
+        this(name, description, new Septuple(septuple));
+    }
+
+    EntityType(String name, String description, String septuple) {
+
+        this(name, description, new Septuple(septuple));
+    }
+
+    EntityType(String name, String description, Septuple septuple) {
+
+        if ((name == null) || name.isEmpty()) {
+
+            throw new IllegalArgumentException("Invalid name: " + name);
+        }
+
+        if ((description == null) || description.isEmpty()) {
+
+            throw new IllegalArgumentException("Invalid name: " + name);
+        }
+
+        if (septuple == null) {
+
+            throw new NullPointerException("Septuple cannot be null!");
+        }
+
+        this.septuple = septuple;
         this.name = name;
         this.description = description;
-        this.alternate = alternate;
+    }
+
+    public long getValue() {
+
+        return septuple.value;
     }
 
     /**
@@ -80,18 +90,12 @@ public class EntityType implements Comparable<EntityType>, Bufferable, Writable 
     @Override
     public int compareTo(EntityType type) {
 
-        if (value < type.value) {
-
-            return -1;
-        }
-        else if (value == type.value) {
-
-            return 0;
-        }
-        else {
+        if (type == null) {
 
             return 1;
         }
+
+        return Long.compare(septuple.value, type.septuple.value);
     }
 
     @Override
@@ -99,7 +103,7 @@ public class EntityType implements Comparable<EntityType>, Bufferable, Writable 
 
         if (object instanceof EntityType) {
 
-            return (value == ((EntityType)object).value);
+            return (septuple.value == ((EntityType)object).septuple.value);
         }
         else {
 
@@ -110,7 +114,7 @@ public class EntityType implements Comparable<EntityType>, Bufferable, Writable 
     @Override
     public int hashCode() {
 
-        return value.hashCode();
+        return Long.valueOf(septuple.value).hashCode();
     }
 
     @Override

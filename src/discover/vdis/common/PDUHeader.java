@@ -19,35 +19,50 @@ public class PDUHeader implements Bufferable, Readable, Writable {
 
     public static final int LENGTH = 12;
 
-    private int type = 0; // TODO: use PDU_TYPE
-    private int family = 0; // TODO: use PDU_FAMILY
-    private int protocol = 0; // TODO: use PDU_PROTOCOL_FAMILY
+    private PDU_TYPE type = null;
+    private PDU_FAMILY family = null;
+    private PROTOCOL_VERSION protocol = null;
     private int exercise = -1;
     private int length = -1;
     private int padding = 0;
     private Timestamp timestamp = new Timestamp();
     private PDUStatus status = new PDUStatus();
 
-    public int getType() { return type; }
-    public int getFamily() { return family; }
-    public int getProtocol() { return protocol; }
+    public PDU_TYPE getType() { return type; }
+    public PDU_FAMILY getFamily() { return family; }
+    public PROTOCOL_VERSION getProtocol() { return protocol; }
     public int getExercise() { return exercise; }
     public int getLength() { return length; }
     public int getPadding() { return padding; }
     public Timestamp getTimestamp() { return timestamp; }
     public PDUStatus getStatus() { return status; }
 
-    public void setType(int type) {
+    public void setType(PDU_TYPE type) {
+
+        if (type == null) {
+
+            throw new NullPointerException("Type is null!");
+        }
 
         this.type = type;
     }
 
-    public void setFamily(int family) {
+    public void setFamily(PDU_FAMILY family) {
+
+        if (family == null) {
+
+            throw new NullPointerException("Family is null!");
+        }
 
         this.family = family;
     }
 
-    public void setProtocol(int protocol) {
+    public void setProtocol(PROTOCOL_VERSION protocol) {
+
+        if (protocol == null) {
+
+            throw new NullPointerException("Protocol is null!");
+        }
 
         this.protocol = protocol;
     }
@@ -83,16 +98,16 @@ public class PDUHeader implements Bufferable, Readable, Writable {
     @Override
     public void read(DataInputStream stream) throws IOException {
 
-        protocol = stream.readUnsignedByte();
+        protocol = PROTOCOL_VERSION.get(stream.readUnsignedByte());
         exercise = stream.readUnsignedByte();
-        type = stream.readUnsignedByte();
-        family = stream.readUnsignedByte();
+        type = PDU_TYPE.get(stream.readUnsignedByte());
+        family = PDU_FAMILY.get(stream.readUnsignedByte());
         timestamp.read(stream); // 4 bytes
         length = stream.readUnsignedShort();
         status.read(stream);
         padding = stream.readUnsignedByte();
 
-        status.setEnumValues(PDU_TYPE.get(type));
+        status.setEnumValues(type);
     }
 
     /**
@@ -101,10 +116,10 @@ public class PDUHeader implements Bufferable, Readable, Writable {
     @Override
     public void write(DataOutputStream stream) throws IOException {
 
-        stream.writeByte(protocol);
+        stream.writeByte(protocol.value);
         stream.writeByte(exercise);
-        stream.writeByte(type);
-        stream.writeByte(family);
+        stream.writeByte(type.value);
+        stream.writeByte(family.value);
         stream.writeInt(timestamp.getValue());
         stream.writeShort(length);
         stream.writeByte(status.getValue()); // status
@@ -115,10 +130,10 @@ public class PDUHeader implements Bufferable, Readable, Writable {
     public void toBuffer(AbstractBuffer buffer) {
 
         buffer.addTitle("HEADER");
-        buffer.addAttribute("Protocol", protocol, PROTOCOL_VERSION.class);
+        buffer.addAttribute("Protocol", protocol.description);
         buffer.addAttribute("Exercise", exercise);
-        buffer.addAttribute("Type", type, PDU_TYPE.class);
-        buffer.addAttribute("Family", family, PDU_FAMILY.class);
+        buffer.addAttribute("Type", type.description);
+        buffer.addAttribute("Family", family.description);
         buffer.addAttribute("Length", length);
         buffer.addAttribute("Timestamp", timestamp.toString());
         buffer.addBuffer(status);

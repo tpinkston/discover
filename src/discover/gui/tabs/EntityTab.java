@@ -49,6 +49,8 @@ import discover.vdis.common.EntityCapabilities;
 import discover.vdis.common.PDUHeader;
 import discover.vdis.common.Timestamp;
 import discover.vdis.enums.FORCE_ID;
+import discover.vdis.enums.PDU_FAMILY;
+import discover.vdis.enums.PDU_TYPE;
 import discover.vdis.enums.PROTOCOL_VERSION;
 import discover.vdis.pdu.EntityState;
 import discover.vdis.types.EntityType;
@@ -118,9 +120,9 @@ public class EntityTab extends Tab implements ActionListener {
         pdu = new PDU();
 
         EntityState state = new EntityState();
-        state.getHeader().setProtocol(7);
-        state.getHeader().setType(1); // ENTITY_STATE
-        state.getHeader().setFamily(1); // ENTITY_INFORMATION_INTERACTION
+        state.getHeader().setProtocol(PROTOCOL_VERSION.PTCL_VER_IEEE_1278_1_2012);
+        state.getHeader().setType(PDU_TYPE.ENTITY_STATE);
+        state.getHeader().setFamily(PDU_FAMILY.ENTITY_INFORMATION_INTERACTION);
         state.getHeader().setExercise(1);
         state.getHeader().setLength(state.calculateLength());
 
@@ -388,6 +390,10 @@ public class EntityTab extends Tab implements ActionListener {
     private void apply() {
 
         EntityState state = getState();
+        PROTOCOL_VERSION version = PROTOCOL_VERSION.get(
+            Utilities.getComboboxValue(
+                protocol,
+                PROTOCOL_VERSION.class));
 
         entityId.getValue(state.getEntityId());
         location.gcc.getValue(state.getLocation());
@@ -412,9 +418,7 @@ public class EntityTab extends Tab implements ActionListener {
 
         header.setTimestamp(timestamp.getValue());
         header.setExercise(Utilities.getIntegerValue(exercise));
-        header.setProtocol(Utilities.getComboboxValue(
-            protocol,
-            PROTOCOL_VERSION.class));
+        header.setProtocol(version);
 
         // Must be done AFTER records have been set...
         header.setLength(state.calculateLength());
@@ -529,7 +533,7 @@ public class EntityTab extends Tab implements ActionListener {
         Utilities.setComboBoxValue(
             protocol,
             PROTOCOL_VERSION.class,
-            Integer.valueOf(state.getHeader().getProtocol()));
+            state.getHeader().getProtocol().value);
         Utilities.setComboBoxValue(
             force,
             FORCE_ID.class,

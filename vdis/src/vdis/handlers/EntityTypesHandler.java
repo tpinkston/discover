@@ -148,7 +148,12 @@ public class EntityTypesHandler extends AbstractSheetHandler {
 
             PrintWriter writer = writers.get(type.kind);
 
-            writer.print("  <type name=\"" + type.name + "\" value=\"");
+            type.description = type.description.replaceAll("\"", "'");
+            type.description = type.description.replaceAll("\\&", "and");
+            type.description = type.description.replaceAll("\\(.*>.*\\)", "");
+            type.description = type.description.replaceAll("\\(.*<.*\\)", "");
+
+            writer.print("  <type name=\"" + type.name.trim() + "\" value=\"");
             writer.print(type.kind + ".");
             writer.print(type.domain + ".");
             writer.print(type.country + ".");
@@ -157,7 +162,7 @@ public class EntityTypesHandler extends AbstractSheetHandler {
             writer.print(type.specific + ".");
             writer.print(type.extension);
             writer.print("\" description=\"");
-            writer.println(type.description + "\"/>");
+            writer.println(type.description.trim() + "\"/>");
 
             counts.put(type.kind, (counts.get(type.kind).intValue() + 1));
         }
