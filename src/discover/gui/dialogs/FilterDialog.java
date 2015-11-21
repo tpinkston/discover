@@ -70,8 +70,8 @@ public class FilterDialog implements ActionListener {
     private final JFormattedTextField site = Utilities.getIntegerField(null);
     private final JFormattedTextField application = Utilities.getIntegerField(null);
     private final JFormattedTextField entity = Utilities.getIntegerField(null);
-    private final List<Integer> typesIncluded = new ArrayList<Integer>(); // TODO: List<PDU_TYPE>
-    private final List<Integer> typesExcluded = new ArrayList<Integer>(); // TODO: List<PDU_TYPE>
+    private final List<PDU_TYPE> typesIncluded = new ArrayList<>();
+    private final List<PDU_TYPE> typesExcluded = new ArrayList<>();
     private final TableModel model;
     private final TableFilter filter;
 
@@ -110,7 +110,7 @@ public class FilterDialog implements ActionListener {
 
         port.setValue(pdu.getPort());
         exercise.setValue(pdu.getExercise());
-        typesIncluded.add(type.value);
+        typesIncluded.add(type);
         included.setText("1");
 
         Utilities.setComboBoxValue(

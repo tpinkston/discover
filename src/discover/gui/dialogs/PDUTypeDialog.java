@@ -47,7 +47,7 @@ public class PDUTypeDialog implements ActionListener {
     public PDUTypeDialog(
         String title,
         JDialog parent,
-        List<Integer> list) {
+        List<PDU_TYPE> list) {
 
         dialog.setTitle(title);
 
@@ -125,11 +125,9 @@ public class PDUTypeDialog implements ActionListener {
     }
 
     /**
-     * TODO: Change list to List<PDU_TYPE>
-     *
-     * @param list
+     * @param list - Output list of {@link PDU_TYPE} 
      */
-    public void apply(List<Integer> list) {
+    public void apply(List<PDU_TYPE> list) {
 
         list.clear();
 
@@ -137,7 +135,7 @@ public class PDUTypeDialog implements ActionListener {
 
             if (row.selected) {
 
-                list.add(row.type.value);
+                list.add(row.type);
             }
         }
     }

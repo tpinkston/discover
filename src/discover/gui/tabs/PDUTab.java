@@ -517,11 +517,11 @@ public abstract class PDUTab
         final int widthMaximum;
 
         private Column(
-            String columnName,
-            Class<?> columnClass,
-            int widthMinimum,
-            int widthPreferred,
-            int widthMaximum) {
+                String columnName,
+                Class<?> columnClass,
+                int widthMinimum,
+                int widthPreferred,
+                int widthMaximum) {
 
             this.columnName = columnName;
             this.columnClass = columnClass;
@@ -587,8 +587,8 @@ public abstract class PDUTab
 
     public class TableFilter extends RowFilter<TableModel, Integer> {
 
-        public List<Integer> includedTypes = new ArrayList<Integer>();
-        public List<Integer> excludedTypes = new ArrayList<Integer>();
+        public List<PDU_TYPE> includedTypes = new ArrayList<>();
+        public List<PDU_TYPE> excludedTypes = new ArrayList<>();
         public Integer port = null;
         public Integer exercise = null;
         public Integer protocol = null;
@@ -608,21 +608,21 @@ public abstract class PDUTab
 
             PDU pdu = getPDU(entry.getIdentifier());
 
-            if (this.exclude(pdu.getType()) ||
-                this.exclude(request, pdu.getRequestId()) ||
-                this.exclude(port, pdu.getPort()) ||
-                this.exclude(exercise, pdu.getExercise()) ||
-                this.exclude(protocol, pdu.getProtocol()) ||
-                this.exclude(family, pdu.getFamily())) {
+            if (exclude(pdu.getTypeEnum()) ||
+                exclude(request, pdu.getRequestId()) ||
+                exclude(port, pdu.getPort()) ||
+                exclude(exercise, pdu.getExercise()) ||
+                exclude(protocol, pdu.getProtocol()) ||
+                exclude(family, pdu.getFamily())) {
 
                 return false;
             }
 
             if (pdu.getTypeEnum() == PDU_TYPE.ENTITY_STATE) {
 
-                if (this.exclude(site, pdu.getSiteId()) ||
-                    this.exclude(application, pdu.getApplicationId()) ||
-                    this.exclude(entity, pdu.getEntityId())) {
+                if (exclude(site, pdu.getSiteId()) ||
+                    exclude(application, pdu.getApplicationId()) ||
+                    exclude(entity, pdu.getEntityId())) {
 
                     return false;
                 }
@@ -638,12 +638,12 @@ public abstract class PDUTab
 
             if (pdu.hasEntityType()) {
 
-                if (this.exclude(kind, pdu.getEntityKind())) {
+                if (exclude(kind, pdu.getEntityKind())) {
 
                     return false;
                 }
 
-                if (this.exclude(domain, pdu.getEntityDomain())) {
+                if (exclude(domain, pdu.getEntityDomain())) {
 
                     return false;
                 }
@@ -679,7 +679,7 @@ public abstract class PDUTab
             return ((object == null) ? false : !(object.intValue() == value));
         }
 
-        private boolean exclude(int type) {
+        private boolean exclude(PDU_TYPE type) {
 
             if (excludedTypes.contains(type)) {
 
