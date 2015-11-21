@@ -9,7 +9,6 @@ import discover.common.buffer.Bufferable;
 import discover.vdis.enums.COUNTRY;
 import discover.vdis.enums.DOMAIN;
 import discover.vdis.enums.ENT_KIND;
-import discover.vdis.enums.Value;
 
 /**
  * @author Tony Pinkston
@@ -59,7 +58,7 @@ public class EntityType implements Comparable<EntityType>, Bufferable, Writable 
      */
     public String getKind() {
 
-        return Value.get(septuple.kind, ENT_KIND.class).description;
+        return ENT_KIND.get(septuple.kind).description;
     }
 
     /**
@@ -67,7 +66,7 @@ public class EntityType implements Comparable<EntityType>, Bufferable, Writable 
      */
     public String getDomain() {
 
-        return Value.get(septuple.domain, DOMAIN.class).description;
+        return DOMAIN.get(septuple.domain).description;
     }
 
     /**
@@ -75,7 +74,7 @@ public class EntityType implements Comparable<EntityType>, Bufferable, Writable 
      */
     public String getCountry() {
 
-        return Value.get(septuple.country, COUNTRY.class).description;
+        return COUNTRY.get(septuple.country).description;
     }
 
     @Override

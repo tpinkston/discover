@@ -72,7 +72,7 @@ public class ObjectTypesHandler extends AbstractSheetHandler {
             switch(reference.charAt(0)) {
 
                 case 'A':
-                    current.type = value;
+                    current.geometry = value;
                     break;
                 case 'B':
                     current.domain = Integer.parseInt(value);
@@ -94,7 +94,7 @@ public class ObjectTypesHandler extends AbstractSheetHandler {
 
     private static class ObjectType {
 
-        String type;
+        String geometry;
         String description;
         Integer domain;
         Integer kind;
@@ -114,7 +114,7 @@ public class ObjectTypesHandler extends AbstractSheetHandler {
 
         for(ObjectType type : types) {
 
-            writer.print("  <type type=\"" + type.type + "\" value=\"");
+            writer.print("  <type geometry=\"" + type.geometry + "\" value=\"");
             writer.print(type.domain + ".");
             writer.print(type.kind + ".");
             writer.print(type.category + ".");

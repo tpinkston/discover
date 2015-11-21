@@ -11,7 +11,7 @@ import discover.common.Readable;
 import discover.common.Writable;
 import discover.common.buffer.AbstractBuffer;
 import discover.common.buffer.Bufferable;
-import discover.vdis.enums.Value;
+import discover.vdis.enums.Values;
 
 /**
  * @author Tony Pinkston
@@ -113,7 +113,7 @@ public abstract class AbstractBits implements Bufferable, Cloneable, Readable, W
 
                 buffer.addAttribute(
                     bits.label,
-                    Value.get(value, bits.enumeration).description);
+                    Values.get(value, bits.enumeration).description);
             }
         }
     }

@@ -14,6 +14,7 @@ import java.net.URL;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.Comparator;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -37,6 +38,7 @@ import org.slf4j.LoggerFactory;
 import discover.gui.frames.DiscoverFrame;
 import discover.vdis.common.EntityId;
 import discover.vdis.enums.Value;
+import discover.vdis.enums.Values;
 import discover.vdis.types.EntityType;
 import discover.vdis.types.ObjectType;
 
@@ -114,20 +116,19 @@ public class Utilities {
         Class<? extends Value> type,
         boolean includeEmpty) {
 
-// TODO configureComboBox
-//        String descriptions[] = VDIS.getEnumDescriptions(type);
-//
-//        box.removeAllItems();
-//
-//        if (includeEmpty) {
-//
-//            box.addItem(EMPTY_ENUM);
-//        }
-//
-//        for(String description : descriptions) {
-//
-//            box.addItem(description);
-//        }
+        final List<? extends Value> list = Values.values(type, true);
+        
+        box.removeAllItems();
+
+        if (includeEmpty) {
+
+            box.addItem(EMPTY_ENUM);
+        }
+
+        for(Value value : list) {
+
+            box.addItem(value.description);
+        }
     }
 
     /**
@@ -142,18 +143,17 @@ public class Utilities {
         Class<? extends Value> type,
         Integer value) {
 
-// TODO setComboBoxValue
-//        if ((value == null) || (value.intValue() < 0)) {
-//
-//            // Assume item at zero index is EMPTY_ENUM
-//            box.setSelectedIndex(0);
-//        }
-//        else {
-//
-//            String description = VDIS.getDescription(type, value.intValue());
-//
-//            box.setSelectedItem(description);
-//        }
+        if ((value == null) || (value.intValue() < 0)) {
+
+            // Assume item at zero index is EMPTY_ENUM
+            box.setSelectedIndex(0);
+        }
+        else {
+
+            Value v = Values.get(value, type);
+
+            box.setSelectedItem(v.description);
+        }
     }
 
     /**
@@ -167,20 +167,20 @@ public class Utilities {
             JComboBox<String> box,
             Class<? extends Value> type) {
 
-// TODO getComboboxValue
-//        Handle handle = VDIS.getHandle(type);
-//        String description = (String)box.getSelectedItem();
-//
-//        if (description != null) {
-//
-//            for(int i = 0; i < handle.descriptions.length; ++i) {
-//
-//                if (description.equals(handle.descriptions[i])) {
-//
-//                    return Integer.valueOf(handle.values[i]);
-//                }
-//            }
-//        }
+        String description = (String)box.getSelectedItem();
+
+        if (description != null) {
+
+            final List<? extends Value> list = Values.values(type, true);
+
+            for(Value v : list) {
+
+                if (description.equals(v.description)) {
+
+                    return Integer.valueOf(v.value);
+                }
+            }
+        }
 
         return null;
     }

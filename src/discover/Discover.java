@@ -1,5 +1,10 @@
 package discover;
 
+import geotransform.ellipsoids.Ellipsoid;
+import geotransform.ellipsoids.WE_Ellipsoid;
+import geotransform.transforms.Gcc_To_Gdc_Converter;
+import geotransform.transforms.Gdc_To_Gcc_Converter;
+
 import java.awt.HeadlessException;
 import java.net.NetworkInterface;
 import java.net.SocketException;
@@ -13,13 +18,9 @@ import org.slf4j.LoggerFactory;
 import discover.gui.frames.DiscoverFrame;
 import discover.headless.Headless;
 import discover.system.Network;
-import discover.vdis.marking.army.ArmyTracking;
+import discover.vdis.enums.Values;
 import discover.vdis.types.EntityTypes;
 import discover.vdis.types.ObjectTypes;
-import geotransform.ellipsoids.Ellipsoid;
-import geotransform.ellipsoids.WE_Ellipsoid;
-import geotransform.transforms.Gcc_To_Gdc_Converter;
-import geotransform.transforms.Gdc_To_Gcc_Converter;
 
 /**
  * @author Tony Pinkston
@@ -57,7 +58,7 @@ public class Discover {
         Gcc_To_Gdc_Converter.Init(ellipsoid);
         Gdc_To_Gcc_Converter.Init(ellipsoid);
 
-        ArmyTracking.load();
+        Values.load();
         EntityTypes.load();
         ObjectTypes.load();
 

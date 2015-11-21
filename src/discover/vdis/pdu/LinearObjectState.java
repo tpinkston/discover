@@ -90,7 +90,7 @@ public class LinearObjectState extends AbstractPDU {
         requestor.readPartial(stream);
         receiver.readPartial(stream);
         objectType = ObjectTypes.getObjectType(
-            OBJECT_GEOMETRY.LINEAR.value,
+            OBJECT_GEOMETRY.LINEAR,
             stream.readInt());
 
         for(int i = 0; i < count; ++i) {

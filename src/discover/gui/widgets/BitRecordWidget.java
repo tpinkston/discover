@@ -38,7 +38,7 @@ import discover.vdis.common.ExtendedLightsLand;
 import discover.vdis.common.ExtendedStatus;
 import discover.vdis.common.LifeformAttributes;
 import discover.vdis.common.ThermalIndicators;
-import discover.vdis.enums.Value;
+import discover.vdis.enums.Values;
 
 /**
  * @author Tony Pinkston
@@ -338,7 +338,7 @@ public class BitRecordWidget extends ToggleWidget {
 
             if ((column == 1) && (bits.enumeration != null)) {
 
-                return Value.get(value.getValue(bits), bits.enumeration).description;
+                return Values.get(value.getValue(bits), bits.enumeration).description;
             }
             else switch(column) {
 

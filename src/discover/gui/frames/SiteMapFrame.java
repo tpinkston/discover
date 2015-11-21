@@ -41,7 +41,6 @@ import discover.gui.Utilities;
 import discover.vdis.PDU;
 import discover.vdis.common.EntityId;
 import discover.vdis.enums.PDU_TYPE;
-import discover.vdis.enums.Value;
 
 /**
  * @author Tony Pinkston
@@ -696,9 +695,7 @@ public class SiteMapFrame
 
                 total += count;
 
-                buffer.addAttribute(
-                    Value.get(type, PDU_TYPE.class).description,
-                    count);
+                buffer.addAttribute(PDU_TYPE.get(type).description, count);
             }
 
             buffer.addBreak();

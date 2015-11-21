@@ -1,7 +1,11 @@
 package vdis;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -29,13 +33,13 @@ import vdis.parsers.OtherEnumsParser;
  */
 public class VDIS {
 
-    private static final List<String> interfaces = new ArrayList<>();
+    private static final List<String> classes = new ArrayList<>();
 
-    public static void addEnumInterface(String name) {
+    public static void addValueClass(String name) {
 
-        if (!interfaces.contains(name)) {
+        if (!classes.contains(name)) {
 
-            interfaces.add(name);
+            classes.add(name);
         }
     }
 
@@ -49,6 +53,8 @@ public class VDIS {
             parse(new OtherEnumsParser());
 
             parseOtherTypes("other_types.xml");
+            
+            writeIndex();
         }
         catch(Exception exception) {
 
@@ -133,5 +139,23 @@ public class VDIS {
 
             System.exit(1);
         }
+    }
+
+    private static void writeIndex() throws Exception {
+        
+        String filename = (EnumGenerator.ENUMS_PATH + "/index.txt");
+        FileWriter file = new FileWriter(new File(filename));
+        PrintWriter writer = new PrintWriter(file);
+
+        Collections.sort(classes);
+
+        for(int i = 0; i < classes.size(); ++i) {
+
+            writer.println(classes.get(i));
+        }
+
+        writer.close();
+
+        System.out.println("---- File written: " + filename + ", classes: " + classes.size());
     }
 }

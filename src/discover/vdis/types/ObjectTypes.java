@@ -1,16 +1,21 @@
 package discover.vdis.types;
 
-import java.io.BufferedReader;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.TreeMap;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 
 import discover.vdis.enums.OBJECT_GEOMETRY;
 
@@ -19,23 +24,23 @@ import discover.vdis.enums.OBJECT_GEOMETRY;
  */
 public class ObjectTypes {
 
-    private static final String FILE = "data/OBJECT_STATE.CSV";
+    private static final String FILE = "data/objects.xml";
 
     private static final Logger logger = LoggerFactory.getLogger(ObjectTypes.class);
 
     /** Maps 32-bit entity type value to ObjectType object. */
-    private static final TreeMap<OBJECT_GEOMETRY, TreeMap<Integer, ObjectType>> mapping;
+    private static final Map<OBJECT_GEOMETRY, Map<Integer, ObjectType>> mapping;
 
     /** Maps 32-bit entity type value to ObjectType object. */
-    private static final TreeMap<OBJECT_GEOMETRY, TreeMap<Integer, ObjectType>> unknowns;
+    private static final Map<OBJECT_GEOMETRY, Map<Integer, ObjectType>> unknowns;
 
     /** List of all ObjectType objects read from data file. */
     private static final ArrayList<ObjectType> listing;
 
     static {
-
-        mapping = new TreeMap<OBJECT_GEOMETRY, TreeMap<Integer, ObjectType>>();
-        unknowns = new TreeMap<OBJECT_GEOMETRY, TreeMap<Integer, ObjectType>>();
+        
+        mapping = new TreeMap<OBJECT_GEOMETRY, Map<Integer, ObjectType>>();
+        unknowns = new TreeMap<OBJECT_GEOMETRY, Map<Integer, ObjectType>>();
         listing = new ArrayList<ObjectType>();
 
         unknowns.put(OBJECT_GEOMETRY.AREAL, new TreeMap<Integer, ObjectType>());
@@ -53,14 +58,14 @@ public class ObjectTypes {
     }
 
     /**
-     * @param geometry - Point, linear, areal... TODO: change to OBJECT_GEOMETRY
+     * @param geometry - {@link OBJECT_GEOMETRY}
      * @param value - 32-bit entity type value
      *
      * @return {@link ObjectType}
      */
-    public static ObjectType getObjectType(int geometry, int value) {
+    public static ObjectType getObjectType(OBJECT_GEOMETRY geometry, int value) {
 
-        TreeMap<Integer, ObjectType> submapping = mapping.get(geometry);
+        Map<Integer, ObjectType> submapping = mapping.get(geometry);
         ObjectType type = submapping.get(value);
 
         if (type == null) {
@@ -80,22 +85,14 @@ public class ObjectTypes {
                 bits >>= 8;
                 int domain = (bits & 0xFF);
 
-                String tuple = toString(
+                type = new ObjectType(
+                    ("UNKNOWN_" + geometry.name + "_" + value),
+                    ("Unknown " + geometry.description + "_" + value),
+                    geometry,
                     domain,
                     kind,
                     category,
                     subcategory);
-
-                type = new ObjectType(
-                    domain,
-                    kind,
-                    category,
-                    subcategory,
-                    value,
-                    geometry,
-                    "UNKNOWN",
-                    "Unknown",
-                    tuple);
 
                 submapping.put(value, type);
             }
@@ -109,105 +106,92 @@ public class ObjectTypes {
      */
     public static void load() {
 
-        BufferedReader reader = getReader();
-        long start = System.currentTimeMillis();
+        final long start = System.currentTimeMillis();
         int total = 0;
 
-        if (reader == null) {
+        InputStream resource = ObjectTypes.class.getResourceAsStream(FILE);
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 
-            logger.error("File not found {}", FILE);
-        }
-        else try {
+        try {
 
-            TreeMap<Integer, ObjectType> submapping = null;
-            String string = reader.readLine();
-            int values[] = new int[4];
-            int line = 1;
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            Document document = builder.parse(new InputSource(resource));
 
-            while(string != null) {
+            document.getDocumentElement().normalize();
 
-                String tokens[] = string.split(",");
+            NodeList types = document.getElementsByTagName("type");
 
-                if ((tokens == null) || (tokens.length != 10)) {
+            for(int i = 0; i < types.getLength(); ++i) {
 
-                    logger.error(
-                        "Parse error:\n" + FILE +
-                        ": Expecting 13 tokens on line " + line +
-                        "\n" + Arrays.toString(tokens));
+                Element element = (Element)types.item(i);
+
+                String geometry = element.getAttribute("geometry");
+                String description = element.getAttribute("description");
+                String value = element.getAttribute("value");
+
+                String tokens[] = value.split("\\.");
+
+                if ((tokens == null) || (tokens.length != 4)) {
+
+                    logger.error("Invalid object type: {}", value);
                 }
                 else try {
 
-                    for(int i = 0; i < 4; ++i) {
+                    int values[] = new int[tokens.length];
+                    
+                    for(int j = 0; j < tokens.length; ++j) {
 
-                        values[i] = Integer.parseInt(tokens[i + 1]);
+                        values[j] = Integer.parseInt(tokens[j]);
                     }
 
-                    int value = toInteger(
-                        values[0],
-                        values[1],
-                        values[2],
-                        values[3]);
+                    OBJECT_GEOMETRY objectGeometry = getGeometry(geometry);
 
-                    String tuple = toString(
-                        values[0],
-                        values[1],
-                        values[2],
-                        values[3]);
-
-                    OBJECT_GEOMETRY geometry = OBJECT_GEOMETRY.get(Integer.parseInt(tokens[0]));
-
+                    String name = description.toUpperCase();
+                    
+                    name = name.replaceAll(" ", "_");
+                    name = name.replaceAll(",", "");
+                    name = name.replaceAll("\\-", "_");
+                    name = name.replaceAll("_\\([A-Z]+\\)", "");
+                    
                     ObjectType type = new ObjectType(
+                        name,
+                        description,
+                        objectGeometry,
                         values[0],
                         values[1],
                         values[2],
-                        values[3],
-                        value,
-                        geometry.value,
-                        tokens[5],
-                        tokens[6],
-                        tuple);
+                        values[3]);
 
                     ++total;
 
-                    submapping = mapping.get(geometry);
+                    Map<Integer, ObjectType> submapping = mapping.get(objectGeometry);
 
                     if (submapping == null) {
 
                         submapping = new TreeMap<Integer, ObjectType>();
 
-                        mapping.put(geometry, submapping);
+                        mapping.put(objectGeometry, submapping);
                     }
 
-                    if (submapping.containsKey(value)) {
+                    if (submapping.containsKey(type.value)) {
 
-                        logger.error("Duplicate object type: {}", tuple);
+                        logger.error("Duplicate object type: {}", value);
                     }
                     else {
 
-                        submapping.put(value, type);
+                        listing.add(type);
+                        submapping.put(type.value, type);
                     }
                 }
                 catch(NumberFormatException exception) {
 
-                    if (line > 1) {
-
-                        logger.error("Caught exception!", exception);
-                    }
+                    logger.error("Caught exception!", exception);
                 }
-
-                string = reader.readLine();
-                ++line;
             }
-
-            listing.addAll(mapping.get(OBJECT_GEOMETRY.POINT).values());
-            listing.addAll(mapping.get(OBJECT_GEOMETRY.LINEAR).values());
-            listing.addAll(mapping.get(OBJECT_GEOMETRY.AREAL).values());
-
-            reader.close();
         }
         catch(Exception exception) {
 
-            logger.error("Caught exception!", exception);
+            logger.error("Failed to load object types!", exception);
         }
 
         long duration = (System.currentTimeMillis() - start);
@@ -216,11 +200,21 @@ public class ObjectTypes {
         System.out.println(duration + " milliseconds");
     }
 
-    private static int toInteger(
-        int domain,
-        int kind,
-        int category,
-        int subcategory) {
+    /**
+     * Converts object type tuple (4 unsigned 9-bit numbers) to 32-bit integer.
+     * 
+     * @param domain
+     * @param kind
+     * @param category
+     * @param subcategory
+     * 
+     * @return Integer value.
+     */
+    public static int toInteger(
+            int domain,
+            int kind,
+            int category,
+            int subcategory) {
 
         int value = 0;
 
@@ -235,11 +229,19 @@ public class ObjectTypes {
         return value;
     }
 
-    private static String toString(
-        int kind,
-        int domain,
-        int category,
-        int subcategory) {
+    /**
+     * @param kind
+     * @param domain
+     * @param category
+     * @param subcategory
+     * 
+     * @return Tuple as string (e.g. "1.3.0.2")
+     */
+    public static String toString(
+            int kind,
+            int domain,
+            int category,
+            int subcategory) {
 
         StringBuilder builder = new StringBuilder();
 
@@ -253,17 +255,21 @@ public class ObjectTypes {
 
         return builder.toString();
     }
-
-    private static BufferedReader getReader() {
-
-        InputStream stream = ObjectTypes.class.getResourceAsStream(FILE);
-        BufferedReader reader = null;
-
-        if (stream != null) {
-
-            reader = new BufferedReader(new InputStreamReader(stream));
+    
+    private static OBJECT_GEOMETRY getGeometry(String value) {
+        
+        List<OBJECT_GEOMETRY> list = OBJECT_GEOMETRY.values(true);
+        
+        for(OBJECT_GEOMETRY geometry : list) {
+            
+            if (geometry.name.equalsIgnoreCase(value)) {
+                
+                return geometry;
+            }
         }
-
-        return reader;
+        
+        logger.error("Invalid object geometry: {}", value);
+        
+        return null;
     }
 }

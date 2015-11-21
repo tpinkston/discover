@@ -1,14 +1,6 @@
 package discover.vdis.enums;
 
-import java.lang.reflect.Constructor;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -16,10 +8,6 @@ import org.slf4j.LoggerFactory;
  *
  */
 public abstract class Value implements Comparable<Value> {
-
-    protected static final Logger logger = LoggerFactory.getLogger(Value.class);
-
-    private static final Map<Class<?>, Values<?>> caches = new HashMap<>();
 
     /** Simple name for class. */
     public final String type;
@@ -90,182 +78,23 @@ public abstract class Value implements Comparable<Value> {
         return string;
     }
 
-    /**
-     * @return Array of all values for specified type (E) or empty list if
-     * type not found.
-     */
-    @SuppressWarnings("unchecked")
-    public static <E extends Value> List<E> values(Class<E> type) {
+    protected <E extends Value> void cache(E element, Class<E> type) {
+    
+        Values.cache(element, type);
+    }
+    
+    protected static <E extends Value> List<E> values(Class<E> type) {
 
-        Values<E> cache = (Values<E>)caches.get(type);
-
-        if (cache != null) {
-
-            return cache.all();
-        }
-
-        return Collections.emptyList();
+        return Values.values(type);
     }
 
-    /**
-     * @return Array of known or unknown values for specified type (E) or
-     * empty list if type not found.
-     */
-    @SuppressWarnings("unchecked")
-    public static <E extends Value> List<E> values(
-            Class<E> type,
-            boolean known) {
+    protected static <E extends Value> List<E> values(Class<E> type, boolean known) {
 
-        Values<E> cache = (Values<E>)caches.get(type);
-
-        if (cache != null) {
-
-            return (known ? cache.known() : cache.unknown());
-        }
-
-        return Collections.emptyList();
+        return Values.values(type, known);
     }
 
-    /**
-     * @return Value object of specified type (E) with specified numeric value.
-     * If the value is not known then an <i>unknown</i> value gets created.
-     * Return null only when exception occurs constructing an <i>unknown</i>.
-     */
-    @SuppressWarnings("unchecked")
-    public static <E extends Value> E get(int value, Class<E> type) {
-
-        Values<E> cache = (Values<E>)caches.get(type);
-        E result = null;
-
-        if (cache != null) {
-
-            result = cache.find(value);
-        }
-
-        if (result == null) {
-
-            try {
-
-                Constructor<E> constructor = (Constructor<E>)type.getDeclaredConstructors()[0];
-
-                constructor.setAccessible(true);
-
-                result = constructor.newInstance(
-                    value,
-                    ("UNKNOWN_" + value),
-                    ("Unknown [" + value + "]"),
-                    false);
-
-                cache(result, type);
-            }
-            catch(Exception exception) {
-
-                logger.error(
-                    "Failed to construct new " + type.getName(),
-                    exception);
-            }
-        }
-
-        return result;
-    }
-
-    @SuppressWarnings("unchecked")
-    protected static <E extends Value> void cache(E element, Class<E> type) {
-
-        // Cache all instances that get constructed.
-        //
-        Values<E> cache = (Values<E>)caches.get(type);
-
-        if (cache == null) {
-
-            cache = new Values<E>();
-            caches.put(type, cache);
-        }
-
-        cache.add(element);
-    }
-
-    private static class Values<E extends Value> {
-
-        /**
-         * List of values known via the VDIS specification or defined via
-         * extension of {@link Value} classes.
-         */
-        final List<E> known = new ArrayList<>();
-
-        /**
-         * List of values that are unknown, these are values that appear on
-         * PDUs coming in off the wire and do not match any known values.
-         */
-        final List<E> unknown = new ArrayList<>();
-
-        /**
-         * Does not create unknown instance if not found.
-         *
-         * @return Cached instance either known or unknown or null if not found.
-         */
-        E find(int value) {
-
-            for(E element : known) {
-
-                if (element.value == value) {
-
-                    return element;
-                }
-            }
-
-            for(E element : unknown) {
-
-                if (element.value == value) {
-
-                    return element;
-                }
-            }
-
-            return null;
-        }
-
-        /**
-         * Adds element to either known or unknown list.
-         */
-        void add(E element) {
-
-            if (element.known) {
-
-                if (!known.contains(element)) {
-
-                    known.add(element);
-                }
-            }
-            else {
-
-                if (!unknown.contains(element)) {
-
-                    unknown.add(element);
-                }
-            }
-        }
-
-        List<E> known() {
-
-            return Collections.unmodifiableList(known);
-        }
-
-        List<E> unknown() {
-
-            return Collections.unmodifiableList(unknown);
-        }
-
-        List<E> all() {
-
-            List<E> list = new ArrayList<>();
-
-            list.addAll(known);
-            list.addAll(unknown);
-
-            Collections.sort(list);
-
-            return list;
-        }
+    protected static <E extends Value> E get(int value, Class<E> type) {
+        
+        return Values.get(value, type);
     }
 }

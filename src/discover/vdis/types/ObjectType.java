@@ -11,38 +11,35 @@ import discover.vdis.enums.OBJECT_KIND;
  */
 public class ObjectType implements Comparable<ObjectType>, Bufferable {
 
+    public final OBJECT_GEOMETRY geometry;
+    public final String name;
+    public final String description;
+    public final String tuple;
     public final int domain;
     public final int kind;
     public final int category;
     public final int subcategory;
     public final int value;
-    public final int geometry;
-    public final String name;
-    public final String description;
-    public final String tuple;
 
     public ObjectType(
-        int domain,
-        int kind,
-        int category,
-        int subcategory,
-        int value,
-        int geometry,
-        String name,
-        String description,
-        String tuple) {
+            String name,
+            String description,
+            OBJECT_GEOMETRY geometry,
+            int domain,
+            int kind,
+            int category,
+            int subcategory) {
 
+        this.geometry = geometry;
+        this.name = name;
+        this.description = description;
         this.domain = domain;
         this.kind = kind;
         this.category = category;
         this.subcategory = subcategory;
 
-        this.value = value;
-        this.geometry = geometry;
-
-        this.name = name;
-        this.description = description;
-        this.tuple = tuple;
+        tuple = ObjectTypes.toString(kind, domain, category, subcategory);
+        value = ObjectTypes.toInteger(domain, kind, category, subcategory);
     }
 
     @Override
@@ -95,14 +92,6 @@ public class ObjectType implements Comparable<ObjectType>, Bufferable {
     public String getKind() {
 
         return OBJECT_KIND.get(kind).description;
-    }
-
-    /**
-     * @return {@link String}
-     */
-    public String getGeometry() {
-
-        return OBJECT_GEOMETRY.get(geometry).description;
     }
 
     @Override

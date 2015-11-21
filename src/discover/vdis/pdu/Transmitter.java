@@ -22,6 +22,7 @@ import discover.vdis.enums.RADIO_SYSTEM;
 import discover.vdis.enums.TRANSMIT_STATE;
 import discover.vdis.enums.UNMODULATED;
 import discover.vdis.enums.Value;
+import discover.vdis.enums.Values;
 import discover.vdis.types.EntityType;
 import discover.vdis.types.EntityTypes;
 
@@ -192,7 +193,7 @@ public class Transmitter extends AbstractPDU {
 
         buffer.addAttribute(
             "Detail",
-            Value.get(modulationDetail, detailType).description);
+            Values.get(modulationDetail, detailType).description);
 
         buffer.addLabel("Parameters");
 

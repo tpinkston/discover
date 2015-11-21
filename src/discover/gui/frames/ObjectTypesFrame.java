@@ -167,7 +167,7 @@ public class ObjectTypesFrame implements ActionListener, ListSelectionListener {
 
                 buffer.addAttribute("Name", type.name);
                 buffer.addAttribute("Value", type.tuple);
-                buffer.addAttribute("Geometry", type.getGeometry());
+                buffer.addAttribute("Geometry", type.geometry.description);
                 buffer.addAttribute("Description", type.description);
                 buffer.addAttribute("Kind", type.getKind());
                 buffer.addAttribute("Domain", type.getDomain());
@@ -210,7 +210,7 @@ public class ObjectTypesFrame implements ActionListener, ListSelectionListener {
 
     public static enum Column {
 
-        NAME("NAME", 300, Utilities.getComparator(String.class)),
+        NAME("Name", 300, Utilities.getComparator(String.class)),
         VALUE("Value", 50, Utilities.getComparator(ObjectType.class)),
         DOMAIN("Domain", 50, Utilities.getComparator(String.class)),
         KIND("Kind", 100, Utilities.getComparator(String.class)),
@@ -282,7 +282,7 @@ public class ObjectTypesFrame implements ActionListener, ListSelectionListener {
                     object = type.getKind();
                     break;
                 case GEOMETRY:
-                    object = type.getGeometry();
+                    object = type.geometry.description;
                     break;
             }
 
@@ -297,7 +297,7 @@ public class ObjectTypesFrame implements ActionListener, ListSelectionListener {
         Integer geometry = null;
 
         @Override
-        public boolean include( RowFilter.Entry<
+        public boolean include(RowFilter.Entry<
             ? extends TableModel,
             ? extends Integer> entry) {
 
@@ -307,7 +307,7 @@ public class ObjectTypesFrame implements ActionListener, ListSelectionListener {
 
                 return false;
             }
-            else if ((domain != null) & (domain != type.domain)) {
+            else if ((domain != null) && (domain != type.domain)) {
 
                 return false;
             }
@@ -315,7 +315,7 @@ public class ObjectTypesFrame implements ActionListener, ListSelectionListener {
 
                 return false;
             }
-            else if ((geometry != null) && (geometry != type.geometry)) {
+            else if ((geometry != null) && (geometry != type.geometry.value)) {
 
                 return false;
             }

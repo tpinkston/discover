@@ -150,7 +150,7 @@ public class EnumGenerator {
 
         System.out.println("---- File written: " + filename + ", enums: " + elements.size());
 
-        VDIS.addEnumInterface(ENUMS_PACKAGE + "." + name);
+        VDIS.addValueClass(ENUMS_PACKAGE + "." + name);
     }
 
     private boolean findName(String name) {
