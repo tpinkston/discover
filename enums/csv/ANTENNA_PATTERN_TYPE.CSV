@@ -1,4 +1,0 @@
-value,name,desc,deleted,new,SISO
-0,ANTENNA_PATTERN_OMNI_DIRECTIONAL,Omni-Directional,0,0,0
-1,ANTENNA_PATTERN_BEAM,Beam,0,0,0
-2,ANTENNA_PATTERN_SPHERICAL_HARMONIC,Spherical Harmonic,0,0,0

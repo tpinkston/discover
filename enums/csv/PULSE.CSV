@@ -1,5 +1,0 @@
-value,name,desc,deleted,new,SISO
-0,PULSE_OTHER,Other,0,0,0
-1,PULSE_PULSE,Pulse,0,0,0
-2,PULSE_X_BAND_TACAN_PULSE,X Band TACAN Pulse,0,0,0
-3,PULSE_Y_BAND_TACAN_PULSE,Y Band TACAN Pulse,0,0,0

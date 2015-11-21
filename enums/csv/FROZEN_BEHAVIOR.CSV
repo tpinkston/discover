@@ -1,7 +1,0 @@
-value,name,desc
-0,RUN_INTERNAL_SIMULATION_CLOCK,Run Internal Simulation Clock
-1,TRANSMIT_PDUS,Transmit PDUs
-2,UPDATE_MODELS_OF_OTHER_ENTITIES,Update Models of Other Entities
-3,CONTINUE_TRANSMIT_PDUS,Continue Transmit PDU
-4,CEASE_MODELS_OF_OTHER_ENTITIES,Cease Update Models of Other Entities
-5,CONTINUE_MODELS_OF_OTHER_ENTITIES,Continue Update Models of Other Entities

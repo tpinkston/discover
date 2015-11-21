@@ -1,5 +1,0 @@
-value,name,desc,deleted,new,SISO
-0,ACK_RESP_OTHER,Other,0,0,0
-1,ACK_RESP_ABLE_TO_COMPLY,Able to Comply,0,0,0
-2,ACK_RESP_UNABLE_TO_COMPLY,Unable to Comply,0,0,0
-3,ACK_RESP_PENDING_OPER_ACT,Pending Operator Action,0,1,1

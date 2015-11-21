@@ -1,9 +1,0 @@
-value,name,desc,deleted,new,SISO
-0,MAJ_MOD_OTHER,Other,0,0,0
-1,MAJ_MOD_AMPLITUDE,Amplitude,0,0,0
-2,MAJ_MOD_AMPLITUDE_AND_ANGLE,Amplitude And Angle,0,0,0
-3,MAJ_MOD_ANGLE,Angle,0,0,0
-4,MAJ_MOD_COMBINATION,Combination,0,0,0
-5,MAJ_MOD_PULSE,Pulse,0,0,0
-6,MAJ_MOD_UNMODULATED,Unmodulated,0,0,0
-7,MAJ_MOD_CPSM,Carrier Phase Shift Modulation (CPSM),0,0,0
