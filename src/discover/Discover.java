@@ -1,10 +1,5 @@
 package discover;
 
-import geotransform.ellipsoids.Ellipsoid;
-import geotransform.ellipsoids.WE_Ellipsoid;
-import geotransform.transforms.Gcc_To_Gdc_Converter;
-import geotransform.transforms.Gdc_To_Gcc_Converter;
-
 import java.awt.HeadlessException;
 import java.net.NetworkInterface;
 import java.net.SocketException;
@@ -21,6 +16,10 @@ import discover.system.Network;
 import discover.vdis.enums.Values;
 import discover.vdis.types.EntityTypes;
 import discover.vdis.types.ObjectTypes;
+import geotransform.ellipsoids.Ellipsoid;
+import geotransform.ellipsoids.WE_Ellipsoid;
+import geotransform.transforms.Gcc_To_Gdc_Converter;
+import geotransform.transforms.Gdc_To_Gcc_Converter;
 
 /**
  * @author Tony Pinkston
@@ -45,7 +44,6 @@ public class Discover {
         String headless = System.getProperty("discover.headless");
         String iface = System.getProperty("discover.iface");
         String playback = System.getProperty("discover.playback");
-        String enumeration = System.getProperty("discover.enum");
         String laf = System.getProperty("discover.laf");
 
         for(String name : EXTERNAL_CLASSES) {
@@ -62,42 +60,34 @@ public class Discover {
         EntityTypes.load();
         ObjectTypes.load();
 
-        if (enumeration != null) {
+        initializeNetwork(iface, playback, unbundled, multicast);
 
-            // TODO: Remove option
-            System.out.print("Enumeration printing deprecated...");
+        if (headless != null) {
+
+            Headless.run(headless);
         }
         else {
 
-            initializeNetwork(iface, playback, unbundled, multicast);
+            if (!"none".equalsIgnoreCase(laf)) {
 
-            if (headless != null) {
-
-                Headless.run(headless);
+                setLookAndFeel(laf);
             }
-            else {
 
-                if (!"none".equalsIgnoreCase(laf)) {
+            SwingUtilities.invokeLater(new Runnable() {
 
-                    setLookAndFeel(laf);
-                }
+                @Override
+                public void run() {
 
-                SwingUtilities.invokeLater(new Runnable() {
+                    try {
 
-                    @Override
-                    public void run() {
-
-                        try {
-
-                            DiscoverFrame.getInstance();
-                        }
-                        catch(HeadlessException exception) {
-
-                            System.out.println("ERROR: Can only run headless!");
-                        }
+                        DiscoverFrame.getInstance();
                     }
-                });
-            }
+                    catch(HeadlessException exception) {
+
+                        System.out.println("ERROR: Can only run headless!");
+                    }
+                }
+            });
         }
     }
 

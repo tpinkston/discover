@@ -17,7 +17,6 @@ function usage() {
     echo "     --laf=LAF          Use LAF for GUI look and feel"
     echo "     --headless=PARAMS  Run without GUI"
     echo "     --playback=IPADDR  Use IPADDR as playback address"
-    echo "     --enum=PARAM       Print enumeration information"
     echo "     --multicast        Use any multicast addresses"
     echo
     echo "Default network interface is 'eth0'"
@@ -46,20 +45,13 @@ function usage() {
     echo "    pdutype:T    Where T is the PDU type number."
     echo "    pdufamily:F  Where F is the PDU family number."
     echo "    verbose:V    Where V is either Y or N."
-    echo
-    echo "For the enumerations possible parameters are as follows:"
-    echo
-    echo "  --enum=all     Same as '--enum=?'"
-    echo "  --enum=list    Same as '--enum=?'"
-    echo "  --enum=X       Print values for enumeration number X"
-    echo "  --enum=NAME    Print values for enumeration named NAME"
     exit 0
 }
 
 JVM_ARGS="-Xmx1024m"
 
-SHORT_OPTIONS="d:e:h:i:l:p:u"
-LONG_OPTIONS="debug-port:,enum:,headless:,help,iface:,laf:,multicast,playback:,unbundled"
+SHORT_OPTIONS="d:hi:l:p:u"
+LONG_OPTIONS="debug-port:,headless:,help,iface:,laf:,multicast,playback:,unbundled"
 
 # Verifies command line options
 OPTS=`getopt -o $SHORT_OPTIONS --long $LONG_OPTIONS -n "$SCRIPT_NAME" -- "$@"`
@@ -74,8 +66,6 @@ eval set -- "$OPTS"
 #echo "OPTIONS: $OPTS"
 while true; do
     case "$1" in
-        -e | --enum ) 
-            JVM_ARGS="$JVM_ARGS -Ddiscover.enum=$2"; shift; shift;;
         -d | --debug-port ) 
             JVM_ARGS="$JVM_ARGS -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=$2"; shift; shift;;
         -i | --iface ) 
