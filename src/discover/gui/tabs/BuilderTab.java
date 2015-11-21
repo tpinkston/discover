@@ -198,7 +198,7 @@ public class BuilderTab extends Tab implements ClipboardTab, MouseListener {
     @Override
     public void close() {
 
-        // TODO Auto-generated method stub
+        // Nothing to do...
     }
 
     private void setPDULength() {

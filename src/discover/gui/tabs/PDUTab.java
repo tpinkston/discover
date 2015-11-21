@@ -59,7 +59,6 @@ public abstract class PDUTab
     private static final String HTML = "text/html";
     private static final String PLAIN = "text/plain";
 
-    // TODO: Make private:
     protected final JTable table = new JTable();
     protected final JToolBar tools = new JToolBar();
     protected final JLabel total = new JLabel();
